@@ -4,6 +4,7 @@ using Server.Items;
 using Server.ContextMenus;
 using Server.Misc;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -20,15 +21,15 @@ namespace Server.Mobiles
 				{
 					switch ( Utility.Random( 9 ))
 					{
-						case 0: CitizenLocalization.SayLocalized(this, "The Stranger has saved Sosaria from Exodus."); break;
-						case 1: CitizenLocalization.SayLocalized(this, "Castle Exodus lies in ruins, no one knowing what evil lurks below."); break;
-						case 2: CitizenLocalization.SayLocalized(this, "Mondain's legacy is forever extinguished."); break;
-						case 3: CitizenLocalization.SayLocalized(this, "The timeline has been restored, after the wrath of Minax."); break;
-						case 4: CitizenLocalization.SayLocalized(this, "One day the Stranger will return to Sosaria."); break;
-						case 5: CitizenLocalization.SayLocalized(this, "Although some speak of virtue, it is the serpents of order who keep the balance."); break;
-						case 6: CitizenLocalization.SayLocalized(this, "The order was Love, Sol, Moon, and Death."); break;
-						case 7: CitizenLocalization.SayLocalized(this, "Maybe one day the Stranger will achieve Avatarhood."); break;
-						case 8: CitizenLocalization.SayLocalized(this, "The strings of time show the Guardian is coming."); break;
+						case 0: CitizenLocalization.SayLocalized(this, StringCatalog.ResolveByKey(this.Account, "mob.other.the_stranger_has_saved_sosaria_from_exodus")); break;
+						case 1: CitizenLocalization.SayLocalized(this, StringCatalog.ResolveByKey(this.Account, "mob.other.castle_exodus_lies_in_ruins_no_one_knowing_what_evil_lu")); break;
+						case 2: CitizenLocalization.SayLocalized(this, StringCatalog.ResolveByKey(this.Account, "mob.other.mondain_s_legacy_is_forever_extinguished")); break;
+						case 3: CitizenLocalization.SayLocalized(this, StringCatalog.ResolveByKey(this.Account, "mob.other.the_timeline_has_been_restored_after_the_wrath_of_minax")); break;
+						case 4: CitizenLocalization.SayLocalized(this, StringCatalog.ResolveByKey(this.Account, "mob.other.one_day_the_stranger_will_return_to_sosaria")); break;
+						case 5: CitizenLocalization.SayLocalized(this, StringCatalog.ResolveByKey(this.Account, "mob.other.although_some_speak_of_virtue_it_is_the_serpents_of_ord")); break;
+						case 6: CitizenLocalization.SayLocalized(this, StringCatalog.ResolveByKey(this.Account, "mob.other.the_order_was_love_sol_moon_and_death")); break;
+						case 7: CitizenLocalization.SayLocalized(this, StringCatalog.ResolveByKey(this.Account, "mob.other.maybe_one_day_the_stranger_will_achieve_avatarhood")); break;
+						case 8: CitizenLocalization.SayLocalized(this, StringCatalog.ResolveByKey(this.Account, "mob.other.the_strings_of_time_show_the_guardian_is_coming")); break;
 					};
 
 					m_NextTalk = (DateTime.Now + TimeSpan.FromSeconds( 30 ));

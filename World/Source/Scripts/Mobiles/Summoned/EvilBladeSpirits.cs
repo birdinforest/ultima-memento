@@ -3,6 +3,7 @@ using System.Collections;
 using Server.Misc;
 using Server.Items;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a blade spirit corpse" )]

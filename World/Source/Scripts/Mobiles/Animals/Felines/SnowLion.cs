@@ -1,6 +1,7 @@
 using System;
 using Server.Mobiles;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -13,7 +14,7 @@ namespace Server.Mobiles
 		}
 
 		[Constructable]
-		public SnowLion() : this( "a lion" )
+		public SnowLion() : this( StringCatalog.ResolveByKey(null, "mob.other.a_lion") )
 		{
 		}
 

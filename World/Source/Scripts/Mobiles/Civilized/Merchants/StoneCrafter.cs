@@ -9,6 +9,7 @@ using Server.ContextMenus;
 using Server.Gumps;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -24,7 +25,7 @@ namespace Server.Mobiles
 		public override NpcGuild NpcGuild{ get{ return NpcGuild.MinersGuild; } }
 
 		[Constructable]
-		public StoneCrafter() : base( "the stone crafter" )
+		public StoneCrafter() : base( StringCatalog.ResolveByKey(null, "mob.other.the_stone_crafter") )
 		{
 			SetSkill( SkillName.Carpentry, 85.0, 100.0 );
 		}

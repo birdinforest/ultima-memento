@@ -8,6 +8,7 @@ using System.Text;
 using Server.Items;
 using Server.Mobiles;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -62,7 +63,7 @@ namespace Server.Mobiles
 
 						if ( action == 1 )
 						{
-							this.Say( "*meditating*" );
+							this.Say( StringCatalog.ResolveByKey(this.Account, "mob.emote.meditating") );
 							this.PlaySound( 0xF9 );
 							this.Animate( 269, 5, 1, true, false, 0 );
 						}

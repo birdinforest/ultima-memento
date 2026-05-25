@@ -3,6 +3,7 @@ using Server.Mobiles;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using Server.Localization;
 
 namespace Server.Misc
 {
@@ -225,7 +226,7 @@ namespace Server.Misc
 
 		public static void SetWantedState( PlayerMobile m ) // -------------------------------------------------------------------------------------------------
 		{
-			SetBardsTaleQuest( m, "BardsTaleWin", true );
+			SetBardsTaleQuest( m, StringCatalog.ResolveByKey(null, "mob.other.bardstalewin"), true );
 			m.SetCharacterType( CharacterType.Fugitive );
 			m.Kills = 1;
 			m.Fugitive = 1;
@@ -950,13 +951,13 @@ namespace Server.Misc
 				int nEntry = 1;
 				foreach (string found in enemies)
 				{
-					if ( nEntry == 1 && found == "1" && who == "Arachnar" ){ AlreadyDid = true; }
+					if ( nEntry == 1 && found == "1" && who == StringCatalog.ResolveByKey(null, "mob.other.arachnar") ){ AlreadyDid = true; }
 					else if ( nEntry == 2 && found == "1" && who == "BlackGateDemon" ){ AlreadyDid = true; }
 					else if ( nEntry == 3 && found == "1" && who == "BloodDemigod" ){ AlreadyDid = true; }
 					else if ( nEntry == 4 && found == "1" && who == "Xurtzar" ){ AlreadyDid = true; }
 					else if ( nEntry == 5 && found == "1" && who == "CaddelliteDragon" ){ AlreadyDid = true; }
 					else if ( nEntry == 6 && found == "1" && who == "DragonKing" ){ AlreadyDid = true; }
-					else if ( nEntry == 7 && found == "1" && who == "Vulcrum" ){ AlreadyDid = true; }
+					else if ( nEntry == 7 && found == "1" && who == StringCatalog.ResolveByKey(null, "mob.other.vulcrum") ){ AlreadyDid = true; }
 					else if ( nEntry == 8 && found == "1" && who == "OrkDemigod" ){ AlreadyDid = true; }
 					else if ( nEntry == 9 && found == "1" && who == "Mangar" ){ AlreadyDid = true; }
 					else if ( nEntry == 10 && found == "1" && who == "Astaroth" ){ AlreadyDid = true; }
@@ -966,11 +967,11 @@ namespace Server.Misc
 					else if ( nEntry == 14 && found == "1" && who == "Dracula" ){ AlreadyDid = true; }
 					else if ( nEntry == 15 && found == "1" && who == "LichKing" ){ AlreadyDid = true; }
 					else if ( nEntry == 16 && found == "1" && who == "Surtaz" ){ AlreadyDid = true; }
-					else if ( nEntry == 17 && found == "1" && who == "TitanLithos" ){ AlreadyDid = true; }
-					else if ( nEntry == 18 && found == "1" && who == "TitanPyros" ){ AlreadyDid = true; }
-					else if ( nEntry == 19 && found == "1" && who == "TitanHydros" ){ AlreadyDid = true; }
+					else if ( nEntry == 17 && found == "1" && who == StringCatalog.ResolveByKey(null, "mob.other.titanlithos") ){ AlreadyDid = true; }
+					else if ( nEntry == 18 && found == "1" && who == StringCatalog.ResolveByKey(null, "mob.other.titanpyros") ){ AlreadyDid = true; }
+					else if ( nEntry == 19 && found == "1" && who == StringCatalog.ResolveByKey(null, "mob.other.titanhydros") ){ AlreadyDid = true; }
 					else if ( nEntry == 20 && found == "1" && who == "TitanStatos" ){ AlreadyDid = true; }
-					else if ( nEntry == 21 && found == "1" && who == "Jormungandr" ){ AlreadyDid = true; }
+					else if ( nEntry == 21 && found == "1" && who == StringCatalog.ResolveByKey(null, "mob.other.jormungandr") ){ AlreadyDid = true; }
 					else if ( nEntry == 22 && found == "1" && who == "Exodus" ){ AlreadyDid = true; }
 
 					nEntry++;
@@ -995,13 +996,13 @@ namespace Server.Misc
 
 				foreach ( string killed in enemies )
 				{
-					if ( nEntry == 1 && who == "Arachnar" ){ entry = entry + "1#"; }
+					if ( nEntry == 1 && who == StringCatalog.ResolveByKey(null, "mob.other.arachnar") ){ entry = entry + "1#"; }
 					else if ( nEntry == 2 && who == "BlackGateDemon" ){ entry = entry + "1#"; }
 					else if ( nEntry == 3 && who == "BloodDemigod" ){ entry = entry + "1#"; }
 					else if ( nEntry == 4 && who == "Xurtzar" ){ entry = entry + "1#"; }
 					else if ( nEntry == 5 && who == "CaddelliteDragon" ){ entry = entry + "1#"; }
 					else if ( nEntry == 6 && who == "DragonKing" ){ entry = entry + "1#"; }
-					else if ( nEntry == 7 && who == "Vulcrum" ){ entry = entry + "1#"; }
+					else if ( nEntry == 7 && who == StringCatalog.ResolveByKey(null, "mob.other.vulcrum") ){ entry = entry + "1#"; }
 					else if ( nEntry == 8 && who == "OrkDemigod" ){ entry = entry + "1#"; }
 					else if ( nEntry == 9 && who == "Mangar" ){ entry = entry + "1#"; }
 					else if ( nEntry == 10 && who == "Astaroth" ){ entry = entry + "1#"; }
@@ -1011,11 +1012,11 @@ namespace Server.Misc
 					else if ( nEntry == 14 && who == "Dracula" ){ entry = entry + "1#"; }
 					else if ( nEntry == 15 && who == "LichKing" ){ entry = entry + "1#"; }
 					else if ( nEntry == 16 && who == "Surtaz" ){ entry = entry + "1#"; }
-					else if ( nEntry == 17 && who == "TitanLithos" ){ entry = entry + "1#"; }
-					else if ( nEntry == 18 && who == "TitanPyros" ){ entry = entry + "1#"; }
-					else if ( nEntry == 19 && who == "TitanHydros" ){ entry = entry + "1#"; }
+					else if ( nEntry == 17 && who == StringCatalog.ResolveByKey(null, "mob.other.titanlithos") ){ entry = entry + "1#"; }
+					else if ( nEntry == 18 && who == StringCatalog.ResolveByKey(null, "mob.other.titanpyros") ){ entry = entry + "1#"; }
+					else if ( nEntry == 19 && who == StringCatalog.ResolveByKey(null, "mob.other.titanhydros") ){ entry = entry + "1#"; }
 					else if ( nEntry == 20 && who == "TitanStatos" ){ entry = entry + "1#"; }
-					else if ( nEntry == 21 && who == "Jormungandr" ){ entry = entry + "1#"; }
+					else if ( nEntry == 21 && who == StringCatalog.ResolveByKey(null, "mob.other.jormungandr") ){ entry = entry + "1#"; }
 					else if ( nEntry == 22 && who == "Exodus" ){ entry = entry + "1#"; }
 
 					else if ( nEntry == 1 ){ entry = entry + killed + "#"; }
@@ -1079,7 +1080,7 @@ namespace Server.Misc
 				else if ( nEntry == 12 && goal == "1" && part == "BardsTaleCrystalGolem" ){ return true; }
 				else if ( nEntry == 13 && goal == "1" && part == "BardsTaleSilverCircle" ){ return true; }
 				else if ( nEntry == 14 && goal == "1" && part == "BardsTaleMangarKey" ){ return true; }
-				else if ( nEntry == 15 && goal == "1" && part == "BardsTaleWin" ){ return true; }
+				else if ( nEntry == 15 && goal == "1" && part == StringCatalog.ResolveByKey(null, "mob.other.bardstalewin") ){ return true; }
 
 				nEntry++;
 			}
@@ -1117,7 +1118,7 @@ namespace Server.Misc
 					else if ( nEntry == 12 && part == "BardsTaleCrystalGolem" ){ entry = entry + "1#"; }
 					else if ( nEntry == 13 && part == "BardsTaleSilverCircle" ){ entry = entry + "1#"; }
 					else if ( nEntry == 14 && part == "BardsTaleMangarKey" ){ entry = entry + "1#"; }
-					else if ( nEntry == 15 && part == "BardsTaleWin" ){ entry = entry + "1#"; Finished = 1; }
+					else if ( nEntry == 15 && part == StringCatalog.ResolveByKey(null, "mob.other.bardstalewin") ){ entry = entry + "1#"; Finished = 1; }
 
 					else if ( nEntry == 1 ){ entry = entry + goal + "#"; }
 					else if ( nEntry == 2 ){ entry = entry + goal + "#"; }

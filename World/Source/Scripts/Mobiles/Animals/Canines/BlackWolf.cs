@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Items;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -10,7 +11,7 @@ namespace Server.Mobiles
 	public class BlackWolf : BaseMount
 	{
 		[Constructable]
-		public BlackWolf() : this( "a black wolf" )
+		public BlackWolf() : this( StringCatalog.ResolveByKey(null, "mob.other.a_black_wolf") )
 		{
 		}
 

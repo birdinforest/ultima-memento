@@ -7,6 +7,7 @@ using Server.Gumps;
 using Server.ContextMenus;
 using Server.Targeting;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -185,7 +186,7 @@ namespace Server.Mobiles
             if ( Deleted || !from.Alive )
                 return;
 
-			SayTo(from, "Did one of your henchman suffer a deathly fate? I can resurrect them for you.");
+			SayTo(from, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.did_one_of_your_henchman_suffer_a_deathly_fate_i_can_re"));
 
             from.Target = new HealingTarget(this);
         }
@@ -218,21 +219,21 @@ namespace Server.Mobiles
 
                     if ( nCost < 1 )
                     {
-                        m_BaseHealer.SayTo( from, "Your friend is not dead." );
+                        m_BaseHealer.SayTo( from, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.your_friend_is_not_dead") );
                     }
                     else if (pack.ConsumeTotal(typeof(Gold), toConsume))
                     {
 						thing.Name = "fighter henchman";
 						thing.HenchDead = 0;
 						thing.InvalidateProperties();
-                        from.SendMessage(String.Format("You pay {0} gold.", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.you_pay_0_gold", toConsume));
 						from.PlaySound( 0x214 );
-						m_BaseHealer.SayTo(from, "Your henchman is back in the land of the living.");
+						m_BaseHealer.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.your_henchman_is_back_in_the_land_of_the_living"));
                     }
                     else
                     {
-                        m_BaseHealer.SayTo(from, "It would cost you {0} gold to have them resurrected.", toConsume);
-                        from.SendMessage("You do not have enough gold.");
+                        m_BaseHealer.SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(null, "mob.fmt.it_would_cost_you_0_gold_to_have_them_resurrected", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_do_not_have_enough_gold"));
                     }
                 }
                 else if (targeted is HenchmanWizardItem && from.Backpack != null)
@@ -251,21 +252,21 @@ namespace Server.Mobiles
 
                     if ( nCost < 1 )
                     {
-                        m_BaseHealer.SayTo( from, "Your friend is not dead." );
+                        m_BaseHealer.SayTo( from, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.your_friend_is_not_dead") );
                     }
                     else if (pack.ConsumeTotal(typeof(Gold), toConsume))
                     {
 						thing.Name = "wizard henchman";
 						thing.HenchDead = 0;
 						thing.InvalidateProperties();
-                        from.SendMessage(String.Format("You pay {0} gold.", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.you_pay_0_gold", toConsume));
 						from.PlaySound( 0x214 );
-						m_BaseHealer.SayTo(from, "Your henchman is back in the land of the living.");
+						m_BaseHealer.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.your_henchman_is_back_in_the_land_of_the_living"));
                     }
                     else
                     {
-                        m_BaseHealer.SayTo(from, "It would cost you {0} gold to have them resurrected.", toConsume);
-                        from.SendMessage("You do not have enough gold.");
+                        m_BaseHealer.SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(null, "mob.fmt.it_would_cost_you_0_gold_to_have_them_resurrected", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_do_not_have_enough_gold"));
                     }
                 }
                 else if (targeted is HenchmanArcherItem && from.Backpack != null)
@@ -284,21 +285,21 @@ namespace Server.Mobiles
 
                     if ( nCost < 1 )
                     {
-                        m_BaseHealer.SayTo( from, "Your friend is not dead." );
+                        m_BaseHealer.SayTo( from, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.your_friend_is_not_dead") );
                     }
                     else if (pack.ConsumeTotal(typeof(Gold), toConsume))
                     {
 						thing.Name = "archer henchman";
 						thing.HenchDead = 0;
 						thing.InvalidateProperties();
-                        from.SendMessage(String.Format("You pay {0} gold.", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.you_pay_0_gold", toConsume));
 						from.PlaySound( 0x214 );
-						m_BaseHealer.SayTo(from, "Your henchman is back in the land of the living.");
+						m_BaseHealer.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.your_henchman_is_back_in_the_land_of_the_living"));
                     }
                     else
                     {
-                        m_BaseHealer.SayTo(from, "It would cost you {0} gold to have them resurrected.", toConsume);
-                        from.SendMessage("You do not have enough gold.");
+                        m_BaseHealer.SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(null, "mob.fmt.it_would_cost_you_0_gold_to_have_them_resurrected", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_do_not_have_enough_gold"));
                     }
                 }
                 else if (targeted is HenchmanMonsterItem && from.Backpack != null)
@@ -317,26 +318,26 @@ namespace Server.Mobiles
 
                     if ( nCost < 1 )
                     {
-                        m_BaseHealer.SayTo( from, "Your friend is not dead." );
+                        m_BaseHealer.SayTo( from, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.your_friend_is_not_dead") );
                     }
                     else if (pack.ConsumeTotal(typeof(Gold), toConsume))
                     {
 						thing.Name = "creature henchman";
 						thing.HenchDead = 0;
 						thing.InvalidateProperties();
-                        from.SendMessage(String.Format("You pay {0} gold.", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.you_pay_0_gold", toConsume));
 						from.PlaySound( 0x214 );
-						m_BaseHealer.SayTo(from, "Your henchman is back in the land of the living.");
+						m_BaseHealer.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.your_henchman_is_back_in_the_land_of_the_living"));
                     }
                     else
                     {
-                        m_BaseHealer.SayTo(from, "It would cost you {0} gold to have them resurrected.", toConsume);
-                        from.SendMessage("You do not have enough gold.");
+                        m_BaseHealer.SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(null, "mob.fmt.it_would_cost_you_0_gold_to_have_them_resurrected", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_do_not_have_enough_gold"));
                     }
                 }
 				else
 				{
-					m_BaseHealer.SayTo(from, "That does not need my services.");
+					m_BaseHealer.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.that_does_not_need_my_services"));
 				}
             }
         }

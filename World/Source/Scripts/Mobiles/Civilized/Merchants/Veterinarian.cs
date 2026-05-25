@@ -7,6 +7,7 @@ using Server.Network;
 using Server.Targeting;
 using Server.ContextMenus;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -77,10 +78,10 @@ namespace Server.Mobiles
 			AddImage(0, 0, 20767);
 			AddButton(968, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
 
-			string _mountText = Server.Localization.StringCatalog.TryResolve( lang, "If you see any creature that looks like these here, regardless of color, they can be used as mounts to travel with if tamed or purchased." ) ?? "If you see any creature that looks like these here, regardless of color, they can be used as mounts to travel with if tamed or purchased.";
+			string _mountText = Server.Localization.StringCatalog.TryResolve( lang, StringCatalog.ResolveByKey(null, "mob.other.if_you_see_any_creature_that_looks_like_these_here_rega") ) ?? StringCatalog.ResolveByKey(null, "mob.other.if_you_see_any_creature_that_looks_like_these_here_rega");
 			AddHtml( 13, 578, 981, 20, @"<BODY><BASEFONT Color=" + color + ">" + _mountText + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
-			string _dragonText = Server.Localization.StringCatalog.TryResolve( lang, "* Dragons must learn to be ridden, while Dragyns can be ridden if the Zuluu legends are true." ) ?? "* Dragons must learn to be ridden, while Dragyns can be ridden if the Zuluu legends are true.";
+			string _dragonText = Server.Localization.StringCatalog.TryResolve( lang, StringCatalog.ResolveByKey(null, "mob.other.dragons_must_learn_to_be_ridden_while_dragyns_can_be_ri") ) ?? StringCatalog.ResolveByKey(null, "mob.other.dragons_must_learn_to_be_ridden_while_dragyns_can_be_ri");
 			AddHtml( 13, 618, 981, 20, @"<BODY><BASEFONT Color=" + color + ">" + _dragonText + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddHtml( 670, 134, 27, 20, @"<BODY><BASEFONT Color=" + color + "><BIG>*</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
 			}

@@ -4,6 +4,7 @@ using Server.Items;
 using Server.Misc;
 using Server.Engines.Plants;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a fallen tree" )]
@@ -33,7 +34,7 @@ namespace Server.Mobiles
 
 			if ( Body == 884 )
 			{
-				Title = "";
+				Title = Server.Localization.StringCatalog.Resolve( null, "" );
 				Name = "a treant";
 			}
 

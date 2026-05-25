@@ -115,9 +115,9 @@ namespace Server.Mobiles
 			{
 				nCost = nCost - (int)( ( from.Skills[SkillName.Begging].Value * 0.005 ) * nCost ); if ( nCost < 1 ){ nCost = 1; }
 				nCostH = nCostH - (int)( ( from.Skills[SkillName.Begging].Value * 0.005 ) * nCostH ); if ( nCostH < 1 ){ nCostH = 1; }
-				SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "Since you are begging, do you still want me to tailor your robe or cloak to look normal, it will only cost you {0} gold? Maybe repair a hat for at least {1} gold per durability?", nCost, nCostH));
+				SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.since_you_are_begging_do_you_still_want_me_to_tailor_yo", nCost, nCostH));
 			}
-			else { SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "If you want me to tailor your robe or cloak to look normal, it will cost you {0} gold. Maybe repair a hat at {1} gold per durability?", nCost, nCostH)); }
+			else { SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.if_you_want_me_to_tailor_your_robe_or_cloak_to_look_nor", nCost, nCostH)); }
 
             from.Target = new RepairTarget(this);
         }
@@ -152,7 +152,7 @@ namespace Server.Mobiles
                     }
                     else
                     {
-						m_Tailor.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "That does not need my services."));
+						m_Tailor.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.that_does_not_need_my_services"));
                     }
 
                     if (toConsume == 0)
@@ -161,16 +161,16 @@ namespace Server.Mobiles
                     if (pack.ConsumeTotal(typeof(Gold), toConsume))
                     {
 						if ( BeggingPose(from) > 0 ){ Titles.AwardKarma( from, -BeggingKarma( from ), true ); } // DO ANY KARMA LOSS
-                        m_Tailor.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "Here is your robe."));
-                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormat(from.Account, "You pay {0} gold.", toConsume));
+                        m_Tailor.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.here_is_your_robe"));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.you_pay_0_gold", toConsume));
                         Effects.PlaySound(from.Location, from.Map, 0x248);
 						ba.ItemID = 0x1F03;
 						ba.Name = "robe";
                     }
                     else
                     {
-                        m_Tailor.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "It would cost you {0} gold to have that done.", toConsume));
-                        from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You do not have enough gold."));
+                        m_Tailor.SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.it_would_cost_you_0_gold_to_have_that_done", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_do_not_have_enough_gold"));
                     }
                 }
 				/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -192,7 +192,7 @@ namespace Server.Mobiles
                     }
                     else
                     {
-						m_Tailor.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "That does not need my services."));
+						m_Tailor.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.that_does_not_need_my_services"));
                     }
 
                     if (toConsume == 0)
@@ -201,16 +201,16 @@ namespace Server.Mobiles
                     if (pack.ConsumeTotal(typeof(Gold), toConsume))
                     {
 						if ( BeggingPose(from) > 0 ){ Titles.AwardKarma( from, -BeggingKarma( from ), true ); } // DO ANY KARMA LOSS
-                        m_Tailor.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "Here is your cloak."));
-                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormat(from.Account, "You pay {0} gold.", toConsume));
+                        m_Tailor.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.here_is_your_cloak"));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.you_pay_0_gold", toConsume));
                         Effects.PlaySound(from.Location, from.Map, 0x248);
 						ba.ItemID = 0x1515;
 						ba.Name = "cloak";
                     }
                     else
                     {
-                        m_Tailor.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "It would cost you {0} gold to have that done.", toConsume));
-                        from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You do not have enough gold."));
+                        m_Tailor.SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.it_would_cost_you_0_gold_to_have_that_done", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_do_not_have_enough_gold"));
                     }
                 }
 				/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -233,11 +233,11 @@ namespace Server.Mobiles
                     }
                     else if (ba.HitPoints >= ba.MaxHitPoints)
                     {
-						m_Tailor.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "That does not need to be repaired."));
+						m_Tailor.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.that_does_not_need_to_be_repaired"));
                     }
 					else
 					{
-						m_Tailor.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "I cannot repair that."));
+						m_Tailor.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.i_cannot_repair_that"));
 					}
 
                     if (toConsume == 0)
@@ -246,20 +246,20 @@ namespace Server.Mobiles
                     if (pack.ConsumeTotal(typeof(Gold), toConsume))
                     {
 						if ( BeggingPose(from) > 0 ){ Titles.AwardKarma( from, -BeggingKarma( from ), true ); } // DO ANY KARMA LOSS
-                        m_Tailor.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "Here is your hat."));
-                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormat(from.Account, "You pay {0} gold.", toConsume));
+                        m_Tailor.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.here_is_your_hat"));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.you_pay_0_gold", toConsume));
                         Effects.PlaySound(from.Location, from.Map, 0x248);
                         ba.MaxHitPoints -= 1;
                         ba.HitPoints = ba.MaxHitPoints;
                     }
                     else
                     {
-                        m_Tailor.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "It would cost you {0} gold to have that repaired.", toConsume));
-                        from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You do not have enough gold."));
+                        m_Tailor.SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.it_would_cost_you_0_gold_to_have_that_repaired", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_do_not_have_enough_gold"));
                     }
                 }
 				else
-					m_Tailor.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "That does not need my services."));
+					m_Tailor.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.that_does_not_need_my_services"));
             }
         }
 

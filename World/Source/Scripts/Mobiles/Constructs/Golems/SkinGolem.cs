@@ -5,6 +5,7 @@ using Server.Regions;
 using Server.Mobiles;
 using Server.Misc;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a flesh golem corpse" )]

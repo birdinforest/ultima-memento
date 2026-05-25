@@ -6,6 +6,7 @@ using Server.Targeting;
 using Server.Misc;
 using Server.Network;
 using System.Text;
+using Server.Localization;
 using Server.Mobiles;
 using Server.Engines.PartySystem;
 
@@ -118,14 +119,14 @@ namespace Server.Mobiles
 						if ( pmi.Mobile is PlayerMobile && pmi.Mobile.InRange(c.Location, 20) && pmi.Mobile.Map == c.Map )
 						{
 							pmi.Mobile.AddToBackpack( new VordoScroll() );
-							pmi.Mobile.SendMessage("An item has appeared in your backpack!");
+							pmi.Mobile.SendMessage(Server.Localization.StringCatalog.Resolve(pmi.Mobile.Account, "An item has appeared in your backpack!"));
 						}
 					}
 				}
 				else
 				{
 					killer.AddToBackpack( new VordoScroll() );
-					killer.SendMessage("An item has appeared in your backpack!");
+					killer.SendMessage(Server.Localization.StringCatalog.Resolve(killer.Account, "An item has appeared in your backpack!"));
 				}
 
 				int killerLuck = MobileUtilities.GetLuckFromKiller( this );
@@ -149,7 +150,7 @@ namespace Server.Mobiles
 					{
 						ResourceMods.SetResource( loot, CraftResource.BloodlessSpec );
 						loot = Server.LootPackEntry.Enchant( killer, 500, loot );
-						loot.InfoText1 = "Vordo of the Darkest Magic";
+						loot.InfoText1 = Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.vordo_of_the_darkest_magic");
 						c.DropItem( loot ); 
 					}
 				}
@@ -229,21 +230,21 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( from.Backpack ) ) 
 			{
-				from.SendMessage( "This spell must be in your backpack to use." );
+				from.SendMessage( Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.this_spell_must_be_in_your_backpack_to_use") );
 			}
 			else if ( from.Land == Land.Kuldar )
 			{
 				Server.Misc.PlayerSettings.SetKeys( from, "VordoKey", true );
 				from.PlaySound( 0x249 );
-				from.SendMessage( "You learned Vordo's secrets to escaping this place." );
-				from.SendMessage( "The parchment crumbles to dust." );
+				from.SendMessage( Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_learned_vordo_s_secrets_to_escaping_this_place") );
+				from.SendMessage( Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.the_parchment_crumbles_to_dust") );
 				this.Delete();
 			}
 			else
 			{
 				from.PlaySound( 0x249 );
-				from.SendMessage( "This seems like a bunch of scribbles." );
-				from.SendMessage( "The parchment crumbles to dust." );
+				from.SendMessage( Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.this_seems_like_a_bunch_of_scribbles") );
+				from.SendMessage( Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.the_parchment_crumbles_to_dust") );
 				this.Delete();
 			}
 		}
@@ -264,8 +265,8 @@ namespace Server.Items
 			}
 			else
 			{
-				list.Add( 1070722, "Vordo's notes on escaping the bottle.");
-				list.Add( 1049644, "Learn to use teleporting magic here.");
+				list.Add( 1070722, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.vordo_s_notes_on_escaping_the_bottle") );
+				list.Add( 1049644, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.learn_to_use_teleporting_magic_here") );
 			}
 
 			m_InfoText1 = saved;

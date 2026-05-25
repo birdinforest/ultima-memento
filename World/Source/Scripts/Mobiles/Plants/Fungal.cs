@@ -5,6 +5,7 @@ using Server.Items;
 using Server.Targeting;
 using Server.Misc;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a fungal corpse" )]

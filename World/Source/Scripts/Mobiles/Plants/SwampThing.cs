@@ -6,6 +6,7 @@ using Server.Targeting;
 using Server.Misc;
 using Server.Engines.Plants;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a swamp thing corpse" )]

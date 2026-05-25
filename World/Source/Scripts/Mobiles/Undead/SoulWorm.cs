@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Server;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -65,7 +66,7 @@ namespace Server.Mobiles
 					m.PlaySound(0x204);
 					m.FixedEffect(0x376A, 6, 1);
 					m.Paralyze(TimeSpan.FromSeconds(Math.Min(MySettings.S_paralyzeDuration, Utility.RandomMinMax(4, 8))));
-					m.SendMessage( "You are hypnotized by the worm's gaze!" );
+					m.SendMessage( StringCatalog.ResolveByKey(m.Account, "mob.other.you_are_hypnotized_by_the_worm_s_gaze") );
 				}
 			}
 		}

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Server.Items;
 using Server.Misc;
 using Server.Engines.PartySystem;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -85,7 +86,7 @@ namespace Server.Mobiles
 							targets.Add( flame );
 							CanDie = 1;
 							winner = m;
-							m.SendMessage( "The Candle of Love has vanished after dispatching the Shadowlord." );
+							m.SendMessage( StringCatalog.ResolveByKey(m.Account, "mob.other.the_candle_of_love_has_vanished_after_dispatching_the_s") );
 							Server.Items.QuestSouvenir.GiveReward( m, flame.Name, flame.Hue, flame.ItemID );
 						}
 					}
@@ -97,7 +98,7 @@ namespace Server.Mobiles
 							targets.Add( flame );
 							CanDie = 1;
 							winner = m;
-							m.SendMessage( "The Book of Truth has vanished after dispatching the Shadowlord." );
+							m.SendMessage( StringCatalog.ResolveByKey(m.Account, "mob.other.the_book_of_truth_has_vanished_after_dispatching_the_sh") );
 							Server.Items.QuestSouvenir.GiveReward( m, flame.Name, flame.Hue, flame.ItemID );
 						}
 					}
@@ -109,7 +110,7 @@ namespace Server.Mobiles
 							targets.Add( flame );
 							CanDie = 1;
 							winner = m;
-							m.SendMessage( "The Bell of Courage has vanished after dispatching the Shadowlord." );
+							m.SendMessage( StringCatalog.ResolveByKey(m.Account, "mob.other.the_bell_of_courage_has_vanished_after_dispatching_the") );
 							Server.Items.QuestSouvenir.GiveReward( m, flame.Name, flame.Hue, flame.ItemID );
 						}
 					}
@@ -118,7 +119,7 @@ namespace Server.Mobiles
 
 			if ( CanDie == 0 )
 			{
-				Say("Foolish mortal! You cannot defeat me!");
+				Say(StringCatalog.ResolveByKey(this.Account, "mob.other.foolish_mortal_you_cannot_defeat_me"));
 				this.Hits = this.HitsMax;
 				this.FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
 				this.PlaySound( 0x202 );
@@ -142,20 +143,20 @@ namespace Server.Mobiles
 				if ( this.Name == "Astaroth" && winner is PlayerMobile )
 				{
 					winner.AddToBackpack( new ShardOfHatred() );
-					winner.SendMessage( "You have obtained the Shard of Hatred!" );
-					LoggingFunctions.LogGenericQuest( winner, "has obtained the shard of hatred" );
+					winner.SendMessage( StringCatalog.ResolveByKey(winner.Account, "mob.other.you_have_obtained_the_shard_of_hatred") );
+					LoggingFunctions.LogGenericQuest( winner, StringCatalog.ResolveByKey(this.Account, "mob.other.has_obtained_the_shard_of_hatred") );
 				}
 				else if ( this.Name == "Faulinei" && winner is PlayerMobile )
 				{
 					winner.AddToBackpack( new ShardOfFalsehood() );
-					winner.SendMessage( "You have obtained the Shard of Falsehood!" );
-					LoggingFunctions.LogGenericQuest( winner, "has obtained the shard of falsehood" );
+					winner.SendMessage( StringCatalog.ResolveByKey(winner.Account, "mob.other.you_have_obtained_the_shard_of_falsehood") );
+					LoggingFunctions.LogGenericQuest( winner, StringCatalog.ResolveByKey(this.Account, "mob.other.has_obtained_the_shard_of_falsehood") );
 				}
 				else if ( this.Name == "Nosfentor" && winner is PlayerMobile )
 				{
 					winner.AddToBackpack( new ShardOfCowardice() );
-					winner.SendMessage( "You have obtained the Shard of Cowardice!" );
-					LoggingFunctions.LogGenericQuest( winner, "has obtained the shard of cowardice" );
+					winner.SendMessage( StringCatalog.ResolveByKey(winner.Account, "mob.other.you_have_obtained_the_shard_of_cowardice") );
+					LoggingFunctions.LogGenericQuest( winner, StringCatalog.ResolveByKey(this.Account, "mob.other.has_obtained_the_shard_of_cowardice") );
 				}
 
 				if ( winner != null )

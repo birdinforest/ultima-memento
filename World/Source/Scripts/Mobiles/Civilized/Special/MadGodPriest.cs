@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Server.Misc;
 using Server.Network;
 using Server;
+using Server.Localization;
 using Server.Items;
 using Server.Gumps;
 using Server.Mobiles;
@@ -19,7 +20,7 @@ namespace Server.Mobiles
 
 		string[] kfcsay = new string[]  
 		{ 
-			"All praise the Mad God.",
+			StringCatalog.ResolveByKey(null, "mob.other.all_praise_the_mad_god"),
 		};
 
 		[Constructable]

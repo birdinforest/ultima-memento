@@ -4,6 +4,7 @@ using Server.Items;
 using Server.Misc;
 using Server.Engines.Plants;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a fallen tree" )]

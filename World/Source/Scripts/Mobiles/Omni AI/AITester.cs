@@ -5,6 +5,7 @@ using Server.Misc;
 using Server.Items;
 using Server.Spells;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a corpse" )]

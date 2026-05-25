@@ -1,5 +1,6 @@
 using System;
-using Server; 
+using Server;
+using Server.Localization; 
 
 namespace Server.Items
 {

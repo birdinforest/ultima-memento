@@ -4,6 +4,7 @@ using System.Collections;
 using Server.Items;
 using Server.Targeting;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -98,8 +99,8 @@ namespace Server.Mobiles
 			orb.owner = killer;
 			LootPackEntry.MakeFixedDrop( this, c, orb );
 			killer.AddToBackpack( orb );
-			killer.SendMessage( "You have obtained Satan's Orb of the Abyss!" );
-			LoggingFunctions.LogGenericQuest( killer, "has obtained Satan's orb of the abyss" );
+			killer.SendMessage( StringCatalog.ResolveByKey(killer.Account, "mob.other.you_have_obtained_satan_s_orb_of_the_abyss") );
+			LoggingFunctions.LogGenericQuest( killer, StringCatalog.ResolveByKey(this.Account, "mob.other.has_obtained_satan_s_orb_of_the_abyss") );
 		}
 
 		public override bool CanRummageCorpses{ get{ return true; } }

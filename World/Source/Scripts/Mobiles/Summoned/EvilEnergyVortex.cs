@@ -3,6 +3,7 @@ using Server;
 using Server.Items;
 using System.Collections;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a dissipated vortex" )]

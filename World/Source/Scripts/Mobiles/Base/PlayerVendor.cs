@@ -11,6 +11,7 @@ using Server.Targeting;
 using Server.Misc;
 using Server.Multis;
 using Server.ContextMenus;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -239,7 +240,7 @@ namespace Server.Mobiles
 					if ( !String.IsNullOrEmpty( vi.Description ) )
 					{
 						// The localized message (1043305) is no longer valid - <br>Seller's Description:<br>"~1_DESC~"
-						item.LabelTo( from, "Description: {0}", vi.Description );
+						item.LabelTo( from, StringCatalog.ResolveByKey(from.Account, "mob.fmt.description_0"), vi.Description );
 					}
 				}
 			}
@@ -1074,7 +1075,7 @@ namespace Server.Mobiles
 			}
 			else if ( vi.Created + TimeSpan.FromMinutes( 1.0 ) > DateTime.Now )
 			{
-				from.SendMessage( "You cannot buy this item right now.  Please wait one minute and try again." );
+				from.SendMessage( Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_cannot_buy_this_item_right_now_please_wait_one_minu") );
 			}
 			else
 			{
@@ -1088,7 +1089,7 @@ namespace Server.Mobiles
 			if ( HoldGold > 0 )
 			{
 				SayTo( to, "How much of the {0} that I'm holding would you like?", HoldGold.ToString() );
-				to.SendMessage( "Enter the amount of gold you wish to withdraw (ESC = CANCEL):" );
+				to.SendMessage( Server.Localization.StringCatalog.ResolveByKey(to.Account, "mob.other.enter_the_amount_of_gold_you_wish_to_withdraw_esc_cance") );
 
 				to.Prompt = new CollectGoldPrompt( this );
 			}
@@ -1492,7 +1493,7 @@ namespace Server.Mobiles
 					if ( price > 100000000 )
 					{
 						price = 100000000;
-						from.SendMessage( "You cannot price items above 100,000,000 gold.  The price has been adjusted." );
+						from.SendMessage( Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_cannot_price_items_above_100_000_000_gold_the_price") );
 					}
 
 					setPrice = true;

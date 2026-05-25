@@ -5,6 +5,7 @@ using System.Collections;
 using Server.Gumps;
 using Server.Network;
 using Server.Engines.Plants;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -149,11 +150,11 @@ namespace Server.Mobiles
 					}
 					else if ( Server.Items.HiddenTrap.CheckInsuranceOnTrap( iWrapped, m ) )
 					{
-						m.LocalOverheadMessage(MessageType.Emote, 1150, true, "One of your protected items was almost wrapped in weeds!");
+						m.LocalOverheadMessage(MessageType.Emote, 1150, true, Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.one_of_your_protected_items_was_almost_wrapped_in_weeds"));
 					}
 					else
 					{
-						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "One of your items is wrapped in weeds!");
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.one_of_your_items_is_wrapped_in_weeds"));
 						m.PlaySound( 0x1BB );
 						Container box = new WeededItem();
 						box.DropItem(iWrapped);

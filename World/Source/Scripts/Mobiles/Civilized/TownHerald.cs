@@ -10,6 +10,7 @@ using Server.Gumps;
 using Server.Mobiles;
 using Server.Regions;
 using Server.Commands;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -161,8 +162,8 @@ namespace Server.Mobiles
 			switch( Utility.RandomMinMax( 0, 4 ) )
 			{
 				case 1: item = "lost"; break;	
-				case 2: item = "found"; break;	
-				case 3: item = "discovered"; break;	
+				case 2: item = StringCatalog.ResolveByKey(null, "mob.other.found"); break;	
+				case 3: item = StringCatalog.ResolveByKey(null, "mob.other.discovered"); break;	
 				case 4: item = "stole"; break;	
 			}
 
@@ -232,7 +233,7 @@ namespace Server.Mobiles
 					}
 					else
 					{
-						m_Giver.SayTo( m_Mobile, false, Server.Localization.StringCatalog.ResolveFormat( m_Mobile.Account, "Good day to you, {0}.", m_Mobile.Name ) );
+						m_Giver.SayTo( m_Mobile, false, Server.Localization.StringCatalog.ResolveFormatByKey(m_Mobile.Account, "mob.fmt.good_day_to_you_0", m_Mobile.Name ) );
 					}
 				}
             }

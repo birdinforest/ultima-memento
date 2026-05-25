@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Server.Network;
 using System.Text;
 using Server.Items;
+using Server.Localization;
 using Server.Mobiles;
 using Server.Targeting;
 

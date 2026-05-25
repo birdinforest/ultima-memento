@@ -4,6 +4,7 @@ using Server.Items;
 using Server.Misc;
 using Server.Targeting;
 using Server.Regions;
+using Server.Localization;
 using Server.Mobiles;
 
 namespace Server.Mobiles
@@ -108,7 +109,7 @@ namespace Server.Mobiles
 					{
 						ResourceMods.SetResource( loot, CraftResource.HolySpec );
 						loot = Server.LootPackEntry.Enchant( killer, 500, loot );
-						loot.InfoText1 = "The Lost Knight";
+						loot.InfoText1 = Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.the_lost_knight_2");
 						c.DropItem( loot ); 
 					}
 				}

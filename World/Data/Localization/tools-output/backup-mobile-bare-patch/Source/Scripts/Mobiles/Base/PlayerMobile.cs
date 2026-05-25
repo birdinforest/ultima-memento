@@ -1,0 +1,4375 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Server.Misc;
+using Server.Items;
+using Server.Gumps;
+using Server.Multis;
+using Server.Engines.Help;
+using Server.ContextMenus;
+using Server.Network;
+using Server.Spells;
+using Server.Spells.Shinobi;
+using Server.Spells.Fifth;
+using Server.Spells.Seventh;
+using Server.Spells.Necromancy;
+using Server.Spells.Ninjitsu;
+using Server.Spells.Bushido;
+using Server.Targeting;
+using Server.Regions;
+using Server.Accounting;
+using Server.Engines.Avatar;
+using Server.Engines.Craft;
+using Server.Engines.PartySystem;
+using Server.Engines.MLQuests;
+using Server.SpellBars;
+using Server.Utilities;
+
+namespace Server.Mobiles
+{
+	#region Enums
+	[Flags]
+	public enum PlayerFlag // First 16 bits are reserved for default-distro use, start custom flags at 0x00010000
+	{
+		None					= 0x00000000,
+		Glassblowing			= 0x00000001,
+		Masonry					= 0x00000002,
+		SandMining				= 0x00000004,
+		StoneMining				= 0x00000008,
+		ToggleMiningStone		= 0x00000010,
+		KarmaLocked				= 0x00000020,
+		AutoRenewInsurance		= 0x00000040,
+		UseOwnFilter			= 0x00000080,
+		PublicInfo				= 0x00000100,
+		PagingSquelched			= 0x00000200,
+		Young					= 0x00000400,
+		AcceptGuildInvites		= 0x00000800,
+		NotUsedEnumFlag			= 0x00001000,
+		HasStatReward			= 0x00002000
+	}
+
+	public enum CharacterType
+	{
+		Default,
+		Fugitive,
+		Savage,
+		Alien,
+	}
+
+	public enum NpcGuild
+	{
+		None,
+		MagesGuild,
+		WarriorsGuild,
+		ThievesGuild,
+		RangersGuild,
+		HealersGuild,
+		MinersGuild,
+		MerchantsGuild,
+		TinkersGuild,
+		TailorsGuild,
+		FishermensGuild,
+		BardsGuild,
+		BlacksmithsGuild,
+		NecromancersGuild,
+		AlchemistsGuild,
+		DruidsGuild,
+		ArchersGuild,
+		CarpentersGuild,
+		CartographersGuild,
+		LibrariansGuild,
+		CulinariansGuild,
+		AssassinsGuild,
+		ElementalGuild
+	}
+	#endregion
+
+	public class PlayerMobile : Mobile
+	{
+		private SpellBarsContext _spellBars;
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public SpellBarsContext SpellBars
+		{
+			get
+			{
+				if (_spellBars == null) _spellBars = new SpellBarsContext();
+
+				return _spellBars;
+			}
+			set
+			{
+			}
+		}
+
+		private PlayerPreferenceContext _preferences;
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public PlayerPreferenceContext Preferences
+		{
+			get
+			{
+				if (_preferences == null) _preferences = new PlayerPreferenceContext();
+
+				return _preferences;
+			}
+			set
+			{
+			}
+		}
+
+		private PlayerQuestContext _quests;
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public PlayerQuestContext Quests
+		{
+			get
+			{
+				if (_quests == null) _quests = new PlayerQuestContext();
+
+				return _quests;
+			}
+			set
+			{
+			}
+		}
+
+		public bool WarnedSkaraBrae;
+		public bool WarnedBottleCity;
+
+		public override bool CurePoison( Mobile from )
+		{
+			if( CheckCure( from ) )
+			{
+				Poison oldPoison = this.Poison;
+				this.Poison = null;
+
+				OnCured( from, oldPoison );
+
+				BuffInfo.RemoveBuff( this, BuffIcon.Poisoned );
+
+				return true;
+			}
+
+			OnFailedCure( from );
+
+			return false;
+		}
+
+	  /* Begin Captcha Mod */////////////////////////////////////////
+	 
+		public DateTime NextCaptchaTime { get; set; }
+	 
+		[CommandProperty(AccessLevel.Seer)]
+		public TimeSpan CaptchaDelay
+		{
+			get
+			{
+				if (DateTime.Now >= NextCaptchaTime)
+					return TimeSpan.Zero;
+	 
+				return NextCaptchaTime - DateTime.Now;
+			}
+			set { NextCaptchaTime = DateTime.Now + value; }
+		}
+	  /* End Captcha Mod *///////////////////////////////////////////
+
+		private class CountAndTimeStamp
+		{
+			private int m_Count;
+			private DateTime m_Stamp;
+
+			public CountAndTimeStamp()
+			{
+			}
+
+			public DateTime TimeStamp { get { return m_Stamp; } }
+			public int Count
+			{
+				get { return m_Count; }
+				set	{ m_Count = value; m_Stamp = DateTime.Now; }
+			}
+		}
+
+		private PlayerFlag m_Flags;
+		private bool m_InnocentFugitive;
+		private bool m_IgnoreMobiles; // IgnoreMobiles should be moved to Server.Mobiles
+		private int m_NonAutoreinsuredItems; // number of items that could not be automaitically reinsured because gold in bank was not enough
+		/*
+		 * a value of zero means, that the mobile is not executing the spell. Otherwise,
+		 * the value should match the BaseMana required
+		*/
+
+		private Server.Guilds.RankDefinition m_GuildRank;
+
+		private List<Mobile> m_AutoStabled;
+		private List<Mobile> m_AllFollowers;
+
+		#region Getters & Setters
+
+		public List<Mobile> RecentlyReported { get; set; }
+
+		public List<Mobile> AutoStabled { get { return m_AutoStabled; } }
+
+		public bool NinjaWepCooldown { get; set; }
+
+		public List<Mobile> AllFollowers
+		{
+			get
+			{
+				if( m_AllFollowers == null )
+					m_AllFollowers = new List<Mobile>();
+				return m_AllFollowers;
+			}
+		}
+
+		public Server.Guilds.RankDefinition GuildRank
+		{
+			get
+			{
+				if( this.AccessLevel >= AccessLevel.GameMaster )
+					return Server.Guilds.RankDefinition.Leader;
+				else
+					return m_GuildRank;
+			}
+			set { m_GuildRank = value; }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public int GuildMessageHue { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public int AllianceMessageHue { get; set; }
+
+		/// <summary>
+		/// 1 = Fugitive + not redeemed
+		/// </summary>
+		[CommandProperty( AccessLevel.GameMaster )]
+		public int Fugitive
+		{
+			get { return CharacterType != CharacterType.Fugitive || m_InnocentFugitive ? 0 : 1; }
+			set { m_InnocentFugitive = value == 0; }
+		}
+
+		public int StepsTaken { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool IsStealthing { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool IgnoreMobiles // IgnoreMobiles should be moved to Server.Mobiles
+		{
+			get
+			{
+				return m_IgnoreMobiles;
+			}
+			set
+			{
+				if( m_IgnoreMobiles != value )
+				{
+					m_IgnoreMobiles = value;
+					Delta( MobileDelta.Flags );
+				}
+			}
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public NpcGuild NpcGuild { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public DateTime NpcGuildJoinTime { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public DateTime LastOnline { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public TimeSpan NpcGuildGameTime { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public DateTime Camp { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public DateTime Bedroll { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public DateTime InnTime { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool PauseDoor { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool SneakDamage { get; set; }
+
+		public int ExecutesLightningStrike { get; set; }
+
+		#endregion
+
+		#region PlayerFlags
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool PagingSquelched
+		{
+			get { return GetFlag( PlayerFlag.PagingSquelched ); }
+			set { SetFlag( PlayerFlag.PagingSquelched, value ); }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool Glassblowing
+		{
+			get { return GetFlag( PlayerFlag.Glassblowing ); }
+			set { SetFlag( PlayerFlag.Glassblowing, value ); }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool Masonry
+		{
+			get { return GetFlag( PlayerFlag.Masonry ); }
+			set { SetFlag( PlayerFlag.Masonry, value ); }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool SandMining
+		{
+			get { return GetFlag( PlayerFlag.SandMining ); }
+			set { SetFlag( PlayerFlag.SandMining, value ); }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool StoneMining
+		{
+			get { return GetFlag( PlayerFlag.StoneMining ); }
+			set { SetFlag( PlayerFlag.StoneMining, value ); }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool ToggleMiningStone
+		{
+			get { return GetFlag( PlayerFlag.ToggleMiningStone ); }
+			set { SetFlag( PlayerFlag.ToggleMiningStone, value ); }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool KarmaLocked
+		{
+			get { return GetFlag( PlayerFlag.KarmaLocked ); }
+			set { SetFlag( PlayerFlag.KarmaLocked, value ); }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool AutoRenewInsurance
+		{
+			get { return GetFlag( PlayerFlag.AutoRenewInsurance ); }
+			set { SetFlag( PlayerFlag.AutoRenewInsurance, value ); }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool UseOwnFilter
+		{
+			get { return GetFlag( PlayerFlag.UseOwnFilter ); }
+			set { SetFlag( PlayerFlag.UseOwnFilter, value ); }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool PublicInfo
+		{
+			get { return GetFlag( PlayerFlag.PublicInfo ); }
+			set { SetFlag( PlayerFlag.PublicInfo, value ); }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool AcceptGuildInvites
+		{
+			get { return GetFlag( PlayerFlag.AcceptGuildInvites ); }
+			set { SetFlag( PlayerFlag.AcceptGuildInvites, value ); }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool HasStatReward
+		{
+			get { return GetFlag( PlayerFlag.HasStatReward ); }
+			set { SetFlag( PlayerFlag.HasStatReward, value ); }
+		}
+		#endregion
+
+		#region Auto Arrow Recovery
+		private Dictionary<Type, int> m_RecoverableAmmo = new Dictionary<Type,int>();
+
+		public Dictionary<Type, int> RecoverableAmmo
+		{
+			get { return m_RecoverableAmmo; }
+		}
+
+		public void RecoverAmmo()
+		{
+			if ( Alive )
+			{
+				foreach ( KeyValuePair<Type, int> kvp in m_RecoverableAmmo )
+				{
+					if ( kvp.Value > 0 )
+					{
+						Item ammo = null;
+
+						try
+						{
+							ammo = Activator.CreateInstance( kvp.Key ) as Item;
+						}
+						catch
+						{
+						}
+
+						if ( ammo != null )
+						{
+							string name = ammo.Name;
+							ammo.Amount = kvp.Value;
+
+							if ( name == null )
+							{
+								if ( ammo is Arrow )
+									name = "arrow";
+								else if ( ammo is Bolt )
+									name = "bolt";
+							}
+
+							if ( name != null && ammo.Amount > 1 )
+								name = String.Format( "{0}s", name );
+
+							if ( name == null )
+								name = String.Format( "#{0}", ammo.LabelNumber );
+
+							PlaceInBackpack( ammo );
+							Server.Gumps.QuickBar.RefreshQuickBar( this );
+							SendLocalizedMessage( 1073504, String.Format( "{0}\t{1}", ammo.Amount, name ) ); // You recover ~1_NUM~ ~2_AMMO~.
+						}
+					}
+				}
+
+				m_RecoverableAmmo.Clear();
+			}
+		}
+
+		#endregion
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public DateTime AnkhNextUse { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public TimeSpan DisguiseTimeLeft
+		{
+			get { return DisguiseTimers.TimeRemaining( this ); }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public DateTime PeacedUntil { get; set; }
+
+		#region Scroll of Alacrity
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public DateTime AcceleratedStart { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public SkillName AcceleratedSkill { get; set; }
+
+		#endregion
+
+		public static Direction GetDirection4( Point3D from, Point3D to )
+		{
+			int dx = from.X - to.X;
+			int dy = from.Y - to.Y;
+
+			int rx = dx - dy;
+			int ry = dx + dy;
+
+			Direction ret;
+
+			if ( rx >= 0 && ry >= 0 )
+				ret = Direction.West;
+			else if ( rx >= 0 && ry < 0 )
+				ret = Direction.South;
+			else if ( rx < 0 && ry < 0 )
+				ret = Direction.East;
+			else
+				ret = Direction.North;
+
+			return ret;
+		}
+
+		public override bool OnDroppedItemToWorld( Item item, Point3D location )
+		{
+			if ( !base.OnDroppedItemToWorld( item, location ) )
+				return false;
+
+			IPooledEnumerable mobiles = Map.GetMobilesInRange( location, 0 );
+
+			foreach ( Mobile m in mobiles )
+			{
+				if ( m.Z >= location.Z && m.Z < location.Z + 16 )
+				{
+					mobiles.Free();
+					return false;
+				}
+			}
+
+			mobiles.Free();
+
+			BounceInfo bi = item.GetBounce();
+
+			if ( bi != null )
+			{
+				Type type = item.GetType();
+
+				if ( type.IsDefined( typeof( FurnitureAttribute ), true ) || type.IsDefined( typeof( DynamicFlipingAttribute ), true ) )
+				{
+					object[] objs = type.GetCustomAttributes( typeof( FlipableAttribute ), true );
+
+					if ( objs != null && objs.Length > 0 )
+					{
+						FlipableAttribute fp = objs[0] as FlipableAttribute;
+
+						if ( fp != null )
+						{
+							int[] itemIDs = fp.ItemIDs;
+
+							Point3D oldWorldLoc = bi.m_WorldLoc;
+							Point3D newWorldLoc = location;
+
+							if ( oldWorldLoc.X != newWorldLoc.X || oldWorldLoc.Y != newWorldLoc.Y )
+							{
+								Direction dir = GetDirection4( oldWorldLoc, newWorldLoc );
+
+								if ( itemIDs.Length == 2 )
+								{
+									switch ( dir )
+									{
+										case Direction.North:
+										case Direction.South: item.ItemID = itemIDs[0]; break;
+										case Direction.East:
+										case Direction.West: item.ItemID = itemIDs[1]; break;
+									}
+								}
+								else if ( itemIDs.Length == 4 )
+								{
+									switch ( dir )
+									{
+										case Direction.South: item.ItemID = itemIDs[0]; break;
+										case Direction.East: item.ItemID = itemIDs[1]; break;
+										case Direction.North: item.ItemID = itemIDs[2]; break;
+										case Direction.West: item.ItemID = itemIDs[3]; break;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			return true;
+		}
+
+		public override int GetPacketFlags()
+		{
+			int flags = base.GetPacketFlags();
+
+			if ( m_IgnoreMobiles )
+				flags |= 0x10;
+
+			return flags;
+		}
+
+		public override int GetOldPacketFlags()
+		{
+			int flags = base.GetOldPacketFlags();
+
+			if ( m_IgnoreMobiles )
+				flags |= 0x10;
+
+			return flags;
+		}
+
+		public bool GetFlag( PlayerFlag flag )
+		{
+			return ( (m_Flags & flag) != 0 );
+		}
+
+		public void SetFlag( PlayerFlag flag, bool value )
+		{
+			if ( value )
+				m_Flags |= flag;
+			else
+				m_Flags &= ~flag;
+		}
+
+		public DesignContext DesignContext { get; set; }
+
+		public static void Initialize()
+		{
+			if ( FastwalkPrevention )
+				PacketHandlers.RegisterThrottler( 0x02, new ThrottlePacketCallback( MovementThrottle_Callback ) );
+
+			EventSink.Login += new LoginEventHandler( OnLogin );
+			EventSink.Logout += new LogoutEventHandler( OnLogout );
+			EventSink.Connected += new ConnectedEventHandler( EventSink_Connected );
+			EventSink.Disconnected += new DisconnectedEventHandler( EventSink_Disconnected );
+
+			if( Core.SE )
+			{
+				Timer.DelayCall( TimeSpan.Zero, new TimerCallback( CheckPets ) );
+			}
+		}
+
+		private static void CheckPets()
+		{
+			foreach( Mobile m in World.Mobiles.Values )
+			{
+				if( m is PlayerMobile )
+				{
+					PlayerMobile pm = (PlayerMobile)m;
+
+					if((( !pm.Mounted || ( pm.Mount != null && pm.Mount is EtherealMount )) && ( pm.AllFollowers.Count > pm.AutoStabled.Count )) ||
+						( pm.Mounted && ( pm.AllFollowers.Count  > ( pm.AutoStabled.Count +1 ))))
+					{
+						pm.AutoStablePets(); /* autostable checks summons, et al: no need here */
+					}
+				}
+			}
+		}
+
+		public override void OnSkillInvalidated( Skill skill )
+		{
+			if ( skill.SkillName == SkillName.MagicResist )
+				UpdateResistances();
+
+			if ( skill.SkillName == SkillName.Herding || skill.SkillName == SkillName.Veterinary || skill.SkillName == SkillName.Druidism || skill.SkillName == SkillName.Taming )
+				UpdateFollowers();
+
+			if ( ( skill.SkillName == SkillName.Necromancy ) && ( this.Hue == 0x47E ) && ( this.Skills[SkillName.Necromancy].Base < 100 ) )
+			{
+				this.Hue = Utility.RandomSkinColor();
+				this.HairHue = Utility.RandomHairHue();
+			}
+		}
+
+		public virtual void UpdateFollowers(){
+
+			if ( (this.Skills[SkillName.Herding].Base >= 120.0) && (this.Skills[SkillName.Veterinary].Base >= 120.0) && (this.Skills[SkillName.Druidism].Base >= 120.0) && (this.Skills[SkillName.Taming].Base >= 120.0) )
+			this.FollowersMax = 8;
+
+			else if ( (this.Skills[SkillName.Herding].Base >= 90) && (this.Skills[SkillName.Veterinary].Base >= 90) && (this.Skills[SkillName.Druidism].Base >= 90) && (this.Skills[SkillName.Taming].Base >= 90) )
+			this.FollowersMax = 7;
+
+			else if ( (this.Skills[SkillName.Herding].Base >= 60) && (this.Skills[SkillName.Veterinary].Base >= 60) && (this.Skills[SkillName.Druidism].Base >= 60) && (this.Skills[SkillName.Taming].Base >= 60) )
+			this.FollowersMax = 6;
+
+			else 
+			this.FollowersMax = 5;
+		}
+
+		public override int GetMaxResistance( ResistanceType type )
+		{
+			int max = base.GetMaxResistance( type );
+
+			if ( MySettings.S_MaxResistance > 39 && MySettings.S_MaxResistance < 91 )
+				max = MySettings.S_MaxResistance;
+
+			if ( type != ResistanceType.Physical && Spells.Fourth.CurseSpell.UnderEffect( this ) )
+				max = max - 10;
+
+			if ( type == ResistanceType.Physical && Spells.Research.ResearchRockFlesh.UnderEffect( this ) )
+			{
+				if ( max >= 90 )
+					max = 99;
+				else
+					max = 90;
+			}
+
+			return max;
+		}
+
+		protected override void OnRaceChange( Race oldRace )
+		{
+			ValidateEquipment();
+			UpdateResistances();
+		}
+
+		public override int MaxWeight { get { return (((Core.ML && this.Race == Race.Human) ? 100 : 40) + (int)(3.5 * this.Str)); } }
+
+		private int m_LastGlobalLight = -1, m_LastPersonalLight = -1;
+
+		public override void OnNetStateChanged()
+		{
+			m_LastGlobalLight = -1;
+			m_LastPersonalLight = -1;
+		}
+
+		public override void ComputeBaseLightLevels( out int global, out int personal )
+		{
+			global = LightCycle.ComputeLevelFor( this );
+
+			if ( this.LightLevel < 19 && AosAttributes.GetValue( this, AosAttribute.NightSight ) > 0 )
+				personal = 19;
+			else
+				personal = this.LightLevel;
+		}
+
+		public override void CheckLightLevels( bool forceResend )
+		{
+			NetState ns = this.NetState;
+
+			if ( ns == null )
+				return;
+
+			int global, personal;
+
+			ComputeLightLevels( out global, out personal );
+
+			if ( !forceResend )
+				forceResend = ( global != m_LastGlobalLight || personal != m_LastPersonalLight );
+
+			if ( !forceResend )
+				return;
+
+			m_LastGlobalLight = global;
+			m_LastPersonalLight = personal;
+
+			ns.Send( GlobalLightLevel.Instantiate( global ) );
+			ns.Send( new PersonalLightLevel( this, personal ) );
+		}
+
+		public override int GetMinResistance( ResistanceType type )
+		{
+            /*
+				25 = 0
+				30 = 5
+				40 = 12
+				50 = 18
+				60 = 23
+				70 = 27
+				80 = 31
+				90 = 34
+				100 = 40
+				110 = 42
+				120 = 44
+				125 = 45
+			 */
+			int magicResist = (int)Skills[SkillName.MagicResist].Value;
+			int min = Math.Max(0, (int)(26.413 * Math.Log(magicResist) - 84.623));
+			if (magicResist >= 100)
+				min += 3; // GM bonnus
+
+			if (min > MaxPlayerResistance)
+				min = MaxPlayerResistance;
+
+			int baseMin = base.GetMinResistance(type);
+
+			if (min < baseMin)
+				min = baseMin;
+
+			return min;
+		}
+
+		public override void OnManaChange(int oldValue)
+		{
+			base.OnManaChange(oldValue);
+			if (ExecutesLightningStrike > 0)
+			{
+				if (Mana < ExecutesLightningStrike)
+				{
+					LightningStrike.ClearCurrentMove(this);
+				}
+			}
+		}
+
+		private static void OnLogin( LoginEventArgs e )
+		{
+			PlayerMobile from = e.Mobile as PlayerMobile;
+			if ( from == null ) return;
+
+			// Move ID skills off the Player
+			if ( from.m_NeedRemoveIDSkills )
+			{
+				from.m_NeedRemoveIDSkills = false;
+				from.MoveSkillToFragment( SkillName.Mercantile, 10 );
+				from.MoveSkillToFragment( SkillName.Tasting, 10 );
+				from.MoveSkillToFragment( SkillName.ArmsLore, 10 );
+			}
+
+			if ( AccountHandler.LockdownLevel > AccessLevel.Player )
+			{
+				string notice;
+
+				Accounting.Account acct = from.Account as Accounting.Account;
+
+				if ( acct == null || !acct.HasAccess( from.NetState ) )
+				{
+					if ( from.AccessLevel == AccessLevel.Player )
+						notice = "The server is currently under lockdown. No players are allowed to log in at this time.";
+					else
+						notice = "The server is currently under lockdown. You do not have sufficient access level to connect.";
+
+					Timer.DelayCall( TimeSpan.FromSeconds( 1.0 ), new TimerStateCallback( Disconnect ), from );
+				}
+				else if ( from.AccessLevel >= AccessLevel.Administrator )
+				{
+					notice = "The server is currently under lockdown. As you are an administrator, you may change this from the [Admin gump.";
+				}
+				else
+				{
+					notice = "The server is currently under lockdown. You have sufficient access level to connect.";
+				}
+
+				from.SendGump( new NoticeGump( 1060637, 30720, notice, 0xFFC000, 300, 140, null, null ) );
+				return;
+			}
+
+			if( from is PlayerMobile )
+				((PlayerMobile)from).ClaimAutoStabledPets();
+
+			if (from.Alive)
+			{
+				// Adjust item graphics/visibility on paperdoll
+				from.ProcessClothing();
+			}
+		}
+
+		private bool m_NoDeltaRecursion;
+
+		public void ValidateEquipment()
+		{
+			if ( m_NoDeltaRecursion || Map == null || Map == Map.Internal )
+				return;
+
+			if ( this.Items == null )
+				return;
+
+			m_NoDeltaRecursion = true;
+			Timer.DelayCall( TimeSpan.Zero, new TimerCallback( ValidateEquipment_Sandbox ) );
+		}
+
+		private void ValidateEquipment_Sandbox()
+		{
+			try
+			{
+				if ( Map == null || Map == Map.Internal )
+					return;
+
+				List<Item> items = this.Items;
+
+				if ( items == null )
+					return;
+
+				bool moved = false;
+
+				int str = this.Str;
+				int dex = this.Dex;
+				int intel = this.Int;
+
+				Mobile from = this;
+
+				for ( int i = items.Count - 1; i >= 0; --i )
+				{
+					if ( i >= items.Count )
+						continue;
+
+					Item item = items[i];
+
+					if ( item is BaseWeapon )
+					{
+						BaseWeapon weapon = (BaseWeapon)item;
+
+						bool drop = false;
+
+						if( dex < weapon.DexRequirement )
+							drop = true;
+						else if( str < AOS.Scale( weapon.StrRequirement, 100 - weapon.GetLowerStatReq() ) )
+							drop = true;
+						else if( intel < weapon.IntRequirement )
+							drop = true;
+						else if( weapon.RequiredRace != null && weapon.RequiredRace != this.Race )
+							drop = true;
+
+						if ( drop )
+						{
+							string name = weapon.Name;
+
+							if ( name == null )
+								name = String.Format( "#{0}", weapon.LabelNumber );
+
+							from.SendLocalizedMessage( 1062001, name ); // You can no longer wield your ~1_WEAPON~
+							from.AddToBackpack( weapon );
+							moved = true;
+						}
+					}
+					else if ( item is BaseArmor )
+					{
+						BaseArmor armor = (BaseArmor)item;
+
+						bool drop = false;
+
+						if ( !armor.AllowMaleWearer && !from.Female && from.AccessLevel < AccessLevel.GameMaster )
+						{
+							drop = true;
+						}
+						else if ( !armor.AllowFemaleWearer && from.Female && from.AccessLevel < AccessLevel.GameMaster )
+						{
+							drop = true;
+						}
+						else if( armor.RequiredRace != null && armor.RequiredRace != this.Race )
+						{
+							drop = true;
+						}
+						else
+						{
+							int strBonus = armor.ComputeStatBonus( StatType.Str ), strReq = armor.ComputeStatReq( StatType.Str );
+							int dexBonus = armor.ComputeStatBonus( StatType.Dex ), dexReq = armor.ComputeStatReq( StatType.Dex );
+							int intBonus = armor.ComputeStatBonus( StatType.Int ), intReq = armor.ComputeStatReq( StatType.Int );
+
+							if( dex < dexReq || (dex + dexBonus) < 1 )
+								drop = true;
+							else if( str < strReq || (str + strBonus) < 1 )
+								drop = true;
+							else if( intel < intReq || (intel + intBonus) < 1 )
+								drop = true;
+						}
+
+						if ( drop )
+						{
+							string name = armor.Name;
+
+							if ( name == null )
+								name = String.Format( "#{0}", armor.LabelNumber );
+
+							if ( armor is BaseShield )
+								from.SendLocalizedMessage( 1062003, name ); // You can no longer equip your ~1_SHIELD~
+							else
+								from.SendLocalizedMessage( 1062002, name ); // You can no longer wear your ~1_ARMOR~
+
+							from.AddToBackpack( armor );
+							moved = true;
+						}
+					}
+					else if ( item is BaseClothing )
+					{
+						BaseClothing clothing = (BaseClothing)item;
+
+						bool drop = false;
+
+						if ( !clothing.AllowMaleWearer && !from.Female && from.AccessLevel < AccessLevel.GameMaster )
+						{
+							drop = true;
+						}
+						else if ( !clothing.AllowFemaleWearer && from.Female && from.AccessLevel < AccessLevel.GameMaster )
+						{
+							drop = true;
+						}
+						else if( clothing.RequiredRace != null && clothing.RequiredRace != this.Race )
+						{
+							drop = true;
+						}
+						else
+						{
+							int strBonus = clothing.ComputeStatBonus( StatType.Str );
+							int strReq = clothing.ComputeStatReq( StatType.Str );
+
+							if( str < strReq || (str + strBonus) < 1 )
+								drop = true;
+						}
+
+						if ( drop )
+						{
+							string name = clothing.Name;
+
+							if ( name == null )
+								name = String.Format( "#{0}", clothing.LabelNumber );
+
+							from.SendLocalizedMessage( 1062002, name ); // You can no longer wear your ~1_ARMOR~
+
+							from.AddToBackpack( clothing );
+							moved = true;
+						}
+					}
+				}
+
+				if ( moved )
+					from.SendLocalizedMessage( 500647 ); // Some equipment has been moved to your backpack.
+			}
+			catch ( Exception e )
+			{
+				Console.WriteLine( e );
+			}
+			finally
+			{
+				m_NoDeltaRecursion = false;
+			}
+		}
+
+		public override void Delta( MobileDelta flag )
+		{
+			base.Delta( flag );
+
+			if ( (flag & MobileDelta.Stat) != 0 )
+				ValidateEquipment();
+		}
+
+		private static void Disconnect( object state )
+		{
+			NetState ns = ((Mobile)state).NetState;
+
+			if ( ns != null )
+				ns.Dispose();
+		}
+
+		private static void OnLogout( LogoutEventArgs e )
+		{
+			if( e.Mobile is PlayerMobile )
+				((PlayerMobile)e.Mobile).AutoStablePets();
+		}
+
+		private static void EventSink_Connected( ConnectedEventArgs e )
+		{
+			PlayerMobile pm = e.Mobile as PlayerMobile;
+
+			if ( pm != null )
+			{
+				pm.m_SessionStart = DateTime.Now;
+				pm.BedrollLogout = false;
+				pm.LastOnline = DateTime.Now;
+			}
+
+			DisguiseTimers.StartTimer( e.Mobile );
+
+			Timer.DelayCall( TimeSpan.Zero, new TimerStateCallback( ClearSpecialMovesCallback ), e.Mobile );
+		}
+
+		private static void ClearSpecialMovesCallback( object state )
+		{
+			Mobile from = (Mobile)state;
+
+			SpecialMove.ClearAllMoves( from );
+		}
+
+		private static void EventSink_Disconnected( DisconnectedEventArgs e )
+		{
+			Mobile from = e.Mobile;
+			DesignContext context = DesignContext.Find( from );
+
+			if ( context != null )
+			{
+				/* Client disconnected
+				 *  - Remove design context
+				 *  - Eject all from house
+				 *  - Restore relocated entities
+				 */
+
+				// Remove design context
+				DesignContext.Remove( from );
+
+				// Eject all from house
+				from.RevealingAction();
+
+				foreach ( Item item in context.Foundation.GetItems() )
+					item.Location = context.Foundation.BanLocation;
+
+				foreach ( Mobile mobile in context.Foundation.GetMobiles() )
+					mobile.Location = context.Foundation.BanLocation;
+
+				// Restore relocated entities
+				context.Foundation.RestoreRelocatedEntities();
+			}
+
+			PlayerMobile pm = e.Mobile as PlayerMobile;
+
+			if ( pm != null )
+			{
+				pm.m_GameTime += (DateTime.Now - pm.m_SessionStart);
+				pm.m_SpeechLog = null;
+				pm.LastOnline = DateTime.Now;
+			}
+
+			DisguiseTimers.StopTimer( from );
+		}
+
+		public override void RevealingAction()
+		{
+			if ( DesignContext != null )
+				return;
+
+			Spells.Sixth.InvisibilitySpell.RemoveTimer( this );
+
+			base.RevealingAction();
+
+			IsStealthing = false; // IsStealthing should be moved to Server.Mobiles
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public override bool Hidden
+		{
+			get
+			{
+				return base.Hidden;
+			}
+			set
+			{
+				base.Hidden = value;
+
+				RemoveBuff( BuffIcon.Invisibility );	//Always remove, default to the hiding icon EXCEPT in the invis spell where it's explicitly set
+
+				if( !Hidden )
+				{
+					RemoveBuff( BuffIcon.HidingAndOrStealth );
+				}
+				else if (	!Server.Spells.Sixth.InvisibilitySpell.HasTimer( this ) && 
+							!Server.Spells.Undead.SpectreShadowSpell.HasTimer( this ) )
+				{
+					BuffInfo.AddBuff( this, new BuffInfo( BuffIcon.HidingAndOrStealth, 1075655 ) );
+				}
+			}
+		}
+
+		public override void OnSubItemAdded( Item item )
+		{
+			if ( AccessLevel < AccessLevel.GameMaster && item.IsChildOf( this.Backpack ) )
+			{
+				int maxWeight = WeightOverloading.GetMaxWeight( this );
+				int curWeight = Mobile.BodyWeight + this.TotalWeight;
+
+				if ( curWeight > maxWeight )
+					this.SendLocalizedMessage( 1019035, true, String.Format( " : {0} / {1}", curWeight, maxWeight ) );
+			}
+
+			Server.Gumps.QuickBar.RefreshQuickBar( this );
+			Server.Gumps.RegBar.RefreshRegBar( this );
+			Server.Gumps.SkillListingGump.RefreshSkillList( this );
+		}
+
+		public override bool CanBeHarmful( Mobile target, bool message, bool ignoreOurBlessedness )
+		{
+			if ( DesignContext != null || (target is PlayerMobile && ((PlayerMobile)target).DesignContext != null) )
+				return false;
+
+			if ( (target is BaseVendor && ((BaseVendor)target).IsInvulnerable) || target is PlayerVendor || target is PlayerBarkeeper )
+			{
+				if ( message )
+				{
+					if ( target.Title == null )
+						SendMessage( "{0} the vendor cannot be harmed.", target.Name );
+					else
+						SendMessage( "{0} {1} cannot be harmed.", target.Name, target.Title );
+				}
+
+				return false;
+			}
+
+			return base.CanBeHarmful( target, message, ignoreOurBlessedness );
+		}
+
+		public override bool CanBeBeneficial( Mobile target, bool message, bool allowDead )
+		{
+			if ( DesignContext != null || (target is PlayerMobile && ((PlayerMobile)target).DesignContext != null) )
+				return false;
+
+			return base.CanBeBeneficial( target, message, allowDead );
+		}
+
+		public override bool CheckContextMenuDisplay( IEntity target )
+		{
+			return ( DesignContext == null );
+		}
+
+		public override void OnItemAdded( Item item )
+		{
+			base.OnItemAdded( item );
+
+			if ( item is BaseArmor || item is BaseWeapon )
+			{
+				Hits=Hits; Stam=Stam; Mana=Mana;
+			}
+
+			if ( this.NetState != null )
+				CheckLightLevels( false );
+
+			Server.Items.BarbaricSatchel.BarbaricRobe( item, this );
+			Server.Gumps.QuickBar.RefreshQuickBar( this );
+			Server.Gumps.RegBar.RefreshRegBar( this );
+			Server.Gumps.SkillListingGump.RefreshSkillList( this );
+		}
+
+		public override void OnItemRemoved( Item item )
+		{
+			base.OnItemRemoved( item );
+
+			if ( item is BaseArmor || item is BaseWeapon )
+			{
+				Hits=Hits; Stam=Stam; Mana=Mana;
+			}
+
+			if ( this.NetState != null )
+				CheckLightLevels( false );
+
+			Server.Gumps.QuickBar.RefreshQuickBar( this );
+			Server.Gumps.RegBar.RefreshRegBar( this );
+			Server.Gumps.SkillListingGump.RefreshSkillList( this );
+		}
+
+		public override void OnSubItemRemoved( Item item )
+		{
+			base.OnSubItemRemoved( item );
+
+			Server.Gumps.QuickBar.RefreshQuickBar( this );
+			Server.Gumps.RegBar.RefreshRegBar( this );
+		}
+
+		public override double ArmorRating
+		{
+			get
+			{
+				//BaseArmor ar;
+				double rating = 0.0;
+
+				AddArmorRating( ref rating, NeckArmor );
+				AddArmorRating( ref rating, HandArmor );
+				AddArmorRating( ref rating, HeadArmor );
+				AddArmorRating( ref rating, ArmsArmor );
+				AddArmorRating( ref rating, LegsArmor );
+				AddArmorRating( ref rating, ChestArmor );
+				AddArmorRating( ref rating, ShieldArmor );
+
+				if( this.FindItemOnLayer( Layer.Shoes ) is BaseArmor )
+					AddArmorRating( ref rating, (BaseArmor)(this.FindItemOnLayer( Layer.Shoes )));
+				if( this.FindItemOnLayer( Layer.Cloak ) is BaseArmor )
+					AddArmorRating( ref rating, (BaseArmor)(this.FindItemOnLayer( Layer.Cloak )));
+				if( this.FindItemOnLayer( Layer.OuterTorso ) is BaseArmor )
+					AddArmorRating( ref rating, (BaseArmor)(this.FindItemOnLayer( Layer.OuterTorso )));
+
+				return VirtualArmor + VirtualArmorMod + rating;
+			}
+		}
+
+		private void AddArmorRating( ref double rating, Item armor )
+		{
+			BaseArmor ar = armor as BaseArmor;
+
+			if( ar != null && ( !Core.AOS || ar.ArmorAttributes.MageArmor == 0 ))
+				rating += ar.ArmorRatingScaled;
+		}
+
+		#region [Stats]Max
+		[CommandProperty( AccessLevel.GameMaster )]
+		public override int HitsMax
+		{
+			get
+			{
+				int strBase;
+				int strOffs = GetStatOffset( StatType.Str );
+
+				strBase = this.Str;	//this.Str already includes GetStatOffset/str
+				strOffs = AosAttributes.GetValue( this, AosAttribute.BonusHits );
+
+				// Allow BonusHits to compensate for missing Str, but don't exceed it's cap
+				var value = Math.Min(
+					MyServerSettings.PlayerLevelMod( STAT_CAP, this ) + 25,
+					MyServerSettings.PlayerLevelMod( strBase, this )  + strOffs
+				);
+
+				if ( AnimalForm.UnderTransformation( this, typeof( MysticalFox ) ) || AnimalForm.UnderTransformation( this, typeof( GreyWolf ) ) )
+					value += 20;
+
+				return value;
+			}
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public override int StamMax
+		{
+			get { return Math.Max( 10, MyServerSettings.PlayerLevelMod( base.StamMax, this ) + AosAttributes.GetValue( this, AosAttribute.BonusStam ) ); }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public override int ManaMax
+		{
+			get { return Math.Max( 10, MyServerSettings.PlayerLevelMod( base.ManaMax, this ) + AosAttributes.GetValue( this, AosAttribute.BonusMana ) ); }
+		}
+		#endregion
+
+		#region Stat Getters/Setters
+
+		private const int STAT_CAP = 150; // Max stat cap
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public override int Str
+		{
+			get
+			{
+				if( Core.ML && this.AccessLevel == AccessLevel.Player )
+					return Math.Min( base.Str, STAT_CAP );
+
+				return base.Str;
+			}
+			set
+			{
+				base.Str = value;
+			}
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public override int Int
+		{
+			get
+			{
+				if( Core.ML && this.AccessLevel == AccessLevel.Player )
+					return Math.Min( base.Int, STAT_CAP );
+
+				return base.Int;
+			}
+			set
+			{
+				base.Int = value;
+			}
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public override int Dex
+		{
+			get
+			{
+				if( Core.ML && this.AccessLevel == AccessLevel.Player )
+					return Math.Min( base.Dex, STAT_CAP );
+
+				return base.Dex;
+			}
+			set
+			{
+				base.Dex = value;
+			}
+		}
+
+		#endregion
+
+		public override bool Move( Direction d )
+		{
+			NetState ns = this.NetState;
+
+			if ( ns != null )
+			{
+				if ( HasGump( typeof( ResurrectGump ) ) ) {
+					if ( Alive ) {
+						CloseGump( typeof( ResurrectGump ) );
+					} else {
+						SendLocalizedMessage( 500111 ); // You are frozen and cannot move.
+						return false;
+					}
+				}
+				else if ( HasGump( typeof( ResurrectCostGump ) ) ) {
+					if ( Alive ) {
+						CloseGump( typeof( ResurrectCostGump ) );
+					} else {
+						SendLocalizedMessage( 500111 ); // You are frozen and cannot move.
+						return false;
+					}
+				}
+				else if ( HasGump( typeof( ResurrectNowGump ) ) ) { if ( Alive ) { CloseGump( typeof( ResurrectNowGump ) ); } }
+			}
+
+			TimeSpan speed = ComputeMovementSpeed( d );
+
+			bool res;
+
+			if ( !Alive )
+				Server.Movement.MovementImpl.IgnoreMovableImpassables = true;
+
+			res = base.Move( d );
+
+			Server.Movement.MovementImpl.IgnoreMovableImpassables = false;
+
+			if ( !res )
+				return false;
+
+			m_NextMovementTime += speed;
+
+			if ( Avatar.Active && Avatar.HasSafetyDepositBox )
+			{
+				var box = Avatar.GetOrCreateSafetyDepositBox( this );
+				if ( box.Opened )
+				{
+					box.Close();
+				}
+			}
+
+			return true;
+		}
+
+		public override bool CheckMovement( Direction d, out int newZ )
+		{
+			DesignContext context = DesignContext;
+
+			if ( context == null )
+				return base.CheckMovement( d, out newZ );
+
+			HouseFoundation foundation = context.Foundation;
+
+			newZ = foundation.Z + HouseFoundation.GetLevelZ( context.Level, context.Foundation );
+
+			int newX = this.X, newY = this.Y;
+			Movement.Movement.Offset( d, ref newX, ref newY );
+
+			int startX = foundation.X + foundation.Components.Min.X + 1;
+			int startY = foundation.Y + foundation.Components.Min.Y + 1;
+			int endX = startX + foundation.Components.Width - 1;
+			int endY = startY + foundation.Components.Height - 2;
+
+			return ( newX >= startX && newY >= startY && newX < endX && newY < endY && Map == foundation.Map );
+		}
+
+		public override bool AllowItemUse( Item item )
+		{
+			return DesignContext.Check( this );
+		}
+
+		public SkillName[] AnimalFormRestrictedSkills{ get { return m_AnimalFormRestrictedSkills; } }
+
+		private SkillName[] m_AnimalFormRestrictedSkills = new SkillName[]
+		{
+			SkillName.ArmsLore,	SkillName.Begging, SkillName.Discordance, SkillName.Forensics,
+			SkillName.Inscribe, SkillName.Mercantile, SkillName.Meditation, SkillName.Peacemaking,
+			SkillName.Provocation, SkillName.RemoveTrap, SkillName.Spiritualism, SkillName.Stealing,
+			SkillName.Tasting
+		};
+
+		public override bool AllowSkillUse( SkillName skill )
+		{
+			if ( AnimalForm.UnderTransformation( this ) )
+			{
+				for( int i = 0; i < m_AnimalFormRestrictedSkills.Length; i++ )
+				{
+					if( m_AnimalFormRestrictedSkills[i] == skill )
+					{
+						SendLocalizedMessage( 1070771 ); // You cannot use that skill in this form.
+						return false;
+					}
+				}
+			}
+
+			return DesignContext.Check( this );
+		}
+
+		private bool m_LastProtectedMessage;
+		private int m_NextProtectionCheck = 10;
+
+		public virtual void RecheckTownProtection()
+		{
+			m_NextProtectionCheck = 10;
+
+			bool isProtected = false;
+
+			if ( isProtected != m_LastProtectedMessage )
+			{
+				if ( isProtected )
+					SendLocalizedMessage( 500112 ); // You are now under the protection of the town guards.
+				else
+					SendLocalizedMessage( 500113 ); // You have left the protection of the town guards.
+
+				m_LastProtectedMessage = isProtected;
+			}
+		}
+
+		public override void MoveToWorld( Point3D loc, Map map )
+		{
+			var land = Lands.GetLand(this);
+
+			base.MoveToWorld( loc, map );
+
+			var newLand = Lands.GetLand(this);
+			if (land != newLand)
+			{
+				CustomEventSink.InvokeLandChanged(new LandChangedArgs(this, land, newLand));
+				Worlds.EnteredTheLand(this);
+			}
+
+			RecheckTownProtection();
+		}
+
+		public override void SetLocation( Point3D loc, bool isTeleport )
+		{
+			if ( !isTeleport && AccessLevel == AccessLevel.Player )
+			{
+				// moving, not teleporting
+				int zDrop = ( this.Location.Z - loc.Z );
+
+				if ( zDrop > 20 ) // we fell more than one story
+					Hits -= ((zDrop / 20) * 10) - 5; // deal some damage; does not kill, disrupt, etc
+			}
+
+			base.SetLocation( loc, isTeleport );
+
+			if ( isTeleport || --m_NextProtectionCheck == 0 )
+				RecheckTownProtection();
+		}
+
+		public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list )
+		{
+			base.GetContextMenuEntries( from, list );
+
+			if ( from == this )
+			{
+				if ( Alive && InsuranceEnabled )
+				{
+					list.Add( new CallbackEntry( 6201, new ContextCallback( ToggleItemInsurance ) ) );
+
+					if ( AutoRenewInsurance )
+						list.Add( new CallbackEntry( 6202, new ContextCallback( CancelRenewInventoryInsurance ) ) );
+					else
+						list.Add( new CallbackEntry( 6200, new ContextCallback( AutoRenewInventoryInsurance ) ) );
+				}
+
+				BaseHouse house = BaseHouse.FindHouseAt( this );
+
+				if ( house != null )
+				{
+					if ( Alive && house.InternalizedVendors.Count > 0 && house.IsOwner( this ) )
+						list.Add( new CallbackEntry( 6204, new ContextCallback( GetVendor ) ) );
+
+					if ( house.IsAosRules )
+						list.Add( new CallbackEntry( 6207, new ContextCallback( LeaveHouse ) ) );
+				}
+			}
+			if ( from != this )
+			{
+				if ( Alive && Core.Expansion >= Expansion.AOS )
+				{
+					Party theirParty = from.Party as Party;
+					Party ourParty = this.Party as Party;
+
+					if ( theirParty == null && ourParty == null ) {
+						list.Add( new AddToPartyEntry( from, this ) );
+					} else if ( theirParty != null && theirParty.Leader == from ) {
+						if ( ourParty == null ) {
+							list.Add( new AddToPartyEntry( from, this ) );
+						} else if ( ourParty == theirParty ) {
+							list.Add( new RemoveFromPartyEntry( from, this ) );
+						}
+					}
+				}
+
+				BaseHouse curhouse = BaseHouse.FindHouseAt( this );
+
+				if( curhouse != null )
+				{
+					if ( Alive && Core.Expansion >= Expansion.AOS && curhouse.IsAosRules && curhouse.IsFriend( from ) )
+						list.Add( new EjectPlayerEntry( from, this ) );
+				}
+			}
+
+			list.Add( new CallbackEntry( 6119, new ContextCallback( ViewQuestLog ) ) ); // View Quest Log
+		}
+
+		#region Insurance
+
+		private void ToggleItemInsurance()
+		{
+			if ( !CheckAlive() )
+				return;
+
+			BeginTarget( -1, false, TargetFlags.None, new TargetCallback( ToggleItemInsurance_Callback ) );
+			SendLocalizedMessage( 1060868 ); // Target the item you wish to toggle insurance status on <ESC> to cancel
+		}
+
+		private bool CanInsure( Item item )
+		{
+			if ( (( item is Container) && !(item is BaseQuiver)) || item is BagOfSending || item is KeyRing )
+				return false;
+
+			if ( (item is Spellbook && item.LootType == LootType.Blessed) || item is PotionKeg )
+				return false;
+
+			if ( item.Stackable )
+				return false;
+
+			if ( item.LootType == LootType.Cursed )
+				return false;
+
+			return true;
+		}
+
+		private void ToggleItemInsurance_Callback( Mobile from, object obj )
+		{
+			if ( !CheckAlive() )
+				return;
+
+			Item item = obj as Item;
+
+			if ( item == null || !item.IsChildOf( this ) )
+			{
+				BeginTarget( -1, false, TargetFlags.None, new TargetCallback( ToggleItemInsurance_Callback ) );
+				SendLocalizedMessage( 1060871, "", 0x23 ); // You can only insure items that you have equipped or that are in your backpack
+			}
+			else if ( item.Insured )
+			{
+				item.Insured = false;
+
+				SendLocalizedMessage( 1060874, "", 0x35 ); // You cancel the insurance on the item
+
+				BeginTarget( -1, false, TargetFlags.None, new TargetCallback( ToggleItemInsurance_Callback ) );
+				SendLocalizedMessage( 1060868, "", 0x23 ); // Target the item you wish to toggle insurance status on <ESC> to cancel
+			}
+			else if ( !CanInsure( item ) )
+			{
+				BeginTarget( -1, false, TargetFlags.None, new TargetCallback( ToggleItemInsurance_Callback ) );
+				SendLocalizedMessage( 1060869, "", 0x23 ); // You cannot insure that
+			}
+			else if ( item.LootType == LootType.Blessed || item.LootType == LootType.Newbied || item.BlessedFor == from )
+			{
+				BeginTarget( -1, false, TargetFlags.None, new TargetCallback( ToggleItemInsurance_Callback ) );
+				SendLocalizedMessage( 1060870, "", 0x23 ); // That item is blessed and does not need to be insured
+				SendLocalizedMessage( 1060869, "", 0x23 ); // You cannot insure that
+			}
+			else
+			{
+				if ( !item.PayedInsurance )
+				{
+					if ( Banker.Withdraw( from, 900 ) )
+					{
+						SendLocalizedMessage( 1060398, "900" ); // ~1_AMOUNT~ gold has been withdrawn from your bank box.
+						item.PayedInsurance = true;
+					}
+					else
+					{
+						SendLocalizedMessage( 1061079, "", 0x23 ); // You lack the funds to purchase the insurance
+						return;
+					}
+				}
+
+				item.Insured = true;
+
+				SendLocalizedMessage( 1060873, "", 0x23 ); // You have insured the item
+
+				BeginTarget( -1, false, TargetFlags.None, new TargetCallback( ToggleItemInsurance_Callback ) );
+				SendLocalizedMessage( 1060868, "", 0x23 ); // Target the item you wish to toggle insurance status on <ESC> to cancel
+			}
+		}
+
+		private void AutoRenewInventoryInsurance()
+		{
+			if ( !CheckAlive() )
+				return;
+
+			SendLocalizedMessage( 1060881, "", 0x23 ); // You have selected to automatically reinsure all insured items upon death
+			AutoRenewInsurance = true;
+		}
+
+		private void CancelRenewInventoryInsurance()
+		{
+			if ( !CheckAlive() )
+				return;
+
+			if( Core.SE )
+			{
+				if( !HasGump( typeof( CancelRenewInventoryInsuranceGump ) ) )
+					SendGump( new CancelRenewInventoryInsuranceGump( this ) );
+			}
+			else
+			{
+				SendLocalizedMessage( 1061075, "", 0x23 ); // You have cancelled automatically reinsuring all insured items upon death
+				AutoRenewInsurance = false;
+			}
+		}
+
+		private class CancelRenewInventoryInsuranceGump : Gump
+		{
+			private PlayerMobile m_Player;
+
+			public CancelRenewInventoryInsuranceGump( PlayerMobile player ) : base( 250, 200 )
+			{
+				m_Player = player;
+
+				AddBackground( 0, 0, 240, 142, 0x1453 );
+				AddImageTiled( 6, 6, 228, 100, 0xA40 );
+				AddImageTiled( 6, 116, 228, 20, 0xA40 );
+				AddAlphaRegion( 6, 6, 228, 142 );
+
+				AddHtmlLocalized( 8, 8, 228, 100, 1071021, 0x7FFF, false, false ); // You are about to disable inventory insurance auto-renewal.
+
+				AddButton( 6, 116, 0xFB1, 0xFB2, 0, GumpButtonType.Reply, 0 );
+				AddHtmlLocalized( 40, 118, 450, 20, 1060051, 0x7FFF, false, false ); // CANCEL
+
+				AddButton( 114, 116, 0xFA5, 0xFA7, 1, GumpButtonType.Reply, 0 );
+				AddHtmlLocalized( 148, 118, 450, 20, 1071022, 0x7FFF, false, false ); // DISABLE IT!
+			}
+
+			public override void OnResponse( NetState sender, RelayInfo info )
+			{
+				if ( !m_Player.CheckAlive() )
+					return;
+
+				if ( info.ButtonID == 1 )
+				{
+					m_Player.SendLocalizedMessage( 1061075, "", 0x23 ); // You have cancelled automatically reinsuring all insured items upon death
+					m_Player.AutoRenewInsurance = false;
+				}
+				else
+				{
+					m_Player.SendLocalizedMessage( 1042021 ); // Cancelled.
+				}
+			}
+		}
+
+		#endregion
+
+		#region View Quest Log
+
+		public void ViewQuestLog()
+		{
+			if ( !CheckAlive() )
+				return;
+
+			Server.Engines.MLQuests.Gumps.BaseQuestGump.CloseOtherGumps( this );
+			CloseGump( typeof( Server.Engines.MLQuests.Gumps.QuestLogDetailedGump ) );
+			CloseGump( typeof( Server.Engines.MLQuests.Gumps.QuestLogGump ) );
+			CloseGump( typeof( Server.Engines.MLQuests.Gumps.QuestOfferGump ) );
+
+			SendGump(new Server.Engines.MLQuests.Gumps.QuestLogGump( this ));
+		}
+
+		#endregion
+
+		#region Toggle Quest Item
+
+		public void ToggleQuestItem()
+		{
+			if ( !CheckAlive() )
+				return;
+
+			ToggleQuestItemTarget();
+		}
+
+		private void ToggleQuestItemTarget()
+		{
+			Server.Engines.MLQuests.Gumps.BaseQuestGump.CloseOtherGumps( this );
+			CloseGump( typeof( Server.Engines.MLQuests.Gumps.QuestLogDetailedGump ) );
+			CloseGump( typeof( Server.Engines.MLQuests.Gumps.QuestLogGump ) );
+			CloseGump( typeof( Server.Engines.MLQuests.Gumps.QuestOfferGump ) );
+			//CloseGump( typeof( UnknownGump802 ) );
+			//CloseGump( typeof( UnknownGump804 ) );
+
+			BeginTarget( -1, false, TargetFlags.None, new TargetCallback( ToggleQuestItem_Callback ) );
+			SendLocalizedMessage( 1072352 ); // Target an item or container you wish to toggle Quest Item status on <ESC> to cancel
+		}
+
+		private void ToggleQuestItem_Callback( Mobile from, object obj )
+		{
+			if ( !CheckAlive() )
+				return;
+
+			Item item = obj as Item;
+
+			if ( item == null )
+				return;
+
+			if ( from.Backpack == null || item.RootParent != from )
+			{
+				SendLocalizedMessage( 1074769 ); // An item must be in your backpack to be toggled as a quest item.
+			}
+			else if ( item.QuestItem )
+			{
+				item.QuestItem = false;
+				SendLocalizedMessage( 1072354 ); // You remove Quest Item status from the item
+			}
+			else
+			{
+				if ( item is Container )
+				{
+					item.Items.ForEach(i => 
+					{
+						if (i is Container) return;
+						if (i.QuestItem) return;
+
+						if ( MLQuestSystem.MarkQuestItem( this, i ) )
+						{
+							SendLocalizedMessage( 1072353 ); // You set the item to Quest Item status
+						}
+					});
+				}
+				else
+				{
+					if ( MLQuestSystem.MarkQuestItem( this, item ) )
+					{
+						SendLocalizedMessage( 1072353 ); // You set the item to Quest Item status
+					}
+					else
+					{
+						SendLocalizedMessage( 1072355, "", 0x23 ); // That item does not match any of your quest criteria
+					}
+				}
+			}
+
+			ToggleQuestItemTarget();
+		}
+
+		#endregion
+
+		private void GetVendor()
+		{
+			BaseHouse house = BaseHouse.FindHouseAt( this );
+
+			if ( CheckAlive() && house != null && house.IsOwner( this ) && house.InternalizedVendors.Count > 0 )
+			{
+				CloseGump( typeof( ReclaimVendorGump ) );
+				SendGump( new ReclaimVendorGump( house ) );
+			}
+		}
+
+		private void LeaveHouse()
+		{
+			BaseHouse house = BaseHouse.FindHouseAt( this );
+
+			if ( house != null )
+				this.Location = house.BanLocation;
+		}
+
+		private delegate void ContextCallback();
+
+		private class CallbackEntry : ContextMenuEntry
+		{
+			private ContextCallback m_Callback;
+
+			public CallbackEntry( int number, ContextCallback callback ) : this( number, -1, callback )
+			{
+			}
+
+			public CallbackEntry( int number, int range, ContextCallback callback ) : base( number, range )
+			{
+				m_Callback = callback;
+			}
+
+			public override void OnClick()
+			{
+				if ( m_Callback != null )
+					m_Callback();
+			}
+		}
+
+		public override void DisruptiveAction()
+		{
+			if( Meditating )
+			{
+				Meditating = false;
+				RemoveBuff( BuffIcon.ActiveMeditation );
+			}
+
+			base.DisruptiveAction();
+		}
+
+		public override void OnDoubleClick( Mobile from )
+		{
+			if ( this == from && !Warmode )
+			{
+				IMount mount = Mount;
+
+				if ( mount != null && !DesignContext.Check( this ) )
+					return;
+			}
+
+			if( this == from && (!DisableDismountInWarmode || !Warmode) )
+			{
+				IMount mount = Mount;
+
+				if( mount != null )
+				{
+					Server.Mobiles.EtherealMount.EthyDismount( this );
+				}
+			}
+
+			base.OnDoubleClick( from );
+		}
+
+		public override void DisplayPaperdollTo( Mobile to )
+		{
+			if ( DesignContext.Check( this ) )
+				base.DisplayPaperdollTo( to );
+		}
+
+		private static bool m_NoRecursion;
+
+		public override bool CheckEquip( Item item )
+		{
+			if ( !base.CheckEquip( item ) )
+				return false;
+
+			if ( this.AccessLevel < AccessLevel.GameMaster && item.Layer != Layer.Mount && this.HasTrade )
+			{
+				BounceInfo bounce = item.GetBounce();
+
+				if ( bounce != null )
+				{
+					if ( bounce.m_Parent is Item )
+					{
+						Item parent = (Item) bounce.m_Parent;
+
+						if ( parent == this.Backpack || parent.IsChildOf( this.Backpack ) )
+							return true;
+					}
+					else if ( bounce.m_Parent == this )
+					{
+						return true;
+					}
+				}
+
+				SendLocalizedMessage( 1004042 ); // You can only equip what you are already carrying while you have a trade pending.
+				return false;
+			}
+
+			return true;
+		}
+
+		public override bool CheckTrade( Mobile to, Item item, SecureTradeContainer cont, bool message, bool checkItems, int plusItems, int plusWeight )
+		{
+			int msgNum = 0;
+
+			if ( cont == null )
+			{
+				if ( to.Holding != null )
+					msgNum = 1062727; // You cannot trade with someone who is dragging something.
+				else if ( this.HasTrade )
+					msgNum = 1062781; // You are already trading with someone else!
+				else if ( to.HasTrade )
+					msgNum = 1062779; // That person is already involved in a trade
+			}
+
+			if ( msgNum == 0 )
+			{
+				if ( cont != null )
+				{
+					plusItems += cont.TotalItems;
+					plusWeight += cont.TotalWeight;
+				}
+
+				if ( this.Backpack == null || !this.Backpack.CheckHold( this, item, false, checkItems, plusItems, plusWeight ) )
+					msgNum = 1004040; // You would not be able to hold this if the trade failed.
+				else if ( to.Backpack == null || !to.Backpack.CheckHold( to, item, false, checkItems, plusItems, plusWeight ) )
+					msgNum = 1004039; // The recipient of this trade would not be able to carry this.
+				else
+					msgNum = CheckContentForTrade( item );
+			}
+
+			if ( msgNum != 0 )
+			{
+				if ( message )
+					this.SendLocalizedMessage( msgNum );
+
+				return false;
+			}
+
+			return true;
+		}
+
+		private static int CheckContentForTrade( Item item )
+		{
+			if ( item is TrapableContainer && ((TrapableContainer)item).TrapType != TrapType.None )
+				return 1004044; // You may not trade trapped items.
+
+			if ( SkillHandlers.StolenItem.IsStolen( item ) )
+				return 1004043; // You may not trade recently stolen items.
+
+			if ( item is Container )
+			{
+				foreach ( Item subItem in item.Items )
+				{
+					int msg = CheckContentForTrade( subItem );
+
+					if ( msg != 0 )
+						return msg;
+				}
+			}
+
+			return 0;
+		}
+
+		public override bool CheckNonlocalDrop( Mobile from, Item item, Item target )
+		{
+			if ( !base.CheckNonlocalDrop( from, item, target ) )
+				return false;
+
+			if ( from.AccessLevel >= AccessLevel.GameMaster )
+				return true;
+
+			Container pack = this.Backpack;
+			if ( from == this && this.HasTrade && ( target == pack || target.IsChildOf( pack ) ) )
+			{
+				BounceInfo bounce = item.GetBounce();
+
+				if ( bounce != null && bounce.m_Parent is Item )
+				{
+					Item parent = (Item) bounce.m_Parent;
+
+					if ( parent == pack || parent.IsChildOf( pack ) )
+						return true;
+				}
+
+				SendLocalizedMessage( 1004041 ); // You can't do that while you have a trade pending.
+				return false;
+			}
+
+			return true;
+		}
+
+		protected override void OnLocationChange( Point3D oldLocation )
+		{
+			BaseRace.SyncRace( this, false );
+
+			if ( !( Server.Misc.Worlds.IsMainRegion( Server.Misc.Worlds.GetRegionName( this.Map, oldLocation ) ) ) && Server.Misc.Worlds.IsMainRegion( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) ) )
+			{
+				Server.Misc.Worlds.EnteredTheLand( this );
+				Server.Misc.RegionMusic.MusicRegion( this, this.Region );
+			}
+
+			bool mountAble = true;
+			bool speedAble = true;
+
+			if ( this.HasGump( typeof( BlackMarketGump ) ) )
+				this.CloseGump( typeof( BlackMarketGump ) );
+
+			if( Meditating )
+			{
+				Meditating = false;
+				RemoveBuff( BuffIcon.ActiveMeditation );
+			}
+
+			if ( IsBodyMod && !Body.IsHuman )
+			{
+				mountAble = false;
+			}
+
+			Region region = Region.Find(Location, Map);
+			if ( MySettings.S_NoMountsInCertainRegions && Server.Mobiles.AnimalTrainer.IsNoMountRegion( this, region ) )
+			{
+				mountAble = false;
+				speedAble = Server.Mobiles.AnimalTrainer.AllowMagicSpeed(this, region);
+			}
+			else if ( ( MySettings.S_NoMountBuilding && Server.Misc.Worlds.InBuilding( this ) ) || ( region is HouseRegion && MySettings.S_NoMountsInHouses ) )
+			{
+				mountAble = false;
+			}
+
+			if ( Server.Mobiles.AnimalTrainer.IsBeingFast( this ) && !mountAble )
+			{
+				if ( this.Mounted )
+				{
+					Server.Mobiles.AnimalTrainer.DismountPlayer( this );
+				}
+
+				if ( !speedAble)
+				{
+					Server.Misc.HenchmanFunctions.DismountHenchman( this );
+				}
+			}
+			else if ( speedAble && !mountAble && !Mounted && Alive )
+			{
+			}
+			else if ( mountAble && !Mounted && Alive )
+			{
+				Server.Mobiles.AnimalTrainer.GetLastMounted( this );
+
+				if ( this.Mount != null ){ Server.Misc.HenchmanFunctions.MountHenchman( this ); }
+			}
+
+			FastPlayer.Refresh(this);
+
+			CheckLightLevels( false );
+
+			DesignContext context = DesignContext;
+
+			if ( context == null || m_NoRecursion )
+				return;
+
+			m_NoRecursion = true;
+
+			HouseFoundation foundation = context.Foundation;
+
+			int newX = this.X, newY = this.Y;
+			int newZ = foundation.Z + HouseFoundation.GetLevelZ( context.Level, context.Foundation );
+
+			int startX = foundation.X + foundation.Components.Min.X + 1;
+			int startY = foundation.Y + foundation.Components.Min.Y + 1;
+			int endX = startX + foundation.Components.Width - 1;
+			int endY = startY + foundation.Components.Height - 2;
+
+			if ( newX >= startX && newY >= startY && newX < endX && newY < endY && Map == foundation.Map )
+			{
+				if ( Z != newZ )
+					Location = new Point3D( X, Y, newZ );
+
+				m_NoRecursion = false;
+				return;
+			}
+
+			Location = new Point3D( foundation.X, foundation.Y, newZ );
+			Map = foundation.Map;
+
+			m_NoRecursion = false;
+		}
+
+		public override bool OnMoveOver( Mobile m )
+		{
+			if ( m is BaseCreature && !((BaseCreature)m).Controlled )
+				return ( !Alive || !m.Alive || IsDeadBondedPet || m.IsDeadBondedPet ) || ( Hidden && m.AccessLevel > AccessLevel.Player );
+
+			return base.OnMoveOver( m );
+		}
+
+		public override bool CheckShove( Mobile shoved )
+		{
+			if( m_IgnoreMobiles || TransformationSpellHelper.UnderTransformation( shoved, typeof( WraithFormSpell ) ) )
+				return true;
+			else
+				return base.CheckShove( shoved );
+		}
+
+		protected override void OnMapChange( Map oldMap )
+		{
+			if ( oldMap != this.Map && Server.Misc.Worlds.IsMainRegion( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) ) )
+			{
+				Server.Misc.Worlds.EnteredTheLand( this );
+				Server.Misc.RegionMusic.MusicRegion( this, this.Region );
+			}
+
+			DesignContext context = DesignContext;
+
+			if ( context == null || m_NoRecursion )
+				return;
+
+			m_NoRecursion = true;
+
+			HouseFoundation foundation = context.Foundation;
+
+			if ( Map != foundation.Map )
+				Map = foundation.Map;
+
+			m_NoRecursion = false;
+		}
+
+		public override void OnDamage( int amount, Mobile from, bool willKill )
+		{
+			int disruptThreshold;
+
+			if ( !Core.AOS )
+				disruptThreshold = 0;
+			else if ( from != null && from.Player )
+				disruptThreshold = 18;
+			else
+				disruptThreshold = 25;
+
+			if ( amount > disruptThreshold )
+			{
+				BandageContext c = BandageContext.GetContext( this );
+
+				if ( c != null )
+					c.Slip();
+			}
+
+			if( Confidence.IsRegenerating( this ) )
+				Confidence.StopRegenerating( this );
+
+			WeightOverloading.FatigueOnDamage( this, amount );
+
+			if ( willKill && from is PlayerMobile )
+				Timer.DelayCall( TimeSpan.FromSeconds( 10 ), new TimerCallback( ((PlayerMobile) from).RecoverAmmo ) );
+
+			base.OnDamage( amount, from, willKill );
+		}
+
+		public PlayerMobile CreateCopy(bool includeRecipes)
+		{
+			var newPlayer = new PlayerMobile
+			{
+				Name = Name,
+				StatCap = StatCap,
+
+				_spellBars = SpellBars,
+				_preferences = Preferences,
+				PublicInfo = PublicInfo,
+			};
+
+			if (includeRecipes) newPlayer.m_AcquiredRecipes = m_AcquiredRecipes;
+
+			AvatarEngine.Instance.MigrateContext(this, newPlayer);
+
+			// Only copy Temptations if they're unlocked
+			if (Avatar.Active && Avatar.UnlockTemptations)
+				Temptation.TemptationEngine.Instance.MigrateContext(this, newPlayer);
+
+			return newPlayer;
+		}
+
+		public override void Resurrect()
+		{
+			if (Temptations.HasPermanentDeath || Avatar.Active)
+			{
+				var confirmation = new ConfirmationGump(
+					this,
+					"Permanent Death",
+					"Your character has died and cannot resurrect. Would you like to return to the Gypsy encampment to start over?",
+					() =>
+					{
+						SendMessage("Your character will be recreated and you will be disconnected shortly...");
+
+						Timer.DelayCall(TimeSpan.FromSeconds(1), () => {
+
+							if (Avatar.Active)
+							{
+								var newPlayer = CharacterCreation.ResetCharacter( this, true, false );
+								AvatarEngine.InitializePlayer(newPlayer);
+								AvatarEngine.Instance.ApplyContext(newPlayer, newPlayer.Avatar);
+							}
+							else
+							{
+								CharacterCreation.ResetCharacter( this, false, true);
+							}
+						});
+					}
+				);
+				SendGump(confirmation);
+				return;
+			}
+
+			DoResurrect();
+		}
+
+		private void DoResurrect()
+		{
+			bool wasAlive = this.Alive;
+
+			base.Resurrect();
+
+			this.Hunger = 20;
+			this.Thirst = 20;
+			this.Hits = this.HitsMax;
+			this.Stam = this.StamMax;
+			this.Mana = this.ManaMax;
+
+			MusicName toPlay = MusicList[Utility.Random(MusicList.Length)];
+			this.Send(PlayMusic.GetInstance(toPlay));
+
+			switch( Utility.Random( 7 ) )
+			{
+				case 0: LoggingFunctions.LogStandard( this, "has returned from the realm of the dead", false );		break;
+				case 1: LoggingFunctions.LogStandard( this, "was brought back to the world of the living", false );	break;
+				case 2: LoggingFunctions.LogStandard( this, "has been restored to life", false );					break;
+				case 3: LoggingFunctions.LogStandard( this, "has been brought back from the grave", false );		break;
+				case 4: LoggingFunctions.LogStandard( this, "has been resurrected to this world", false );			break;
+				case 5: LoggingFunctions.LogStandard( this, "has returned to life after death", false );			break;
+				case 6: LoggingFunctions.LogStandard( this, "was resurrected for another chance at life", false );	break;
+			}
+
+			if ( this.QuestArrow != null ){ this.QuestArrow.Stop(); }
+
+			if ( Alive && !wasAlive && RaceID < 1 )
+			{
+				Item deathRobe = new DeathRobe();
+				
+				if ( !EquipItem( deathRobe ) )
+					deathRobe.Delete();
+			}
+
+			BaseRace.SyncRace( this, true );
+		}
+
+        public static MusicName[] MusicList = new MusicName[]
+        {
+            MusicName.Traveling,
+            MusicName.Explore,
+            MusicName.Adventure,
+            MusicName.Searching,
+            MusicName.Scouting,
+            MusicName.Wrong,
+            MusicName.Hunting,
+            MusicName.Seeking,
+            MusicName.Despise,
+            MusicName.Wandering,
+            MusicName.Odyssey,
+            MusicName.Expedition,
+            MusicName.Roaming
+        };
+
+		public override void OnWarmodeChanged()
+		{
+			if ( !Warmode )
+				Timer.DelayCall( TimeSpan.FromSeconds( 10 ), new TimerCallback( RecoverAmmo ) );
+
+			AutoSheatheWeapon.From(this);
+		}
+
+		private Mobile m_InsuranceAward;
+		private int m_InsuranceCost;
+		private int m_InsuranceBonus;
+
+		private bool FindItems_Callback(Item item)
+		{
+			if (!item.Deleted && (item.LootType == LootType.Blessed || item.Insured == true))
+			{
+				if (this.Backpack != item.ParentEntity)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		public override bool OnBeforeDeath()
+		{
+			if ( !MySettings.S_GuardsSentenceDeath && ( this.LastKiller is TownGuards || ( this.LastKiller is BaseVendor && this.LastKiller.WhisperHue != 999 && !(this.LastKiller is PlayerVendor) && !(this.LastKiller is PlayerBarkeeper) ) ) )
+			{
+				Land world = Server.Lands.GetLand( Map, Location, X, Y );
+				Point3D p = new Point3D( 1956, 1328, 0 );
+				Map map = Map.SerpentIsland;
+				string sJail = "Sosaria Prison";
+
+				if ( this.RaceID > 0 && Server.Items.BaseRace.IsEvilDemonCreature( this ) && Land == Land.Serpent && !PlayerSettings.GetDiscovered( this, "the Serpent Island" ) )
+				{
+					if ( this.RaceHomeLand == 2 )
+						world = Land.Lodoria;
+					else
+						world = Land.Sosaria;
+				}
+
+				if ( world == Land.Lodoria )
+				{
+					p = new Point3D( 1980, 1656, 0 );
+					sJail = "Lodoria Prison";
+				}
+				else if ( world == Land.UmberVeil )
+				{
+					p = new Point3D( 2084, 1304, 0 );
+					sJail = "Renika Prison";
+				}
+				else if ( world == Land.Kuldar )
+				{
+					p = new Point3D( 2188, 1304, 0 );
+					sJail = "Kuldara Prison";
+				}
+				else if ( world == Land.Savaged )
+				{
+					p = new Point3D( 2292, 1336, 0 );
+					sJail = "Ork Prison";
+				}
+				else if ( world == Land.Serpent )
+				{
+					p = new Point3D( 2388, 1336, 0 );
+					sJail = "Furnace Prison";
+				}
+				else if ( world == Land.IslesDread )
+				{
+					p = new Point3D( 2484, 1336, 0 );
+					sJail = "Cimmeran Prison";
+				}
+
+				this.SendMessage("You have been sent to the " + sJail + "!"); 
+				Server.Mobiles.BaseCreature.TeleportPets( this, p, map );
+				this.MoveToWorld( p, map );
+				LoggingFunctions.LogPrison( this, sJail );
+
+				Hits = HitsMax;
+				Stam = StamMax;
+				Mana = ManaMax;
+
+				if ( this.Backpack != null )
+				{
+					List<Item> list = new List<Item>();
+					(this.Backpack).RecurseItems( list );
+					foreach ( Item c in list )
+                    {
+                        if ( c.LootType == LootType.Blessed )
+                            continue;
+						
+						if ( MySettings.S_JailOnlyDeletesMoney )
+						{
+							if (
+								c is DDXormite
+								|| c is DDJewels
+								|| c is DDGemstones
+								|| c is DDGoldNuggets
+								|| c is DDSilver
+								|| c is DDCopper
+							)
+							{
+								c.Delete();
+							}
+						}
+                        else if (
+                                c.Catalog == Catalogs.Reagent ||
+                                c.Catalog == Catalogs.Potion ||
+                                c.Catalog == Catalogs.Body ||
+                                c.Stackable ||
+                                c is BaseTool ||
+                                c is BaseHarvestTool ||
+                                c is MagicalWand ||
+                                c is BaseBeverage ||
+                                c is ManyArrows100 ||
+                                c is ManyBolts100 ||
+                                c is ManyArrows1000 ||
+                                c is ManyBolts1000 ||
+                                c is Bedroll ||
+                                c is SmallTent ||
+                                c is CampersTent ||
+                                c is SkeletonsKey ||
+                                c is MasterSkeletonsKey ||
+                                c is Scissors ||
+                                c is PolishBoneBrush ||
+                                c is Torch ||
+                                c is Candle ||
+                                c is Lantern ||
+                                c is DyeTub ||
+                                c is Dyes
+                        )
+                        {
+                            if (c.Parent is NotIdentified)
+                                ((NotIdentified)c.Parent).Delete();
+                            c.Delete();
+                        }
+                    }
+                }
+
+				return false;
+			}
+
+			if ( Server.Misc.SeeIfJewelInBag.IHaveAJewel( this ) == true ) // FOR THE JEWEL OF IMMORTALITY
+			{
+				return false;
+			}
+			else if ( Server.Misc.SeeIfGemInBag.IHaveAGem( this ) == true ) // FOR THE GEM OF IMMORTALITY
+			{
+				return false;
+			}
+
+			NetState state = NetState;
+
+			if ( state != null )
+				state.CancelAllTrades();
+
+			DropHolding();
+
+			if (Backpack != null && !Backpack.Deleted)
+			{
+				List<Item> ilist = Backpack.FindItemsByType<Item>(FindItems_Callback);
+
+				for (int i = 0; i < ilist.Count; i++)
+				{
+					Backpack.AddItem(ilist[i]);
+				}
+			}
+
+			m_NonAutoreinsuredItems = 0;
+			m_InsuranceCost = 0;
+			m_InsuranceAward = base.FindMostRecentDamager( false );
+
+			if ( m_InsuranceAward is BaseCreature )
+			{
+				Mobile master = ((BaseCreature)m_InsuranceAward).GetMaster();
+
+				if ( master != null )
+					m_InsuranceAward = master;
+			}
+
+			if ( m_InsuranceAward != null && (!m_InsuranceAward.Player || m_InsuranceAward == this) )
+				m_InsuranceAward = null;
+
+			if ( m_InsuranceAward is PlayerMobile )
+				((PlayerMobile)m_InsuranceAward).m_InsuranceBonus = 0;
+
+			RecoverAmmo();
+
+			Mobile mob = this.LastKiller;
+			if ( mob != null ){ LoggingFunctions.LogDeaths( this, mob ); }
+
+			DeathRobe robe = FindItemOnLayer( Layer.OuterTorso ) as DeathRobe;
+			if ( robe != null )
+				robe.Delete();
+
+			return base.OnBeforeDeath();
+		}
+
+		private bool CheckInsuranceOnDeath( Item item )
+		{
+			if ( InsuranceEnabled && item.Insured )
+			{
+				if ( AutoRenewInsurance )
+				{
+					int cost = 900;
+
+					if ( Banker.Withdraw( this, cost ) )
+					{
+						m_InsuranceCost += cost;
+						item.PayedInsurance = true;
+						SendLocalizedMessage(1060398, cost.ToString()); // ~1_AMOUNT~ gold has been withdrawn from your bank box.
+					}
+					else
+					{
+						SendLocalizedMessage( 1061079, "", 0x23 ); // You lack the funds to purchase the insurance
+						item.PayedInsurance = false;
+						item.Insured = false;
+						m_NonAutoreinsuredItems++;
+					}
+				}
+				else
+				{
+					item.PayedInsurance = false;
+					item.Insured = false;
+				}
+
+				return true;
+			}
+
+			return false;
+		}
+
+		public override DeathMoveResult GetParentMoveResultFor( Item item )
+		{
+			if ( CheckInsuranceOnDeath( item ) )
+				return DeathMoveResult.MoveToBackpack;
+
+			DeathMoveResult res = base.GetParentMoveResultFor( item );
+
+			if ( res == DeathMoveResult.MoveToCorpse && item.Movable && this.Young )
+				res = DeathMoveResult.MoveToBackpack;
+
+			return res;
+		}
+
+		private bool _recursiveDeleteBlock;
+		public override void OnDelete()
+		{
+			base.OnDelete();
+
+			if (!_recursiveDeleteBlock)
+			{
+				_recursiveDeleteBlock = true;
+
+				foreach (var pet in WorldUtilities.ForEachMobile<Mobile>(mobile => mobile != this && mobile != null && !mobile.Deleted && MobileUtilities.TryGetMasterPlayer(mobile) == this))
+				{
+					pet.Delete();
+				}
+
+				foreach (var corpse in WorldUtilities.ForEachItem<Corpse>(item => item != null && !item.Deleted && item.Owner == this))
+				{
+					corpse.Delete();
+				}
+
+				var party = Party as Party;
+				if (party != null)
+				{
+					party.Remove(this);
+				}
+
+				_recursiveDeleteBlock = false;
+			}
+		}
+
+		public override DeathMoveResult GetInventoryMoveResultFor( Item item )
+		{
+			if ( CheckInsuranceOnDeath( item ) )
+				return DeathMoveResult.MoveToBackpack;
+
+			DeathMoveResult res = base.GetInventoryMoveResultFor( item );
+
+			if ( res == DeathMoveResult.MoveToCorpse && item.Movable && this.Young )
+				res = DeathMoveResult.MoveToBackpack;
+
+			return res;
+		}
+
+		public override void OnDeath( Container c )
+		{
+			if (m_NonAutoreinsuredItems > 0)
+			{
+				SendLocalizedMessage(1061115);
+			}
+
+			base.OnDeath(c);
+
+			var context = Engines.MobileEnhancement.Engine.Instance.GetContextOrDefault(this);
+			context.Validate(true);
+
+			RevertMods();
+
+			SkillHandlers.StolenItem.ReturnOnDeath( this, c );
+
+			if ( m_PermaFlags.Count > 0 )
+			{
+				m_PermaFlags.Clear();
+
+				if ( c is Corpse )
+					((Corpse)c).Criminal = true;
+
+				if ( SkillHandlers.Stealing.ClassicMode )
+					Criminal = true;
+			}
+
+			if ( m_InsuranceAward is PlayerMobile )
+			{
+				PlayerMobile pm = (PlayerMobile)m_InsuranceAward;
+
+				if ( pm.m_InsuranceBonus > 0 )
+					pm.SendLocalizedMessage( 1060397, pm.m_InsuranceBonus.ToString() ); // ~1_AMOUNT~ gold has been deposited into your bank box.
+			}
+
+			Mobile killer = this.FindMostRecentDamager( true );
+
+			if ( killer is BaseCreature )
+			{
+				BaseCreature bc = (BaseCreature)killer;
+
+				Mobile master = bc.GetMaster();
+				if( master != null )
+					killer = master;
+			}
+
+			if ( this.Young )
+			{
+				if ( YoungDeathTeleport() )
+					Timer.DelayCall( TimeSpan.FromSeconds( 2.5 ), new TimerCallback( SendYoungDeathNotice ) );
+			}
+
+			Server.Guilds.Guild.HandleDeath( this, killer );
+
+			if( m_BuffTable != null )
+			{
+				List<BuffInfo> list = new List<BuffInfo>();
+
+				foreach( BuffInfo buff in m_BuffTable.Values )
+				{
+					if( !buff.RetainThroughDeath )
+					{
+						list.Add( buff );
+					}
+				}
+
+				for( int i = 0; i < list.Count; i++ )
+				{
+					RemoveBuff( list[i] );
+				}
+			}
+
+			BaseRace.SyncRace( this, false );
+		}
+
+		private List<Mobile> m_PermaFlags;
+		private List<Mobile> m_VisList;
+		private Hashtable m_AntiMacroTable;
+		private TimeSpan m_GameTime;
+		private TimeSpan m_ShortTermElapse;
+		private TimeSpan m_LongTermElapse;
+		private DateTime m_SessionStart;
+		private DateTime m_LastPetBallTime;
+		private DateTime m_SavagePaintExpiration;
+		private SkillName m_Learning = (SkillName)(-1);
+
+		public SkillName Learning
+		{
+			get { return m_Learning; }
+			set { m_Learning = value; }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public TimeSpan SavagePaintExpiration
+		{
+			get
+			{
+				TimeSpan ts = m_SavagePaintExpiration - DateTime.Now;
+
+				if ( ts < TimeSpan.Zero )
+					ts = TimeSpan.Zero;
+
+				return ts;
+			}
+			set
+			{
+				m_SavagePaintExpiration = DateTime.Now + value;
+			}
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public DateTime LastPetBallTime { get; set; }
+
+		public PlayerMobile()
+		{
+			m_AutoStabled = new List<Mobile>();
+
+			m_VisList = new List<Mobile>();
+			m_PermaFlags = new List<Mobile>();
+			m_AntiMacroTable = new Hashtable();
+			RecentlyReported = new List<Mobile>();
+
+			m_GameTime = TimeSpan.Zero;
+			m_ShortTermElapse = TimeSpan.FromHours( 8.0 );
+			m_LongTermElapse = TimeSpan.FromHours( 40.0 );
+
+			m_GuildRank = Guilds.RankDefinition.Lowest;
+		}
+
+		public override bool MutateSpeech( List<Mobile> hears, ref string text, ref object context )
+		{
+			if ( Alive )
+				return false;
+
+			if ( Core.ML && Skills[SkillName.Spiritualism].Value >= 100.0 )
+				return false;
+
+			if ( Core.AOS )
+			{
+				for ( int i = 0; i < hears.Count; ++i )
+				{
+					Mobile m = hears[i];
+
+					if ( m != this && m.Skills[SkillName.Spiritualism].Value >= 100.0 )
+						return false;
+				}
+			}
+
+			return base.MutateSpeech( hears, ref text, ref context );
+		}
+
+		public override void DoSpeech( string text, int[] keywords, MessageType type, int hue )
+		{
+			if( Guilds.Guild.NewGuildSystem && (type == MessageType.Guild || type == MessageType.Alliance) )
+			{
+				Guilds.Guild g = this.Guild as Guilds.Guild;
+				if( g == null )
+				{
+					SendLocalizedMessage( 1063142 ); // You are not in a guild!
+				}
+				else if( type == MessageType.Alliance )
+				{
+					if( g.Alliance != null && g.Alliance.IsMember( g ) )
+					{
+						//g.Alliance.AllianceTextMessage( hue, "[Alliance][{0}]: {1}", this.Name, text );
+						g.Alliance.AllianceChat( this, text );
+						SendToStaffMessage( this, "[Alliance]: {0}", text );
+
+						AllianceMessageHue = hue;
+					}
+					else
+					{
+						SendLocalizedMessage( 1071020 ); // You are not in an alliance!
+					}
+				}
+				else	//Type == MessageType.Guild
+				{
+					GuildMessageHue = hue;
+
+					g.GuildChat( this, text );
+					SendToStaffMessage( this, "[Guild]: {0}", text );
+				}
+			}
+			else
+			{
+				base.DoSpeech( text, keywords, type, hue );
+			}
+		}
+
+		private static void SendToStaffMessage( Mobile from, string text )
+		{
+			Packet p = null;
+
+			foreach( NetState ns in from.GetClientsInRange( 8 ) )
+			{
+				Mobile mob = ns.Mobile;
+
+				if( mob != null && mob.AccessLevel >= AccessLevel.GameMaster && mob.AccessLevel > from.AccessLevel )
+				{
+					if( p == null )
+						p = Packet.Acquire( new UnicodeMessage( from.Serial, from.Body, MessageType.Regular, from.SpeechHue, 3, from.Language, from.Name, text ) );
+
+					ns.Send( p );
+				}
+			}
+
+			Packet.Release( p );
+		}
+
+		private static void SendToStaffMessage( Mobile from, string format, params object[] args )
+		{
+			SendToStaffMessage( from, String.Format( format, args ) );
+		}
+
+		public override void Damage( int amount, Mobile from )
+		{
+			if ( Spells.Necromancy.EvilOmenSpell.TryEndEffect( this ) )
+				amount = (int)(amount * 1.25);
+
+			Mobile oath = Spells.Necromancy.BloodOathSpell.GetBloodOath( from );
+
+				/* Per EA's UO Herald Pub48 (ML):
+				 * ((magic resist x10)/20 + 10=percentage of damage resisted)
+				 */
+
+			if ( oath == this )
+			{
+				amount = (int)(amount * 1.1);
+
+				if( amount > 35 && from is PlayerMobile )  /* capped @ 35, seems no expansion */
+				{
+					amount = 35;
+				}
+
+				if( Core.ML )
+				{
+					from.Damage( (int)(amount * ( 1 - ((( from.Skills.MagicResist.Value * .5 ) + 10) / 100 ))), this );
+				}
+				else
+				{
+					from.Damage( amount, this );
+				}
+			}
+
+			base.Damage( amount, from );
+		}
+
+		#region Poison
+
+		public override ApplyPoisonResult ApplyPoison( Mobile from, Poison poison )
+		{
+			if ( !Alive )
+				return ApplyPoisonResult.Immune;
+
+			if ( Spells.Necromancy.EvilOmenSpell.TryEndEffect( this ) )
+				poison = PoisonImpl.IncreaseLevel( poison );
+
+			ApplyPoisonResult result = base.ApplyPoison( from, poison );
+
+			if ( from != null && result == ApplyPoisonResult.Poisoned && PoisonTimer is PoisonImpl.PoisonTimer )
+				(PoisonTimer as PoisonImpl.PoisonTimer).From = from;
+
+			return result;
+		}
+
+		public override bool CheckPoisonImmunity( Mobile from, Poison poison )
+		{
+			if ( this.Young )
+				return true;
+
+			return base.CheckPoisonImmunity( from, poison );
+		}
+
+		public override void OnPoisonImmunity( Mobile from, Poison poison )
+		{
+			if ( this.Young )
+				SendLocalizedMessage( 502808 ); // You would have been poisoned, were you not new to the land of Britannia. Be careful in the future.
+			else
+				base.OnPoisonImmunity( from, poison );
+		}
+
+		#endregion
+
+		public PlayerMobile( Serial s ) : base( s )
+		{
+			m_VisList = new List<Mobile>();
+			m_AntiMacroTable = new Hashtable();
+		}
+
+		public List<Mobile> VisibilityList
+		{
+			get { return m_VisList; }
+		}
+
+		public List<Mobile> PermaFlags
+		{
+			get { return m_PermaFlags; }
+		}
+
+		public override int Luck
+		{
+			get
+			{
+				if ( CharacterType == CharacterType.Alien && MySettings.S_AllowAlienChoice ) { return 0; } // Aliens never have Luck
+
+				return AosAttributes.GetValue( this, AosAttribute.Luck );
+			}
+		}
+
+		public override bool IsHarmfulCriminal( Mobile target )
+		{
+			if ( SkillHandlers.Stealing.ClassicMode && target is PlayerMobile && ((PlayerMobile)target).m_PermaFlags.Count > 0 )
+			{
+				int noto = Notoriety.Compute( this, target );
+
+				if ( noto == Notoriety.Innocent )
+					target.Delta( MobileDelta.Noto );
+
+				return false;
+			}
+
+			if ( target is BaseCreature && ((BaseCreature)target).InitialInnocent && !((BaseCreature)target).Controlled )
+				return false;
+
+			if ( Core.ML && target is BaseCreature && ((BaseCreature)target).Controlled && this == ((BaseCreature)target).ControlMaster )
+				return false;
+
+			return base.IsHarmfulCriminal( target );
+		}
+
+		public bool AntiMacroCheck( Skill skill, object obj )
+		{
+			if ( obj == null || m_AntiMacroTable == null || this.AccessLevel != AccessLevel.Player )
+				return true;
+
+			Hashtable tbl = (Hashtable)m_AntiMacroTable[skill];
+			if ( tbl == null )
+				m_AntiMacroTable[skill] = tbl = new Hashtable();
+
+			CountAndTimeStamp count = (CountAndTimeStamp)tbl[obj];
+			if ( count != null )
+			{
+				if ( count.TimeStamp + SkillCheck.AntiMacroExpire <= DateTime.Now )
+				{
+					count.Count = 1;
+					return true;
+				}
+				else
+				{
+					++count.Count;
+					if ( count.Count <= SkillCheck.Allowance )
+						return true;
+					else
+						return false;
+				}
+			}
+			else
+			{
+				tbl[obj] = count = new CountAndTimeStamp();
+				count.Count = 1;
+
+				return true;
+			}
+		}
+
+		private void RevertMods()
+		{
+			HueMod = -1;
+			NameMod = null;
+			SavagePaintExpiration = TimeSpan.Zero;
+
+			SetHairMods( -1, -1 );
+
+			PolymorphSpell.StopTimer( this );
+			IncognitoSpell.StopTimer( this );
+			Deception.StopTimer( this );
+			DisguiseTimers.RemoveTimer( this );
+
+			EndAction( typeof( PolymorphSpell ) );
+			EndAction( typeof( IncognitoSpell ) );
+			EndAction( typeof( Deception ) );
+		}
+
+		private void MoveSkillToFragment( SkillName skill, int threshold )
+		{
+			if ( Skills[skill].Base < threshold ) return;
+
+			var username = Account != null ? Account.Username : null;
+			var fragment = new SoulstoneFragment(1, username)
+			{
+				LootType = LootType.Blessed,
+				LastUserName = Name,
+				Skill = skill,
+				SkillValue = Skills[skill].Base
+			};
+			Skills[skill].Base = 0;
+
+			AddToBackpack( fragment );
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public int CharacterSkill { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public string CharacterKeys { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public string CharacterDiscovered { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public int CharacterGuilds { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public string CharacterBoatDoor { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public string CharacterPublicDoor { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public int CharacterBegging { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public string CharacterWanted { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public int CharacterElement { get; set; }
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public string KilledSpecialMonsters { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public int SkillDisplay { get; set; }
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool IsTitanOfEther { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public CharacterType CharacterType { get; private set; }
+
+		public void SetCharacterType( CharacterType type )
+		{
+			CharacterType = type;
+			RefreshSkillCap();
+		}
+
+		public void RefreshSkillCap()
+		{
+			var baseAmount = 1000 * MyServerSettings.DEFAULT_SKILL_COUNT;
+			var boostAmount = 1000 * MyServerSettings.SkillBoostCount();
+			var typeAmount = 1000 * MyServerSettings.StartTypeBonusSkillCount( CharacterType );
+			if (CharacterType == CharacterType.Fugitive && Temptations.ReduceFugitiveSkillCap) typeAmount -= 1000;
+
+			var avatarAmount = 0;
+			var titanAmount = IsTitanOfEther
+				? Temptations.LimitTitanBonus
+					? 2000
+					: 5000
+				: 0;
+			
+			if ( Avatar.Active )
+			{
+				baseAmount = Constants.SKILL_CAP_BASE;
+				avatarAmount = Avatar.SkillCapLevel > 0 ? Avatar.SkillCapLevel * Constants.SKILL_CAP_PER_LEVEL * 10: 0;
+				titanAmount =  IsTitanOfEther ? Constants.TITAN_SKILL_BONUS : 0;
+			}
+
+			Skills.Cap = baseAmount + boostAmount + typeAmount + avatarAmount + titanAmount;
+		}
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public Engines.Avatar.PlayerContext Avatar
+		{
+			get { return Engines.Avatar.AvatarEngine.Instance.GetContextOrDefault(this); }
+			set { }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public Temptation.PlayerContext Temptations
+		{
+			get { return Temptation.TemptationEngine.Instance.GetContextOrDefault(this); }
+			set { }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool IsJester
+		{
+			get { return GetPlayerInfo.isJester(this); }
+			set { }
+		}
+
+
+		private bool m_NeedRemoveIDSkills = false;
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		public override void Deserialize( GenericReader reader )
+		{
+			base.Deserialize( reader );
+			int version = reader.ReadInt();
+
+			switch ( version )
+			{
+				case 51:
+				case 50:
+					_quests = new PlayerQuestContext( reader );	
+					if (version < 51) PublicInfo = true;
+					goto case 49;
+				case 49:
+					_spellBars = new SpellBarsContext( reader );
+					_preferences = new PlayerPreferenceContext( reader );
+					goto case 48;
+				case 48:
+					if (version < 49) Preferences.ColorlessFabricBreakdown = reader.ReadBool();
+					goto case 47;
+				case 47:
+					if (version == 47) Preferences.ColorlessFabricBreakdown = true;
+
+					if (version < 49) Preferences.SingleAttemptID = reader.ReadBool();
+					goto case 46;
+				case 46:
+					IsTitanOfEther = reader.ReadBool();
+					CharacterType = (CharacterType)reader.ReadInt();
+					m_InnocentFugitive = reader.ReadBool();
+					goto case 45;
+				case 45:
+					m_NeedRemoveIDSkills = reader.ReadBool();
+					goto case 44;
+				case 44:
+					if ( version == 44 ) m_NeedRemoveIDSkills = true;
+					if (version < 49) Preferences.SuppressVendorTooltip = reader.ReadBool();
+					goto case 43;
+
+				case 43:
+				case 42:
+					if (version < 49) Preferences.IgnoreVendorGoldSafeguard = reader.ReadBool();
+					goto case 41;
+				case 41:
+				case 40:
+				{
+					int recipeCount = reader.ReadInt();
+					if( recipeCount > 0 )
+					{
+						m_AcquiredRecipes = new Dictionary<int, bool>();
+						for( int i = 0; i < recipeCount; i++ )
+						{
+							int r = reader.ReadInt();
+							if( reader.ReadBool() )	// Don't add in recipies which we haven't gotten or have been removed
+								m_AcquiredRecipes.Add( r, true );
+						}
+					}
+					goto case 39;
+				}
+				case 39:
+				case 38:
+				case 37:
+				{
+					if (version < 49) Preferences.DoubleClickID = reader.ReadBool();
+					goto case 36;
+				}
+				case 36:
+				{
+					InnTime = reader.ReadDateTime();
+					goto case 35;
+				}
+				case 35:
+				{
+					if (version < 41)
+					{
+						var craftQueue = reader.ReadInt();
+						var craftSuccess = reader.ReadInt();
+						var craftExceptional = reader.ReadInt();
+						var craftError = reader.ReadInt();
+						var craftDone = reader.ReadDateTime();
+						var craftSound = reader.ReadInt();
+						var craftSoundAfter = reader.ReadInt();
+					}
+
+					goto case 34;
+				}
+				case 34:
+				{
+					if (version < 50) Preferences.UsingAncientBook = reader.ReadBool();
+					if ( version < 49 ) SpellBars.Arch4 = reader.ReadString();
+
+					goto case 33;
+				}
+				case 33:
+				{
+					if ( version < 46 )
+					{
+						var skillStart = reader.ReadInt();
+						var skillBoost = reader.ReadInt();
+						var skillEther = reader.ReadInt();
+
+						if (skillStart == 40000) CharacterType = CharacterType.Alien;
+						else if (skillStart == 13000) CharacterType = CharacterType.Fugitive;
+						else if (skillStart == 11000) CharacterType = CharacterType.Savage;
+						else CharacterType = CharacterType.Default;
+
+						if (skillEther > 0) IsTitanOfEther = true;
+					}
+
+					goto case 32;
+				}
+				case 32:
+				{
+					Camp = reader.ReadDateTime();
+					Bedroll = reader.ReadDateTime();
+
+					goto case 31;
+				}
+				case 31:
+				{
+					if (version < 50) Preferences.MyChat = reader.ReadString();
+
+					goto case 30;
+				}
+				case 30:
+				{
+					if (version < 50) Preferences.RegBar = reader.ReadString();
+					if (version < 50) Preferences.MyLibrary = reader.ReadString();
+
+					goto case 29;
+				}
+				case 29:
+				{
+					if (version < 50) Preferences.MessageOfTheDay = reader.ReadInt() == 1;
+					CharacterSkill = reader.ReadInt();
+					CharacterKeys = reader.ReadString();
+					CharacterDiscovered = reader.ReadString();
+					if (version < 49) Preferences.CharacterSheath = reader.ReadInt() == 1;
+					CharacterGuilds = reader.ReadInt();
+					CharacterBoatDoor = reader.ReadString();
+					CharacterPublicDoor = reader.ReadString();
+					CharacterBegging = reader.ReadInt();
+					if (version < 49) Preferences.CharacterWepAbNames = reader.ReadInt() == 1;
+					CharacterElement = reader.ReadInt();
+
+					if (version < 39) // Property was removed
+					{
+						var ArtifactQuestTime = reader.ReadString();
+					}
+					if (version < 50) Quests.StandardQuest = reader.ReadString();
+					if (version < 50) Quests.FishingQuest = reader.ReadString();
+					if (version < 50) Quests.AssassinQuest = reader.ReadString();
+					if (version < 50) Quests.MessageQuest = reader.ReadString();
+					if (version < 50) Quests.BardsTaleQuest = reader.ReadString();
+
+					if ( version < 49 )
+					{
+						SpellBars.Mage1 = reader.ReadString();
+						SpellBars.Mage2 = reader.ReadString();
+						SpellBars.Mage3 = reader.ReadString();
+						SpellBars.Mage4 = reader.ReadString();
+						SpellBars.Necro1 = reader.ReadString();
+						SpellBars.Necro2 = reader.ReadString();
+						SpellBars.Knight1 = reader.ReadString();
+						SpellBars.Knight2 = reader.ReadString();
+						SpellBars.Death1 = reader.ReadString();
+						SpellBars.Death2 = reader.ReadString();
+						SpellBars.Bard1 = reader.ReadString();
+						SpellBars.Bard2 = reader.ReadString();
+						SpellBars.Priest1 = reader.ReadString();
+						SpellBars.Priest2 = reader.ReadString();
+						SpellBars.Arch1 = reader.ReadString();
+						SpellBars.Arch2 = reader.ReadString();
+						SpellBars.Arch3 = reader.ReadString();
+						SpellBars.Monk1 = reader.ReadString();
+						SpellBars.Monk2 = reader.ReadString();
+						SpellBars.Elly1 = reader.ReadString();
+						SpellBars.Elly2 = reader.ReadString();
+					}
+
+					if (version < 50) Preferences.QuickBar = reader.ReadString();
+					if (version < 50) Quests.ThiefQuest = reader.ReadString();
+					KilledSpecialMonsters = reader.ReadString();
+					if (version < 50) Preferences.MusicPlaylist = reader.ReadString();
+					CharacterWanted = reader.ReadString();
+					if (version < 50) Preferences.CharacterLoot = reader.ReadString();
+					if (version < 49) Preferences.CharMusical = reader.ReadString();
+					if (version < 50) Quests.EpicQuestName = reader.ReadString();
+					if (version < 50) Preferences.CharacterBarbaric = reader.ReadInt();
+					SkillDisplay = reader.ReadInt();
+					if (version < 50) Preferences.MagerySpellHue = reader.ReadInt();
+					if (version < 49) Preferences.ClassicPoisoning = reader.ReadInt() == 1;
+					if (version < 50) Preferences.CharacterEvil = reader.ReadInt() == 1;
+					if (version < 50) Preferences.CharacterOriental = reader.ReadInt() == 1;
+					if (version < 50) Preferences.GumpHue = reader.ReadInt();
+					if (version < 49) Preferences.WeaponBarOpen = reader.ReadInt() == 1;
+					if (version < 50) Quests.EpicQuestNumber = reader.ReadInt();
+
+					goto case 28;
+				}
+				case 28:
+				{
+					PeacedUntil = reader.ReadDateTime();
+
+					goto case 27;
+				}
+				case 27:
+				{
+					AnkhNextUse = reader.ReadDateTime();
+
+					goto case 26;
+				}
+				case 26:
+				{
+					m_AutoStabled = reader.ReadStrongMobileList();
+
+					goto case 25;
+				}
+				case 25:
+				{
+					goto case 24;
+				}
+				case 24:
+				{
+					goto case 23;
+				}
+				case 23:
+				{
+					goto case 22;
+				}
+				case 22:
+				{
+					goto case 21;
+				}
+				case 21:
+				{
+					goto case 20;
+				}
+				case 20:
+				{
+					AllianceMessageHue = reader.ReadEncodedInt();
+					GuildMessageHue = reader.ReadEncodedInt();
+
+					goto case 19;
+				}
+				case 19:
+				{
+					int rank = reader.ReadEncodedInt();
+					int maxRank = Guilds.RankDefinition.Ranks.Length -1;
+					if( rank > maxRank )
+						rank = maxRank;
+
+					m_GuildRank = Guilds.RankDefinition.Ranks[rank];
+					LastOnline = reader.ReadDateTime();
+					goto case 18;
+				}
+				case 18:
+				{
+					goto case 17;
+				}
+				case 17: // changed how DoneQuests is serialized
+				case 16:
+				{
+					if ( version < 46 ) { Fugitive = reader.ReadEncodedInt(); }
+					goto case 15;
+				}
+				case 15:
+				{
+					goto case 14;
+				}
+				case 14:
+				{
+					goto case 13;
+				}
+				case 13: // just removed m_PayedInsurance list
+				case 12:
+				{
+					if (version < 43)
+					{
+						var BOBFilter_Version = reader.ReadEncodedInt();
+						if (BOBFilter_Version == 1)
+						{
+							var BOBFilter_Type = reader.ReadEncodedInt();
+							var BOBFilter_Quality = reader.ReadEncodedInt();
+							var BOBFilter_Material = reader.ReadEncodedInt();
+							var BOBFilter_Quantity = reader.ReadEncodedInt();
+						}
+					}
+					goto case 11;
+				}
+				case 11:
+				{
+					goto case 10;
+				}
+				case 10:
+				{
+					if ( reader.ReadBool() )
+					{
+						m_HairModID = reader.ReadInt();
+						m_HairModHue = reader.ReadInt();
+						m_BeardModID = reader.ReadInt();
+						m_BeardModHue = reader.ReadInt();
+					}
+
+					goto case 9;
+				}
+				case 9:
+				{
+					SavagePaintExpiration = reader.ReadTimeSpan();
+					goto case 8;
+				}
+				case 8:
+				{
+					NpcGuild = (NpcGuild)reader.ReadInt();
+					NpcGuildJoinTime = reader.ReadDateTime();
+					NpcGuildGameTime = reader.ReadTimeSpan();
+					goto case 7;
+				}
+				case 7:
+				{
+					m_PermaFlags = reader.ReadStrongMobileList();
+					goto case 6;
+				}
+				case 6:
+				{
+					if (version < 43)
+					{
+						var NextTailorBulkOrder = reader.ReadTimeSpan();
+					}
+					goto case 5;
+				}
+				case 5:
+				{
+					if (version < 43)
+					{
+						var NextSmithBulkOrder = reader.ReadTimeSpan();
+					}
+					goto case 4;
+				}
+				case 4:
+				{
+					goto case 3;
+				}
+				case 3:
+				{
+					goto case 2;
+				}
+				case 2:
+				{
+					m_Flags = (PlayerFlag)reader.ReadInt();
+					goto case 1;
+				}
+				case 1:
+				{
+					m_LongTermElapse = reader.ReadTimeSpan();
+					m_ShortTermElapse = reader.ReadTimeSpan();
+					m_GameTime = reader.ReadTimeSpan();
+					goto case 0;
+				}
+				case 0:
+				{
+					break;
+				}
+			}
+
+			if (RecentlyReported == null)
+				RecentlyReported = new List<Mobile>();
+
+			if ( m_PermaFlags == null )
+				m_PermaFlags = new List<Mobile>();
+
+			if( m_GuildRank == null )
+				m_GuildRank = Guilds.RankDefinition.Member;	//Default to member if going from older verstion to new version (only time it should be null)
+
+			if( LastOnline == DateTime.MinValue && Account != null )
+				LastOnline = ((Account)Account).LastLogin;
+
+			if ( AccessLevel > AccessLevel.Player )
+				m_IgnoreMobiles = true;
+
+			List<Mobile> list = this.Stabled;
+
+			for ( int i = 0; i < list.Count; ++i )
+			{
+				BaseCreature bc = list[i] as BaseCreature;
+
+				if ( bc != null )
+					bc.IsStabled = true;
+			}
+
+			if( Hidden )	//Hiding is the only buff where it has an effect that's serialized.
+				AddBuff( new BuffInfo( BuffIcon.HidingAndOrStealth, 1075655 ) );
+
+			if ( !MyServerSettings.MonstersAllowed() && RaceID > 0 )
+				BaseRace.BackToHuman( this );
+
+			if ( NpcGuild != NpcGuild.None && version < 38 )
+				CharacterGuilds = 1;
+			else if ( version < 38 )
+				CharacterGuilds = 0;
+
+			// Force to latest configured value and resync skill cap
+			RefreshSkillCap();
+
+			Timer.DelayCall( TimeSpan.FromSeconds( 5.0 ), new TimerStateCallback( ResetThings ), this );
+		}
+
+		private void ResetThings( object state )
+		{
+			((PlayerMobile)state).ResetInn();
+			((PlayerMobile)state).RevertMods();
+		}
+
+		public override void Serialize( GenericWriter writer )
+		{
+			//cleanup our anti-macro table
+			foreach ( Hashtable t in m_AntiMacroTable.Values )
+			{
+				ArrayList remove = new ArrayList();
+				foreach ( CountAndTimeStamp time in t.Values )
+				{
+					if ( time.TimeStamp + SkillCheck.AntiMacroExpire <= DateTime.Now )
+						remove.Add( time );
+				}
+
+				for (int i=0;i<remove.Count;++i)
+					t.Remove( remove[i] );
+			}
+
+			CheckKillDecay();
+
+			base.Serialize( writer );
+
+			writer.Write( (int) 51 ); // version
+
+			Quests.Serialize( writer );
+			SpellBars.Serialize( writer );
+			Preferences.Serialize( writer );
+
+			writer.Write( IsTitanOfEther );
+			writer.Write( (int)CharacterType );
+			writer.Write( m_InnocentFugitive );
+
+			writer.Write(m_NeedRemoveIDSkills);
+
+			if( m_AcquiredRecipes == null )
+			{
+				writer.Write( (int)0 );
+			}
+			else
+			{
+				writer.Write( m_AcquiredRecipes.Count );
+				foreach( KeyValuePair<int, bool> kvp in m_AcquiredRecipes )
+				{
+					writer.Write( kvp.Key );
+					writer.Write( kvp.Value );
+				}
+			}
+
+			writer.Write( InnTime );
+
+			writer.Write( Camp );
+			writer.Write( Bedroll );
+
+			writer.Write( CharacterSkill );
+			writer.Write( CharacterKeys );
+			writer.Write( CharacterDiscovered );
+			writer.Write( CharacterGuilds );
+			writer.Write( CharacterBoatDoor );
+			writer.Write( CharacterPublicDoor );
+			writer.Write( CharacterBegging );
+			writer.Write( CharacterElement );
+
+			writer.Write( KilledSpecialMonsters );
+			writer.Write( CharacterWanted );
+			writer.Write( SkillDisplay );
+
+			writer.Write( (DateTime) PeacedUntil );
+			writer.Write( (DateTime) AnkhNextUse );
+			writer.Write( m_AutoStabled, true );
+
+			writer.WriteEncodedInt( AllianceMessageHue );
+			writer.WriteEncodedInt( GuildMessageHue );
+
+			writer.WriteEncodedInt( m_GuildRank.Rank );
+			writer.Write( LastOnline );
+
+			bool useMods = ( m_HairModID != -1 || m_BeardModID != -1 );
+
+			writer.Write( useMods );
+
+			if ( useMods )
+			{
+				writer.Write( (int) m_HairModID );
+				writer.Write( (int) m_HairModHue );
+				writer.Write( (int) m_BeardModID );
+				writer.Write( (int) m_BeardModHue );
+			}
+
+			writer.Write( SavagePaintExpiration );
+
+			writer.Write( (int) NpcGuild );
+			writer.Write( (DateTime) NpcGuildJoinTime );
+			writer.Write( (TimeSpan) NpcGuildGameTime );
+
+			writer.Write( m_PermaFlags, true );
+
+			writer.Write( (int) m_Flags );
+
+			writer.Write( m_LongTermElapse );
+			writer.Write( m_ShortTermElapse );
+			writer.Write( this.GameTime );
+		}
+
+		public void CheckKillDecay()
+		{
+			if ( m_ShortTermElapse < this.GameTime )
+			{
+				m_ShortTermElapse += TimeSpan.FromHours( 8 );
+				if ( ShortTermMurders > 0 )
+					--ShortTermMurders;
+			}
+
+			if ( m_LongTermElapse < this.GameTime )
+			{
+				m_LongTermElapse += TimeSpan.FromHours( 40 );
+				if ( Kills > 0 )
+					--Kills;
+			}
+		}
+
+		public void ResetKillTime()
+		{
+			m_ShortTermElapse = this.GameTime + TimeSpan.FromHours( 8 );
+			m_LongTermElapse = this.GameTime + TimeSpan.FromHours( 40 );
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public DateTime SessionStart
+		{
+			get { return m_SessionStart; }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public TimeSpan GameTime
+		{
+			get
+			{
+				if ( NetState != null )
+					return m_GameTime + (DateTime.Now - m_SessionStart);
+				else
+					return m_GameTime;
+			}
+		}
+
+		public override bool CanSee( Mobile m )
+		{
+			if ( m is CharacterStatue )
+				((CharacterStatue) m).OnRequestedAnimation( this );
+
+			if ( m is PlayerMobile && ((PlayerMobile)m).m_VisList.Contains( this ) )
+				return true;
+
+			if( m is BaseCreature && ((BaseCreature)m).Controlled && ((BaseCreature)m).ControlMaster == this )
+				return true;
+
+			return base.CanSee( m );
+		}
+
+		public override bool CanSee( Item item )
+		{
+			if ( DesignContext != null && DesignContext.Foundation.IsHiddenToCustomizer( item ) )
+				return false;
+
+			return base.CanSee( item );
+		}
+
+		public override void OnAfterDelete()
+		{
+			base.OnAfterDelete();
+
+			BaseHouse.HandleDeletion( this );
+
+			MLQuestSystem.HandleDeletion( this );
+
+			DisguiseTimers.RemoveTimer( this );
+		}
+
+		public override bool NewGuildDisplay { get { return Server.Guilds.Guild.NewGuildSystem; } }
+
+		public override void GetProperties( ObjectPropertyList list )
+		{
+			base.GetProperties( list );
+
+			list.Add( 1072171, "{0}\t{1}", "D1CE74", GetPlayerInfo.GetSkillTitle( this ) + " " );
+
+			if ( GetPlayerInfo.GetNPCGuild( this ) != null )
+			{
+				string gldClr = "51C273";
+				if ( GetPlayerInfo.GetNPCGuild( this ) == "Fugitive" )
+					gldClr = "DC5555";
+
+				list.Add( 1072172, "{0}\t{1}", gldClr, GetPlayerInfo.GetNPCGuild( this ) + " " );
+			}
+
+			for ( int i = AllFollowers.Count - 1; i >= 0; i-- )
+			{
+				BaseCreature c = AllFollowers[ i ] as BaseCreature;
+
+				if ( c != null && c.ControlOrder == OrderType.Guard )
+				{
+					list.Add( 501129 ); // guarded
+					break;
+				}
+			}
+		}
+
+		protected override bool OnMove( Direction d )
+		{
+			if( !Core.SE )
+				return base.OnMove( d );
+
+			if( AccessLevel != AccessLevel.Player )
+				return true;
+
+			if( Hidden && DesignContext.Find( this ) == null )	//Hidden & NOT customizing a house
+			{
+				if( !Mounted && Skills.Stealth.Value >= 0.1 )
+				{
+					bool running = (d & Direction.Running) != 0;
+
+					if( running )
+					{
+						if( (AllowedStealthSteps -= 2) <= 0 )
+							RevealingAction();
+					}
+					else if( AllowedStealthSteps-- <= 0 )
+					{
+						Server.SkillHandlers.Stealth.OnUse( this );
+					}
+				}
+				else
+				{
+					RevealingAction();
+				}
+			}
+
+			return true;
+		}
+
+		public bool BedrollLogout { get; set; }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public override bool Paralyzed
+		{
+			get
+			{
+				return base.Paralyzed;
+			}
+			set
+			{
+				base.Paralyzed = value;
+
+				if( value )
+					AddBuff( new BuffInfo( BuffIcon.Paralyze, 1075827 ) );	//Paralyze/You are frozen and can not move
+				else
+					BuffInfo.CleanupIcons( this, true );
+			}
+		}
+
+		public override void OnSkillChange( SkillName skill, double oldBase )
+		{
+			MLQuestSystem.HandleSkillGain( this, skill );
+		}
+
+    //CombatBar
+    public override void OnKarmaChange( int oldValue )
+		{
+      CombatBar.Refresh(this);
+    }
+
+		public override void OnFameChange( int oldValue )
+		{
+			CombatBar.Refresh(this);
+		}
+
+    public override void OnHungerChange(int oldValue)
+    {
+		   CombatBar.Refresh(this);
+    }
+
+    public override void OnThirstChange(int oldValue)
+    {
+			 CombatBar.Refresh(this);
+    }
+
+    public override void OnTithingPointsChange(int oldValue)
+    {
+        CombatBar.Refresh(this);
+    }
+    // End CombatBar
+
+		#region Fastwalk Prevention
+		private static bool FastwalkPrevention = true; // Is fastwalk prevention enabled?
+		private static TimeSpan FastwalkThreshold = TimeSpan.FromSeconds( 0.4 ); // Fastwalk prevention will become active after 0.4 seconds
+
+		private DateTime m_NextMovementTime;
+
+		public virtual bool UsesFastwalkPrevention{ get { return ( AccessLevel < AccessLevel.Counselor ); } }
+
+		public override TimeSpan ComputeMovementSpeed( Direction dir, bool checkTurning )
+		{
+			if ( checkTurning && (dir & Direction.Mask) != (this.Direction & Direction.Mask) )
+				return Mobile.RunMount;	// We are NOT actually moving (just a direction change)
+
+			bool running = ( (dir & Direction.Running) != 0 );
+
+			bool onHorse = ( this.Mount != null );
+
+			AnimalFormContext animalContext = AnimalForm.GetContext( this );
+
+			if( onHorse || (animalContext != null && animalContext.SpeedBoost) || FastPlayer.IsActive(this) || !Alive )
+				return ( running ? Mobile.RunMount : Mobile.WalkMount );
+
+			return ( running ? Mobile.RunFoot : Mobile.WalkFoot );
+		}
+
+		public static bool MovementThrottle_Callback( NetState ns )
+		{
+			PlayerMobile pm = ns.Mobile as PlayerMobile;
+
+			TimeSpan ts = pm.m_NextMovementTime - DateTime.Now;
+
+			if ( pm != null )
+			{
+				if (!pm.Alive)
+				{
+					return true;
+				}
+
+				if (FastPlayer.IsActive(pm)) return true;
+			}
+
+			if ( pm == null || !pm.UsesFastwalkPrevention )
+				return true;
+
+			if ( pm.m_NextMovementTime == DateTime.MinValue )
+			{
+				// has not yet moved
+				pm.m_NextMovementTime = DateTime.Now;
+				return true;
+			}
+
+			if ( ts < TimeSpan.Zero )
+			{
+				// been a while since we've last moved
+				pm.m_NextMovementTime = DateTime.Now;
+				return true;
+			}
+
+			return ( ts < FastwalkThreshold );
+		}
+
+		#endregion
+
+		#region Enemy of One
+		private Type m_EnemyOfOneType;
+
+		public Type EnemyOfOneType
+		{
+			get { return m_EnemyOfOneType; }
+			set
+			{
+				Type oldType = m_EnemyOfOneType;
+				Type newType = value;
+
+				if ( oldType == newType )
+					return;
+
+				m_EnemyOfOneType = value;
+
+				DeltaEnemies( oldType, newType );
+			}
+		}
+
+		public bool WaitingForEnemy { get; set; }
+
+		private void DeltaEnemies( Type oldType, Type newType )
+		{
+			foreach ( Mobile m in this.GetMobilesInRange( 18 ) )
+			{
+				Type t = m.GetType();
+
+				if ( t == oldType || t == newType ) {
+					NetState ns = this.NetState;
+
+					if ( ns != null ) {
+						if ( ns.StygianAbyss ) {
+							ns.Send( new MobileMoving( m, Notoriety.Compute( this, m ) ) );
+						} else {
+							ns.Send( new MobileMovingOld( m, Notoriety.Compute( this, m ) ) );
+						}
+					}
+				}
+			}
+		}
+
+		#endregion
+
+		#region Hair and beard mods
+		private int m_HairModID = -1, m_HairModHue;
+		private int m_BeardModID = -1, m_BeardModHue;
+
+		public void SetHairMods( int hairID, int beardID )
+		{
+			if ( hairID == -1 )
+				InternalRestoreHair( true, ref m_HairModID, ref m_HairModHue );
+			else if ( hairID != -2 )
+				InternalChangeHair( true, hairID, ref m_HairModID, ref m_HairModHue );
+
+			if ( beardID == -1 )
+				InternalRestoreHair( false, ref m_BeardModID, ref m_BeardModHue );
+			else if ( beardID != -2 )
+				InternalChangeHair( false, beardID, ref m_BeardModID, ref m_BeardModHue );
+		}
+
+		private void CreateHair( bool hair, int id, int hue )
+		{
+			if ( RaceID > 0 )
+				return;
+
+			if( hair )
+			{
+				HairItemID = id;
+				HairHue = hue;
+			}
+			else
+			{
+				FacialHairItemID = id;
+				FacialHairHue = hue;
+			}
+		}
+
+		private void InternalRestoreHair( bool hair, ref int id, ref int hue )
+		{
+			if ( RaceID > 0 )
+				return;
+
+			if ( id == -1 )
+				return;
+
+			if ( hair )
+				HairItemID = 0;
+			else
+				FacialHairItemID = 0;
+
+			CreateHair( hair, id, hue );
+
+			id = -1;
+			hue = 0;
+		}
+
+		private void InternalChangeHair( bool hair, int id, ref int storeID, ref int storeHue )
+		{
+			if ( storeID == -1 && RaceID < 1 )
+			{
+				storeID = hair ? HairItemID : FacialHairItemID;
+				storeHue = hair ? HairHue : FacialHairHue;
+			}
+
+			if ( RaceID > 0 )
+				CreateHair( hair, id, 0 );
+		}
+
+		#endregion
+
+		#region Young system
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool Young
+		{
+			get { return GetFlag( PlayerFlag.Young ); }
+			set { SetFlag( PlayerFlag.Young, value ); InvalidateProperties(); }
+		}
+
+		public override string ApplyNameSuffix( string suffix )
+		{
+			if ( Young )
+			{
+				if ( suffix.Length == 0 )
+					suffix = "(Young)";
+				else
+					suffix = String.Concat( suffix, " (Young)" );
+			}
+
+			return base.ApplyNameSuffix( suffix );
+		}
+
+		public override TimeSpan GetLogoutDelay()
+		{
+			if ( BedrollLogout )
+				return TimeSpan.Zero;
+
+			return base.GetLogoutDelay();
+		}
+
+		private DateTime m_LastYoungMessage = DateTime.MinValue;
+
+		public bool CheckYoungProtection( Mobile from )
+		{
+			if ( !this.Young )
+				return false;
+
+			if ( Region is BaseRegion && !((BaseRegion)Region).YoungProtected )
+				return false;
+
+			if( from is BaseCreature && ((BaseCreature)from).IgnoreYoungProtection )
+				return false;
+
+			if ( DateTime.Now - m_LastYoungMessage > TimeSpan.FromMinutes( 1.0 ) )
+			{
+				m_LastYoungMessage = DateTime.Now;
+				SendLocalizedMessage( 1019067 ); // A monster looks at you menacingly but does not attack.  You would be under attack now if not for your status as a new citizen of Britannia.
+			}
+
+			return true;
+		}
+
+		private DateTime m_LastYoungHeal = DateTime.MinValue;
+
+		public bool CheckYoungHealTime()
+		{
+			if ( DateTime.Now - m_LastYoungHeal > TimeSpan.FromMinutes( 5.0 ) )
+			{
+				m_LastYoungHeal = DateTime.Now;
+				return true;
+			}
+
+			return false;
+		}
+
+		private static Point3D[] m_SosariaDeathDestinations = new Point3D[]
+			{
+				new Point3D( 1481, 1612, 20 ),
+				new Point3D( 2708, 2153,  0 ),
+				new Point3D( 2249, 1230,  0 ),
+				new Point3D( 5197, 3994, 37 ),
+				new Point3D( 1412, 3793,  0 ),
+				new Point3D( 3688, 2232, 20 ),
+				new Point3D( 2578,  604,  0 ),
+				new Point3D( 4397, 1089,  0 ),
+				new Point3D( 5741, 3218, -2 ),
+				new Point3D( 2996, 3441, 15 ),
+				new Point3D(  624, 2225,  0 ),
+				new Point3D( 1916, 2814,  0 ),
+				new Point3D( 2929,  854,  0 ),
+				new Point3D(  545,  967,  0 ),
+				new Point3D( 3665, 2587,  0 )
+			};
+
+		private static Point3D[] m_UnderworldDeathDestinations = new Point3D[]
+			{
+				new Point3D( 1216,  468, -13 ),
+				new Point3D(  723, 1367, -60 ),
+				new Point3D(  745,  725, -28 ),
+				new Point3D(  281, 1017,   0 ),
+				new Point3D(  986, 1011, -32 ),
+				new Point3D( 1175, 1287, -30 ),
+				new Point3D( 1533, 1341,  -3 ),
+				new Point3D(  529,  217, -44 ),
+				new Point3D( 1722,  219,  96 )
+			};
+
+		private static Point3D[] m_SerpentIslandDeathDestinations = new Point3D[]
+			{
+				new Point3D( 2079, 1376, -70 ),
+				new Point3D(  944,  519, -71 )
+			};
+
+		private static Point3D[] m_IslesDreadDeathDestinations = new Point3D[]
+			{
+				new Point3D( 1166,  801, 27 ),
+				new Point3D(  782, 1228, 25 ),
+				new Point3D(  268,  624, 15 )
+			};
+
+		public bool YoungDeathTeleport()
+		{
+			if ( this.Region.IsPartOf( typeof( Jail ) )
+				|| this.Region.IsPartOf( "Samurai start location" )
+				|| this.Region.IsPartOf( "Ninja start location" )
+				|| this.Region.IsPartOf( "Ninja cave" ) )
+				return false;
+
+			Point3D loc;
+			Map map;
+
+			DungeonRegion dungeon = (DungeonRegion) this.Region.GetRegion( typeof( DungeonRegion ) );
+			if ( dungeon != null && dungeon.EntranceLocation != Point3D.Zero )
+			{
+				loc = dungeon.EntranceLocation;
+				map = dungeon.EntranceMap;
+			}
+			else
+			{
+				loc = this.Location;
+				map = this.Map;
+			}
+
+			Point3D[] list;
+
+			list = m_SosariaDeathDestinations;
+
+			Point3D dest = Point3D.Zero;
+			int sqDistance = int.MaxValue;
+
+			for ( int i = 0; i < list.Length; i++ )
+			{
+				Point3D curDest = list[i];
+
+				int width = loc.X - curDest.X;
+				int height = loc.Y - curDest.Y;
+				int curSqDistance = width * width + height * height;
+
+				if ( curSqDistance < sqDistance )
+				{
+					dest = curDest;
+					sqDistance = curSqDistance;
+				}
+			}
+
+			this.MoveToWorld( dest, map );
+			return true;
+		}
+
+		private void SendYoungDeathNotice()
+		{
+			this.SendGump( new YoungDeathNotice() );
+		}
+
+		#endregion
+
+		#region Speech log
+		private SpeechLog m_SpeechLog;
+
+		public SpeechLog SpeechLog { get {  return m_SpeechLog; } }
+
+		public override void OnSpeech( SpeechEventArgs e )
+		{
+			if ( SpeechLog.Enabled && this.NetState != null )
+			{
+				if ( m_SpeechLog == null )
+					m_SpeechLog = new SpeechLog();
+
+				m_SpeechLog.Add( e.Mobile, e.Speech );
+			}
+		}
+
+		#endregion
+
+		#region Buff Icons
+
+		public void ResendBuffs()
+		{
+			if( !BuffInfo.Enabled || m_BuffTable == null )
+				return;
+
+			NetState state = this.NetState;
+
+			if( state != null && state.BuffIcon )
+			{
+				foreach( BuffInfo info in m_BuffTable.Values )
+				{
+					state.Send( new AddBuffPacket( this, info ) );
+				}
+			}
+		}
+
+		private Dictionary<BuffIcon, BuffInfo> m_BuffTable;
+
+		public void AddBuff( BuffInfo b )
+		{
+			if( !BuffInfo.Enabled || b == null )
+				return;
+
+			RemoveBuff( b );	//Check & subsequently remove the old one.
+
+			if( m_BuffTable == null )
+				m_BuffTable = new Dictionary<BuffIcon, BuffInfo>();
+
+			m_BuffTable.Add( b.ID, b );
+
+			NetState state = this.NetState;
+
+			if( state != null && state.BuffIcon )
+			{
+				state.Send( new AddBuffPacket( this, b ) );
+			}
+		}
+
+		public void RemoveBuff( BuffInfo b )
+		{
+			if( b == null )
+				return;
+
+			RemoveBuff( b.ID );
+		}
+
+		public void RemoveBuff( BuffIcon b )
+		{
+			if( m_BuffTable == null || !m_BuffTable.ContainsKey( b ) )
+				return;
+
+			BuffInfo info = m_BuffTable[b];
+
+			if( info.Timer != null && info.Timer.Running )
+				info.Timer.Stop();
+
+			m_BuffTable.Remove( b );
+
+			NetState state = this.NetState;
+
+			if( state != null && state.BuffIcon )
+			{
+				state.Send( new RemoveBuffPacket( this, b ) );
+			}
+
+			if( m_BuffTable.Count <= 0 )
+				m_BuffTable = null;
+		}
+
+        public override void OnRawStatChange(StatType stat, int oldValue)
+        {
+            base.OnRawStatChange(stat, oldValue);
+
+			var remaining = SkillCheck.GetCooldownRemaining(this, stat);
+			if (remaining == TimeSpan.Zero) return;
+
+			switch(stat)
+            {
+                case StatType.Dex:
+                        BuffInfo.AddBuff(this, new BuffInfo(BuffIcon.DexGainCooldown, 1060527, 1060526, remaining, this, "", true));
+                        break;
+                case StatType.Int:
+                        BuffInfo.AddBuff(this, new BuffInfo(BuffIcon.IntGainCooldown, 1060528, 1060526, remaining, this, "", true));
+                        break;
+                case StatType.Str:
+                        BuffInfo.AddBuff(this, new BuffInfo(BuffIcon.StrGainCooldown, 1060529, 1060526, remaining, this, "", true));
+                        break;
+            }
+        }
+
+        #endregion
+
+		public void AutoStablePets()
+		{
+			if ( Core.SE && AllFollowers.Count > 0 )
+			{
+				for ( int i = m_AllFollowers.Count - 1; i >= 0; --i )
+				{
+					BaseCreature pet = AllFollowers[i] as BaseCreature;
+
+					if (pet == null || pet.ControlMaster == null)
+						continue;
+
+					if (pet.Summoned)
+					{
+						if (pet.Map != Map)
+						{
+							pet.PlaySound( pet.GetAngerSound() );
+							Timer.DelayCall( TimeSpan.Zero, new TimerCallback( pet.Delete ) );
+						}
+						continue;
+					}
+
+					if ( pet is IMount && ((IMount)pet).Rider != null )
+						continue;
+
+					if ( (pet is PackLlama || pet is PackHorse || pet is Beetle || pet is HordeMinionFamiliar) && (pet.Backpack != null && pet.Backpack.Items.Count > 0) )
+						continue;
+
+					pet.ControlTarget = null;
+					pet.ControlOrder = OrderType.Stay;
+					pet.Internalize();
+
+					pet.SetControlMaster( null );
+					pet.SummonMaster = null;
+
+					pet.IsStabled = true;
+
+					pet.Loyalty = BaseCreature.MaxLoyalty; // Wonderfully happy
+
+					Stabled.Add( pet );
+					m_AutoStabled.Add( pet );
+				}
+			}
+		}
+
+		public void ClaimAutoStabledPets()
+		{
+			if ( !Core.SE || m_AutoStabled.Count <= 0 )
+				return;
+
+			if ( !Alive )
+			{
+				SendLocalizedMessage( 1076251 ); // Your pet was unable to join you while you are a ghost.  Please re-login once you have ressurected to claim your pets.
+				return;
+			}
+
+			for ( int i = m_AutoStabled.Count - 1; i >= 0; --i )
+			{
+				BaseCreature pet = m_AutoStabled[i] as BaseCreature;
+
+				if ( pet == null || pet.Deleted )
+				{
+					pet.IsStabled = false;
+
+					if ( Stabled.Contains( pet ) )
+						Stabled.Remove( pet );
+
+					continue;
+				}
+
+				if ( (Followers + pet.ControlSlots) <= FollowersMax )
+				{
+					pet.SetControlMaster( this );
+
+					if ( pet.Summoned )
+						pet.SummonMaster = this;
+
+					pet.ControlTarget = this;
+					pet.ControlOrder = OrderType.Follow;
+
+					pet.MoveToWorld( Location, Map );
+
+					pet.IsStabled = false;
+
+					pet.Loyalty = BaseCreature.MaxLoyalty; // Wonderfully Happy
+
+					if ( Stabled.Contains( pet ) )
+						Stabled.Remove( pet );
+				}
+				else
+				{
+					SendLocalizedMessage( 1049612, pet.Name ); // ~1_NAME~ remained in the stables because you have too many followers.
+				}
+			}
+
+			m_AutoStabled.Clear();
+		}
+
+		#region Recipes
+
+		private Dictionary<int, bool> m_AcquiredRecipes;
+
+		public virtual bool HasRecipe( Recipe r )
+		{
+			return r != null && HasRecipe( r.ID );
+		}
+
+		public virtual bool HasRecipe( int recipeID )
+		{
+			if( m_AcquiredRecipes != null && m_AcquiredRecipes.ContainsKey( recipeID ) ) return m_AcquiredRecipes[recipeID];
+
+			return false;
+		}
+
+		public virtual void AcquireRecipe( Recipe r )
+		{
+			if( r != null )
+				AcquireRecipe( r.ID );
+		}
+
+		public virtual void AcquireRecipe( int recipeID )
+		{
+			if( m_AcquiredRecipes == null ) m_AcquiredRecipes = new Dictionary<int, bool>();
+
+			m_AcquiredRecipes[recipeID] = true;
+		}
+
+		public virtual void ResetRecipes()
+		{
+			m_AcquiredRecipes = null;
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public int KnownRecipes
+		{
+			get
+			{
+				return m_AcquiredRecipes == null ? 0 : m_AcquiredRecipes.Count;
+			}
+		}
+
+        #endregion
+
+        public override void OnRegionChange(Region Old, Region New)
+        {
+			EventSink.InvokeOnEnterRegion(new OnEnterRegionArgs(this, Old, New));
+        }
+    }
+}

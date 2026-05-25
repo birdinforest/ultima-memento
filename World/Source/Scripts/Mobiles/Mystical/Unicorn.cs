@@ -3,6 +3,7 @@ using Server.Mobiles;
 using Server.Network;
 using Server.Items;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a unicorn corpse" )]
@@ -49,7 +50,7 @@ namespace Server.Mobiles
 					{
 						if( Rider.CurePoison( this ) )	//TODO: Confirm if mount is the one flagged for curing it or the rider is
 						{
-							Rider.LocalOverheadMessage( Server.Network.MessageType.Regular, 0x3B2, true, "Your mount senses you are in danger and aids you with magic." );
+							Rider.LocalOverheadMessage( Server.Network.MessageType.Regular, 0x3B2, true, Server.Localization.StringCatalog.ResolveByKey(Rider.Account, "mob.other.your_mount_senses_you_are_in_danger_and_aids_you_with_m"));
 							Rider.FixedParticles( 0x373A, 10, 15, 5012, EffectLayer.Waist );
 							Rider.PlaySound( 0x1E0 );	// Cure spell effect.
 							Rider.PlaySound( 0xA9 );		// Unicorn's whinny.
@@ -64,7 +65,7 @@ namespace Server.Mobiles
 		}
 
 		[Constructable]
-		public Unicorn() : this( "a unicorn" )
+		public Unicorn() : this( StringCatalog.ResolveByKey(null, "mob.other.a_unicorn") )
 		{
 		}
 

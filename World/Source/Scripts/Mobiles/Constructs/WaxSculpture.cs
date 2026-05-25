@@ -5,6 +5,7 @@ using Server.Targeting;
 using Server.Network;
 using Server.Misc;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a pile of wax" )]
@@ -86,7 +87,7 @@ namespace Server.Mobiles
 				{
 					DoHarmful( m );
 					m.PlaySound( 0x026 );
-					m.SendMessage( "Wax covers your mouth...so it is hard to breath!" );
+					m.SendMessage(Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.wax_covers_your_mouth_so_it_is_hard_to_breath"));
 					int toDrain = Utility.RandomMinMax( 10, 40 );
 					m.Stam -= toDrain;
 				}

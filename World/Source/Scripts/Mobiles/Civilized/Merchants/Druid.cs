@@ -8,6 +8,7 @@ using Server.Network;
 using Server.Targeting;
 using Server.ContextMenus;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -111,7 +112,7 @@ namespace Server.Mobiles
 
 					if ( m.Map == null || !m.Map.CanFit( m.Location, 16, false, false ) )
 					{
-						Say("I sense a spirt of an animal...somewhere.");
+						Say(StringCatalog.ResolveByKey(this.Account, "mob.other.i_sense_a_spirt_of_an_animal_somewhere"));
 					}
 					else
 					{
@@ -122,7 +123,7 @@ namespace Server.Mobiles
 
 						bc.ResurrectPet();
 
-						Say("Rise my friend. I wish I could save every unfortunate animal.");
+						Say(StringCatalog.ResolveByKey(this.Account, "mob.other.rise_my_friend_i_wish_i_could_save_every_unfortunate_an"));
 					}
 				}
 			}

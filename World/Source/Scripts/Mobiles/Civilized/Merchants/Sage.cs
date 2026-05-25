@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Server.Items;
 using Server.Network;
 using Server.Engines.MLQuests;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -77,7 +78,7 @@ namespace Server.Mobiles
 					{
 						if ( Server.Misc.Research.AlreadyHasBag( from ) )
 						{
-							this.PublicOverheadMessage( MessageType.Regular, 0, false, string.Format ( "Good luck with your research." ) ); 
+							this.PublicOverheadMessage( MessageType.Regular, 0, false, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.good_luck_with_your_research") ); 
 						}
 						else
 						{
@@ -85,13 +86,13 @@ namespace Server.Mobiles
 							from.PlaySound( 0x2E6 );
 							Server.Misc.Research.SetupBag( from, bag );
 							from.AddToBackpack( bag );
-							this.PublicOverheadMessage( MessageType.Regular, 0, false, string.Format ( "Good luck with your research." ) ); 
+							this.PublicOverheadMessage( MessageType.Regular, 0, false, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.good_luck_with_your_research") ); 
 						}
 						dropped.Delete();
 					}
 					else
 					{
-						sMessage = "You need to be a neophyte scribe before I sell that to you.";
+						sMessage = Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_need_to_be_a_neophyte_scribe_before_i_sell_that_to");
 						from.AddToBackpack ( dropped );
 					}
 				}
@@ -102,7 +103,7 @@ namespace Server.Mobiles
 				}
 				else
 				{
-					sMessage = "You look like you need this more than I do.";
+					sMessage = Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_look_like_you_need_this_more_than_i_do");
 					from.AddToBackpack ( dropped );
 				}
 

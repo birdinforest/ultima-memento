@@ -20,6 +20,7 @@
 | Build and test the server | [§4 Build & Test](#4-build--test) |
 | Localization regression (lightweight host, CI) | [§4.4](#44-localization-regression-lightweight-host) |
 | Understand what an AI agent may/must not do | [§5 Boundaries & Verification](#5-agent-boundaries--verification) |
+| **Global Shoppe system** (player workshops, customer contracts, bulk orders, rewards) | [`World/Documentation/global-shoppe-system.md`](World/Documentation/global-shoppe-system.md) — architecture, order context types, calculators, shoppe catalog |
 | **Avoid server crashes / stability pitfalls** (OPL reentrancy, serializers, timers, …) | [`World/Documentation/server-stability-crash-patterns.md`](World/Documentation/server-stability-crash-patterns.md) — **read before** touching `Item`/`Mobile` OPL paths, `Serialize`/`Deserialize`, or tick/timer-heavy logic |
 | **Cross-repo design/mechanics documentation index** | [§8 Design & Analysis Documentation](#8-design--analysis-documentation-uo-dev-documentations) — read before codebase search |
 | **NPC dialogue intelligence mechanisms** | `<UO_DEV_DOCS_ROOT>/memento/game-mechanism/NPC_INTELLIGENCE_DIALOGUE_MECHANISM.md` (EN) / `NPC对话情报机制分析.md` (ZH) — refresh frequencies, file references |

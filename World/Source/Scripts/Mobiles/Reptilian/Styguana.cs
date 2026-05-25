@@ -5,6 +5,7 @@ using Server.Mobiles;
 using Server.Items;
 using Server.ContextMenus;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a styguana corpse" )]

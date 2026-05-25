@@ -3,6 +3,7 @@ using Server;
 using Server.Misc;
 using Server.Items;
 using System.Collections;
+using Server.Localization;
 
 namespace Server.Mobiles 
 { 
@@ -97,7 +98,7 @@ namespace Server.Mobiles
 					m.PlaySound( 0x133 );
 					m.FixedParticles( 0x377A, 244, 25, 9950, 31, 0, EffectLayer.Waist );
 
-					m.SendMessage( "You feel the blood draining from you!" );
+					m.SendMessage( StringCatalog.ResolveByKey(m.Account, "mob.other.you_feel_the_blood_draining_from_you") );
 
 					int toDrain = Utility.RandomMinMax( 15, 30 );
 
@@ -197,7 +198,7 @@ namespace Server.Mobiles
 
 			SetHits( 100, 150 );
 
-			Say("Arrrrrgh!"); 
+			Say(StringCatalog.ResolveByKey(this.Account, "mob.other.arrrrrgh")); 
 		}
 
 		public VampireLord( Serial serial ) : base( serial ) 

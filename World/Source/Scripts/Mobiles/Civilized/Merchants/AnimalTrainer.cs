@@ -12,6 +12,7 @@ using Server.Spells.Syth;
 using Server.Spells.Jedi;
 using Server.Spells.Mystic;
 using System.Collections;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -310,7 +311,7 @@ namespace Server.Mobiles
 				EtherealMount ethy = (EtherealMount)mount;
 				Server.Mobiles.EtherealMount.Dismount( m );
 				ethy.Owner = m;
-				if ( !Server.Misc.Worlds.InBuilding( m ) ){ m.SendMessage( "Your mount has moved to your pack." ); }
+				if ( !Server.Misc.Worlds.InBuilding( m ) ){ m.SendMessage( Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.your_mount_has_moved_to_your_pack") ); }
 			}
 			else if ( m.Mount is BaseMount )
 			{
@@ -327,7 +328,7 @@ namespace Server.Mobiles
 
 				m.Stabled.Add( pet );
 
-				if ( !Server.Misc.Worlds.InBuilding( m ) ){ m.SendMessage( "Your mount is safely waiting for you elsewhere." ); }
+				if ( !Server.Misc.Worlds.InBuilding( m ) ){ m.SendMessage( Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.your_mount_is_safely_waiting_for_you_elsewhere") ); }
 			}
 		}
 
@@ -535,7 +536,7 @@ namespace Server.Mobiles
 
 			Container bank = from.FindBankNoCreate();
 
-			from.SendMessage( "You are currently using " + from.Stabled.Count + " out of " + GetMaxStabled( from ) + " stable slots." );
+			from.SendMessage( Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.you_are_currently_using_0_out_of_1_stable_slots", from.Stabled.Count, GetMaxStabled( from ) ) );
 			
 			if ( ( from.Backpack == null || from.Backpack.GetAmount( typeof( Gold ) ) < 30 ) && ( bank == null || bank.GetAmount( typeof( Gold ) ) < 30 ) )
 			{
@@ -613,7 +614,7 @@ namespace Server.Mobiles
 
 					SayTo( from, Core.AOS ? 1049677 : 502679 ); // [AOS: Your pet has been stabled.] Very well, thy pet is stabled. Thou mayst recover it by saying 'claim' to me. In one real world week, I shall sell it off if it is not claimed!
 
-					from.SendMessage( "You are currently using " + from.Stabled.Count + " out of " + GetMaxStabled( from ) + " stable slots." );
+					from.SendMessage( Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.you_are_currently_using_0_out_of_1_stable_slots", from.Stabled.Count, GetMaxStabled( from ) ) );
 				}
 				else
 				{

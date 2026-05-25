@@ -81,8 +81,8 @@ namespace Server.Mobiles
 			if (pack.ConsumeTotal(typeof(Gold), paintPrice))
 			{
 				if ( BeggingPose(from) > 0 ){ Titles.AwardKarma( from, -BeggingKarma( from ), true ); } // DO ANY KARMA LOSS
-				this.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "Here is a nice painting of you."));
-				from.SendMessage(Server.Localization.StringCatalog.ResolveFormat(from.Account, "You pay {0} gold.", paintPrice));
+				this.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.here_is_a_nice_painting_of_you"));
+				from.SendMessage(Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.you_pay_0_gold", paintPrice));
 
 					WaxPaintingA portrait = new WaxPaintingA();
 
@@ -99,15 +99,15 @@ namespace Server.Mobiles
 				}
 			else
 			{
-				this.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "It would cost you {0} gold to have a portrait done.", paintPrice));
-				from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You do not have enough gold."));
+				this.SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.it_would_cost_you_0_gold_to_have_a_portrait_done", paintPrice));
+				from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_do_not_have_enough_gold"));
 				from.AddToBackpack ( new PaintCanvas() );
 			}
 				dropped.Delete();
 			}
 		else if ( dropped is WaxPaintingA && dropped.Weight == 15.0 )
 		{
-			this.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "How about this?"));
+			this.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.how_about_this"));
 
 				WaxPaintingA portrait = (WaxPaintingA)dropped;
 

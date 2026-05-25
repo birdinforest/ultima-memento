@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Server.Items; 
 using Server.Network;
 using Server.ContextMenus;
+using Server.Localization;
 
 namespace Server.Mobiles 
 { 
@@ -96,8 +97,8 @@ namespace Server.Mobiles
 					}
 					else
 					{
-						this.SayTo( pm, Server.Localization.StringCatalog.ResolveFormat( pm.Account, "Please give me {0} gold for a room.", RoomCost( pm ) ) );
-						pm.SendMessage( Server.Localization.StringCatalog.ResolveFormat( pm.Account, "Give the innkeeper {0} gold, or put that amount in the bank.", RoomCost( pm ) ) );
+						this.SayTo( pm, Server.Localization.StringCatalog.ResolveFormatByKey(pm.Account, "mob.fmt.please_give_me_0_gold_for_a_room", RoomCost( pm ) ) );
+						pm.SendMessage( Server.Localization.StringCatalog.ResolveFormatByKey(pm.Account, "mob.fmt.give_the_innkeeper_0_gold_or_put_that_amount_in_the_ban", RoomCost( pm ) ) );
 					}
 
 					if ( canOpen )
@@ -140,7 +141,7 @@ namespace Server.Mobiles
 				return;
 				
 				PlayerMobile mobile = (PlayerMobile) m_Mobile;
-					m_Giver.SayTo( m_Mobile, Server.Localization.StringCatalog.ResolveFormat( mobile.Account, "If you want to rent a room, it will cost you {0} gold per week.", RoomCost( mobile ) ) );
+					m_Giver.SayTo( m_Mobile, Server.Localization.StringCatalog.ResolveFormatByKey(mobile.Account, "mob.fmt.if_you_want_to_rent_a_room_it_will_cost_you_0_gold_per", RoomCost( mobile ) ) );
             }
         }
 		///////////////////////////////////////////////////////////////////////////
@@ -151,7 +152,7 @@ namespace Server.Mobiles
 			{
 				InnRoom inn = from.InnRoom;
 				inn.DropItem( dropped );
-				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, "Thank you. You can now try to rent a room.", from.NetState);
+				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.ResolveByKey(this.Account, "mob.other.thank_you_you_can_now_try_to_rent_a_room"), from.NetState);
 				return true;
 			}
 

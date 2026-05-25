@@ -7,6 +7,7 @@ using Server.Mobiles;
 using Server.Misc;
 using Server.Commands;
 using Server.Commands.Generic;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -147,7 +148,7 @@ namespace Server.Items
 				PlayerSettings.SetBardsTaleQuest( from, "BardsTaleSpectreEye", true );
 				PlayerSettings.SetBardsTaleQuest( from, "BardsTaleHarkynKey", true );
 				from.SendSound( 0x3D );
-				from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You found a mysterious eye and a key with a dragon symbol on it.", from.NetState);
+				from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(null, "mob.other.you_found_a_mysterious_eye_and_a_key_with_a_dragon_symb"), from.NetState);
 				from.CloseGump( typeof(Server.Gumps.ClueGump) );
 				from.SendGump(new Server.Gumps.ClueGump( from, "You have obtained an eye from the slain spectre, and the box has a key with a dragon symbol on it. A scribbled parchment claims it to be the Eye of Tarjan.", "The Spectre's Eye" ) );
 			}

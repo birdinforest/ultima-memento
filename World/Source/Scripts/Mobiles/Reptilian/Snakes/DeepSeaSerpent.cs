@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Items;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a deep sea serpents corpse" )]

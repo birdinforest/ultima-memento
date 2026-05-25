@@ -3,6 +3,7 @@ using System.Collections;
 using Server;
 using Server.Items;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a xorn's corpse" )]
@@ -74,7 +75,7 @@ namespace Server.Mobiles
 				toEat = Utility.RandomMinMax( 1, nGold );
 				pack.ConsumeTotal(typeof(Gold), toEat);
 				m.PlaySound( Utility.Random( 0x3A, 3 ) );
-				m.SendMessage( "The xorn ate some of your gold!" );
+				m.SendMessage(Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.the_xorn_ate_some_of_your_gold"));
 			}
 		}
 

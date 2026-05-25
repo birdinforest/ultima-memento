@@ -3,6 +3,7 @@ using System.Collections;
 using Server.Items;
 using Server.Targeting;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "an antaur corpse" )] // TODO: Corpse name?

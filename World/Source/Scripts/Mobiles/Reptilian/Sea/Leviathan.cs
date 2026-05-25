@@ -4,6 +4,7 @@ using Server.Items;
 using Server.Targeting;
 using Server.Misc;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a leviathan corpse" )]
@@ -16,7 +17,7 @@ namespace Server.Mobiles
 		public override int BreathEffectHue{ get{ return 0x1ED; } }
 		public override double BreathMinDelay{ get{ return 5.0; } }
 		public override double BreathMaxDelay{ get{ return 7.5; } }
-		public override void BreathDealDamage( Mobile target, int form ){ target.SendMessage( "You are hit by the force of the beast!" ); base.BreathDealDamage( target, 0 ); }
+		public override void BreathDealDamage( Mobile target, int form ){ target.SendMessage(Server.Localization.StringCatalog.ResolveByKey(target.Account, "mob.other.you_are_hit_by_the_force_of_the_beast")); base.BreathDealDamage( target, 0 ); }
 
 		private Mobile m_Fisher;
 
@@ -131,7 +132,7 @@ namespace Server.Mobiles
 		public static void GiveArtifactTo( Mobile m )
 		{
 			NotIdentified.ConfigureItem( Loot.RandomArty(), m.Backpack, m );
-			m.SendMessage( "As a reward for slaying the mighty leviathan, an artifact has been placed in your backpack." );
+			m.SendMessage(Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.as_a_reward_for_slaying_the_mighty_leviathan_an_artifac"));
 		}
 
 		public override void OnKilledBy( Mobile mob, Container corpse, int damagerCount, int totalDamage )

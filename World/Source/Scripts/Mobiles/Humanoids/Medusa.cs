@@ -3,6 +3,7 @@ using System.Collections;
 using Server;
 using Server.Items;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -87,7 +88,7 @@ namespace Server.Mobiles
 				m.PlaySound(0x204);
 				m.FixedEffect(0x376A, 6, 1);
 				m.Paralyze(TimeSpan.FromSeconds(Math.Min(MySettings.S_paralyzeDuration, Utility.RandomMinMax(4, 8))));
-				m.SendMessage( "You are paralyzed!" );
+				m.SendMessage( StringCatalog.ResolveByKey(m.Account, "mob.other.you_are_paralyzed") );
 			}
 		}
 
@@ -107,11 +108,11 @@ namespace Server.Mobiles
 					}
 					else if ( Server.Items.HiddenTrap.CheckInsuranceOnTrap( iStone, m ) )
 					{
-						m.LocalOverheadMessage(MessageType.Emote, 1150, true, "The medusa almost turned one of your protected items to stone!");
+						m.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveByKey(m.Account, "mob.other.the_medusa_almost_turned_one_of_your_protected_items_to"));
 					}
 					else
 					{
-						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "One of your items has been turned to stone!");
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey(m.Account, "mob.other.one_of_your_items_has_been_turned_to_stone"));
 						m.PlaySound( 0x1FB );
 						Item rock = new BrokenGear();
 						rock.ItemID = iStone.GraphicID;

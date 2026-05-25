@@ -8,6 +8,7 @@ using Server.Network;
 using Server.Mobiles;
 using Server.Commands;
 using Server.Commands.Generic;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -296,19 +297,19 @@ namespace Server.Items
 		{
 			if ( from.InRange( this.GetWorldLocation(), 2 ) )
 			{
-				if ( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleWin" ) )
+				if ( PlayerSettings.GetBardsTaleQuest( from, StringCatalog.ResolveByKey(null, "mob.other.bardstalewin") ) )
 				{
 					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You find nothing of interest.", from.NetState);
-					from.SendMessage("A gate is open nearby. You better hurry or you will remain trapped here.");
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "mob.other.a_gate_is_open_nearby_you_better_hurry_or_you_will_rema"));
 				}
 				else
 				{
-					PlayerSettings.SetBardsTaleQuest( from, "BardsTaleWin", true );
+					PlayerSettings.SetBardsTaleQuest( from, StringCatalog.ResolveByKey(null, "mob.other.bardstalewin"), true );
 					from.SendSound( 0x3D );
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You have pulled Mangar's Vault toward you.", from.NetState);
-					from.SendMessage("A gate is open nearby. You better hurry or you will remain trapped here.");
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(null, "mob.other.you_have_pulled_mangar_s_vault_toward_you"), from.NetState);
+					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "mob.other.a_gate_is_open_nearby_you_better_hurry_or_you_will_rema"));
 					from.CloseGump( typeof(Server.Gumps.ClueGump) );
-					from.SendGump(new Server.Gumps.ClueGump( from, "You notice a magical gate is open nearby. You better hurry or you will remain trapped here.<br><br>You have 30 minutes. Don't forget to loot the Vault or take it with you!", "Final Escape!" ) );
+					from.SendGump(new Server.Gumps.ClueGump( from, StringCatalog.ResolveByKey(null, "mob.other.you_notice_a_magical_gate_is_open_nearby_you_better_hur"), "Final Escape!" ) );
 
 					LootChest MyChest = new LootChest( 6 );
 					MyChest.Name = "Mangar's Vault";

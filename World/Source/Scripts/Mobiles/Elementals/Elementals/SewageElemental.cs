@@ -4,6 +4,7 @@ using Server.Items;
 using System.Collections;
 using Server.Gumps;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -91,11 +92,11 @@ namespace Server.Mobiles
 					}
 					else if ( Server.Items.HiddenTrap.CheckInsuranceOnTrap( iWrapped, m ) )
 					{
-						m.LocalOverheadMessage(MessageType.Emote, 1150, true, "Sewage almost covered one of your protected items!");
+						m.LocalOverheadMessage(MessageType.Emote, 1150, true, Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.sewage_almost_covered_one_of_your_protected_items"));
 					}
 					else
 					{
-						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "One of your items is covered in sewage!");
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.one_of_your_items_is_covered_in_sewage"));
 						m.PlaySound( 0x364 );
 						Container box = new SewageItem();
 						box.DropItem(iWrapped);

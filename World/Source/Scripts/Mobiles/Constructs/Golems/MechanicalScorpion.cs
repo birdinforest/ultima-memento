@@ -3,6 +3,7 @@ using System.Collections;
 using Server.Items;
 using Server.Network;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a broken machine" )]
@@ -150,7 +151,7 @@ namespace Server.Mobiles
 
 				PlaySound( 0x2F4 );
 
-				attacker.SendAsciiMessage( "Your weapon cannot penetrate the creature's magical barrier" );
+				attacker.SendAsciiMessage( StringCatalog.ResolveByKey(attacker.Account, "mob.other.your_weapon_cannot_penetrate_the_creature_s_magical_bar") );
 			}
 
 			if( attacker != null && attacker.Alive && attacker.Weapon is BaseRanged && 0.4 > Utility.RandomDouble() )

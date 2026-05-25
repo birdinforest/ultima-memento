@@ -9,6 +9,7 @@ using Server.Items;
 using Server.Gumps;
 using Server.Mobiles;
 using Server.Commands;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -63,7 +64,7 @@ namespace Server.Mobiles
 
 		public override bool OnBeforeDeath()
 		{
-			Say("In Vas Mani");
+			Say(StringCatalog.ResolveByKey(this.Account, "mob.other.in_vas_mani"));
 			this.Hits = this.HitsMax;
 			this.FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
 			this.PlaySound( 0x202 );

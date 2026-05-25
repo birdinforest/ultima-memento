@@ -9,6 +9,7 @@ using Server.Mobiles;
 using System.Collections;
 using System.Collections.Generic;
 using Server.Accounting;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -76,7 +77,7 @@ namespace Server.Items
 
 			if ( animalfriend == 0 )
 			{
-				from.SendMessage( Server.Localization.StringCatalog.Resolve(from.Account, "You need to be near a druid or animal handler to call this pack animal!") );
+				from.SendMessage( Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_need_to_be_near_a_druid_or_animal_handler_to_call_t") );
 			}
 			else
 			{
@@ -99,7 +100,7 @@ namespace Server.Items
 				}
 				else if ( pets.Count > 0 )
 				{
-					from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You already have a pack animal."));
+					from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_already_have_a_pack_animal"));
 				}
 				else if ( nFollowers > 0 )
 				{
@@ -107,11 +108,11 @@ namespace Server.Items
 				}
 				else if ( Charges < 1 )
 				{
-					from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "Your pack animal needs to be tended to by a druid guildmaster."));
+					from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.your_pack_animal_needs_to_be_tended_to_by_a_druid_guild"));
 				}
 				else if ( PorterOwner == null || PorterOwner.Serial != from.Serial )
 				{
-					from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "This is not your pack animal!"));
+					from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.this_is_not_your_pack_animal"));
 				}
 				else
 				{
@@ -186,19 +187,19 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			string sType = "a pack animal";
+			string sType = StringCatalog.ResolveByKey(null, "mob.other.a_pack_animal");
 
-			if ( PorterType == 292 ){ sType = "a pack llama"; if ( PorterName != "a pack animal" ){ sType = PorterName + " the pack llama"; } }
-			else if ( PorterType == 23 ){ sType = "a pack bear"; if ( PorterName != "a pack animal" ){ sType = PorterName + " the pack bear"; } }
-			else if ( PorterType == 177 ){ sType = "a pack bear"; if ( PorterName != "a pack animal" ){ sType = PorterName + " the pack bear"; } }
-			else if ( PorterType == 179 ){ sType = "a pack bear"; if ( PorterName != "a pack animal" ){ sType = PorterName + " the pack bear"; } }
-			else if ( PorterType == 291 ){ sType = "a pack horse"; if ( PorterName != "a pack animal" ){ sType = PorterName + " the pack horse"; } }
+			if ( PorterType == 292 ){ sType = "a pack llama"; if ( PorterName != StringCatalog.ResolveByKey(null, "mob.other.a_pack_animal") ){ sType = PorterName + " the pack llama"; } }
+			else if ( PorterType == 23 ){ sType = "a pack bear"; if ( PorterName != StringCatalog.ResolveByKey(null, "mob.other.a_pack_animal") ){ sType = PorterName + " the pack bear"; } }
+			else if ( PorterType == 177 ){ sType = "a pack bear"; if ( PorterName != StringCatalog.ResolveByKey(null, "mob.other.a_pack_animal") ){ sType = PorterName + " the pack bear"; } }
+			else if ( PorterType == 179 ){ sType = "a pack bear"; if ( PorterName != StringCatalog.ResolveByKey(null, "mob.other.a_pack_animal") ){ sType = PorterName + " the pack bear"; } }
+			else if ( PorterType == 291 ){ sType = StringCatalog.ResolveByKey(null, "mob.other.a_pack_horse"); if ( PorterName != StringCatalog.ResolveByKey(null, "mob.other.a_pack_animal") ){ sType = PorterName + " the pack horse"; } }
 
 			string sInfo = sType;
 			list.Add( 1070722, sInfo );
 
 			string sOwner = PorterOwner != null ? PorterOwner.Name : "nobody";
-			list.Add( 1049644, "Belongs To " + sOwner + ""); // PARENTHESIS
+			list.Add( 1049644, Server.Localization.StringCatalog.ResolveFormatByKey(null, "mob.fmt.belongs_to_0", sOwner ) ); // PARENTHESIS
         }
 
 		public override void Serialize( GenericWriter writer )

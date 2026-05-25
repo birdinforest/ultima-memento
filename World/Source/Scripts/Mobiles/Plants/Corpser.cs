@@ -4,6 +4,7 @@ using Server.Items;
 using Server.Targeting;
 using Server.Engines.Plants;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a corpser corpse" )]

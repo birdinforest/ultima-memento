@@ -1,0 +1,163 @@
+{"key": "mob.other.all_should_fear", "en": "All should fear "}
+{"key": "mob.other.your_life_ends_here", "en": "Your life ends here, "}
+{"key": "mob.creature.faerie", "en": "the faerie"}
+{"key": "mob.other.earth_elemental", "en": "earth elemental"}
+{"key": "mob.other.has_obtained_the_blackrock_serpent_of_balance", "en": "has obtained the blackrock serpent of balance"}
+{"key": "mob.other.your_soul_will_be_mine", "en": "Your soul will be mine, "}
+{"key": "mob.other.a_crystal_elemental", "en": "a crystal elemental"}
+{"key": "mob.other.i_look_forward_to_torturing_your_soul", "en": "I look forward to torturing your soul, "}
+{"key": "mob.other.has_obtained_the_shard_of_hatred", "en": "has obtained the shard of hatred"}
+{"key": "mob.creature.wyrm_guard", "en": "the Wyrm Guard"}
+{"key": "mob.other.one_day_you_will_be_taken_by_the_sea", "en": "One day you will be taken by the sea, "}
+{"key": "mob.creature.black_knights_s_box", "en": "the Black Knights's box"}
+{"key": "mob.other.here_you_already_have_a_pack", "en": "Here. You already have a pack."}
+{"key": "mob.other.good_luck_with_the_search", "en": "Good luck with the search."}
+{"key": "mob.other.vordo_s_notes_on_escaping_the_bottle", "en": "Vordo's notes on escaping the bottle."}
+{"key": "mob.other.statue_of_jormungandr", "en": "Statue of Jormungandr"}
+{"key": "mob.fmt.you_are_currently_using_0_out_of_1_stable_slots", "en": "You are currently using {0} out of {1} stable slots."}
+{"key": "mob.other.no_one_will_find_the_bones_of", "en": "No one will find the bones of "}
+{"key": "mob.creature.ancient_tree", "en": "the ancient tree"}
+{"key": "mob.fmt.the_0_1", "en": "the {0} {1}"}
+{"key": "mob.other.an_electrical_elemental", "en": "an electrical elemental"}
+{"key": "mob.other.i_don_t_think_we_could_let_someone_like_you_join", "en": "I don't think we could let someone like you join."}
+{"key": "mob.other.you_puny", "en": "You puny "}
+{"key": "mob.creature.deep_crawler", "en": "the deep crawler"}
+{"key": "mob.other.has_subdued_the_serpent_of_order", "en": "has subdued the serpent of order"}
+{"key": "mob.other.me_will_be_eating_your", "en": "Me will be eating your "}
+{"key": "mob.other.i_cannot_identify_that", "en": "I cannot identify that."}
+{"key": "mob.other.you_will_make_me_young_again", "en": "You will make me young again, "}
+{"key": "mob.other.target", "en": "target"}
+{"key": "mob.fmt.contains_0_1_boards", "en": "Contains {0} {1} Boards"}
+{"key": "mob.other.mechanical_scorpion", "en": "mechanical scorpion"}
+{"key": "mob.other.a_hoard_minion", "en": "A hoard minion"}
+{"key": "mob.other.pack_animal", "en": "pack animal"}
+{"key": "mob.creature.agapite_grue", "en": "an agapite grue"}
+{"key": "mob.other.arachnar_s_vault", "en": "Arachnar's Vault"}
+{"key": "mob.other.my_cold_heart_will_come_for_you", "en": "My cold heart will come for you, "}
+{"key": "mob.other.wizard_henchman", "en": "wizard henchman"}
+{"key": "mob.other.i_will_swallow_you_whole", "en": "I will swallow you whole, "}
+{"key": "mob.fmt.contains_0_1", "en": "Contains {0} {1}"}
+{"key": "mob.other.you_have_not_finished_your_search_yet", "en": "You have not finished your search yet."}
+{"key": "mob.other.sword_of_baron_almric", "en": "sword of Baron Almric"}
+{"key": "mob.fmt.crate_of_0_leather", "en": "crate of {0} leather"}
+{"key": "mob.other.curse_you", "en": "Curse you, "}
+{"key": "mob.other.animated_rocks", "en": "animated rocks"}
+{"key": "mob.other.i_will_come_for_you", "en": "I will come for you, "}
+{"key": "mob.other.caddellite_elemental", "en": "caddellite elemental"}
+{"key": "mob.other.vulcrum_s_vault", "en": "Vulcrum's Vault"}
+{"key": "mob.other.some_day_your_blood_will_fill_these_halls", "en": "Some day your blood will fill these halls, "}
+{"key": "mob.other.this_will_be_your_final_battle", "en": "This will be your final battle, "}
+{"key": "mob.creature.sea_serpent", "en": "a sea serpent"}
+{"key": "mob.other.this_book_doesn_t_belong_to_you_so_i_will_just_get_rid", "en": "This book doesn't belong to you so I will just get rid of it."}
+{"key": "mob.fmt.contains_0_1_leather", "en": "Contains {0} {1} Leather"}
+{"key": "mob.other.dnadona_qae_gia", "en": "Dnadona qae gia, "}
+{"key": "mob.other.the_dragon_rusted_one_of_your_equipped_items", "en": "The dragon rusted one of your equipped items!"}
+{"key": "mob.other.creature_henchman", "en": "creature henchman"}
+{"key": "mob.creature.basilosaurus", "en": "a basilosaurus"}
+{"key": "mob.creature.security_droid", "en": "the security droid"}
+{"key": "mob.other.open_to_remove_them_from_the_crate", "en": "Open to Remove them from the Crate"}
+{"key": "mob.other.did_one_of_your_henchman_suffer_a_deathly_fate_i_can_re", "en": "Did one of your henchman suffer a deathly fate? I can resurrect them for you."}
+{"key": "mob.other.archer_henchman", "en": "archer henchman"}
+{"key": "mob.other.speak_to_me_when_that_strange_effect_has_worn_off", "en": "Speak to me when that strange effect has worn off."}
+{"key": "mob.other.you_have_not_seen_the_last_of_me", "en": "You have not seen the last of me, "}
+{"key": "mob.creature.excavation_droid", "en": "the excavation droid"}
+{"key": "mob.fmt.0_take_the_gold_and_these_as_well_you_may_be_a_good_pri", "en": "{0}, take the gold and these as well. You may be a good priest one day."}
+{"key": "mob.creature.ancient_gazer", "en": "the ancient gazer"}
+{"key": "mob.creature.iguana", "en": "an iguana"}
+{"key": "mob.other.look_into_my_eyes", "en": "Look into my eyes, "}
+{"key": "mob.fmt.thank_you_here_is_0_gold_for_your_bravery", "en": "Thank you. Here is {0} gold for your bravery."}
+{"key": "mob.other.thank_you_but_you_already_done_that_for_me", "en": "Thank you, but you already done that for me."}
+{"key": "mob.other.i_will_have_your_soul_one_day", "en": "I will have your soul one day, "}
+{"key": "mob.creature.lich", "en": "the lich"}
+{"key": "mob.other.your_corpse_will_rise_and_serve_me", "en": "Your corpse will rise and serve me, "}
+{"key": "mob.creature.water_strider", "en": "a water strider"}
+{"key": "mob.creature.death_vortex", "en": "a death vortex"}
+{"key": "mob.creature.gargoyle_guard", "en": "a gargoyle guard"}
+{"key": "mob.other.a_forest_elemental", "en": "a forest elemental"}
+{"key": "mob.creature.priest", "en": "the priest"}
+{"key": "mob.creature.toad", "en": "a toad"}
+{"key": "mob.other.here_i_see_you_already_have_a_book", "en": "Here. I see you already have a book."}
+{"key": "mob.fmt.contains_0_1_ore", "en": "Contains {0} {1} ore"}
+{"key": "mob.other.i_have_brought_justice_to_others_more_vile_than_you", "en": "I have brought justice to others more vile than you, "}
+{"key": "mob.creature.dark_iron_statue", "en": "a dark iron statue"}
+{"key": "mob.other.water_hit", "en": "water hit"}
+{"key": "mob.creature.antaur_king", "en": "the antaur king"}
+{"key": "mob.creature.stonecrafter", "en": "the stonecrafter"}
+{"key": "mob.fmt.crate_of_0_ore", "en": "crate of {0} ore"}
+{"key": "mob.creature.tiger", "en": "a tiger"}
+{"key": "mob.creature.battle_droid", "en": "the battle droid"}
+{"key": "mob.creature.antaur_soldier", "en": "an antaur soldier"}
+{"key": "mob.other.a_spinel_elemental", "en": "a spinel elemental"}
+{"key": "mob.creature.hook_horror", "en": "a hook horror"}
+{"key": "mob.other.cinders_will_be_all_that_is_left_of_you", "en": "Cinders will be all that is left of you, "}
+{"key": "mob.other.a_copper_elemental", "en": "a copper elemental"}
+{"key": "mob.creature.tyranasaur", "en": "a tyranasaur"}
+{"key": "mob.creature.lava_serpent", "en": "a lava serpent"}
+{"key": "mob.creature.lochasaur", "en": "a lochasaur"}
+{"key": "mob.other.i_will_become_your_new_god", "en": "I will become your new god, "}
+{"key": "mob.creature.roper", "en": "a roper"}
+{"key": "mob.creature.alligator", "en": "an alligator"}
+{"key": "mob.creature.angel", "en": "an angel"}
+{"key": "mob.fmt.crate_of_0_boards", "en": "crate of {0} boards"}
+{"key": "mob.creature.service_droid", "en": "the service droid"}
+{"key": "mob.other.i_will_tell_all_on_how_i_crushed", "en": "I will tell all on how I crushed "}
+{"key": "mob.other.i_will_have_a_place_for_the_bones_of", "en": "I will have a place for the bones of "}
+{"key": "mob.other.you_may_have_won_this_day", "en": "You may have won this day, "}
+{"key": "mob.other.tentacles_of_the_blood_god", "en": "tentacles of the blood god"}
+{"key": "mob.other.has_subdued_the_serpent_of_chaos", "en": "has subdued the serpent of chaos"}
+{"key": "mob.other.chest_of_vulcrum_relics", "en": "Chest of Vulcrum Relics"}
+{"key": "mob.creature.sprite", "en": "the sprite"}
+{"key": "mob.fmt.crate_of_0", "en": "crate of {0}"}
+{"key": "mob.other.in_vas_mani", "en": "In Vas Mani"}
+{"key": "mob.fmt.summons_a_hoard_minion_for_0_minutes", "en": "Summons a hoard minion for {0} minutes"}
+{"key": "mob.other.has_obtained_the_blackrock_serpent_of_order", "en": "has obtained the blackrock serpent of order"}
+{"key": "mob.other.has_obtained_the_blackrock_serpent_of_chaos", "en": "has obtained the blackrock serpent of chaos"}
+{"key": "mob.creature.stone_crafter", "en": "the stone crafter"}
+{"key": "mob.other.no_4", "en": "No, "}
+{"key": "mob.other.elemental", "en": " elemental"}
+{"key": "mob.other.chuckles_gave_you_a_check_for", "en": "Chuckles gave you a check for "}
+{"key": "mob.other.your_henchman_is_back_in_the_land_of_the_living", "en": "Your henchman is back in the land of the living."}
+{"key": "mob.other.you_have_been_sent_to_the", "en": "You have been sent to the "}
+{"key": "mob.other.let_the_mountain_fires_take_you", "en": "Let the mountain fires take you, "}
+{"key": "mob.creature.maintenance_droid", "en": "the maintenance droid"}
+{"key": "mob.creature.antaur_lord", "en": "an antaur lord"}
+{"key": "mob.creature.centaur", "en": "the centaur"}
+{"key": "mob.fmt.it_would_cost_you_0_gold_to_have_them_resurrected", "en": "It would cost you {0} gold to have them resurrected."}
+{"key": "mob.other.your_life_will_end_in_darkness", "en": "Your life will end in darkness, "}
+{"key": "mob.other.vordo_s_magical_gate_research", "en": "Vordo's Magical Gate Research"}
+{"key": "mob.other.all_will_know_that", "en": "All will know that "}
+{"key": "mob.other.welcome_to_the_guild_thou_shalt_find_it_beneficial_to_y", "en": "Welcome to the guild! Thou shalt find it beneficial to your future endeavors."}
+{"key": "mob.other.poison", "en": "Poison"}
+{"key": "mob.creature.great_white_shark", "en": "a great white shark"}
+{"key": "mob.other.let_the_shadows_take_you", "en": "Let the shadows take you, "}
+{"key": "mob.other.has_obtained_the_shard_of_cowardice", "en": "has obtained the shard of cowardice"}
+{"key": "mob.other.feel_the_power_of", "en": "Feel the power of "}
+{"key": "mob.other.murk_s_lost_treasure_chest", "en": "Murk's Lost Treasure Chest"}
+{"key": "mob.other.i_have_slain_others_better_than_you", "en": "I have slain others better than you, "}
+{"key": "mob.other.a_bronze_elemental", "en": "a bronze elemental"}
+{"key": "mob.creature.decaying_corpse", "en": "a decaying corpse"}
+{"key": "mob.other.you_need_to_discover_the_nine_lands_before_i_share_this", "en": "You need to discover the nine lands before I share this with you."}
+{"key": "mob.creature.giant_squid", "en": "a giant squid"}
+{"key": "mob.other.has_obtained_the_shard_of_falsehood", "en": "has obtained the shard of falsehood"}
+{"key": "mob.creature.cosmic_gargoyle", "en": "the cosmic gargoyle"}
+{"key": "mob.other.all_praise_the_mad_god", "en": "All praise the Mad God."}
+{"key": "mob.creature.leviathan", "en": "a leviathan"}
+{"key": "mob.creature.lurker", "en": "a lurker"}
+{"key": "mob.other.me_make_soup_with_your", "en": "Me make soup with your "}
+{"key": "mob.creature.ancient_ent", "en": "the ancient ent"}
+{"key": "mob.fmt.crate_of_0_logs", "en": "crate of {0} logs"}
+{"key": "mob.other.fighter_henchman", "en": "fighter henchman"}
+{"key": "mob.creature.alien_hatchling", "en": "an alien hatchling"}
+{"key": "mob.other.learn_to_use_teleporting_magic_here", "en": "Learn to use teleporting magic here."}
+{"key": "mob.other.i_have_slain_those_mightier_than_you", "en": "I have slain those mightier than you, "}
+{"key": "mob.fmt.crate_of_0_ingots", "en": "crate of {0} ingots"}
+{"key": "mob.fmt.you_have_done_the_museum_a_great_service_here_is_0_gold", "en": "You have done the museum a great service. Here is {0} gold we promised."}
+{"key": "mob.creature.ancient_gargoyle", "en": "an ancient gargoyle"}
+{"key": "mob.creature.lion", "en": "a lion"}
+{"key": "mob.fmt.contains_0_1_logs", "en": "Contains {0} {1} Logs"}
+{"key": "mob.other.are_your_bones_cold_yet", "en": "Are your bones cold yet, "}
+{"key": "mob.creature.giant_crab", "en": "a giant crab"}
+{"key": "mob.other.i_have_converted_others_stonger_than_you", "en": "I have converted others stonger than you, "}
+{"key": "mob.fmt.contains_0_1_ingots", "en": "Contains {0} {1} Ingots"}
+{"key": "mob.other.are_you_ready_to_serve_me_in_the_depths", "en": "Are you ready to serve me in the depths, "}
+{"key": "mob.other.recently_questioned", "en": "Recently Questioned"}

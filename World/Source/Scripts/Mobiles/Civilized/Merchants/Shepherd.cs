@@ -7,6 +7,7 @@ using Server.Items;
 using Server.Network;
 using Server.Targeting;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -27,22 +28,22 @@ namespace Server.Mobiles
 				{
 					switch ( Utility.Random( 45 ))
 					{
-						case 0: Say("Another ale over here!"); break;
-						case 1: PlaySound( Female ? 781 : 1052 ); Say( "*blows nose*" );	break;
-						case 2: PlaySound( Female ? 786 : 1057 ); Say( "*cough*" ); break;
-						case 3: PlaySound( Female ? 782 : 1053 ); Say( "*burp*" ); break;
-						case 4: PlaySound( Female ? 784 : 1055 ); Say( "*clears throat*" ); break;
-						case 5: PlaySound( Female ? 785 : 1056 ); Say( "*cough*" ); break;
-						case 6: PlaySound( Female ? 792 : 1064 ); Say( "*farts*" ); break;
+						case 0: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.another_ale_over_here")); break;
+						case 1: PlaySound( Female ? 781 : 1052 ); Say( StringCatalog.ResolveByKey(this.Account, "mob.emote.blows_nose") );	break;
+						case 2: PlaySound( Female ? 786 : 1057 ); Say( StringCatalog.ResolveByKey(this.Account, "mob.emote.cough") ); break;
+						case 3: PlaySound( Female ? 782 : 1053 ); Say( StringCatalog.ResolveByKey(this.Account, "mob.emote.burp") ); break;
+						case 4: PlaySound( Female ? 784 : 1055 ); Say( StringCatalog.ResolveByKey(this.Account, "mob.emote.clears_throat") ); break;
+						case 5: PlaySound( Female ? 785 : 1056 ); Say( StringCatalog.ResolveByKey(this.Account, "mob.emote.cough") ); break;
+						case 6: PlaySound( Female ? 792 : 1064 ); Say( StringCatalog.ResolveByKey(this.Account, "mob.emote.farts") ); break;
 						case 7: PlaySound( Female ? 0x31B : 0x42B ); Say( "*groans*" ); break;
 						case 8: PlaySound( Female ? 0x338 : 0x44A ); Say( "*growls*" ); break;
-						case 9: PlaySound( Female ? 798 : 1070 ); Say( "*hiccup*" ); break;
+						case 9: PlaySound( Female ? 798 : 1070 ); Say( StringCatalog.ResolveByKey(this.Account, "mob.emote.hiccup") ); break;
 						case 10: PlaySound( Female ? 816 : 1090 ); Say( "*sigh*" ); break;
-						case 11: PlaySound( Female ? 817 : 1091 ); Say( "Ahh-choo!" ); break;
-						case 12: PlaySound( Female ? 818 : 1092 ); Say( "*sniff*" ); break;
-						case 13: PlaySound( Female ? 819 : 1093 ); Say( "*snore*" ); break;
-						case 14: PlaySound( Female ? 820 : 1094 ); Say( "*spits*" ); break;
-						case 15: PlaySound( Female ? 822 : 1096 ); Say( "*yawns*" ); break;
+						case 11: PlaySound( Female ? 817 : 1091 ); Say( StringCatalog.ResolveByKey(this.Account, "mob.other.ahh_choo") ); break;
+						case 12: PlaySound( Female ? 818 : 1092 ); Say( StringCatalog.ResolveByKey(this.Account, "mob.emote.sniff") ); break;
+						case 13: PlaySound( Female ? 819 : 1093 ); Say( StringCatalog.ResolveByKey(this.Account, "mob.emote.snore") ); break;
+						case 14: PlaySound( Female ? 820 : 1094 ); Say( StringCatalog.ResolveByKey(this.Account, "mob.emote.spits") ); break;
+						case 15: PlaySound( Female ? 822 : 1096 ); Say( StringCatalog.ResolveByKey(this.Account, "mob.emote.yawns") ); break;
 					};
 					m_NextTalk = (DateTime.Now + TimeSpan.FromSeconds( 30 ));
 				}

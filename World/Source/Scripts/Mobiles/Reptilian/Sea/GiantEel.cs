@@ -3,6 +3,7 @@ using Server;
 using Server.Items;
 using System.Collections;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "an eel corpse" )]
@@ -95,7 +96,7 @@ namespace Server.Mobiles
 					m.BoltEffect( 0 );
 					int itHurts = (int)( (Utility.RandomMinMax(10,20) * ( 100 - m.EnergyResistance ) ) / 100 );
 					m.Damage( itHurts, m );
-					m.SendMessage( "You are struck with the eel's electricity!" );
+					m.SendMessage(Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.you_are_struck_with_the_eel_s_electricity"));
 				}
 			}
 		}

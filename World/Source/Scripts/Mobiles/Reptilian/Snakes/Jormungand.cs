@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Server.Misc;
 using Server.Regions;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a sea serpents corpse" )]
@@ -130,9 +131,9 @@ namespace Server.Mobiles
 					}
 				}
 
-				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "Jormungandr" ) )
+				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, StringCatalog.ResolveByKey(this.Account, "mob.other.jormungandr") ) )
 				{
-					Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "Jormungandr", true );
+					Server.Misc.PlayerSettings.SetSpecialsKilled( killer, StringCatalog.ResolveByKey(this.Account, "mob.other.jormungandr"), true );
 					ManualOfItems book = new ManualOfItems();
 						book.Hue = 0xB3D;
 						book.Name = "Chest of Midgard Relics";

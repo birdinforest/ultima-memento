@@ -2,6 +2,7 @@ using System;
 using Server.Mobiles;
 using Server.Network;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -22,7 +23,7 @@ namespace Server.Mobiles
 		public override void BreathDealDamage( Mobile target, int form ){ base.BreathDealDamage( target, 26 ); }
 
 		[Constructable]
-		public Dreadhorn() : this( "a dreadhorn" )
+		public Dreadhorn() : this( StringCatalog.ResolveByKey(null, "mob.other.a_dreadhorn") )
 		{
 		}
 

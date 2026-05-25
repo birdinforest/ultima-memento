@@ -132,7 +132,7 @@ namespace Server.Mobiles
 	}
 
 	/// <summary>
-	/// Resolves a stable logical key for the <paramref name="target"/> player's language only
+	/// Resolves a stable logical key for the <paramref name=StringCatalog.ResolveByKey(this.Account, "mob.other.target")/> player's language only
 	/// and sends via <see cref="Mobile.SayTo"/>. For private one-on-one exchanges.
 	/// </summary>
 	public static void SayToLocalizedByKey( Mobile speaker, Mobile target, string key, string englishFallback )

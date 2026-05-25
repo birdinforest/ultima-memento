@@ -11,6 +11,7 @@ using Server.Mobiles;
 using Server.Accounting;
 using Server.Regions;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "Arachnar's corpse" )]
@@ -158,7 +159,7 @@ namespace Server.Items
 			if ( from.InRange( this.GetWorldLocation(), 2 ) )
 			{
 				from.SendSound( 0x3D );
-				from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You have pulled Arachnar's Vault toward you.", from.NetState);
+				from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(null, "mob.other.you_have_pulled_arachnar_s_vault_toward_you"), from.NetState);
 
 				LootChest MyChest = new LootChest( 6 );
 				MyChest.Name = "Arachnar's Vault";
@@ -166,14 +167,14 @@ namespace Server.Items
 
 				if ( from is PlayerMobile )
 				{
-					if ( GetPlayerInfo.LuckyKiller( from.Luck ) && !Server.Misc.PlayerSettings.GetSpecialsKilled( from, "Arachnar" ) )
+					if ( GetPlayerInfo.LuckyKiller( from.Luck ) && !Server.Misc.PlayerSettings.GetSpecialsKilled( from, StringCatalog.ResolveByKey(null, "mob.other.arachnar") ) )
 					{
 						if ( GetPlayerInfo.LuckyKiller( from.Luck ) )
 						{
 							Item arty = Loot.RandomArty();
 							MyChest.DropItem( arty );
 						}
-						Server.Misc.PlayerSettings.SetSpecialsKilled( from, "Arachnar", true );
+						Server.Misc.PlayerSettings.SetSpecialsKilled( from, StringCatalog.ResolveByKey(null, "mob.other.arachnar"), true );
 						ManualOfItems lexicon = new ManualOfItems();
 							lexicon.Hue = 0x4F6;
 							lexicon.Name = "Chest of Arachnar Relics";

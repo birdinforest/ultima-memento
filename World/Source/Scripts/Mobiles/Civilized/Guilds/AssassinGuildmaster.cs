@@ -8,6 +8,7 @@ using Server.ContextMenus;
 using Server.Gumps;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -131,7 +132,7 @@ namespace Server.Mobiles
 			else if ( packs.ConsumeTotal(typeof(Gold), cost) )
 			{
 				SayTo(from, "I will use your " + cost.ToString() + " gold to pursuade the guards to look the other way.");
-				from.SendMessage(String.Format("You pay {0} gold.", cost));
+				from.SendMessage(String.Format(StringCatalog.ResolveByKey(from.Account, "mob.fmt.you_pay_0_gold"), cost));
 				from.Kills = from.Kills - 1;
 				paid = true;
 			}

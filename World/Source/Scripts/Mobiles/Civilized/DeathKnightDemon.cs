@@ -6,6 +6,7 @@ using Server.ContextMenus;
 using Server.Misc;
 using Server.Network;
 using Server.Gumps;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -66,14 +67,14 @@ namespace Server.Mobiles
 		{
 			if ( dropped is Gold && dropped.Amount == 10000 && from.Karma <= -5000 && from.Skills[SkillName.Knightship].Base >= 100 )
 			{
-				CitizenLocalization.SayLocalized( this, "Take your steed and fill the world with dread." );
+				CitizenLocalization.SayLocalized( this, StringCatalog.ResolveByKey(this.Account, "mob.other.take_your_steed_and_fill_the_world_with_dread") );
 				from.AddToBackpack ( new DeathKnightWarhorse() );
 				dropped.Delete();
 			}
 			else if ( dropped is Gold && dropped.Amount >= 5 && Server.Misc.GetPlayerInfo.isSyth ( from, false ) )
 			{
 				int crystals = (int)( dropped.Amount / 5 );
-				CitizenLocalization.SayLocalized( this, "Do with these what you will, Syth." );
+				CitizenLocalization.SayLocalized( this, StringCatalog.ResolveByKey(this.Account, "mob.other.do_with_these_what_you_will_syth") );
 				from.AddToBackpack ( new HellShard( crystals ) );
 				dropped.Delete();
 			}
@@ -86,7 +87,7 @@ namespace Server.Mobiles
 
                     if (pack.ConsumeTotal(typeof(Gold), cost))
                     {
-                        from.SendMessage(String.Format("You pay {0} gold.", cost));
+                        from.SendMessage(String.Format(StringCatalog.ResolveByKey(from.Account, "mob.fmt.you_pay_0_gold"), cost));
 						dropped.ItemID = Utility.RandomList( 0x2FC5, 0x317B );
                         CitizenLocalization.SayToLocalized( this, from, "Here are your wings you so desire." );
 						dropped.Name = "demon wings";
@@ -102,8 +103,8 @@ namespace Server.Mobiles
 					}
 					else
 					{
-                        this.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "It would cost you {0} gold for demon wings you fool!", cost));
-                        from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You do not have enough gold."));
+                        this.SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.it_would_cost_you_0_gold_for_demon_wings_you_fool", cost));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_do_not_have_enough_gold"));
 					}
 				}
 				else if ( dropped.Layer == Layer.Cloak && ( dropped.ItemID == 0x2FC5 || dropped.ItemID == 0x317B ) )
@@ -131,7 +132,7 @@ namespace Server.Mobiles
 
 		public override bool OnBeforeDeath()
 		{
-			Say("In Vas Mani");
+			Say(StringCatalog.ResolveByKey(this.Account, "mob.other.in_vas_mani"));
 			this.Hits = this.HitsMax;
 			this.FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
 			this.PlaySound( 0x202 );

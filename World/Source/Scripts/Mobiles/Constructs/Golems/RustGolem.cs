@@ -8,6 +8,7 @@ using Server.Mobiles;
 using System.Collections.Generic;
 using Server.Misc;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a broken machine" )]
@@ -133,11 +134,11 @@ namespace Server.Mobiles
 						{
 							if ( Server.Items.HiddenTrap.CheckInsuranceOnTrap( iRuined, m ) )
 							{
-								m.LocalOverheadMessage(MessageType.Emote, 1150, true, "The golem almost rusted one of your protected items!");
+								m.LocalOverheadMessage(MessageType.Emote, 1150, true, Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.the_golem_almost_rusted_one_of_your_protected_items"));
 							}
 							else
 							{
-								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "The golem rusted one of your equipped items!");
+								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.the_golem_rusted_one_of_your_equipped_items"));
 								RustyJunk broke = new RustyJunk();
 								broke.ItemID = iRuined.GraphicID;
 								broke.Name = "rusted item";
@@ -155,11 +156,11 @@ namespace Server.Mobiles
 						{
 							if ( Server.Items.HiddenTrap.CheckInsuranceOnTrap( iRuined, m ) )
 							{
-								m.LocalOverheadMessage(MessageType.Emote, 1150, true, "The golem almost rusted one of your protected items!");
+								m.LocalOverheadMessage(MessageType.Emote, 1150, true, Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.the_golem_almost_rusted_one_of_your_protected_items"));
 							}
 							else
 							{
-								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "The golem rusted one of your equipped items!");
+								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.the_golem_rusted_one_of_your_equipped_items"));
 								RustyJunk broke = new RustyJunk();
 								broke.ItemID = iRuined.ItemID;
 								broke.Name = "rusted item";

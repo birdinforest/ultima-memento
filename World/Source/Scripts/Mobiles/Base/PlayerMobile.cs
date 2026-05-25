@@ -24,6 +24,7 @@ using Server.Engines.PartySystem;
 using Server.Engines.MLQuests;
 using Server.SpellBars;
 using Server.Utilities;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -1150,9 +1151,9 @@ namespace Server.Mobiles
 				if ( message )
 				{
 					if ( target.Title == null )
-						SendMessage( "{0} the vendor cannot be harmed.", target.Name );
+						SendMessage( StringCatalog.ResolveByKey(this.Account, "mob.fmt.0_the_vendor_cannot_be_harmed"), target.Name );
 					else
-						SendMessage( "{0} {1} cannot be harmed.", target.Name, target.Title );
+						SendMessage( StringCatalog.ResolveByKey(this.Account, "mob.fmt.0_1_cannot_be_harmed"), target.Name, target.Title );
 				}
 
 				return false;
@@ -2359,7 +2360,7 @@ namespace Server.Mobiles
 					sJail = "Cimmeran Prison";
 				}
 
-				this.SendMessage("You have been sent to the " + sJail + "!"); 
+				this.SendMessage(StringCatalog.ResolveByKey(this.Account, "mob.other.you_have_been_sent_to_the") + sJail + "!"); 
 				Server.Mobiles.BaseCreature.TeleportPets( this, p, map );
 				this.MoveToWorld( p, map );
 				LoggingFunctions.LogPrison( this, sJail );

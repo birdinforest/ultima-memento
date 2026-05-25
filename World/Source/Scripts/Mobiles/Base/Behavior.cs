@@ -25,6 +25,7 @@ using System.IO;
 using System.Text;
 using System;
 using Server.Gumps;
+using Server.Localization;
 
 namespace Server
 {
@@ -3619,7 +3620,7 @@ namespace Server.Misc
 			{
 				m.Paralyze(TimeSpan.FromSeconds(Math.Min(MySettings.S_paralyzeDuration, Utility.RandomMinMax(4, 12))));
 				m.Warmode = false;
-				m.LocalOverheadMessage( MessageType.Emote, 0x916, true, "You are hit with a stunning punch!" );
+				m.LocalOverheadMessage( MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey(m.Account, "mob.other.you_are_hit_with_a_stunning_punch") );
 			}
 		}
 
@@ -3645,7 +3646,7 @@ namespace Server.Misc
 				CanPoison = true;
 			}
 
-			if ( !(Server.Items.HiddenTrap.SavingThrow( m, "Poison", false, null )) && Utility.RandomMinMax( 1, 5 ) == 1 && CanPoison == true )
+			if ( !(Server.Items.HiddenTrap.SavingThrow( m, StringCatalog.ResolveByKey(null, "mob.other.poison"), false, null )) && Utility.RandomMinMax( 1, 5 ) == 1 && CanPoison == true )
 			{
 				switch( Utility.RandomMinMax( 1, itSicks ) )
 				{
@@ -3658,7 +3659,7 @@ namespace Server.Misc
 
 				Effects.SendLocationEffect( m.Location, m.Map, 0x11A8 - 2, 16, 3, 0, 0 );
 				Effects.PlaySound( m, m.Map, 0x201 );
-				m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You have been poisoned!");
+				m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey(m.Account, "mob.other.you_have_been_poisoned"));
 			}
 		}
 
@@ -4668,30 +4669,30 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("I will vanquish your existence from all time!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_vanquish_your_existence_from_all_time")); break;
 							case 1: from.Say("" + m.Name + ", prepare to meet your end!"); break;
-							case 2: from.Say("You cannot stop the destruction I will soon unleash!"); break;
-							case 3: from.Say("My diligence will be your ultimate doom!"); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_cannot_stop_the_destruction_i_will_soon_unleash")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.my_diligence_will_be_your_ultimate_doom")); break;
 						};
 					}
 					else if ( from is FleshGolem || from is AncientFleshGolem )
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("I am fearless, and therefore powerful!"); break;
-							case 1: from.Say("I am a monster, cut off from all the world!"); break;
-							case 2: from.Say("To be whole again, I must destroy you!"); break;
-							case 3: from.Say("Fell the wrath of my master!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_am_fearless_and_therefore_powerful")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_am_a_monster_cut_off_from_all_the_world")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.to_be_whole_again_i_must_destroy_you")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.fell_the_wrath_of_my_master")); break;
 						};
 					}
 					else if ( from is BloodDemigod )
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("Foolish mortal!"); break;
-							case 1: from.Say("I will summon your gore to crawl these halls!"); break;
-							case 2: from.Say("Your life only feeds my own!"); break;
-							case 3: from.Say("Let this be your final battle!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.foolish_mortal")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_summon_your_gore_to_crawl_these_halls")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_life_only_feeds_my_own")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.let_this_be_your_final_battle")); break;
 						};
 					}
 					else if ( from is Balron 
@@ -4710,80 +4711,80 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("Your soul will be mine!"); break;
-							case 1: from.Say("I will use your corpse to feed my minions!"); break;
-							case 2: from.Say("Do you think you can slay one such as me?!"); break;
-							case 3: from.Say("I look forward to torturing your soul, " + m.Name + "!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_soul_will_be_mine_2")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_use_your_corpse_to_feed_my_minions")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.do_you_think_you_can_slay_one_such_as_me")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_look_forward_to_torturing_your_soul") + m.Name + "!"); break;
 						};
 					}
 					else if ( from is DeepSeaDevil || from is DemonOfTheSea )
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("Your soul will soon be one with the deep!"); break;
-							case 1: from.Say("You dare face the power of the sea?!"); break;
-							case 2: from.Say("Are you ready to serve me in the depths, " + m.Name + "?!"); break;
-							case 3: from.Say("I will drag your corpse into the sea!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_soul_will_soon_be_one_with_the_deep")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_dare_face_the_power_of_the_sea")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.are_you_ready_to_serve_me_in_the_depths") + m.Name + "?!"); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_drag_your_corpse_into_the_sea")); break;
 						};
 					}
 					else if ( from is IceDevil )
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("Your soul will soon be encased in ice!"); break;
-							case 1: from.Say("You dare face my glacial power?!"); break;
-							case 2: from.Say("Are your bones cold yet, " + m.Name + "?!"); break;
-							case 3: from.Say("I will freeze your blood and shatter your soul!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_soul_will_soon_be_encased_in_ice")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_dare_face_my_glacial_power")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.are_your_bones_cold_yet") + m.Name + "?!"); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_freeze_your_blood_and_shatter_your_soul")); break;
 						};
 					}
 					else if ( from is Succubus )
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("Your blood smells sweet!"); break;
-							case 1: from.Say("Are you ready to give yourself to me?!"); break;
-							case 2: from.Say("Your life only feeds my own!"); break;
-							case 3: from.Say("You will make me young again, " + m.Name + "!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_blood_smells_sweet")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.are_you_ready_to_give_yourself_to_me")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_life_only_feeds_my_own")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_will_make_me_young_again") + m.Name + "!"); break;
 						};
 					}
 					else if ( from is Satan )
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("Your soul will serve me well!"); break;
-							case 1: from.Say("I will break a spirit such as yours!"); break;
-							case 2: from.Say("Do you feel the power of hell on you?!"); break;
-							case 3: from.Say("Your soul will be mine, " + m.Name + "!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_soul_will_serve_me_well")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_break_a_spirit_such_as_yours")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.do_you_feel_the_power_of_hell_on_you")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_soul_will_be_mine") + m.Name + "!"); break;
 						};
 					}
 					else if ( from is VampiricDragon )
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("I will drain every breath of life from you!"); break;
-							case 1: from.Say("I can smell the blood from your wounds!"); break;
-							case 2: from.Say("Fool...I cannot kill what is dead?!"); break;
-							case 3: from.Say("Your corpse will rise and serve me, " + m.Name + "!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_drain_every_breath_of_life_from_you")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_can_smell_the_blood_from_your_wounds")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.fool_i_cannot_kill_what_is_dead")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_corpse_will_rise_and_serve_me") + m.Name + "!"); break;
 						};
 					}
 					else if ( from is ShadowWyrm )
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("I will take you from the light!"); break;
-							case 1: from.Say("I can feel the darkness filling you!"); break;
-							case 2: from.Say("Fool...you can never bring me to the light!"); break;
-							case 3: from.Say("Your life will end in darkness, " + m.Name + "!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_take_you_from_the_light")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_can_feel_the_darkness_filling_you")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.fool_you_can_never_bring_me_to_the_light")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_life_will_end_in_darkness") + m.Name + "!"); break;
 						};
 					}
 					else if ( from is AshDragon || from is VolcanicDragon )
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("I will leave your corpse as ashes!"); break;
-							case 1: from.Say("I can smell your burning flesh!"); break;
-							case 2: from.Say("Fool...you cannot survive the flames!"); break;
-							case 3: from.Say("Cinders will be all that is left of you, " + m.Name + "!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_leave_your_corpse_as_ashes")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_can_smell_your_burning_flesh")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.fool_you_cannot_survive_the_flames")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.cinders_will_be_all_that_is_left_of_you") + m.Name + "!"); break;
 						};
 					}
 					else if ( from is BottleDragon
@@ -4812,10 +4813,10 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("I have slain those mightier than you, " + m.Name + "!"); break;
-							case 1: from.Say("You will make me an excellent meal!"); break;
-							case 2: from.Say("Many have died trying to take what is mine!"); break;
-							case 3: from.Say("I will swallow you whole, " + m.Name + "!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_have_slain_those_mightier_than_you") + m.Name + "!"); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_will_make_me_an_excellent_meal")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.many_have_died_trying_to_take_what_is_mine")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_swallow_you_whole") + m.Name + "!"); break;
 						};
 					}
 					else if ( from is FireGargoyle
@@ -4838,30 +4839,30 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("Esaeu lizz gia xes zes soth!"); break;
-							case 1: from.Say("Dnadona qae zaaq esaeun doom!"); break;
-							case 2: from.Say("I lizz raeq chq esaeu xaed za!"); break;
-							case 3: from.Say("Dnadona qae gia, " + m.Name + "!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.esaeu_lizz_gia_xes_zes_soth")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.dnadona_qae_zaaq_esaeun_doom")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_lizz_raeq_chq_esaeu_xaed_za")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.dnadona_qae_gia") + m.Name + "!"); break;
 						};
 					}
 					else if ( from is ZornTheBlacksmith )
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("You will never have the secrets of the ore!"); break;
-							case 1: from.Say("You should leave before I crush you!"); break;
-							case 2: from.Say("Feel the power of my hammer!"); break;
-							case 3: from.Say("I will tell all on how I crushed " + m.Name + "!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_will_never_have_the_secrets_of_the_ore")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_should_leave_before_i_crush_you")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.feel_the_power_of_my_hammer")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_tell_all_on_how_i_crushed") + m.Name + "!"); break;
 						};
 					}
 					else if ( from is OrkDemigod )
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("Kneel before me you puny creature!"); break;
-							case 1: from.Say("Feel the might of the orks!"); break;
-							case 2: from.Say("I will become your new god, " + m.Name + "!"); break;
-							case 3: from.Say("I have slain those more powerful than you!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.kneel_before_me_you_puny_creature")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.feel_the_might_of_the_orks")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_become_your_new_god") + m.Name + "!"); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_have_slain_those_more_powerful_than_you")); break;
 						};
 					}
 					else if ( from is TrollWitchDoctor
@@ -4881,10 +4882,10 @@ namespace Server.Misc
 						};
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("Me will be eating your " + organ + " me thinks!"); break;
-							case 1: from.Say("Me see you living no longer!"); break;
-							case 2: from.Say("You will be dead by me hand!"); break;
-							case 3: from.Say("Me will be feasting on your bones soon!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.me_will_be_eating_your") + organ + " me thinks!"); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.me_see_you_living_no_longer")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_will_be_dead_by_me_hand")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.me_will_be_feasting_on_your_bones_soon")); break;
 						};
 					}
 					else if ( from is AncientEttin
@@ -4894,10 +4895,10 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("I smash you to pulp!"); break;
-							case 1: from.Say("I will smash you into dirt!"); break;
-							case 2: from.Say("You will make great feast for us!"); break;
-							case 3: from.Say("You leave our land now!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_smash_you_to_pulp")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_smash_you_into_dirt")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_will_make_great_feast_for_us")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_leave_our_land_now")); break;
 						};
 					}
 					else if ( from is Titan
@@ -4907,10 +4908,10 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("Feel the wrath of the storm!"); break;
-							case 1: from.Say("I unleash the storms on you!"); break;
-							case 2: from.Say("This will be your final battle, " + m.Name + "!"); break;
-							case 3: from.Say("You think you can defeat me?!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.feel_the_wrath_of_the_storm")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_unleash_the_storms_on_you")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.this_will_be_your_final_battle") + m.Name + "!"); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_think_you_can_defeat_me")); break;
 						};
 					}
 					else if ( from is Dragonogre
@@ -4934,30 +4935,30 @@ namespace Server.Misc
 						};
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("Me hit, you die!"); break;
-							case 1: from.Say("You no match for me!"); break;
-							case 2: from.Say("Me make soup with your " + organ + "!"); break;
-							case 3: from.Say("You weak, me strong!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.me_hit_you_die")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_no_match_for_me")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.me_make_soup_with_your") + organ + "!"); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_weak_me_strong")); break;
 						};
 					}
 					else if ( from is IceGiant )
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("Feel the cold of glacial ice!"); break;
-							case 1: from.Say("You are nothing but an insect to me!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.feel_the_cold_of_glacial_ice")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_are_nothing_but_an_insect_to_me")); break;
 							case 2: from.Say("" + m.Name + ", you dare face me!"); break;
-							case 3: from.Say("Your frozen corpse will decorate my halls!"); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_frozen_corpse_will_decorate_my_halls")); break;
 						};
 					}
 					else if ( from is LavaGiant )
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("Feel the fires of volcanic might!"); break;
-							case 1: from.Say("You are nothing but an insect to me!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.feel_the_fires_of_volcanic_might")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_are_nothing_but_an_insect_to_me")); break;
 							case 2: from.Say("" + m.Name + ", you dare face me!"); break;
-							case 3: from.Say("You will soon be nothing but ashes!"); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_will_soon_be_nothing_but_ashes")); break;
 						};
 					}
 					else if ( from is DeepSeaGiant
@@ -4965,10 +4966,10 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("Feel the strength of the sea!"); break;
-							case 1: from.Say("You will soon will rot below the waves!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.feel_the_strength_of_the_sea")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_will_soon_will_rot_below_the_waves")); break;
 							case 2: from.Say("" + m.Name + ", your bones will lie with the crabs!"); break;
-							case 3: from.Say("You are no match for the gods of the sea!"); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_are_no_match_for_the_gods_of_the_sea")); break;
 						};
 					}
 					else if ( from is MountainGiant
@@ -4986,10 +4987,10 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("My foot will be the last thing you see!"); break;
-							case 1: from.Say("I will crush you into the dirt!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.my_foot_will_be_the_last_thing_you_see")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_crush_you_into_the_dirt")); break;
 							case 2: from.Say("" + m.Name + ", you will die!"); break;
-							case 3: from.Say("I have defeated foes larger than you!"); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_have_defeated_foes_larger_than_you")); break;
 						};
 					}
 					else if ( from is TheAncientTree
@@ -5000,30 +5001,30 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("You...dare...fight...me?!"); break;
-							case 1: from.Say("I...will...dispatch...of...you!"); break;
-							case 2: from.Say("My...might...outweighs...yours!"); break;
-							case 3: from.Say("You...will...die...in...this...fight!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_dare_fight_me")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_dispatch_of_you")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.my_might_outweighs_yours")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_will_die_in_this_fight")); break;
 						};
 					}
 					else if ( from is SwampThing )
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("Gri Gril Gestroy Groo!"); break;
-							case 1: from.Say("Groo Gran Grever Gregreat Gre!"); break;
-							case 2: from.Say("Grour Grones Gril Gray Grin Gry Grwamp!"); break;
-							case 3: from.Say("Groo Grar Gro Gratch Gror Gre!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.gri_gril_gestroy_groo")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.groo_gran_grever_gregreat_gre")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.grour_grones_gril_gray_grin_gry_grwamp")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.groo_grar_gro_gratch_gror_gre")); break;
 						};
 					}
 					else if ( from is Beholder )
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("*blinks a red eye*"); break;
-							case 1: from.Say("*blinks a blue eye*"); break;
-							case 2: from.Say("*blinks a greed eye*"); break;
-							case 3: from.Say("*blinks a yellow eye*"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.emote.blinks_a_red_eye")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.emote.blinks_a_blue_eye")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.emote.blinks_a_greed_eye")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.emote.blinks_a_yellow_eye")); break;
 						};
 					}
 					else if ( from is Dracolich
@@ -5031,10 +5032,10 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("Your soul will make an excellent meal!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_soul_will_make_an_excellent_meal")); break;
 							case 1: from.Say("" + m.Name + ", do I frighten you?!"); break;
-							case 2: from.Say("I have destroyed armies of things like you!"); break;
-							case 3: from.Say("You dare invade my lair?!"); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_have_destroyed_armies_of_things_like_you")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_dare_invade_my_lair")); break;
 						};
 					}
 					else if ( from is Vampire
@@ -5044,10 +5045,10 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("I can smell the blood from your wounds!"); break;
-							case 1: from.Say("Look into my eyes..."); break;
-							case 2: from.Say("Submit, and I will make it quick!"); break;
-							case 3: from.Say("You think I have not faced mortals like you?!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_can_smell_the_blood_from_your_wounds")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.look_into_my_eyes_2")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.submit_and_i_will_make_it_quick")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_think_i_have_not_faced_mortals_like_you")); break;
 						};
 					}
 					else if ( from is Dracula )
@@ -5055,9 +5056,9 @@ namespace Server.Misc
 						switch ( Utility.Random( 4 ))		   
 						{
 							case 0: from.Say("" + m.Name + ", your blood will fill my glass tonight!"); break;
-							case 1: from.Say("Look into my eyes, " + m.Name + "..."); break;
-							case 2: from.Say("Your blood will decorate these walls!"); break;
-							case 3: from.Say("You should be honored to be slain by me!"); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.look_into_my_eyes") + m.Name + "..."); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_blood_will_decorate_these_walls")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_should_be_honored_to_be_slain_by_me")); break;
 						};
 					}
 					else if ( from is Vordo )
@@ -5065,9 +5066,9 @@ namespace Server.Misc
 						switch ( Utility.Random( 4 ))		   
 						{
 							case 0: from.Say("" + m.Name + ", you will join!"); break;
-							case 1: from.Say("Look into my eyes, " + m.Name + "..."); break;
-							case 2: from.Say("Your blood will decorate these walls!"); break;
-							case 3: from.Say("You should be honored to be slain by me!"); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.look_into_my_eyes") + m.Name + "..."); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_blood_will_decorate_these_walls")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_should_be_honored_to_be_slain_by_me")); break;
 						};
 					}
 					else if ( from is AncientLich
@@ -5083,10 +5084,10 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("Feel the power of " + from.Name + "!"); break;
-							case 1: from.Say("I will have a place for the bones of " + m.Name + "!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.feel_the_power_of") + from.Name + "!"); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_have_a_place_for_the_bones_of") + m.Name + "!"); break;
 							case 2: from.Say("" + m.Name + ", you are a fool to face me!"); break;
-							case 3: from.Say("My magic will decimate you!"); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.my_magic_will_decimate_you")); break;
 						};
 					}
 					else if ( from is Executioner )
@@ -5094,9 +5095,9 @@ namespace Server.Misc
 						switch ( Utility.Random( 4 ))		   
 						{
 							case 0: from.Say("" + m.Name + ", you are sentenced to death!"); break;
-							case 1: from.Say("Your head will look good on the block!"); break;
-							case 2: from.Say("My blade is eager to sever your head!"); break;
-							case 3: from.Say("This will be your final fight!"); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_head_will_look_good_on_the_block")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.my_blade_is_eager_to_sever_your_head")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.this_will_be_your_final_fight")); break;
 						};
 					}
 					else if ( from is BlackKnight )
@@ -5104,9 +5105,9 @@ namespace Server.Misc
 						switch ( Utility.Random( 4 ))		   
 						{
 							case 0: from.Say("" + m.Name + ", do you think you can defeat me?!"); break;
-							case 1: from.Say("You will never gain entry to my vault!"); break;
-							case 2: from.Say("Many have come here and all have perished!"); break;
-							case 3: from.Say("Your treasure will help fill my vault!"); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_will_never_gain_entry_to_my_vault")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.many_have_come_here_and_all_have_perished")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_treasure_will_help_fill_my_vault")); break;
 						};
 					}
 					else if ( from is Archmage )
@@ -5114,39 +5115,39 @@ namespace Server.Misc
 						switch ( Utility.Random( 4 ))		   
 						{
 							case 0: from.Say("" + m.Name + ", you have no hope against my power!"); break;
-							case 1: from.Say("You will never leave this place alive!"); break;
-							case 2: from.Say("You are no match for my magic!"); break;
-							case 3: from.Say("All that have come here have perished!"); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_will_never_leave_this_place_alive")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_are_no_match_for_my_magic")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.all_that_have_come_here_have_perished")); break;
 						};
 					}
 					else if ( from is BombWorshipper || from is Psionicist )
 					{
 						switch ( Utility.Random( 9 ))		   
 						{
-							case 0: from.Say("I have converted others stonger than you, " + m.Name + "!"); break;
-							case 1: from.Say("You will soon be one with the glow!"); break;
-							case 2: from.Say("All will know that " + from.Name + " gave " + m.Name + " to the glow!"); break;
-							case 3: from.Say("Maybe you should flee before it is too late!"); break;
-							case 4: from.Say("Do you think you can beat me?!"); break;
-							case 5: from.Say("No one desecrates the temple of the bomb!"); break;
-							case 6: from.Say("Your life ends here!"); break;
-							case 7: from.Say("Your life ends here, " + m.Name + "!"); break;
-							case 8: from.Say("You will kneel before the bomb!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_have_converted_others_stonger_than_you") + m.Name + "!"); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_will_soon_be_one_with_the_glow")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.all_will_know_that") + from.Name + " gave " + m.Name + " to the glow!"); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.maybe_you_should_flee_before_it_is_too_late")); break;
+							case 4: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.do_you_think_you_can_beat_me")); break;
+							case 5: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_one_desecrates_the_temple_of_the_bomb")); break;
+							case 6: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_life_ends_here_2")); break;
+							case 7: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_life_ends_here") + m.Name + "!"); break;
+							case 8: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_will_kneel_before_the_bomb")); break;
 						};
 					}
 					else if ( from is Syth )
 					{
 						switch ( Utility.Random( 9 ))		   
 						{
-							case 0: from.Say("The Syth will be the last thing you see, " + m.Name + "!"); break;
-							case 1: from.Say("You will submit to my dark power!"); break;
-							case 2: from.Say("No one will find the bones of " + m.Name + "!"); break;
-							case 3: from.Say("You should have fled but it is too late!"); break;
-							case 4: from.Say("Do you think you can beat me?!"); break;
-							case 5: from.Say("No one has faced a syth and lived!"); break;
-							case 6: from.Say("Your life ends here!"); break;
-							case 7: from.Say("Your life ends here, " + m.Name + "!"); break;
-							case 8: from.Say("You will kneel before the Syth!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.the_syth_will_be_the_last_thing_you_see") + m.Name + "!"); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_will_submit_to_my_dark_power")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_one_will_find_the_bones_of") + m.Name + "!"); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_should_have_fled_but_it_is_too_late")); break;
+							case 4: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.do_you_think_you_can_beat_me")); break;
+							case 5: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_one_has_faced_a_syth_and_lived")); break;
+							case 6: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_life_ends_here_2")); break;
+							case 7: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_life_ends_here") + m.Name + "!"); break;
+							case 8: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_will_kneel_before_the_syth")); break;
 						};
 					}
 					else if ( from is ElfBerserker
@@ -5171,30 +5172,30 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 9 ))		   
 						{
-							case 0: from.Say("I have slain others better than you, " + m.Name + "!"); break;
-							case 1: from.Say("Your riches will soon be mine!"); break;
-							case 2: from.Say("All will know that " + from.Name + " defeated " + m.Name + "!"); break;
-							case 3: from.Say("Maybe you should flee before it is too late!"); break;
-							case 4: from.Say("Do you think you can best me?!"); break;
-							case 5: from.Say("Let this be your final battle!"); break;
-							case 6: from.Say("Your life ends here!"); break;
-							case 7: from.Say("Your life ends here, " + m.Name + "!"); break;
-							case 8: from.Say("All should fear " + from.Name + "!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_have_slain_others_better_than_you") + m.Name + "!"); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_riches_will_soon_be_mine")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.all_will_know_that") + from.Name + " defeated " + m.Name + "!"); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.maybe_you_should_flee_before_it_is_too_late")); break;
+							case 4: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.do_you_think_you_can_best_me")); break;
+							case 5: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.let_this_be_your_final_battle")); break;
+							case 6: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_life_ends_here_2")); break;
+							case 7: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_life_ends_here") + m.Name + "!"); break;
+							case 8: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.all_should_fear") + from.Name + "!"); break;
 						};
 					}
 					else if ( from is Adventurers || from is Jedi )
 					{
 						switch ( Utility.Random( 9 ))		   
 						{
-							case 0: from.Say("I have brought justice to others more vile than you, " + m.Name + "!"); break;
-							case 1: from.Say("You will pay for your crimes!"); break;
-							case 2: from.Say("All will know that " + from.Name + " brought " + m.Name + " to justice!"); break;
-							case 3: from.Say("You should have fled this land long ago!"); break;
-							case 4: from.Say("Do you think you can best me?!"); break;
-							case 5: from.Say("Let this be your final battle!"); break;
-							case 6: from.Say("Your life ends here!"); break;
-							case 7: from.Say("Your life ends here, " + m.Name + "!"); break;
-							case 8: from.Say("Your evil will be vanquished!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_have_brought_justice_to_others_more_vile_than_you") + m.Name + "!"); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_will_pay_for_your_crimes")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.all_will_know_that") + from.Name + " brought " + m.Name + " to justice!"); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_should_have_fled_this_land_long_ago")); break;
+							case 4: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.do_you_think_you_can_best_me")); break;
+							case 5: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.let_this_be_your_final_battle")); break;
+							case 6: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_life_ends_here_2")); break;
+							case 7: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_life_ends_here") + m.Name + "!"); break;
+							case 8: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.your_evil_will_be_vanquished")); break;
 						};
 					}
 					else if ( Server.Mobiles.BasePirate.IsSailor( from ) )
@@ -5202,13 +5203,13 @@ namespace Server.Misc
 						switch ( Utility.Random( 9 ))		   
 						{
 							case 0: from.Say("" + m.Name + ", you will soon walk the plank!"); break;
-							case 1: from.Say("I could beat you if I were three sheets to the wind!"); break;
-							case 2: from.Say("I will splice the mainbrace over your corpse!"); break;
-							case 3: from.Say("You will soon become shark bait!"); break;
-							case 4: from.Say("You scurvy dog, do you think you can best me?!"); break;
-							case 5: from.Say("I fought scallywags better than you!"); break;
-							case 6: from.Say("No pray, no pay. Your riches will be mine!"); break;
-							case 7: from.Say("You landlubber, prepare to die!"); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_could_beat_you_if_i_were_three_sheets_to_the_wind")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_splice_the_mainbrace_over_your_corpse")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_will_soon_become_shark_bait")); break;
+							case 4: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_scurvy_dog_do_you_think_you_can_best_me")); break;
+							case 5: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_fought_scallywags_better_than_you")); break;
+							case 6: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_pray_no_pay_your_riches_will_be_mine")); break;
+							case 7: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_landlubber_prepare_to_die")); break;
 							case 8: from.Say("" + from.Name + ", you will soon feed the fish!"); break;
 						};
 					}
@@ -5231,21 +5232,21 @@ namespace Server.Misc
 				{
 					if ( from is Exodus )
 					{
-						from.Say("You have not seen the last of me, " + m.Name + "!");
+						from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_have_not_seen_the_last_of_me") + m.Name + "!");
 					}
 					else if ( from is FleshGolem || from is AncientFleshGolem )
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("No...I am eternal!"); break;
-							case 1: from.Say("No...How can this be?!"); break;
-							case 2: from.Say("Peace has finally found me..."); break;
-							case 3: from.Say("I failed you my master..."); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_i_am_eternal")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_how_can_this_be_2")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.peace_has_finally_found_me")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_failed_you_my_master")); break;
 						};
 					}
 					else if ( from is BloodDemigod )
 					{
-						from.Say("Some day your blood will fill these halls, " + m.Name + "!");
+						from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.some_day_your_blood_will_fill_these_halls") + m.Name + "!");
 					}
 					else if ( from is Balron 
 							|| from is Devil 
@@ -5260,72 +5261,72 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 5 ))		   
 						{
-							case 0: from.Say("No...I will not be vanquished!"); break;
-							case 1: from.Say("I will return..."); break;
-							case 2: from.Say("I hope the curses of hell fill your soul!"); break;
-							case 3: from.Say("Death is only a distraction to me!"); break;
-							case 4: from.Say("I will come for you, " + m.Name + "!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_i_will_not_be_vanquished")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_return")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_hope_the_curses_of_hell_fill_your_soul")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.death_is_only_a_distraction_to_me")); break;
+							case 4: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_come_for_you") + m.Name + "!"); break;
 						};
 					}
 					else if ( from is DeepSeaDevil || from is DemonOfTheSea )
 					{
 						switch ( Utility.Random( 5 ))		   
 						{
-							case 0: from.Say("No...I will not be vanquished!"); break;
-							case 1: from.Say("I will return..."); break;
-							case 2: from.Say("I hope the blood of the sea drowns you!"); break;
-							case 3: from.Say("Fool...I will rise again!"); break;
-							case 4: from.Say("One day you will be taken by the sea, " + m.Name + "!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_i_will_not_be_vanquished")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_return")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_hope_the_blood_of_the_sea_drowns_you")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.fool_i_will_rise_again")); break;
+							case 4: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.one_day_you_will_be_taken_by_the_sea") + m.Name + "!"); break;
 						};
 					}
 					else if ( from is IceDevil )
 					{
 						switch ( Utility.Random( 5 ))		   
 						{
-							case 0: from.Say("No...I will not be vanquished!"); break;
-							case 1: from.Say("I will return..."); break;
-							case 2: from.Say("The frost of death will find you!"); break;
-							case 3: from.Say("Fool...you can never destroy me!"); break;
-							case 4: from.Say("My cold heart will come for you, " + m.Name + "!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_i_will_not_be_vanquished")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_return")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.the_frost_of_death_will_find_you")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.fool_you_can_never_destroy_me")); break;
+							case 4: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.my_cold_heart_will_come_for_you") + m.Name + "!"); break;
 						};
 					}
 					else if ( from is Succubus )
 					{
-						from.Say("No...!");
+						from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_5"));
 					}
 					else if ( from is Satan )
 					{
 						switch ( Utility.Random( 5 ))		   
 						{
-							case 0: from.Say("No...I cannot return to hell!"); break;
-							case 1: from.Say("Hell will not be able to hold me..."); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_i_cannot_return_to_hell")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.hell_will_not_be_able_to_hold_me")); break;
 							case 2: from.Say("" + m.Name + ", I will return for you!"); break;
-							case 3: from.Say("Fool...I am eternal!"); break;
-							case 4: from.Say("I will have your soul one day, " + m.Name + "!"); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.fool_i_am_eternal")); break;
+							case 4: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_will_have_your_soul_one_day") + m.Name + "!"); break;
 						};
 					}
 					else if ( from is VampiricDragon )
 					{
 						switch ( Utility.Random( 2 ))		   
 						{
-							case 0: from.Say("No...you cannot do this!"); break;
-							case 1: from.Say("Curse you, " + m.Name + "!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_you_cannot_do_this")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.curse_you") + m.Name + "!"); break;
 						};
 					}
 					else if ( from is ShadowWyrm )
 					{
 						switch ( Utility.Random( 2 ))		   
 						{
-							case 0: from.Say("No...you cannot have light without dark!"); break;
-							case 1: from.Say("Let the shadows take you, " + m.Name + "!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_you_cannot_have_light_without_dark")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.let_the_shadows_take_you") + m.Name + "!"); break;
 						};
 					}
 					else if ( from is AshDragon || from is VolcanicDragon )
 					{
 						switch ( Utility.Random( 2 ))		   
 						{
-							case 0: from.Say("No...this cannot be how it ends!"); break;
-							case 1: from.Say("Let the mountain fires take you, " + m.Name + "!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_this_cannot_be_how_it_ends")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.let_the_mountain_fires_take_you") + m.Name + "!"); break;
 						};
 					}
 					else if ( from is BottleDragon
@@ -5353,10 +5354,10 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("No...this cannot be the end!"); break;
-							case 1: from.Say("How...can...this...be..."); break;
-							case 2: from.Say("No, " + m.Name + "!"); break;
-							case 3: from.Say("What is this madness?!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_this_cannot_be_the_end")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.how_can_this_be")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_4") + m.Name + "!"); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.joke.what_is_this_madness")); break;
 						};
 					}
 					else if ( from is FireGargoyle
@@ -5374,25 +5375,25 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 2 ))		   
 						{
-							case 0: from.Say("Rae...sael yor yiz xa?"); break;
-							case 1: from.Say("Zae zes hima ends sabbia!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.rae_sael_yor_yiz_xa")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.zae_zes_hima_ends_sabbia")); break;
 						};
 					}
 					else if ( from is ZornTheBlacksmith )
 					{
 						switch ( Utility.Random( 2 ))		   
 						{
-							case 0: from.Say("No...you will never get the ore!"); break;
-							case 1: from.Say("You will never find the caddellite!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_you_will_never_get_the_ore")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_will_never_find_the_caddellite")); break;
 						};
 					}
 					else if ( from is OrkDemigod )
 					{
 						switch ( Utility.Random( 3 ))		   
 						{
-							case 0: from.Say("You cannot defeat the power of gods..."); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_cannot_defeat_the_power_of_gods")); break;
 							case 1: from.Say("" + m.Name + ", you have bested me in battle..."); break;
-							case 2: from.Say("No..."); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_2")); break;
 						};
 					}
 					else if ( from is TrollWitchDoctor
@@ -5404,8 +5405,8 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 2 ))		   
 						{
-							case 0: from.Say("Me cannot lose!"); break;
-							case 1: from.Say("Me curse you..."); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.me_cannot_lose")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.me_curse_you")); break;
 						};
 					}
 					else if ( from is AncientEttin
@@ -5415,8 +5416,8 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 2 ))		   
 						{
-							case 0: from.Say("Arrrggghhh..."); break;
-							case 1: from.Say("You...fight...good..."); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.arrrggghhh")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_fight_good")); break;
 						};
 					}
 					else if ( from is Titan
@@ -5425,10 +5426,10 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("By what thunder is this?"); break;
-							case 1: from.Say("No, it cannot be..."); break;
-							case 2: from.Say("You may have won this day, " + m.Name + "...but..."); break;
-							case 3: from.Say("Arrgghhh..."); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.by_what_thunder_is_this")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_it_cannot_be")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_may_have_won_this_day") + m.Name + "...but..."); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.arrgghhh")); break;
 						};
 					}
 					else if ( from is Dragonogre
@@ -5444,26 +5445,26 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 2 ))		   
 						{
-							case 0: from.Say("Me no feel good!"); break;
-							case 1: from.Say("Arrgghhh..."); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.me_no_feel_good")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.arrgghhh")); break;
 						};
 					}
 					else if ( from is IceGiant )
 					{
 						switch ( Utility.Random( 3 ))		   
 						{
-							case 0: from.Say("By iceberg's might, how..."); break;
-							case 1: from.Say("Arrgghhh..."); break;
-							case 2: from.Say("No..."); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.by_iceberg_s_might_how")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.arrgghhh")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_2")); break;
 						};
 					}
 					else if ( from is LavaGiant )
 					{
 						switch ( Utility.Random( 3 ))		   
 						{
-							case 0: from.Say("By magma's might, how..."); break;
-							case 1: from.Say("Arrgghhh..."); break;
-							case 2: from.Say("No..."); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.by_magma_s_might_how")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.arrgghhh")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_2")); break;
 						};
 					}
 					else if ( from is DeepSeaGiant
@@ -5471,10 +5472,10 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 4 ))		   
 						{
-							case 0: from.Say("By Neptunes's might, how..."); break;
-							case 1: from.Say("By Poseidon's wrath, how..."); break;
-							case 2: from.Say("Arrgghhh..."); break;
-							case 3: from.Say("No..."); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.by_neptunes_s_might_how")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.by_poseidon_s_wrath_how")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.arrgghhh")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_2")); break;
 						};
 					}
 					else if ( from is MountainGiant
@@ -5500,9 +5501,9 @@ namespace Server.Misc
 						};
 						switch ( Utility.Random( 3 ))		   
 						{
-							case 0: from.Say("You puny " + called + ", how..."); break;
-							case 1: from.Say("Arrgghhh..."); break;
-							case 2: from.Say("No..."); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.you_puny") + called + ", how..."); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.arrgghhh")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_2")); break;
 						};
 					}
 					else if ( from is TheAncientTree
@@ -5513,16 +5514,16 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 2 ))		   
 						{
-							case 0: from.Say("How...did...you..."); break;
-							case 1: from.Say("I...am...no...more..."); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.how_did_you")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_am_no_more")); break;
 						};
 					}
 					else if ( from is SwampThing )
 					{
 						switch ( Utility.Random( 2 ))		   
 						{
-							case 0: from.Say("Groo Grite Grood!"); break;
-							case 1: from.Say("Grarrgh..."); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.groo_grite_grood")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.grarrgh")); break;
 						};
 					}
 					else if ( from is Beholder )
@@ -5534,9 +5535,9 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 3 ))		   
 						{
-							case 0: from.Say("My power is eternal!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.my_power_is_eternal")); break;
 							case 1: from.Say("" + m.Name + ", I will have my revenge..."); break;
-							case 2: from.Say("No, how can this be?!"); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_how_can_this_be")); break;
 						};
 					}
 					else if ( from is AncientLich
@@ -5552,9 +5553,9 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 3 ))		   
 						{
-							case 0: from.Say("My magic is eternal!"); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.my_magic_is_eternal")); break;
 							case 1: from.Say("" + m.Name + ", I will have vengeance..."); break;
-							case 2: from.Say("No...how can..."); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_how_can")); break;
 						};
 					}
 					else if ( from is Executioner
@@ -5584,11 +5585,11 @@ namespace Server.Misc
 					{
 						switch ( Utility.Random( 5 ))		   
 						{
-							case 0: from.Say("No!"); break;
-							case 1: from.Say("Argh!"); break;
-							case 2: from.Say("Ahhh..."); break;
-							case 3: from.Say("I...uh...uhhhhh..."); break;
-							case 4: from.Say("Nooo..."); break;
+							case 0: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.no_3")); break;
+							case 1: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.argh")); break;
+							case 2: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.ahhh")); break;
+							case 3: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.i_uh_uhhhhh")); break;
+							case 4: from.Say(StringCatalog.ResolveByKey(from.Account, "mob.other.nooo")); break;
 						};
 					}
 				}
@@ -7845,8 +7846,8 @@ namespace Server.Mobiles
 				}
 				else if( accepted && IsInCombat( m_Creature ) )
 				{
-					from.SendMessage( "You may not transfer a pet that has recently been in combat." );
-					to.SendMessage( "The pet may not be transfered to you because it has recently been in combat." );
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_may_not_transfer_a_pet_that_has_recently_been_in_co") );
+					to.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.the_pet_may_not_be_transfered_to_you_because_it_has_rec") );
 
 					return false;
 				}
@@ -7914,33 +7915,33 @@ namespace Server.Mobiles
 				}
 				else if( m_Mobile is HenchmanMonster || m_Mobile is HenchmanFighter || m_Mobile is HenchmanWizard || m_Mobile is HenchmanArcher )
 				{
-					from.SendMessage( "This is not some slave you can trade." );
-					to.SendMessage( "This is not some slave you can take control of." );
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.this_is_not_some_slave_you_can_trade") );
+					to.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.this_is_not_some_slave_you_can_take_control_of") );
 				}
 				else if( m_Mobile is AerialServant )
 				{
-					from.SendMessage( "You cannot give away an elemental." );
-					to.SendMessage( "You cannot take another wizard's elemental." );
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_cannot_give_away_an_elemental") );
+					to.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_cannot_take_another_wizard_s_elemental") );
 				}
 				else if( m_Mobile is HenchmanFamiliar )
 				{
-					from.SendMessage( "You cannot give away a familiar." );
-					to.SendMessage( "You cannot take another wizard's familiar." );
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_cannot_give_away_a_familiar") );
+					to.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_cannot_take_another_wizard_s_familiar") );
 				}
 				else if( m_Mobile is PackBeast )
 				{
-					from.SendMessage( "You cannot give away a mystical pack animal." );
-					to.SendMessage( "You cannot take another's mystical pack animal." );
+					from.SendMessage( StringCatalog.ResolveByKey(to.Account, "mob.other.you_cannot_give_away_a_mystical_pack_animal") );
+					to.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_cannot_take_another_s_mystical_pack_animal") );
 				}
 				else if( m_Mobile is GolemPorter || m_Mobile is GolemFighter )
 				{
-					from.SendMessage( "You cannot give away a golem." );
-					to.SendMessage( "You cannot take another's golem." );
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_cannot_give_away_a_golem") );
+					to.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_cannot_take_another_s_golem") );
 				}
 				else if( m_Mobile is FrankenPorter || m_Mobile is FrankenFighter )
 				{
-					from.SendMessage( "You cannot give away a reanimation." );
-					to.SendMessage( "You cannot take another's reanimation." );
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_cannot_give_away_a_reanimation") );
+					to.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_cannot_take_another_s_reanimation") );
 				}
 				else if( !youngFrom && youngTo )
 				{
@@ -7962,8 +7963,8 @@ namespace Server.Mobiles
 				}
 				else if( TransferItem.IsInCombat( m_Mobile ) )
 				{
-					from.SendMessage( "You may not transfer a pet that has recently been in combat." );
-					to.SendMessage( "The pet may not be transferred to you because it has recently been in combat." );
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_may_not_transfer_a_pet_that_has_recently_been_in_co") );
+					to.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.the_pet_may_not_be_transferred_to_you_because_it_has_re") );
 				}
 				else
 				{

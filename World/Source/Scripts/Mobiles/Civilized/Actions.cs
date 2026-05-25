@@ -6,6 +6,7 @@ using Server.Network;
 using Server.Items;
 using Server.Mobiles;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -351,7 +352,7 @@ namespace Server.Items
 			}
 			else if ( from is Butcher )
 			{
-				EquipVendor( from, "cleaver" );
+				EquipVendor( from, StringCatalog.ResolveByKey(null, "mob.other.cleaver") );
 				Name = "carcass";
 				BaseWeapon weapon = ( BaseWeapon )( from.FindItemOnLayer( Layer.OneHanded ) );
 
@@ -499,7 +500,7 @@ namespace Server.Items
 				}
 				else if ( ItemID == 0x9CC || ItemID == 0x9CD || ItemID == 0x1E15 || ItemID == 0x1E16 || ItemID == 0x1E17 || ItemID == 0x1E18 || ItemID == 0x97A )
 				{
-					EquipVendor( from, "cleaver" );
+					EquipVendor( from, StringCatalog.ResolveByKey(null, "mob.other.cleaver") );
 					Name = "fish";
 					BaseWeapon weapon = ( BaseWeapon )( from.FindItemOnLayer( Layer.OneHanded ) );
 
@@ -719,7 +720,7 @@ namespace Server.Items
 			{
 				if ( from is Lumberjack || ItemID == 0x653E || ItemID == 0x653F || ItemID == 0x1BE1 || ItemID == 0x1BDE )
 				{
-					EquipVendor( from, "axe" );
+					EquipVendor( from, StringCatalog.ResolveByKey(null, "mob.other.axe") );
 					if ( m_Acts == 0 )
 					{
 						m_Acts = 1;
@@ -750,7 +751,7 @@ namespace Server.Items
 				}
 				else
 				{
-					EquipVendor( from, "hammer" );
+					EquipVendor( from, StringCatalog.ResolveByKey(null, "mob.other.hammer") );
 					Name = "furniture";
 					if ( m_Acts == 0 )
 					{
@@ -919,7 +920,7 @@ namespace Server.Items
 				}
 				else
 				{
-					EquipVendor( from, "hammer" );
+					EquipVendor( from, StringCatalog.ResolveByKey(null, "mob.other.hammer") );
 					Name = "anvil";
 					if ( m_Acts == 0 )
 					{
@@ -1010,7 +1011,7 @@ namespace Server.Items
 			{
 				ClearHands( m );
 			}
-			else if ( item == "cleaver" && !(one is Cleaver) )
+			else if ( item == StringCatalog.ResolveByKey(null, "mob.other.cleaver") && !(one is Cleaver) )
 			{
 				ClearHands( m );
 				m.AddItem( new Cleaver() );
@@ -1036,12 +1037,12 @@ namespace Server.Items
 				ClearHands( m );
 				m.AddItem( new Pickaxe() );
 			}
-			else if ( item == "axe" && !(two is Hatchet) )
+			else if ( item == StringCatalog.ResolveByKey(null, "mob.other.axe") && !(two is Hatchet) )
 			{
 				ClearHands( m );
 				m.AddItem( new Hatchet() );
 			}
-			else if ( item == "hammer" && !(one is Club) )
+			else if ( item == StringCatalog.ResolveByKey(null, "mob.other.hammer") && !(one is Club) )
 			{
 				ClearHands( m );
 				Item hammer = new Club();

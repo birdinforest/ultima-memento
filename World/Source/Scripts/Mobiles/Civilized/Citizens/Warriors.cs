@@ -3,6 +3,7 @@ using Server;
 using Server.ContextMenus;
 using System.Collections;
 using System.Collections.Generic;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -88,12 +89,12 @@ namespace Server.Mobiles
 					case 7: jMove = "the waves"; break;
 				};
 
-				string jHit = "a tiger";
+				string jHit = StringCatalog.ResolveByKey(this.Account, "mob.other.a_tiger");
 				switch ( Utility.Random( 8 ))		   
 				{
-					case 1: jHit = "a lion"; break;
-					case 2: jHit = "a bear"; break;
-					case 3: jHit = "a panther"; break;
+					case 1: jHit = StringCatalog.ResolveByKey(this.Account, "mob.other.a_lion"); break;
+					case 2: jHit = StringCatalog.ResolveByKey(this.Account, "mob.other.a_bear"); break;
+					case 3: jHit = StringCatalog.ResolveByKey(this.Account, "mob.other.a_panther"); break;
 					case 4: jHit = "a warrior"; break;
 					case 5: jHit = "a storm"; break;
 					case 6: jHit = "lightning"; break;
@@ -102,17 +103,17 @@ namespace Server.Mobiles
 
 				switch ( Utility.Random( 60 ))		   
 				{
-					case 0: Say("You have improved" + name + "."); break;
-					case 1: Say("You will need to be more graceful than that" + name + "."); break;
-					case 2: Say("Where did you study to fight like that" + name + "?"); break;
-					case 3: Say("Move like " + jMove + ", attack like " + jHit + "."); break;
-					case 4: Say("You will have to be better than that" + name + "."); break;
-					case 5: Say("Defend yourself!"); break;
-					case 6: Say("Eyes open and focus on me" + name + "."); break;
-					case 7: Say("After this, we will reflect on what we learned."); break;
-					case 8: Say("This is good practice" + name + "."); break;
-					case 9: Say("You need to learn to parry" + name + "."); break;
-					case 10: Say("Did you not meditate before the coming sun?"); break;
+					case 0: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.you_have_improved") + name + "."); break;
+					case 1: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.you_will_need_to_be_more_graceful_than_that") + name + "."); break;
+					case 2: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.where_did_you_study_to_fight_like_that") + name + "?"); break;
+					case 3: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.move_like") + jMove + ", attack like " + jHit + "."); break;
+					case 4: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.you_will_have_to_be_better_than_that") + name + "."); break;
+					case 5: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.defend_yourself")); break;
+					case 6: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.eyes_open_and_focus_on_me") + name + "."); break;
+					case 7: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.after_this_we_will_reflect_on_what_we_learned")); break;
+					case 8: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.this_is_good_practice") + name + "."); break;
+					case 9: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.you_need_to_learn_to_parry") + name + "."); break;
+					case 10: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.did_you_not_meditate_before_the_coming_sun")); break;
 				};
 			}
 			else
@@ -129,17 +130,17 @@ namespace Server.Mobiles
 
 				switch ( Utility.Random( 60 ))		   
 				{
-					case 0: Say("You have improved" + name + "."); break;
-					case 1: Say("You will need to be quicker than that" + name + "."); break;
-					case 2: Say("Where did you learn to fight like that" + name + "?"); break;
+					case 0: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.you_have_improved") + name + "."); break;
+					case 1: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.you_will_need_to_be_quicker_than_that") + name + "."); break;
+					case 2: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.where_did_you_learn_to_fight_like_that") + name + "?"); break;
 					case 3: Say("" + Utility.RandomMinMax(10,100) + " gold says I can best you" + name + "."); break;
-					case 4: Say("You will have to do better than that" + name + "."); break;
-					case 5: Say("En garde!"); break;
-					case 6: Say("Eyes open and focus on me" + name + "."); break;
-					case 7: Say("After this, I will buy you some " + ale + "."); break;
-					case 8: Say("This is good practice" + name + "."); break;
-					case 9: Say("You need to learn to parry" + name + "."); break;
-					case 10: Say("Did you have too much " + ale + " last night" + name + "?"); break;
+					case 4: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.you_will_have_to_do_better_than_that_2") + name + "."); break;
+					case 5: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.en_garde")); break;
+					case 6: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.eyes_open_and_focus_on_me") + name + "."); break;
+					case 7: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.after_this_i_will_buy_you_some") + ale + "."); break;
+					case 8: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.this_is_good_practice") + name + "."); break;
+					case 9: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.you_need_to_learn_to_parry") + name + "."); break;
+					case 10: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.did_you_have_too_much") + ale + " last night" + name + "?"); break;
 				};
 			}
 		}

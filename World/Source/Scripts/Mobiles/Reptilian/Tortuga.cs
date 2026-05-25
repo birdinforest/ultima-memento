@@ -4,6 +4,7 @@ using Server;
 using Server.Network;
 using Server.Items;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a tortuga corpse" )]

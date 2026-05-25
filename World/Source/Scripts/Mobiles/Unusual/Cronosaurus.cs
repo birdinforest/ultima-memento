@@ -3,6 +3,7 @@ using System.Collections;
 using Server.Items;
 using Server.Targeting;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a sea creature corpse" )]

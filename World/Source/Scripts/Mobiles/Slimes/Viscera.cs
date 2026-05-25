@@ -5,6 +5,7 @@ using System.Collections;
 using Server.Gumps;
 using Server.Network;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a pile of viscera" )]
@@ -79,11 +80,11 @@ namespace Server.Mobiles
 					}
 					else if ( Server.Items.HiddenTrap.CheckInsuranceOnTrap( iWrapped, m ) )
 					{
-						m.LocalOverheadMessage(MessageType.Emote, 1150, true, "Viscera almost covered one of your protected items!");
+						m.LocalOverheadMessage(MessageType.Emote, 1150, true, Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.viscera_almost_covered_one_of_your_protected_items"));
 					}
 					else
 					{
-						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "One of your items is covered in viscera!");
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.one_of_your_items_is_covered_in_viscera"));
 						m.PlaySound( 0x364 );
 						Container box = new SlimeItem();
 						box.DropItem(iWrapped);

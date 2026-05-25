@@ -6,6 +6,7 @@ using Server.Network;
 using Server.Misc;
 using Server.Items;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -123,7 +124,7 @@ namespace Server.Mobiles
 
 		public virtual void OnDisallowedRider( Mobile m )
 		{
-			m.SendMessage( "You may not ride this creature." );
+			m.SendMessage( Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.you_may_not_ride_this_creature") );
 		}
 
 		public override void OnDoubleClick( Mobile from )
@@ -158,7 +159,7 @@ namespace Server.Mobiles
 
 			if ( from is PlayerMobile && !PlayerSettings.GetKeys( from, "DragonRiding" ) && ( this is Dragoon || this is RidingDragon || this is GemDragon ) )
 			{
-				from.SendMessage( "You have yet to learn the secrets of riding draconic creatures." );
+				from.SendMessage( Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_have_yet_to_learn_the_secrets_of_riding_draconic_cr") );
 				return;
 			}
 
@@ -173,12 +174,12 @@ namespace Server.Mobiles
 
 			if ( MySettings.S_NoMountsInCertainRegions && Server.Mobiles.AnimalTrainer.IsNoMountRegion( from, from.Region ) )
 			{
-				from.SendMessage( "You cannot mount that while you are in this place." );
+				from.SendMessage( Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_cannot_mount_that_while_you_are_in_this_place") );
 				return;
 			}
 			else if ( ( MySettings.S_NoMountBuilding && Server.Misc.Worlds.InBuilding( from ) ) || ( from.Region is HouseRegion && MySettings.S_NoMountsInHouses ) )
 			{
-				from.SendMessage( "You cannot mount that while you are in here." );
+				from.SendMessage( Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_cannot_mount_that_while_you_are_in_here") );
 				return;
 			}
 

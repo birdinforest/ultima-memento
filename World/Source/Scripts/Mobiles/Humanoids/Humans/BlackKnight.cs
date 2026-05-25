@@ -5,6 +5,7 @@ using Server.Items;
 using Server.ContextMenus; 
 using Server.Misc; 
 using Server.Network;
+using Server.Localization;
 using Server.Mobiles;
 
 namespace Server.Mobiles 
@@ -144,7 +145,7 @@ namespace Server.Mobiles
 					{
 						ResourceMods.SetResource( loot, CraftResource.DreadSpec );
 						loot = Server.LootPackEntry.Enchant( killer, 500, loot );
-						loot.InfoText1 = "The Black Knight";
+						loot.InfoText1 = Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.the_black_knight_2");
 						c.DropItem( loot ); 
 					}
 				}
@@ -201,13 +202,13 @@ namespace Server.Items
 			{
 				if ( PlayerSettings.GetKeys( from, "BlackKnightKey" ) )
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You find nothing of interest.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, Server.Localization.StringCatalog.Resolve(from.Account, "You find nothing of interest."), from.NetState);
 				}
 				else
 				{
 					PlayerSettings.SetKeys( from, "BlackKnightKey", true );
 					from.SendSound( 0x3D );
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You found a blackened key with a symbol of a sword on it.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_found_a_blackened_key_with_a_symbol_of_a_sword_on_i"), from.NetState);
 				}
 			}
 			else

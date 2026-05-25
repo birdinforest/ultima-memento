@@ -11,6 +11,7 @@ using Server.Misc;
 using Server.Mobiles;
 using Server.Targeting;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -121,7 +122,7 @@ namespace Server.Mobiles
 
 			if ( m.CheckYoungHealTime() )
 			{
-				CitizenLocalization.SayLocalized( this, "You look like you need soe healing dark one." );
+				CitizenLocalization.SayLocalized( this, StringCatalog.ResolveByKey(this.Account, "mob.other.you_look_like_you_need_soe_healing_dark_one") );
 
 				m.PlaySound( 0x1F2 );
 				m.FixedEffect( 0x376A, 9, 32 );
@@ -194,9 +195,9 @@ namespace Server.Mobiles
 			if ( BeggingPose(from) > 0 ) // LET US SEE IF THEY ARE BEGGING
 			{
 				nCost = nCost - (int)( ( from.Skills[SkillName.Begging].Value * 0.005 ) * nCost ); if ( nCost < 1 ){ nCost = 1; }
-				SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "Since you are begging, do you still want me to charge a crystal balls of summoning with 5 charges, it will only cost you {0} gold?", nCost));
+				SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.since_you_are_begging_do_you_still_want_me_to_charge_a", nCost));
 			}
-			else { SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "If you want me to charge a crystal ball of summoning with 5 charges, it will cost you {0} gold.", nCost)); }
+			else { SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.if_you_want_me_to_charge_a_crystal_ball_of_summoning_wi", nCost)); }
 
             from.Target = new RepairTarget(this);
         }
@@ -230,7 +231,7 @@ namespace Server.Mobiles
                     }
                     else
                     {
-						m_Necromancer.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "That crystal ball has too many charges already."));
+						m_Necromancer.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.that_crystal_ball_has_too_many_charges_already"));
                     }
 
                     if (toConsume == 0)
@@ -239,20 +240,20 @@ namespace Server.Mobiles
                     if (pack.ConsumeTotal(typeof(Gold), toConsume))
                     {
 						if ( BeggingPose(from) > 0 ){ Titles.AwardKarma( from, -BeggingKarma( from ), true ); } // DO ANY KARMA LOSS
-                        m_Necromancer.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "Your crystal ball is charged."));
-                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormat(from.Account, "You pay {0} gold.", toConsume));
+                        m_Necromancer.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.your_crystal_ball_is_charged"));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.you_pay_0_gold", toConsume));
                         Effects.PlaySound(from.Location, from.Map, 0x5C1);
 						ball.Charges = ball.Charges + 5;
                     }
                     else
                     {
-                        m_Necromancer.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "It would cost you {0} gold to have that charged.", toConsume));
-                        from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You do not have enough gold."));
+                        m_Necromancer.SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.it_would_cost_you_0_gold_to_have_that_charged", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_do_not_have_enough_gold"));
                     }
                 }
 				else
 				{
-					m_Necromancer.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "That does not need my services."));
+					m_Necromancer.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.that_does_not_need_my_services"));
 				}
             }
         }
@@ -266,14 +267,14 @@ namespace Server.Mobiles
 
 				if ( ( StarSapphires > 19 ) && ( from.Skills[SkillName.Elementalism].Base >= 50 || from.Skills[SkillName.Magery].Base >= 50 || from.Skills[SkillName.Necromancy].Base >= 50 ) )
 				{
-					sMessage = Server.Localization.StringCatalog.Resolve(from.Account, "Ahhh...this is generous of you. Here...have this as a token of the guild's gratitude.");
+					sMessage = Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.ahhh_this_is_generous_of_you_here_have_this_as_a_token");
 					HenchmanFamiliarItem ball = new HenchmanFamiliarItem();
 					ball.FamiliarOwner = from;
 					from.AddToBackpack ( ball );
 				}
 				else
 				{
-					sMessage = Server.Localization.StringCatalog.Resolve(from.Account, "Thank you for these. Star sapphires are something we often look for.");
+					sMessage = Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.thank_you_for_these_star_sapphires_are_something_we_oft");
 				}
 
 				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, sMessage, from.NetState);
@@ -314,12 +315,12 @@ namespace Server.Mobiles
 					else if ( ball.FamiliarType == 0x15 && HighSpellCaster == 2 ){ ball.FamiliarType = 0x9; sMessage = "Your familiar is now in the form of a daemon." ; }
 					else if ( ball.FamiliarType == 0x4 || ball.FamiliarType == 0x9 ){ ball.FamiliarType = 0x16; sMessage = "Your familiar is now in the form of a gazer." ; }
 
-					sMessage = Server.Localization.StringCatalog.ResolveFormat(from.Account, "You would perhaps like a different familiar? {0}", Server.Localization.StringCatalog.Resolve(from.Account, sMessage));
+					sMessage = Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.you_would_perhaps_like_a_different_familiar_0", Server.Localization.StringCatalog.Resolve(from.Account, sMessage));
 					from.AddToBackpack ( ball );
 				}
 				else
 				{
-					sMessage = Server.Localization.StringCatalog.Resolve(from.Account, "Thank you for this. I could only assume an apprentice spell caster lost this.");
+					sMessage = Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.thank_you_for_this_i_could_only_assume_an_apprentice_sp");
 					dropped.Delete();
 				}
 

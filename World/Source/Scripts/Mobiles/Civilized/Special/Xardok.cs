@@ -9,6 +9,7 @@ using Server.Items;
 using Server.Gumps;
 using Server.Mobiles;
 using Server.Commands;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -65,7 +66,7 @@ namespace Server.Mobiles
 
 		public override bool OnBeforeDeath()
 		{
-			Say("In Vas Mani");
+			Say(StringCatalog.ResolveByKey(this.Account, "mob.other.in_vas_mani"));
 			this.Hits = this.HitsMax;
 			this.FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
 			this.PlaySound( 0x202 );
@@ -111,19 +112,19 @@ namespace Server.Mobiles
 
 			if ( PlayerSettings.GetQuestState( m_Mobile, "AssassinQuest" ) )
 			{
-				CitizenLocalization.SayLocalized(m_Giver, "You already have your orders. Return to me when you are done with the task.");
+				CitizenLocalization.SayLocalized(m_Giver, StringCatalog.ResolveByKey(null, "mob.other.you_already_have_your_orders_return_to_me_when_you_are"));
 			}
 			else if ( mobile.NpcGuild != NpcGuild.AssassinsGuild ) // HE WILL ONLY TALK GUILD MEMBERS
 			{
-				CitizenLocalization.SayLocalized(m_Giver, "Hmmm...you do not seem the type I wish to discuss matters with.");
+				CitizenLocalization.SayLocalized(m_Giver, StringCatalog.ResolveByKey(null, "mob.other.hmmm_you_do_not_seem_the_type_i_wish_to_discuss_matters"));
 			}
 			else if ( m_Mobile.Karma > -1250 ) // HE WILL ONLY TALK TO THE UNSAVORY GUILD MEMBERS
 			{
-				CitizenLocalization.SayLocalized(m_Giver, "Hmmm...maybe show me that you could handle such tasks first.");
+				CitizenLocalization.SayLocalized(m_Giver, StringCatalog.ResolveByKey(null, "mob.other.hmmm_maybe_show_me_that_you_could_handle_such_tasks_fir"));
 				}
 				else if ( nWhenForAnotherQuest > 0 )
 				{
-					m_Giver.SayTo( m_Mobile, false, Server.Localization.StringCatalog.ResolveFormat( m_Mobile.Account, "I have nothing for you at the moment. Check back in {0} minutes.", sAllowedForAnotherQuest ) );
+					m_Giver.SayTo( m_Mobile, false, Server.Localization.StringCatalog.ResolveFormatByKey(m_Mobile.Account, "mob.fmt.i_have_nothing_for_you_at_the_moment_check_back_in_0_mi", sAllowedForAnotherQuest ) );
 				}
 				else
 				{
@@ -179,7 +180,7 @@ namespace Server.Mobiles
 				}
 				else
 				{
-					CitizenLocalization.SayLocalized(m_Giver, "Done? With what? I am not sure what things you speak of.");
+					CitizenLocalization.SayLocalized(m_Giver, StringCatalog.ResolveByKey(null, "mob.other.done_with_what_i_am_not_sure_what_things_you_speak_of"));
 				}
             }
         }

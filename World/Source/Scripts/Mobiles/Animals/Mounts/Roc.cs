@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Server;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -72,7 +73,7 @@ namespace Server.Mobiles
 		}
 
 		[Constructable]
-		public Roc(): base( "a roc", 243, 0x3E94, AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
+		public Roc(): base( StringCatalog.ResolveByKey(null, "mob.other.a_roc"), 243, 0x3E94, AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			Hue = GetHue();
 			BaseSoundID = 0x2EE;

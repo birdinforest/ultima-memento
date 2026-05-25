@@ -3,6 +3,7 @@ using Server;
 using System.Collections;
 using Server.Items;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -104,11 +105,11 @@ namespace Server.Mobiles
 					}
 					else if ( Server.Items.HiddenTrap.CheckInsuranceOnTrap( iSucked, m ) )
 					{
-						m.LocalOverheadMessage(MessageType.Emote, 1150, true, "One of your protected items was almost carried by the wind!");
+						m.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveByKey(m.Account, "mob.other.one_of_your_protected_items_was_almost_carried_by_the_w"));
 					}
 					else
 					{
-						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "One of your items was carried into the wind!");
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey(m.Account, "mob.other.one_of_your_items_was_carried_into_the_wind"));
 						m.PlaySound( 0x10B );
 						PackItem( iSucked );
 					}

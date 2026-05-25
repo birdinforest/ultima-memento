@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Server.Items;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -118,8 +119,8 @@ namespace Server.Mobiles
 					rock.Delete();
 					winner.AddToBackpack( new SerpentCapturedOrder() );
 					winner.AddToBackpack (new BlackrockSerpentOrderDecoration() );
-					winner.SendMessage( "You have subdued the Serpent of Order!" );
-					LoggingFunctions.LogGenericQuest( winner, "has subdued the serpent of order" );
+					winner.SendMessage( StringCatalog.ResolveByKey(winner.Account, "mob.other.you_have_subdued_the_serpent_of_order") );
+					LoggingFunctions.LogGenericQuest( winner, StringCatalog.ResolveByKey(this.Account, "mob.other.has_subdued_the_serpent_of_order") );
 				}
 
 				return base.OnBeforeDeath();

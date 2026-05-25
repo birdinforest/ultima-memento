@@ -5,6 +5,7 @@ using Server.Mobiles;
 using Server.Prompts;
 using Server.Network;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -150,7 +151,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage("Please enter a new name for this grave stone.");
+			from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.please_enter_a_new_name_for_this_grave_stone"));
 			from.Prompt = new RenamePrompt( this );
 		}
 
@@ -166,7 +167,7 @@ namespace Server.Items
 			public override void OnResponse( Mobile from, string text )
 			{
 				m_Sign.Name = text;
-				from.SendMessage("The grave stone has been changed."); 
+				from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.the_grave_stone_has_been_changed")); 
 			}
 		}
 

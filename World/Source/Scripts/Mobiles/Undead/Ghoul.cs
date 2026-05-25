@@ -3,6 +3,7 @@ using System.Collections;
 using Server.Items;
 using Server.Targeting;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -80,7 +81,7 @@ namespace Server.Mobiles
 
 					defender.Animate( 21, 6, 1, true, false, 0 );
 					this.PlaySound( 0xEE );
-					defender.LocalOverheadMessage( MessageType.Regular, 0x3B2, false, "You have been paralyzed by a necrotic claw!" );
+					defender.LocalOverheadMessage( MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(defender.Account, "mob.other.you_have_been_paralyzed_by_a_necrotic_claw") );
 
 					BaseWeapon weapon = this.Weapon as BaseWeapon;
 					if ( weapon != null )
@@ -105,7 +106,7 @@ namespace Server.Mobiles
 			{
 				defender.Frozen = false;
 				defender.Combatant = null;
-				defender.LocalOverheadMessage( MessageType.Regular, 0x3B2, false, "You feel your muscles regain control." );
+				defender.LocalOverheadMessage( MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(defender.Account, "mob.other.you_feel_your_muscles_regain_control") );
 			}
 
 			m_Stunning = false;

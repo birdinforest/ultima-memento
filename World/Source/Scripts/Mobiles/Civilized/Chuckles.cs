@@ -8,6 +8,7 @@ using Server.ContextMenus;
 using Server.Gumps;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -36,34 +37,34 @@ namespace Server.Mobiles
 			if ( m is PlayerMobile ){ act = Utility.Random( 22 ); }
 			switch ( act )
 			{
-				case 0: CitizenLocalization.SayLocalized(m, "Why did the king go to the dentist? To get his teeth crowned."); break;
-				case 1: CitizenLocalization.SayLocalized(m, "When a knight in armor was killed in battle, what sign did they put on his grave? Rust in peace!"); break;
-				case 2: CitizenLocalization.SayLocalized(m, "What do you call a mosquito in a tin suit? A bite in shining armor."); break;
-				case 3: CitizenLocalization.SayLocalized(m, "There are many castles in the world, but who is strong enough to move one? Any chess player"); break;
-				case 4: CitizenLocalization.SayLocalized(m, "What king was famous because he spent so many nights at his Round Table writing books? King Author!"); break;
-				case 5: CitizenLocalization.SayLocalized(m, "How do you find a princess? You follow the foot prince."); break;
-				case 6: CitizenLocalization.SayLocalized(m, "Why were the early days called the dark ages? Because there were so many knights!"); break;
-				case 7: CitizenLocalization.SayLocalized(m, "Why did Arthur have a round table? So no one could corner him!"); break;
-				case 8: CitizenLocalization.SayLocalized(m, "Who invented King Arthur's round table? Sir Cumference!"); break;
-				case 9: CitizenLocalization.SayLocalized(m, "Why did the knight run about shouting for a tin opener? He had a bee in his suit of armor!"); break;
-				case 10: CitizenLocalization.SayLocalized(m, "What was Camelot famous for? It's knight life!"); break;
-				case 11: CitizenLocalization.SayLocalized(m, "What did the toad say when the princess would not kiss him? Warts the matter with you?"); break;
-				case 12: CitizenLocalization.SayLocalized(m, "What do you call the young royal who keeps falling down? Prince Harming!"); break;
-				case 13: CitizenLocalization.SayLocalized(m, "What do you call a cat that flies over the castle wall? A cat-a-pult!"); break;
-				case 14: CitizenLocalization.SayLocalized(m, "What game do the fish play in the moat? Trout or dare!"); break;
-				case 15: CitizenLocalization.SayLocalized(m, "What did the fish say to the other when the horse fell in the moat? See horse!"); break;
-				case 16: CitizenLocalization.SayLocalized(m, "What do you call an angry princess just awakened from a long sleep? Slapping beauty!"); break;
-				case 17: CitizenLocalization.SayLocalized(m, "How did the prince get into the castle when the drawbridge was broken? He used a rowmoat!"); break;
-				case 18: CitizenLocalization.SayLocalized(m, "How did the girl dragon win the beauty contest? She was the beast of the show!"); break;
-				case 19: CitizenLocalization.SayLocalized(m, "Why did the dinosaur live longer than the dragon? Because it didn�t smoke!"); break;
-				case 20: CitizenLocalization.SayLocalized(m, "What did the dragon say when it saw the Knight? 'Not more tinned food!'"); break;
-				case 21: CitizenLocalization.SayLocalized(m, "What do you do with a green dragon? Wait until it ripens!"); break;
+				case 0: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.joke.why_did_the_king_go_to_the_dentist_to_get_his_teeth_cro")); break;
+				case 1: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.other.when_a_knight_in_armor_was_killed_in_battle_what_sign_d")); break;
+				case 2: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.joke.what_do_you_call_a_mosquito_in_a_tin_suit_a_bite_in_shi")); break;
+				case 3: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.other.there_are_many_castles_in_the_world_but_who_is_strong_e")); break;
+				case 4: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.other.what_king_was_famous_because_he_spent_so_many_nights_at")); break;
+				case 5: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.joke.how_do_you_find_a_princess_you_follow_the_foot_prince")); break;
+				case 6: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.other.why_were_the_early_days_called_the_dark_ages_because_th")); break;
+				case 7: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.joke.why_did_arthur_have_a_round_table_so_no_one_could_corne")); break;
+				case 8: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.other.who_invented_king_arthur_s_round_table_sir_cumference")); break;
+				case 9: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.joke.why_did_the_knight_run_about_shouting_for_a_tin_opener")); break;
+				case 10: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.joke.what_was_camelot_famous_for_it_s_knight_life")); break;
+				case 11: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.joke.what_did_the_toad_say_when_the_princess_would_not_kiss")); break;
+				case 12: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.joke.what_do_you_call_the_young_royal_who_keeps_falling_down")); break;
+				case 13: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.joke.what_do_you_call_a_cat_that_flies_over_the_castle_wall")); break;
+				case 14: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.other.what_game_do_the_fish_play_in_the_moat_trout_or_dare")); break;
+				case 15: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.joke.what_did_the_fish_say_to_the_other_when_the_horse_fell")); break;
+				case 16: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.joke.what_do_you_call_an_angry_princess_just_awakened_from_a")); break;
+				case 17: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.joke.how_did_the_prince_get_into_the_castle_when_the_drawbri")); break;
+				case 18: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.joke.how_did_the_girl_dragon_win_the_beauty_contest_she_was")); break;
+				case 19: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.joke.why_did_the_dinosaur_live_longer_than_the_dragon_becaus")); break;
+				case 20: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.joke.what_did_the_dragon_say_when_it_saw_the_knight_not_more")); break;
+				case 21: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.joke.what_do_you_do_with_a_green_dragon_wait_until_it_ripens")); break;
 				case 22: m.PlaySound( m.Female ? 780 : 1051 ); CitizenLocalization.SayLocalized(m, "*claps*"); break;
-				case 23: CitizenLocalization.SayLocalized(m, "*bows*"); m.Animate( 32, 5, 1, true, false, 0 ); break;
+				case 23: CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.emote.bows")); m.Animate( 32, 5, 1, true, false, 0 ); break;
 				case 24: m.PlaySound( m.Female ? 794 : 1066 ); CitizenLocalization.SayLocalized(m, "*giggles*"); break;
 				case 25: m.PlaySound( m.Female ? 801 : 1073 ); CitizenLocalization.SayLocalized(m, "*laughs*"); break;
-				case 26: m.PlaySound( 792 ); CitizenLocalization.SayLocalized(m, "*sticks out tongue*"); break;
-				case 27: m.PlaySound( m.Female ? 783 : 1054 ); CitizenLocalization.SayLocalized(m, "*woohoo!*"); break;
+				case 26: m.PlaySound( 792 ); CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.emote.sticks_out_tongue")); break;
+				case 27: m.PlaySound( m.Female ? 783 : 1054 ); CitizenLocalization.SayLocalized(m, StringCatalog.ResolveByKey(null, "mob.emote.woohoo")); break;
 			};
 
 			if ( act < 22 && Utility.RandomBool() )
@@ -148,7 +149,7 @@ namespace Server.Mobiles
 						hat.m_Points = Utility.RandomMinMax( 80, 100 );
 
 						from.AddToBackpack ( hat );
-						from.SendMessage( "Chuckles gave you one of his hats!" );
+						from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.chuckles_gave_you_one_of_his_hats") );
 					}
 					else
 					{
@@ -162,23 +163,23 @@ namespace Server.Mobiles
 						coat.m_Points = Utility.RandomMinMax( 80, 100 );
 
 						from.AddToBackpack ( coat );
-						from.SendMessage( "Chuckles gave you one of his suits!" );
+						from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.chuckles_gave_you_one_of_his_suits") );
 					}
-					this.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormat( from.Account, "Thank you, {0}! I am always looking for some new jokes.", from.Name ) );
+					this.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.thank_you_0_i_am_always_looking_for_some_new_jokes", from.Name ) );
 					from.SendSound( 0x3D );
 					dropped.Delete();
-					from.SendMessage( "Single click on it to enchant it." );
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.single_click_on_it_to_enchant_it") );
 					return true;
 				}
 			}
 			else if ( dropped is Artifact_JesterHatofChuckles )
 			{
-				this.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormat( from.Account, "Thank you, {0}! I lost that hat years ago.", from.Name ) );
+				this.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.thank_you_0_i_lost_that_hat_years_ago", from.Name ) );
 				from.SendSound( 0x5B4 );
 				dropped.Delete();
 				int gold = Utility.RandomMinMax(5,10) * 1000;
 				from.AddToBackpack ( new BankCheck( gold ) );
-				from.SendMessage( "Chuckles gave you a check for " + gold + " gold!" );
+				from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.chuckles_gave_you_a_check_for") + gold + " gold!" );
 				return true;
 			}
 

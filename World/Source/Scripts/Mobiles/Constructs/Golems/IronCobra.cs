@@ -4,6 +4,7 @@ using Server.Network;
 using System.Collections;
 using Server;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a broken machine" )]
@@ -128,7 +129,7 @@ namespace Server.Mobiles
 
 					m.PlaySound(0x1CB);
 					m.Paralyze(TimeSpan.FromSeconds(Math.Min(MySettings.S_paralyzeDuration, Utility.RandomMinMax(4, 8))));
-					m.SendMessage( "You are paralyzed from the poisonous bite!" );
+					m.SendMessage(Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.you_are_paralyzed_from_the_poisonous_bite"));
 				}
 			}
 		}

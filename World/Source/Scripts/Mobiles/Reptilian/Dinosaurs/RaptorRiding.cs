@@ -3,13 +3,14 @@ using Server.Items;
 using Server.Mobiles;
 using Server.Misc;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a dinosaur corpse" )]
 	public class RaptorRiding : BaseMount
 	{
 		[Constructable]
-		public RaptorRiding() : this( "a raptor" )
+		public RaptorRiding() : this( StringCatalog.ResolveByKey(null, "mob.other.a_raptor") )
 		{
 		}
 

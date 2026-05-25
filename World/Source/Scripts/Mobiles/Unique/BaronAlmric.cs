@@ -7,6 +7,7 @@ using Server.Items;
 using Server.Network;
 using Server.Commands;
 using Server.Commands.Generic;
+using Server.Localization;
 using Server.Mobiles;
 using Server.Accounting;
 using Server.Regions;
@@ -87,12 +88,12 @@ namespace Server.Mobiles
 							sword.Hue = 0x9C4;
 							c.DropItem( sword );	
 							break;
-						case 1: item = new DragonLegs();		item.InfoText2 = "Slain by Baron Almric";	break;
-						case 2: item = new DragonGloves();		item.InfoText2 = "Slain by Baron Almric";	break;
-						case 3: item = new DragonArms();		item.InfoText2 = "Slain by Baron Almric";	break;
-						case 4: item = new DragonChest();		item.InfoText2 = "Slain by Baron Almric";	break;
-						case 5: item = new DragonHelm();		item.InfoText2 = "Slain by Baron Almric";	break;
-						case 6: item = new ScalemailShield();	item.InfoText2 = "Slain by Baron Almric";	break;
+						case 1: item = new DragonLegs();		item.InfoText2 = Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.slain_by_baron_almric");	break;
+						case 2: item = new DragonGloves();		item.InfoText2 = Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.slain_by_baron_almric");	break;
+						case 3: item = new DragonArms();		item.InfoText2 = Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.slain_by_baron_almric");	break;
+						case 4: item = new DragonChest();		item.InfoText2 = Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.slain_by_baron_almric");	break;
+						case 5: item = new DragonHelm();		item.InfoText2 = Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.slain_by_baron_almric");	break;
+						case 6: item = new ScalemailShield();	item.InfoText2 = Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.slain_by_baron_almric");	break;
 					}
 
 					if ( item != null && item is BaseArmor )

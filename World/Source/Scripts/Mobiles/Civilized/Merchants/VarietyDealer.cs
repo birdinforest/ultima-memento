@@ -10,6 +10,7 @@ using Server.Gumps;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Accounting;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -90,11 +91,11 @@ namespace Server.Mobiles
 					{
 						if ( AlreadyHasBook( from ) )
 						{
-							this.PublicOverheadMessage( MessageType.Regular, 0, false, string.Format ( "Here. I see you already have a book." ) ); 
+							this.PublicOverheadMessage( MessageType.Regular, 0, false, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.here_i_see_you_already_have_a_book") ); 
 						}
 						else if ( PlayerSettings.GetKeys( from, "Antiques" ) )
 						{
-							this.PublicOverheadMessage( MessageType.Regular, 0, false, string.Format ( "Thank you, but you already done that for me." ) ); 
+							this.PublicOverheadMessage( MessageType.Regular, 0, false, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.thank_you_but_you_already_done_that_for_me") ); 
 						}
 						else
 						{
@@ -102,20 +103,20 @@ namespace Server.Mobiles
 							from.PlaySound( 0x2E6 );
 							book.ArtOwner = from;
 							from.AddToBackpack( book );
-							this.PublicOverheadMessage( MessageType.Regular, 0, false, string.Format ( "Good luck with the search." ) ); 
+							this.PublicOverheadMessage( MessageType.Regular, 0, false, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.good_luck_with_the_search") ); 
 							PlayerSettings.SetKeys( from, "Antiques", true );
 							dropped.Delete();
 						}
 					}
 					else
 					{
-						sMessage = "You need to discover the nine lands before I share this with you.";
+						sMessage = Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_need_to_discover_the_nine_lands_before_i_share_this");
 						from.AddToBackpack ( dropped );
 					}
 				}
 				else
 				{
-					sMessage = "You look like you need this more than I do.";
+					sMessage = Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_look_like_you_need_this_more_than_i_do");
 					from.AddToBackpack ( dropped );
 				}
 
@@ -127,7 +128,7 @@ namespace Server.Mobiles
 				string sMessage = "";
 				if ( book.ArtOwner != from )
 				{
-					sMessage = "This book doesn't belong to you so I will just get rid of it.";
+					sMessage = Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.this_book_doesn_t_belong_to_you_so_i_will_just_get_rid");
 					bool remove = true;
 					foreach ( Account a in Accounts.GetAccounts() )
 					{
@@ -162,14 +163,14 @@ namespace Server.Mobiles
 					PlayerSettings.SetKeys( from, "Museums", true );
 					from.SendSound( 0x3D );
 					from.AddToBackpack ( new BankCheck( MuseumBook.QuestValue() ) );
-					sMessage = "You have done the museum a great service. Here is " + MuseumBook.QuestValue() + " gold we promised.";
+					sMessage = Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.you_have_done_the_museum_a_great_service_here_is_0_gold", MuseumBook.QuestValue() );
 					from.Fame = 15000;
-					from.SendMessage( "You have gained a really large amount of fame." );
+					from.SendMessage( Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_have_gained_a_really_large_amount_of_fame") );
 					dropped.Delete();
 				}
 				else
 				{
-					sMessage = "You have not finished your search yet.";
+					sMessage = Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_have_not_finished_your_search_yet");
 				}
 				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, sMessage, from.NetState);
 			}

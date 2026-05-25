@@ -10,6 +10,7 @@ using Server.Gumps;
 using Server.Mobiles;
 using Server.Commands;
 using System.Globalization;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -93,7 +94,7 @@ namespace Server.Mobiles
 
 		public override bool OnBeforeDeath()
 		{
-			Say("In Vas Mani");
+			Say(StringCatalog.ResolveByKey(this.Account, "mob.other.in_vas_mani"));
 			this.Hits = this.HitsMax;
 			this.FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
 			this.PlaySound( 0x202 );
@@ -120,14 +121,14 @@ namespace Server.Mobiles
 		{
 			if ( m.CheckYoungHealTime() )
 			{
-				Say( "You look as though you have some wounds." );
+				Say( StringCatalog.ResolveByKey(this.Account, "mob.other.you_look_as_though_you_have_some_wounds") );
 				m.PlaySound( 0x1F2 );
 				m.FixedEffect( 0x376A, 9, 32 );
 				m.Hits = m.HitsMax;
 			}
 			else
 			{
-				Say( "Sorry, but I am tired and cannot heal you now." );
+				Say( StringCatalog.ResolveByKey(this.Account, "mob.other.sorry_but_i_am_tired_and_cannot_heal_you_now") );
 			}
 		}
 
@@ -250,11 +251,11 @@ namespace Server.Mobiles
 
 			if ( m_Mobile.TotalGold < 5000 && m_Pay )
 			{
-				m_Mobile.SendMessage( string.Format( Server.Localization.StringCatalog.Resolve( m_Mobile.Account, "{0} needs at least 5,000 gold to construct the item for you." ), m_Giver.Name ) );
+				m_Mobile.SendMessage( string.Format( Server.Localization.StringCatalog.ResolveByKey(m_Mobile.Account, "mob.fmt.0_needs_at_least_5_000_gold_to_construct_the_item_for_y"), m_Giver.Name ) );
 			}
 			else if ( !(HaveSpecialItemRequirement( m_Mobile )) && m_Pay )
 			{
-				m_Mobile.SendMessage( string.Format( Server.Localization.StringCatalog.Resolve( m_Mobile.Account, "{0} will need a symbol of your {1} ({2})." ), m_Giver.Name, merit, GetSpecialItemRequirement( m_Mobile ) ) );
+				m_Mobile.SendMessage( string.Format( Server.Localization.StringCatalog.ResolveByKey(m_Mobile.Account, "mob.fmt.0_will_need_a_symbol_of_your_1_2"), m_Giver.Name, merit, GetSpecialItemRequirement( m_Mobile ) ) );
 			}
 			else if ( PassTest == true || !m_Pay )
 			{
@@ -268,7 +269,7 @@ namespace Server.Mobiles
 			}
 			else
 			{
-				m_Mobile.SendMessage( Server.Localization.StringCatalog.Resolve( m_Mobile.Account, "Your deeds do not grant you a gift of tribute." ) );
+				m_Mobile.SendMessage( Server.Localization.StringCatalog.ResolveByKey(m_Mobile.Account, "mob.other.your_deeds_do_not_grant_you_a_gift_of_tribute") );
 			}
             }
         }
@@ -1038,7 +1039,7 @@ namespace Server.Mobiles
 
 				AddButton(668, 9, 4017, 4017, page_prev, GumpButtonType.Reply, 0);
 
-				{ string _tg = Server.Localization.StringCatalog.TryResolve( Server.Localization.AccountLang.GetLanguageCode( from.Account ), "TRIBUTE GIFTS" ) ?? "TRIBUTE GIFTS";
+				{ string _tg = Server.Localization.StringCatalog.TryResolve( Server.Localization.AccountLang.GetLanguageCode( null ), StringCatalog.ResolveByKey(null, "mob.other.tribute_gifts") ) ?? StringCatalog.ResolveByKey(null, "mob.other.tribute_gifts");
 			AddHtml( 61, 12, 579, 20, @"<BODY><BASEFONT Color=" + color + "><CENTER>" + _tg + "</CENTER></BASEFONT></BODY>", (bool)false, (bool)false); }
 
 				AddButton(9, 425, 4014, 4014, page_prev, GumpButtonType.Reply, 0);
@@ -1141,11 +1142,11 @@ namespace Server.Mobiles
 				}
 			else if ( from.TotalGold < 5000 && m_Pay )
 			{
-				from.SendMessage( string.Format( Server.Localization.StringCatalog.Resolve( from.Account, "{0} needs at least 5,000 gold to construct the item for you." ), m_Giver.Name ) );
+				from.SendMessage( string.Format( Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.fmt.0_needs_at_least_5_000_gold_to_construct_the_item_for_y"), m_Giver.Name ) );
 			}
 			else if ( !(HaveSpecialItemRequirement( from )) && m_Pay )
 			{
-				from.SendMessage( string.Format( Server.Localization.StringCatalog.Resolve( from.Account, "{0} will need a symbol of your {1} ({2})." ), m_Giver.Name, merit, GetSpecialItemRequirement( from ) ) );
+				from.SendMessage( string.Format( Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.fmt.0_will_need_a_symbol_of_your_1_2"), m_Giver.Name, merit, GetSpecialItemRequirement( from ) ) );
 				}
 				else if ( ( passTest == true && pack.ConsumeTotal(typeof(Gold), 5000) ) || !m_Pay )
 				{
@@ -1277,7 +1278,7 @@ namespace Server.Mobiles
 				}
 			else if ( passTest == false && info.ButtonID > 0 && info.ButtonID < 262 )
 			{
-				from.SendMessage( Server.Localization.StringCatalog.Resolve( from.Account, "Your deeds do not grant you a gift of tribute." ) );
+				from.SendMessage( Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.your_deeds_do_not_grant_you_a_gift_of_tribute") );
 			}
 			}
 		}
@@ -1450,7 +1451,7 @@ namespace Server.Mobiles
 					( dropped is Artifact_IolosLute && this.Name == "Iolo" )
 				)
 			{
-				this.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormat( from.Account, "Thank you, {0}! I lost that this years ago.", from.Name ) );
+				this.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.thank_you_0_i_lost_that_this_years_ago", from.Name ) );
 				from.SendSound( 0x5B4 );
 				dropped.Delete();
 				int gold = Utility.RandomMinMax(5,10) * 1000;

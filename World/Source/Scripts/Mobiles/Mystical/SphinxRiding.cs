@@ -3,6 +3,7 @@ using System.Collections;
 using Server;
 using Server.Items;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a sphinx corpse" )]
@@ -94,7 +95,7 @@ namespace Server.Mobiles
 
 					m.PlaySound(0x16B);
 					m.Paralyze(TimeSpan.FromSeconds(Math.Min(MySettings.S_paralyzeDuration, Utility.RandomMinMax(4, 8))));
-					m.SendMessage( "You are petrified with fear from the mighty roar!" );
+					m.SendMessage(Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.you_are_petrified_with_fear_from_the_mighty_roar"));
 				}
 			}
 		}

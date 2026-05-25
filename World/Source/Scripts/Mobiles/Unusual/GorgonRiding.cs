@@ -4,13 +4,14 @@ using Server;
 using Server.Items;
 using Server.Network;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a gorgon corpse" )]
 	public class GorgonRiding : BaseMount
 	{
 		[Constructable]
-		public GorgonRiding() : this( "a gorgon" )
+		public GorgonRiding() : this( StringCatalog.ResolveByKey(null, "mob.other.a_gorgon") )
 		{
 		}
 
@@ -77,7 +78,7 @@ namespace Server.Mobiles
 				m.PlaySound(0x16B);
 				m.FixedEffect(0x376A, 6, 1);
 				m.Paralyze(TimeSpan.FromSeconds(Math.Min(MySettings.S_paralyzeDuration, Utility.RandomMinMax(4, 8))));
-				m.SendMessage( "You are petrified from the Gorgon breath!" );
+				m.SendMessage(Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.you_are_petrified_from_the_gorgon_breath"));
 			}
 		}
 
@@ -97,11 +98,11 @@ namespace Server.Mobiles
 					}
 					else if ( Server.Items.HiddenTrap.CheckInsuranceOnTrap( iStone, m ) )
 					{
-						m.LocalOverheadMessage(MessageType.Emote, 1150, true, "The GorgonRiding almost turned one of your protected items to stone!");
+						m.LocalOverheadMessage(MessageType.Emote, 1150, true, Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.the_gorgonriding_almost_turned_one_of_your_protected_it"));
 					}
 					else
 					{
-						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "One of your items has been turned to stone!");
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.one_of_your_items_has_been_turned_to_stone"));
 						m.PlaySound( 0x1FB );
 						Item rock = new BrokenGear();
 						rock.ItemID = iStone.GraphicID;

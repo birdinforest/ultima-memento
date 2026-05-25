@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Items;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -344,7 +345,7 @@ namespace Server.Items
 		{
 			if ( rSummoner != from )
 			{
-				from.SendMessage( "The rune doesn't seem to budge." );
+				from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.the_rune_doesn_t_seem_to_budge") );
 			}
 			else if ( from.InRange( this.GetWorldLocation(), 5 ) )
 			{
@@ -395,7 +396,7 @@ namespace Server.Items
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
 			base.AddNameProperties( list );
-			list.Add( 1070722, "Double Click To Take It" );
+			list.Add( 1070722, StringCatalog.ResolveByKey(null, "mob.other.double_click_to_take_it") );
 		}
 
 		public override void Serialize( GenericWriter writer )

@@ -4,6 +4,7 @@ using Server.Items;
 using Server.Misc;
 using Server.Targeting;
 using Server.Regions;
+using Server.Localization;
 using Server.Mobiles;
 
 namespace Server.Mobiles
@@ -112,7 +113,7 @@ namespace Server.Mobiles
 					{
 						ResourceMods.SetResource( loot, CraftResource.WyrmSpec );
 						loot = Server.LootPackEntry.Enchant( killer, 500, loot );
-						loot.InfoText1 = "Kull the Wyrm Guard";
+						loot.InfoText1 = Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.kull_the_wyrm_guard");
 						c.DropItem( loot ); 
 					}
 				}

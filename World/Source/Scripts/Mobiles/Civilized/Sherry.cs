@@ -13,6 +13,7 @@ using Server.Guilds;
 using Server.Items;
 using Server.Gumps;
 using Server.Commands;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -26,7 +27,7 @@ namespace Server.Mobiles
 			{
 				if ( DateTime.Now >= m_NextTalk && InRange( m, 4 ) && InLOS( m ) )
 				{
-					Say("Squeak");
+					Say(StringCatalog.ResolveByKey(this.Account, "mob.other.squeak_2"));
 					m_NextTalk = (DateTime.Now + TimeSpan.FromSeconds( 30 ));
 				}
 			}
@@ -82,7 +83,7 @@ namespace Server.Mobiles
 			}
 			else
 			{
-				from.SendMessage( "She is too far away from you." );
+				from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.she_is_too_far_away_from_you") );
 			}
 		}
 
@@ -101,7 +102,7 @@ namespace Server.Mobiles
 				AddPage(0);
 				AddImage(20, 16, 1243);
 				AddButton(202, 247, 2020, 2020, 1, GumpButtonType.Reply, 0);
-				AddHtml( 62, 288, 178, 27, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>Sherry the Mouse</CENTER></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 62, 288, 178, 27, @StringCatalog.ResolveByKey(from.Account, "mob.other.body_basefont_color_111111_big_center_sherry_the_mouse"), (bool)false, (bool)false);
 			}
 
 			public override void OnResponse( NetState state, RelayInfo info )
@@ -115,15 +116,15 @@ namespace Server.Mobiles
 					switch ( Utility.RandomMinMax( 0, 8 ) )
 					{
 
-						case 0:	CitizenLocalization.SayLocalized(mouse, "Oft have I wished that stranger would return."); break;
-						case 1:	CitizenLocalization.SayLocalized(mouse, "We must bring the shards into harmony, so that they resonate in such a manner that matches the original universe."); break;
-						case 2:	CitizenLocalization.SayLocalized(mouse, "Yet sometimes one must sacrifice a pawn to save a king."); break;
-						case 3:	CitizenLocalization.SayLocalized(mouse, "Suddenly the shutters blew open and Lord British fell to the ground, one hand shielding his eyes."); break;
-						case 4:	CitizenLocalization.SayLocalized(mouse, "I witnessed them all from my tiny mousehole."); break;
-						case 5:	CitizenLocalization.SayLocalized(mouse, "But I am but a mouse, and none hear me."); break;
-						case 6:	CitizenLocalization.SayLocalized(mouse, "A shard of a universe is a powerful thing."); break;
-						case 7:	CitizenLocalization.SayLocalized(mouse, "Aid the nobility that resideth in human heart."); break;
-						case 8:	CitizenLocalization.SayLocalized(mouse, "Even pawns have lives and loves at home, my lord."); break;
+						case 0:	CitizenLocalization.SayLocalized(mouse, StringCatalog.ResolveByKey(null, "mob.other.oft_have_i_wished_that_stranger_would_return")); break;
+						case 1:	CitizenLocalization.SayLocalized(mouse, StringCatalog.ResolveByKey(null, "mob.other.we_must_bring_the_shards_into_harmony_so_that_they_reso")); break;
+						case 2:	CitizenLocalization.SayLocalized(mouse, StringCatalog.ResolveByKey(null, "mob.other.yet_sometimes_one_must_sacrifice_a_pawn_to_save_a_king")); break;
+						case 3:	CitizenLocalization.SayLocalized(mouse, StringCatalog.ResolveByKey(null, "mob.other.suddenly_the_shutters_blew_open_and_lord_british_fell_t")); break;
+						case 4:	CitizenLocalization.SayLocalized(mouse, StringCatalog.ResolveByKey(null, "mob.other.i_witnessed_them_all_from_my_tiny_mousehole")); break;
+						case 5:	CitizenLocalization.SayLocalized(mouse, StringCatalog.ResolveByKey(null, "mob.other.but_i_am_but_a_mouse_and_none_hear_me")); break;
+						case 6:	CitizenLocalization.SayLocalized(mouse, StringCatalog.ResolveByKey(null, "mob.other.a_shard_of_a_universe_is_a_powerful_thing")); break;
+						case 7:	CitizenLocalization.SayLocalized(mouse, StringCatalog.ResolveByKey(null, "mob.other.aid_the_nobility_that_resideth_in_human_heart")); break;
+						case 8:	CitizenLocalization.SayLocalized(mouse, StringCatalog.ResolveByKey(null, "mob.other.even_pawns_have_lives_and_loves_at_home_my_lord")); break;
 					}
 				}
 			}
@@ -135,7 +136,7 @@ namespace Server.Mobiles
 			{
 				if ( DateTime.Now < NextFeed )
 				{
-					PrivateOverheadMessage(MessageType.Regular, 1153, false, "My tummy hurts..." , from.NetState);
+					PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.ResolveByKey(this.Account, "mob.other.my_tummy_hurts") , from.NetState);
 					return false;
 				}
 
@@ -146,7 +147,7 @@ namespace Server.Mobiles
 
 				this.PlaySound( 0x0CD );
 
-				string sMessage = "Squeak";
+				string sMessage = StringCatalog.ResolveByKey(this.Account, "mob.other.squeak_2");
 
 				int relic = Utility.RandomMinMax( 1, 59 );
 

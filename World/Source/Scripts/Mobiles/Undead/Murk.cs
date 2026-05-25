@@ -4,6 +4,7 @@ using Server.Items;
 using Server.Misc;
 using Server.Targeting;
 using Server.Regions;
+using Server.Localization;
 using Server.Mobiles;
 
 namespace Server.Mobiles
@@ -95,13 +96,13 @@ namespace Server.Mobiles
 				if ( loot != null )
 				{
 					ResourceMods.SetResource( loot, CraftResource.SpectralSpec );
-					loot.InfoText1 = "Murk the Slayer of the Coast";
+					loot.InfoText1 = Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.murk_the_slayer_of_the_coast");
 					c.DropItem( loot ); 
 				}
 			}
 
 			PirateChest MyChest = new PirateChest(6, null);
-			MyChest.ContainerOwner = "Murk's Lost Treasure Chest";
+			MyChest.ContainerOwner = Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.murk_s_lost_treasure_chest");
 			c.DropItem( MyChest );
 		}
 

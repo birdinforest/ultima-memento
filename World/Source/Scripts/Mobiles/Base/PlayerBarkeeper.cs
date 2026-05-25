@@ -7,6 +7,7 @@ using Server.Prompts;
 using Server.Network;
 using Server.ContextMenus;
 using Server.Multis;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -287,7 +288,7 @@ namespace Server.Mobiles
 
 				if ( g.Amount > 50 )
 				{
-					PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "I cannot accept so large a tip!", from.NetState );
+					PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(this.Account, "mob.other.i_cannot_accept_so_large_a_tip"), from.NetState );
 				}
 				else
 				{
@@ -295,7 +296,7 @@ namespace Server.Mobiles
 
 					if ( tip == null || (tip = tip.Trim()).Length == 0 )
 					{
-						PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "It would not be fair of me to take your money and not offer you information in return.", from.NetState );
+						PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(this.Account, "mob.other.it_would_not_be_fair_of_me_to_take_your_money_and_not_o"), from.NetState );
 					}
 					else
 					{
@@ -349,7 +350,7 @@ namespace Server.Mobiles
 				return;
 
 			from.Prompt = new ChangeRumorMessagePrompt( this, index );
-			PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "Say what news you would like me to tell our guests.", from.NetState );
+			PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(this.Account, "mob.other.say_what_news_you_would_like_me_to_tell_our_guests"), from.NetState );
 		}
 
 		public void EndChangeRumor( Mobile from, int index, string text )
@@ -363,7 +364,7 @@ namespace Server.Mobiles
 				m_Rumors[index].Message = text;
 
 			from.Prompt = new ChangeRumorKeywordPrompt( this, index );
-			PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "What keyword should a guest say to me to get this news?", from.NetState );
+			PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(this.Account, "mob.other.what_keyword_should_a_guest_say_to_me_to_get_this_news"), from.NetState );
 		}
 
 		public void EndChangeKeyword( Mobile from, int index, string text )
@@ -376,7 +377,7 @@ namespace Server.Mobiles
 			else
 				m_Rumors[index].Keyword = text;
 
-			PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "I'll pass on the message.", from.NetState );
+			PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(this.Account, "mob.other.i_ll_pass_on_the_message"), from.NetState );
 		}
 
 		public void RemoveRumor( Mobile from, int index )
@@ -390,13 +391,13 @@ namespace Server.Mobiles
 		public void BeginChangeTip( Mobile from )
 		{
 			from.Prompt = new ChangeTipMessagePrompt( this );
-			PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "Say what you want me to tell guests when they give me a good tip.", from.NetState );
+			PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(this.Account, "mob.other.say_what_you_want_me_to_tell_guests_when_they_give_me_a"), from.NetState );
 		}
 
 		public void EndChangeTip( Mobile from, string text )
 		{
 			m_TipMessage = text;
-			PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "I'll say that to anyone who gives me a good tip.", from.NetState );
+			PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(this.Account, "mob.other.i_ll_say_that_to_anyone_who_gives_me_a_good_tip"), from.NetState );
 		}
 
 		public void RemoveTip( Mobile from )
@@ -653,12 +654,12 @@ namespace Server.Mobiles
 
 			AddImage( 22, 22, 10464, clr );
 
-			AddHtml( 223, 32, 200, 40, "BARKEEP CUSTOMIZATION MENU", false, false );
+			AddHtml( 223, 32, 200, 40, StringCatalog.ResolveByKey(from.Account, "mob.other.barkeep_customization_menu"), false, false );
 
 			AddImage( 80, 398, 2151 );
 			AddItem( 72, 406, 2543 );
 
-			AddHtml( 110, 412, 180, 25, "sells food and drink", false, false );
+			AddHtml( 110, 412, 180, 25, StringCatalog.ResolveByKey(from.Account, "mob.other.sells_food_and_drink"), false, false );
 		}
 
 		private void RenderPage( Entry[] entries, int page )
@@ -682,10 +683,10 @@ namespace Server.Mobiles
 			}
 
 			AddButton( 340, 400, 4005, 4007, 0, GumpButtonType.Page, 1 + ((page + 1) % ((entries.Length + 19) / 20)) );
-			AddHtml( 380, 400, 180, 25, "More Job Titles", false, false );
+			AddHtml( 380, 400, 180, 25, StringCatalog.ResolveByKey(null, "mob.other.more_job_titles"), false, false );
 
 			AddButton( 338, 437, 4014, 4016, 1, GumpButtonType.Reply, 0 );
-			AddHtml( 290, 440, 35, 40, "Back", false, false );
+			AddHtml( 290, 440, 35, 40, StringCatalog.ResolveByKey(null, "mob.other.back"), false, false );
 		}
 
 		public BarkeeperTitleGump( Mobile from, PlayerBarkeeper barkeeper ) : base( 0, 0 )
@@ -742,7 +743,7 @@ namespace Server.Mobiles
 
 			AddImage( 22, 22, 10464, clr );
 
-			AddHtml( 223, 32, 200, 40, "BARKEEP CUSTOMIZATION MENU", false, false );
+			AddHtml( 223, 32, 200, 40, StringCatalog.ResolveByKey(from.Account, "mob.other.barkeep_customization_menu"), false, false );
 		}
 
 		public void RenderCategories()
@@ -750,16 +751,16 @@ namespace Server.Mobiles
 			AddPage( 1 );
 
 			AddButton( 130, 120, 4005, 4007, 0, GumpButtonType.Page, 2 );
-			AddHtml( 170, 120, 200, 40, "Message Control", false, false );
+			AddHtml( 170, 120, 200, 40, StringCatalog.ResolveByKey(null, "mob.other.message_control"), false, false );
 
 			AddButton( 130, 200, 4005, 4007, 0, GumpButtonType.Page, 8 );
-			AddHtml( 170, 200, 200, 40, "Customize your barkeep", false, false );
+			AddHtml( 170, 200, 200, 40, StringCatalog.ResolveByKey(null, "mob.other.customize_your_barkeep"), false, false );
 
 			AddButton( 130, 280, 4005, 4007, 0, GumpButtonType.Page, 3 );
-			AddHtml( 170, 280, 200, 40, "Dismiss your barkeep", false, false );
+			AddHtml( 170, 280, 200, 40, StringCatalog.ResolveByKey(null, "mob.other.dismiss_your_barkeep"), false, false );
 
 			AddButton( 338, 437, 4014, 4016, 0, GumpButtonType.Reply, 0 );
-			AddHtml( 290, 440, 35, 40, "Back", false, false );
+			AddHtml( 290, 440, 35, 40, StringCatalog.ResolveByKey(null, "mob.other.back"), false, false );
 		}
 
 		public void RenderMessageManagement()
@@ -767,42 +768,42 @@ namespace Server.Mobiles
 			AddPage( 2 );
 
 			AddButton( 130, 120, 4005, 4007, 0, GumpButtonType.Page, 4 );
-			AddHtml( 170, 120, 380, 20, "Add or change a message and keyword", false, false );
+			AddHtml( 170, 120, 380, 20, StringCatalog.ResolveByKey(null, "mob.other.add_or_change_a_message_and_keyword"), false, false );
 
 			AddButton( 130, 200, 4005, 4007, 0, GumpButtonType.Page, 5 );
-			AddHtml( 170, 200, 380, 20, "Remove a message and keyword from your barkeep", false, false );
+			AddHtml( 170, 200, 380, 20, StringCatalog.ResolveByKey(null, "mob.other.remove_a_message_and_keyword_from_your_barkeep"), false, false );
 
 			AddButton( 130, 280, 4005, 4007, 0, GumpButtonType.Page, 6 );
-			AddHtml( 170, 280, 380, 20, "Add or change your barkeeper's tip message", false, false );
+			AddHtml( 170, 280, 380, 20, StringCatalog.ResolveByKey(null, "mob.other.add_or_change_your_barkeeper_s_tip_message"), false, false );
 
 			AddButton( 130, 360, 4005, 4007, 0, GumpButtonType.Page, 7 );
-			AddHtml( 170, 360, 380, 20, "Delete your barkeepers tip message", false, false );
+			AddHtml( 170, 360, 380, 20, StringCatalog.ResolveByKey(null, "mob.other.delete_your_barkeepers_tip_message"), false, false );
 
 			AddButton( 338, 437, 4014, 4016, 0, GumpButtonType.Page, 1 );
-			AddHtml( 290, 440, 35, 40, "Back", false, false );
+			AddHtml( 290, 440, 35, 40, StringCatalog.ResolveByKey(null, "mob.other.back"), false, false );
 		}
 
 		public void RenderDismissConfirmation()
 		{
 			AddPage( 3 );
 
-			AddHtml( 170, 160, 380, 20, "Are you sure you want to dismiss your barkeeper?", false, false );
+			AddHtml( 170, 160, 380, 20, StringCatalog.ResolveByKey(null, "mob.other.are_you_sure_you_want_to_dismiss_your_barkeeper"), false, false );
 
 			AddButton( 205, 280, 4005, 4007, GetButtonID( 0, 0 ), GumpButtonType.Reply, 0 );
-			AddHtml( 240, 280, 100, 20,@"Yes", false, false );
+			AddHtml( 240, 280, 100, 20,@StringCatalog.ResolveByKey(null, "mob.other.yes"), false, false );
 
 			AddButton( 395, 280, 4005, 4007, 0, GumpButtonType.Reply, 0 );
-			AddHtml( 430, 280, 100, 20, "No", false, false );
+			AddHtml( 430, 280, 100, 20, StringCatalog.ResolveByKey(null, "mob.other.no"), false, false );
 
 			AddButton( 338, 437, 4014, 4016, 0, GumpButtonType.Page, 1 );
-			AddHtml( 290, 440, 35, 40, "Back", false, false );
+			AddHtml( 290, 440, 35, 40, StringCatalog.ResolveByKey(null, "mob.other.back"), false, false );
 		}
 
 		public void RenderMessageManagement_Message_AddOrChange()
 		{
 			AddPage( 4 );
 
-			AddHtml( 250, 60, 500, 25, "Add or change a message", false, false );
+			AddHtml( 250, 60, 500, 25, StringCatalog.ResolveByKey(null, "mob.other.add_or_change_a_message"), false, false );
 
 			BarkeeperRumor[] rumors = m_Barkeeper.Rumors;
 
@@ -810,23 +811,23 @@ namespace Server.Mobiles
 			{
 				BarkeeperRumor rumor = rumors[i];
 
-				AddHtml( 100,  70 + (i * 120),  50, 20, "Message", false, false );
+				AddHtml( 100,  70 + (i * 120),  50, 20, StringCatalog.ResolveByKey(null, "mob.other.message"), false, false );
 				AddHtml( 100,  90 + (i * 120), 450, 40, rumor == null ? "No current message" : rumor.Message, true, false );
-				AddHtml( 100, 130 + (i * 120),  50, 20, "Keyword", false, false );
+				AddHtml( 100, 130 + (i * 120),  50, 20, StringCatalog.ResolveByKey(null, "mob.other.keyword"), false, false );
 				AddHtml( 100, 150 + (i * 120), 450, 40, rumor == null ? "None" : rumor.Keyword, true, false );
 
 				AddButton( 60, 90 + (i * 120), 4005, 4007, GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
 			}
 
 			AddButton( 338, 437, 4014, 4016, 0, GumpButtonType.Page, 2 );
-			AddHtml( 290, 440, 35, 40, "Back", false, false );
+			AddHtml( 290, 440, 35, 40, StringCatalog.ResolveByKey(null, "mob.other.back"), false, false );
 		}
 
 		public void RenderMessageManagement_Message_Remove()
 		{
 			AddPage( 5 );
 
-			AddHtml( 190, 60, 500, 25, "Choose the message you would like to remove", false, false );
+			AddHtml( 190, 60, 500, 25, StringCatalog.ResolveByKey(null, "mob.other.choose_the_message_you_would_like_to_remove"), false, false );
 
 			BarkeeperRumor[] rumors = m_Barkeeper.Rumors;
 
@@ -834,16 +835,16 @@ namespace Server.Mobiles
 			{
 				BarkeeperRumor rumor = rumors[i];
 
-				AddHtml( 100,  70 + (i * 120),  50, 20, "Message", false, false );
+				AddHtml( 100,  70 + (i * 120),  50, 20, StringCatalog.ResolveByKey(null, "mob.other.message"), false, false );
 				AddHtml( 100,  90 + (i * 120), 450, 40, rumor == null ? "No current message" : rumor.Message, true, false );
-				AddHtml( 100, 130 + (i * 120),  50, 20, "Keyword", false, false );
+				AddHtml( 100, 130 + (i * 120),  50, 20, StringCatalog.ResolveByKey(null, "mob.other.keyword"), false, false );
 				AddHtml( 100, 150 + (i * 120), 450, 40, rumor == null ? "None" : rumor.Keyword, true, false );
 
 				AddButton( 60, 90 + (i * 120), 4005, 4007, GetButtonID( 2, i ), GumpButtonType.Reply, 0 );
 			}
 
 			AddButton( 338, 437, 4014, 4016, 0, GumpButtonType.Page, 2 );
-			AddHtml( 290, 440, 35, 40, "Back", false, false );
+			AddHtml( 290, 440, 35, 40, StringCatalog.ResolveByKey(null, "mob.other.back"), false, false );
 		}
 
 		private int GetButtonID( int type, int index )
@@ -855,28 +856,28 @@ namespace Server.Mobiles
 		{
 			AddPage( 6 );
 
-			AddHtml( 250, 95, 500, 20, "Change this tip message", false, false );
-			AddHtml( 100, 190, 50, 20, "Message", false, false );
+			AddHtml( 250, 95, 500, 20, StringCatalog.ResolveByKey(null, "mob.other.change_this_tip_message"), false, false );
+			AddHtml( 100, 190, 50, 20, StringCatalog.ResolveByKey(null, "mob.other.message"), false, false );
 			AddHtml( 100, 210, 450, 40, m_Barkeeper.TipMessage == null ? "No current message" : m_Barkeeper.TipMessage, true, false );
 
 			AddButton( 60, 210, 4005, 4007, GetButtonID( 3, 0 ), GumpButtonType.Reply, 0 );
 
 			AddButton( 338, 437, 4014, 4016, 0, GumpButtonType.Page, 2 );
-			AddHtml( 290, 440, 35, 40, "Back", false, false );
+			AddHtml( 290, 440, 35, 40, StringCatalog.ResolveByKey(null, "mob.other.back"), false, false );
 		}
 
 		private void RenderMessageManagement_Tip_Remove()
 		{
 			AddPage( 7 );
 
-			AddHtml( 250, 95, 500, 20, "Remove this tip message", false, false );
-			AddHtml( 100, 190, 50, 20, "Message", false, false );
+			AddHtml( 250, 95, 500, 20, StringCatalog.ResolveByKey(null, "mob.other.remove_this_tip_message"), false, false );
+			AddHtml( 100, 190, 50, 20, StringCatalog.ResolveByKey(null, "mob.other.message"), false, false );
 			AddHtml( 100, 210, 450, 40, m_Barkeeper.TipMessage == null ? "No current message" : m_Barkeeper.TipMessage, true, false );
 
 			AddButton( 60, 210, 4005, 4007, GetButtonID( 4, 0 ), GumpButtonType.Reply, 0 );
 
 			AddButton( 338, 437, 4014, 4016, 0, GumpButtonType.Page, 2 );
-			AddHtml( 290, 440, 35, 40, "Back", false, false );
+			AddHtml( 290, 440, 35, 40, StringCatalog.ResolveByKey(null, "mob.other.back"), false, false );
 		}
 
 		private void RenderAppearanceCategories()
@@ -884,16 +885,16 @@ namespace Server.Mobiles
 			AddPage( 8 );
 
 			AddButton( 130, 120, 4005, 4007, GetButtonID( 5, 0 ), GumpButtonType.Reply, 0 );
-			AddHtml( 170, 120, 120, 20, "Title", false, false );
+			AddHtml( 170, 120, 120, 20, StringCatalog.ResolveByKey(null, "mob.other.title"), false, false );
 
 			AddButton( 130, 200, 4005, 4007, GetButtonID( 5, 1 ), GumpButtonType.Reply, 0 );
-			AddHtml( 170, 200, 120, 20, "Appearance", false, false );
+			AddHtml( 170, 200, 120, 20, StringCatalog.ResolveByKey(null, "mob.other.appearance"), false, false );
 
 			AddButton( 130, 280, 4005, 4007, GetButtonID( 5, 2 ), GumpButtonType.Reply, 0 );
-			AddHtml( 170, 280, 120, 20, "Male / Female", false, false );
+			AddHtml( 170, 280, 120, 20, StringCatalog.ResolveByKey(null, "mob.other.male_female"), false, false );
 
 			AddButton( 338, 437, 4014, 4016, 0, GumpButtonType.Page, 1 );
-			AddHtml( 290, 440, 35, 40, "Back", false, false );
+			AddHtml( 290, 440, 35, 40, StringCatalog.ResolveByKey(null, "mob.other.back"), false, false );
 		}
 
 		public BarkeeperGump( Mobile from, PlayerBarkeeper barkeeper ) : base( 0, 0 )

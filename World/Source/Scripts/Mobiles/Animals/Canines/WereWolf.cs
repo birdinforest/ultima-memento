@@ -4,6 +4,7 @@ using Server.Misc;
 using Server.Items;
 using System.Collections;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Mobiles 
 { 
@@ -220,8 +221,8 @@ namespace Server.Mobiles
 			switch ( Utility.Random( 6 ) )
 			{
 				case 0: Body = 23; 	BaseSoundID = 0xA3; 	Name = "a werebear"; 				Growl = "Grrrrr!";		break;
-				case 1: Body = 42; 	BaseSoundID = 437; 		Name = "a wererat";					Growl = "Squeak!";		break;
-				case 2: Body = 39; 	BaseSoundID = 422; 		Name = "a werebat";	Hue = 0x497;	Growl = "Squeak!";		break;
+				case 1: Body = 42; 	BaseSoundID = 437; 		Name = "a wererat";					Growl = StringCatalog.ResolveByKey(this.Account, "mob.other.squeak");		break;
+				case 2: Body = 39; 	BaseSoundID = 422; 		Name = "a werebat";	Hue = 0x497;	Growl = StringCatalog.ResolveByKey(this.Account, "mob.other.squeak");		break;
 				case 3: Body = 176; BaseSoundID = 0x3EE; 	Name = "a werecat"; 				Growl = "Grrrrr!";		break;
 			}
 

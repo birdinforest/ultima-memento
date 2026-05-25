@@ -1,0 +1,2614 @@
+{
+  "s.0013367760c4cc0b": {
+    "text": "All should fear ",
+    "shotkey": "mob.other.all_should_fear"
+  },
+  "s.003bf3441b21363d": {
+    "text": "Ahhh...",
+    "shotkey": "mob.other.ahhh"
+  },
+  "s.0089d86a758d80ec": {
+    "text": "Arrrggghhh...",
+    "shotkey": "mob.other.arrrggghhh"
+  },
+  "s.0090d41dd551bcf7": {
+    "text": "*sticks out tongue*",
+    "shotkey": "mob.emote.sticks_out_tongue"
+  },
+  "s.00d033cc5e56c7f0": {
+    "text": "I...am...no...more...",
+    "shotkey": "mob.other.i_am_no_more"
+  },
+  "s.00f908bc232598cc": {
+    "text": "*woohoo!*",
+    "shotkey": "mob.emote.woohoo"
+  },
+  "s.011ad8d2f883ebf2": {
+    "text": "Oft have I wished that stranger would return.",
+    "shotkey": "mob.other.oft_have_i_wished_that_stranger_would_return"
+  },
+  "s.01e655fe5c6484d5": {
+    "text": "The weeds have been removed.",
+    "shotkey": "mob.other.the_weeds_have_been_removed"
+  },
+  "s.0328b941df77fa71": {
+    "text": "I can smell your burning flesh!",
+    "shotkey": "mob.other.i_can_smell_your_burning_flesh"
+  },
+  "s.03c5339030f233b5": {
+    "text": "I hope the curses of hell fill your soul!",
+    "shotkey": "mob.other.i_hope_the_curses_of_hell_fill_your_soul"
+  },
+  "s.04447936523b4a0f": {
+    "text": "Your life ends here, ",
+    "shotkey": "mob.other.your_life_ends_here"
+  },
+  "s.047fcba817b4ae3b": {
+    "text": "Customize your barkeep",
+    "shotkey": "mob.other.customize_your_barkeep"
+  },
+  "s.06c2213321f8065d": {
+    "text": "Your life ends here!",
+    "shotkey": "mob.other.your_life_ends_here_2"
+  },
+  "s.0787fb60001b720a": {
+    "text": "Double Click To Take It",
+    "shotkey": "mob.other.double_click_to_take_it"
+  },
+  "s.07b09e88dc0b1bfb": {
+    "text": "She will finally intrude.",
+    "shotkey": "mob.other.she_will_finally_intrude"
+  },
+  "s.0941cc4369f957cb": {
+    "text": "Mondain's legacy is forever extinguished.",
+    "shotkey": "mob.other.mondain_s_legacy_is_forever_extinguished"
+  },
+  "s.0aac9a30c2a380b9": {
+    "text": "My blade is eager to sever your head!",
+    "shotkey": "mob.other.my_blade_is_eager_to_sever_your_head"
+  },
+  "s.0aeff09405290370": {
+    "text": "The fanatical wizard shall not wax near a holy site in the afternoon at the coming of luck.",
+    "shotkey": "mob.other.the_fanatical_wizard_shall_not_wax_near_a_holy_site_in"
+  },
+  "s.0ba295b837a93470": {
+    "text": "No, {0}...but that is useless to me.",
+    "shotkey": "mob.fmt.no_0_but_that_is_useless_to_me"
+  },
+  "s.0c01b8c2a302e7a9": {
+    "text": "has obtained the blackrock serpent of balance",
+    "shotkey": "mob.other.has_obtained_the_blackrock_serpent_of_balance"
+  },
+  "s.0c56a4742a5d5e53": {
+    "text": "discovered",
+    "shotkey": "mob.other.discovered"
+  },
+  "s.0c6d4745832302b4": {
+    "text": "Aid the nobility that resideth in human heart.",
+    "shotkey": "mob.other.aid_the_nobility_that_resideth_in_human_heart"
+  },
+  "s.0cbc27a8f8cb2265": {
+    "text": "You have been paralyzed by a necrotic claw!",
+    "shotkey": "mob.other.you_have_been_paralyzed_by_a_necrotic_claw"
+  },
+  "s.0d06cb90438c8084": {
+    "text": "Are you ready to give yourself to me?!",
+    "shotkey": "mob.other.are_you_ready_to_give_yourself_to_me"
+  },
+  "s.0d3a948648d480e2": {
+    "text": "You should have fled but it is too late!",
+    "shotkey": "mob.other.you_should_have_fled_but_it_is_too_late"
+  },
+  "s.0d5813b9eee5439d": {
+    "text": "Esaeu lizz gia xes zes soth!",
+    "shotkey": "mob.other.esaeu_lizz_gia_xes_zes_soth"
+  },
+  "s.0f9d9523eb38e6cf": {
+    "text": "You feel the blood draining from you!",
+    "shotkey": "mob.other.you_feel_the_blood_draining_from_you"
+  },
+  "s.0ff9097d93c1624e": {
+    "text": "The item has been cleaned.",
+    "shotkey": "mob.other.the_item_has_been_cleaned"
+  },
+  "s.106fe607a0ae6dc4": {
+    "text": "Your soul will be mine, ",
+    "shotkey": "mob.other.your_soul_will_be_mine"
+  },
+  "s.10728d9d637cd140": {
+    "text": "You have obtained the Shard of Falsehood!",
+    "shotkey": "mob.other.you_have_obtained_the_shard_of_falsehood"
+  },
+  "s.108cceda41aa4d94": {
+    "text": "{0} the vendor cannot be harmed.",
+    "shotkey": "mob.fmt.0_the_vendor_cannot_be_harmed"
+  },
+  "s.11119a8ba177c7a2": {
+    "text": "*clears throat*",
+    "shotkey": "mob.emote.clears_throat"
+  },
+  "s.113c67aaacb48435": {
+    "text": "Fool! I will take your corpse to the depths!",
+    "shotkey": "mob.other.fool_i_will_take_your_corpse_to_the_depths"
+  },
+  "s.1178c45519631e6c": {
+    "text": "What do you call a mosquito in a tin suit? A bite in shining armor.",
+    "shotkey": "mob.joke.what_do_you_call_a_mosquito_in_a_tin_suit_a_bite_in_shi"
+  },
+  "s.11868285c3d68bc4": {
+    "text": "It will never pray with the shy zealot.",
+    "shotkey": "mob.other.it_will_never_pray_with_the_shy_zealot"
+  },
+  "s.118b07739c436cee": {
+    "text": "I look forward to torturing your soul, ",
+    "shotkey": "mob.other.i_look_forward_to_torturing_your_soul"
+  },
+  "s.11ad1df24de3fa9e": {
+    "text": "I will vanquish your existence from all time!",
+    "shotkey": "mob.other.i_will_vanquish_your_existence_from_all_time"
+  },
+  "s.11cee688c2bf19ce": {
+    "text": "Fool...I am eternal!",
+    "shotkey": "mob.other.fool_i_am_eternal"
+  },
+  "s.124df46b55392f8b": {
+    "text": "A defeat will not take place in a castle on a journey.",
+    "shotkey": "mob.other.a_defeat_will_not_take_place_in_a_castle_on_a_journey"
+  },
+  "s.1280d22b2fc60132": {
+    "text": "You place the mysterious eye into the statue.",
+    "shotkey": "mob.other.you_place_the_mysterious_eye_into_the_statue"
+  },
+  "s.12b5e8e4f31843a9": {
+    "text": "If you see any creature that looks like these here, regardless of color, they can be used as mounts to travel with if tamed or purchased.",
+    "shotkey": "mob.other.if_you_see_any_creature_that_looks_like_these_here_rega"
+  },
+  "s.12f4094a8b327269": {
+    "text": "You have obtained the Blackrock Serpent of Order!",
+    "shotkey": "mob.other.you_have_obtained_the_blackrock_serpent_of_order"
+  },
+  "s.1336221d31b4f291": {
+    "text": "Defensively Dispelled",
+    "shotkey": "mob.other.defensively_dispelled"
+  },
+  "s.143c705db5377317": {
+    "text": "* The creature has been beaten into subjugation! *",
+    "shotkey": "mob.emote.the_creature_has_been_beaten_into_subjugation"
+  },
+  "s.14ef00ef06497234": {
+    "text": "The order was Love, Sol, Moon, and Death.",
+    "shotkey": "mob.other.the_order_was_love_sol_moon_and_death"
+  },
+  "s.15845dea5eb76669": {
+    "text": "No...this cannot be how it ends!",
+    "shotkey": "mob.other.no_this_cannot_be_how_it_ends"
+  },
+  "s.15be78f55a3e82d5": {
+    "text": "I feel this quest is a dead end and may leave soon.",
+    "shotkey": "mob.other.i_feel_this_quest_is_a_dead_end_and_may_leave_soon"
+  },
+  "s.1635d78abd6de17f": {
+    "text": "Male / Female",
+    "shotkey": "mob.other.male_female"
+  },
+  "s.164b42679570c922": {
+    "text": "{0} {1} cannot be harmed.",
+    "shotkey": "mob.fmt.0_1_cannot_be_harmed"
+  },
+  "s.16e17955e62f9acd": {
+    "text": "You will kneel before the Syth!",
+    "shotkey": "mob.other.you_will_kneel_before_the_syth"
+  },
+  "s.16f2c84e9ea4413e": {
+    "text": "has obtained the shard of hatred",
+    "shotkey": "mob.other.has_obtained_the_shard_of_hatred"
+  },
+  "s.17b79c8600c0df06": {
+    "text": "One day you will be taken by the sea, ",
+    "shotkey": "mob.other.one_day_you_will_be_taken_by_the_sea"
+  },
+  "s.17dca99c440fc7bc": {
+    "text": "I hope the blood of the sea drowns you!",
+    "shotkey": "mob.other.i_hope_the_blood_of_the_sea_drowns_you"
+  },
+  "s.183cb4d75ad3175d": {
+    "text": "Your riches will soon be mine!",
+    "shotkey": "mob.other.your_riches_will_soon_be_mine"
+  },
+  "s.184ae2eb7774c687": {
+    "text": "No, how can this be?!",
+    "shotkey": "mob.other.no_how_can_this_be"
+  },
+  "s.191f19b1ec86e12a": {
+    "text": "You said there were riches, but I don't see it.",
+    "shotkey": "mob.other.you_said_there_were_riches_but_i_don_t_see_it"
+  },
+  "s.1a4c05702e078d05": {
+    "text": "You remove the giant's fresh brain.",
+    "shotkey": "mob.other.you_remove_the_giant_s_fresh_brain"
+  },
+  "s.1a53c7dd8837550e": {
+    "text": "Me no feel good!",
+    "shotkey": "mob.other.me_no_feel_good"
+  },
+  "s.1b96abe06d15cc9b": {
+    "text": "Your pet {0} has gained {1} experience!",
+    "shotkey": "mob.fmt.your_pet_0_has_gained_1_experience"
+  },
+  "s.1baa9a3270965ce8": {
+    "text": "No...How can this be?!",
+    "shotkey": "mob.other.no_how_can_this_be_2"
+  },
+  "s.1c09c99ce503afca": {
+    "text": "We have been told to watch for you, ",
+    "shotkey": "mob.other.we_have_been_told_to_watch_for_you"
+  },
+  "s.1c15af6f7429de34": {
+    "text": "Where are we off to?",
+    "shotkey": "mob.other.where_are_we_off_to"
+  },
+  "s.1c3c4f6e5de12ae4": {
+    "text": "sells food and drink",
+    "shotkey": "mob.other.sells_food_and_drink"
+  },
+  "s.1cdf8e1a08c35f44": {
+    "text": "Why did Arthur have a round table? So no one could corner him!",
+    "shotkey": "mob.joke.why_did_arthur_have_a_round_table_so_no_one_could_corne"
+  },
+  "s.1cf6e953176d965d": {
+    "text": "She will finally famish and a recovery will not happen near a well during a rainstorm.",
+    "shotkey": "mob.other.she_will_finally_famish_and_a_recovery_will_not_happen"
+  },
+  "s.1d44b6961c4c8ed0": {
+    "text": "You cannot give away an elemental.",
+    "shotkey": "mob.other.you_cannot_give_away_an_elemental"
+  },
+  "s.1ea442a134b2a184": {
+    "text": "No",
+    "shotkey": "mob.other.no"
+  },
+  "s.1ebb74c679c8a7e7": {
+    "text": "You cannot mount that while you are in this place.",
+    "shotkey": "mob.other.you_cannot_mount_that_while_you_are_in_this_place"
+  },
+  "s.1ed353812ee46d7e": {
+    "text": "Here is a note citizen. Be on the lookout.",
+    "shotkey": "mob.other.here_is_a_note_citizen_be_on_the_lookout"
+  },
+  "s.1f9be30ece895f88": {
+    "text": "He shall fence with the black countess near a portal.",
+    "shotkey": "mob.other.he_shall_fence_with_the_black_countess_near_a_portal"
+  },
+  "s.1fd2cc9180d4ab60": {
+    "text": "I will leave soon if we don't find treasure.",
+    "shotkey": "mob.other.i_will_leave_soon_if_we_don_t_find_treasure"
+  },
+  "s.20b3cfbeaa7b203c": {
+    "text": "You carve away some wood and they are on the corpse.",
+    "shotkey": "mob.other.you_carve_away_some_wood_and_they_are_on_the_corpse"
+  },
+  "s.2183dbb01216a8c7": {
+    "text": "The arrogant rogue must not comply with the indigo robber at the coming of joy.",
+    "shotkey": "mob.other.the_arrogant_rogue_must_not_comply_with_the_indigo_robb"
+  },
+  "s.22920a83160f0015": {
+    "text": "No...you cannot have light without dark!",
+    "shotkey": "mob.other.no_you_cannot_have_light_without_dark"
+  },
+  "s.22b73c67516bc539": {
+    "text": "No one will find the bones of ",
+    "shotkey": "mob.other.no_one_will_find_the_bones_of"
+  },
+  "s.23429bd9ba98dd51": {
+    "text": "Hello, ",
+    "shotkey": "mob.other.hello"
+  },
+  "s.235eb164538f7d0d": {
+    "text": "Die villian!",
+    "shotkey": "mob.other.die_villian"
+  },
+  "s.243187e84da322df": {
+    "text": "Suddenly the shutters blew open and Lord British fell to the ground, one hand shielding his eyes.",
+    "shotkey": "mob.other.suddenly_the_shutters_blew_open_and_lord_british_fell_t"
+  },
+  "s.247ed2ffc9278cd9": {
+    "text": "The mummy ruined your bandages!",
+    "shotkey": "mob.other.the_mummy_ruined_your_bandages"
+  },
+  "s.255a67ace5808003": {
+    "text": "BardsTaleWin",
+    "shotkey": "mob.other.bardstalewin"
+  },
+  "s.25914ab8e150b3f6": {
+    "text": "You need to learn to parry",
+    "shotkey": "mob.other.you_need_to_learn_to_parry"
+  },
+  "s.25a120aafa5d1495": {
+    "text": "You scurvy dog, do you think you can best me?!",
+    "shotkey": "mob.other.you_scurvy_dog_do_you_think_you_can_best_me"
+  },
+  "s.25f15d6703eec857": {
+    "text": "Your soul will soon be one with the deep!",
+    "shotkey": "mob.other.your_soul_will_soon_be_one_with_the_deep"
+  },
+  "s.2607e28b446a32d9": {
+    "text": "I...uh...uhhhhh...",
+    "shotkey": "mob.other.i_uh_uhhhhh"
+  },
+  "s.266af10beb98d8dd": {
+    "text": "To be whole again, I must destroy you!",
+    "shotkey": "mob.other.to_be_whole_again_i_must_destroy_you"
+  },
+  "s.27485c5d209230ad": {
+    "text": "Feel the strength of the sea!",
+    "shotkey": "mob.other.feel_the_strength_of_the_sea"
+  },
+  "s.282d0ca2001574c9": {
+    "text": "Chuckles gave you one of his suits!",
+    "shotkey": "mob.other.chuckles_gave_you_one_of_his_suits"
+  },
+  "s.28a5d341e05a59b4": {
+    "text": "Hail, Z~Z~Z~Z~Z.",
+    "shotkey": "mob.other.hail_z_z_z_z_z"
+  },
+  "s.291a18062b830c5f": {
+    "text": "The strings of time show the Guardian is coming.",
+    "shotkey": "mob.other.the_strings_of_time_show_the_guardian_is_coming"
+  },
+  "s.29f8975ea39da9a3": {
+    "text": "The word to the dark mage depths is 'bravoka'.",
+    "shotkey": "mob.other.the_word_to_the_dark_mage_depths_is_bravoka"
+  },
+  "s.2a4fd3fa8cf8f055": {
+    "text": "You puny ",
+    "shotkey": "mob.other.you_puny"
+  },
+  "s.2ab5b4f84ead336c": {
+    "text": "The greedy artist shall lace and the garnet general must not compose.",
+    "shotkey": "mob.other.the_greedy_artist_shall_lace_and_the_garnet_general_mus"
+  },
+  "s.2af37eccdb7afbbf": {
+    "text": "Hmmm...maybe show me that you could handle such tasks first.",
+    "shotkey": "mob.other.hmmm_maybe_show_me_that_you_could_handle_such_tasks_fir"
+  },
+  "s.2b11600b12016671": {
+    "text": "My power is eternal!",
+    "shotkey": "mob.other.my_power_is_eternal"
+  },
+  "s.2b92b22ff2fd3817": {
+    "text": "You are nothing but an insect to me!",
+    "shotkey": "mob.other.you_are_nothing_but_an_insect_to_me"
+  },
+  "s.2c596299b940b08f": {
+    "text": "I smash you to pulp!",
+    "shotkey": "mob.other.i_smash_you_to_pulp"
+  },
+  "s.2c71cb0fdc5c59b5": {
+    "text": "You look like you need soe healing dark one.",
+    "shotkey": "mob.other.you_look_like_you_need_soe_healing_dark_one"
+  },
+  "s.2c9475ee380276e6": {
+    "text": "Do you think you can slay one such as me?!",
+    "shotkey": "mob.other.do_you_think_you_can_slay_one_such_as_me"
+  },
+  "s.2cdd7a5326949a7d": {
+    "text": "Another ale over here!",
+    "shotkey": "mob.other.another_ale_over_here"
+  },
+  "s.2d56e61548987c32": {
+    "text": "You cut away some furs and they are on the corpse.",
+    "shotkey": "mob.other.you_cut_away_some_furs_and_they_are_on_the_corpse"
+  },
+  "s.2d5c83fc6f88e1dd": {
+    "text": "has subdued the serpent of order",
+    "shotkey": "mob.other.has_subdued_the_serpent_of_order"
+  },
+  "s.2d5e8b40a728cdea": {
+    "text": "No...",
+    "shotkey": "mob.other.no_2"
+  },
+  "s.2ec5eab06d86a543": {
+    "text": "What dungeon do we dare explore?",
+    "shotkey": "mob.other.what_dungeon_do_we_dare_explore"
+  },
+  "s.2f2daea6703d6917": {
+    "text": "A meeting must happen with the malicious cook.",
+    "shotkey": "mob.other.a_meeting_must_happen_with_the_malicious_cook"
+  },
+  "s.2f6fdef6da55ebe4": {
+    "text": "Me will be eating your ",
+    "shotkey": "mob.other.me_will_be_eating_your"
+  },
+  "s.2f77668a9dfbf8d5": {
+    "text": "Message",
+    "shotkey": "mob.other.message"
+  },
+  "s.2f950474ad1ed342": {
+    "text": "mob.fmt.0_needs_at_least_5_000_gold_to_construct_the_item_for_y",
+    "shotkey": null
+  },
+  "s.3013a711cf51e5f6": {
+    "text": "I failed you my master...",
+    "shotkey": "mob.other.i_failed_you_my_master"
+  },
+  "s.308b597df1def73b": {
+    "text": "The clever hamster will trespass with the saffron youth in a castle when the first flowers bloom.",
+    "shotkey": "mob.other.the_clever_hamster_will_trespass_with_the_saffron_youth"
+  },
+  "s.30d09ad3ff3b8f3c": {
+    "text": "The fearless trader shall not look with the violet druid.",
+    "shotkey": "mob.other.the_fearless_trader_shall_not_look_with_the_violet_drui"
+  },
+  "s.31bbee7afea3b3f7": {
+    "text": "*blinks a greed eye*",
+    "shotkey": "mob.emote.blinks_a_greed_eye"
+  },
+  "s.31ee250f67d885a1": {
+    "text": "I fought scallywags better than you!",
+    "shotkey": "mob.other.i_fought_scallywags_better_than_you"
+  },
+  "s.31f5c4143e352f95": {
+    "text": "TitanLithos",
+    "shotkey": "mob.other.titanlithos"
+  },
+  "s.3250e736e488d71e": {
+    "text": "I sense a spirt of an animal...somewhere.",
+    "shotkey": "mob.other.i_sense_a_spirt_of_an_animal_somewhere"
+  },
+  "s.32cefdcc2e305283": {
+    "text": "So, {0}? Your evil ends here!",
+    "shotkey": "mob.fmt.so_0_your_evil_ends_here"
+  },
+  "s.33637e89d55b4fd7": {
+    "text": "I cannot identify that.",
+    "shotkey": "mob.other.i_cannot_identify_that"
+  },
+  "s.337045581d15adf3": {
+    "text": "What did the toad say when the princess would not kiss him? Warts the matter with you?",
+    "shotkey": "mob.joke.what_did_the_toad_say_when_the_princess_would_not_kiss"
+  },
+  "s.3398d8c9a040e784": {
+    "text": "The remorseless muse will fraternize at the bridge.",
+    "shotkey": "mob.other.the_remorseless_muse_will_fraternize_at_the_bridge"
+  },
+  "s.33b42ce7b9a43e44": {
+    "text": "Your pet has decreased in level!",
+    "shotkey": "mob.other.your_pet_has_decreased_in_level"
+  },
+  "s.33c6b5ba1ab0a82f": {
+    "text": "You will make me young again, ",
+    "shotkey": "mob.other.you_will_make_me_young_again"
+  },
+  "s.33cc096870cddc27": {
+    "text": "Squeak!",
+    "shotkey": "mob.other.squeak"
+  },
+  "s.3454ff399a3e5fe2": {
+    "text": "Feel the wrath of the storm!",
+    "shotkey": "mob.other.feel_the_wrath_of_the_storm"
+  },
+  "s.35798a9d96fbe5ee": {
+    "text": "The frost of death will find you!",
+    "shotkey": "mob.other.the_frost_of_death_will_find_you"
+  },
+  "s.359d5caf6941fa6d": {
+    "text": "Do you think you can best me?!",
+    "shotkey": "mob.other.do_you_think_you_can_best_me"
+  },
+  "s.35f8811ba15d9c91": {
+    "text": "By what thunder is this?",
+    "shotkey": "mob.other.by_what_thunder_is_this"
+  },
+  "s.3617d338d7f73f37": {
+    "text": "By magma's might, how...",
+    "shotkey": "mob.other.by_magma_s_might_how"
+  },
+  "s.361a8e318ebe8555": {
+    "text": "How...did...you...",
+    "shotkey": "mob.other.how_did_you"
+  },
+  "s.372dfb3eb60607cf": {
+    "text": "So, {0}? I sentence you to death!",
+    "shotkey": "mob.fmt.so_0_i_sentence_you_to_death"
+  },
+  "s.37c6bdfeeb11244b": {
+    "text": "TitanPyros",
+    "shotkey": "mob.other.titanpyros"
+  },
+  "s.3907fa7f80722a6f": {
+    "text": "Appearance",
+    "shotkey": "mob.other.appearance"
+  },
+  "s.39140fe8e529773f": {
+    "text": "What do you call an angry princess just awakened from a long sleep? Slapping beauty!",
+    "shotkey": "mob.joke.what_do_you_call_an_angry_princess_just_awakened_from_a"
+  },
+  "s.393111f766ccde45": {
+    "text": "You should leave before I crush you!",
+    "shotkey": "mob.other.you_should_leave_before_i_crush_you"
+  },
+  "s.396a5237418db47b": {
+    "text": "They will not weave near an altar.",
+    "shotkey": "mob.other.they_will_not_weave_near_an_altar"
+  },
+  "s.3a710411a57c1d10": {
+    "text": "I have destroyed armies of things like you!",
+    "shotkey": "mob.other.i_have_destroyed_armies_of_things_like_you"
+  },
+  "s.3bbfa416d7928975": {
+    "text": "*cough*",
+    "shotkey": "mob.emote.cough"
+  },
+  "s.3bd7d803de97f0a2": {
+    "text": "I unleash the storms on you!",
+    "shotkey": "mob.other.i_unleash_the_storms_on_you"
+  },
+  "s.3bf44d43fe865619": {
+    "text": "Chuckles gave you one of his hats!",
+    "shotkey": "mob.other.chuckles_gave_you_one_of_his_hats"
+  },
+  "s.3c27c4704ac535c1": {
+    "text": "I'll pass on the message.",
+    "shotkey": "mob.other.i_ll_pass_on_the_message"
+  },
+  "s.3d583920935d52d1": {
+    "text": "You will soon be one with the glow!",
+    "shotkey": "mob.other.you_will_soon_be_one_with_the_glow"
+  },
+  "s.3dbcd64ef8b0eb7a": {
+    "text": "My cold heart will come for you, ",
+    "shotkey": "mob.other.my_cold_heart_will_come_for_you"
+  },
+  "s.3e587b0e7f5c4831": {
+    "text": "I will swallow you whole, ",
+    "shotkey": "mob.other.i_will_swallow_you_whole"
+  },
+  "s.3e6ccb13d9718ab2": {
+    "text": "Me will be feasting on your bones soon!",
+    "shotkey": "mob.other.me_will_be_feasting_on_your_bones_soon"
+  },
+  "s.3ea95ff542f357d7": {
+    "text": "I will return...",
+    "shotkey": "mob.other.i_will_return"
+  },
+  "s.3ef25c63da1ba7eb": {
+    "text": "Dispel prevented (Magery)",
+    "shotkey": "mob.other.dispel_prevented_magery"
+  },
+  "s.3f602b9eb5148183": {
+    "text": "A financial difficulty will never take place or the clumsy zombie will finally weep at midnight.",
+    "shotkey": "mob.other.a_financial_difficulty_will_never_take_place_or_the_clu"
+  },
+  "s.4141ae1d456886bf": {
+    "text": "You already have the onyx key. Use it to enter Mangar's tower.",
+    "shotkey": "mob.other.you_already_have_the_onyx_key_use_it_to_enter_mangar_s"
+  },
+  "s.418211926c542906": {
+    "text": "Your evil will be vanquished!",
+    "shotkey": "mob.other.your_evil_will_be_vanquished"
+  },
+  "s.4229f908d90945b6": {
+    "text": "The Syth will be the last thing you see, ",
+    "shotkey": "mob.other.the_syth_will_be_the_last_thing_you_see"
+  },
+  "s.423240d76da9104d": {
+    "text": "More Job Titles",
+    "shotkey": "mob.other.more_job_titles"
+  },
+  "s.429d002e3caa666e": {
+    "text": "Your life only feeds my own!",
+    "shotkey": "mob.other.your_life_only_feeds_my_own"
+  },
+  "s.42bedbd1202b2a8d": {
+    "text": "You...will...die...in...this...fight!",
+    "shotkey": "mob.other.you_will_die_in_this_fight"
+  },
+  "s.42eadf493cef38c7": {
+    "text": "A gate is open nearby. You better hurry or you will remain trapped here.",
+    "shotkey": "mob.other.a_gate_is_open_nearby_you_better_hurry_or_you_will_rema"
+  },
+  "s.432a76397e5fda51": {
+    "text": "No...I am eternal!",
+    "shotkey": "mob.other.no_i_am_eternal"
+  },
+  "s.437447ad4f1f90da": {
+    "text": "Your friend {0}'s pet {1} has died!",
+    "shotkey": "mob.fmt.your_friend_0_s_pet_1_has_died"
+  },
+  "s.43b791ccc067550a": {
+    "text": "Greetings, Z~Z~Z~Z~Z.",
+    "shotkey": "mob.other.greetings_z_z_z_z_z"
+  },
+  "s.4436e9d90a415602": {
+    "text": "The pet may not be transferred to you because it has recently been in combat.",
+    "shotkey": "mob.other.the_pet_may_not_be_transferred_to_you_because_it_has_re"
+  },
+  "s.447febb75f17a47b": {
+    "text": "No! It is your soul I will take!",
+    "shotkey": "mob.other.no_it_is_your_soul_i_will_take"
+  },
+  "s.451bc9819b122955": {
+    "text": "You weak, me strong!",
+    "shotkey": "mob.other.you_weak_me_strong"
+  },
+  "s.466a9486e54d4590": {
+    "text": "I...will...dispatch...of...you!",
+    "shotkey": "mob.other.i_will_dispatch_of_you"
+  },
+  "s.466facc930e84e7f": {
+    "text": "After this, I will buy you some ",
+    "shotkey": "mob.other.after_this_i_will_buy_you_some"
+  },
+  "s.4718478fc3b6afd9": {
+    "text": "You are hit by the force of the mighty roar!",
+    "shotkey": "mob.other.you_are_hit_by_the_force_of_the_mighty_roar"
+  },
+  "s.475a78d6080943e8": {
+    "text": "One of your items was carried into the wind!",
+    "shotkey": "mob.other.one_of_your_items_was_carried_into_the_wind"
+  },
+  "s.47aeb04b7200fb3d": {
+    "text": "Where did you study to fight like that",
+    "shotkey": "mob.other.where_did_you_study_to_fight_like_that"
+  },
+  "s.47c90c33eab903d9": {
+    "text": "You separate the boards into your backpack",
+    "shotkey": "mob.other.you_separate_the_boards_into_your_backpack"
+  },
+  "s.481dd2cb9e546da8": {
+    "text": "You separate the ingots into your backpack",
+    "shotkey": "mob.other.you_separate_the_ingots_into_your_backpack"
+  },
+  "s.487d96d662c12d7a": {
+    "text": "Curse you, ",
+    "shotkey": "mob.other.curse_you"
+  },
+  "s.48c8db355e44e986": {
+    "text": "I have been waiting here too long.",
+    "shotkey": "mob.other.i_have_been_waiting_here_too_long"
+  },
+  "s.48d5424b2559e8bb": {
+    "text": "Groo Grar Gro Gratch Gror Gre!",
+    "shotkey": "mob.other.groo_grar_gro_gratch_gror_gre"
+  },
+  "s.494834fe9e24a282": {
+    "text": "Do you feel the power of hell on you?!",
+    "shotkey": "mob.other.do_you_feel_the_power_of_hell_on_you"
+  },
+  "s.495b8e5de059dce3": {
+    "text": "BARKEEP CUSTOMIZATION MENU",
+    "shotkey": "mob.other.barkeep_customization_menu"
+  },
+  "s.4a093e1ed3ed339c": {
+    "text": "Who invented King Arthur's round table? Sir Cumference!",
+    "shotkey": "mob.other.who_invented_king_arthur_s_round_table_sir_cumference"
+  },
+  "s.4a8784492cbae380": {
+    "text": "What do you call the young royal who keeps falling down? Prince Harming!",
+    "shotkey": "mob.joke.what_do_you_call_the_young_royal_who_keeps_falling_down"
+  },
+  "s.4af3523f4de26a4c": {
+    "text": "This is a statue of Tarjan, who lies dead nearby.",
+    "shotkey": "mob.other.this_is_a_statue_of_tarjan_who_lies_dead_nearby"
+  },
+  "s.4b84fca6109b7304": {
+    "text": "She is too far away from you.",
+    "shotkey": "mob.other.she_is_too_far_away_from_you"
+  },
+  "s.4b941eca79d94d8b": {
+    "text": "We have been told to watch for {0}!",
+    "shotkey": "mob.fmt.we_have_been_told_to_watch_for_0"
+  },
+  "s.4bc2f19cf0d3a5dc": {
+    "text": "I will come for you, ",
+    "shotkey": "mob.other.i_will_come_for_you"
+  },
+  "s.4c92b006225ed88b": {
+    "text": "The timeline has been restored, after the wrath of Minax.",
+    "shotkey": "mob.other.the_timeline_has_been_restored_after_the_wrath_of_minax"
+  },
+  "s.4c9e93bfeca2614a": {
+    "text": "I cannot accept so large a tip!",
+    "shotkey": "mob.other.i_cannot_accept_so_large_a_tip"
+  },
+  "s.4cbbd7a04a8f472f": {
+    "text": "*sniff*",
+    "shotkey": "mob.emote.sniff"
+  },
+  "s.4cd32aa4b9cdb660": {
+    "text": "The pet may not be transfered to you because it has recently been in combat.",
+    "shotkey": "mob.other.the_pet_may_not_be_transfered_to_you_because_it_has_rec"
+  },
+  "s.4d118acea5baac6f": {
+    "text": "How...can...this...be...",
+    "shotkey": "mob.other.how_can_this_be"
+  },
+  "s.4d468a9b562a79f3": {
+    "text": "I will send you to hell!",
+    "shotkey": "mob.other.i_will_send_you_to_hell"
+  },
+  "s.4d567050471a04b8": {
+    "text": "What do you do with a green dragon? Wait until it ripens!",
+    "shotkey": "mob.joke.what_do_you_do_with_a_green_dragon_wait_until_it_ripens"
+  },
+  "s.4d5be91b56ed4705": {
+    "text": "The Candle of Love has vanished after dispatching the Shadowlord.",
+    "shotkey": "mob.other.the_candle_of_love_has_vanished_after_dispatching_the_s"
+  },
+  "s.4dc46efa038db198": {
+    "text": "You cannot defeat the power of gods...",
+    "shotkey": "mob.other.you_cannot_defeat_the_power_of_gods"
+  },
+  "s.4dcb71f5bfeb57f6": {
+    "text": "No!",
+    "shotkey": "mob.other.no_3"
+  },
+  "s.4ddcbd5df131499f": {
+    "text": "The balron almost rusted one of your protected items!",
+    "shotkey": "mob.other.the_balron_almost_rusted_one_of_your_protected_items"
+  },
+  "s.4e0c87f44ca6e09f": {
+    "text": "No one desecrates the temple of the bomb!",
+    "shotkey": "mob.other.no_one_desecrates_the_temple_of_the_bomb"
+  },
+  "s.4e4b6c5a03bbbca0": {
+    "text": "willing to sell",
+    "shotkey": "mob.other.willing_to_sell"
+  },
+  "s.4e9b7fe02836ce26": {
+    "text": "Fool...you cannot survive the flames!",
+    "shotkey": "mob.other.fool_you_cannot_survive_the_flames"
+  },
+  "s.4f93ecd1ddd51dd2": {
+    "text": "an enchanted item",
+    "shotkey": "mob.other.an_enchanted_item"
+  },
+  "s.4f9879c865cfdfb0": {
+    "text": "You will need to be quicker than that",
+    "shotkey": "mob.other.you_will_need_to_be_quicker_than_that"
+  },
+  "s.5123339a3f084f7c": {
+    "text": "The rune doesn't seem to budge.",
+    "shotkey": "mob.other.the_rune_doesn_t_seem_to_budge"
+  },
+  "s.512cac51a3e5b22b": {
+    "text": "I will have to leave soon if we don't find some treasure.",
+    "shotkey": "mob.other.i_will_have_to_leave_soon_if_we_don_t_find_some_treasur"
+  },
+  "s.5165167f873b4b73": {
+    "text": "Oooh.",
+    "shotkey": "mob.other.oooh"
+  },
+  "s.51a6754dfefeaa50": {
+    "text": "You found a mysterious eye and a key with a dragon symbol on it.",
+    "shotkey": "mob.other.you_found_a_mysterious_eye_and_a_key_with_a_dragon_symb"
+  },
+  "s.51e2e72e68df6631": {
+    "text": "I will leave your corpse as ashes!",
+    "shotkey": "mob.other.i_will_leave_your_corpse_as_ashes"
+  },
+  "s.52291cd265ddd953": {
+    "text": "{0} I have {1} I {2} on the remains of some {3} that I am {4} for {5} gold.",
+    "shotkey": "mob.fmt.0_i_have_1_i_2_on_the_remains_of_some_3_that_i_am_4_for"
+  },
+  "s.52bc185b8d4447da": {
+    "text": "a magic item",
+    "shotkey": "mob.other.a_magic_item"
+  },
+  "s.5308e95a0e608bc0": {
+    "text": "A reversal of fortune shall not happen and a fall shall not occur in the spring for the sake of lust.",
+    "shotkey": "mob.other.a_reversal_of_fortune_shall_not_happen_and_a_fall_shall"
+  },
+  "s.530e74f706353c8a": {
+    "text": "The music is hypnotic, making you remove your worn items.",
+    "shotkey": "mob.other.the_music_is_hypnotic_making_you_remove_your_worn_items"
+  },
+  "s.5476e57a327e214d": {
+    "text": "I lizz raeq chq esaeu xaed za!",
+    "shotkey": "mob.other.i_lizz_raeq_chq_esaeu_xaed_za"
+  },
+  "s.54a098f7c6974b36": {
+    "text": "No...you will never get the ore!",
+    "shotkey": "mob.other.no_you_will_never_get_the_ore"
+  },
+  "s.5503e7ce6ac89b86": {
+    "text": "I can feel the darkness filling you!",
+    "shotkey": "mob.other.i_can_feel_the_darkness_filling_you"
+  },
+  "s.550bf90d7dec023c": {
+    "text": "The lazy juggler will finally enquire and a loss shall not occur.",
+    "shotkey": "mob.other.the_lazy_juggler_will_finally_enquire_and_a_loss_shall"
+  },
+  "s.55348ac058752ad3": {
+    "text": "All that have come here have perished!",
+    "shotkey": "mob.other.all_that_have_come_here_have_perished"
+  },
+  "s.5596630b18983bbf": {
+    "text": "Only grandmaster warriors may ride this warhorse.",
+    "shotkey": "mob.other.only_grandmaster_warriors_may_ride_this_warhorse"
+  },
+  "s.559f78467ec46ecc": {
+    "text": "Some day your blood will fill these halls, ",
+    "shotkey": "mob.other.some_day_your_blood_will_fill_these_halls"
+  },
+  "s.55c3e5daec20a64d": {
+    "text": "Huh?",
+    "shotkey": "mob.other.huh"
+  },
+  "s.5618ee2b376b21cd": {
+    "text": "This will be your final battle, ",
+    "shotkey": "mob.other.this_will_be_your_final_battle"
+  },
+  "s.562ed0dfbf1d5893": {
+    "text": "Ahhhh!",
+    "shotkey": "mob.other.ahhhh"
+  },
+  "s.56489ee494e01a73": {
+    "text": "Add or change a message and keyword",
+    "shotkey": "mob.other.add_or_change_a_message_and_keyword"
+  },
+  "s.56723edcd935d476": {
+    "text": "Oh!",
+    "shotkey": "mob.other.oh"
+  },
+  "s.567e0cbe2c3fc372": {
+    "text": "Many have come here and all have perished!",
+    "shotkey": "mob.other.many_have_come_here_and_all_have_perished"
+  },
+  "s.58779048745a0387": {
+    "text": "Dispel chance increased (Slayer)",
+    "shotkey": "mob.other.dispel_chance_increased_slayer"
+  },
+  "s.58ccab8f8c68f8f4": {
+    "text": "My diligence will be your ultimate doom!",
+    "shotkey": "mob.other.my_diligence_will_be_your_ultimate_doom"
+  },
+  "s.591d6100d7b21b60": {
+    "text": "Dnadona qae gia, ",
+    "shotkey": "mob.other.dnadona_qae_gia"
+  },
+  "s.592034ca0c0d20c5": {
+    "text": "I will take you from the light!",
+    "shotkey": "mob.other.i_will_take_you_from_the_light"
+  },
+  "s.5a15a3f5468115ad": {
+    "text": "Although some speak of virtue, it is the serpents of order who keep the balance.",
+    "shotkey": "mob.other.although_some_speak_of_virtue_it_is_the_serpents_of_ord"
+  },
+  "s.5ac3687f44e7af3a": {
+    "text": "I have no business with you.",
+    "shotkey": "mob.other.i_have_no_business_with_you"
+  },
+  "s.5b13bcbd5c83a9e5": {
+    "text": "My magic is eternal!",
+    "shotkey": "mob.other.my_magic_is_eternal"
+  },
+  "s.5b2e35dd2d06b249": {
+    "text": "The dragon rusted one of your equipped items!",
+    "shotkey": "mob.other.the_dragon_rusted_one_of_your_equipped_items"
+  },
+  "s.5ba50a28791eb34a": {
+    "text": "Rae...sael yor yiz xa?",
+    "shotkey": "mob.other.rae_sael_yor_yiz_xa"
+  },
+  "s.5bf13c4a72df3188": {
+    "text": "You will soon will rot below the waves!",
+    "shotkey": "mob.other.you_will_soon_will_rot_below_the_waves"
+  },
+  "s.5c778e2e833ab3ea": {
+    "text": "You will need to be more graceful than that",
+    "shotkey": "mob.other.you_will_need_to_be_more_graceful_than_that"
+  },
+  "s.5cbcc3a63fe5121d": {
+    "text": "Groo Grite Grood!",
+    "shotkey": "mob.other.groo_grite_grood"
+  },
+  "s.5cd4036df469d04c": {
+    "text": "Let this be your final battle!",
+    "shotkey": "mob.other.let_this_be_your_final_battle"
+  },
+  "s.5d17d131715c9493": {
+    "text": "What did the dragon say when it saw the Knight? 'Not more tinned food!'",
+    "shotkey": "mob.joke.what_did_the_dragon_say_when_it_saw_the_knight_not_more"
+  },
+  "s.5db3bd48d03757ad": {
+    "text": "Kneel before me you puny creature!",
+    "shotkey": "mob.other.kneel_before_me_you_puny_creature"
+  },
+  "s.5e36815dcc97f0de": {
+    "text": "Me hit, you die!",
+    "shotkey": "mob.other.me_hit_you_die"
+  },
+  "s.5f0a459b3acb4622": {
+    "text": "You...fight...good...",
+    "shotkey": "mob.other.you_fight_good"
+  },
+  "s.5f8c354aead04d4e": {
+    "text": "Dispel prevented (Mana)",
+    "shotkey": "mob.other.dispel_prevented_mana"
+  },
+  "s.60714dfdba551163": {
+    "text": "What did the fish say to the other when the horse fell in the moat? See horse!",
+    "shotkey": "mob.joke.what_did_the_fish_say_to_the_other_when_the_horse_fell"
+  },
+  "s.60905b4e366e6687": {
+    "text": "The dragon changed its bone structure.",
+    "shotkey": "mob.other.the_dragon_changed_its_bone_structure"
+  },
+  "s.60c1daf71c4d7630": {
+    "text": "This lack of treasure is not what I came along for.",
+    "shotkey": "mob.other.this_lack_of_treasure_is_not_what_i_came_along_for"
+  },
+  "s.60d0efefe2ac8aca": {
+    "text": "You sever off the giant's head.",
+    "shotkey": "mob.other.you_sever_off_the_giant_s_head"
+  },
+  "s.610f0581c6a362b4": {
+    "text": "Dispel prevented (Failed)",
+    "shotkey": "mob.other.dispel_prevented_failed"
+  },
+  "s.614b68a46fc59b08": {
+    "text": "She will finally gutter in a market before it is too late.",
+    "shotkey": "mob.other.she_will_finally_gutter_in_a_market_before_it_is_too_la"
+  },
+  "s.616d4a81244d32d7": {
+    "text": " You can look in my backpack to examine the item if you wish. If you want to trade, then hand me the gold and I will give you the item.",
+    "shotkey": "mob.other.you_can_look_in_my_backpack_to_examine_the_item_if_you"
+  },
+  "s.621f2a200741e794": {
+    "text": "Thank you. You can now try to rent a room.",
+    "shotkey": "mob.other.thank_you_you_can_now_try_to_rent_a_room"
+  },
+  "s.629fb52734cc4d74": {
+    "text": "No...I cannot return to hell!",
+    "shotkey": "mob.other.no_i_cannot_return_to_hell"
+  },
+  "s.6379b6de64a1fb89": {
+    "text": "{0} I have {1} I {2} on some {3} in {4} that I am {5} for {6} gold.",
+    "shotkey": "mob.fmt.0_i_have_1_i_2_on_some_3_in_4_that_i_am_5_for_6_gold"
+  },
+  "s.63ecd9217aa08515": {
+    "text": "*blows nose*",
+    "shotkey": "mob.emote.blows_nose"
+  },
+  "s.65db141f1fd5b204": {
+    "text": "*burp*",
+    "shotkey": "mob.emote.burp"
+  },
+  "s.66a67c45b468c897": {
+    "text": "Is that all you got?",
+    "shotkey": "mob.other.is_that_all_you_got"
+  },
+  "s.66db9577830030c3": {
+    "text": "Sorry, {0}...but my bag is full.",
+    "shotkey": "mob.fmt.sorry_0_but_my_bag_is_full"
+  },
+  "s.67987af144197a33": {
+    "text": "Peace has finally found me...",
+    "shotkey": "mob.other.peace_has_finally_found_me"
+  },
+  "s.67f3a8af2273aa7a": {
+    "text": "She shall not ascend after sunset.",
+    "shotkey": "mob.other.she_shall_not_ascend_after_sunset"
+  },
+  "s.69034c560116073e": {
+    "text": "Argh!",
+    "shotkey": "mob.other.argh"
+  },
+  "s.6986e0b1c5355ec4": {
+    "text": "This statue seems to be missing an eye.",
+    "shotkey": "mob.other.this_statue_seems_to_be_missing_an_eye"
+  },
+  "s.6b00f32cca353f76": {
+    "text": "You think you can defeat me?!",
+    "shotkey": "mob.other.you_think_you_can_defeat_me"
+  },
+  "s.6b9b598bf82ce2c2": {
+    "text": "A betrayal will finally happen or he will babble at the coming of destruction.",
+    "shotkey": "mob.other.a_betrayal_will_finally_happen_or_he_will_babble_at_the"
+  },
+  "s.6bb3ded8d6265cc4": {
+    "text": "I am a monster, cut off from all the world!",
+    "shotkey": "mob.other.i_am_a_monster_cut_off_from_all_the_world"
+  },
+  "s.6c0c827360af73e8": {
+    "text": "Did you not meditate before the coming sun?",
+    "shotkey": "mob.other.did_you_not_meditate_before_the_coming_sun"
+  },
+  "s.6c13a01c10289f03": {
+    "text": "You will have to do better than that!",
+    "shotkey": "mob.other.you_will_have_to_do_better_than_that"
+  },
+  "s.6d41fc6e8cfca718": {
+    "text": "He shall not assimilate with the proud youth.",
+    "shotkey": "mob.other.he_shall_not_assimilate_with_the_proud_youth"
+  },
+  "s.6d57fd09bcc62e5e": {
+    "text": "I assume they done you harm. Let me rid you of this thing.",
+    "shotkey": "mob.other.i_assume_they_done_you_harm_let_me_rid_you_of_this_thin"
+  },
+  "s.6df6e674a4538233": {
+    "text": "Sorry, but I am tired and cannot heal you now.",
+    "shotkey": "mob.other.sorry_but_i_am_tired_and_cannot_heal_you_now"
+  },
+  "s.6e4bda6eb8e2f1ef": {
+    "text": "You have not seen the last of me, ",
+    "shotkey": "mob.other.you_have_not_seen_the_last_of_me"
+  },
+  "s.6e70659c47401b2f": {
+    "text": "Hail, Z~Z~Z~Z~Z. Welcome to Y~Y~Y~Y~Y.",
+    "shotkey": "mob.other.hail_z_z_z_z_z_welcome_to_y_y_y_y_y"
+  },
+  "s.6ea4728f997cc252": {
+    "text": "This is not a graveyard! Bury them somewhere else!",
+    "shotkey": "mob.other.this_is_not_a_graveyard_bury_them_somewhere_else"
+  },
+  "s.6eb9fcbc618c8403": {
+    "text": "Guards, ",
+    "shotkey": "mob.other.guards"
+  },
+  "s.6ef7e7c129be9fd7": {
+    "text": "Thank you, {0}.",
+    "shotkey": "mob.fmt.thank_you_0"
+  },
+  "s.6f318339dcb554ea": {
+    "text": "Delete your barkeepers tip message",
+    "shotkey": "mob.other.delete_your_barkeepers_tip_message"
+  },
+  "s.701f4550c13fa1c5": {
+    "text": "It is your turn!",
+    "shotkey": "mob.other.it_is_your_turn"
+  },
+  "s.702352c1f5e88d5a": {
+    "text": "By Poseidon's wrath, how...",
+    "shotkey": "mob.other.by_poseidon_s_wrath_how"
+  },
+  "s.7034cfa96afbde5e": {
+    "text": "No...you cannot do this!",
+    "shotkey": "mob.other.no_you_cannot_do_this"
+  },
+  "s.707088d341c79e07": {
+    "text": "You cannot give away a golem.",
+    "shotkey": "mob.other.you_cannot_give_away_a_golem"
+  },
+  "s.70afbe657c65f166": {
+    "text": "Your pet {0} has lost {1} experience!",
+    "shotkey": "mob.fmt.your_pet_0_has_lost_1_experience"
+  },
+  "s.70dd61f0cef97c84": {
+    "text": "Grarrgh...",
+    "shotkey": "mob.other.grarrgh"
+  },
+  "s.72e48375d4a72fa2": {
+    "text": "Say what you want me to tell guests when they give me a good tip.",
+    "shotkey": "mob.other.say_what_you_want_me_to_tell_guests_when_they_give_me_a"
+  },
+  "s.7307bd76daa5e912": {
+    "text": "The Lantern of Discipline has vanished after dispatching the Chaos Bane.",
+    "shotkey": "mob.other.the_lantern_of_discipline_has_vanished_after_dispatchin"
+  },
+  "s.735f15a19cd74d6d": {
+    "text": "Why did the knight run about shouting for a tin opener? He had a bee in his suit of armor!",
+    "shotkey": "mob.joke.why_did_the_knight_run_about_shouting_for_a_tin_opener"
+  },
+  "s.73d53b3cba2c8971": {
+    "text": "The deluded pony will not forget in a graveyard on a windy day for the sake of alchemy.",
+    "shotkey": "mob.other.the_deluded_pony_will_not_forget_in_a_graveyard_on_a_wi"
+  },
+  "s.74684e7745f6613b": {
+    "text": "You sever off the giant's left leg.",
+    "shotkey": "mob.other.you_sever_off_the_giant_s_left_leg"
+  },
+  "s.74ea98a0ae1cccb0": {
+    "text": "The Orb of Logic has vanished after dispatching the Chaos Bane.",
+    "shotkey": "mob.other.the_orb_of_logic_has_vanished_after_dispatching_the_cha"
+  },
+  "s.755d6122c65dd48f": {
+    "text": "You landlubber, prepare to die!",
+    "shotkey": "mob.other.you_landlubber_prepare_to_die"
+  },
+  "s.758495ff2558cc74": {
+    "text": "Look into my eyes, ",
+    "shotkey": "mob.other.look_into_my_eyes"
+  },
+  "s.7660db7acaedb124": {
+    "text": "Maybe you should flee before it is too late!",
+    "shotkey": "mob.other.maybe_you_should_flee_before_it_is_too_late"
+  },
+  "s.76900f1bfd16c8d4": {
+    "text": "Back",
+    "shotkey": "mob.other.back"
+  },
+  "s.76a7e6981a694f6c": {
+    "text": "You have improved",
+    "shotkey": "mob.other.you_have_improved"
+  },
+  "s.76adb275a52845f0": {
+    "text": "Fool...you can never bring me to the light!",
+    "shotkey": "mob.other.fool_you_can_never_bring_me_to_the_light"
+  },
+  "s.76b39459450b4f8f": {
+    "text": "Death is only a distraction to me!",
+    "shotkey": "mob.other.death_is_only_a_distraction_to_me"
+  },
+  "s.77439b8c0e6eb49c": {
+    "text": "You found a key with a symbol of a unicorn on it.",
+    "shotkey": "mob.other.you_found_a_key_with_a_symbol_of_a_unicorn_on_it"
+  },
+  "s.77a7ff0a46b2be55": {
+    "text": "We are just here to rest after exploring {0}.",
+    "shotkey": "mob.fmt.we_are_just_here_to_rest_after_exploring_0"
+  },
+  "s.77bb6c553783bcdd": {
+    "text": "I will have your soul one day, ",
+    "shotkey": "mob.other.i_will_have_your_soul_one_day"
+  },
+  "s.7803e5629e8d9ad8": {
+    "text": "The dragon almost rusted one of your protected items!",
+    "shotkey": "mob.other.the_dragon_almost_rusted_one_of_your_protected_items"
+  },
+  "s.783b14db9c9a303b": {
+    "text": "Your corpse will rise and serve me, ",
+    "shotkey": "mob.other.your_corpse_will_rise_and_serve_me"
+  },
+  "s.789ce80516dc79d9": {
+    "text": "You cut away some bones and they are on the corpse.",
+    "shotkey": "mob.other.you_cut_away_some_bones_and_they_are_on_the_corpse"
+  },
+  "s.792ac6d7475b0ae2": {
+    "text": "By iceberg's might, how...",
+    "shotkey": "mob.other.by_iceberg_s_might_how"
+  },
+  "s.797d71ad5541e483": {
+    "text": "Only a grandmaster in necromancy may ride this undead steed.",
+    "shotkey": "mob.other.only_a_grandmaster_in_necromancy_may_ride_this_undead_s"
+  },
+  "s.7988413c1edc7842": {
+    "text": "A shard of a universe is a powerful thing.",
+    "shotkey": "mob.other.a_shard_of_a_universe_is_a_powerful_thing"
+  },
+  "s.798e5ac5f6318385": {
+    "text": "You have pulled Surtaz's Vault toward you.",
+    "shotkey": "mob.other.you_have_pulled_surtaz_s_vault_toward_you"
+  },
+  "s.798ff6e439c2663e": {
+    "text": "Prepare to die fool!",
+    "shotkey": "mob.other.prepare_to_die_fool"
+  },
+  "s.79bf82dcd78b2278": {
+    "text": "One day the Stranger will return to Sosaria.",
+    "shotkey": "mob.other.one_day_the_stranger_will_return_to_sosaria"
+  },
+  "s.7a165e9db040422b": {
+    "text": "Grour Grones Gril Gray Grin Gry Grwamp!",
+    "shotkey": "mob.other.grour_grones_gril_gray_grin_gry_grwamp"
+  },
+  "s.7a7cc0d90593efb0": {
+    "text": "Castle Exodus lies in ruins, no one knowing what evil lurks below.",
+    "shotkey": "mob.other.castle_exodus_lies_in_ruins_no_one_knowing_what_evil_lu"
+  },
+  "s.7ae5ea1ce7aa62a6": {
+    "text": "If you hear of any rumors of gold, come and get me.",
+    "shotkey": "mob.other.if_you_hear_of_any_rumors_of_gold_come_and_get_me"
+  },
+  "s.7c2905a6c29bf631": {
+    "text": "Gri Gril Gestroy Groo!",
+    "shotkey": "mob.other.gri_gril_gestroy_groo"
+  },
+  "s.7d1a3da1e76dc16b": {
+    "text": "mob.fmt.0_will_probably_adventure_with_you_for_another_1_minute",
+    "shotkey": null
+  },
+  "s.7dac5810142182e2": {
+    "text": "willing to trade",
+    "shotkey": "mob.other.willing_to_trade"
+  },
+  "s.7e75a528a1b01550": {
+    "text": "Taste my wrath and my blade!",
+    "shotkey": "mob.other.taste_my_wrath_and_my_blade"
+  },
+  "s.7e8cd2056da73a7f": {
+    "text": "Title",
+    "shotkey": "mob.other.title"
+  },
+  "s.7f1a267a01bb3c8b": {
+    "text": "You may not transfer a pet that has recently been in combat.",
+    "shotkey": "mob.other.you_may_not_transfer_a_pet_that_has_recently_been_in_co"
+  },
+  "s.7f52508c793e31cf": {
+    "text": "Remove this tip message",
+    "shotkey": "mob.other.remove_this_tip_message"
+  },
+  "s.7f5ba07046627cd1": {
+    "text": "Do with these what you will, Syth.",
+    "shotkey": "mob.other.do_with_these_what_you_will_syth"
+  },
+  "s.7fd0e0e14e82b6b8": {
+    "text": "Tis but a scratch!",
+    "shotkey": "mob.other.tis_but_a_scratch"
+  },
+  "s.80978b00166789cf": {
+    "text": "A small chest has been added to your pack!",
+    "shotkey": "mob.other.a_small_chest_has_been_added_to_your_pack"
+  },
+  "s.80cbc576e2eb9d57": {
+    "text": "The Stranger has saved Sosaria from Exodus.",
+    "shotkey": "mob.other.the_stranger_has_saved_sosaria_from_exodus"
+  },
+  "s.813d9ac2e7f63e83": {
+    "text": "But I am but a mouse, and none hear me.",
+    "shotkey": "mob.other.but_i_am_but_a_mouse_and_none_hear_me"
+  },
+  "s.81481a013715d49a": {
+    "text": "I have brought justice to others more vile than you, ",
+    "shotkey": "mob.other.i_have_brought_justice_to_others_more_vile_than_you"
+  },
+  "s.818ec46afab5f24d": {
+    "text": "TitanStratos",
+    "shotkey": "mob.other.titanstratos"
+  },
+  "s.81f939ac1059f854": {
+    "text": "You already have your orders. Return to me when you are done with the task.",
+    "shotkey": "mob.other.you_already_have_your_orders_return_to_me_when_you_are"
+  },
+  "s.8245efaa3df7c93b": {
+    "text": "I have defeated foes larger than you!",
+    "shotkey": "mob.other.i_have_defeated_foes_larger_than_you"
+  },
+  "s.8295e065c7730dbf": {
+    "text": "You cannot give away a reanimation.",
+    "shotkey": "mob.other.you_cannot_give_away_a_reanimation"
+  },
+  "s.830e47255bc51901": {
+    "text": "Me see you living no longer!",
+    "shotkey": "mob.other.me_see_you_living_no_longer"
+  },
+  "s.8344947a402c722a": {
+    "text": "Oops!",
+    "shotkey": "mob.other.oops"
+  },
+  "s.837049b63bdb1a0b": {
+    "text": "That skill cannot be taught. You must learn it yourself!",
+    "shotkey": "mob.other.that_skill_cannot_be_taught_you_must_learn_it_yourself"
+  },
+  "s.838b315e4c133457": {
+    "text": "You dare face my glacial power?!",
+    "shotkey": "mob.other.you_dare_face_my_glacial_power"
+  },
+  "s.8395c3691429a035": {
+    "text": "I've had worse!",
+    "shotkey": "mob.other.i_ve_had_worse"
+  },
+  "s.842c300354eb021c": {
+    "text": "Single click on it to enchant it.",
+    "shotkey": "mob.other.single_click_on_it_to_enchant_it"
+  },
+  "s.8523c1e49b6d0174": {
+    "text": "I will use your corpse to feed my minions!",
+    "shotkey": "mob.other.i_will_use_your_corpse_to_feed_my_minions"
+  },
+  "s.85a39ab345d672ff": {
+    "text": "Yes",
+    "shotkey": "mob.other.yes"
+  },
+  "s.85d00d88e4aef04b": {
+    "text": "You are no match for me!",
+    "shotkey": "mob.other.you_are_no_match_for_me"
+  },
+  "s.85f491c9f36c2a0f": {
+    "text": "An introduction will not happen and the intelligent champion shall lower on the spring equinox.",
+    "shotkey": "mob.other.an_introduction_will_not_happen_and_the_intelligent_cha"
+  },
+  "s.866cd7ebb9d28ef5": {
+    "text": "Good, more treasure for me.",
+    "shotkey": "mob.other.good_more_treasure_for_me"
+  },
+  "s.86c19841ba99b9ee": {
+    "text": "*yells*",
+    "shotkey": "mob.emote.yells"
+  },
+  "s.86ecf58ee1ca7859": {
+    "text": "Shhh!",
+    "shotkey": "mob.other.shhh"
+  },
+  "s.86ef93c796ea5618": {
+    "text": "The broken-hearted grandmother will act or he shall not meander.",
+    "shotkey": "mob.other.the_broken_hearted_grandmother_will_act_or_he_shall_not"
+  },
+  "s.87030af6afe9061e": {
+    "text": "You magically resist the affects of the song.",
+    "shotkey": "mob.other.you_magically_resist_the_affects_of_the_song"
+  },
+  "s.87b0c903d7fa06a1": {
+    "text": "Your blood smells sweet!",
+    "shotkey": "mob.other.your_blood_smells_sweet"
+  },
+  "s.88393bb24976dacd": {
+    "text": "Cinders will be all that is left of you, ",
+    "shotkey": "mob.other.cinders_will_be_all_that_is_left_of_you"
+  },
+  "s.886a8b580615c661": {
+    "text": "You have pulled Arachnar's Vault toward you.",
+    "shotkey": "mob.other.you_have_pulled_arachnar_s_vault_toward_you"
+  },
+  "s.886df9f85eb4eec0": {
+    "text": "Make sure this skill is marked to raise. If you are near the skill cap you may need to lose some points in another skill first.",
+    "shotkey": "mob.other.make_sure_this_skill_is_marked_to_raise_if_you_are_near"
+  },
+  "s.88ddbb45d586c544": {
+    "text": "This is good practice",
+    "shotkey": "mob.other.this_is_good_practice"
+  },
+  "s.8a07289158d8056b": {
+    "text": "Your soul will make an excellent meal!",
+    "shotkey": "mob.other.your_soul_will_make_an_excellent_meal"
+  },
+  "s.8a8786aeadcd2435": {
+    "text": "You will have to be better than that",
+    "shotkey": "mob.other.you_will_have_to_be_better_than_that"
+  },
+  "s.8a91cdde824e34b9": {
+    "text": "Fame and fortune await!",
+    "shotkey": "mob.other.fame_and_fortune_await"
+  },
+  "s.8a9b68db525e5315": {
+    "text": "Why were the early days called the dark ages? Because there were so many knights!",
+    "shotkey": "mob.other.why_were_the_early_days_called_the_dark_ages_because_th"
+  },
+  "s.8b63f7971d7ca2cf": {
+    "text": "What is this madness?!",
+    "shotkey": "mob.joke.what_is_this_madness"
+  },
+  "s.8bcb810f295645d1": {
+    "text": "You leave our land now!",
+    "shotkey": "mob.other.you_leave_our_land_now"
+  },
+  "s.8c1e54ebf5aba8cd": {
+    "text": "I will become your new god, ",
+    "shotkey": "mob.other.i_will_become_your_new_god"
+  },
+  "s.8c3d905ca181c2b7": {
+    "text": "No...I will not be vanquished!",
+    "shotkey": "mob.other.no_i_will_not_be_vanquished"
+  },
+  "s.8d11d1b7b23edeca": {
+    "text": "Arrrrrgh!",
+    "shotkey": "mob.other.arrrrrgh"
+  },
+  "s.8d630be3f4756fd0": {
+    "text": "Rise my friend. I wish I could save every unfortunate animal.",
+    "shotkey": "mob.other.rise_my_friend_i_wish_i_could_save_every_unfortunate_an"
+  },
+  "s.8db85dd320d8d137": {
+    "text": "TRIBUTE GIFTS",
+    "shotkey": "mob.other.tribute_gifts"
+  },
+  "s.8e4ea538a965cb95": {
+    "text": "Dnadona qae zaaq esaeun doom!",
+    "shotkey": "mob.other.dnadona_qae_zaaq_esaeun_doom"
+  },
+  "s.8e8be6f66efada68": {
+    "text": "Your henchmen have been resurrected.",
+    "shotkey": "mob.other.your_henchmen_have_been_resurrected"
+  },
+  "s.8ea9574228ae6c38": {
+    "text": "You have subdued the Serpent of Order!",
+    "shotkey": "mob.other.you_have_subdued_the_serpent_of_order"
+  },
+  "s.8ff05be7d4e56165": {
+    "text": "Change this tip message",
+    "shotkey": "mob.other.change_this_tip_message"
+  },
+  "s.9046c89cd8c4f8b7": {
+    "text": "You have pulled Xurtzar's Vault toward you.",
+    "shotkey": "mob.other.you_have_pulled_xurtzar_s_vault_toward_you"
+  },
+  "s.90ef4327f9f92a07": {
+    "text": "*blinks a red eye*",
+    "shotkey": "mob.emote.blinks_a_red_eye"
+  },
+  "s.914ea3deae6d2835": {
+    "text": "Fool! You think chaos can be slain to easily?",
+    "shotkey": "mob.other.fool_you_think_chaos_can_be_slain_to_easily"
+  },
+  "s.914ede438d58ed6f": {
+    "text": "No pray, no pay. Your riches will be mine!",
+    "shotkey": "mob.other.no_pray_no_pay_your_riches_will_be_mine"
+  },
+  "s.91a1969129e2373b": {
+    "text": "A contest must not happen after the first frost.",
+    "shotkey": "mob.other.a_contest_must_not_happen_after_the_first_frost"
+  },
+  "s.91e7c5724145de41": {
+    "text": "You cannot ride a mount in your current form.",
+    "shotkey": "mob.other.you_cannot_ride_a_mount_in_your_current_form"
+  },
+  "s.9278604e3b7d8333": {
+    "text": "Your pet {0} has died!",
+    "shotkey": "mob.fmt.your_pet_0_has_died"
+  },
+  "s.936d4710707d6e64": {
+    "text": "Your treasure will help fill my vault!",
+    "shotkey": "mob.other.your_treasure_will_help_fill_my_vault"
+  },
+  "s.93a43cb56e6c3a80": {
+    "text": "Remove a message and keyword from your barkeep",
+    "shotkey": "mob.other.remove_a_message_and_keyword_from_your_barkeep"
+  },
+  "s.93f3c22a4a1cf580": {
+    "text": "I will tell all on how I crushed ",
+    "shotkey": "mob.other.i_will_tell_all_on_how_i_crushed"
+  },
+  "s.9467fee641bc4b88": {
+    "text": "No! The power of the wind will blow you away!",
+    "shotkey": "mob.other.no_the_power_of_the_wind_will_blow_you_away"
+  },
+  "s.95218b987442c030": {
+    "text": "You think I have not faced mortals like you?!",
+    "shotkey": "mob.other.you_think_i_have_not_faced_mortals_like_you"
+  },
+  "s.952fb7b140e6203a": {
+    "text": "Fell the wrath of my master!",
+    "shotkey": "mob.other.fell_the_wrath_of_my_master"
+  },
+  "s.9541a04b8c8b9af0": {
+    "text": "You will make great feast for us!",
+    "shotkey": "mob.other.you_will_make_great_feast_for_us"
+  },
+  "s.9570a3347135b543": {
+    "text": "You are paralyzed!",
+    "shotkey": "mob.other.you_are_paralyzed"
+  },
+  "s.957a3d1d231ce3ff": {
+    "text": "* Dragons must learn to be ridden, while Dragyns can be ridden if the Zuluu legends are true.",
+    "shotkey": "mob.other.dragons_must_learn_to_be_ridden_while_dragyns_can_be_ri"
+  },
+  "s.95e6dc6a0e1bea59": {
+    "text": "I will have a place for the bones of ",
+    "shotkey": "mob.other.i_will_have_a_place_for_the_bones_of"
+  },
+  "s.95f9a58edea29560": {
+    "text": "Do you think you can beat me?!",
+    "shotkey": "mob.other.do_you_think_you_can_beat_me"
+  },
+  "s.96b0cf8a7dd9f514": {
+    "text": "has obtained Satan's orb of the abyss",
+    "shotkey": "mob.other.has_obtained_satan_s_orb_of_the_abyss"
+  },
+  "s.96df3fa8d1334476": {
+    "text": "You cut away some skins and they are on the corpse.",
+    "shotkey": "mob.other.you_cut_away_some_skins_and_they_are_on_the_corpse"
+  },
+  "s.971510fb82537f2c": {
+    "text": "When a knight in armor was killed in battle, what sign did they put on his grave? Rust in peace!",
+    "shotkey": "mob.other.when_a_knight_in_armor_was_killed_in_battle_what_sign_d"
+  },
+  "s.9736af5ef8d503b8": {
+    "text": "A reunion must not occur or the unlucky chimera must fold in the age of temptation.",
+    "shotkey": "mob.other.a_reunion_must_not_occur_or_the_unlucky_chimera_must_fo"
+  },
+  "s.976ad573796ed091": {
+    "text": "You will have to do better than that",
+    "shotkey": "mob.other.you_will_have_to_do_better_than_that_2"
+  },
+  "s.986788ebf3c48e2f": {
+    "text": "You may have won this day, ",
+    "shotkey": "mob.other.you_may_have_won_this_day"
+  },
+  "s.98952c897f545f70": {
+    "text": "Take this, and be enlightened.",
+    "shotkey": "mob.other.take_this_and_be_enlightened"
+  },
+  "s.991be3c0da7346e7": {
+    "text": "Done? With what? I am not sure what things you speak of.",
+    "shotkey": "mob.other.done_with_what_i_am_not_sure_what_things_you_speak_of"
+  },
+  "s.99a889b7a56db40a": {
+    "text": "This is the first time I have been to Y~Y~Y~Y~Y.",
+    "shotkey": "mob.other.this_is_the_first_time_i_have_been_to_y_y_y_y_y"
+  },
+  "s.9a2fb29829e384bc": {
+    "text": "Give up! We do not fear {0}!",
+    "shotkey": "mob.fmt.give_up_we_do_not_fear_0"
+  },
+  "s.9a623806a8a28935": {
+    "text": "Your blood will decorate these walls!",
+    "shotkey": "mob.other.your_blood_will_decorate_these_walls"
+  },
+  "s.9a63208b77559440": {
+    "text": "The honest runaway will succumb with the hungry hare before the coming of lust.",
+    "shotkey": "mob.other.the_honest_runaway_will_succumb_with_the_hungry_hare_be"
+  },
+  "s.9a710ecc4db2320b": {
+    "text": "What was Camelot famous for? It's knight life!",
+    "shotkey": "mob.joke.what_was_camelot_famous_for_it_s_knight_life"
+  },
+  "s.9abcf84ef3a19fe6": {
+    "text": "Your soul will be mine!",
+    "shotkey": "mob.other.your_soul_will_be_mine_2"
+  },
+  "s.9af6a9112864e831": {
+    "text": "The Scales of Ethicality have vanished after dispatching the Chaos Bane.",
+    "shotkey": "mob.other.the_scales_of_ethicality_have_vanished_after_dispatchin"
+  },
+  "s.9b4c41103e51babd": {
+    "text": "You found a book and put it in your pack.",
+    "shotkey": "mob.other.you_found_a_book_and_put_it_in_your_pack"
+  },
+  "s.9b57fc82f8fc7388": {
+    "text": "The balron rusted one of your equipped items!",
+    "shotkey": "mob.other.the_balron_rusted_one_of_your_equipped_items"
+  },
+  "s.9b9d28148bd0cdc2": {
+    "text": "Are you sure you want to dismiss your barkeeper?",
+    "shotkey": "mob.other.are_you_sure_you_want_to_dismiss_your_barkeeper"
+  },
+  "s.9bd8d4c76d50bfe8": {
+    "text": "Sorry, but there is not enough reward on this journey for me.",
+    "shotkey": "mob.other.sorry_but_there_is_not_enough_reward_on_this_journey_fo"
+  },
+  "s.9c151c35222d45c2": {
+    "text": "I will freeze your blood and shatter your soul!",
+    "shotkey": "mob.other.i_will_freeze_your_blood_and_shatter_your_soul"
+  },
+  "s.9c277ec83e481511": {
+    "text": "Look into my eyes...",
+    "shotkey": "mob.other.look_into_my_eyes_2"
+  },
+  "s.9c2de9ab53621283": {
+    "text": "I think I will head back to town and get a drink.",
+    "shotkey": "mob.other.i_think_i_will_head_back_to_town_and_get_a_drink"
+  },
+  "s.9c2ecea8bac88d8c": {
+    "text": "You cannot stop the destruction I will soon unleash!",
+    "shotkey": "mob.other.you_cannot_stop_the_destruction_i_will_soon_unleash"
+  },
+  "s.9e3dae4b8ee669f1": {
+    "text": "My foot will be the last thing you see!",
+    "shotkey": "mob.other.my_foot_will_be_the_last_thing_you_see"
+  },
+  "s.9e5642605a717432": {
+    "text": "You'll pay for that!",
+    "shotkey": "mob.other.you_ll_pay_for_that"
+  },
+  "s.9e7042a10f4cb181": {
+    "text": "Your pet trusts you implicitly. It will be easier to control now.",
+    "shotkey": "mob.other.your_pet_trusts_you_implicitly_it_will_be_easier_to_con"
+  },
+  "s.9e9135b7b12209ef": {
+    "text": "has subdued the serpent of chaos",
+    "shotkey": "mob.other.has_subdued_the_serpent_of_chaos"
+  },
+  "s.9fa0348eb865b8bc": {
+    "text": "You do not have enough gold.",
+    "shotkey": "mob.other.you_do_not_have_enough_gold"
+  },
+  "s.9fc117663fac40bf": {
+    "text": "Only grandmaster knights may ride this holy steed.",
+    "shotkey": "mob.other.only_grandmaster_knights_may_ride_this_holy_steed"
+  },
+  "s.a032efafe7070810": {
+    "text": "You hear jarring music, suppressing your abilities.",
+    "shotkey": "mob.other.you_hear_jarring_music_suppressing_your_abilities"
+  },
+  "s.a179a6885d58f0d7": {
+    "text": "A soul has been claimed.",
+    "shotkey": "mob.other.a_soul_has_been_claimed"
+  },
+  "s.a17fe5561b853e74": {
+    "text": "You have obtained the Blackrock Serpent of Chaos!",
+    "shotkey": "mob.other.you_have_obtained_the_blackrock_serpent_of_chaos"
+  },
+  "s.a1e7690045af7f2f": {
+    "text": "*hiccup*",
+    "shotkey": "mob.emote.hiccup"
+  },
+  "s.a2fd53b55d5b7320": {
+    "text": "I witnessed them all from my tiny mousehole.",
+    "shotkey": "mob.other.i_witnessed_them_all_from_my_tiny_mousehole"
+  },
+  "s.a323df78680eada8": {
+    "text": "*blinks a blue eye*",
+    "shotkey": "mob.emote.blinks_a_blue_eye"
+  },
+  "s.a346fc572a981856": {
+    "text": "You sever off the giant's right arm.",
+    "shotkey": "mob.other.you_sever_off_the_giant_s_right_arm"
+  },
+  "s.a3a9221f5431b374": {
+    "text": "Ah ha!",
+    "shotkey": "mob.other.ah_ha"
+  },
+  "s.a41f8b62eb7c19b6": {
+    "text": "You cannot crush me puny one!",
+    "shotkey": "mob.other.you_cannot_crush_me_puny_one"
+  },
+  "s.a432c9f243afaca3": {
+    "text": "No one has faced a syth and lived!",
+    "shotkey": "mob.other.no_one_has_faced_a_syth_and_lived"
+  },
+  "s.a47c89ca264a8f36": {
+    "text": "You are no match for my magic!",
+    "shotkey": "mob.other.you_are_no_match_for_my_magic"
+  },
+  "s.a482c78b4e8053b0": {
+    "text": "My magic will decimate you!",
+    "shotkey": "mob.other.my_magic_will_decimate_you"
+  },
+  "s.a498b139ba66d982": {
+    "text": "She will ensure in the citadel.",
+    "shotkey": "mob.other.she_will_ensure_in_the_citadel"
+  },
+  "s.a4d228886dcf5271": {
+    "text": "You separate the leather into your backpack",
+    "shotkey": "mob.other.you_separate_the_leather_into_your_backpack"
+  },
+  "s.a4d4021c5b1196d6": {
+    "text": "The lavender summoner will crush in a time of truth.",
+    "shotkey": "mob.other.the_lavender_summoner_will_crush_in_a_time_of_truth"
+  },
+  "s.a580ca344bd0ef1f": {
+    "text": "What game do the fish play in the moat? Trout or dare!",
+    "shotkey": "mob.other.what_game_do_the_fish_play_in_the_moat_trout_or_dare"
+  },
+  "s.a668022aed26067d": {
+    "text": "Keyword",
+    "shotkey": "mob.other.keyword"
+  },
+  "s.a69b33ab3a8b0e26": {
+    "text": "Thank you, {0}...but my treasure bag is full.",
+    "shotkey": "mob.fmt.thank_you_0_but_my_treasure_bag_is_full"
+  },
+  "s.a724cb3dabeafbca": {
+    "text": "Zae zes hima ends sabbia!",
+    "shotkey": "mob.other.zae_zes_hima_ends_sabbia"
+  },
+  "s.a743a593d89e1b61": {
+    "text": "I will smash you into dirt!",
+    "shotkey": "mob.other.i_will_smash_you_into_dirt"
+  },
+  "s.a859c10c3ebbfdff": {
+    "text": "You can only call your henchman from a home, inn, or tavern.",
+    "shotkey": "mob.other.you_can_only_call_your_henchman_from_a_home_inn_or_tave"
+  },
+  "s.a85bc902738295bd": {
+    "text": "She shall weld or he will finally crush during the growing season.",
+    "shotkey": "mob.other.she_shall_weld_or_he_will_finally_crush_during_the_grow"
+  },
+  "s.a89698ae8cf9298d": {
+    "text": "You separate the potions into your backpack",
+    "shotkey": "mob.other.you_separate_the_potions_into_your_backpack"
+  },
+  "s.a89bf69ec4118b83": {
+    "text": "Not enough to bring me down!",
+    "shotkey": "mob.other.not_enough_to_bring_me_down"
+  },
+  "s.a8e9c3a93a6ec584": {
+    "text": "Eyes open and focus on me",
+    "shotkey": "mob.other.eyes_open_and_focus_on_me"
+  },
+  "s.a99801e8a2c53bcc": {
+    "text": "Hello, Z~Z~Z~Z~Z.",
+    "shotkey": "mob.other.hello_z_z_z_z_z"
+  },
+  "s.a9cebb94d1d5ff47": {
+    "text": "Woohoo!",
+    "shotkey": "mob.other.woohoo"
+  },
+  "s.aaf1a735a8208d99": {
+    "text": "You will never gain entry to my vault!",
+    "shotkey": "mob.other.you_will_never_gain_entry_to_my_vault"
+  },
+  "s.aba442673f0cab41": {
+    "text": "{0} I have {1} I {2} from a chest in {3} that I am {4} for {5} gold.",
+    "shotkey": "mob.fmt.0_i_have_1_i_2_from_a_chest_in_3_that_i_am_4_for_5_gold"
+  },
+  "s.ac38c6d243905223": {
+    "text": "You will pay for your crimes!",
+    "shotkey": "mob.other.you_will_pay_for_your_crimes"
+  },
+  "s.ac4afb335ec564cf": {
+    "text": "Fool...I will rise again!",
+    "shotkey": "mob.other.fool_i_will_rise_again"
+  },
+  "s.acae9c3b95fa1b04": {
+    "text": "I will drag your corpse into the sea!",
+    "shotkey": "mob.other.i_will_drag_your_corpse_into_the_sea"
+  },
+  "s.ad257a056f4a4f22": {
+    "text": "Your weapon cannot penetrate the creature's magical barrier",
+    "shotkey": "mob.other.your_weapon_cannot_penetrate_the_creature_s_magical_bar"
+  },
+  "s.ae3b8ee8140cbeaf": {
+    "text": "You absord the Titan's power into the Tongue of Flame.",
+    "shotkey": "mob.other.you_absord_the_titan_s_power_into_the_tongue_of_flame"
+  },
+  "s.ae47f0060abeb815": {
+    "text": "mob.fmt.0_will_need_a_symbol_of_your_1_2",
+    "shotkey": null
+  },
+  "s.aea822ac1c426676": {
+    "text": "You have obtained Satan's Orb of the Abyss!",
+    "shotkey": "mob.other.you_have_obtained_satan_s_orb_of_the_abyss"
+  },
+  "s.aefa3d2d7eb3835e": {
+    "text": "The medusa almost turned one of your protected items to stone!",
+    "shotkey": "mob.other.the_medusa_almost_turned_one_of_your_protected_items_to"
+  },
+  "s.af37a531ef01ce63": {
+    "text": "No, it cannot be...",
+    "shotkey": "mob.other.no_it_cannot_be"
+  },
+  "s.af641dcec5d0907b": {
+    "text": "Only grandmaster death knights may ride this evil steed.",
+    "shotkey": "mob.other.only_grandmaster_death_knights_may_ride_this_evil_steed"
+  },
+  "s.af78e08b6a7f0475": {
+    "text": "Leave this place!",
+    "shotkey": "mob.other.leave_this_place"
+  },
+  "s.b002f60202e35654": {
+    "text": "Evil has been banished.",
+    "shotkey": "mob.other.evil_has_been_banished"
+  },
+  "s.b00d2f39ac78768a": {
+    "text": "Maybe one day the Stranger will achieve Avatarhood.",
+    "shotkey": "mob.other.maybe_one_day_the_stranger_will_achieve_avatarhood"
+  },
+  "s.b03941e8effab611": {
+    "text": "In Vas Mani",
+    "shotkey": "mob.other.in_vas_mani"
+  },
+  "s.b15c78425bc04aeb": {
+    "text": "The risk is not worth the little reward I am getting.",
+    "shotkey": "mob.other.the_risk_is_not_worth_the_little_reward_i_am_getting"
+  },
+  "s.b1a366b38fd05f89": {
+    "text": "You absord the Titan's power into the Tear of the Seas.",
+    "shotkey": "mob.other.you_absord_the_titan_s_power_into_the_tear_of_the_seas"
+  },
+  "s.b1c2489fea9751e8": {
+    "text": "Groo Gran Grever Gregreat Gre!",
+    "shotkey": "mob.other.groo_gran_grever_gregreat_gre"
+  },
+  "s.b2aec9d41d9bb24e": {
+    "text": "You separate the reagents into your backpack",
+    "shotkey": "mob.other.you_separate_the_reagents_into_your_backpack"
+  },
+  "s.b2d3e6b71a3176da": {
+    "text": "Your pet is now level {0}.",
+    "shotkey": "mob.fmt.your_pet_is_now_level_0"
+  },
+  "s.b36ab0bf09edfd92": {
+    "text": "has obtained the blackrock serpent of order",
+    "shotkey": "mob.other.has_obtained_the_blackrock_serpent_of_order"
+  },
+  "s.b3a11895de9af422": {
+    "text": "A fight shall take place for the sake of willpower.",
+    "shotkey": "mob.other.a_fight_shall_take_place_for_the_sake_of_willpower"
+  },
+  "s.b4828a3b9c5a61c6": {
+    "text": "One of your items has been turned to stone!",
+    "shotkey": "mob.other.one_of_your_items_has_been_turned_to_stone"
+  },
+  "s.b4971afd9fb3925b": {
+    "text": "You charm the snake. Select a target to attack.",
+    "shotkey": "mob.other.you_charm_the_snake_select_a_target_to_attack"
+  },
+  "s.b57c370a0fcc7045": {
+    "text": "Hey!",
+    "shotkey": "mob.other.hey"
+  },
+  "s.b59874c7055971c9": {
+    "text": "The Book of Truth has vanished after dispatching the Shadowlord.",
+    "shotkey": "mob.other.the_book_of_truth_has_vanished_after_dispatching_the_sh"
+  },
+  "s.b5dc8f23d07114a1": {
+    "text": "You will never leave this place alive!",
+    "shotkey": "mob.other.you_will_never_leave_this_place_alive"
+  },
+  "s.b5f6b3ee22932e54": {
+    "text": "You have been poisoned!",
+    "shotkey": "mob.other.you_have_been_poisoned"
+  },
+  "s.b746b1ecd7ce9863": {
+    "text": "has obtained the blackrock serpent of chaos",
+    "shotkey": "mob.other.has_obtained_the_blackrock_serpent_of_chaos"
+  },
+  "s.b749589198775cdf": {
+    "text": "I can smell the blood from your wounds!",
+    "shotkey": "mob.other.i_can_smell_the_blood_from_your_wounds"
+  },
+  "s.b794c20a7aa832ce": {
+    "text": "You absord the Titan's power into the Heart of Earth.",
+    "shotkey": "mob.other.you_absord_the_titan_s_power_into_the_heart_of_earth"
+  },
+  "s.b95904a9aeae9d66": {
+    "text": "*bows*",
+    "shotkey": "mob.emote.bows"
+  },
+  "s.b95e6c55ad950975": {
+    "text": "Fellow guardsmen, {0} is here!",
+    "shotkey": "mob.fmt.fellow_guardsmen_0_is_here"
+  },
+  "s.b969b55ad2715147": {
+    "text": "*yawns*",
+    "shotkey": "mob.emote.yawns"
+  },
+  "s.ba20c28271b5a002": {
+    "text": "This statue still has the eye you placed in it.",
+    "shotkey": "mob.other.this_statue_still_has_the_eye_you_placed_in_it"
+  },
+  "s.bafc6b5bc95e074d": {
+    "text": "You look as though you have some wounds.",
+    "shotkey": "mob.other.you_look_as_though_you_have_some_wounds"
+  },
+  "s.bb1147cce0e0e023": {
+    "text": "Feel the power of my hammer!",
+    "shotkey": "mob.other.feel_the_power_of_my_hammer"
+  },
+  "s.bb2eb5ad0ab59e14": {
+    "text": "The orange donkey shall not gutter at the bridge.",
+    "shotkey": "mob.other.the_orange_donkey_shall_not_gutter_at_the_bridge"
+  },
+  "s.bb811b89400b58b9": {
+    "text": "No, ",
+    "shotkey": "mob.other.no_4"
+  },
+  "s.bbe4a9a34718b7c2": {
+    "text": "You cannot take another wizard's familiar.",
+    "shotkey": "mob.other.you_cannot_take_another_wizard_s_familiar"
+  },
+  "s.bc1945d64f179d0e": {
+    "text": "You will never have the secrets of the ore!",
+    "shotkey": "mob.other.you_will_never_have_the_secrets_of_the_ore"
+  },
+  "s.bcc0a17bf2e878ed": {
+    "text": "You feel your muscles regain control.",
+    "shotkey": "mob.other.you_feel_your_muscles_regain_control"
+  },
+  "s.bcc649cfdb8cc557": {
+    "text": "found",
+    "shotkey": "mob.other.found"
+  },
+  "s.bd09ccfbbfba686f": {
+    "text": "Chuckles gave you a check for ",
+    "shotkey": "mob.other.chuckles_gave_you_a_check_for"
+  },
+  "s.bd4e95090e95dced": {
+    "text": "What do you call a cat that flies over the castle wall? A cat-a-pult!",
+    "shotkey": "mob.joke.what_do_you_call_a_cat_that_flies_over_the_castle_wall"
+  },
+  "s.bd7bce94c3b555d0": {
+    "text": "Move like ",
+    "shotkey": "mob.other.move_like"
+  },
+  "s.bdddddf1e0e6f088": {
+    "text": "Your soul will soon be encased in ice!",
+    "shotkey": "mob.other.your_soul_will_soon_be_encased_in_ice"
+  },
+  "s.be05c518448fefca": {
+    "text": "Me cannot lose!",
+    "shotkey": "mob.other.me_cannot_lose"
+  },
+  "s.be612e9dce5bfb5c": {
+    "text": "Foolish mortal! You cannot defeat me!",
+    "shotkey": "mob.other.foolish_mortal_you_cannot_defeat_me"
+  },
+  "s.be7f8efd1e8e5e99": {
+    "text": "My tummy hurts...",
+    "shotkey": "mob.other.my_tummy_hurts"
+  },
+  "s.beb4c7f0f44b3a64": {
+    "text": "*snore*",
+    "shotkey": "mob.emote.snore"
+  },
+  "s.bee528eac39a87f4": {
+    "text": "An agreement must take place with the broken-hearted cleric.",
+    "shotkey": "mob.other.an_agreement_must_take_place_with_the_broken_hearted_cl"
+  },
+  "s.bef6eb875172fc4d": {
+    "text": "Good day to you, Z~Z~Z~Z~Z.",
+    "shotkey": "mob.other.good_day_to_you_z_z_z_z_z"
+  },
+  "s.bfa6bdd3222243b3": {
+    "text": "You dare invade my lair?!",
+    "shotkey": "mob.other.you_dare_invade_my_lair"
+  },
+  "s.bfd69daaad3f73fc": {
+    "text": "I will drain every breath of life from you!",
+    "shotkey": "mob.other.i_will_drain_every_breath_of_life_from_you"
+  },
+  "s.bfdca0e48452b2ab": {
+    "text": "I will break a spirit such as yours!",
+    "shotkey": "mob.other.i_will_break_a_spirit_such_as_yours"
+  },
+  "s.c05cbfff5fc539e9": {
+    "text": "You have been sent to the ",
+    "shotkey": "mob.other.you_have_been_sent_to_the"
+  },
+  "s.c0e51bc600ef2f77": {
+    "text": "*meditating*",
+    "shotkey": "mob.emote.meditating"
+  },
+  "s.c220725136d1286e": {
+    "text": "Come and find me later when you have a quest for riches.",
+    "shotkey": "mob.other.come_and_find_me_later_when_you_have_a_quest_for_riches"
+  },
+  "s.c251cb6bbf6bcb7d": {
+    "text": "You cut away some leather and they are on the corpse.",
+    "shotkey": "mob.other.you_cut_away_some_leather_and_they_are_on_the_corpse"
+  },
+  "s.c28ffdce683c1e93": {
+    "text": "You cut away some scales and they are on the corpse.",
+    "shotkey": "mob.other.you_cut_away_some_scales_and_they_are_on_the_corpse"
+  },
+  "s.c2bdd7ea66647cc4": {
+    "text": "By Neptunes's might, how...",
+    "shotkey": "mob.other.by_neptunes_s_might_how"
+  },
+  "s.c2e94e2cdbc6f9ae": {
+    "text": "a special item",
+    "shotkey": "mob.other.a_special_item"
+  },
+  "s.c3684392e026f58f": {
+    "text": "You have subdued the Serpent of Chaos!",
+    "shotkey": "mob.other.you_have_subdued_the_serpent_of_chaos"
+  },
+  "s.c4227e2af4b16812": {
+    "text": "Let me fix that quiver for you.",
+    "shotkey": "mob.other.let_me_fix_that_quiver_for_you"
+  },
+  "s.c4746141fd59716c": {
+    "text": "You cannot give away a familiar.",
+    "shotkey": "mob.other.you_cannot_give_away_a_familiar"
+  },
+  "s.c4973605b95b3256": {
+    "text": "She must not consent in the age of entropy.",
+    "shotkey": "mob.other.she_must_not_consent_in_the_age_of_entropy"
+  },
+  "s.c4ba596ef58187b4": {
+    "text": "What king was famous because he spent so many nights at his Round Table writing books? King Author!",
+    "shotkey": "mob.other.what_king_was_famous_because_he_spent_so_many_nights_at"
+  },
+  "s.c4ec0f00ab35dc4a": {
+    "text": "Let the mountain fires take you, ",
+    "shotkey": "mob.other.let_the_mountain_fires_take_you"
+  },
+  "s.c4f74c955368bdae": {
+    "text": "*whistles*",
+    "shotkey": "mob.emote.whistles"
+  },
+  "s.c533f4c38bf7f17f": {
+    "text": "After this, we will reflect on what we learned.",
+    "shotkey": "mob.other.after_this_we_will_reflect_on_what_we_learned"
+  },
+  "s.c613a217d3ee34c5": {
+    "text": "You separate the ore into your backpack",
+    "shotkey": "mob.other.you_separate_the_ore_into_your_backpack"
+  },
+  "s.c68a27a70785f2ee": {
+    "text": "The diamond possum shall not deflect near a fortress on a sunny day before the coming of beauty.",
+    "shotkey": "mob.other.the_diamond_possum_shall_not_deflect_near_a_fortress_on"
+  },
+  "s.c6da9743e538363c": {
+    "text": "You cannot take another's golem.",
+    "shotkey": "mob.other.you_cannot_take_another_s_golem"
+  },
+  "s.c6f7fa100ba8b400": {
+    "text": "How do you find a princess? You follow the foot prince.",
+    "shotkey": "mob.joke.how_do_you_find_a_princess_you_follow_the_foot_prince"
+  },
+  "s.c739ef0b08fc2271": {
+    "text": "Add or change your barkeeper's tip message",
+    "shotkey": "mob.other.add_or_change_your_barkeeper_s_tip_message"
+  },
+  "s.c776cfbf0acf2cba": {
+    "text": "*looks furious*",
+    "shotkey": "mob.emote.looks_furious"
+  },
+  "s.c797fe8c0b888ba1": {
+    "text": "Yet sometimes one must sacrifice a pawn to save a king.",
+    "shotkey": "mob.other.yet_sometimes_one_must_sacrifice_a_pawn_to_save_a_king"
+  },
+  "s.c804480211fe3763": {
+    "text": "Nooo...",
+    "shotkey": "mob.other.nooo"
+  },
+  "s.c855b84b1e6b8967": {
+    "text": "Yea!",
+    "shotkey": "mob.other.yea"
+  },
+  "s.c8940be0f85fde31": {
+    "text": "We have ways of dealing with the likes of {0}!",
+    "shotkey": "mob.fmt.we_have_ways_of_dealing_with_the_likes_of_0"
+  },
+  "s.c9252cd544c8e212": {
+    "text": "Your life will end in darkness, ",
+    "shotkey": "mob.other.your_life_will_end_in_darkness"
+  },
+  "s.c972381ed8edf63a": {
+    "text": "Your frozen corpse will decorate my halls!",
+    "shotkey": "mob.other.your_frozen_corpse_will_decorate_my_halls"
+  },
+  "s.c9f1fafa950bf735": {
+    "text": "This is not some slave you can trade.",
+    "shotkey": "mob.other.this_is_not_some_slave_you_can_trade"
+  },
+  "s.cb3dfdb2cee2c4ff": {
+    "text": "Defend yourself!",
+    "shotkey": "mob.other.defend_yourself"
+  },
+  "s.cb5abbc4d786c751": {
+    "text": "Ahh-choo!",
+    "shotkey": "mob.other.ahh_choo"
+  },
+  "s.cb5fe0b4575b36f0": {
+    "text": "My...might...outweighs...yours!",
+    "shotkey": "mob.other.my_might_outweighs_yours"
+  },
+  "s.cbdc786981f2bf39": {
+    "text": "No...!",
+    "shotkey": "mob.other.no_5"
+  },
+  "s.cc47e3c16275b2cb": {
+    "text": "Good, {0}.",
+    "shotkey": "mob.fmt.good_0"
+  },
+  "s.ccd48f34162c9e80": {
+    "text": "What keyword should a guest say to me to get this news?",
+    "shotkey": "mob.other.what_keyword_should_a_guest_say_to_me_to_get_this_news"
+  },
+  "s.cd3ec23c3e6e4384": {
+    "text": "All will know that ",
+    "shotkey": "mob.other.all_will_know_that"
+  },
+  "s.ce7d39158d666e84": {
+    "text": "I will crush you into the dirt!",
+    "shotkey": "mob.other.i_will_crush_you_into_the_dirt"
+  },
+  "s.cf0e5cfb4898ef7d": {
+    "text": "You dare face the power of the sea?!",
+    "shotkey": "mob.other.you_dare_face_the_power_of_the_sea"
+  },
+  "s.cf4ef25afb85e1e7": {
+    "text": "You cannot mount that while you are in here.",
+    "shotkey": "mob.other.you_cannot_mount_that_while_you_are_in_here"
+  },
+  "s.cf7bc1260bf9fb98": {
+    "text": "Arrgghhh...",
+    "shotkey": "mob.other.arrgghhh"
+  },
+  "s.cf82a4e9c162222f": {
+    "text": "Description: {0}",
+    "shotkey": "mob.fmt.description_0"
+  },
+  "s.d008ff09ac6ceb93": {
+    "text": "If you hear stories of riches, come and get me.",
+    "shotkey": "mob.other.if_you_hear_stories_of_riches_come_and_get_me"
+  },
+  "s.d05cb44f3be22138": {
+    "text": "No...how can...",
+    "shotkey": "mob.other.no_how_can"
+  },
+  "s.d0d10bb16ecd668e": {
+    "text": "*spits*",
+    "shotkey": "mob.emote.spits"
+  },
+  "s.d1459fd2c2b060db": {
+    "text": "Did you have too much ",
+    "shotkey": "mob.other.did_you_have_too_much"
+  },
+  "s.d1a00d33645a5a61": {
+    "text": "I could beat you if I were three sheets to the wind!",
+    "shotkey": "mob.other.i_could_beat_you_if_i_were_three_sheets_to_the_wind"
+  },
+  "s.d1f65e343fa665e8": {
+    "text": "You chip away some stones and they are on the corpse.",
+    "shotkey": "mob.other.you_chip_away_some_stones_and_they_are_on_the_corpse"
+  },
+  "s.d2043f4ffc7c4d79": {
+    "text": "You chisel away some granite and it is on the corpse.",
+    "shotkey": "mob.other.you_chisel_away_some_granite_and_it_is_on_the_corpse"
+  },
+  "s.d27f3fb55524fefc": {
+    "text": "The Bell of Courage has vanished after dispatching the Shadowlord.",
+    "shotkey": "mob.other.the_bell_of_courage_has_vanished_after_dispatching_the"
+  },
+  "s.d3aeddb06974736f": {
+    "text": "You have pulled Vordinax's Vault toward you.",
+    "shotkey": "mob.other.you_have_pulled_vordinax_s_vault_toward_you"
+  },
+  "s.d431cae71370bcff": {
+    "text": "You cannot give away a mystical pack animal.",
+    "shotkey": "mob.other.you_cannot_give_away_a_mystical_pack_animal"
+  },
+  "s.d53bb53febf5caa0": {
+    "text": "Dispel prevented (Low skill)",
+    "shotkey": "mob.other.dispel_prevented_low_skill"
+  },
+  "s.d53d59a0685b66fc": {
+    "text": "It would not be fair of me to take your money and not offer you information in return.",
+    "shotkey": "mob.other.it_would_not_be_fair_of_me_to_take_your_money_and_not_o"
+  },
+  "s.d5a78b996fe640a3": {
+    "text": "Poison",
+    "shotkey": "mob.other.poison"
+  },
+  "s.d62d59bd4632e691": {
+    "text": "You should be honored to be slain by me!",
+    "shotkey": "mob.other.you_should_be_honored_to_be_slain_by_me"
+  },
+  "s.d6a1875f022da259": {
+    "text": "You will be dead by me hand!",
+    "shotkey": "mob.other.you_will_be_dead_by_me_hand"
+  },
+  "s.d6a3a64b2d48a0ab": {
+    "text": "Let the shadows take you, ",
+    "shotkey": "mob.other.let_the_shadows_take_you"
+  },
+  "s.d816b9ee037fb622": {
+    "text": "I have slain those more powerful than you!",
+    "shotkey": "mob.other.i_have_slain_those_more_powerful_than_you"
+  },
+  "s.d8747bead2dc35d5": {
+    "text": "has obtained the shard of cowardice",
+    "shotkey": "mob.other.has_obtained_the_shard_of_cowardice"
+  },
+  "s.d8c227bbf4d22507": {
+    "text": "*blinks a yellow eye*",
+    "shotkey": "mob.emote.blinks_a_yellow_eye"
+  },
+  "s.d8f265fee42169c3": {
+    "text": "Ahhh...a cut of the treasure. This journey is worth the risk.",
+    "shotkey": "mob.other.ahhh_a_cut_of_the_treasure_this_journey_is_worth_the_ri"
+  },
+  "s.d93667c28afaa233": {
+    "text": "Feel the power of ",
+    "shotkey": "mob.other.feel_the_power_of"
+  },
+  "s.db000e968e22acb7": {
+    "text": "You sever off the giant's right leg.",
+    "shotkey": "mob.other.you_sever_off_the_giant_s_right_leg"
+  },
+  "s.db3de9e24bad202d": {
+    "text": "I have slain others better than you, ",
+    "shotkey": "mob.other.i_have_slain_others_better_than_you"
+  },
+  "s.db67d62e228a2fdf": {
+    "text": "You chip away some metal and it is on the corpse.",
+    "shotkey": "mob.other.you_chip_away_some_metal_and_it_is_on_the_corpse"
+  },
+  "s.db995b35cfcacf31": {
+    "text": "The russet berserker must gasp or the remorseless slave must not bicker with the triumphant lion near a farm on the spring equinox.",
+    "shotkey": "mob.other.the_russet_berserker_must_gasp_or_the_remorseless_slave"
+  },
+  "s.dbf5bcb1a3fb7b60": {
+    "text": "Yield to me!",
+    "shotkey": "mob.other.yield_to_me"
+  },
+  "s.dc80eaee29d0c2bc": {
+    "text": "Message Control",
+    "shotkey": "mob.other.message_control"
+  },
+  "s.dc9874750f3a2fe1": {
+    "text": "You absord the Titan's power into the Breath of Air.",
+    "shotkey": "mob.other.you_absord_the_titan_s_power_into_the_breath_of_air"
+  },
+  "s.dcae823e58e45376": {
+    "text": "Foolish mortal!",
+    "shotkey": "mob.other.foolish_mortal"
+  },
+  "s.dcb7cc2dc433f4ef": {
+    "text": "Why did the king go to the dentist? To get his teeth crowned.",
+    "shotkey": "mob.joke.why_did_the_king_go_to_the_dentist_to_get_his_teeth_cro"
+  },
+  "s.dcbab46c3d3d0a96": {
+    "text": "No one does that and lives!",
+    "shotkey": "mob.other.no_one_does_that_and_lives"
+  },
+  "s.dd107f1e0bf05e66": {
+    "text": "has obtained the shard of falsehood",
+    "shotkey": "mob.other.has_obtained_the_shard_of_falsehood"
+  },
+  "s.dd6b9c2e00bddf57": {
+    "text": "How did the girl dragon win the beauty contest? She was the beast of the show!",
+    "shotkey": "mob.joke.how_did_the_girl_dragon_win_the_beauty_contest_she_was"
+  },
+  "s.dddd40983408c289": {
+    "text": "We must bring the shards into harmony, so that they resonate in such a manner that matches the original universe.",
+    "shotkey": "mob.other.we_must_bring_the_shards_into_harmony_so_that_they_reso"
+  },
+  "s.ddfe1b634c57f11a": {
+    "text": "TitanHydros",
+    "shotkey": "mob.other.titanhydros"
+  },
+  "s.de694fbfbb7f7ae9": {
+    "text": "You have obtained the Shard of Hatred!",
+    "shotkey": "mob.other.you_have_obtained_the_shard_of_hatred"
+  },
+  "s.ded80bce7c2f23fe": {
+    "text": "Why did the dinosaur live longer than the dragon? Because it didn�t smoke!",
+    "shotkey": "mob.joke.why_did_the_dinosaur_live_longer_than_the_dragon_becaus"
+  },
+  "s.df02fd05d1bf9467": {
+    "text": "You found the rusty key that was around the gray dragon's neck.",
+    "shotkey": "mob.other.you_found_the_rusty_key_that_was_around_the_gray_dragon"
+  },
+  "s.df607ee4a1d6f06c": {
+    "text": "Time to die!",
+    "shotkey": "mob.other.time_to_die"
+  },
+  "s.df65467729eb8159": {
+    "text": "You are no match for the gods of the sea!",
+    "shotkey": "mob.other.you_are_no_match_for_the_gods_of_the_sea"
+  },
+  "s.df743c15c668c10a": {
+    "text": "Feel the fires of volcanic might!",
+    "shotkey": "mob.other.feel_the_fires_of_volcanic_might"
+  },
+  "s.dfbb18c4dc9a565e": {
+    "text": "You sever off the giant's left arm.",
+    "shotkey": "mob.other.you_sever_off_the_giant_s_left_arm"
+  },
+  "s.dfc0970aae1f4321": {
+    "text": "Many have died trying to take what is mine!",
+    "shotkey": "mob.other.many_have_died_trying_to_take_what_is_mine"
+  },
+  "s.e02e5e78fc463f4b": {
+    "text": "Your pet has gained {0} trait{1}!",
+    "shotkey": "mob.fmt.your_pet_has_gained_0_trait_1"
+  },
+  "s.e04a745b95a96520": {
+    "text": "You will never find the caddellite!",
+    "shotkey": "mob.other.you_will_never_find_the_caddellite"
+  },
+  "s.e0b477400d44a89c": {
+    "text": "You cannot take another's mystical pack animal.",
+    "shotkey": "mob.other.you_cannot_take_another_s_mystical_pack_animal"
+  },
+  "s.e0b735a04fddb0f0": {
+    "text": "willing to part with",
+    "shotkey": "mob.other.willing_to_part_with"
+  },
+  "s.e0dfd0b0c5e417be": {
+    "text": "Your head will look good on the block!",
+    "shotkey": "mob.other.your_head_will_look_good_on_the_block"
+  },
+  "s.e15e2a853b937447": {
+    "text": "Only a grandmaster in necromancy and magery may ride this evil being.",
+    "shotkey": "mob.other.only_a_grandmaster_in_necromancy_and_magery_may_ride_th"
+  },
+  "s.e1b2d995e7fad8fc": {
+    "text": "Fool...you can never destroy me!",
+    "shotkey": "mob.other.fool_you_can_never_destroy_me"
+  },
+  "s.e274d3cc408597cc": {
+    "text": "You have been disrupted while attempting to summon your mount!",
+    "shotkey": "mob.other.you_have_been_disrupted_while_attempting_to_summon_your"
+  },
+  "s.e291cad3d7b2fcaa": {
+    "text": "Take your steed and fill the world with dread.",
+    "shotkey": "mob.other.take_your_steed_and_fill_the_world_with_dread"
+  },
+  "s.e2940837ab2ccf0f": {
+    "text": "Me make soup with your ",
+    "shotkey": "mob.other.me_make_soup_with_your"
+  },
+  "s.e2fb1b66161f8f16": {
+    "text": "No...this cannot be the end!",
+    "shotkey": "mob.other.no_this_cannot_be_the_end"
+  },
+  "s.e356b967462880da": {
+    "text": "Why did the dinosaur live longer than the dragon? Because it didn’t smoke!",
+    "shotkey": "mob.joke.why_did_the_dinosaur_live_longer_than_the_dragon_becaus_2"
+  },
+  "s.e37f9ef1789c9471": {
+    "text": "The hasty hostler must jump.",
+    "shotkey": "mob.other.the_hasty_hostler_must_jump"
+  },
+  "s.e39dd00513bc648d": {
+    "text": "{0} I have {1} I {2} while exploring {3} that I am {4} for {5} gold.",
+    "shotkey": "mob.fmt.0_i_have_1_i_2_while_exploring_3_that_i_am_4_for_5_gold"
+  },
+  "s.e44431cb60bd1442": {
+    "text": "I am fearless, and therefore powerful!",
+    "shotkey": "mob.other.i_am_fearless_and_therefore_powerful"
+  },
+  "s.e49c976a68dadaf1": {
+    "text": "You sever apart the giant's torso.",
+    "shotkey": "mob.other.you_sever_apart_the_giant_s_torso"
+  },
+  "s.e4baebe7b0db3788": {
+    "text": "May monsters fear our hardy band.",
+    "shotkey": "mob.other.may_monsters_fear_our_hardy_band"
+  },
+  "s.e4c5532a487a5670": {
+    "text": "You have obtained the Blackrock Serpent of Balance!",
+    "shotkey": "mob.other.you_have_obtained_the_blackrock_serpent_of_balance"
+  },
+  "s.e58fae3c69986ec4": {
+    "text": "*cries*",
+    "shotkey": "mob.emote.cries"
+  },
+  "s.e6019f0327dfee43": {
+    "text": "Choose the message you would like to remove",
+    "shotkey": "mob.other.choose_the_message_you_would_like_to_remove"
+  },
+  "s.e65754210a6740bd": {
+    "text": "Where did you learn to fight like that",
+    "shotkey": "mob.other.where_did_you_learn_to_fight_like_that"
+  },
+  "s.e6c1fc87c5feb1ca": {
+    "text": "Me curse you...",
+    "shotkey": "mob.other.me_curse_you"
+  },
+  "s.e79bff16b024f46e": {
+    "text": "Feel the cold of glacial ice!",
+    "shotkey": "mob.other.feel_the_cold_of_glacial_ice"
+  },
+  "s.e79fc4f42155a62e": {
+    "text": "It will judge in the summer.",
+    "shotkey": "mob.other.it_will_judge_in_the_summer"
+  },
+  "s.e9acf1b36320ba70": {
+    "text": "Fool...I cannot kill what is dead?!",
+    "shotkey": "mob.other.fool_i_cannot_kill_what_is_dead"
+  },
+  "s.ea39e67763ec5f9e": {
+    "text": "One of your protected items was almost carried by the wind!",
+    "shotkey": "mob.other.one_of_your_protected_items_was_almost_carried_by_the_w"
+  },
+  "s.ea3d077e666e4b42": {
+    "text": "You will soon be nothing but ashes!",
+    "shotkey": "mob.other.you_will_soon_be_nothing_but_ashes"
+  },
+  "s.eaaa25dcd62e9565": {
+    "text": "Sorry, {0}...but I can't see much value in that.",
+    "shotkey": "mob.fmt.sorry_0_but_i_can_t_see_much_value_in_that"
+  },
+  "s.ebbbccc3089897f2": {
+    "text": "You promised riches, but I fear there is none.",
+    "shotkey": "mob.other.you_promised_riches_but_i_fear_there_is_none"
+  },
+  "s.ec609becffdec77d": {
+    "text": "En garde!",
+    "shotkey": "mob.other.en_garde"
+  },
+  "s.ec92ea5d03f6de1d": {
+    "text": "* The bunny begins to dig a tunnel back to its underground lair *",
+    "shotkey": "mob.emote.the_bunny_begins_to_dig_a_tunnel_back_to_its_undergroun"
+  },
+  "s.ed3d0102d8b1d082": {
+    "text": "You notice a magical gate is open nearby. You better hurry or you will remain trapped here.<br><br>You have 30 minutes. Don't forget to loot the Vault or take it with you!",
+    "shotkey": "mob.other.you_notice_a_magical_gate_is_open_nearby_you_better_hur"
+  },
+  "s.ed6dbbb8749bd89d": {
+    "text": "Say what news you would like me to tell our guests.",
+    "shotkey": "mob.other.say_what_news_you_would_like_me_to_tell_our_guests"
+  },
+  "s.ed8b25c85b3aef9b": {
+    "text": "A relationship ending will finally happen with the tired juggler during the planting season.",
+    "shotkey": "mob.other.a_relationship_ending_will_finally_happen_with_the_tire"
+  },
+  "s.edb19130ef855c09": {
+    "text": "You are hit with a stunning punch!",
+    "shotkey": "mob.other.you_are_hit_with_a_stunning_punch"
+  },
+  "s.ede63e84fa1bfd8c": {
+    "text": "I sentence you to death!",
+    "shotkey": "mob.other.i_sentence_you_to_death"
+  },
+  "s.edf401b1c32991a0": {
+    "text": "I have slain those mightier than you, ",
+    "shotkey": "mob.other.i_have_slain_those_mightier_than_you"
+  },
+  "s.ee1bed2dec8687de": {
+    "text": "{0} I won {1} from a card game in {2} that I am {3} for {4} gold.",
+    "shotkey": "mob.fmt.0_i_won_1_from_a_card_game_in_2_that_i_am_3_for_4_gold"
+  },
+  "s.ef0787cc4cd61d54": {
+    "text": "You separate the meat into your backpack",
+    "shotkey": "mob.other.you_separate_the_meat_into_your_backpack"
+  },
+  "s.ef3fe22899feb214": {
+    "text": "You...dare...fight...me?!",
+    "shotkey": "mob.other.you_dare_fight_me"
+  },
+  "s.ef57429919c31cc6": {
+    "text": "Hmmm...you do not seem the type I wish to discuss matters with.",
+    "shotkey": "mob.other.hmmm_you_do_not_seem_the_type_i_wish_to_discuss_matters"
+  },
+  "s.ef72493ee3d009b2": {
+    "text": "It will finally benefit in the citadel in the age of dreams.",
+    "shotkey": "mob.other.it_will_finally_benefit_in_the_citadel_in_the_age_of_dr"
+  },
+  "s.efffc63af5693750": {
+    "text": "The emerald lion will never scare for the sake of winter.",
+    "shotkey": "mob.other.the_emerald_lion_will_never_scare_for_the_sake_of_winte"
+  },
+  "s.f057dd314d22db4c": {
+    "text": "Hell will not be able to hold me...",
+    "shotkey": "mob.other.hell_will_not_be_able_to_hold_me"
+  },
+  "s.f0e11e38a3bb638d": {
+    "text": "Squeak",
+    "shotkey": "mob.other.squeak_2"
+  },
+  "s.f1a4d28cb8a2892d": {
+    "text": "How did the prince get into the castle when the drawbridge was broken? He used a rowmoat!",
+    "shotkey": "mob.joke.how_did_the_prince_get_into_the_castle_when_the_drawbri"
+  },
+  "s.f28df56bb48b91db": {
+    "text": "*gasp*",
+    "shotkey": "mob.emote.gasp"
+  },
+  "s.f2b52c7e4f17e600": {
+    "text": "You will submit to my dark power!",
+    "shotkey": "mob.other.you_will_submit_to_my_dark_power"
+  },
+  "s.f2fe902490d30082": {
+    "text": "You should have fled this land long ago!",
+    "shotkey": "mob.other.you_should_have_fled_this_land_long_ago"
+  },
+  "s.f37e2b17c4dd76f5": {
+    "text": "You are hit by a manticore thorn!",
+    "shotkey": "mob.other.you_are_hit_by_a_manticore_thorn"
+  },
+  "s.f3da63b81db26495": {
+    "text": "There is not enough reward in this for me.",
+    "shotkey": "mob.other.there_is_not_enough_reward_in_this_for_me"
+  },
+  "s.f40c5f777b54ac9e": {
+    "text": "You are hypnotized by the worm's gaze!",
+    "shotkey": "mob.other.you_are_hypnotized_by_the_worm_s_gaze"
+  },
+  "s.f42e3eeaabebb871": {
+    "text": "I'll say that to anyone who gives me a good tip.",
+    "shotkey": "mob.other.i_ll_say_that_to_anyone_who_gives_me_a_good_tip"
+  },
+  "s.f43816fd6195e74b": {
+    "text": "They are dead and you must hire a healer to resurrect them.",
+    "shotkey": "mob.other.they_are_dead_and_you_must_hire_a_healer_to_resurrect_t"
+  },
+  "s.f448cbe2aade96d9": {
+    "text": "You no match for me!",
+    "shotkey": "mob.other.you_no_match_for_me"
+  },
+  "s.f4bc1cf3fe822e14": {
+    "text": "Add or change a message",
+    "shotkey": "mob.other.add_or_change_a_message"
+  },
+  "s.f4d97854855ac141": {
+    "text": "You cannot take another's reanimation.",
+    "shotkey": "mob.other.you_cannot_take_another_s_reanimation"
+  },
+  "s.f4f3b768fe2d8272": {
+    "text": "A promise will finally take place and it shall not bother during fall in a time of fear.",
+    "shotkey": "mob.other.a_promise_will_finally_take_place_and_it_shall_not_both"
+  },
+  "s.f518cb6364733882": {
+    "text": "You cannot take another wizard's elemental.",
+    "shotkey": "mob.other.you_cannot_take_another_wizard_s_elemental"
+  },
+  "s.f54b7338ff51bfe8": {
+    "text": "<BODY><BASEFONT Color=#111111><BIG><CENTER>Sherry the Mouse</CENTER></BIG></BASEFONT></BODY>",
+    "shotkey": "mob.other.body_basefont_color_111111_big_center_sherry_the_mouse"
+  },
+  "s.f54b73e44dc78e4a": {
+    "text": "You have obtained the Shard of Cowardice!",
+    "shotkey": "mob.other.you_have_obtained_the_shard_of_cowardice"
+  },
+  "s.f5b6a1b96119bb3d": {
+    "text": "I will splice the mainbrace over your corpse!",
+    "shotkey": "mob.other.i_will_splice_the_mainbrace_over_your_corpse"
+  },
+  "s.f5c35bc6ad87f5f0": {
+    "text": "I am ready for adventure.",
+    "shotkey": "mob.other.i_am_ready_for_adventure"
+  },
+  "s.f5cb2d7afab9a605": {
+    "text": "You separate the logs into your backpack",
+    "shotkey": "mob.other.you_separate_the_logs_into_your_backpack"
+  },
+  "s.f60c10d1115b601a": {
+    "text": "Dismiss your barkeep",
+    "shotkey": "mob.other.dismiss_your_barkeep"
+  },
+  "s.f674136f6bbb1f45": {
+    "text": "I will bring you justice!",
+    "shotkey": "mob.other.i_will_bring_you_justice"
+  },
+  "s.f67898a624cb1114": {
+    "text": "You will soon become shark bait!",
+    "shotkey": "mob.other.you_will_soon_become_shark_bait"
+  },
+  "s.f6adef0c735e728b": {
+    "text": "Are your bones cold yet, ",
+    "shotkey": "mob.other.are_your_bones_cold_yet"
+  },
+  "s.f6c114c0c0f1c1bc": {
+    "text": "An injury shall happen.",
+    "shotkey": "mob.other.an_injury_shall_happen"
+  },
+  "s.f6f706e3b11e575b": {
+    "text": "There are many castles in the world, but who is strong enough to move one? Any chess player",
+    "shotkey": "mob.other.there_are_many_castles_in_the_world_but_who_is_strong_e"
+  },
+  "s.f714649b546a8ada": {
+    "text": "You separate the food into your backpack",
+    "shotkey": "mob.other.you_separate_the_food_into_your_backpack"
+  },
+  "s.f755c4dc55da08b1": {
+    "text": "You will kneel before the bomb!",
+    "shotkey": "mob.other.you_will_kneel_before_the_bomb"
+  },
+  "s.f76365147c7a22c1": {
+    "text": "He must not weary.",
+    "shotkey": "mob.other.he_must_not_weary"
+  },
+  "s.f7d2ec0d0cd74be6": {
+    "text": "This is not some slave you can take control of.",
+    "shotkey": "mob.other.this_is_not_some_slave_you_can_take_control_of"
+  },
+  "s.f8c31d7501e6fefc": {
+    "text": "You will make me an excellent meal!",
+    "shotkey": "mob.other.you_will_make_me_an_excellent_meal"
+  },
+  "s.f8ea9daf4d45afe9": {
+    "text": "I will summon your gore to crawl these halls!",
+    "shotkey": "mob.other.i_will_summon_your_gore_to_crawl_these_halls"
+  },
+  "s.f8fd5d454e5fe13d": {
+    "text": "Feel the might of the orks!",
+    "shotkey": "mob.other.feel_the_might_of_the_orks"
+  },
+  "s.fa1922d507f62474": {
+    "text": "I have converted others stonger than you, ",
+    "shotkey": "mob.other.i_have_converted_others_stonger_than_you"
+  },
+  "s.fa35baa0a2bfd475": {
+    "text": "This will be your final fight!",
+    "shotkey": "mob.other.this_will_be_your_final_fight"
+  },
+  "s.fb07cf7a8f1cdd54": {
+    "text": "Dispel prevented (DispelDifficulty)",
+    "shotkey": "mob.other.dispel_prevented_dispeldifficulty"
+  },
+  "s.fb248bf63d87c075": {
+    "text": "An introduction will finally happen or the seductive viper shall not worship with the fanatical druid during the planting season.",
+    "shotkey": "mob.other.an_introduction_will_finally_happen_or_the_seductive_vi"
+  },
+  "s.fc16b0f115f2e2bb": {
+    "text": "{0} I have {1} I {2} on a beast I killed in {3} that I am {4} for {5} gold.",
+    "shotkey": "mob.fmt.0_i_have_1_i_2_on_a_beast_i_killed_in_3_that_i_am_4_for"
+  },
+  "s.fd112f6ce1610b08": {
+    "text": "What are we looking for? It is obviously not treasure.",
+    "shotkey": "mob.other.what_are_we_looking_for_it_is_obviously_not_treasure"
+  },
+  "s.fd3b20909f999e11": {
+    "text": "Are you ready to serve me in the depths, ",
+    "shotkey": "mob.other.are_you_ready_to_serve_me_in_the_depths"
+  },
+  "s.fdf33c845c7f50e7": {
+    "text": "Your soul will serve me well!",
+    "shotkey": "mob.other.your_soul_will_serve_me_well"
+  },
+  "s.fe499594c9aed1d3": {
+    "text": "You have pulled Mangar's Vault toward you.",
+    "shotkey": "mob.other.you_have_pulled_mangar_s_vault_toward_you"
+  },
+  "s.ff5095e1dbabdda5": {
+    "text": "Submit, and I will make it quick!",
+    "shotkey": "mob.other.submit_and_i_will_make_it_quick"
+  },
+  "s.ffb4c69aa24f123a": {
+    "text": "Even pawns have lives and loves at home, my lord.",
+    "shotkey": "mob.other.even_pawns_have_lives_and_loves_at_home_my_lord"
+  },
+  "s.fff539174b6ead18": {
+    "text": "*farts*",
+    "shotkey": "mob.emote.farts"
+  }
+}

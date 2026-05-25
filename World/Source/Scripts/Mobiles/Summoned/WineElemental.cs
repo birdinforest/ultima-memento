@@ -5,6 +5,7 @@ using Server.Mobiles;
 using Server.Misc;
 using Server.Network;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a wine elemental corpse" )]

@@ -5,6 +5,7 @@ using Server.Spells;
 using System.Collections;
 using Server.Misc;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -122,7 +123,7 @@ namespace Server.Mobiles
 			}
 			else if ( ( this is PaladinWarhorse ) && ( from.Skills[SkillName.Knightship].Base < 100 || from.Karma < 0 ) )
 			{
-				from.SendMessage("Only grandmaster knights may ride this holy steed.");
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "mob.other.only_grandmaster_knights_may_ride_this_holy_steed"));
 				return false;
 			}
 			else if ( this is Warhorse && (
@@ -133,22 +134,22 @@ namespace Server.Mobiles
 				from.Skills[SkillName.Fencing].Base < 100 
 			))
 			{
-				from.SendMessage("Only grandmaster warriors may ride this warhorse.");
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "mob.other.only_grandmaster_warriors_may_ride_this_warhorse"));
 				return false;
 			}
 			else if ( ( this is DeathKnightWarhorse ) && ( from.Skills[SkillName.Knightship].Base < 100 || from.Karma > 0 ) )
 			{
-				from.SendMessage("Only grandmaster death knights may ride this evil steed.");
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "mob.other.only_grandmaster_death_knights_may_ride_this_evil_steed"));
 				return false;
 			}
 			else if ( ( this is NecroHorse ) && ( from.Skills[SkillName.Necromancy].Base < 100 ) )
 			{
-				from.SendMessage("Only a grandmaster in necromancy may ride this undead steed.");
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "mob.other.only_a_grandmaster_in_necromancy_may_ride_this_undead_s"));
 				return false;
 			}
 			else if ( ( this is DaemonMount ) && ( from.Skills[SkillName.Necromancy].Base < 100 ) && ( from.Skills[SkillName.Magery].Base < 100 ) )
 			{
-				from.SendMessage("Only a grandmaster in necromancy and magery may ride this evil being.");
+				from.SendMessage(StringCatalog.ResolveByKey(from.Account, "mob.other.only_a_grandmaster_in_necromancy_and_magery_may_ride_th"));
 				return false;
 			}
 			else if( !BaseMount.CheckMountAllowed( from, true ) )
@@ -189,15 +190,15 @@ namespace Server.Mobiles
 		{
 			if ( from.IsBodyMod && !from.Body.IsHuman )
 			{
-				from.SendMessage( "You cannot ride a mount in your current form." );
+				from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_cannot_ride_a_mount_in_your_current_form") );
 			}
 			if ( MySettings.S_NoMountsInCertainRegions && Server.Mobiles.AnimalTrainer.IsNoMountRegion( from, from.Region ) )
 			{
-				from.SendMessage( "You cannot mount that while you are in this place." );
+				from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_cannot_mount_that_while_you_are_in_this_place") );
 			}
 			else if ( ( MySettings.S_NoMountBuilding && Server.Misc.Worlds.InBuilding( from ) ) || ( from.Region is HouseRegion && MySettings.S_NoMountsInHouses ) )
 			{
-				from.SendMessage( "You cannot mount that while you are in here." );
+				from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_cannot_mount_that_while_you_are_in_here") );
 			}
 			else
 			{
@@ -505,7 +506,7 @@ namespace Server.Mobiles
 			public override void OnDisturb( DisturbType type, bool message )
 			{
 				if( message && !m_Stop )
-					Caster.SendMessage("You have been disrupted while attempting to summon your mount!");
+					Caster.SendMessage(StringCatalog.ResolveByKey(Caster.Account, "mob.other.you_have_been_disrupted_while_attempting_to_summon_your"));
 			}
 
 			public override void OnCast()

@@ -1,6 +1,7 @@
 using System;
 using Server.Mobiles;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -18,7 +19,7 @@ namespace Server.Mobiles
 		}
 
 		[Constructable]
-		public PredatorHellCatRiding() : this( "a hell lion" )
+		public PredatorHellCatRiding() : this( StringCatalog.ResolveByKey(null, "mob.other.a_hell_lion") )
 		{
 		}
 

@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Items;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -68,7 +69,7 @@ namespace Server.Mobiles
 				else if ( this.Body == 0x143 ){ this.Body = 0x68; this.Hue = 0xB42; }
 				else { this.Body = 272; this.Hue = 0xB4D; }
 
-				from.SendMessage( "The dragon changed its bone structure." );
+				from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.the_dragon_changed_its_bone_structure") );
 
 				this.PlaySound( 0x488 );
 				dropped.Delete();

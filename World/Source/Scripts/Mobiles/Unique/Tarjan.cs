@@ -7,6 +7,7 @@ using Server.Mobiles;
 using Server.Misc;
 using Server.Commands;
 using Server.Commands.Generic;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -198,7 +199,7 @@ namespace Server.Items
 				PlayerSettings.SetBardsTaleQuest( from, "BardsTaleKylearanKey", true );
 				PlayerSettings.SetBardsTaleQuest( from, "BardsTaleSpectreEye", true );
 				from.SendSound( 0x3D );
-				from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You found a key with a symbol of a unicorn on it.", from.NetState);
+				from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(null, "mob.other.you_found_a_key_with_a_symbol_of_a_unicorn_on_it"), from.NetState);
 				from.CloseGump( typeof(Server.Gumps.ClueGump) );
 				from.SendGump(new Server.Gumps.ClueGump( from, "You found a key with a symbol of a unicorn on it, along with a magical book of items.", "Tarjan's Death" ) );
 
@@ -228,7 +229,7 @@ namespace Server.Items
 						book.m_Points = 100;
 						book.m_Hue = 0x5B7;
 						from.AddToBackpack( book );
-						from.SendMessage( "A small chest has been added to your pack!" );
+						from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.a_small_chest_has_been_added_to_your_pack") );
 				}
 			}
 		}
@@ -276,7 +277,7 @@ namespace Server.Items
 
 			if ( !trigger )
 			{
-				from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "This is a statue of Tarjan, who lies dead nearby.", from.NetState);
+				from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(null, "mob.other.this_is_a_statue_of_tarjan_who_lies_dead_nearby"), from.NetState);
 			}
 			else if ( from.InRange( this.GetWorldLocation(), 2 ) )
 			{
@@ -284,17 +285,17 @@ namespace Server.Items
 
 				if ( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleKylearanKey" ) )
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "This statue still has the eye you placed in it.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(null, "mob.other.this_statue_still_has_the_eye_you_placed_in_it"), from.NetState);
 				}
 				else if ( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleSpectreEye" ) && !( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleKylearanKey" ) ) )
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You place the mysterious eye into the statue.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(null, "mob.other.you_place_the_mysterious_eye_into_the_statue"), from.NetState);
 					SpawnTarjan( from );
 					this.Delete();
 				}
 				else
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "This statue seems to be missing an eye.", from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(null, "mob.other.this_statue_seems_to_be_missing_an_eye"), from.NetState);
 				}
 			}
 			else

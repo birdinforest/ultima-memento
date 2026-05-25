@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -9,7 +10,7 @@ namespace Server.Mobiles
 	public class Phoenix : BaseMount
 	{
 		[Constructable]
-		public Phoenix() : base( "a phoenix", 243, 0x3E94, AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4 ) 
+		public Phoenix() : base( StringCatalog.ResolveByKey(null, "mob.other.a_phoenix"), 243, 0x3E94, AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4 ) 
 		{
 			Hue = 0xB73;
 			BaseSoundID = 0x8F;

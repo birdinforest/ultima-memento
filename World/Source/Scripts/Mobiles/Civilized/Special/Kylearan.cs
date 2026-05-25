@@ -9,6 +9,7 @@ using Server.Items;
 using Server.Gumps;
 using Server.Mobiles;
 using Server.Commands;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -46,7 +47,7 @@ namespace Server.Mobiles
 
 		public override bool OnBeforeDeath()
 		{
-			Say("In Vas Mani");
+			Say(StringCatalog.ResolveByKey(this.Account, "mob.other.in_vas_mani"));
 			this.Hits = this.HitsMax;
 			this.FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
 			this.PlaySound( 0x202 );
@@ -82,7 +83,7 @@ namespace Server.Mobiles
 
 				if ( PlayerSettings.GetBardsTaleQuest( m_Mobile, "BardsTaleEbonyKey" ) )
 				{
-					CitizenLocalization.SayLocalized(m_Giver, "You already have the onyx key. Use it to enter Mangar's tower.");
+					CitizenLocalization.SayLocalized(m_Giver, StringCatalog.ResolveByKey(null, "mob.other.you_already_have_the_onyx_key_use_it_to_enter_mangar_s"));
 				}
 				else if ( ! m_Mobile.HasGump( typeof( SpeechGump ) ) )
 				{
@@ -113,7 +114,7 @@ namespace Server.Mobiles
 						book.m_Points = 150;
 						book.m_Hue = 0xA20;
 						m_Mobile.AddToBackpack( book );
-						m_Mobile.SendMessage( "A small chest has been added to your pack!" );
+						m_Mobile.SendMessage( StringCatalog.ResolveByKey(m_Mobile.Account, "mob.other.a_small_chest_has_been_added_to_your_pack") );
 				}
             }
         }

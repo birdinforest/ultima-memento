@@ -7,6 +7,7 @@ using Server.Network;
 using Server.Mobiles;
 using Server.Items;
 using Server.ContextMenus;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -30,7 +31,7 @@ namespace Server.Mobiles
 
 		public virtual void SayWelcomeTo( Mobile m )
 		{
-			SayTo( m, "Welcome to the guild! Thou shalt find it beneficial to your future endeavors." );
+			SayTo( m, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.welcome_to_the_guild_thou_shalt_find_it_beneficial_to_y") );
 		}
 
 		public static void SayPriceTo( Mobile m, Mobile guildmaster )
@@ -109,9 +110,9 @@ namespace Server.Mobiles
 			PlayerMobile pm = (PlayerMobile)player;
 
 			if ( player.Blessed )
-				guildmaster.SayTo( player, "Speak to me when that strange effect has worn off." );
+				guildmaster.SayTo( player, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.speak_to_me_when_that_strange_effect_has_worn_off") );
 			else if ( ((PlayerMobile)player).Fugitive == 1 && ((BaseVendor)guildmaster).NpcGuild != NpcGuild.AssassinsGuild && ((BaseVendor)guildmaster).NpcGuild != NpcGuild.NecromancersGuild && ((BaseVendor)guildmaster).NpcGuild != NpcGuild.ThievesGuild )
-				guildmaster.SayTo( player, "I don't think we could let someone like you join." );
+				guildmaster.SayTo( player, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.i_don_t_think_we_could_let_someone_like_you_join") );
 			else if ( pm.NpcGuild == ((BaseVendor)guildmaster).NpcGuild )
 				guildmaster.SayTo( player, 501047 ); // Thou art already a member of our guild.
 			else if ( pm.NpcGuild != NpcGuild.None )
@@ -131,7 +132,7 @@ namespace Server.Mobiles
 			else
 			{
 				if ( guildmaster == null )
-					player.SendMessage(0x22, "You have resigned from the local guild.");
+					player.SendMessage(0x22, Server.Localization.StringCatalog.ResolveByKey(player.Account, "mob.other.you_have_resigned_from_the_local_guild"));
 				else
 					guildmaster.SayTo( player, 501054 ); // I accept thy resignation.
 
@@ -292,14 +293,14 @@ namespace Server.Mobiles
 				else if ( this.NpcGuild == NpcGuild.ElementalGuild ){ GuildType = 22; }
 
 
-				Say( "Here is your replacement ring." );
+				Say( Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.here_is_your_replacement_ring") );
 				from.AddToBackpack( new GuildRing( from, GuildType ) );
 			}
 		}
 
 		public BaseGuildmaster( string title ) : base( title )
 		{
-			Title = String.Format( "the {0} {1}", title, Female ? "guildmistress" : "guildmaster" );
+			Title = "the " + title + " " + (Female ? "guildmistress" : "guildmaster");
 		}
 
 		public BaseGuildmaster( Serial serial ) : base( serial )

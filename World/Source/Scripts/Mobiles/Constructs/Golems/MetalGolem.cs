@@ -3,6 +3,7 @@ using Server.Items;
 using Server.Network;
 using Server.Misc;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a broken machine" )]
@@ -146,7 +147,7 @@ namespace Server.Mobiles
 
 				defender.Animate( 21, 6, 1, true, false, 0 );
 				this.PlaySound( 0xEE );
-				defender.LocalOverheadMessage( MessageType.Regular, 0x3B2, false, "You have been stunned by a colossal blow!" );
+				defender.LocalOverheadMessage( MessageType.Regular, 0x3B2, false, Server.Localization.StringCatalog.Resolve(defender.Account, "You have been stunned by a colossal blow!"));
 
 				BaseWeapon weapon = this.Weapon as BaseWeapon;
 				if ( weapon != null )
@@ -168,7 +169,7 @@ namespace Server.Mobiles
 			{
 				defender.Frozen = false;
 				defender.Combatant = null;
-				defender.LocalOverheadMessage( MessageType.Regular, 0x3B2, false, "You recover your senses." );
+				defender.LocalOverheadMessage( MessageType.Regular, 0x3B2, false, Server.Localization.StringCatalog.Resolve(defender.Account, "You recover your senses."));
 			}
 
 			m_Stunning = false;

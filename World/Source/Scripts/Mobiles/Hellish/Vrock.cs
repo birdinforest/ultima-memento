@@ -2,6 +2,7 @@ using System;
 using Server.Mobiles;
 using Server.Items;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a vrock corpse" )]

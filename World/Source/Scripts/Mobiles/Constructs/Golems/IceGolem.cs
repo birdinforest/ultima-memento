@@ -5,6 +5,7 @@ using Server.ContextMenus;
 using Server.Misc; 
 using Server.Network; 
 
+using Server.Localization;
 namespace Server.Mobiles 
 {
 	[CorpseName( "a golem corpse" )] 

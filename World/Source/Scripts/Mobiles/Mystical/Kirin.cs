@@ -1,6 +1,7 @@
 using System;
 using Server.Mobiles;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -40,7 +41,7 @@ namespace Server.Mobiles
 		}
 
 		[Constructable]
-		public Kirin() : this( "a kirin" )
+		public Kirin() : this( StringCatalog.ResolveByKey(null, "mob.other.a_kirin") )
 		{
 		}
 

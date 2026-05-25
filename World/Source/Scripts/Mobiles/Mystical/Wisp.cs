@@ -3,6 +3,7 @@ using Server;
 using Server.Misc;
 using Server.Items;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a wisp corpse" )]

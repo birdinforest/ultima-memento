@@ -6,6 +6,7 @@ using System.Collections;
 using Server.Targeting;
 using Server.Misc;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a broken machine" )]
@@ -86,7 +87,7 @@ namespace Server.Mobiles
 			if ( 0.3 > Utility.RandomDouble() )
 			{
 				this.PlaySound( 0x21C );
-				defender.LocalOverheadMessage( MessageType.Regular, 0x3B2, false, "You have been sliced by a saw!" );
+				defender.LocalOverheadMessage( MessageType.Regular, 0x3B2, false, Server.Localization.StringCatalog.ResolveByKey(defender.Account, "mob.other.you_have_been_sliced_by_a_saw"));
 				defender.Damage( ((int)(this.Hits/4)), this );
 				if ( Server.Items.BaseRace.IsBleeder( defender ) )
 				{

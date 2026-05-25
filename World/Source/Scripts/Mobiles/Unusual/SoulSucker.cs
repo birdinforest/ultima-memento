@@ -3,6 +3,7 @@ using Server;
 using Server.Items;
 using System.Collections;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a soul sucker corpse" )]
@@ -77,7 +78,7 @@ namespace Server.Mobiles
 					m.FixedParticles( 0x374A, 10, 15, 5013, 0x496, 0, EffectLayer.Waist );
 					m.PlaySound( 0x231 );
 
-					m.SendMessage( "The creature is sucking the soul out of you!" );
+					m.SendMessage(Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.the_creature_is_sucking_the_soul_out_of_you"));
 
 					int toDrain = Utility.RandomMinMax( 10, 40 );
 

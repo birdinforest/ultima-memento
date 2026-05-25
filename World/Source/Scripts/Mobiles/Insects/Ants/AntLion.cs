@@ -4,6 +4,7 @@ using Server.Items;
 using Server.Targeting;
 using Server.Network;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "an ant lion corpse" )]

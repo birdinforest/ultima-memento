@@ -6,6 +6,7 @@ using Server.Targeting;
 using Server.Misc;
 using System.Collections.Generic;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a satyr's corpse" )]

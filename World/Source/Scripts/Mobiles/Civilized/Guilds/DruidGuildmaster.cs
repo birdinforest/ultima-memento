@@ -9,6 +9,7 @@ using Server.Targeting;
 using Server.ContextMenus;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -129,9 +130,9 @@ namespace Server.Mobiles
 			if ( BeggingPose(from) > 0 ) // LET US SEE IF THEY ARE BEGGING
 			{
 				nCost = nCost - (int)( ( from.Skills[SkillName.Begging].Value * 0.005 ) * nCost ); if ( nCost < 1 ){ nCost = 1; }
-				SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "Since you are begging, do you still want me to tend to your pack animal for up to 5 journeys, it will only cost you {0} gold?", nCost));
+				SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.since_you_are_begging_do_you_still_want_me_to_tend_to_y", nCost));
 			}
-			else { SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "If you want me to tend to your pack animal for up to 5 journeys, it will cost you {0} gold.", nCost)); }
+			else { SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.if_you_want_me_to_tend_to_your_pack_animal_for_up_to_5", nCost)); }
 
             from.Target = new RepairTarget(this);
         }
@@ -165,7 +166,7 @@ namespace Server.Mobiles
                     }
                     else
                     {
-						m_Druid.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "You pack animal has been tended to enough."));
+						m_Druid.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_pack_animal_has_been_tended_to_enough"));
                     }
 
                     if (toConsume == 0)
@@ -174,20 +175,20 @@ namespace Server.Mobiles
                     if (pack.ConsumeTotal(typeof(Gold), toConsume))
                     {
 						if ( BeggingPose(from) > 0 ){ Titles.AwardKarma( from, -BeggingKarma( from ), true ); } // DO ANY KARMA LOSS
-                        m_Druid.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "Your pack animal is properly tended to."));
-                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormat(from.Account, "You pay {0} gold.", toConsume));
+                        m_Druid.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.your_pack_animal_is_properly_tended_to"));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.you_pay_0_gold", toConsume));
                         Effects.PlaySound(from.Location, from.Map, 0x5C1);
 						ball.Charges = ball.Charges + 5;
                     }
                     else
                     {
-                        m_Druid.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "It would cost you {0} gold to have that pack animal tended to.", toConsume));
-                        from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You do not have enough gold."));
+                        m_Druid.SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.it_would_cost_you_0_gold_to_have_that_pack_animal_tende", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_do_not_have_enough_gold"));
                     }
                 }
 				else
 				{
-					m_Druid.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "That does not need my services."));
+					m_Druid.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.that_does_not_need_my_services"));
 				}
             }
         }
@@ -201,14 +202,14 @@ namespace Server.Mobiles
 
 				if ( TreeSap > 19 )
 				{
-					sMessage = Server.Localization.StringCatalog.Resolve(from.Account, "Ahhh...this is generous of you. Here...have this as a token of the guild's gratitude.");
+					sMessage = Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.ahhh_this_is_generous_of_you_here_have_this_as_a_token");
 					PackBeastItem ball = new PackBeastItem();
 					ball.PorterOwner = from;
 					from.AddToBackpack ( ball );
 				}
 				else
 				{
-					sMessage = Server.Localization.StringCatalog.Resolve(from.Account, "Thank you for these. Mushrooms are something we often look for.");
+					sMessage = Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.thank_you_for_these_mushrooms_are_something_we_often_lo");
 				}
 
 				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, sMessage, from.NetState);
@@ -226,7 +227,7 @@ namespace Server.Mobiles
 				else if ( ball.PorterType == 177 ){ ball.ItemID = 0x20E1; ball.PorterType = 179; ball.Hue = 0; sMessage = "You may like a pack polar bear instead." ; }
 				else if ( ball.PorterType == 179 ){ ball.ItemID = 0x2126; ball.PorterType = 291; ball.Hue = 0; sMessage = "You may like a pack horse instead." ; }
 
-				sMessage = Server.Localization.StringCatalog.ResolveFormat(from.Account, "You would perhaps like a different pack animal? {0}", Server.Localization.StringCatalog.Resolve(from.Account, sMessage));
+				sMessage = Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.you_would_perhaps_like_a_different_pack_animal_0", Server.Localization.StringCatalog.Resolve(from.Account, sMessage));
 				from.AddToBackpack ( ball );
 
 				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, sMessage, from.NetState);
@@ -252,7 +253,7 @@ namespace Server.Mobiles
 
 					if ( m.Map == null || !m.Map.CanFit( m.Location, 16, false, false ) )
 					{
-						CitizenLocalization.SayLocalized( this, "I sense a spirt of an animal...somewhere." );
+						CitizenLocalization.SayLocalized( this, StringCatalog.ResolveByKey(this.Account, "mob.other.i_sense_a_spirt_of_an_animal_somewhere") );
 					}
 					else
 					{
@@ -263,7 +264,7 @@ namespace Server.Mobiles
 
 						bc.ResurrectPet();
 
-						CitizenLocalization.SayLocalized( this, "Rise my friend. I wish I could save every unfortunate animal." );
+						CitizenLocalization.SayLocalized( this, StringCatalog.ResolveByKey(this.Account, "mob.other.rise_my_friend_i_wish_i_could_save_every_unfortunate_an") );
 					}
 				}
 			}

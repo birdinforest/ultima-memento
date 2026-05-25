@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Server.Items;
 using Server.Targeting;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a rune beetle corpse" )]
@@ -120,7 +121,7 @@ namespace Server.Mobiles
 				/* Rune Corruption
 				 * Start cliloc: 1070846 "The creature magically corrupts your armor!"
 				 * Effect: All resistances -70 (lowest 0) for 5 seconds
-				 * End ASCII: "The corruption of your armor has worn off"
+				 * End ASCII: StringCatalog.ResolveByKey(this.Account, "mob.other.the_corruption_of_your_armor_has_worn_off")
 				 */
 
 				ExpireTimer timer = (ExpireTimer)m_Table[defender];
@@ -206,7 +207,7 @@ namespace Server.Mobiles
 
 			protected override void OnTick()
 			{
-				m_Mobile.SendMessage( "The corruption of your armor has worn off" );
+				m_Mobile.SendMessage(Server.Localization.StringCatalog.ResolveByKey(m_Mobile.Account, "mob.other.the_corruption_of_your_armor_has_worn_off"));
 				DoExpire();
 			}
 		}

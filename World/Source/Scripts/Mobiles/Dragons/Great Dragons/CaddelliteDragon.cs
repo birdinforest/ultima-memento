@@ -10,6 +10,7 @@ using Server.Commands.Generic;
 using Server.Mobiles;
 using Server.Accounting;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -172,7 +173,7 @@ namespace Server.Items
 			if ( from.InRange( this.GetWorldLocation(), 2 ) )
 			{
 				from.SendSound( 0x3D );
-				from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You have pulled Vordinax's Vault toward you.", from.NetState);
+				from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(null, "mob.other.you_have_pulled_vordinax_s_vault_toward_you"), from.NetState);
 
 				LootChest MyChest = new LootChest( 6 );
 				MyChest.Name = "Vordinax's Vault";

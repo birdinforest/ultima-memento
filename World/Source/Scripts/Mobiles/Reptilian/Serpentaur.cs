@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Server.Items;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a serpentaur corpse" )]

@@ -5,6 +5,7 @@ using Server.Items;
 using Server.Regions;
 using Server.Mobiles;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName("a giant snake corpse")]
@@ -112,7 +113,7 @@ namespace Server.Mobiles
 					m.FixedParticles( 0x374A, 10, 15, 5013, 0x496, 0, EffectLayer.Waist );
 					m.PlaySound( 0x231 );
 
-					m.SendMessage( "You feel the blood drain from you!" );
+					m.SendMessage(Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.you_feel_the_blood_drain_from_you"));
 
 					int toDrain = Utility.RandomMinMax( 10, 40 );
 

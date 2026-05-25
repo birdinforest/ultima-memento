@@ -540,34 +540,34 @@ namespace Server.Mobiles
 			if ( m is PlayerMobile ){ act = Utility.Random( 22 ); }
 			switch ( act )
 			{
-				case 0: m.Say("Why did the king go to the dentist? To get his teeth crowned."); break;
-				case 1: m.Say("When a knight in armor was killed in battle, what sign did they put on his grave? Rust in peace!"); break;
-				case 2: m.Say("What do you call a mosquito in a tin suit? A bite in shining armor."); break;
-				case 3: m.Say("There are many castles in the world, but who is strong enough to move one? Any chess player"); break;
-				case 4: m.Say("What king was famous because he spent so many nights at his Round Table writing books? King Author!"); break;
-				case 5: m.Say("How do you find a princess? You follow the foot prince."); break;
-				case 6: m.Say("Why were the early days called the dark ages? Because there were so many knights!"); break;
-				case 7: m.Say("Why did Arthur have a round table? So no one could corner him!"); break;
-				case 8: m.Say("Who invented King Arthur's round table? Sir Cumference!"); break;
-				case 9: m.Say("Why did the knight run about shouting for a tin opener? He had a bee in his suit of armor!"); break;
-				case 10: m.Say("What was Camelot famous for? It's knight life!"); break;
-				case 11: m.Say("What did the toad say when the princess would not kiss him? Warts the matter with you?"); break;
-				case 12: m.Say("What do you call the young royal who keeps falling down? Prince Harming!"); break;
-				case 13: m.Say("What do you call a cat that flies over the castle wall? A cat-a-pult!"); break;
-				case 14: m.Say("What game do the fish play in the moat? Trout or dare!"); break;
-				case 15: m.Say("What did the fish say to the other when the horse fell in the moat? See horse!"); break;
-				case 16: m.Say("What do you call an angry princess just awakened from a long sleep? Slapping beauty!"); break;
-				case 17: m.Say("How did the prince get into the castle when the drawbridge was broken? He used a rowmoat!"); break;
-				case 18: m.Say("How did the girl dragon win the beauty contest? She was the beast of the show!"); break;
-				case 19: m.Say("Why did the dinosaur live longer than the dragon? Because it didn’t smoke!"); break;
-				case 20: m.Say("What did the dragon say when it saw the Knight? 'Not more tinned food!'"); break;
-				case 21: m.Say("What do you do with a green dragon? Wait until it ripens!"); break;
+				case 0: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.joke.why_did_the_king_go_to_the_dentist_to_get_his_teeth_cro")); break;
+				case 1: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.other.when_a_knight_in_armor_was_killed_in_battle_what_sign_d")); break;
+				case 2: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.joke.what_do_you_call_a_mosquito_in_a_tin_suit_a_bite_in_shi")); break;
+				case 3: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.other.there_are_many_castles_in_the_world_but_who_is_strong_e")); break;
+				case 4: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.other.what_king_was_famous_because_he_spent_so_many_nights_at")); break;
+				case 5: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.joke.how_do_you_find_a_princess_you_follow_the_foot_prince")); break;
+				case 6: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.other.why_were_the_early_days_called_the_dark_ages_because_th")); break;
+				case 7: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.joke.why_did_arthur_have_a_round_table_so_no_one_could_corne")); break;
+				case 8: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.other.who_invented_king_arthur_s_round_table_sir_cumference")); break;
+				case 9: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.joke.why_did_the_knight_run_about_shouting_for_a_tin_opener")); break;
+				case 10: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.joke.what_was_camelot_famous_for_it_s_knight_life")); break;
+				case 11: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.joke.what_did_the_toad_say_when_the_princess_would_not_kiss")); break;
+				case 12: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.joke.what_do_you_call_the_young_royal_who_keeps_falling_down")); break;
+				case 13: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.joke.what_do_you_call_a_cat_that_flies_over_the_castle_wall")); break;
+				case 14: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.other.what_game_do_the_fish_play_in_the_moat_trout_or_dare")); break;
+				case 15: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.joke.what_did_the_fish_say_to_the_other_when_the_horse_fell")); break;
+				case 16: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.joke.what_do_you_call_an_angry_princess_just_awakened_from_a")); break;
+				case 17: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.joke.how_did_the_prince_get_into_the_castle_when_the_drawbri")); break;
+				case 18: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.joke.how_did_the_girl_dragon_win_the_beauty_contest_she_was")); break;
+				case 19: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.joke.why_did_the_dinosaur_live_longer_than_the_dragon_becaus_2")); break;
+				case 20: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.joke.what_did_the_dragon_say_when_it_saw_the_knight_not_more")); break;
+				case 21: m.Say(StringCatalog.ResolveByKey(m.Account, "mob.joke.what_do_you_do_with_a_green_dragon_wait_until_it_ripens")); break;
 				case 22: m.PlaySound( m.Female ? 780 : 1051 ); m.Say( "*claps*" ); break;
-				case 23: m.Say( "*bows*" ); m.Animate( 32, 5, 1, true, false, 0 ); break;
+				case 23: m.Say( StringCatalog.ResolveByKey(m.Account, "mob.emote.bows") ); m.Animate( 32, 5, 1, true, false, 0 ); break;
 				case 24: m.PlaySound( m.Female ? 794 : 1066 ); m.Say( "*giggles*" ); break;
 				case 25: m.PlaySound( m.Female ? 801 : 1073 ); m.Say( "*laughs*" ); break;
-				case 26: m.PlaySound( 792 ); m.Say( "*sticks out tongue*" ); break;
-				case 27: m.PlaySound( m.Female ? 783 : 1054 ); m.Say( "*woohoo!*" ); break;
+				case 26: m.PlaySound( 792 ); m.Say( StringCatalog.ResolveByKey(m.Account, "mob.emote.sticks_out_tongue") ); break;
+				case 27: m.PlaySound( m.Female ? 783 : 1054 ); m.Say( StringCatalog.ResolveByKey(m.Account, "mob.emote.woohoo") ); break;
 			};
 
 			if ( act < 22 && Utility.RandomBool() )
@@ -874,10 +874,10 @@ namespace Server.Mobiles
 		{
 			switch ( Utility.Random( 4 ))		   
 			{
-				case 0: Say("Leave this place!"); break;
+				case 0: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.leave_this_place")); break;
 				case 1: Say("" + defender.Name + ", we have heard of you!"); break;
-				case 2: Say("We have been told to watch for you, " + defender.Name + "!"); break;
-				case 3: Say("Guards, " + defender.Name + " is here!"); break;
+				case 2: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.we_have_been_told_to_watch_for_you") + defender.Name + "!"); break;
+				case 3: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.guards") + defender.Name + " is here!"); break;
 			};
 		}
 
@@ -893,7 +893,7 @@ namespace Server.Mobiles
 
 			if ( !CheckVendorAccess( from ) )
 			{
-				this.Say( "I have no business with you." );
+				this.Say( StringCatalog.ResolveByKey(this.Account, "mob.other.i_have_no_business_with_you") );
 				return;
 			}
 
@@ -1146,7 +1146,7 @@ namespace Server.Mobiles
 			if ( !CheckVendorAccess( from ) )
 			{
 				//Say( 501522 ); // I shall not treat with scum like thee!
-				this.Say( "I have no business with you." );
+				this.Say( StringCatalog.ResolveByKey(this.Account, "mob.other.i_have_no_business_with_you") );
 				return;
 			}
 
@@ -1249,7 +1249,7 @@ namespace Server.Mobiles
 						dropped.ItemID = 0x5770;
 					}
 
-					this.PrivateOverheadMessage(MessageType.Regular, 1153, false, "Let me fix that quiver for you.", from.NetState);
+					this.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.ResolveByKey(this.Account, "mob.other.let_me_fix_that_quiver_for_you"), from.NetState);
 					Effects.PlaySound(from.Location, from.Map, 0x55);
 					return false;
 				}
@@ -1492,7 +1492,7 @@ namespace Server.Mobiles
 						dropped.Delete();
 						return true;
 					}
-					else { this.PrivateOverheadMessage(MessageType.Regular, 1153, false, "This is not a graveyard! Bury them somewhere else!", from.NetState); }
+					else { this.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.ResolveByKey(this.Account, "mob.other.this_is_not_a_graveyard_bury_them_somewhere_else"), from.NetState); }
 				}
 				else if ( dropped is BookBox && ( this is Mage || this is KeeperOfChivalry || this is Witches || this is Necromancer || this is MageGuildmaster ) )
 				{
@@ -1569,7 +1569,7 @@ namespace Server.Mobiles
 						{
 							from.AddToBackpack ( item );
 						}
-					this.PrivateOverheadMessage(MessageType.Regular, 1153, false, "The item has been cleaned.", from.NetState);
+					this.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.ResolveByKey(this.Account, "mob.other.the_item_has_been_cleaned"), from.NetState);
 					dropped.Delete();
 					return true;
 				}
@@ -1585,7 +1585,7 @@ namespace Server.Mobiles
 						{
 							from.AddToBackpack ( item );
 						}
-					this.PrivateOverheadMessage(MessageType.Regular, 1153, false, "The weeds have been removed.", from.NetState);
+					this.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.ResolveByKey(this.Account, "mob.other.the_weeds_have_been_removed"), from.NetState);
 					dropped.Delete();
 					return true;
 				}
@@ -1798,7 +1798,7 @@ namespace Server.Mobiles
 			if ( !CheckVendorAccess( buyer ) )
 			{
 				//Say( 501522 ); // I shall not treat with scum like thee!
-				this.Say( "I have no business with you." );
+				this.Say( StringCatalog.ResolveByKey(this.Account, "mob.other.i_have_no_business_with_you") );
 				return false;
 			}
 
@@ -2083,7 +2083,7 @@ namespace Server.Mobiles
 
 			if ( !CheckVendorAccess( seller ) )
 			{
-				this.Say( "I have no business with you." );
+				this.Say( StringCatalog.ResolveByKey(this.Account, "mob.other.i_have_no_business_with_you") );
 				return false;
 			}
 
@@ -2542,7 +2542,7 @@ namespace Server.Mobiles
 
 					if ( worn < 1 )
 					{
-						m_Vendor.SayTo( from, "That does not need to be repaired." );
+						m_Vendor.SayTo( from, StringCatalog.ResolveByKey(null, "mob.other.that_does_not_need_to_be_repaired") );
 						return;
 					}
 
@@ -2566,7 +2566,7 @@ namespace Server.Mobiles
 					{
 						if ( repaired < 1 )
 						{
-							m_Vendor.SayTo( from, "I cannot repair that." );
+							m_Vendor.SayTo( from, StringCatalog.ResolveByKey(null, "mob.other.i_cannot_repair_that") );
 							return;
 						}
 
@@ -2617,7 +2617,7 @@ namespace Server.Mobiles
 						}
 
 						m_Vendor.AddToCoinPurse( from, spent );
-						from.SendMessage( String.Format( "You pay {0} gold.", spent ) );
+						from.SendMessage( String.Format( StringCatalog.ResolveByKey(from.Account, "mob.fmt.you_pay_0_gold"), spent ) );
 						if ( BeggingPose( from ) > 0 && !(m_Vendor is PlayerBarkeeper) )
 							Titles.AwardKarma( from, -BeggingKarma( from ), true );
 							// DO ANY KARMA LOSS
@@ -2625,7 +2625,7 @@ namespace Server.Mobiles
 
 				}
 				else
-					m_Vendor.SayTo( from, "I cannot repair that." );
+					m_Vendor.SayTo( from, StringCatalog.ResolveByKey(null, "mob.other.i_cannot_repair_that") );
             }
         }
 
@@ -2639,7 +2639,7 @@ namespace Server.Mobiles
 				( item is BaseInstrument && ((BaseInstrument)item).UsesRemaining >= ((BaseInstrument)item).InitMinUses ) 
 			)
 			{
-				m.SayTo( from, "That does not need to be repaired." );
+				m.SayTo( from, StringCatalog.ResolveByKey(null, "mob.other.that_does_not_need_to_be_repaired") );
 				return false;
 			}
 
@@ -2686,7 +2686,7 @@ namespace Server.Mobiles
 				repair = true;
 
 			if ( !repair )
-				m.SayTo( from, "I cannot repair that." );
+				m.SayTo( from, StringCatalog.ResolveByKey(null, "mob.other.i_cannot_repair_that") );
 
 			return repair;
 		}
@@ -2719,7 +2719,7 @@ namespace Server.Mobiles
 
 						if ( WhatIsIt.ScrollIntelligence == 0 )
 						{
-							m_Vendor.SayTo( from, "That was already deciphered by someone." );
+							m_Vendor.SayTo( from, StringCatalog.ResolveByKey(null, "mob.other.that_was_already_deciphered_by_someone") );
 						}
 						else if (packs.ConsumeTotal(typeof(Gold), toConsume))
 						{
@@ -2733,16 +2733,16 @@ namespace Server.Mobiles
 
 							WhatIsIt.ScrollIntelligence = 0;
 							WhatIsIt.InvalidateProperties();
-							from.SendMessage(String.Format("You pay {0} gold.", toConsume));
-							m_Vendor.SayTo(from, "Let me show you what this reads...");
+							from.SendMessage(String.Format(StringCatalog.ResolveByKey(null, "mob.fmt.you_pay_0_gold"), toConsume));
+							m_Vendor.SayTo(from, StringCatalog.ResolveByKey(null, "mob.other.let_me_show_you_what_this_reads"));
 							WhatIsIt.ScrollSolved = "Deciphered by " + m_Vendor.Name + " the Scribe";
 							from.PlaySound( 0x249 );
 							WhatIsIt.InvalidateProperties();
 						}
 						else
 						{
-							m_Vendor.SayTo(from, "It would cost you {0} gold to have that deciphered.", toConsume);
-							from.SendMessage("You do not have enough gold.");
+							m_Vendor.SayTo(from, StringCatalog.ResolveByKey(null, "mob.fmt.it_would_cost_you_0_gold_to_have_that_deciphered"), toConsume);
+							from.SendMessage(StringCatalog.ResolveByKey(null, "mob.other.you_do_not_have_enough_gold"));
 						}
 					}
 					else if ( examine.CoinPrice > 0 && examine.NotIdentified && RelicFunctions.VendorCanID( examine.NotIDSource, m_Vendor ) )
@@ -2766,7 +2766,7 @@ namespace Server.Mobiles
 								RelicFunctions.IDItem( m_Vendor, from, examine, SkillName.Alchemy );
 							else
 							{
-								from.SendMessage(String.Format("You pay {0} gold.", toConsume));
+								from.SendMessage(String.Format(StringCatalog.ResolveByKey(from.Account, "mob.fmt.you_pay_0_gold"), toConsume));
 								examine.NotIdentified = false;
 								m_Vendor.SayTo(from, "That is worth about " + examine.CoinPrice + " gold." );
 							}
@@ -2780,16 +2780,16 @@ namespace Server.Mobiles
 						else
 						{
 							m_Vendor.SayTo(from, "It would cost you {0} gold for me to examine that.", toConsume);
-							from.SendMessage("You do not have enough gold.");
+							from.SendMessage(StringCatalog.ResolveByKey(from.Account, "mob.other.you_do_not_have_enough_gold"));
 						}
 					}
 					else
 					{
-						m_Vendor.SayTo(from, "I cannot identify that.");
+						m_Vendor.SayTo(from, StringCatalog.ResolveByKey(null, "mob.other.i_cannot_identify_that"));
 					}
 				}
 				else
-					m_Vendor.SayTo(from, "I cannot identify that.");
+					m_Vendor.SayTo(from, StringCatalog.ResolveByKey(null, "mob.other.i_cannot_identify_that"));
             }
         }
 
@@ -2865,7 +2865,7 @@ namespace Server.Mobiles
 
 						m_Vendor.AddToCoinPurse( from, spent );
 
-						from.SendMessage( String.Format( "You pay {0} gold.", spent ) );
+						from.SendMessage( String.Format( StringCatalog.ResolveByKey(from.Account, "mob.fmt.you_pay_0_gold"), spent ) );
 						if ( BeggingPose( from ) > 0 && !(m_Vendor is PlayerBarkeeper) )
 							Titles.AwardKarma( from, -BeggingKarma( from ), true );
 							// DO ANY KARMA LOSS

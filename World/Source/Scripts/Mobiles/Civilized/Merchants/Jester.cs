@@ -135,9 +135,9 @@ namespace Server.Mobiles
 			if ( BeggingPose(from) > 0 ) // LET US SEE IF THEY ARE BEGGING
 			{
 				nCost = nCost - (int)( ( from.Skills[SkillName.Begging].Value * 0.005 ) * nCost ); if ( nCost < 1 ){ nCost = 1; }
-				SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "Since you are begging, do you still want me to alter your hat, robe, or shoes to look more foolish as it will only cost you {0} gold?", nCost));
+				SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.since_you_are_begging_do_you_still_want_me_to_alter_you", nCost));
 			}
-			else { SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "If you want me to alter your hat, robe, or shoes to be more foolish, it will cost you {0} gold.", nCost)); }
+			else { SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.if_you_want_me_to_alter_your_hat_robe_or_shoes_to_be_mo", nCost)); }
 
             from.Target = new RepairTarget(this);
         }
@@ -178,7 +178,7 @@ namespace Server.Mobiles
 
                     if ( ba.ItemID == 0x4C27 )
                     {
-						m_Jester.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "That does not need my services."));
+						m_Jester.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.that_does_not_need_my_services"));
                     }
                     else
                     {
@@ -197,8 +197,8 @@ namespace Server.Mobiles
                     if (pack.ConsumeTotal(typeof(Gold), toConsume))
                     {
 						if ( BeggingPose(from) > 0 ){ Titles.AwardKarma( from, -BeggingKarma( from ), true ); } // DO ANY KARMA LOSS
-                        m_Jester.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "Here you go."));
-                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormat(from.Account, "You pay {0} gold.", toConsume));
+                        m_Jester.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.here_you_go"));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.you_pay_0_gold", toConsume));
                         Effects.PlaySound(from.Location, from.Map, 0x248);
 
 						string cls = "jester "; if ( Utility.RandomBool() ){ cls = "joker "; }
@@ -240,13 +240,13 @@ namespace Server.Mobiles
                     }
                     else
                     {
-                        m_Jester.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "It would cost you {0} gold to have that done.", toConsume));
-                        from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You do not have enough gold."));
+                        m_Jester.SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.it_would_cost_you_0_gold_to_have_that_done", toConsume));
+                        from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_do_not_have_enough_gold"));
                     }
                 }
 				else
 				{
-					m_Jester.SayTo(from, Server.Localization.StringCatalog.Resolve(from.Account, "That does not need my services."));
+					m_Jester.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.that_does_not_need_my_services"));
 				}
             }
         }

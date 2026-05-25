@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Server.Misc;
 using Server.Items;
 using Server.Network;
+using Server.Localization;
 using Server.Commands;
 using Server.Commands.Generic;
 using Server.Mobiles;
@@ -139,7 +140,7 @@ namespace Server.Items
 			if ( from.InRange( this.GetWorldLocation(), 2 ) )
 			{
 				from.SendSound( 0x3D );
-				from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You have pulled Vulcrum's Vault toward you.", from.NetState);
+				from.PrivateOverheadMessage(MessageType.Regular, 1150, false, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_have_pulled_vulcrum_s_vault_toward_you"), from.NetState);
 
 				LootChest MyChest = new LootChest( 6 );
 				MyChest.Name = "Vulcrum's Vault";
@@ -147,14 +148,14 @@ namespace Server.Items
 
 				if ( from is PlayerMobile )
 				{
-					if ( GetPlayerInfo.LuckyKiller( from.Luck ) && !Server.Misc.PlayerSettings.GetSpecialsKilled( from, "Vulcrum" ) )
+					if ( GetPlayerInfo.LuckyKiller( from.Luck ) && !Server.Misc.PlayerSettings.GetSpecialsKilled( from, StringCatalog.ResolveByKey(null, "mob.other.vulcrum") ) )
 					{
 						if ( GetPlayerInfo.LuckyKiller( from.Luck ) )
 						{
 							Item arty = Loot.RandomArty();
 							MyChest.DropItem( arty );
 						}
-						Server.Misc.PlayerSettings.SetSpecialsKilled( from, "Vulcrum", true );
+						Server.Misc.PlayerSettings.SetSpecialsKilled( from, StringCatalog.ResolveByKey(null, "mob.other.vulcrum"), true );
 						ManualOfItems lexicon = new ManualOfItems();
 							lexicon.Hue = 0x4EA;
 							lexicon.Name = "Chest of Vulcrum Relics";

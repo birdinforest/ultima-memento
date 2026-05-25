@@ -9,6 +9,7 @@ using Server.Misc;
 using Server.Mobiles;
 using System.Collections;
 using Server.Gumps;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -27,51 +28,51 @@ namespace Server.Mobiles
 				{
 					switch ( Utility.Random( 45 ))
 					{
-						case 0: Say("A reunion must not occur or the unlucky chimera must fold in the age of temptation."); break;
-						case 1: Say("An injury shall happen."); break;
-						case 2: Say("He shall not assimilate with the proud youth."); break;
-						case 3: Say("They will not weave near an altar."); break;
-						case 4: Say("She will finally intrude."); break;
-						case 5: Say("The diamond possum shall not deflect near a fortress on a sunny day before the coming of beauty."); break;
-						case 6: Say("A relationship ending will finally happen with the tired juggler during the planting season."); break;
-						case 7: Say("The clever hamster will trespass with the saffron youth in a castle when the first flowers bloom."); break;
-						case 8: Say("A betrayal will finally happen or he will babble at the coming of destruction."); break;
-						case 9: Say("She will finally gutter in a market before it is too late."); break;
-						case 10: Say("An introduction will finally happen or the seductive viper shall not worship with the fanatical druid during the planting season."); break;
-						case 11: Say("The broken-hearted grandmother will act or he shall not meander."); break;
-						case 12: Say("A defeat will not take place in a castle on a journey."); break;
-						case 13: Say("The fearless trader shall not look with the violet druid."); break;
-						case 14: Say("The honest runaway will succumb with the hungry hare before the coming of lust."); break;
-						case 15: Say("It will judge in the summer."); break;
-						case 16: Say("The emerald lion will never scare for the sake of winter."); break;
-						case 17: Say("She will finally famish and a recovery will not happen near a well during a rainstorm."); break;
-						case 18: Say("A fight shall take place for the sake of willpower."); break;
-						case 19: Say("The fanatical wizard shall not wax near a holy site in the afternoon at the coming of luck."); break;
-						case 20: Say("She shall not ascend after sunset."); break;
-						case 21: Say("It will never pray with the shy zealot."); break;
-						case 22: Say("A meeting must happen with the malicious cook."); break;
-						case 23: Say("The remorseless muse will fraternize at the bridge."); break;
-						case 24: Say("The russet berserker must gasp or the remorseless slave must not bicker with the triumphant lion near a farm on the spring equinox."); break;
-						case 25: Say("He shall fence with the black countess near a portal."); break;
-						case 26: Say("An introduction will not happen and the intelligent champion shall lower on the spring equinox."); break;
-						case 27: Say("The hasty hostler must jump."); break;
-						case 28: Say("An agreement must take place with the broken-hearted cleric."); break;
-						case 29: Say("It will finally benefit in the citadel in the age of dreams."); break;
-						case 30: Say("A financial difficulty will never take place or the clumsy zombie will finally weep at midnight."); break;
-						case 31: Say("She shall weld or he will finally crush during the growing season."); break;
-						case 32: Say("The greedy artist shall lace and the garnet general must not compose."); break;
-						case 33: Say("The arrogant rogue must not comply with the indigo robber at the coming of joy."); break;
-						case 34: Say("The lavender summoner will crush in a time of truth."); break;
-						case 35: Say("A contest must not happen after the first frost."); break;
-						case 36: Say("She must not consent in the age of entropy."); break;
-						case 37: Say("The deluded pony will not forget in a graveyard on a windy day for the sake of alchemy."); break;
-						case 38: Say("A reversal of fortune shall not happen and a fall shall not occur in the spring for the sake of lust."); break;
-						case 39: Say("She will ensure in the citadel."); break;
-						case 40: Say("The lazy juggler will finally enquire and a loss shall not occur."); break;
-						case 41: Say("A promise will finally take place and it shall not bother during fall in a time of fear."); break;
-						case 42: Say("He must not weary."); break;
-						case 43: Say("The orange donkey shall not gutter at the bridge."); break;
-						case 44: Say("The word to the dark mage depths is 'bravoka'."); break;
+						case 0: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.a_reunion_must_not_occur_or_the_unlucky_chimera_must_fo")); break;
+						case 1: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.an_injury_shall_happen")); break;
+						case 2: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.he_shall_not_assimilate_with_the_proud_youth")); break;
+						case 3: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.they_will_not_weave_near_an_altar")); break;
+						case 4: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.she_will_finally_intrude")); break;
+						case 5: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.the_diamond_possum_shall_not_deflect_near_a_fortress_on")); break;
+						case 6: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.a_relationship_ending_will_finally_happen_with_the_tire")); break;
+						case 7: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.the_clever_hamster_will_trespass_with_the_saffron_youth")); break;
+						case 8: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.a_betrayal_will_finally_happen_or_he_will_babble_at_the")); break;
+						case 9: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.she_will_finally_gutter_in_a_market_before_it_is_too_la")); break;
+						case 10: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.an_introduction_will_finally_happen_or_the_seductive_vi")); break;
+						case 11: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.the_broken_hearted_grandmother_will_act_or_he_shall_not")); break;
+						case 12: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.a_defeat_will_not_take_place_in_a_castle_on_a_journey")); break;
+						case 13: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.the_fearless_trader_shall_not_look_with_the_violet_drui")); break;
+						case 14: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.the_honest_runaway_will_succumb_with_the_hungry_hare_be")); break;
+						case 15: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.it_will_judge_in_the_summer")); break;
+						case 16: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.the_emerald_lion_will_never_scare_for_the_sake_of_winte")); break;
+						case 17: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.she_will_finally_famish_and_a_recovery_will_not_happen")); break;
+						case 18: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.a_fight_shall_take_place_for_the_sake_of_willpower")); break;
+						case 19: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.the_fanatical_wizard_shall_not_wax_near_a_holy_site_in")); break;
+						case 20: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.she_shall_not_ascend_after_sunset")); break;
+						case 21: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.it_will_never_pray_with_the_shy_zealot")); break;
+						case 22: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.a_meeting_must_happen_with_the_malicious_cook")); break;
+						case 23: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.the_remorseless_muse_will_fraternize_at_the_bridge")); break;
+						case 24: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.the_russet_berserker_must_gasp_or_the_remorseless_slave")); break;
+						case 25: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.he_shall_fence_with_the_black_countess_near_a_portal")); break;
+						case 26: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.an_introduction_will_not_happen_and_the_intelligent_cha")); break;
+						case 27: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.the_hasty_hostler_must_jump")); break;
+						case 28: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.an_agreement_must_take_place_with_the_broken_hearted_cl")); break;
+						case 29: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.it_will_finally_benefit_in_the_citadel_in_the_age_of_dr")); break;
+						case 30: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.a_financial_difficulty_will_never_take_place_or_the_clu")); break;
+						case 31: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.she_shall_weld_or_he_will_finally_crush_during_the_grow")); break;
+						case 32: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.the_greedy_artist_shall_lace_and_the_garnet_general_mus")); break;
+						case 33: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.the_arrogant_rogue_must_not_comply_with_the_indigo_robb")); break;
+						case 34: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.the_lavender_summoner_will_crush_in_a_time_of_truth")); break;
+						case 35: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.a_contest_must_not_happen_after_the_first_frost")); break;
+						case 36: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.she_must_not_consent_in_the_age_of_entropy")); break;
+						case 37: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.the_deluded_pony_will_not_forget_in_a_graveyard_on_a_wi")); break;
+						case 38: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.a_reversal_of_fortune_shall_not_happen_and_a_fall_shall")); break;
+						case 39: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.she_will_ensure_in_the_citadel")); break;
+						case 40: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.the_lazy_juggler_will_finally_enquire_and_a_loss_shall")); break;
+						case 41: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.a_promise_will_finally_take_place_and_it_shall_not_both")); break;
+						case 42: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.he_must_not_weary")); break;
+						case 43: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.the_orange_donkey_shall_not_gutter_at_the_bridge")); break;
+						case 44: Say(StringCatalog.ResolveByKey(this.Account, "mob.other.the_word_to_the_dark_mage_depths_is_bravoka")); break;
 					};
 					m_NextTalk = (DateTime.Now + TimeSpan.FromSeconds( 30 ));
 				}
@@ -199,11 +200,11 @@ namespace Server.Mobiles
 							CitizenLocalization.SayToLocalizedComposite(m_GypsyLady, from, WillSay + " falsely written.", WillSayZh + "虚假记载。");
 						}
 
-						from.SendMessage(String.Format("You pay {0} gold.", toConsume));
+						from.SendMessage(String.Format(StringCatalog.ResolveByKey(from.Account, "mob.fmt.you_pay_0_gold"), toConsume));
 					}
 					else
 					{
-						m_GypsyLady.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "I require {0} gold for my visions.", toConsume));
+						m_GypsyLady.SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.i_require_0_gold_for_my_visions", toConsume));
 					}
 				}
 				///////////////////////////////////////////////////////////////////////////////////
@@ -242,11 +243,11 @@ namespace Server.Mobiles
 							CitizenLocalization.SayToLocalizedComposite(m_GypsyLady, from, WillSay + " never happened.", WillSayZh + "实属虚构。");
 						}
 
-						from.SendMessage(String.Format("You pay {0} gold.", toConsume));
+						from.SendMessage(String.Format(StringCatalog.ResolveByKey(from.Account, "mob.fmt.you_pay_0_gold"), toConsume));
 					}
 					else
 					{
-						m_GypsyLady.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "I require {0} gold for my visions.", toConsume));
+						m_GypsyLady.SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.i_require_0_gold_for_my_visions", toConsume));
 					}
 				}
 				///////////////////////////////////////////////////////////////////////////////////
@@ -285,11 +286,11 @@ namespace Server.Mobiles
 							CitizenLocalization.SayToLocalizedComposite(m_GypsyLady, from, WillSay + " contains falsehoods.", WillSayZh + "记载虚妄。");
 						}
 
-						from.SendMessage(String.Format("You pay {0} gold.", toConsume));
+						from.SendMessage(String.Format(StringCatalog.ResolveByKey(from.Account, "mob.fmt.you_pay_0_gold"), toConsume));
 					}
 					else
 					{
-						m_GypsyLady.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "I require {0} gold for my visions.", toConsume));
+						m_GypsyLady.SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.i_require_0_gold_for_my_visions", toConsume));
 					}
 				}
 				///////////////////////////////////////////////////////////////////////////////////
@@ -328,11 +329,11 @@ namespace Server.Mobiles
 							CitizenLocalization.SayToLocalizedComposite(m_GypsyLady, from, WillSay + " falsely written.", WillSayZh + "虚假记载。");
 						}
 
-						from.SendMessage(String.Format("You pay {0} gold.", toConsume));
+						from.SendMessage(String.Format(StringCatalog.ResolveByKey(from.Account, "mob.fmt.you_pay_0_gold"), toConsume));
 					}
 					else
 					{
-						m_GypsyLady.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "I require {0} gold for my visions.", toConsume));
+						m_GypsyLady.SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.i_require_0_gold_for_my_visions", toConsume));
 					}
 				}
 				///////////////////////////////////////////////////////////////////////////////////
@@ -362,11 +363,11 @@ namespace Server.Mobiles
 
 						CitizenLocalization.SayToLocalizedComposite(m_GypsyLady, from, WillSay + " truthfully written.", WillSayZh + "如实记载。");
 
-						from.SendMessage(String.Format("You pay {0} gold.", toConsume));
+						from.SendMessage(String.Format(StringCatalog.ResolveByKey(from.Account, "mob.fmt.you_pay_0_gold"), toConsume));
 					}
 					else
 					{
-						m_GypsyLady.SayTo(from, Server.Localization.StringCatalog.ResolveFormat(from.Account, "I require {0} gold for my visions.", toConsume));
+						m_GypsyLady.SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.i_require_0_gold_for_my_visions", toConsume));
 					}
 				}
 				///////////////////////////////////////////////////////////////////////////////////

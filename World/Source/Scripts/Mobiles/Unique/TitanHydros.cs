@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Server.Items;
 using Server.Misc;
 using Server.Engines.PartySystem;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -91,7 +92,7 @@ namespace Server.Mobiles
 							CanDie = 1;
 							winner = m;
 							tip.WonWater = 1;
-							m.SendMessage( "You absord the Titan's power into the Tear of the Seas." );
+							m.SendMessage( StringCatalog.ResolveByKey(m.Account, "mob.other.you_absord_the_titan_s_power_into_the_tear_of_the_seas") );
 							m.PlaySound( 0x65A );
 							m.FixedParticles( 0x375A, 1, 30, 9966, 33, 2, EffectLayer.Head );
 						}
@@ -123,7 +124,7 @@ namespace Server.Mobiles
 
 			if ( CanDie == 0 && CanKillIt == 0 )
 			{
-				Say("Fool! I will take your corpse to the depths!");
+				Say(StringCatalog.ResolveByKey(this.Account, "mob.other.fool_i_will_take_your_corpse_to_the_depths"));
 				this.Hits = this.HitsMax;
 				this.FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
 				this.PlaySound( 0x202 );
@@ -151,9 +152,9 @@ namespace Server.Mobiles
 						{
 							foreach ( PartyMemberInfo pmi in p.Members )
 							{
-								if ( pmi.Mobile is PlayerMobile && pmi.Mobile.InRange(this.Location, 20) && pmi.Mobile.Map == this.Map && !pmi.Mobile.Blessed && !Server.Misc.PlayerSettings.GetSpecialsKilled( pmi.Mobile, "TitanHydros" ) )
+								if ( pmi.Mobile is PlayerMobile && pmi.Mobile.InRange(this.Location, 20) && pmi.Mobile.Map == this.Map && !pmi.Mobile.Blessed && !Server.Misc.PlayerSettings.GetSpecialsKilled( pmi.Mobile, StringCatalog.ResolveByKey(this.Account, "mob.other.titanhydros") ) )
 								{
-									Server.Misc.PlayerSettings.SetSpecialsKilled( pmi.Mobile, "TitanHydros", true );
+									Server.Misc.PlayerSettings.SetSpecialsKilled( pmi.Mobile, StringCatalog.ResolveByKey(this.Account, "mob.other.titanhydros"), true );
 									ManualOfItems book = new ManualOfItems();
 										book.Hue = RewardColor;
 										book.ItemID = 0x1AA3;
@@ -183,9 +184,9 @@ namespace Server.Mobiles
 								}
 							}
 						}
-						else if ( !Server.Misc.PlayerSettings.GetSpecialsKilled( winner, "TitanHydros" ) )
+						else if ( !Server.Misc.PlayerSettings.GetSpecialsKilled( winner, StringCatalog.ResolveByKey(this.Account, "mob.other.titanhydros") ) )
 						{
-							Server.Misc.PlayerSettings.SetSpecialsKilled( winner, "TitanHydros", true );
+							Server.Misc.PlayerSettings.SetSpecialsKilled( winner, StringCatalog.ResolveByKey(this.Account, "mob.other.titanhydros"), true );
 							ManualOfItems book = new ManualOfItems();
 								book.Hue = RewardColor;
 								book.ItemID = 0x1AA3;

@@ -9,6 +9,7 @@ using Server.ContextMenus;
 using Server.Gumps;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Mobiles 
 { 
@@ -239,7 +240,7 @@ namespace Server.Mobiles
 					}
 					else
 					{
-						this.PrivateOverheadMessage(MessageType.Regular, 1153, false, "I assume they done you harm. Let me rid you of this thing.", from.NetState);
+						this.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.ResolveByKey(this.Account, "mob.other.i_assume_they_done_you_harm_let_me_rid_you_of_this_thin"), from.NetState);
 						dropped.Delete();
 						return true;
 					}
@@ -499,14 +500,14 @@ namespace Server.Mobiles
 		{
 			switch ( Utility.Random( 8 ))		   
 			{
-			case 0: CitizenLocalization.SayLocalized(this, "Die villian!"); break;
-			case 1: CitizenLocalization.SayLocalized(this, "I will bring you justice!"); break;
-			case 2: CitizenLocalization.SayLocalizedFormat(this, "So, {0}? Your evil ends here!", defender.Name); break;
-			case 3: CitizenLocalization.SayLocalizedFormat(this, "We have been told to watch for {0}!", defender.Name); break;
-			case 4: CitizenLocalization.SayLocalizedFormat(this, "Fellow guardsmen, {0} is here!", defender.Name); break;
-			case 5: CitizenLocalization.SayLocalizedFormat(this, "We have ways of dealing with the likes of {0}!", defender.Name); break;
-			case 6: CitizenLocalization.SayLocalizedFormat(this, "Give up! We do not fear {0}!", defender.Name); break;
-			case 7: CitizenLocalization.SayLocalizedFormat(this, "So, {0}? I sentence you to death!", defender.Name); break;
+			case 0: CitizenLocalization.SayLocalized(this, StringCatalog.ResolveByKey(this.Account, "mob.other.die_villian")); break;
+			case 1: CitizenLocalization.SayLocalized(this, StringCatalog.ResolveByKey(this.Account, "mob.other.i_will_bring_you_justice")); break;
+			case 2: CitizenLocalization.SayLocalizedFormat(this, StringCatalog.ResolveByKey(this.Account, "mob.fmt.so_0_your_evil_ends_here"), defender.Name); break;
+			case 3: CitizenLocalization.SayLocalizedFormat(this, StringCatalog.ResolveByKey(this.Account, "mob.fmt.we_have_been_told_to_watch_for_0"), defender.Name); break;
+			case 4: CitizenLocalization.SayLocalizedFormat(this, StringCatalog.ResolveByKey(this.Account, "mob.fmt.fellow_guardsmen_0_is_here"), defender.Name); break;
+			case 5: CitizenLocalization.SayLocalizedFormat(this, StringCatalog.ResolveByKey(this.Account, "mob.fmt.we_have_ways_of_dealing_with_the_likes_of_0"), defender.Name); break;
+			case 6: CitizenLocalization.SayLocalizedFormat(this, StringCatalog.ResolveByKey(this.Account, "mob.fmt.give_up_we_do_not_fear_0"), defender.Name); break;
+			case 7: CitizenLocalization.SayLocalizedFormat(this, StringCatalog.ResolveByKey(this.Account, "mob.fmt.so_0_i_sentence_you_to_death"), defender.Name); break;
 			};
 		}
 
@@ -585,7 +586,7 @@ namespace Server.Mobiles
 						GuardNote note = new GuardNote();
 						note.ScrollText = ((PlayerMobile)m).CharacterWanted;
 						m_Mobile.AddToBackpack( note );
-						CitizenLocalization.SayLocalized(m_Giver, "Here is a note citizen. Be on the lookout.");
+						CitizenLocalization.SayLocalized(m_Giver, StringCatalog.ResolveByKey(null, "mob.other.here_is_a_note_citizen_be_on_the_lookout"));
 					}
 				}
             }
@@ -593,7 +594,7 @@ namespace Server.Mobiles
 
 		public override bool OnBeforeDeath()
 		{
-			CitizenLocalization.SayLocalized(this, "In Vas Mani");
+			CitizenLocalization.SayLocalized(this, StringCatalog.ResolveByKey(this.Account, "mob.other.in_vas_mani"));
 			this.Hits = this.HitsMax;
 			this.FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
 			this.PlaySound( 0x202 );

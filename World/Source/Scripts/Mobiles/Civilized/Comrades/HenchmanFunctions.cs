@@ -11,6 +11,7 @@ using Server.Regions;
 using Server.Targeting;
 using System.Collections.Generic;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Misc
 {
@@ -53,9 +54,9 @@ namespace Server.Misc
             var bc = henchman as BaseCreature;
             var masterAcct = bc != null && bc.ControlMaster != null ? bc.ControlMaster.Account : null;
             if (henchman is HenchmanMonster)
-                henchman.Say( Server.Localization.StringCatalog.ResolveFormat( masterAcct, "Have {0} bandages. Will stay for {1} minutes.", new object[]{ bandages, time } ) );
+                henchman.Say( Server.Localization.StringCatalog.ResolveFormatByKey(masterAcct, "mob.fmt.have_0_bandages_will_stay_for_1_minutes", new object[]{ bandages, time } ) );
             else
-                henchman.Say( Server.Localization.StringCatalog.ResolveFormat( masterAcct, "I have {0} bandages. I will travel with thee for {1} minutes.", new object[]{ bandages, time } ) );
+                henchman.Say( Server.Localization.StringCatalog.ResolveFormatByKey(masterAcct, "mob.fmt.i_have_0_bandages_i_will_travel_with_thee_for_1_minutes", new object[]{ bandages, time } ) );
         }
 
 		public static void DismountHenchman( Mobile from )
@@ -162,19 +163,19 @@ namespace Server.Misc
 						{
 							switch ( Utility.Random( 2 ) )		   
 							{
-								case 0: CitizenLocalization.SayLocalized(from, "There is not enough reward in this for me."); break;
-								case 1: CitizenLocalization.SayLocalized(from, "If you hear stories of riches, come and get me."); break;
+								case 0: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.there_is_not_enough_reward_in_this_for_me")); break;
+								case 1: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.if_you_hear_stories_of_riches_come_and_get_me")); break;
 							}
 						}
 						else
 						{
 							switch ( Utility.Random( 5 ) )		   
 							{
-								case 0: CitizenLocalization.SayLocalized(from, "Sorry, but there is not enough reward on this journey for me."); break;
-								case 1: CitizenLocalization.SayLocalized(from, "I think I will head back to town and get a drink."); break;
-								case 2: CitizenLocalization.SayLocalized(from, "The risk is not worth the little reward I am getting."); break;
-								case 3: CitizenLocalization.SayLocalized(from, "Come and find me later when you have a quest for riches."); break;
-								case 4: CitizenLocalization.SayLocalized(from, "If you hear of any rumors of gold, come and get me."); break;
+								case 0: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.sorry_but_there_is_not_enough_reward_on_this_journey_fo")); break;
+								case 1: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.i_think_i_will_head_back_to_town_and_get_a_drink")); break;
+								case 2: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.the_risk_is_not_worth_the_little_reward_i_am_getting")); break;
+								case 3: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.come_and_find_me_later_when_you_have_a_quest_for_riches")); break;
+								case 4: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.if_you_hear_of_any_rumors_of_gold_come_and_get_me")); break;
 							}
 						}
 						GoAway = true;
@@ -185,19 +186,19 @@ namespace Server.Misc
 						{
 							switch ( Utility.Random( 2 ) )		   
 							{
-								case 0: CitizenLocalization.SayLocalized(from, "I will leave soon if we don't find treasure."); break;
-								case 1: CitizenLocalization.SayLocalized(from, "You said there were riches, but I don't see it."); break;
+								case 0: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.i_will_leave_soon_if_we_don_t_find_treasure")); break;
+								case 1: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.you_said_there_were_riches_but_i_don_t_see_it")); break;
 							}
 						}
 						else
 						{
 							switch ( Utility.Random( 5 ))		   
 							{
-								case 0: CitizenLocalization.SayLocalized(from, "I will have to leave soon if we don't find some treasure."); break;
-								case 1: CitizenLocalization.SayLocalized(from, "I feel this quest is a dead end and may leave soon."); break;
-								case 2: CitizenLocalization.SayLocalized(from, "This lack of treasure is not what I came along for."); break;
-								case 3: CitizenLocalization.SayLocalized(from, "You promised riches, but I fear there is none."); break;
-								case 4: CitizenLocalization.SayLocalized(from, "What are we looking for? It is obviously not treasure."); break;
+								case 0: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.i_will_have_to_leave_soon_if_we_don_t_find_some_treasur")); break;
+								case 1: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.i_feel_this_quest_is_a_dead_end_and_may_leave_soon")); break;
+								case 2: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.this_lack_of_treasure_is_not_what_i_came_along_for")); break;
+								case 3: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.you_promised_riches_but_i_fear_there_is_none")); break;
+								case 4: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.what_are_we_looking_for_it_is_obviously_not_treasure")); break;
 							}
 						}
 					}
@@ -256,21 +257,21 @@ namespace Server.Misc
 			{
 				switch ( Utility.Random( 28 ))		   
 				{
-					case 0: CitizenLocalization.SayLocalized(from, "Time to die!"); break;
-					case 1: CitizenLocalization.SayLocalized(from, "I will send you to hell!"); break;
-					case 2: CitizenLocalization.SayLocalized(from, "Your life ends here!"); break;
-					case 3: CitizenLocalization.SayLocalized(from, "You are no match for me!"); break;
-					case 4: CitizenLocalization.SayLocalized(from, "Prepare to die fool!"); break;
-					case 5: CitizenLocalization.SayLocalized(from, "Taste my wrath and my blade!"); break;
-					case 6: CitizenLocalization.SayLocalized(from, "Yield to me!"); break;
-					case 7: CitizenLocalization.SayLocalized(from, "I sentence you to death!"); break;
-					case 8: from.PlaySound( from.Female ? 793 : 1065 ); CitizenLocalization.SayLocalized(from, "*gasp*"); break;
+					case 0: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.time_to_die")); break;
+					case 1: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.i_will_send_you_to_hell")); break;
+					case 2: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.your_life_ends_here_2")); break;
+					case 3: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.you_are_no_match_for_me")); break;
+					case 4: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.prepare_to_die_fool")); break;
+					case 5: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.taste_my_wrath_and_my_blade")); break;
+					case 6: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.yield_to_me")); break;
+					case 7: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.i_sentence_you_to_death")); break;
+					case 8: from.PlaySound( from.Female ? 793 : 1065 ); CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.emote.gasp")); break;
 					case 9: from.PlaySound( from.Female ? 0x338 : 0x44A ); CitizenLocalization.SayLocalized(from, "*growls*"); break;
-					case 10: from.PlaySound( from.Female ? 797 : 1069 ); CitizenLocalization.SayLocalized(from, "Hey!"); break;
-					case 11: from.PlaySound( from.Female ? 821 : 1095 ); CitizenLocalization.SayLocalized(from, "*whistles*"); break;
-					case 12: from.PlaySound( from.Female ? 783 : 1054 ); CitizenLocalization.SayLocalized(from, "Woohoo!"); break;
-					case 13: from.PlaySound( from.Female ? 823 : 1097 ); CitizenLocalization.SayLocalized(from, "Yea!"); break;
-					case 14: from.PlaySound( from.Female ? 0x31C : 0x42C ); CitizenLocalization.SayLocalized(from, "*yells*"); break;
+					case 10: from.PlaySound( from.Female ? 797 : 1069 ); CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.hey")); break;
+					case 11: from.PlaySound( from.Female ? 821 : 1095 ); CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.emote.whistles")); break;
+					case 12: from.PlaySound( from.Female ? 783 : 1054 ); CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.woohoo")); break;
+					case 13: from.PlaySound( from.Female ? 823 : 1097 ); CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.yea")); break;
+					case 14: from.PlaySound( from.Female ? 0x31C : 0x42C ); CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.emote.yells")); break;
 				}
 			}
 			((BaseCreature)from).Loyalty = 100;
@@ -283,21 +284,21 @@ namespace Server.Misc
 			{
 				switch ( Utility.Random( 28 ))		   
 				{
-					case 0: CitizenLocalization.SayLocalized(from, "Time to die!"); break;
-					case 1: CitizenLocalization.SayLocalized(from, "I will send you to hell!"); break;
-					case 2: CitizenLocalization.SayLocalized(from, "Your life ends here!"); break;
-					case 3: CitizenLocalization.SayLocalized(from, "You are no match for me!"); break;
-					case 4: CitizenLocalization.SayLocalized(from, "Prepare to die fool!"); break;
-					case 5: CitizenLocalization.SayLocalized(from, "Taste my wrath and my blade!"); break;
-					case 6: CitizenLocalization.SayLocalized(from, "Yield to me!"); break;
-					case 7: CitizenLocalization.SayLocalized(from, "I sentence you to death!"); break;
-					case 8: from.PlaySound( from.Female ? 793 : 1065 ); CitizenLocalization.SayLocalized(from, "*gasp*"); break;
+					case 0: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.time_to_die")); break;
+					case 1: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.i_will_send_you_to_hell")); break;
+					case 2: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.your_life_ends_here_2")); break;
+					case 3: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.you_are_no_match_for_me")); break;
+					case 4: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.prepare_to_die_fool")); break;
+					case 5: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.taste_my_wrath_and_my_blade")); break;
+					case 6: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.yield_to_me")); break;
+					case 7: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.i_sentence_you_to_death")); break;
+					case 8: from.PlaySound( from.Female ? 793 : 1065 ); CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.emote.gasp")); break;
 					case 9: from.PlaySound( from.Female ? 0x338 : 0x44A ); CitizenLocalization.SayLocalized(from, "*growls*"); break;
-					case 10: from.PlaySound( from.Female ? 797 : 1069 ); CitizenLocalization.SayLocalized(from, "Hey!"); break;
-					case 11: from.PlaySound( from.Female ? 821 : 1095 ); CitizenLocalization.SayLocalized(from, "*whistles*"); break;
-					case 12: from.PlaySound( from.Female ? 783 : 1054 ); CitizenLocalization.SayLocalized(from, "Woohoo!"); break;
-					case 13: from.PlaySound( from.Female ? 823 : 1097 ); CitizenLocalization.SayLocalized(from, "Yea!"); break;
-					case 14: from.PlaySound( from.Female ? 0x31C : 0x42C ); CitizenLocalization.SayLocalized(from, "*yells*"); break;
+					case 10: from.PlaySound( from.Female ? 797 : 1069 ); CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.hey")); break;
+					case 11: from.PlaySound( from.Female ? 821 : 1095 ); CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.emote.whistles")); break;
+					case 12: from.PlaySound( from.Female ? 783 : 1054 ); CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.woohoo")); break;
+					case 13: from.PlaySound( from.Female ? 823 : 1097 ); CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.yea")); break;
+					case 14: from.PlaySound( from.Female ? 0x31C : 0x42C ); CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.emote.yells")); break;
 				}
 			}
 			((BaseCreature)from).Loyalty = 100;
@@ -312,18 +313,18 @@ namespace Server.Misc
 
 				switch ( Utility.Random( 22 ))		   
 				{
-					case 0: CitizenLocalization.SayLocalized(from, "Is that all you got?"); break;
-					case 1: CitizenLocalization.SayLocalized(from, "Tis but a scratch!"); break;
-					case 2: CitizenLocalization.SayLocalized(from, "I've had worse!"); break;
-					case 3: CitizenLocalization.SayLocalized(from, "You will have to do better than that!"); break;
-					case 4: CitizenLocalization.SayLocalized(from, "You'll pay for that!"); break;
-					case 5: CitizenLocalization.SayLocalized(from, "No one does that and lives!"); break;
-					case 6: CitizenLocalization.SayLocalized(from, "It is your turn!"); break;
-					case 7: CitizenLocalization.SayLocalized(from, "Not enough to bring me down!"); break;
-					case 8: from.PlaySound( from.Female ? 793 : 1065 ); CitizenLocalization.SayLocalized(from, "*gasp*"); break;
+					case 0: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.is_that_all_you_got")); break;
+					case 1: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.tis_but_a_scratch")); break;
+					case 2: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.i_ve_had_worse")); break;
+					case 3: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.you_will_have_to_do_better_than_that")); break;
+					case 4: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.you_ll_pay_for_that")); break;
+					case 5: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.no_one_does_that_and_lives")); break;
+					case 6: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.it_is_your_turn")); break;
+					case 7: CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.not_enough_to_bring_me_down")); break;
+					case 8: from.PlaySound( from.Female ? 793 : 1065 ); CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.emote.gasp")); break;
 					case 9: from.PlaySound( from.Female ? 0x338 : 0x44A ); CitizenLocalization.SayLocalized(from, "*growls*"); break;
-					case 10: from.PlaySound( from.Female ? 797 : 1069 ); CitizenLocalization.SayLocalized(from, "Hey!"); break;
-					case 11: from.PlaySound( from.Female ? 0x31C : 0x42C ); CitizenLocalization.SayLocalized(from, "*yells*"); break;
+					case 10: from.PlaySound( from.Female ? 797 : 1069 ); CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.other.hey")); break;
+					case 11: from.PlaySound( from.Female ? 0x31C : 0x42C ); CitizenLocalization.SayLocalized(from, StringCatalog.ResolveByKey(null, "mob.emote.yells")); break;
 				}
 			}
 			((BaseCreature)from).Loyalty = 100;
@@ -380,14 +381,14 @@ namespace Server.Misc
 			if ( dropped is Bandage )
 			{
 				henchman.Hunger = henchman.Hunger + dropped.Amount;
-				if ( henchman is HenchmanMonster ){ henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormat( from.Account, "I could use these bandages. I have {0} of them now.", henchman.Hunger.ToString() ) ); }
-				else { henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormat( from.Account, "Ahhh...bandages can be of great use. I have {0} of them now.", henchman.Hunger.ToString() ) ); }
+				if ( henchman is HenchmanMonster ){ henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.i_could_use_these_bandages_i_have_0_of_them_now", henchman.Hunger.ToString() ) ); }
+				else { henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.ahhh_bandages_can_be_of_great_use_i_have_0_of_them_now", henchman.Hunger.ToString() ) ); }
 				dropped.Delete();
 			}
 			else if ( dropped is LesserCurePotion || dropped is CurePotion || dropped is GreaterCurePotion )
 			{
-				if ( henchman is HenchmanMonster ){ henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormat( from.Account, "Good, {0}.", from.Name ) ); }
-				else { henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormat( from.Account, "Thank you, {0}.", from.Name ) ); }
+				if ( henchman is HenchmanMonster ){ henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.good_0", from.Name ) ); }
+				else { henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.thank_you_0", from.Name ) ); }
 
 				henchman.CurePoison( henchman );
 				henchman.RevealingAction();
@@ -399,8 +400,8 @@ namespace Server.Misc
 			}
 			else if ( dropped is RefreshPotion || dropped is TotalRefreshPotion )
 			{
-				if ( henchman is HenchmanMonster ){ henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormat( from.Account, "Good, {0}.", from.Name ) ); }
-				else { henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormat( from.Account, "Thank you, {0}.", from.Name ) ); }
+				if ( henchman is HenchmanMonster ){ henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.good_0", from.Name ) ); }
+				else { henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.thank_you_0", from.Name ) ); }
 
 				henchman.Stam = henchman.StamMax;
 				henchman.RevealingAction();
@@ -412,8 +413,8 @@ namespace Server.Misc
 			}
 			else if ( dropped is LesserHealPotion || dropped is HealPotion || dropped is GreaterHealPotion )
 			{
-				if ( henchman is HenchmanMonster ){ henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormat( from.Account, "Good, {0}.", from.Name ) ); }
-				else { henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormat( from.Account, "Thank you, {0}.", from.Name ) ); }
+				if ( henchman is HenchmanMonster ){ henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.good_0", from.Name ) ); }
+				else { henchman.SayTo( from, false, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.thank_you_0", from.Name ) ); }
 
 				henchman.Hits = henchman.HitsMax;
 				henchman.RevealingAction();
@@ -425,8 +426,8 @@ namespace Server.Misc
 			}
 			else if ( dropped is LesserRejuvenatePotion || dropped is RejuvenatePotion || dropped is GreaterRejuvenatePotion )
 			{
-				if ( henchman is HenchmanMonster ){ CitizenLocalization.SayLocalizedFormat(henchman, "Good, {0}.", from.Name); }
-				else { CitizenLocalization.SayLocalizedFormat(henchman, "Thank you, {0}.", from.Name); }
+				if ( henchman is HenchmanMonster ){ CitizenLocalization.SayLocalizedFormat(henchman, StringCatalog.ResolveByKey(null, "mob.fmt.good_0"), from.Name); }
+				else { CitizenLocalization.SayLocalizedFormat(henchman, StringCatalog.ResolveByKey(null, "mob.fmt.thank_you_0"), from.Name); }
 
 				henchman.Hits = henchman.HitsMax;
 				henchman.Stam = henchman.StamMax;
@@ -440,8 +441,8 @@ namespace Server.Misc
 			}
 			else if ( dropped is LesserManaPotion || dropped is ManaPotion || dropped is GreaterManaPotion )
 			{
-				if ( henchman is HenchmanMonster ){ CitizenLocalization.SayLocalizedFormat(henchman, "Good, {0}.", from.Name); }
-				else { CitizenLocalization.SayLocalizedFormat(henchman, "Thank you, {0}.", from.Name); }
+				if ( henchman is HenchmanMonster ){ CitizenLocalization.SayLocalizedFormat(henchman, StringCatalog.ResolveByKey(null, "mob.fmt.good_0"), from.Name); }
+				else { CitizenLocalization.SayLocalizedFormat(henchman, StringCatalog.ResolveByKey(null, "mob.fmt.thank_you_0"), from.Name); }
 
 				henchman.Mana = henchman.ManaMax;
 				henchman.RevealingAction();
@@ -485,25 +486,25 @@ namespace Server.Misc
 				{
 					if ( henchman.Fame >= 1800 )
 					{
-						if ( henchman is HenchmanMonster ){ CitizenLocalization.SayLocalizedFormat(henchman, "Sorry, {0}...but my bag is full.", from.Name); }
-						else { CitizenLocalization.SayLocalizedFormat(henchman, "Thank you, {0}...but my treasure bag is full.", from.Name); }
+						if ( henchman is HenchmanMonster ){ CitizenLocalization.SayLocalizedFormat(henchman, StringCatalog.ResolveByKey(null, "mob.fmt.sorry_0_but_my_bag_is_full"), from.Name); }
+						else { CitizenLocalization.SayLocalizedFormat(henchman, StringCatalog.ResolveByKey(null, "mob.fmt.thank_you_0_but_my_treasure_bag_is_full"), from.Name); }
 					}
 					else
 					{
-						if ( henchman is HenchmanMonster ){ CitizenLocalization.SayLocalized(henchman, "Good, more treasure for me."); }
-						else { CitizenLocalization.SayLocalized(henchman, "Ahhh...a cut of the treasure. This journey is worth the risk."); }
+						if ( henchman is HenchmanMonster ){ CitizenLocalization.SayLocalized(henchman, StringCatalog.ResolveByKey(null, "mob.other.good_more_treasure_for_me")); }
+						else { CitizenLocalization.SayLocalized(henchman, StringCatalog.ResolveByKey(null, "mob.other.ahhh_a_cut_of_the_treasure_this_journey_is_worth_the_ri")); }
 
 						if ( (henchman.Fame + nGold) > 1800 ){ henchman.Fame = 1800; }
 						else { henchman.Fame = henchman.Fame + nGold; }
 						int nTime = (int)(henchman.Fame/5);
-						from.SendMessage( string.Format( Server.Localization.StringCatalog.Resolve( from.Account, "{0} will probably adventure with you for another {1} minutes." ), henchman.Name, nTime ) );
+						from.SendMessage( string.Format( Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.fmt.0_will_probably_adventure_with_you_for_another_1_minute"), henchman.Name, nTime ) );
 						dropped.Delete();
 					}
 				}
 				else
 				{
-					if ( henchman is HenchmanMonster ){ CitizenLocalization.SayLocalizedFormat(henchman, "No, {0}...but that is useless to me.", from.Name); }
-					else { CitizenLocalization.SayLocalizedFormat(henchman, "Sorry, {0}...but I can't see much value in that.", from.Name); }
+					if ( henchman is HenchmanMonster ){ CitizenLocalization.SayLocalizedFormat(henchman, StringCatalog.ResolveByKey(null, "mob.fmt.no_0_but_that_is_useless_to_me"), from.Name); }
+					else { CitizenLocalization.SayLocalizedFormat(henchman, StringCatalog.ResolveByKey(null, "mob.fmt.sorry_0_but_i_can_t_see_much_value_in_that"), from.Name); }
 				}
 			}
 

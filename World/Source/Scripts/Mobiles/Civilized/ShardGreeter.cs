@@ -29,7 +29,7 @@ namespace Server.Mobiles
 			NameHue = 0x92E;
 			Body = 0x191;
 			Name = NameList.RandomName( "female" );
-			Title = StringCatalog.TryResolveByKey( LangConfig.DefaultLanguage, "shardgreeter.title" ) ?? "the gypsy";
+			Title = "the gypsy";
 
 			FancyDress dress = new FancyDress(0xAFE);
 			dress.ItemID = 0x1F00;

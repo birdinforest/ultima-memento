@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Items;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -14,7 +15,7 @@ namespace Server.Mobiles
 		public override void BreathDealDamage( Mobile target, int form ){ base.BreathDealDamage( target, 9 ); }
 
 		[Constructable]
-		public AncientNightmareRiding() : this( "an ancient nightmare" )
+		public AncientNightmareRiding() : this( StringCatalog.ResolveByKey(null, "mob.other.an_ancient_nightmare") )
 		{
 		}
 

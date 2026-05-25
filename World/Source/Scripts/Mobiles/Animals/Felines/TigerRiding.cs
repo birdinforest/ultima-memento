@@ -1,6 +1,7 @@
 using System;
 using Server.Mobiles;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -13,7 +14,7 @@ namespace Server.Mobiles
 		}
 
 		[Constructable]
-		public TigerRiding() : this( "a tiger" )
+		public TigerRiding() : this( StringCatalog.ResolveByKey(null, "mob.other.a_tiger") )
 		{
 		}
 

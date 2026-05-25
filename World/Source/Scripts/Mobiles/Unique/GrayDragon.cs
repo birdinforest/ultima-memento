@@ -7,6 +7,7 @@ using Server.Mobiles;
 using Server.Misc;
 using Server.Commands;
 using Server.Commands.Generic;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -150,7 +151,7 @@ namespace Server.Items
 				PlayerSettings.SetBardsTaleQuest( from, "BardsTaleDragonKey", true );
 				PlayerSettings.SetBardsTaleQuest( from, "BardsTaleHarkynKey", true );
 				from.SendSound( 0x3D );
-				from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You found the rusty key that was around the gray dragon's neck.", from.NetState);
+				from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(null, "mob.other.you_found_the_rusty_key_that_was_around_the_gray_dragon"), from.NetState);
 				from.CloseGump( typeof(Server.Gumps.ClueGump) );
 				from.SendGump(new Server.Gumps.ClueGump( from, "You found the rusty key that was around the gray dragon's neck. Perhaps it can be used on that nearby door.", "Rusty Key" ) );
 			}

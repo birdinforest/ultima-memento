@@ -7,6 +7,7 @@ using Server.Gumps;
 using Server.Network;
 using Server.ContextMenus;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -544,7 +545,7 @@ namespace Server.Mobiles
 
 			if ( m_From.Race == Race.Elf )
 			{
-				m_From.SendMessage( "This isn't implemented for elves yet.  Sorry!" );
+				m_From.SendMessage( Server.Localization.StringCatalog.ResolveByKey(m_From.Account, "mob.other.this_isn_t_implemented_for_elves_yet_sorry") );
 				return;
 			}
 

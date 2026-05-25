@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Server.Network;
 using System.Text;
 using Server.Items;
+using Server.Localization;
 using Server.Mobiles;
 
 namespace Server.Mobiles
@@ -185,7 +186,7 @@ namespace Server.Items
 				else if ( ItemID == 0x641C ){ from.AddToBackpack ( new WerewolfClaw( CrateQty ) ); }
 				else if ( ItemID == 0x641D ){ from.AddToBackpack ( new Wolfsbane( CrateQty ) ); }
 
-				from.PrivateOverheadMessage(MessageType.Regular, 0x14C, false, "You separate the reagents into your backpack", from.NetState);
+				from.PrivateOverheadMessage(MessageType.Regular, 0x14C, false, StringCatalog.ResolveByKey(null, "mob.other.you_separate_the_reagents_into_your_backpack"), from.NetState);
 				this.Delete();
 			}
 		}
@@ -194,8 +195,8 @@ namespace Server.Items
 		{
             base.AddNameProperties(list);
 
-			list.Add( 1070722, "Contains " + CrateQty + " " + CrateItem + "");
-			list.Add( 1049644, "Open to Remove them from the Crate");
+			list.Add( 1070722, Server.Localization.StringCatalog.ResolveFormatByKey(null, "mob.fmt.contains_0_1", CrateQty, CrateItem ) );
+			list.Add( 1049644, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.open_to_remove_them_from_the_crate") );
         }
 
 		public override void Serialize( GenericWriter writer )
@@ -286,7 +287,7 @@ namespace Server.Items
 				else if ( Name == "crate of greater frostbite potions" ){ Item pot = new GreaterFrostbitePotion(); pot.Amount = CrateQty; from.AddToBackpack ( pot ); }
 				else if ( Name == "crate of acid bottles" ){ Item pot = new BottleOfAcid(); pot.Amount = CrateQty; from.AddToBackpack ( pot ); }
 
-				from.PrivateOverheadMessage(MessageType.Regular, 0x14C, false, "You separate the potions into your backpack", from.NetState);
+				from.PrivateOverheadMessage(MessageType.Regular, 0x14C, false, StringCatalog.ResolveByKey(null, "mob.other.you_separate_the_potions_into_your_backpack"), from.NetState);
 				this.Delete();
 			}
 		}
@@ -295,8 +296,8 @@ namespace Server.Items
 		{
             base.AddNameProperties(list);
 
-			list.Add( 1070722, "Contains " + CrateQty + " " + CrateItem + "");
-			list.Add( 1049644, "Open to Remove them from the Crate");
+			list.Add( 1070722, Server.Localization.StringCatalog.ResolveFormatByKey(null, "mob.fmt.contains_0_1", CrateQty, CrateItem ) );
+			list.Add( 1049644, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.open_to_remove_them_from_the_crate") );
         }
 
 		public override void Serialize( GenericWriter writer )

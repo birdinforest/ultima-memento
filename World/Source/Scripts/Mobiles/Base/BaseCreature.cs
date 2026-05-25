@@ -11,6 +11,7 @@ using Server.Items;
 using Server.Gumps;
 using Server.ContextMenus;
 using Server.Engines.PartySystem;
+using Server.Localization;
 using Server.Spells.Bushido;
 using Server.Spells.Necromancy;
 using Server.Spells.Elementalism;
@@ -1007,7 +1008,7 @@ namespace Server.Mobiles
 					Effects.SendLocationParticles( EffectItem.Create( blast1, target.Map, EffectItem.DefaultDuration ), 0x36B0, 1, 14, 63, 7, 9915, 0 );
 					Effects.PlaySound( target.Location, target.Map, 0x229 );
 
-					if ( !(Server.Items.HiddenTrap.SavingThrow( target, "Poison", false, null )) )
+					if ( !(Server.Items.HiddenTrap.SavingThrow( target, StringCatalog.ResolveByKey(this.Account, "mob.other.poison"), false, null )) )
 					{
 						switch( Utility.RandomMinMax( 1, 2 ) )
 						{
@@ -1046,7 +1047,7 @@ namespace Server.Mobiles
 
 				if ( BreathEffectItemID == 0x406C ) // ASSASSIN STAR
 				{
-					if ( !(Server.Items.HiddenTrap.SavingThrow( target, "Poison", false, null )) )
+					if ( !(Server.Items.HiddenTrap.SavingThrow( target, StringCatalog.ResolveByKey(this.Account, "mob.other.poison"), false, null )) )
 					{
 						switch( Utility.RandomMinMax( 1, 2 ) )
 						{
@@ -1058,14 +1059,14 @@ namespace Server.Mobiles
 			}
 			else if ( form == 4 ) // DINOSAUR ROAR --------------------------------------------------------------------------------------------------
 			{
-				target.SendMessage( "You are hit by the force of the mighty roar!" );
+				target.SendMessage( StringCatalog.ResolveByKey(target.Account, "mob.other.you_are_hit_by_the_force_of_the_mighty_roar") );
 				target.PlaySound( 0x63F );
 				BreathDistance = 5;
 			}
 			else if ( form == 5 ) // MANTICORE ------------------------------------------------------------------------------------------------------
 			{
-				target.SendMessage( "You are hit by a manticore thorn!" );
-				if ( !(Server.Items.HiddenTrap.SavingThrow( target, "Poison", false, null )) )
+				target.SendMessage( StringCatalog.ResolveByKey(target.Account, "mob.other.you_are_hit_by_a_manticore_thorn") );
+				if ( !(Server.Items.HiddenTrap.SavingThrow( target, StringCatalog.ResolveByKey(this.Account, "mob.other.poison"), false, null )) )
 				{
 					target.ApplyPoison( target, Poison.Lethal );
 				}
@@ -1125,7 +1126,7 @@ namespace Server.Mobiles
 				}
 				BreathDistance = 3;
 
-				if ( !(Server.Items.HiddenTrap.SavingThrow( target, "Poison", false, null )) )
+				if ( !(Server.Items.HiddenTrap.SavingThrow( target, StringCatalog.ResolveByKey(this.Account, "mob.other.poison"), false, null )) )
 				{
 					switch( Utility.RandomMinMax( 1, 2 ) )
 					{
@@ -1209,7 +1210,7 @@ namespace Server.Mobiles
 					Effects.PlaySound( target.Location, target.Map, 0x229 );
 				}
 
-				if ( !(Server.Items.HiddenTrap.SavingThrow( target, "Poison", false, null )) )
+				if ( !(Server.Items.HiddenTrap.SavingThrow( target, StringCatalog.ResolveByKey(this.Account, "mob.other.poison"), false, null )) )
 				{
 					switch( Utility.RandomMinMax( 1, 2 ) )
 					{
@@ -2097,7 +2098,7 @@ namespace Server.Mobiles
 			if ( SubdueBeforeTame && !Controlled )
 			{
 				if ( (oldHits > (this.HitsMax / 10)) && (this.Hits <= (this.HitsMax / 10)) )
-					PublicOverheadMessage( MessageType.Regular, 0x3B2, false, "* The creature has been beaten into subjugation! *" );
+					PublicOverheadMessage( MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(this.Account, "mob.emote.the_creature_has_been_beaten_into_subjugation") );
 			}
 		}
 
@@ -2960,7 +2961,7 @@ namespace Server.Mobiles
 						{
 							armor.Resource = CraftResource.LichSkeletal;
 							LootPackEntry.MakeFixedDrop( this, armor );
-							armor.InfoText5 = "Kazibal the Unearthed";
+							armor.InfoText5 = Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.kazibal_the_unearthed");
 							this.PackItem( armor );
 						}
 					}
@@ -4406,13 +4407,13 @@ namespace Server.Mobiles
 
 				switch ( Utility.Random( 7 ) )
 				{
-					case 0: piece = new FrankenLegLeft(); from.SendMessage("You sever off the giant's left leg."); break;
-					case 1: piece = new FrankenLegRight(); from.SendMessage("You sever off the giant's right leg."); break;
-					case 2: piece = new FrankenArmLeft(); from.SendMessage("You sever off the giant's left arm."); break;
-					case 3: piece = new FrankenArmRight(); from.SendMessage("You sever off the giant's right arm."); break;
-					case 4: piece = new FrankenHead(); from.SendMessage("You sever off the giant's head."); break;
-					case 5: piece = new FrankenTorso(); from.SendMessage("You sever apart the giant's torso."); break;
-					case 6: piece = new FrankenBrain(); from.SendMessage("You remove the giant's fresh brain."); break;
+					case 0: piece = new FrankenLegLeft(); from.SendMessage(StringCatalog.ResolveByKey(from.Account, "mob.other.you_sever_off_the_giant_s_left_leg")); break;
+					case 1: piece = new FrankenLegRight(); from.SendMessage(StringCatalog.ResolveByKey(from.Account, "mob.other.you_sever_off_the_giant_s_right_leg")); break;
+					case 2: piece = new FrankenArmLeft(); from.SendMessage(StringCatalog.ResolveByKey(from.Account, "mob.other.you_sever_off_the_giant_s_left_arm")); break;
+					case 3: piece = new FrankenArmRight(); from.SendMessage(StringCatalog.ResolveByKey(from.Account, "mob.other.you_sever_off_the_giant_s_right_arm")); break;
+					case 4: piece = new FrankenHead(); from.SendMessage(StringCatalog.ResolveByKey(from.Account, "mob.other.you_sever_off_the_giant_s_head")); break;
+					case 5: piece = new FrankenTorso(); from.SendMessage(StringCatalog.ResolveByKey(from.Account, "mob.other.you_sever_apart_the_giant_s_torso")); break;
+					case 6: piece = new FrankenBrain(); from.SendMessage(StringCatalog.ResolveByKey(from.Account, "mob.other.you_remove_the_giant_s_fresh_brain")); break;
 				}
 
 				if ( piece is FrankenBrain )
@@ -4549,7 +4550,7 @@ namespace Server.Mobiles
 						case ClothType.Fiendish:     	corpse.AddCarvedItem( new FiendishFabric( cloth ), from ); break;
 					}
 
-					from.SendMessage( "You cut away some furs and they are on the corpse." );
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_cut_away_some_furs_and_they_are_on_the_corpse") );
 				}
 
 				if ( hides != 0 )
@@ -4574,7 +4575,7 @@ namespace Server.Mobiles
 						case HideType.Alien:     	corpse.AddCarvedItem( new AlienLeather( hides ), from ); break;
 					}
 
-					from.SendMessage( "You cut away some leather and they are on the corpse." );
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_cut_away_some_leather_and_they_are_on_the_corpse") );
 				}
 
 				if ( wood != 0 )
@@ -4602,7 +4603,7 @@ namespace Server.Mobiles
 						case WoodType.Elven:     	corpse.AddCarvedItem( new ElvenLog( wood ), from ); break;
 					}
 
-					from.SendMessage( "You carve away some wood and they are on the corpse." );
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_carve_away_some_wood_and_they_are_on_the_corpse") );
 				}
 
 				if ( granite != 0 )
@@ -4630,7 +4631,7 @@ namespace Server.Mobiles
 						case GraniteType.Steel:     	corpse.AddCarvedItem( new SteelGranite( granite ), from ); break;
 						case GraniteType.Brass:     	corpse.AddCarvedItem( new BrassGranite( granite ), from ); break;
 					}
-					from.SendMessage( "You chisel away some granite and it is on the corpse." );
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_chisel_away_some_granite_and_it_is_on_the_corpse") );
 				}
 
 				if ( skins != 0 )
@@ -4651,7 +4652,7 @@ namespace Server.Mobiles
 						case SkinType.Dead:     	corpse.AddCarvedItem( new DeadSkins( skins ), from ); break;
 					}
 
-					from.SendMessage( "You cut away some skins and they are on the corpse." );
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_cut_away_some_skins_and_they_are_on_the_corpse") );
 				}
 
 				if ( rocks != 0 )
@@ -4753,7 +4754,7 @@ namespace Server.Mobiles
 						}
 					}
 
-					from.SendMessage( "You chip away some stones and they are on the corpse." );
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_chip_away_some_stones_and_they_are_on_the_corpse") );
 				}
 
 				if ( metal != 0 )
@@ -4806,7 +4807,7 @@ namespace Server.Mobiles
 						}
 					}
 
-					from.SendMessage( "You chip away some metal and it is on the corpse." );
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_chip_away_some_metal_and_it_is_on_the_corpse") );
 				}
 
 				if ( scales != 0 )
@@ -4841,7 +4842,7 @@ namespace Server.Mobiles
 						}
 					}
 
-					from.SendMessage( "You cut away some scales and they are on the corpse." );
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_cut_away_some_scales_and_they_are_on_the_corpse") );
 				}
 
 				if ( skeletal != 0 )
@@ -4918,7 +4919,7 @@ namespace Server.Mobiles
 						}
 					}
 
-					from.SendMessage( "You cut away some bones and they are on the corpse." );
+					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_cut_away_some_bones_and_they_are_on_the_corpse") );
 				}
 
 				corpse.Carved = true;
@@ -6515,7 +6516,7 @@ namespace Server.Mobiles
 					if ( ( Utility.RandomMinMax(0,50) + attacker.AutoDispelChance ) > bc.DispelDifficulty ) return true;
 
 					if (MyServerSettings.EnableDispelLogging())
-						defender.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel prevented (DispelDifficulty)");
+						defender.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(defender.Account, "mob.other.dispel_prevented_dispeldifficulty"));
 				}
 			}
 			return false;
@@ -6584,7 +6585,7 @@ namespace Server.Mobiles
             if ((this.Skills[SkillName.Magery].Value < 54 && this.Skills[SkillName.Necromancy].Value < 81))
             {
                 if (MyServerSettings.EnableDispelLogging() && !fromSpell)
-                    m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel prevented (Low skill)");
+                    m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(m.Account, "mob.other.dispel_prevented_low_skill"));
                 return false;
             }
 
@@ -6595,13 +6596,13 @@ namespace Server.Mobiles
 			if ( !( magery > Utility.RandomDouble() ) )
 			{
 				if (magery > 0 && MyServerSettings.EnableDispelLogging() && !fromSpell)
-					m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel prevented (Magery)");
+					m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(m.Account, "mob.other.dispel_prevented_magery"));
 				return false;
 			}
 			else if ( this.Mana < 40 )
 			{
 				if (MyServerSettings.EnableDispelLogging() && !fromSpell)
-					m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel prevented (Mana)");
+					m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(m.Account, "mob.other.dispel_prevented_mana"));
 				return false;
 			}
 
@@ -6626,7 +6627,7 @@ namespace Server.Mobiles
 				{
 					dispelFailureChance += 50;
 					if (MyServerSettings.EnableDispelLogging() && !fromSpell)
-						m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel chance increased (Slayer)");
+						m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(m.Account, "mob.other.dispel_chance_increased_slayer"));
 				}
 			}
 
@@ -6637,7 +6638,7 @@ namespace Server.Mobiles
 			if (dispelFailureChance >= successChance )
 			{
 				if (MyServerSettings.EnableDispelLogging() && !fromSpell)
-					m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Dispel prevented (Failed)");
+					m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(m.Account, "mob.other.dispel_prevented_failed"));
 				return false;
 			}
 		
@@ -6669,7 +6670,7 @@ namespace Server.Mobiles
 					Mana -= manaCost;
 					m_NextDefensiveDispel = now.AddSeconds( Utility.RandomMinMax( 3, 5 ) );
                     if (MyServerSettings.EnableDispelLogging())
-                        m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Defensively Dispelled");
+                        m.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, StringCatalog.ResolveByKey(m.Account, "mob.other.defensively_dispelled"));
                 }
 
 				Effects.SendLocationParticles( EffectItem.Create( m.Location, m.Map, EffectItem.DefaultDuration ), 0x3728, 8, 20, 5042 );
@@ -7021,7 +7022,7 @@ namespace Server.Mobiles
 			{
 				case TeachResult.NoSecondarySkills:
 				{
-					Say("That skill cannot be taught. You must learn it yourself!");
+					Say(StringCatalog.ResolveByKey(this.Account, "mob.other.that_skill_cannot_be_taught_you_must_learn_it_yourself"));
 					break;
 				}
 				case TeachResult.KnowsMoreThanMe:
@@ -7037,7 +7038,7 @@ namespace Server.Mobiles
 				case TeachResult.NotEnoughFreePoints:
 				case TeachResult.SkillNotRaisable:
 				{
-					m.SendMessage( "Make sure this skill is marked to raise. If you are near the skill cap you may need to lose some points in another skill first.");
+					m.SendMessage( StringCatalog.ResolveByKey(m.Account, "mob.other.make_sure_this_skill_is_marked_to_raise_if_you_are_near"));
 					break;
 				}
 				case TeachResult.Success:
@@ -7898,7 +7899,7 @@ namespace Server.Mobiles
 
 				if ( da != null && !da.Deleted )
 				{
-					from.SendAsciiMessage( "You charm the snake. Select a target to attack." );
+					from.SendAsciiMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.you_charm_the_snake_select_a_target_to_attack") );
 					from.Target = new DeathAdderCharmTarget( this );
 				}
 			}
@@ -7933,7 +7934,7 @@ namespace Server.Mobiles
 				int resist = (int)(target.Skills.MagicResist.Value);
 				if ( Utility.RandomMinMax( bard-20, bard ) < Utility.RandomMinMax( resist-20, resist ) )
 				{
-					target.SendMessage( "You magically resist the affects of the song." );
+					target.SendMessage( StringCatalog.ResolveByKey(target.Account, "mob.other.you_magically_resist_the_affects_of_the_song") );
 				}
 				else
 				{
@@ -7972,11 +7973,11 @@ namespace Server.Mobiles
 				int resist = (int)(target.Skills.MagicResist.Value);
 				if ( Utility.RandomMinMax( bard-20, bard ) < Utility.RandomMinMax( resist-20, resist ) )
 				{
-					target.SendMessage( "You magically resist the affects of the song." );
+					target.SendMessage( StringCatalog.ResolveByKey(target.Account, "mob.other.you_magically_resist_the_affects_of_the_song") );
 				}
 				else
 				{
-					target.SendMessage("You hear jarring music, suppressing your abilities.");
+					target.SendMessage(StringCatalog.ResolveByKey(target.Account, "mob.other.you_hear_jarring_music_suppressing_your_abilities"));
 
 					for ( int i = 0; i < target.Skills.Length; i++ )
 					{
@@ -8047,7 +8048,7 @@ namespace Server.Mobiles
 				int resist = (int)(target.Skills.MagicResist.Value);
 				if ( Utility.RandomMinMax( bard-20, bard ) < Utility.RandomMinMax( resist-20, resist ) )
 				{
-					target.SendMessage( "You magically resist the affects of the song." );
+					target.SendMessage( StringCatalog.ResolveByKey(target.Account, "mob.other.you_magically_resist_the_affects_of_the_song") );
 				}
 				else
 				{
@@ -8070,7 +8071,7 @@ namespace Server.Mobiles
 					if ( Utility.RandomBool() ){ UndressItem( target, Layer.Waist ); }
 					if ( Utility.RandomBool() ){ UndressItem( target, Layer.Bracelet ); }
 
-					target.SendMessage("The music is hypnotic, making you remove your worn items.");
+					target.SendMessage(StringCatalog.ResolveByKey(target.Account, "mob.other.the_music_is_hypnotic_making_you_remove_your_worn_items"));
 				}
 			}
 
@@ -8455,7 +8456,7 @@ namespace Server.Mobiles
 						{
 							Item dtcoins = this.Backpack.FindItemByType( typeof( Gold ) );
 							dtcoins.Delete();
-							deathknight.SendMessage( "A soul has been claimed." );
+							deathknight.SendMessage( StringCatalog.ResolveByKey(deathknight.Account, "mob.other.a_soul_has_been_claimed") );
 							Effects.SendLocationParticles( EffectItem.Create( deathknight.Location, deathknight.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 5008 );
 							Effects.PlaySound( deathknight.Location, deathknight.Map, 0x1ED );
 						}
@@ -8490,7 +8491,7 @@ namespace Server.Mobiles
 						{
 							Item dtcoins = this.Backpack.FindItemByType( typeof( Gold ) );
 							dtcoins.Delete();
-							holyman.SendMessage( "Evil has been banished." );
+							holyman.SendMessage( StringCatalog.ResolveByKey(holyman.Account, "mob.other.evil_has_been_banished") );
 							holyman.FixedParticles( 0x373A, 10, 15, 5018, EffectLayer.Waist );
 							holyman.PlaySound( 0x1EA );
 						}
@@ -8973,9 +8974,9 @@ namespace Server.Mobiles
 				if ( message )
 				{
 					if ( target.Title == null )
-						SendMessage( "{0} the vendor cannot be harmed.", target.Name );
+						SendMessage( StringCatalog.ResolveByKey(this.Account, "mob.fmt.0_the_vendor_cannot_be_harmed"), target.Name );
 					else
-						SendMessage( "{0} {1} cannot be harmed.", target.Name, target.Title );
+						SendMessage( StringCatalog.ResolveByKey(this.Account, "mob.fmt.0_1_cannot_be_harmed"), target.Name, target.Title );
 				}
 
 				return false;
@@ -9711,7 +9712,7 @@ namespace Server.Mobiles
 		{
 			BardProvoked = true;
 
-			this.PublicOverheadMessage( MessageType.Emote, EmoteHue, false, "*looks furious*" );
+			this.PublicOverheadMessage( MessageType.Emote, EmoteHue, false, StringCatalog.ResolveByKey(this.Account, "mob.emote.looks_furious") );
 
 			if ( bSuccess )
 			{
@@ -9990,13 +9991,13 @@ namespace Server.Mobiles
         public virtual void DeathNotification(bool controller, bool friend)
         {
             if (controller && ControlMaster != null)
-                ControlMaster.SendMessage("Your pet {0} has died!", Name);
+                ControlMaster.SendMessage(StringCatalog.ResolveByKey(ControlMaster.Account, "mob.fmt.your_pet_0_has_died"), Name);
 
             if (!friend || Friends == null)
                 return;
             foreach (PlayerMobile f in Friends)
             {
-                f.SendMessage("Your friend {0}'s pet {1} has died!", ControlMaster, Name);
+                f.SendMessage(StringCatalog.ResolveByKey(f.Account, "mob.fmt.your_friend_0_s_pet_1_has_died"), ControlMaster, Name);
             }
         }
 
@@ -10028,7 +10029,7 @@ namespace Server.Mobiles
 			}
 
             if (tellOwner && ControlMaster != null)
-                ControlMaster.SendMessage("Your pet {0} has gained {1} experience!", Name, exp);
+                ControlMaster.SendMessage(StringCatalog.ResolveByKey(ControlMaster.Account, "mob.fmt.your_pet_0_has_gained_1_experience"), Name, exp);
             if ((Experience + exp) < ExpToNextLevel)
             {
                 Experience += exp;
@@ -10058,7 +10059,7 @@ namespace Server.Mobiles
                 return;
 
             if (tellOwner && ControlMaster != null)
-                ControlMaster.SendMessage("Your pet {0} has lost {1} experience!", Name, exp);
+                ControlMaster.SendMessage(StringCatalog.ResolveByKey(ControlMaster.Account, "mob.fmt.your_pet_0_has_lost_1_experience"), Name, exp);
             if (exp < Experience)
             {
                 Experience -= exp;
@@ -10126,7 +10127,7 @@ namespace Server.Mobiles
         public void IncreaseTraits(uint bonus, bool tellOwner)
         {
             if (tellOwner && ControlMaster != null)
-                ControlMaster.SendMessage("Your pet has gained {0} trait{1}!", bonus, (bonus == 1 ? "" : "s"));
+                ControlMaster.SendMessage(StringCatalog.ResolveByKey(ControlMaster.Account, "mob.fmt.your_pet_has_gained_0_trait_1"), bonus, (bonus == 1 ? "" : "s"));
             Traits += bonus;
         }
 
@@ -10152,7 +10153,7 @@ namespace Server.Mobiles
             if (!levelUp)
             {
                 if (tellOwner && ControlMaster != null)
-                    ControlMaster.SendMessage("Your pet has decreased in level!");
+                    ControlMaster.SendMessage(StringCatalog.ResolveByKey(ControlMaster.Account, "mob.other.your_pet_has_decreased_in_level"));
                 m_level = newLevel;
             }
             else if (newLevel > RealLevel)
@@ -10179,7 +10180,7 @@ namespace Server.Mobiles
 					{
 						ControlSlots -= 1;
 						if (ControlMaster != null)
-							ControlMaster.SendMessage( "Your pet trusts you implicitly. It will be easier to control now." );
+							ControlMaster.SendMessage( StringCatalog.ResolveByKey(ControlMaster.Account, "mob.other.your_pet_trusts_you_implicitly_it_will_be_easier_to_con") );
 					}
 				}
 
@@ -10203,7 +10204,7 @@ namespace Server.Mobiles
 
             //Effects.SendLocationParticles(EffectItem.Create(Location, Map, EffectItem.DefaultDuration), 0x20F6, 10, 5, 5023);
             if (tellOwner && ControlMaster != null)
-                ControlMaster.SendMessage("Your pet is now level {0}.", newLevel);
+                ControlMaster.SendMessage(StringCatalog.ResolveByKey(ControlMaster.Account, "mob.fmt.your_pet_is_now_level_0"), newLevel);
 
             Experience = 0;
             InvalidateProperties();

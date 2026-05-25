@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Server.Network;
 using System.Text;
 using Server.Items;
+using Server.Localization;
 using Server.Mobiles;
 
 namespace Server.Mobiles
@@ -155,7 +156,7 @@ namespace Server.Items
 				else if ( ItemID == 0x508D ){ from.AddToBackpack ( new Ribs( CrateQty ) ); }
 				else if ( ItemID == 0x50BA ){ from.AddToBackpack ( new BreadLoaf( CrateQty ) ); }
 
-				from.PrivateOverheadMessage(MessageType.Regular, 0x14C, false, "You separate the food into your backpack", from.NetState);
+				from.PrivateOverheadMessage(MessageType.Regular, 0x14C, false, StringCatalog.ResolveByKey(null, "mob.other.you_separate_the_food_into_your_backpack"), from.NetState);
 				this.Delete();
 			}
 		}
@@ -164,8 +165,8 @@ namespace Server.Items
 		{
             base.AddNameProperties(list);
 
-			list.Add( 1070722, "Contains " + CrateQty + " " + CrateItem + "");
-			list.Add( 1049644, "Open to Remove them from the Crate");
+			list.Add( 1070722, Server.Localization.StringCatalog.ResolveFormatByKey(null, "mob.fmt.contains_0_1", CrateQty, CrateItem ) );
+			list.Add( 1049644, Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.open_to_remove_them_from_the_crate") );
         }
 
 		public override void Serialize( GenericWriter writer )

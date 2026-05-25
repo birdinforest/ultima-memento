@@ -2,6 +2,7 @@ using System;
 using Server.Items;
 using Server.Engines.Plants;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a dead plant" )]

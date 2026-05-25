@@ -3,6 +3,7 @@ using Server;
 using Server.Items;
 using Server.Misc;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -172,9 +173,9 @@ namespace Server.Mobiles
 			Item item = Loot.RandomArty();
 
 			if ( m.AddToBackpack( item ) )
-				m.SendMessage( "As a reward for slaying the cursed creature, an artifact has been placed in your backpack." );
+				m.SendMessage( Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.as_a_reward_for_slaying_the_cursed_creature_an_artifact") );
 			else
-				m.SendMessage( "As your backpack is full, your reward for slaying cursed creature has been placed at your feet." );
+				m.SendMessage( Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.as_your_backpack_is_full_your_reward_for_slaying_cursed") );
 		}
 	}
 }

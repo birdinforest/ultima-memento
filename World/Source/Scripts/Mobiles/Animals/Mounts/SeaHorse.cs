@@ -1,5 +1,6 @@
 using System;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -7,7 +8,7 @@ namespace Server.Mobiles
 	public class SeaHorse : BaseMount
 	{
 		[Constructable]
-		public SeaHorse() : this( "a sea horse" )
+		public SeaHorse() : this( StringCatalog.ResolveByKey(null, "mob.other.a_sea_horse") )
 		{
 		}
 

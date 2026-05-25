@@ -2,6 +2,7 @@ using System;
 using Server.Mobiles;
 using Server.Items;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a vorpal bunny corpse" )]
@@ -95,7 +96,7 @@ namespace Server.Mobiles
 			new BunnyHole().MoveToWorld( Location, Map );
 
 			Frozen = true;
-			Say( "* The bunny begins to dig a tunnel back to its underground lair *" );
+			Say( StringCatalog.ResolveByKey(this.Account, "mob.emote.the_bunny_begins_to_dig_a_tunnel_back_to_its_undergroun") );
 			PlaySound( 0x247 );
 
 			Timer.DelayCall( TimeSpan.FromSeconds( 5.0 ), new TimerCallback( Delete ) );

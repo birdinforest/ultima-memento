@@ -4,6 +4,7 @@ using Server.Items;
 using Server.Spells;
 using Server.Misc;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "an alien corpse" )]

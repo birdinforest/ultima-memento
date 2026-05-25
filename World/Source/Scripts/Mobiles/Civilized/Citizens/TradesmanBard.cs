@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Server.Network;
 using System.Text;
 using Server.Items;
+using Server.Localization;
 using Server.Misc;
 using Server.Mobiles;
 
@@ -53,7 +54,7 @@ namespace Server.Mobiles
 					Server.Items.BardHit.SetInstrument( this, music );
 				}
 				music.OnDoubleClick( this );
-				if ( music.Name != "instrument"){ seconds = Utility.RandomMinMax( 5, 10 ); }
+				if ( music.Name != StringCatalog.ResolveByKey(this.Account, "mob.other.instrument")){ seconds = Utility.RandomMinMax( 5, 10 ); }
 
 				m_NextTalk = (DateTime.Now + TimeSpan.FromSeconds( seconds ));
 			}
@@ -340,10 +341,10 @@ namespace Server.Items
 								break;
 						}
 
-						string verb = "found";
+						string verb = StringCatalog.ResolveByKey(null, "mob.other.found");
 						switch ( Utility.RandomMinMax( 0, 3 ) )
 						{
-							case 1: verb = "discovered"; break;
+							case 1: verb = StringCatalog.ResolveByKey(null, "mob.other.discovered"); break;
 							case 2: verb = "said to be"; break;
 							case 3: verb = "seen"; break;
 						}

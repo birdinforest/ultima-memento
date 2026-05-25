@@ -4,6 +4,7 @@ using Server.Engines.Plants;
 using Server.Misc;
 using Server.Mobiles;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a dryad's corpse" )]

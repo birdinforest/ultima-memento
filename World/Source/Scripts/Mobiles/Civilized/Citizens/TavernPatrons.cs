@@ -1,5 +1,6 @@
 using System;	
-using Server;	
+using Server;
+using Server.Localization;	
 using System.Collections;	
 using Server.Misc;	
 using Server.Items;	
@@ -103,7 +104,7 @@ namespace Server.Misc
 			{
 				// Jormungandr's Relic is not guaranteed to drop
 				
-				what = "Jormungandr";	
+				what = StringCatalog.ResolveByKey(null, "mob.other.jormungandr");	
 				foreach ( Mobile mob in World.Mobiles.Values )
 				if ( mob is Jormungandr )
 				{
@@ -1077,8 +1078,8 @@ namespace Server.Misc
 					{
 						case 1: cVal = "sold"; break;	
 						case 2: cVal = "lost"; break;	
-						case 3: cVal = "found"; break;	
-						case 4: cVal = "discovered"; break;	
+						case 3: cVal = StringCatalog.ResolveByKey(null, "mob.other.found"); break;	
+						case 4: cVal = StringCatalog.ResolveByKey(null, "mob.other.discovered"); break;	
 						case 5: cVal = "traded"; break;	
 						case 6: cVal = "stole"; break;	
 					}
@@ -1252,8 +1253,8 @@ namespace Server.Misc
 						case 1: cVal = "lost"; break;	
 						case 2: cVal = "left"; break;	
 						case 3: cVal = "hidden"; break;	
-						case 4: cVal = "found"; break;	
-						case 5: cVal = "discovered"; break;	
+						case 4: cVal = StringCatalog.ResolveByKey(null, "mob.other.found"); break;	
+						case 5: cVal = StringCatalog.ResolveByKey(null, "mob.other.discovered"); break;	
 						case 6: cVal = "created"; break;	
 					}
 					sSpeech = sThey + " " + cVal + " " + relics + " deep in " + RandomThings.MadeUpDungeon() + "."; break;	
@@ -1725,7 +1726,7 @@ namespace Server.Misc
 
 		switch( Utility.RandomMinMax( 1, ( 11 + CommonTalkingCount ) ) )
 		{
-			case 1: sGossip = "Another ale over here!"; sGossipZh = "再来一杯麦酒！"; break;
+			case 1: sGossip = StringCatalog.ResolveByKey(null, "mob.other.another_ale_over_here"); sGossipZh = "再来一杯麦酒！"; break;
 			case 2: sGossip = "More wine!"; sGossipZh = "再来些葡萄酒！"; break;
 			case 3: sGossip = "Can I get another mug over here?"; sGossipZh = "这里能再来一大杯吗？"; break;
 			case 4: sGossip = "What does it take to get a good drink in this place?"; sGossipZh = "这地方要怎么才能喝到一杯好酒？"; break;
@@ -1930,39 +1931,39 @@ namespace Server.Misc
 				switch( Utility.RandomMinMax( 1, 39 ) )
 				{
 					case 1: patron.PlaySound( patron.Female ? 778 : 1049 ); CitizenLocalization.SayLocalized(patron, "*ah!*"); break;	
-					case 2: patron.PlaySound( patron.Female ? 779 : 1050 ); CitizenLocalization.SayLocalized(patron, "Ah ha!"); break;	
+					case 2: patron.PlaySound( patron.Female ? 779 : 1050 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.other.ah_ha")); break;	
 					case 3: patron.PlaySound( patron.Female ? 780 : 1051 ); CitizenLocalization.SayLocalized(patron, "*applauds*"); break;	
-					case 4: patron.PlaySound( patron.Female ? 781 : 1052 ); CitizenLocalization.SayLocalized(patron, "*blows nose*");	break;	
-					case 5: patron.PlaySound( patron.Female ? 786 : 1057 ); CitizenLocalization.SayLocalized(patron, "*cough*"); break;	
-					case 6: patron.PlaySound( patron.Female ? 782 : 1053 ); CitizenLocalization.SayLocalized(patron, "*burp*"); break;	
-					case 7: patron.PlaySound( patron.Female ? 784 : 1055 ); CitizenLocalization.SayLocalized(patron, "*clears throat*"); break;	
-					case 8: patron.PlaySound( patron.Female ? 785 : 1056 ); CitizenLocalization.SayLocalized(patron, "*cough*"); break;	
-					case 9: patron.PlaySound( patron.Female ? 787 : 1058 ); CitizenLocalization.SayLocalized(patron, "*cries*"); break;	
-					case 10: patron.PlaySound( patron.Female ? 792 : 1064 ); CitizenLocalization.SayLocalized(patron, "*farts*"); break;	
-					case 11: patron.PlaySound( patron.Female ? 793 : 1065 ); CitizenLocalization.SayLocalized(patron, "*gasp*"); break;	
+					case 4: patron.PlaySound( patron.Female ? 781 : 1052 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.emote.blows_nose"));	break;	
+					case 5: patron.PlaySound( patron.Female ? 786 : 1057 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.emote.cough")); break;	
+					case 6: patron.PlaySound( patron.Female ? 782 : 1053 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.emote.burp")); break;	
+					case 7: patron.PlaySound( patron.Female ? 784 : 1055 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.emote.clears_throat")); break;	
+					case 8: patron.PlaySound( patron.Female ? 785 : 1056 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.emote.cough")); break;	
+					case 9: patron.PlaySound( patron.Female ? 787 : 1058 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.emote.cries")); break;	
+					case 10: patron.PlaySound( patron.Female ? 792 : 1064 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.emote.farts")); break;	
+					case 11: patron.PlaySound( patron.Female ? 793 : 1065 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.emote.gasp")); break;	
 					case 12: patron.PlaySound( patron.Female ? 794 : 1066 ); CitizenLocalization.SayLocalized(patron, "*giggles*"); break;	
 					case 13: patron.PlaySound( patron.Female ? 0x31B : 0x42B ); CitizenLocalization.SayLocalized(patron, "*groans*"); break;	
 					case 14: patron.PlaySound( patron.Female ? 0x338 : 0x44A ); CitizenLocalization.SayLocalized(patron, "*growls*"); break;	
-					case 15: patron.PlaySound( patron.Female ? 797 : 1069 ); CitizenLocalization.SayLocalized(patron, "Hey!"); break;	
-					case 16: patron.PlaySound( patron.Female ? 798 : 1070 ); CitizenLocalization.SayLocalized(patron, "*hiccup*"); break;	
-					case 17: patron.PlaySound( patron.Female ? 799 : 1071 ); CitizenLocalization.SayLocalized(patron, "Huh?"); break;	
+					case 15: patron.PlaySound( patron.Female ? 797 : 1069 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.other.hey")); break;	
+					case 16: patron.PlaySound( patron.Female ? 798 : 1070 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.emote.hiccup")); break;	
+					case 17: patron.PlaySound( patron.Female ? 799 : 1071 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.other.huh")); break;	
 					case 18: patron.PlaySound( patron.Female ? 801 : 1073 ); CitizenLocalization.SayLocalized(patron, "*laughs*"); break;	
-					case 19: patron.PlaySound( patron.Female ? 802 : 1074 ); CitizenLocalization.SayLocalized(patron, "No!"); break;	
-					case 20: patron.PlaySound( patron.Female ? 803 : 1075 ); CitizenLocalization.SayLocalized(patron, "Oh!"); break;	
-					case 21: patron.PlaySound( patron.Female ? 811 : 1085 ); CitizenLocalization.SayLocalized(patron, "Oooh."); break;	
-					case 22: patron.PlaySound( patron.Female ? 812 : 1086 ); CitizenLocalization.SayLocalized(patron, "Oops!"); break;	
-					case 23: patron.PlaySound( patron.Female ? 0x32E : 0x440 ); CitizenLocalization.SayLocalized(patron, "Ahhhh!"); break;	
-					case 24: patron.PlaySound( patron.Female ? 815 : 1089 ); CitizenLocalization.SayLocalized(patron, "Shhh!"); break;	
+					case 19: patron.PlaySound( patron.Female ? 802 : 1074 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.other.no_3")); break;	
+					case 20: patron.PlaySound( patron.Female ? 803 : 1075 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.other.oh")); break;	
+					case 21: patron.PlaySound( patron.Female ? 811 : 1085 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.other.oooh")); break;	
+					case 22: patron.PlaySound( patron.Female ? 812 : 1086 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.other.oops")); break;	
+					case 23: patron.PlaySound( patron.Female ? 0x32E : 0x440 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.other.ahhhh")); break;	
+					case 24: patron.PlaySound( patron.Female ? 815 : 1089 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.other.shhh")); break;	
 					case 25: patron.PlaySound( patron.Female ? 816 : 1090 ); CitizenLocalization.SayLocalized(patron, "*sigh*"); break;	
-					case 26: patron.PlaySound( patron.Female ? 817 : 1091 ); CitizenLocalization.SayLocalized(patron, "Ahh-choo!"); break;	
-					case 27: patron.PlaySound( patron.Female ? 818 : 1092 ); CitizenLocalization.SayLocalized(patron, "*sniff*"); break;	
-					case 28: patron.PlaySound( patron.Female ? 819 : 1093 ); CitizenLocalization.SayLocalized(patron, "*snore*"); break;	
-					case 29: patron.PlaySound( patron.Female ? 820 : 1094 ); CitizenLocalization.SayLocalized(patron, "*spits*"); break;	
-					case 30: patron.PlaySound( patron.Female ? 821 : 1095 ); CitizenLocalization.SayLocalized(patron, "*whistles*"); break;	
-					case 31: patron.PlaySound( patron.Female ? 783 : 1054 ); CitizenLocalization.SayLocalized(patron, "Woohoo!"); break;	
-					case 32: patron.PlaySound( patron.Female ? 822 : 1096 ); CitizenLocalization.SayLocalized(patron, "*yawns*"); break;	
-					case 33: patron.PlaySound( patron.Female ? 823 : 1097 ); CitizenLocalization.SayLocalized(patron, "Yea!"); break;	
-					case 34: patron.PlaySound( patron.Female ? 0x31C : 0x42C ); CitizenLocalization.SayLocalized(patron, "*yells*"); break;	
+					case 26: patron.PlaySound( patron.Female ? 817 : 1091 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.other.ahh_choo")); break;	
+					case 27: patron.PlaySound( patron.Female ? 818 : 1092 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.emote.sniff")); break;	
+					case 28: patron.PlaySound( patron.Female ? 819 : 1093 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.emote.snore")); break;	
+					case 29: patron.PlaySound( patron.Female ? 820 : 1094 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.emote.spits")); break;	
+					case 30: patron.PlaySound( patron.Female ? 821 : 1095 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.emote.whistles")); break;	
+					case 31: patron.PlaySound( patron.Female ? 783 : 1054 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.other.woohoo")); break;	
+					case 32: patron.PlaySound( patron.Female ? 822 : 1096 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.emote.yawns")); break;	
+					case 33: patron.PlaySound( patron.Female ? 823 : 1097 ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.other.yea")); break;	
+					case 34: patron.PlaySound( patron.Female ? 0x31C : 0x42C ); CitizenLocalization.SayLocalized(patron, StringCatalog.ResolveByKey(null, "mob.emote.yells")); break;	
 					case 35: patron.PlaySound( Utility.RandomList( 0x30, 0x2D6 ) ); break;	
 					case 36: patron.PlaySound( Utility.RandomList( 0x30, 0x2D6 ) ); break;	
 					case 37: patron.PlaySound( Utility.RandomList( 0x30, 0x2D6 ) ); break;	

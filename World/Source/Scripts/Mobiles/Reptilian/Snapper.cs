@@ -1,6 +1,7 @@
 using System;
 using Server.Mobiles;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a turtle corpse" )]

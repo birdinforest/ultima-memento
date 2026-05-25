@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Server.Items;
 using Server.Network;
 using Server.Misc;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -147,7 +148,7 @@ namespace Server.Mobiles
 						string sAmount = nAmount.ToString();
 						if ( nAmount > 1 ){ bandage.Name = sAmount + " tainted bandages"; }
 						m.AddToBackpack ( bandage );
-						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "The mummy ruined your bandages!");
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey(m.Account, "mob.other.the_mummy_ruined_your_bandages"));
 					}
 				}
 			}

@@ -5,6 +5,7 @@ using System.Collections;
 using Server.Gumps;
 using Server.Network;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a jellyfish corpse" )]

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Server;
 using Server.Items;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -76,7 +77,7 @@ namespace Server.Mobiles
 					DoHarmful( m );
 					m.PlaySound(0x1CB);
 					m.Stam = m.Stam - 5;
-					m.SendMessage( "You choke from the thrown mud!" );
+					m.SendMessage( Server.Localization.StringCatalog.ResolveByKey(m.Account, "mob.other.you_choke_from_the_thrown_mud") );
 				}
 			}
 		}

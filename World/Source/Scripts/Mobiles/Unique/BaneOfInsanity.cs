@@ -6,6 +6,7 @@ using Server.ContextMenus;
 using Server.Misc; 
 using Server.Network;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Mobiles 
 {
@@ -134,7 +135,7 @@ namespace Server.Mobiles
 						targets.Add( flame );
 						CanDie = 1;
 						winner = m;
-						m.SendMessage( "The Orb of Logic has vanished after dispatching the Chaos Bane." );
+						m.SendMessage( StringCatalog.ResolveByKey(m.Account, "mob.other.the_orb_of_logic_has_vanished_after_dispatching_the_cha") );
 						Server.Items.QuestSouvenir.GiveReward( m, flame.Name, flame.Hue, flame.ItemID );
 					}
 				}
@@ -142,7 +143,7 @@ namespace Server.Mobiles
 
 			if ( CanDie == 0 )
 			{
-				Say("Fool! You think chaos can be slain to easily?");
+				Say(StringCatalog.ResolveByKey(this.Account, "mob.other.fool_you_think_chaos_can_be_slain_to_easily"));
 				this.Hits = this.HitsMax;
 				this.FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
 				this.PlaySound( 0x202 );
@@ -166,8 +167,8 @@ namespace Server.Mobiles
 				if ( winner is PlayerMobile )
 				{
 					winner.AddToBackpack( new BlackrockSerpentChaos() );
-					winner.SendMessage( "You have obtained the Blackrock Serpent of Chaos!" );
-					LoggingFunctions.LogGenericQuest( winner, "has obtained the blackrock serpent of chaos" );
+					winner.SendMessage( StringCatalog.ResolveByKey(winner.Account, "mob.other.you_have_obtained_the_blackrock_serpent_of_chaos") );
+					LoggingFunctions.LogGenericQuest( winner, StringCatalog.ResolveByKey(this.Account, "mob.other.has_obtained_the_blackrock_serpent_of_chaos") );
 				}
 
 				return base.OnBeforeDeath();

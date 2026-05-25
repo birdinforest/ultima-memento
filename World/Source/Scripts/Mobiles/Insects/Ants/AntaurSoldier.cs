@@ -3,6 +3,7 @@ using System.Collections;
 using Server.Items;
 using Server.Network;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "an antaur corpse" )]

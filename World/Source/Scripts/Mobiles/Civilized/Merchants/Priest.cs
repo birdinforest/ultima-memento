@@ -9,6 +9,7 @@ using Server.Gumps;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Regions;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -113,7 +114,7 @@ namespace Server.Mobiles
 				{
 					from.AddToBackpack( new Gold( reward ) );
 
-					string sMessage = "Thank you. Here is " + reward + " gold for your bravery.";
+					string sMessage = Server.Localization.StringCatalog.ResolveFormatByKey(null, "mob.fmt.thank_you_here_is_0_gold_for_your_bravery", reward );
 
 					if ( reward >= 1000 && from.Karma >= 2500 && from.Skills[SkillName.Spiritualism].Base > 0 && from.Skills[SkillName.Healing].Base > 0 )
 					{
@@ -142,7 +143,7 @@ namespace Server.Mobiles
 						if ( hasSymbol == 0 ){ from.AddToBackpack ( new HolySymbol( from ) ); }
 						if ( hasBook == 0 ){ HolyManSpellbook tome = new HolyManSpellbook( (ulong)0, from ); from.AddToBackpack ( tome ); }
 
-						from.SendMessage( "You have been given your holy symbol and prayer book." );
+						from.SendMessage( Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_have_been_given_your_holy_symbol_and_prayer_book") );
 
 						if ( hasSymbol + hasBook == 0 )
 						{
@@ -150,7 +151,7 @@ namespace Server.Mobiles
 							LoggingFunctions.LogGenericQuest( from, "has become a priest" );
 							from.FixedParticles( 0x373A, 10, 15, 5018, EffectLayer.Waist );
 							from.PlaySound( 0x1EA );
-							sMessage = from.Name + ", take the gold and these as well. You may be a good priest one day.";
+							sMessage = Server.Localization.StringCatalog.ResolveFormatByKey(null, "mob.fmt.0_take_the_gold_and_these_as_well_you_may_be_a_good_pri", from.Name );
 						}
 					}
 
@@ -165,7 +166,7 @@ namespace Server.Mobiles
 			else if ( dropped is Gold && dropped.Amount >= 5 && Server.Misc.GetPlayerInfo.isJedi ( from, false ) )
 			{
 				int crystals = (int)( dropped.Amount / 5 );
-				this.Say( "Bring light to the world with these, Jedi." );
+				this.Say( Server.Localization.StringCatalog.ResolveByKey(null, "mob.other.bring_light_to_the_world_with_these_jedi") );
 				from.AddToBackpack ( new KaranCrystal( crystals ) );
 				dropped.Delete();
 			}

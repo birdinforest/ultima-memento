@@ -8,6 +8,7 @@ using Server.Regions;
 using Server.Mobiles;
 using System.Collections;
 using System.Collections.Generic;
+using Server.Localization;
 using Server.Accounting;
 
 namespace Server.Items
@@ -75,7 +76,7 @@ namespace Server.Items
 			}
 			else if ( pets.Count > 0 )
 			{
-				from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "You already have a familiar."));
+				from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_already_have_a_familiar"));
 			}
 			else if ( nFollowers > 0 )
 			{
@@ -83,15 +84,15 @@ namespace Server.Items
 			}
 			else if ( from.Skills[SkillName.Elementalism].Base < 50 && from.Skills[SkillName.Magery].Base < 50 && from.Skills[SkillName.Necromancy].Base < 50 )
 			{
-				from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "Only apprentice mages, elementalists, or necromancers may summon these familiars."));
+				from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.only_apprentice_mages_elementalists_or_necromancers_may"));
 			}
 			else if ( Charges < 1 )
 			{
-				from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "This crystal ball seems to be out of charges."));
+				from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.this_crystal_ball_seems_to_be_out_of_charges"));
 			}
 			else if ( FamiliarOwner == null || FamiliarOwner.Serial != from.Serial )
 			{
-				from.SendMessage(Server.Localization.StringCatalog.Resolve(from.Account, "This is not your crystal ball!"));
+				from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.this_is_not_your_crystal_ball"));
 			}
 			else
 			{
@@ -187,35 +188,35 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			string sType = "a familiar";
-			if ( FamiliarType == 0x15 ){ sType = "a serpent familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the serpent familiar"; } }
-			else if ( FamiliarType == 0xD9 ){ sType = "a dog familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the dog familiar"; } }
-			else if ( FamiliarType == 238 ){ sType = "a rat familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the rat familiar"; } }
-			else if ( FamiliarType == 0xC9 ){ sType = "a cat familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the cat familiar"; } }
-			else if ( FamiliarType == 0xD7 ){ sType = "a huge rat familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the huge rat familiar"; } }
-			else if ( FamiliarType == 80 ){ sType = "a large toad familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the large toad familiar"; } }
-			else if ( FamiliarType == 81 ){ sType = "a huge frog familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the huge frog familiar"; } }
-			else if ( FamiliarType == 340 ){ sType = "a large cat familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the large cat familiar"; } }
-			else if ( FamiliarType == 277 ){ sType = "a wolf familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the wolf familiar"; } }
-			else if ( FamiliarType == 0xCE ){ sType = "a large lizard familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the large lizard familiar"; } }
-			else if ( FamiliarType == 590 ){ sType = "a small dragon familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the small dragon familiar"; } }
-			else if ( FamiliarType == 315 ){ sType = "a large scorpion familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the large scorpion familiar"; } }
-			else if ( FamiliarType == 120 ){ sType = "a huge beetle familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the huge beetle familiar"; } }
-			else if ( FamiliarType == 202 ){ sType = "an imp familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the imp familiar"; } }
-			else if ( FamiliarType == 140 ){ sType = "a spider familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the spider familiar"; } }
-			else if ( FamiliarType == 173 ){ sType = "a giant spider familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the giant spider familiar"; } }
-			else if ( FamiliarType == 317 ){ sType = "a bat familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the bat familiar"; } }
-			else if ( FamiliarType == 242 ){ sType = "a giant insect familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the giant insect familiar"; } }
-			else if ( FamiliarType == 0x3C ){ sType = "a dragon familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the dragon familiar"; } }
-			else if ( FamiliarType == 0x4 ){ sType = "a demon familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the demon familiar"; } }
-			else if ( FamiliarType == 0x9 ){ sType = "a daemon familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the daemon familiar"; } }
-			else if ( FamiliarType == 0x16 ){ sType = "a gazer familiar"; if ( FamiliarName != "a familiar" ){ sType = FamiliarName + " the gazer familiar"; } }
+			string sType = StringCatalog.ResolveByKey(null, "mob.other.a_familiar");
+			if ( FamiliarType == 0x15 ){ sType = "a serpent familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the serpent familiar"; } }
+			else if ( FamiliarType == 0xD9 ){ sType = "a dog familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the dog familiar"; } }
+			else if ( FamiliarType == 238 ){ sType = "a rat familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the rat familiar"; } }
+			else if ( FamiliarType == 0xC9 ){ sType = "a cat familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the cat familiar"; } }
+			else if ( FamiliarType == 0xD7 ){ sType = "a huge rat familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the huge rat familiar"; } }
+			else if ( FamiliarType == 80 ){ sType = "a large toad familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the large toad familiar"; } }
+			else if ( FamiliarType == 81 ){ sType = "a huge frog familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the huge frog familiar"; } }
+			else if ( FamiliarType == 340 ){ sType = "a large cat familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the large cat familiar"; } }
+			else if ( FamiliarType == 277 ){ sType = "a wolf familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the wolf familiar"; } }
+			else if ( FamiliarType == 0xCE ){ sType = "a large lizard familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the large lizard familiar"; } }
+			else if ( FamiliarType == 590 ){ sType = "a small dragon familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the small dragon familiar"; } }
+			else if ( FamiliarType == 315 ){ sType = "a large scorpion familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the large scorpion familiar"; } }
+			else if ( FamiliarType == 120 ){ sType = "a huge beetle familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the huge beetle familiar"; } }
+			else if ( FamiliarType == 202 ){ sType = "an imp familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the imp familiar"; } }
+			else if ( FamiliarType == 140 ){ sType = "a spider familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the spider familiar"; } }
+			else if ( FamiliarType == 173 ){ sType = "a giant spider familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the giant spider familiar"; } }
+			else if ( FamiliarType == 317 ){ sType = "a bat familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the bat familiar"; } }
+			else if ( FamiliarType == 242 ){ sType = "a giant insect familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the giant insect familiar"; } }
+			else if ( FamiliarType == 0x3C ){ sType = "a dragon familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the dragon familiar"; } }
+			else if ( FamiliarType == 0x4 ){ sType = "a demon familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the demon familiar"; } }
+			else if ( FamiliarType == 0x9 ){ sType = "a daemon familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the daemon familiar"; } }
+			else if ( FamiliarType == 0x16 ){ sType = "a gazer familiar"; if ( FamiliarName != StringCatalog.ResolveByKey(null, "mob.other.a_familiar") ){ sType = FamiliarName + " the gazer familiar"; } }
 
 			string sInfo = sType;
 			list.Add( 1070722, sInfo );
 
 			string sOwner = FamiliarOwner != null ? FamiliarOwner.Name : "nobody";
-			list.Add( 1049644, "Belongs To " + sOwner + ""); // PARENTHESIS
+			list.Add( 1049644, Server.Localization.StringCatalog.ResolveFormatByKey(null, "mob.fmt.belongs_to_0", sOwner ) ); // PARENTHESIS
         }
 
 		public override void Serialize( GenericWriter writer )

@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Server.Network;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Mobiles 
 { 
@@ -119,7 +120,7 @@ namespace Server.Mobiles
 					m.PlaySound( 0x133 );
 					m.FixedParticles( 0x377A, 244, 25, 9950, 31, 0, EffectLayer.Waist );
 
-					m.SendMessage( "You feel the blood draining from you!" );
+					m.SendMessage( StringCatalog.ResolveByKey(m.Account, "mob.other.you_feel_the_blood_draining_from_you") );
 
 					int toDrain = Utility.RandomMinMax( 15, 30 );
 
@@ -183,7 +184,7 @@ namespace Server.Mobiles
 
 			SetHits( 350, 400 );
 
-			Say("Arrrrrgh!"); 
+			Say(StringCatalog.ResolveByKey(this.Account, "mob.other.arrrrrgh")); 
 		}
 
 		public override void OnDeath( Container c )
@@ -222,7 +223,7 @@ namespace Server.Mobiles
 						book.m_Points = 250;
 						book.m_Hue = 0x497;
 						killer.AddToBackpack( book );
-						killer.PrivateOverheadMessage(MessageType.Regular, 1153, false, "You found a book and put it in your pack.", killer.NetState);
+						killer.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.ResolveByKey(this.Account, "mob.other.you_found_a_book_and_put_it_in_your_pack"), killer.NetState);
 				}
 
 				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )

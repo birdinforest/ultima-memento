@@ -8,6 +8,7 @@ using Server.ContextMenus;
 using Server.Gumps;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.Mobiles 
 { 
@@ -181,7 +182,7 @@ namespace Server.Mobiles
 		{
 			if ( dropped is Gold && dropped.Amount >= 5000 && from.Karma >= 0 && from.Skills[SkillName.Psychology].Base >= 25 )
 			{
-				this.Say( "Take this, and be enlightened." );
+				this.Say( StringCatalog.ResolveByKey(this.Account, "mob.other.take_this_and_be_enlightened") );
 
 				LoreBook book = new LoreBook();
 				book.BookTitle = "The Jedi Order";

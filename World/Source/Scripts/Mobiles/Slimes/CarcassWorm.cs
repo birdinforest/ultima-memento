@@ -3,6 +3,7 @@ using System.Collections;
 using Server;
 using Server.Items;
 
+using Server.Localization;
 namespace Server.Mobiles
 {
 	[CorpseName( "a worm corpse" )]
