@@ -48,11 +48,13 @@ namespace Server.Items
 			set{ m_Charges = value; InvalidateProperties(); }
 		}
 
+			public override string DisplayNameLocalizationKey => "item.special.golem.porter";
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public GolemPorterItem() : base( 0x3566 )
 		{
 			PorterHue = 0x430;
-			Name = "a golem";
 			Weight = 1.0;
 			PorterSerial = 0;
 			Charges = 5;
@@ -91,19 +93,19 @@ namespace Server.Items
 			}
 			else if ( pets.Count > 0 )
 			{
-				from.SendMessage( StringCatalog.Resolve( from.Account, "You already have a golem." ) );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "eng.golem.already_have" ) );
 			}
 			else if ( nFollowers > 0 )
 			{
-				from.SendMessage( StringCatalog.Resolve( from.Account, "You already have too many in your group." ) );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "eng.golem.too_many" ) );
 			}
 			else if ( Charges == 0 )
 			{
-				from.SendMessage( StringCatalog.Resolve( from.Account, "Your golem needs another power crystal." ) );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "eng.golem.needs_crystal" ) );
 			}
 			else if ( PorterOwner == null || PorterOwner.Serial != from.Serial )
 			{
-				from.SendMessage( StringCatalog.Resolve( from.Account, "This is not your golem!" ) );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "eng.golem.not_yours" ) );
 			}
 			else
 			{
@@ -173,7 +175,10 @@ namespace Server.Items
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-			list.Add( 1060584, "{0}\t{1}", m_Charges.ToString(), "Uses" );
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.uses", m_Charges.ToString() );
+			else
+				list.Add( 1060584, "{0}\t{1}", m_Charges.ToString(), "Uses" );
 		}
 
         public override void AddNameProperties(ObjectPropertyList list)
@@ -186,7 +191,20 @@ namespace Server.Items
 			list.Add( 1070722, sInfo );
 
 			string sOwner = PorterOwner != null ? PorterOwner.Name : "nobody";
-			list.Add( 1049644, "Belongs To " + sOwner + ""); // PARENTHESIS
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.gift.how.belongs", sOwner );
+			else
+				list.Add( 1049644, "Belongs To " + sOwner + ""); // PARENTHESIS
+
+			if ( PorterExodus > 0 )
+			{
+				int cores = PorterExodus;
+				if ( cores > 3 ) cores = 3;
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.golem.exodus.core", cores.ToString() );
+				else
+					list.Add( 1070722, "Exodus Core: " + cores.ToString() + " / 3" );
+			}
         }
 
 		public override void Serialize( GenericWriter writer )

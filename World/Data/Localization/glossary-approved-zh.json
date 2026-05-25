@@ -4532,6 +4532,74 @@
       "category": "character",
       "notes": "EpicCharacter quest NPC from Ultima lore.",
       "translation_basis_zh": "Ultima 世界观人物音译/意译，用于任务日记。"
-    }
+    },
+    "Valorite": "瓦洛莱",
+    "Verite": "维里特",
+    "Agapite": "阿迦佩",
+    "Shadow Iron": "暗影铁",
+    "Dull Copper": "暗铜",
+    "a Valorite Golem": "瓦洛莱魔像",
+    "a Verite Golem": "维里特魔像",
+    "an Agapite Golem": "阿迦佩魔像",
+    "a Shadow Iron Golem": "暗影铁魔像",
+    "a Dull Copper Golem": "暗铜魔像",
+    "an Iron Golem": "铁魔像",
+    "a Golden Golem": "黄金魔像",
+    "a Bronze Golem": "青铜魔像",
+    "a Copper Golem": "铜魔像",
+    "an Iron golem": "铁魔像",
+    "a Stone Golem": "岩石魔像",
+    "a Bone Golem": "骨魔像",
+    "a Wax Golem": "蜡魔像",
+    "a Rust Golem": "锈蚀魔像",
+    "an Ice Golem": "寒冰魔像",
+    "a Wooden Golem": "木制魔像",
+    "a Runic Golem": "符文魔像",
+    "a golem": "魔像",
+    "golem": "魔像",
+    "Golem": "魔像",
+    "Manual of Golems": "魔像手册"
+  },
+  "Golem": {
+    "canonical": "魔像",
+    "alternatives": [],
+    "category": "creature",
+    "notes": "Generic term for any construct golem creature in UO / Memento shard. This is the canonical term for all golem references.",
+    "translation_basis_zh": "根据用户要求使用「魔像」作为Golem的全局标准译名，废弃此前混用的「傀儡」。"
+  },
+  "Shadow Iron": {
+    "canonical": "暗影铁",
+    "alternatives": [],
+    "category": "item",
+    "notes": "One of the nine colored metal tiers in UO mining. Always use 暗影铁 (not 影铁).",
+    "translation_basis_zh": "全系统统一为「暗影铁」：resource-harvest-extra.json 和 itemname_overrides.cfg 中使用的素材名称。之前混用「影铁」亦统一为此。"
+  },
+  "Valorite": {
+    "canonical": "瓦洛莱",
+    "alternatives": [],
+    "category": "item",
+    "notes": "Top-tier colored metal in UO. Always use 瓦洛莱 (not 瓦洛里特).",
+    "translation_basis_zh": "全系统统一为「瓦洛莱」：resource-harvest-extra.json 使用的名称。之前 itemname_overrides.cfg 中的「瓦洛里特」亦修正为此。"
+  },
+  "Verite": {
+    "canonical": "维里特",
+    "alternatives": [],
+    "category": "item",
+    "notes": "High-tier colored metal in UO. Always use 维里特.",
+    "translation_basis_zh": "全系统统一为「维里特」。"
+  },
+  "Agapite": {
+    "canonical": "阿迦佩",
+    "alternatives": [],
+    "category": "item",
+    "notes": "High-tier colored metal in UO. Always use 阿迦佩 (not 阿加帕石).",
+    "translation_basis_zh": "全系统统一为「阿迦佩」：resource-harvest-extra.json 使用的名称。之前 itemname_overrides.cfg 中的「阿加帕石」亦修正为此。"
+  },
+  "Dull Copper": {
+    "canonical": "暗铜",
+    "alternatives": [],
+    "category": "item",
+    "notes": "Entry-tier colored metal in UO. Always use 暗铜.",
+    "translation_basis_zh": "全局一致使用「暗铜」，无歧义。"
   }
 }

@@ -144,7 +144,7 @@ namespace Server.Mobiles
 
 				PlaySound( 0x2F4 );
 
-				attacker.SendAsciiMessage( "Your weapon is less effective with the creature's magical barrier up!" );
+				attacker.SendMessage( StringCatalog.ResolveByKey( attacker.Account, "eng.exodus.magical_barrier" ) );
 
 				if ( attacker is BaseCreature ) // KILL ANY PETS PLAYERS FOOLISHLY BROUGHT WITH THEM
 				{
@@ -190,7 +190,7 @@ namespace Server.Mobiles
 						Item reward = new SummonReward();
 						reward.Hue = 0x835;
 						reward.ItemID = 0x2105;
-						reward.Name = "Statue of Exodus";
+						reward.Name = StringCatalog.ResolveByKey( killer.Account, "item.special.exodus.statue" );
 						c.DropItem( reward );
 					}
 					c.DropItem( new DarkCoreExodus() );
@@ -257,18 +257,20 @@ namespace Server.Items
 {
 	public class DarkCoreExodus : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.special.exodus.darkcore";
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public DarkCoreExodus() : base( 0x1CD )
 		{
 			Hue = 0x497;
-			Name = "dark core of Exodus";
 		}
 
 		public override void OnDoubleClick( Mobile from )
 		{
 			if ( !IsChildOf( from.Backpack ) )
 			{
-				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to inspect." ) );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "eng.exodus.dark_core_inspect" ) );
 			}
 			else
 			{
@@ -352,21 +354,21 @@ namespace Server.Gumps
 
 			AddButton(427, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
 
-			AddHtml( 11, 11, 403, 20, @"<BODY><BASEFONT Color=" + color + ">SHRINE OF DILIGENCE</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 11, 11, 403, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey( from.Account, "eng.exodus.shrine_diligence_title" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 			string text = "";
 
 			if ( items == "null" )
 			{
-				text = "To destroy the dark core and absorb its power into one of your items, you can only place a single piece of armor, weapon, trinket, clothing, or jewelry onto the shrine. Remove some of the items and try to destroy the dark core again.";
+				text = StringCatalog.ResolveByKey( from.Account, "eng.exodus.dark_core_gump_null" );
 			}
 			else if ( items == "non" )
 			{
-				text = "To destroy the dark core and absorb its power into one of your items, you can only place a single piece of armor, weapon, trinket, clothing, or jewelry onto the shrine. Remove any of the items, that do not fall into these categories, and try to destroy the dark core again.";
+				text = StringCatalog.ResolveByKey( from.Account, "eng.exodus.dark_core_gump_non" );
 			}
 			else
 			{
-				text = "Some items have an inherent magical aura bestowed upon them, that the magic of the dark core cannot enhance any further. These include Artefacts and Relics where you use enhancement points to modify. Below are the items on the shrine that cannot be affected. Once you remove them, you can try to destroy the dark core of exodus again.<br>" + items + "";
+				text = StringCatalog.ResolveFormatByKey( from.Account, "eng.exodus.dark_core_gump_artifact", items );
 			}
 
 			AddHtml( 13, 43, 440, 301, @"<BODY><BASEFONT Color=" + color + ">" + text + "</BASEFONT></BODY>", (bool)false, (bool)false);

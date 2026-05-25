@@ -2050,5 +2050,21 @@
   "item.magical.soulorb.soil": "神秘泥土（mystical mud）",
   "item.magical.soulorb.placeholder": "灵魂球（soul orb）",
   "item.magical.soulorb.default": "灵魂球（soul orb）",
-  "item.special.wabook": "武器能力大全（Weapon Abilities）"
+  "item.special.wabook": "武器能力大全（Weapon Abilities）",
+  "prop.golem.exodus.core": "埃克索达斯核心：{0} / 3",
+  "item.special.exodus.statue": "埃克索达斯（Exodus）雕像",
+  "item.special.exodus.darkcore": "埃克索达斯（Exodus）的黑暗核心",
+  "item.special.manual_of_golems": "魔偶手册（Manual of Golems）",
+  "prop.golem.build_type": "建造 {0}",
+  "prop.golem.level": "等级 {0}",
+  "prop.golem.type.valorite": "瓦洛莱魔像（Valorite Golem）",
+  "prop.golem.type.verite": "维里特魔像（Verite Golem）",
+  "prop.golem.type.agapite": "阿迦佩魔像（Agapite Golem）",
+  "prop.golem.type.golden": "黄金魔像（Golden Golem）",
+  "prop.golem.type.bronze": "青铜魔像（Bronze Golem）",
+  "prop.golem.type.copper": "铜魔像（Copper Golem）",
+  "prop.golem.type.shadowiron": "暗影铁魔像（Shadow Iron Golem）",
+  "prop.golem.type.dullcopper": "暗铜魔像（Dull Copper Golem）",
+  "prop.golem.type.iron": "铁魔像（Iron Golem）",
+  "item.special.golem.porter": "一个魔像（golem）"
 }

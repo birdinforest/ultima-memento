@@ -68,15 +68,28 @@ namespace Server.Mobiles
 			if ( Hue == 2118 )
 			{
 				Title = "of Exodus";
-				if ( PorterExodus == 1 ){ scalar = 1.7; }
-				else if ( PorterExodus == 2 ){ scalar = 1.8; }
-				else if ( PorterExodus == 3 ){ scalar = 1.9; }
-				else if ( PorterExodus == 4 ){ scalar = 2.0; }
-				else if ( PorterExodus == 5 ){ scalar = 2.1; }
-				else if ( PorterExodus == 6 ){ scalar = 2.2; }
-				else if ( PorterExodus == 7 ){ scalar = 2.3; }
-				else if ( PorterExodus == 8 ){ scalar = 2.4; }
-				else if ( PorterExodus == 9 ){ scalar = 2.5; }
+
+				int cores = PorterExodus;
+				if ( cores > 3 ) cores = 3; // safety clamp for old data
+
+				double coreBonus = 0;
+				if ( cores >= 1 ) coreBonus += 0.40;
+				if ( cores >= 2 ) coreBonus += 0.20;
+				if ( cores >= 3 ) coreBonus += 0.10;
+				// coreBonus: 1→0.40, 2→0.60, 3→0.70
+
+				// Base scalar from resource (same as non-Exodus path)
+				if ( Resource == CraftResource.DullCopper ) scalar = 1.1;
+				else if ( Resource == CraftResource.ShadowIron ) scalar = 1.2;
+				else if ( Resource == CraftResource.Copper ) scalar = 1.3;
+				else if ( Resource == CraftResource.Bronze ) scalar = 1.4;
+				else if ( Resource == CraftResource.Gold ) scalar = 1.5;
+				else if ( Resource == CraftResource.Agapite ) scalar = 1.6;
+				else if ( Resource == CraftResource.Verite ) scalar = 1.7;
+				else if ( Resource == CraftResource.Valorite ) scalar = 1.8;
+				else { scalar = 1.0; }
+
+				scalar += coreBonus;
 			}
 			else if ( Resource == CraftResource.DullCopper ){ scalar = 1.1; }
 			else if ( Resource == CraftResource.ShadowIron ){ scalar = 1.2; }

@@ -71,15 +71,28 @@ namespace Server.Mobiles
 			if ( Hue == 2118 )
 			{
 				Title = "of Exodus";
-				if ( PorterExodus == 1 ){ SetStr( 600 ); }
-				else if ( PorterExodus == 2 ){ SetStr( 650 ); }
-				else if ( PorterExodus == 3 ){ SetStr( 700 ); }
-				else if ( PorterExodus == 4 ){ SetStr( 750 ); }
-				else if ( PorterExodus == 5 ){ SetStr( 800 ); }
-				else if ( PorterExodus == 6 ){ SetStr( 850 ); }
-				else if ( PorterExodus == 7 ){ SetStr( 900 ); }
-				else if ( PorterExodus == 8 ){ SetStr( 950 ); }
-				else if ( PorterExodus == 9 ){ SetStr( 1000 ); }
+
+				int cores = PorterExodus;
+				if ( cores > 3 ) cores = 3; // safety clamp for old data
+
+				int coreBonus = 0;
+				if ( cores >= 1 ) coreBonus += 130;
+				if ( cores >= 2 ) coreBonus += 70;
+				if ( cores >= 3 ) coreBonus += 40;
+				// coreBonus: 1→130, 2→200, 3→240
+
+				// Base Str from resource (same as non-Exodus path)
+				int baseStr = 100;
+				if ( Resource == CraftResource.DullCopper ) baseStr = 150;
+				else if ( Resource == CraftResource.ShadowIron ) baseStr = 200;
+				else if ( Resource == CraftResource.Copper ) baseStr = 250;
+				else if ( Resource == CraftResource.Bronze ) baseStr = 300;
+				else if ( Resource == CraftResource.Gold ) baseStr = 350;
+				else if ( Resource == CraftResource.Agapite ) baseStr = 400;
+				else if ( Resource == CraftResource.Verite ) baseStr = 450;
+				else if ( Resource == CraftResource.Valorite ) baseStr = 500;
+
+				SetStr( baseStr + coreBonus );
 			}
 			else if ( Resource == CraftResource.DullCopper ){ SetStr( 150 ); }
 			else if ( Resource == CraftResource.ShadowIron ){ SetStr( 200 ); }
@@ -88,7 +101,7 @@ namespace Server.Mobiles
 			else if ( Resource == CraftResource.Gold ){ SetStr( 350 ); }
 			else if ( Resource == CraftResource.Agapite ){ SetStr( 400 ); }
 			else if ( Resource == CraftResource.Verite ){ SetStr( 450 ); }
-			else if ( Resource == CraftResource.Valorite ){ SetStr( 65000 ); }
+			else if ( Resource == CraftResource.Valorite ){ SetStr( 500 ); }
 			else { Hue = 0x430; SetStr( 100 ); }
 		}
 

@@ -2049,5 +2049,21 @@
   "item.magical.soulorb.soil": "mystical mud",
   "item.magical.soulorb.placeholder": "soul orb",
   "item.magical.soulorb.default": "soul orb",
-  "item.special.wabook": "Weapon Abilities"
+  "item.special.wabook": "Weapon Abilities",
+  "prop.golem.exodus.core": "Exodus Core: {0} / 3",
+  "item.special.exodus.statue": "Statue of Exodus",
+  "item.special.exodus.darkcore": "dark core of Exodus",
+  "item.special.manual_of_golems": "Manual of Golems",
+  "prop.golem.build_type": "To Build {0}",
+  "prop.golem.level": "Level {0}",
+  "prop.golem.type.valorite": "a Valorite Golem",
+  "prop.golem.type.verite": "a Verite Golem",
+  "prop.golem.type.agapite": "an Agapite Golem",
+  "prop.golem.type.golden": "a Golden Golem",
+  "prop.golem.type.bronze": "a Bronze Golem",
+  "prop.golem.type.copper": "a Copper Golem",
+  "prop.golem.type.shadowiron": "a Shadow Iron Golem",
+  "prop.golem.type.dullcopper": "a Dull Copper Golem",
+  "prop.golem.type.iron": "an Iron Golem",
+  "item.special.golem.porter": "a golem"
 }

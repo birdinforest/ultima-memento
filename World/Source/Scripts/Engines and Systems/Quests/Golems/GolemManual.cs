@@ -23,11 +23,13 @@ namespace Server.Items
 			Hue = CraftResources.GetHue(m_Resource);
 		}
 
+		public override string DisplayNameLocalizationKey => "item.special.manual_of_golems";
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public GolemManual() : base( 0x225D )
 		{
 			Weight = 2.0;
-			Name = "Manual of Golems";
 
 			if ( Weight > 1.0 )
 			{
@@ -36,7 +38,7 @@ namespace Server.Items
 				HaveSprings = 0; // ONLY NEED SPRINGS FOR FIGHTING GOLEMS
 				HaveClocks = 0;
 				HaveCrystals = 0;
-				HaveDarkCore = 0; // ONLY NEED DARK CORE FOR BIG BOOST
+				HaveDarkCore = 0; // UP TO 3 DARK CORES FOR PROGRESSIVE BOOST
 				HaveGears = 0;
 				HaveGems = 0;
 				HaveGold = 0;
@@ -78,9 +80,41 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "To Build " + GolemType );
-			list.Add( 1049644, "Level " + NeedGems.ToString() );
+			if ( BuildingPropertyListLocale != null )
+			{
+				string golemTypeLocalized = ResolvePropertyText( GetGolemTypeShotkey( GolemType ) );
+				AddLocalizedProperty( list, "prop.golem.build_type", golemTypeLocalized );
+				AddLocalizedProperty( list, "prop.golem.level", NeedGems.ToString() );
+			}
+			else
+			{
+				list.Add( 1070722, "To Build " + GolemType );
+				list.Add( 1049644, "Level " + NeedGems.ToString() );
+			}
+			if ( HaveDarkCore > 0 )
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.golem.exodus.core", HaveDarkCore.ToString() );
+				else
+					list.Add( 1070722, "Exodus Core: " + HaveDarkCore.ToString() + " / 3" );
+			}
         }
+
+		public static string GetGolemTypeShotkey( string golemType )
+		{
+			switch ( golemType )
+			{
+				case "a Valorite Golem": return "prop.golem.type.valorite";
+				case "a Verite Golem": return "prop.golem.type.verite";
+				case "an Agapite Golem": return "prop.golem.type.agapite";
+				case "a Golden Golem": return "prop.golem.type.golden";
+				case "a Bronze Golem": return "prop.golem.type.bronze";
+				case "a Copper Golem": return "prop.golem.type.copper";
+				case "a Shadow Iron Golem": return "prop.golem.type.shadowiron";
+				case "a Dull Copper Golem": return "prop.golem.type.dullcopper";
+				default: return "prop.golem.type.iron";
+			}
+		}
 
 		public override void OnDoubleClick( Mobile from )
 		{
@@ -110,7 +144,7 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveMetalQty = HaveMetalQty + iAmount;
-					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You added {0} valorite ingot{1}", iAmount, sEnd ) );
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "eng.golem.added.valorite", iAmount, sEnd ) );
 					dropped.Delete();
 					return true;
 				}
@@ -122,7 +156,7 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveMetalQty = HaveMetalQty + iAmount;
-					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You added {0} verite ingot{1}", iAmount, sEnd ) );
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "eng.golem.added.verite", iAmount, sEnd ) );
 					dropped.Delete();
 					return true;
 				}
@@ -134,7 +168,7 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveMetalQty = HaveMetalQty + iAmount;
-					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You added {0} agapite ingot{1}", iAmount, sEnd ) );
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "eng.golem.added.agapite", iAmount, sEnd ) );
 					dropped.Delete();
 					return true;
 				}
@@ -146,7 +180,7 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveMetalQty = HaveMetalQty + iAmount;
-					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You added {0} golden ingot{1}", iAmount, sEnd ) );
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "eng.golem.added.golden", iAmount, sEnd ) );
 					dropped.Delete();
 					return true;
 				}
@@ -158,7 +192,7 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveMetalQty = HaveMetalQty + iAmount;
-					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You added {0} bronze ingot{1}", iAmount, sEnd ) );
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "eng.golem.added.bronze", iAmount, sEnd ) );
 					dropped.Delete();
 					return true;
 				}
@@ -170,7 +204,7 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveMetalQty = HaveMetalQty + iAmount;
-					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You added {0} copper ingot{1}", iAmount, sEnd ) );
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "eng.golem.added.copper", iAmount, sEnd ) );
 					dropped.Delete();
 					return true;
 				}
@@ -182,7 +216,7 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveMetalQty = HaveMetalQty + iAmount;
-					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You added {0} shadow iron ingot{1}", iAmount, sEnd ) );
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "eng.golem.added.shadowiron", iAmount, sEnd ) );
 					dropped.Delete();
 					return true;
 				}
@@ -194,7 +228,7 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveMetalQty = HaveMetalQty + iAmount;
-					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You added {0} dull copper ingot{1}", iAmount, sEnd ) );
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "eng.golem.added.dullcopper", iAmount, sEnd ) );
 					dropped.Delete();
 					return true;
 				}
@@ -206,23 +240,60 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveMetalQty = HaveMetalQty + iAmount;
-					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You added {0} iron ingot{1}", iAmount, sEnd ) );
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "eng.golem.added.iron", iAmount, sEnd ) );
 					dropped.Delete();
 					return true;
 				}
-				else if ( dropped is DarkCoreExodus && HaveDarkCore == 0 )
+				else if ( dropped is DarkCoreExodus && HaveDarkCore < 3 )
 				{
+					int newCount = HaveDarkCore + 1;
+					int tier = GetMetalTier();
+
+					switch ( newCount )
+					{
+						case 1:
+							NeedMetalQty += 250;
+							NeedClocks += 1 * tier;
+							NeedCrystals += 1 * tier;
+							NeedGems += 1 * tier;
+							NeedGears += 3 * tier;
+							NeedOil += 1 * tier;
+							NeedGold += 5000 + ( 1000 * tier );
+							NeedSprings += 2 * tier;
+							break;
+						case 2:
+							NeedMetalQty += 500;
+							NeedClocks += 2 * tier;
+							NeedCrystals += 2 * tier;
+							NeedGems += 2 * tier;
+							NeedGears += 5 * tier;
+							NeedOil += 2 * tier;
+							NeedGold += 10000 + ( 2000 * tier );
+							NeedSprings += 3 * tier;
+							break;
+						case 3:
+							NeedMetalQty += 1000;
+							NeedClocks += 3 * tier;
+							NeedCrystals += 3 * tier;
+							NeedGems += 3 * tier;
+							NeedGears += 8 * tier;
+							NeedOil += 3 * tier;
+							NeedGold += 20000 + ( 5000 * tier );
+							NeedSprings += 5 * tier;
+							break;
+					}
+
+					HaveDarkCore = newCount;
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "eng.golem.added.darkcore", HaveDarkCore ) );
 					dropped.Delete();
-					HaveDarkCore = 1;
-					from.SendMessage( StringCatalog.Resolve( from.Account, "Against most other's judgement, you added the dark core of Exodus." ) );
-					dropped.Delete();
+					InvalidateProperties();
 					return true;
 				}
 				else if ( dropped is PowerCrystal && NeedCrystals > HaveCrystals )
 				{
 					dropped.Delete();
 					HaveCrystals = HaveCrystals + 1;
-					from.SendMessage( StringCatalog.Resolve( from.Account, "You added a power crystal." ) );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "eng.golem.added.powercrystal" ) );
 					dropped.Delete();
 					return true;
 				}
@@ -230,7 +301,7 @@ namespace Server.Items
 				{
 					dropped.Delete();
 					HaveGems = HaveGems + dropped.Amount;
-					if ( dropped.Amount > 1 ){ from.SendMessage( StringCatalog.Resolve( from.Account, "You added arcane gems." ) ); } else { from.SendMessage( StringCatalog.Resolve( from.Account, "You added an arcane gem." ) ); }
+					if ( dropped.Amount > 1 ){ from.SendMessage( StringCatalog.ResolveByKey( from.Account, "eng.golem.added.arcanegems" ) ); } else { from.SendMessage( StringCatalog.ResolveByKey( from.Account, "eng.golem.added.arcanegem" ) ); }
 					if ( HaveGems > NeedGems )
 					{
 						from.AddToBackpack( new ArcaneGem( (HaveGems-NeedGems) ) );
@@ -243,7 +314,7 @@ namespace Server.Items
 				{
 					dropped.Delete();
 					HaveClocks = HaveClocks + 1;
-					from.SendMessage( StringCatalog.Resolve( from.Account, "You added a clockwork assembly." ) );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "eng.golem.added.clockwork" ) );
 					dropped.Delete();
 					return true;
 				}
@@ -259,7 +330,7 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveOil = HaveOil + iAmount;
-					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You added {0} technomancer oil{1}", iAmount, sEnd ) );
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "eng.golem.added.oil", iAmount, sEnd ) );
 					dropped.Delete();
 					return true;
 				}
@@ -275,7 +346,7 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveGears = HaveGears + iAmount;
-					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You added {0} gear{1}", iAmount, sEnd ) );
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "eng.golem.added.gear", iAmount, sEnd ) );
 					dropped.Delete();
 					return true;
 				}
@@ -291,7 +362,7 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveSprings = HaveSprings + iAmount;
-					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You added {0} spring{1}", iAmount, sEnd ) );
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "eng.golem.added.spring", iAmount, sEnd ) );
 					dropped.Delete();
 					return true;
 				}
@@ -307,7 +378,7 @@ namespace Server.Items
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveGold = HaveGold + iAmount;
-					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "You added {0} gold coin{1}", iAmount, sEnd ) );
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "eng.golem.added.gold", iAmount, sEnd ) );
 					dropped.Delete();
 					return true;
 				}
@@ -481,7 +552,7 @@ namespace Server.Items
 
 			string QuestLog = "had " + (book.GolemType).ToLower() + " built";
 
-			if ( book.HaveDarkCore > 0 ){ ball.PorterExodus = ExodusBoost; PortColor = 2118; QuestLog = QuestLog + " with the dark core of Exodus"; }
+			if ( book.HaveDarkCore > 0 ){ ball.PorterExodus = book.HaveDarkCore; PortColor = 2118; QuestLog = QuestLog + " with " + book.HaveDarkCore.ToString() + " dark core(s) of Exodus"; }
 
 			ball.PorterOwner = m;
 			ball.PorterHue = PortColor;
@@ -493,7 +564,7 @@ namespace Server.Items
 
 			LoggingFunctions.LogGenericQuest( m, QuestLog );
 
-			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.Resolve( m.Account, "My golem has been built." ), m.NetState);
+			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.ResolveByKey( m.Account, "eng.golem.completed.built" ), m.NetState);
 			m.PlaySound( 0x5C3 );
 
 			dropped.Delete();
@@ -513,8 +584,8 @@ namespace Server.Items
 
 				GolemManual pedia = (GolemManual)gBook;
 
-				string sExodus = "";
-					if ( gBook.HaveDarkCore > 0 ){ sExodus = " of Exodus"; }
+			string sExodus = "";
+				if ( gBook.HaveDarkCore > 0 ){ sExodus = " of Exodus (" + gBook.HaveDarkCore.ToString() + "/3)"; }
 
 				string GolemType = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase( (gBook.GolemType).ToLower() );
 
@@ -582,6 +653,19 @@ namespace Server.Items
 		public string TinkerLocation;
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string g_TinkerLocation { get{ return TinkerLocation; } set{ TinkerLocation = value; } }
+
+		private int GetMetalTier()
+		{
+			if ( Resource == CraftResource.Valorite ) return 9;
+			if ( Resource == CraftResource.Verite ) return 8;
+			if ( Resource == CraftResource.Agapite ) return 7;
+			if ( Resource == CraftResource.Gold ) return 6;
+			if ( Resource == CraftResource.Bronze ) return 5;
+			if ( Resource == CraftResource.Copper ) return 4;
+			if ( Resource == CraftResource.ShadowIron ) return 3;
+			if ( Resource == CraftResource.DullCopper ) return 2;
+			return 1; // Iron or unknown
+		}
 
 		public string GolemType;
 		[CommandProperty( AccessLevel.GameMaster )]

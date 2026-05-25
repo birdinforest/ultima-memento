@@ -488,7 +488,7 @@ namespace Server.Items
 							Point3D fire = new Point3D( 710, 2209, -17 );
 							Effects.SendLocationEffect( fire, m.Map, 0x3709, 30, 10 );
 							m.PlaySound( 0x208 );
-							m.SendMessage(StringCatalog.Resolve(m.Account, "You destroy the dark core of Exodus, unleashing the power."));
+							m.SendMessage(StringCatalog.ResolveByKey(m.Account, "eng.exodus.destroy_core"));
 
 							for ( int x = -5; x <= 5; ++x )
 							{
