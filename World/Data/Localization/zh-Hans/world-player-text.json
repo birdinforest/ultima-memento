@@ -1953,5 +1953,7 @@
   "quest.tome.noun.relic.herb.wyrm_bile": "翼龙胆汁",
   "quest.tome.noun.relic.herb.dragon_tears": "龙泪",
   "quest.tome.noun.relic.herb.dragon_bile": "龙胆汁",
-  "quest.tome.noun.relic.veil": "面纱"
+  "quest.tome.noun.relic.veil": "面纱",
+  "eng.dark_core_exodus.title": "埃克索达斯（Exodus）的黑暗核心",
+  "eng.dark_core_exodus.body": "这枚黑暗水晶散发着微弱的异界能量脉冲，是名为埃克索达斯（Exodus）的神秘存在之核心——这个存在既非纯粹的恶魔也非机器，由蒙丹（Mondain）与米纳克斯（Minax）所创造。\n\n传说中有两种方法可以驾驭其力量：\n\n• 美德熔炉（Forge of Virtue）——前往野蛮帝域（Savaged Empire）中的古老石像鬼城市，在岩石地城（Dungeon Rock）内找到勤勉神龛（Shrine of Diligence）。在背包中携带黑暗核心的同时，将一件武器、防具、饰品或衣物放在神龛上。熔炉将消耗核心，为你的物品注入强大的魔法属性，并将其材质转化为埃克索达斯（Exodus）锻造之钢。\n\n• 魔偶手册（Manual of Golems）——如果你拥有魔偶手册(Golem Manual)，可以将黑暗核心添加至手册中。成品魔偶将被注入埃克索达斯（Exodus）的力量，呈现出深紫色光泽并拥有更强的能力。\n\n核心在上述任一过程中都会被消耗。谨慎使用，因为埃克索达斯（Exodus）终将重建自身，核心也会回到它的胸膛。"
 }

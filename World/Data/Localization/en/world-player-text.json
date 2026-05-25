@@ -1953,5 +1953,7 @@
   "quest.tome.noun.relic.herb.wyrm_bile": "wyrm bile",
   "quest.tome.noun.relic.herb.dragon_tears": "dragon tears",
   "quest.tome.noun.relic.herb.dragon_bile": "dragon bile",
-  "quest.tome.noun.relic.veil": "Veil"
+  "quest.tome.noun.relic.veil": "Veil",
+  "eng.dark_core_exodus.title": "Dark Core of Exodus",
+  "eng.dark_core_exodus.body": "Pulsing with a faint, otherworldly energy, this dark crystal is the core of the enigmatic being known as Exodus — a creature neither fully demon nor machine, born from Mondain and Minax.\n\nLegends speak of two ways to harness its power:\n\n• Forge of Virtue — Travel to the ancient gargoyle city within the Savaged Empire and find the Shrine of Diligence in Dungeon Rock. Place a single weapon, armor, trinket, or garment on the shrine with the dark core in your pack. The forge will consume the core and fill your item with potent magical properties, transforming its material into Exodus-forged steel.\n\n• Golem Manual — If you possess a Manual of Golems, you may add the dark core to the construction materials. The resulting golem will be imbued with Exodus’ power, marked by a deep violet hue and enhanced strength.\n\nThe core is consumed in either process. Use it wisely, for Exodus will eventually rebuild itself and the core will return to its chest."
 }

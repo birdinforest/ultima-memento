@@ -4,7 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Server.Items;
 using Server.Misc;
-using Server.Network; 
+using Server.Network;
+using Server.Localization;
+using Server.Gumps;
 
 namespace Server.Mobiles
 {
@@ -262,6 +264,19 @@ namespace Server.Items
 			Name = "dark core of Exodus";
 		}
 
+		public override void OnDoubleClick( Mobile from )
+		{
+			if ( !IsChildOf( from.Backpack ) )
+			{
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to inspect." ) );
+			}
+			else
+			{
+				from.CloseGump( typeof( DarkCoreExodusGump ) );
+				from.SendGump( new DarkCoreExodusGump( from ) );
+			}
+		}
+
 		public DarkCoreExodus( Serial serial ) : base( serial )
 		{
 		}
@@ -276,6 +291,42 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
+		}
+	}
+}
+
+namespace Server.Gumps
+{
+	public class DarkCoreExodusGump : Gump
+	{
+		public DarkCoreExodusGump( Mobile from ) : base( 50, 50 )
+		{
+			from.SendSound( 0x1F7 );
+
+			this.Closable = true;
+			this.Disposable = true;
+			this.Dragable = true;
+			this.Resizable = false;
+
+			string color = "#e3a27e";
+
+			AddPage( 0 );
+
+			AddImage( 0, 0, 7034, Server.Misc.PlayerSettings.GetGumpHue( from ) );
+
+			AddButton( 427, 10, 4017, 4017, 0, GumpButtonType.Reply, 0 );
+
+			AddHtml( 11, 11, 403, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey( from.Account, "eng.dark_core_exodus.title" ) + "</BASEFONT></BODY>", false, false );
+
+			string text = StringCatalog.ResolveByKey( from.Account, "eng.dark_core_exodus.body" );
+
+			AddHtml( 13, 43, 440, 301, @"<BODY><BASEFONT Color=" + color + ">" + text + "</BASEFONT></BODY>", false, true );
+		}
+
+		public override void OnResponse( NetState state, RelayInfo info )
+		{
+			Mobile from = state.Mobile;
+			from.SendSound( 0x4A );
 		}
 	}
 }
