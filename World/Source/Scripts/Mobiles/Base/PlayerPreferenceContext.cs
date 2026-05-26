@@ -54,6 +54,10 @@ namespace Server.Mobiles
 
 			if (3 < version)
 				MotdLastSeenVersion = reader.ReadInt();
+			// v5 (local bump): Jascen's DoubleClickToTalk rides version 4 upstream, but our
+			// v4 saves already carry MotdLastSeenVersion — gating on 4 avoids over-reading
+			// a byte from existing saves.
+			DoubleClickToTalk = 4 < version ? reader.ReadBool() : false;
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -88,6 +92,9 @@ namespace Server.Mobiles
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool DoubleClickID { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool DoubleClickToTalk { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int GumpHue { get; set; }
@@ -130,7 +137,7 @@ namespace Server.Mobiles
 
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(4);
+			writer.Write(5);
 
 			writer.Write(DoubleClickID);
 			writer.Write(SuppressVendorTooltip);
@@ -159,6 +166,7 @@ namespace Server.Mobiles
 			writer.Write((int)DefaultRunebookSpellType);
 
 			writer.Write(MotdLastSeenVersion);
+			writer.Write(DoubleClickToTalk);
 		}
 	}
 }
