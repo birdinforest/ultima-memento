@@ -21,6 +21,7 @@ namespace Server.Misc
 			builder.Append("- Trap - Remove Trap salvage on stone face and giant spike traps is once per player per trap every 30 minutes (avoidance still works; fire columns still drop no salvage)<br>");
 			builder.Append("- Trap - Remove Trap avoidance on fire column traps no longer drops salvage gold (skill checks unchanged; other trap types still drop salvage)<br>");
 			builder.Append("- Gump - Add tooltips for plants<br>");
+			builder.Append("- Gump - Add search button to Craft gump<br>");
 			builder.Append("- Gump - Multi-craft is now a button that prompts for a value<br>");
 			builder.Append("- Gump - Major refactor on Spell Bars for extensibility<br>");
 			builder.Append("- Housekeeping - The following spells had a minor change that should not impact anything:<br>");
