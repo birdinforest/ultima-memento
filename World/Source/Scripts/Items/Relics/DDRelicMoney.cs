@@ -1,5 +1,6 @@
 using System;
 using Server.Localization;
+using Server.Utilities;
 
 namespace Server.Items
 {
@@ -68,11 +69,6 @@ namespace Server.Items
 				return 0x2E6;
 		}
 
-		protected override void OnAmountChange( int oldValue )
-		{
-			int newValue = this.Amount;
-		}
-
 		public override void OnDoubleClick( Mobile from )
 		{
 			BankBox box = from.FindBankNoCreate();
@@ -85,13 +81,15 @@ namespace Server.Items
 				int nGold = (int)Math.Floor((decimal)(this.Amount / nRate));
 				int nChange = this.Amount - ( nGold * nRate );
 
-				if ( ( nGold > 0 ) && ( nChange > 0 ) )
+				if ( nGold > 0 )
 				{
-					from.AddToBackpack ( new Gold( nGold ) );
-				}
-				else if ( nGold > 0 )
-				{
-					from.AddToBackpack ( new Gold( nGold ) );
+					foreach (var gold in ItemUtilities.AddStacks(nGold, () => new Gold()))
+					{
+						if (!box.TryStackItem(gold, from))
+						{
+							box.DropItem(gold);
+						}
+					}
 				}
 
 				if (nChange < 1)
@@ -165,11 +163,6 @@ namespace Server.Items
 				return 0x2E6;
 		}
 
-		protected override void OnAmountChange( int oldValue )
-		{
-			int newValue = this.Amount;
-		}
-
 		public override void OnDoubleClick( Mobile from )
 		{
 			BankBox box = from.FindBankNoCreate();
@@ -182,13 +175,15 @@ namespace Server.Items
 				int nGold = (int)Math.Floor((decimal)(this.Amount / nRate));
 				int nChange = this.Amount - ( nGold * nRate );
 
-				if ( ( nGold > 0 ) && ( nChange > 0 ) )
+				if ( nGold > 0 )
 				{
-					from.AddToBackpack ( new Gold( nGold ) );
-				}
-				else if ( nGold > 0 )
-				{
-					from.AddToBackpack ( new Gold( nGold ) );
+					foreach (var gold in ItemUtilities.AddStacks(nGold, () => new Gold()))
+					{
+						if (!box.TryStackItem(gold, from))
+						{
+							box.DropItem(gold);
+						}
+					}
 				}
 
 				if (nChange < 1)
@@ -268,7 +263,16 @@ namespace Server.Items
 			{
 				Delete();
 				int nGold = this.Amount * 2;
-				from.AddToBackpack ( new Gold( nGold ) );
+				if ( nGold > 0 )
+				{
+					foreach (var gold in ItemUtilities.AddStacks(nGold, () => new Gold()))
+					{
+						if (!box.TryStackItem(gold, from))
+						{
+							box.DropItem(gold);
+						}
+					}
+				}
 			}
 			else
 			{
@@ -340,7 +344,16 @@ namespace Server.Items
 			{
 				Delete();
 				int nGold = this.Amount * 3;
-				from.AddToBackpack ( new Gold( nGold ) );
+				if ( nGold > 0 )
+				{
+					foreach (var gold in ItemUtilities.AddStacks(nGold, () => new Gold()))
+					{
+						if (!box.TryStackItem(gold, from))
+						{
+							box.DropItem(gold);
+						}
+					}
+				}
 			}
 			else
 			{
@@ -411,7 +424,16 @@ namespace Server.Items
 			{
 				Delete();
 				int nGold = this.Amount * 2;
-				from.AddToBackpack ( new Gold( nGold ) );
+				if ( nGold > 0 )
+				{
+					foreach (var gold in ItemUtilities.AddStacks(nGold, () => new Gold()))
+					{
+						if (!box.TryStackItem(gold, from))
+						{
+							box.DropItem(gold);
+						}
+					}
+				}
 			}
 			else
 			{
@@ -482,7 +504,16 @@ namespace Server.Items
 			{
 				Delete();
 				int nGold = this.Amount;
-				from.AddToBackpack ( new Gold( nGold ) );
+				if ( nGold > 0 )
+				{
+					foreach (var gold in ItemUtilities.AddStacks(nGold, () => new Gold()))
+					{
+						if (!box.TryStackItem(gold, from))
+						{
+							box.DropItem(gold);
+						}
+					}
+				}
 			}
 			else
 			{
