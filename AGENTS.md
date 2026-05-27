@@ -630,6 +630,9 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | Race temptation & potion shelf | `memento/game-mechanism/race-temptation-and-potion-shelf.md` | Before modifying race temptation or potion shelf |
 | Player hazards & threats | `memento/game-mechanism/PLAYER_HAZARDS_AND_THREATS.md` | Before modifying hazard/threat systems |
 | Slayer weapon system | `memento/game-mechanism/SLAYER_WEAPON_SYSTEM.md` | Before modifying slayer mechanics |
+| Endgame boss data & BeefUp | `memento/game-mechanism/ENDGAME_BOSS_ANALYSIS.md` | Before balancing named bosses, champ/world boss stats, or difficulty scaling |
+| Endgame content survey | `memento/game-mechanism/survey_endgame_content.md` | Broad endgame inventory (champs, Avatar, quests, items) |
+| Ultima-Adventures team PvE comparison | `memento/game-mechanism/ULTIMA_ADVENTURES_ENDGAME_TEAM_DESIGN_COMPARISON.md` | Cross-shard endgame/team-challenge design reference (external Adventures repo) |
 
 ### 8.2 Castle of Knowledge
 
