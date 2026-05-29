@@ -311,6 +311,92 @@ namespace Server.Mobiles
 			}
 		}
 
+		public static PremiumSpawner FindBySerial( int spawnerSerial )
+		{
+			if ( spawnerSerial <= 0 )
+				return null;
+
+			foreach ( Item item in World.Items.Values )
+			{
+				if ( item is PremiumSpawner && item.Serial == spawnerSerial )
+					return (PremiumSpawner)item;
+			}
+
+			return null;
+		}
+
+		/// <summary>
+		/// Spawn a replacement town guard without waiting for MinDelay/MaxDelay (oathbreak death).
+		/// </summary>
+		public static void RequestTownGuardImmediateRespawn( int spawnerSerial, Point3D home, Map map, int rangeHome )
+		{
+			Timer.DelayCall( TimeSpan.FromSeconds( 1 ), () =>
+			{
+				PremiumSpawner spawner = FindBySerial( spawnerSerial );
+
+				if ( spawner != null && !spawner.Deleted )
+				{
+					spawner.RespawnSlottedCreatureImmediately();
+					return;
+				}
+
+				if ( map == null || map == Map.Internal )
+					return;
+
+				IPooledEnumerable eable = map.GetMobilesInRange( home, 2 );
+
+				try
+				{
+					foreach ( Mobile m in eable )
+					{
+						if ( m is TownGuards && m.Alive && !m.Deleted )
+							return;
+					}
+				}
+				finally
+				{
+					eable.Free();
+				}
+
+				TownGuards guard = new TownGuards();
+				guard.Home = home;
+				guard.RangeHome = rangeHome > 0 ? rangeHome : 5;
+				guard.MoveToWorld( home, map );
+				guard.OnAfterSpawn();
+			} );
+		}
+
+		public void RespawnSlottedCreatureImmediately()
+		{
+			if ( Deleted )
+				return;
+
+			if ( m_Timer != null )
+			{
+				m_Timer.Stop();
+				m_Timer = null;
+			}
+
+			m_Running = true;
+
+			Defrag();
+
+			if ( m_Group )
+			{
+				if ( m_Creatures.Count == 0 || m_CreaturesA.Count == 0 || m_CreaturesB.Count == 0 || m_CreaturesC.Count == 0 || m_CreaturesD.Count == 0 || m_CreaturesE.Count == 0 )
+					Respawn();
+			}
+			else
+			{
+				Spawn();
+				SpawnA();
+				SpawnB();
+				SpawnC();
+				SpawnD();
+				SpawnE();
+			}
+		}
+
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Group
 		{

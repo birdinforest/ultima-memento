@@ -81,6 +81,11 @@ namespace Server.Gumps
 			y=y+d;
 			rows++;
 
+			AddButton(x, y, 4011, 4011, 406, GumpButtonType.Reply, 0);
+			AddHtml( x+38, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + mains + ">" + StringCatalog.ResolveByKey( from.Account, "guard.oathbreak.newspaper.library_label" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+			y=y+d;
+			rows++;
+
 			string keys = PlayerSettings.ValLibraryConfig( from );
 
 			if ( keys.Length > 0 )
@@ -127,6 +132,11 @@ namespace Server.Gumps
 					else if ( button == 402 ){ from.CloseGump( typeof( FameKarma ) ); from.SendGump( new FameKarma( from, 0 ) ); }
 					else if ( button == 403 ){ from.CloseGump( typeof( ItemPropsGump ) ); from.SendGump( new ItemPropsGump( from, 0 ) ); }
 					else if ( button == 404 ){ from.CloseGump( typeof( NewSkillsGump ) ); from.SendGump( new NewSkillsGump( from, 0 ) ); }
+					else if ( button == 406 )
+					{
+						from.CloseGump( typeof( GuardOathbreakNewspaperGump ) );
+						GuardOathbreakNewspaperGump.SendGump( from, m_Origin );
+					}
 					else { from.CloseGump( typeof( WeaponAbilityBook.AbilityBookGump ) ); from.SendGump( new WeaponAbilityBook.AbilityBookGump( from ) ); }
 				}
 				else if ( refer >= 300 ) // SKULLS & SHACKLES

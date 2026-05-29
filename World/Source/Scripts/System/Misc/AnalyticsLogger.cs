@@ -203,6 +203,27 @@ namespace Server.Misc
 			Emit( d );
 		}
 
+		public static void LogCustomEvent( Mobile from, string eventType, string featureName, string featureVariant, Dictionary<string, string> extraFields )
+		{
+			if ( !MySettings.S_AnalyticsEnabled )
+				return;
+
+			var pm = from as PlayerMobile;
+			var acc = from?.Account as Account;
+			var d = BaseAccountFields( acc, pm );
+			d["event_type"] = eventType ?? "";
+			d["feature_name"] = featureName ?? "";
+			d["feature_variant"] = featureVariant ?? "";
+
+			if ( extraFields != null )
+			{
+				foreach ( var kv in extraFields )
+					d[kv.Key] = kv.Value ?? "";
+			}
+
+			Emit( d );
+		}
+
 		private static void OnLogin( LoginEventArgs e )
 		{
 			if ( !MySettings.S_AnalyticsEnabled || e == null || e.Mobile == null )

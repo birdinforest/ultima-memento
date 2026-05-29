@@ -15,25 +15,103 @@ namespace Server.Mobiles
 { 
 	public class TownGuards : BasePerson
 	{
+		public static readonly TimeSpan OathWindowDuration = TimeSpan.FromMinutes( 15 );
+		public const int OathKnockdownsRequired = 3;
+
+		private const int OathBreaksRequired = OathKnockdownsRequired;
+
+		private int m_OathBreaks;
+		private DateTime m_OathWindow;
+		private HashSet<Serial> m_Assailants = new HashSet<Serial>();
+		private int m_AssailantCount;
+		private int m_AttemptCount;
+		private DateTime m_EngagementStart;
+		private Serial m_OathWeaponSerial;
+		private OathWindowTimer m_OathWindowTimer;
+		private int m_OathWindowLastThresholdIndex;
+		private bool m_KeepCorpseOnOathDeath;
+
+		public bool HasActiveOathWindow
+		{
+			get { return m_OathBreaks > 0 && m_OathWindow != DateTime.MinValue && ( DateTime.UtcNow - m_OathWindow ) <= OathWindowDuration; }
+		}
+
+		public bool IsOathEngaged => m_EngagementStart != DateTime.MinValue;
+
+		public int OathBreaks => m_OathBreaks;
+		public int OathAssailantCount => m_AssailantCount;
+		public DateTime OathWindowStart => m_OathWindow;
+
+		public TimeSpan GetOathWindowTimeRemaining()
+		{
+			if ( !HasActiveOathWindow )
+				return TimeSpan.Zero;
+
+			TimeSpan elapsed = DateTime.UtcNow - m_OathWindow;
+			TimeSpan left = OathWindowDuration - elapsed;
+
+			if ( left < TimeSpan.Zero )
+				return TimeSpan.Zero;
+
+			return left;
+		}
+
+		public IEnumerable<PlayerMobile> GetOathAssailants()
+		{
+			foreach ( Serial s in m_Assailants )
+			{
+				Mobile m = World.FindMobile( s );
+
+				if ( m is PlayerMobile pm && !pm.Deleted )
+					yield return pm;
+			}
+		}
+
+		private void RefreshOathStatusGumps()
+		{
+			OathStatusGump.RefreshAllForGuard( this );
+		}
+
+		private void CloseOathStatusGumps()
+		{
+			OathStatusGump.CloseAllForGuard( this );
+		}
+
+		// Melee output tuned for ~200 HP per swing vs endgame tanks (~70 PhysicalResistance).
+		// BaseCreature SetDamage is used while the guard wields OathGuardSword; player-mode sword damage stays on the item.
+		private const int GuardDamageMin = 100;
+		private const int GuardDamageMax = 130;
+
 		[Constructable] 
 		public TownGuards() : base( ) 
 		{
 			Title = "the guard";
 			NameHue = 1154;
-			SetStr( 3000, 3000 );
-			SetDex( 3000, 3000 );
-			SetInt( 3000, 3000 );
-			SetHits( 6000,6000 );
-			SetDamage( 500, 900 );
-			VirtualArmor = 3000;
 
-			SetSkill( SkillName.Anatomy, 200.0 );
-			SetSkill( SkillName.MagicResist, 200.0 );
-			SetSkill( SkillName.Bludgeoning, 200.0 );
-			SetSkill( SkillName.Fencing, 200.0 );
-			SetSkill( SkillName.FistFighting, 200.0 );
-			SetSkill( SkillName.Swords, 200.0 );
-			SetSkill( SkillName.Tactics, 200.0 );
+			// Endgame champion-tier profile (see ENDGAME_BOSS_ANALYSIS — Rikktor / KhumashGor band).
+			SetStr( 800, 950 );
+			SetDex( 201, 350 );
+			SetInt( 101, 200 );
+			SetHits( 3500 );
+			SetStam( 203, 650 );
+			SetDamage( GuardDamageMin, GuardDamageMax );
+			VirtualArmor = 100;
+
+			SetDamageType( ResistanceType.Physical, 100 );
+
+			SetResistance( ResistanceType.Physical, 40, 50 );
+			SetResistance( ResistanceType.Fire, 55, 65 );
+			SetResistance( ResistanceType.Cold, 35, 45 );
+			SetResistance( ResistanceType.Poison, 55, 65 );
+			SetResistance( ResistanceType.Energy, 55, 65 );
+
+			SetSkill( SkillName.Anatomy, 100.0, 120.0 );
+			SetSkill( SkillName.MagicResist, 115.0, 140.0 );
+			SetSkill( SkillName.Bludgeoning, 100.0, 120.0 );
+			SetSkill( SkillName.Fencing, 100.0, 120.0 );
+			SetSkill( SkillName.FistFighting, 100.0, 120.0 );
+			SetSkill( SkillName.Swords, 100.0, 120.0 );
+			SetSkill( SkillName.Tactics, 100.0, 120.0 );
 
 			AddItem( new LightCitizen( true ) );
 
@@ -53,6 +131,17 @@ namespace Server.Mobiles
 		public override Poison PoisonImmune{ get{ return Poison.Deadly; } }
 		public override bool Unprovokable { get { return true; } }
 		public override bool Uncalmable{ get{ return true; } }
+
+		public override bool DeleteCorpseOnDeath
+		{
+			get
+			{
+				if ( m_KeepCorpseOnOathDeath )
+					return false;
+
+				return base.DeleteCorpseOnDeath;
+			}
+		}
 
 		public override bool OnDragDrop( Mobile from, Item dropped )
 		{
@@ -373,12 +462,10 @@ namespace Server.Mobiles
 				clothColor = 0x9C4;		shieldType = 0x1BC4;	helmType = 0x140E;		cloakColor = 0x845;		weapon = new VikingSword();
 			}
 
-			weapon.Movable = false;
-			((BaseWeapon)weapon).MaxHitPoints = 1000;
-			((BaseWeapon)weapon).HitPoints = 1000;
-			((BaseWeapon)weapon).MinDamage = 500;
-			((BaseWeapon)weapon).MaxDamage = 900;
-			AddItem( weapon );
+			Item oathWeapon = new OathGuardSword( this );
+			oathWeapon.Movable = false;
+			AddItem( oathWeapon );
+			m_OathWeaponSerial = oathWeapon.Serial;
 
 			Item arms = new RingmailArms();
 			Item tunic = new PlateChest();
@@ -592,13 +679,278 @@ namespace Server.Mobiles
             }
         }
 
+		private class OathWindowTimer : Timer
+		{
+			private TownGuards m_Owner;
+
+			public OathWindowTimer( TownGuards owner ) : base( TimeSpan.FromSeconds( 30 ), TimeSpan.FromSeconds( 30 ) )
+			{
+				m_Owner = owner;
+				Priority = TimerPriority.FiftyMS;
+			}
+
+			protected override void OnTick()
+			{
+				if ( m_Owner.Deleted || m_Owner.m_OathBreaks <= 0 || m_Owner.m_OathWindow == DateTime.MinValue )
+				{
+					Stop();
+					m_Owner.m_OathWindowTimer = null;
+					return;
+				}
+
+				var elapsed = DateTime.UtcNow - m_Owner.m_OathWindow;
+
+				if ( elapsed >= TownGuards.OathWindowDuration )
+				{
+					// Analytics event D: window expired
+					PlayerMobile actorD = m_Owner.GetAnyAssailantActor();
+					if ( actorD != null )
+					{
+						var extraD = new Dictionary<string, string>();
+						extraD["knockdowns_achieved"] = m_Owner.m_OathBreaks.ToString( System.Globalization.CultureInfo.InvariantCulture );
+						extraD["failure_reason"] = "window_expired";
+						AnalyticsLogger.LogCustomEvent( actorD, "guard_oathbreak_failed", "guard_oathbreak", "window_expired", extraD );
+					}
+
+					// Time expired: reset state
+					m_Owner.ResetOathState();
+					Stop();
+					m_Owner.m_OathWindowTimer = null;
+					return;
+				}
+
+				TimeSpan remaining = TownGuards.OathWindowDuration - elapsed;
+				m_Owner.NameMod = String.Format(
+					System.Globalization.CultureInfo.InvariantCulture,
+					"(Oath: {0}/{1} - {2} left)",
+					m_Owner.m_OathBreaks,
+					TownGuards.OathBreaksRequired,
+					remaining.ToString( @"mm\:ss" ) );
+				m_Owner.InvalidateProperties();
+
+				double leftMinutes = remaining.TotalMinutes;
+
+				// 10, 5, 2, 1, 0.5 minute thresholds
+				if ( leftMinutes <= 10 && m_Owner.m_OathWindowLastThresholdIndex < 0 )
+				{
+					m_Owner.m_OathWindowLastThresholdIndex = 0;
+					m_Owner.PublicOverheadMessage( MessageType.Regular, 38, false, StringCatalog.ResolveByKey( m_Owner.Account, "mob.other.oath_window_warning_10min" ) );
+				}
+				else if ( leftMinutes <= 5 && m_Owner.m_OathWindowLastThresholdIndex < 1 )
+				{
+					m_Owner.m_OathWindowLastThresholdIndex = 1;
+					m_Owner.PublicOverheadMessage( MessageType.Regular, 38, false, StringCatalog.ResolveByKey( m_Owner.Account, "mob.other.oath_window_warning_5min" ) );
+				}
+				else if ( leftMinutes <= 2 && m_Owner.m_OathWindowLastThresholdIndex < 2 )
+				{
+					m_Owner.m_OathWindowLastThresholdIndex = 2;
+					m_Owner.PublicOverheadMessage( MessageType.Regular, 38, false, StringCatalog.ResolveByKey( m_Owner.Account, "mob.other.oath_window_warning_2min" ) );
+				}
+				else if ( leftMinutes <= 1 && m_Owner.m_OathWindowLastThresholdIndex < 3 )
+				{
+					m_Owner.m_OathWindowLastThresholdIndex = 3;
+					m_Owner.PublicOverheadMessage( MessageType.Regular, 68, false, StringCatalog.ResolveByKey( m_Owner.Account, "mob.other.oath_window_warning_1min" ) );
+				}
+				else if ( leftMinutes <= 0.5 && m_Owner.m_OathWindowLastThresholdIndex < 4 )
+				{
+					m_Owner.m_OathWindowLastThresholdIndex = 4;
+					m_Owner.PublicOverheadMessage( MessageType.Regular, 68, false, StringCatalog.ResolveByKey( m_Owner.Account, "mob.other.oath_window_warning_30s" ) );
+				}
+			}
+		}
+
+		public override void OnDamage( int amount, Mobile from, bool willKill )
+		{
+			base.OnDamage( amount, from, willKill );
+
+			PlayerMobile pm = from as PlayerMobile;
+			if ( pm == null || pm.Deleted )
+				return;
+
+			if ( m_Assailants.Add( pm.Serial ) )
+			{
+				m_AssailantCount = m_Assailants.Count;
+			}
+
+			// First engagement (attempt start)
+			if ( m_EngagementStart == DateTime.MinValue )
+			{
+				m_EngagementStart = DateTime.UtcNow;
+				++m_AttemptCount;
+				OathStatusGump.ClearDismissed( pm );
+
+				// Analytics event A: first attacker starts an attempt
+				var extraA = new Dictionary<string, string>();
+				extraA["guard_serial"] = this.Serial.ToString();
+				extraA["guard_location"] = Region != null ? Region.Name : "";
+				extraA["attempt_number"] = m_AttemptCount.ToString( System.Globalization.CultureInfo.InvariantCulture );
+				AnalyticsLogger.LogCustomEvent(
+					pm,
+					"guard_oathbreak_attempt",
+					"guard_oathbreak",
+					"attempt_start",
+					extraA );
+			}
+
+			OathStatusGump.NotifyAssailant( pm, this );
+		}
+
+		private void StartOathWindowTimer()
+		{
+			if ( m_OathWindowTimer != null )
+				return;
+
+			m_OathWindowLastThresholdIndex = -1;
+			m_OathWindowTimer = new OathWindowTimer( this );
+			m_OathWindowTimer.Start();
+		}
+
+		private void ResetOathState()
+		{
+			CloseOathStatusGumps();
+
+			m_OathBreaks = 0;
+			m_OathWindow = DateTime.MinValue;
+			m_Assailants.Clear();
+			m_AssailantCount = 0;
+			m_EngagementStart = DateTime.MinValue;
+			m_OathWindowLastThresholdIndex = -1;
+			NameMod = null;
+		}
+
+		private PlayerMobile GetAnyAssailantActor()
+		{
+			foreach ( Serial s in m_Assailants )
+			{
+				Mobile m = World.FindMobile( s );
+				if ( m is PlayerMobile pm && !pm.Deleted )
+					return pm;
+			}
+
+			return null;
+		}
+
 		public override bool OnBeforeDeath()
 		{
-			CitizenLocalization.SayLocalized(this, StringCatalog.ResolveByKey(this.Account, "mob.other.in_vas_mani"));
+			++m_OathBreaks;
+
+			bool withinWindow = ( m_OathWindow != DateTime.MinValue ) && ( DateTime.UtcNow - m_OathWindow <= OathWindowDuration );
+
+			if ( m_OathBreaks == 1 )
+			{
+				m_OathWindow = DateTime.UtcNow;
+				StartOathWindowTimer();
+
+				// Analytics event B: first knockdown fell
+				PlayerMobile actorB = GetAnyAssailantActor();
+				if ( actorB != null )
+				{
+					double engagementSeconds = m_EngagementStart == DateTime.MinValue ? 0 : ( DateTime.UtcNow - m_EngagementStart ).TotalSeconds;
+					var extraB = new Dictionary<string, string>();
+					extraB["knockdown_number"] = "1";
+					extraB["engagement_duration_seconds"] = engagementSeconds.ToString( "0.##", System.Globalization.CultureInfo.InvariantCulture );
+					AnalyticsLogger.LogCustomEvent( actorB, "guard_oathbreak_felled", "guard_oathbreak", "knockdown_1", extraB );
+				}
+
+				CitizenLocalization.SayLocalized( this, StringCatalog.ResolveByKey( this.Account, "mob.other.in_vas_mani" ) );
+				this.Hits = this.HitsMax;
+				this.FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
+				this.PlaySound( 0x202 );
+				RefreshOathStatusGumps();
+				return false;
+			}
+			else if ( m_OathBreaks == 2 )
+			{
+				// Analytics event B: second knockdown fell
+				PlayerMobile actorB = GetAnyAssailantActor();
+				if ( actorB != null )
+				{
+					double engagementSeconds = m_EngagementStart == DateTime.MinValue ? 0 : ( DateTime.UtcNow - m_EngagementStart ).TotalSeconds;
+					var extraB = new Dictionary<string, string>();
+					extraB["knockdown_number"] = "2";
+					extraB["engagement_duration_seconds"] = engagementSeconds.ToString( "0.##", System.Globalization.CultureInfo.InvariantCulture );
+					AnalyticsLogger.LogCustomEvent( actorB, "guard_oathbreak_felled", "guard_oathbreak", "knockdown_2", extraB );
+				}
+
+				CitizenLocalization.SayLocalized( this, StringCatalog.ResolveByKey( this.Account, "mob.other.oathbreak_phase2" ) );
+				this.Hits = this.HitsMax;
+				this.FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
+				this.PlaySound( 0x202 );
+				RefreshOathStatusGumps();
+				return false;
+			}
+
+			// 3rd (or later) knockdown: allow real death only if within window
+			if ( withinWindow && m_OathBreaks >= OathBreaksRequired )
+			{
+				CitizenLocalization.SayLocalized( this, StringCatalog.ResolveByKey( this.Account, "mob.other.oathbreak_phase3" ) );
+				m_KeepCorpseOnOathDeath = true;
+				return base.OnBeforeDeath();
+			}
+
+			// Window expired: treat this knockdown as a new first break.
+			ResetOathState();
+			m_OathBreaks = 1;
+			m_OathWindow = DateTime.UtcNow;
+			StartOathWindowTimer();
+
+			CitizenLocalization.SayLocalized( this, StringCatalog.ResolveByKey( this.Account, "mob.other.in_vas_mani" ) );
 			this.Hits = this.HitsMax;
 			this.FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
 			this.PlaySound( 0x202 );
+			RefreshOathStatusGumps();
 			return false;
+		}
+
+		public override void OnDeath( Container c )
+		{
+			bool oathDeath = m_KeepCorpseOnOathDeath;
+			int spawnerSerial = SpawnerID;
+			Point3D respawnAt = Home;
+			Map respawnMap = Map;
+			int respawnRange = RangeHome;
+
+			base.OnDeath( c );
+
+			// Stop oath timer
+			if ( m_OathWindowTimer != null )
+			{
+				m_OathWindowTimer.Stop();
+				m_OathWindowTimer = null;
+			}
+
+			// Consequences for assailants
+			foreach ( Serial s in m_Assailants )
+			{
+				Mobile m = World.FindMobile( s );
+				if ( m is PlayerMobile pm )
+				{
+					pm.Criminal = true;
+					pm.Kills += 2;
+				}
+			}
+
+			// Town Crier broadcast (adventures.txt)
+			LoggingFunctions.LogEvent(
+				"Guard " + Name + " of " + ( Region != null ? Region.Name : "" ) + " oath broken!",
+				LogEventType.Adventures,
+				true );
+
+			// Analytics event C: oathbreak completed
+			PlayerMobile actorC = GetAnyAssailantActor();
+			if ( actorC != null )
+			{
+				var extraC = new Dictionary<string, string>();
+				extraC["weapon_serial"] = m_OathWeaponSerial.Value.ToString();
+				extraC["assailant_count"] = m_AssailantCount.ToString();
+				AnalyticsLogger.LogCustomEvent( actorC, "guard_oathbreak_completed", "guard_oathbreak", "completed", extraC );
+			}
+
+			m_KeepCorpseOnOathDeath = false;
+			ResetOathState();
+
+			if ( oathDeath )
+				PremiumSpawner.RequestTownGuardImmediateRespawn( spawnerSerial, respawnAt, respawnMap, respawnRange );
 		}
 
 		public TownGuards( Serial serial ) : base( serial ) 
@@ -608,13 +960,39 @@ namespace Server.Mobiles
 		public override void Serialize( GenericWriter writer ) 
 		{ 
 			base.Serialize( writer ); 
-			writer.Write( (int) 0 ); // version 
+			writer.Write( (int) 1 ); // version
+
+			writer.Write( m_OathBreaks );
+			writer.Write( m_OathWindow );
+			writer.Write( m_AssailantCount );
+			writer.Write( m_AttemptCount );
+			writer.Write( m_EngagementStart );
+
+			writer.Write( m_Assailants.Count );
+			foreach ( Serial s in m_Assailants )
+				writer.Write( s );
 		} 
 
 		public override void Deserialize( GenericReader reader ) 
 		{ 
 			base.Deserialize( reader ); 
-			int version = reader.ReadInt(); 
+			int version = reader.ReadInt();
+
+			switch ( version )
+			{
+				case 1:
+					m_OathBreaks = reader.ReadInt();
+					m_OathWindow = reader.ReadDateTime();
+					m_AssailantCount = reader.ReadInt();
+					m_AttemptCount = reader.ReadInt();
+					m_EngagementStart = reader.ReadDateTime();
+
+					int count = reader.ReadInt();
+					m_Assailants = new HashSet<Serial>();
+					for ( int i = 0; i < count; i++ )
+						m_Assailants.Add( (Serial)reader.ReadInt() );
+					break;
+			}
 		} 
 	} 
 }   

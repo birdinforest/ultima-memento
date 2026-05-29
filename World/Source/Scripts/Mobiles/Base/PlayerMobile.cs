@@ -2658,6 +2658,8 @@ namespace Server.Mobiles
 		private DateTime m_SessionStart;
 		private DateTime m_LastPetBallTime;
 		private DateTime m_SavagePaintExpiration;
+		private Serial m_OathWeaponSerial;
+		private DateTime m_OathCooldownEnd;
 		private SkillName m_Learning = (SkillName)(-1);
 
 		public SkillName Learning
@@ -2682,6 +2684,24 @@ namespace Server.Mobiles
 			{
 				m_SavagePaintExpiration = DateTime.Now + value;
 			}
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool OathCooldownActive
+		{
+			get { return m_OathCooldownEnd > DateTime.UtcNow; }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public Serial OathWeaponSerial
+		{
+			get { return m_OathWeaponSerial; }
+			set { m_OathWeaponSerial = value; }
+		}
+
+		public void SetOathCooldown( DateTime endTime )
+		{
+			m_OathCooldownEnd = endTime;
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -3082,6 +3102,10 @@ namespace Server.Mobiles
 
 			switch ( version )
 			{
+				case 52:
+					m_OathWeaponSerial = (Serial)reader.ReadInt();
+					m_OathCooldownEnd = reader.ReadDateTime();
+					goto case 51;
 				case 51:
 				case 50:
 					_quests = new PlayerQuestContext( reader );	
@@ -3506,7 +3530,9 @@ namespace Server.Mobiles
 
 			base.Serialize( writer );
 
-			writer.Write( (int) 51 ); // version
+			writer.Write( (int) 52 ); // version
+			writer.Write( m_OathWeaponSerial );
+			writer.Write( m_OathCooldownEnd );
 
 			Quests.Serialize( writer );
 			SpellBars.Serialize( writer );

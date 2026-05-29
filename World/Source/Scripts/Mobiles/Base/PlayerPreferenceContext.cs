@@ -54,6 +54,9 @@ namespace Server.Mobiles
 
 			if (3 < version)
 				MotdLastSeenVersion = reader.ReadInt();
+
+			if (4 < version)
+				HideOathbreakNewspaperAtLogin = reader.ReadBool();
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -128,9 +131,15 @@ namespace Server.Mobiles
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool WeaponBarOpen { get; set; }
 
+		/// <summary>
+		/// When true, the Guard Oathbreak newspaper gump is not shown on login.
+		/// </summary>
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool HideOathbreakNewspaperAtLogin { get; set; }
+
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(4);
+			writer.Write(5);
 
 			writer.Write(DoubleClickID);
 			writer.Write(SuppressVendorTooltip);
@@ -159,6 +168,7 @@ namespace Server.Mobiles
 			writer.Write((int)DefaultRunebookSpellType);
 
 			writer.Write(MotdLastSeenVersion);
+			writer.Write(HideOathbreakNewspaperAtLogin);
 		}
 	}
 }

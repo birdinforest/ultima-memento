@@ -809,6 +809,8 @@ def main() -> int:
             "chat3-ui.json",
             "mob-loot-infotext.json",
             "world-player-text.json",
+            "guard-oathbreak-newspaper.json",
+            "prison-gump.json",
         }
     )
     if args.prune_stale_locale_files:
