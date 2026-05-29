@@ -54,9 +54,6 @@ namespace Server.Mobiles
 
 			if (3 < version)
 				MotdLastSeenVersion = reader.ReadInt();
-
-			if (4 < version)
-				reader.ReadBool(); // HideOathbreakNewspaperAtLogin — feat/guard-oathbreak v5; discard
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]

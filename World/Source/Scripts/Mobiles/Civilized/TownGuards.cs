@@ -614,22 +614,7 @@ namespace Server.Mobiles
 		public override void Deserialize( GenericReader reader ) 
 		{ 
 			base.Deserialize( reader ); 
-			int version = reader.ReadInt();
-
-			switch ( version )
-			{
-				case 1:
-					// feat/guard-oathbreak v1 — discard oath fields so Saves from that branch still load.
-					reader.ReadInt();
-					reader.ReadDateTime();
-					reader.ReadInt();
-					reader.ReadInt();
-					reader.ReadDateTime();
-					int assailantCount = reader.ReadInt();
-					for ( int i = 0; i < assailantCount; i++ )
-						reader.ReadInt();
-					break;
-			}
+			int version = reader.ReadInt(); 
 		} 
 	} 
 }   
