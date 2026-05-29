@@ -3082,6 +3082,11 @@ namespace Server.Mobiles
 
 			switch ( version )
 			{
+				case 52:
+					// feat/guard-oathbreak v52 — discard oath fields so Saves from that branch still load.
+					reader.ReadInt();
+					reader.ReadDateTime();
+					goto case 51;
 				case 51:
 				case 50:
 					_quests = new PlayerQuestContext( reader );	
