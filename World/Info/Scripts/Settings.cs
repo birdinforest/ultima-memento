@@ -451,7 +451,7 @@ namespace Server
 	// to 100 will double the hit points of creatures (adding an additional 100% on top of their normal hit points).
 	// Setting it to 80 will increase their hit points by 80%...etc...
 
-		public static int S_HPModifier = 0;
+		public static int S_HPModifier = 50;
 
 	// These values represent the percentage of difficulty increase for dungeons with the below categories. The higher
 	// the number, the more difficult the monsters will become. So setting the difficult dungeons to 50, will increase
@@ -461,10 +461,10 @@ namespace Server
 	// order for them to remain defeatable.
 
 		public static int S_Normal = 0;
-		public static int S_Difficult = 30;
-		public static int S_Challenging = 60;
-		public static int S_Hard = 90;
-		public static int S_Deadly = 120;
+		public static int S_Difficult = 40;
+		public static int S_Challenging = 80;
+		public static int S_Hard = 110;
+		public static int S_Deadly = 130;
 
 	// If true, then the land will spawn random powerful daemons/balrons/dragons/wyrms/angels/etc that will spread
 	// throughout the land.
