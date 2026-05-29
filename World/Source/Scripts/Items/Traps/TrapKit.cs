@@ -156,7 +156,7 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( from.Backpack ) )
 			{
-				from.SendMessage( "These tools must be in your backpack to use." );
+				from.SendMessage( "You are already doing something else." );
 				return;
 			}
 
