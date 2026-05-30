@@ -12,6 +12,20 @@ using System.IO;
 using Server.Misc;
 using Server.Network;
 using System.Linq;
+using Server.Spells;
+using Server.Spells.Seventh;
+using Server.Spells.Fourth;
+using Server.Spells.Magical;
+using Server.Spells.Bushido;
+using Server.Spells.Ninjitsu;
+using Server.Spells.Necromancy;
+using Server.Spells.Chivalry;
+using Server.Spells.DeathKnight;
+using Server.Spells.Herbalist;
+using Server.Spells.Undead;
+using Server.Spells.Mystic;
+using Server.Spells.Research;
+using Server.Spells.Elementalism;
 
 namespace Server.Regions
 {
@@ -47,12 +61,41 @@ namespace Server.Regions
 				return base.AllowHarmful( from, target );
 		}
 
+		public static bool IsAllowedSpell( Mobile m, ISpell s )
+		{
+			if (	s is GateTravelSpell || 
+						s is MushroomGatewaySpell || 
+						s is UndeadGraveyardGatewaySpell || 
+						s is HellsGateSpell || 
+						s is AstralTravel || 
+						s is ResearchEtherealTravel || 
+						s is NaturesPassageSpell || 
+						s is RecallSpell || 
+						s is TravelSpell || 
+						s is Elemental_Void_Spell || 
+						s is Elemental_Gate_Spell || 
+						s is SacredJourneySpell )
+			{
+				return true;
+			}
+
+			return false;
+		}
+
 		public override bool OnBeginSpellCast( Mobile m, ISpell s )
 		{
+
 			if ( m_House.IsOwner( m ) || m_House.IsCoOwner( m ) || m_House.IsFriend( m ) )
+			{
 				return true;
+			}
+			else if ( IsAllowedSpell( m, s ) )
+			{
+				return true;
+			}
 			else
 			{
+
 				m.SendMessage( "That does not seem to work here." );
 				return false;
 			}

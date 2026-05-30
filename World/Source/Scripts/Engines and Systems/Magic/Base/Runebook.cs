@@ -114,6 +114,9 @@ namespace Server.Items
 
 		public override int LabelNumber{ get{ return 1041267; } } // runebook
 
+		public override string DisplayNameLocalizationKey => "item.magical.runebook";
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public Runebook( int maxCharges ) : base( 0x0F3D )
 		{
