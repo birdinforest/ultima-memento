@@ -22,6 +22,7 @@ namespace Server.Mobiles
 
 		private int m_OathBreaks;
 		private DateTime m_OathWindow;
+		private DateTime m_LastOathKnockdownUtc;
 		private HashSet<Serial> m_Assailants = new HashSet<Serial>();
 		private int m_AssailantCount;
 		private int m_AttemptCount;
@@ -41,6 +42,8 @@ namespace Server.Mobiles
 		public int OathBreaks => m_OathBreaks;
 		public int OathAssailantCount => m_AssailantCount;
 		public DateTime OathWindowStart => m_OathWindow;
+
+		private bool m_TESTING = true;
 
 		public TimeSpan GetOathWindowTimeRemaining()
 		{
@@ -81,6 +84,18 @@ namespace Server.Mobiles
 		// BaseCreature SetDamage is used while the guard wields OathGuardSword; player-mode sword damage stays on the item.
 		private const int GuardDamageMin = 100;
 		private const int GuardDamageMax = 130;
+		private const double OathBreakDamageMultiplier = 1.2;
+
+		public static readonly TimeSpan OathGuardRespawnDelay = TimeSpan.FromMinutes( 1 );
+		public static readonly TimeSpan OathBreakAlertDuration = TimeSpan.FromHours( 6 );
+		private static readonly TimeSpan OathKnockdownDebounce = TimeSpan.FromMilliseconds( 100 );
+
+		private static bool s_OathBreakAlertActive;
+		private static Timer s_OathBreakAlertExpiryTimer;
+
+		public static bool OathBreakAlertActive => s_OathBreakAlertActive;
+
+		private bool m_OathBreakEnhanced;
 
 		[Constructable] 
 		public TownGuards() : base( ) 
@@ -92,7 +107,7 @@ namespace Server.Mobiles
 			SetStr( 800, 950 );
 			SetDex( 201, 350 );
 			SetInt( 101, 200 );
-			SetHits( 3500 );
+			SetHits( m_TESTING ? 100 : 3500 );
 			SetStam( 203, 650 );
 			SetDamage( GuardDamageMin, GuardDamageMax );
 			VirtualArmor = 100;
@@ -351,115 +366,120 @@ namespace Server.Mobiles
 			int cloakColor = 0;
 			bool griffon = true;
 
-			Item weapon = new VikingSword(); weapon.Delete();
+			Item weapon = new OathGuardSword(this); weapon.Delete();
 
-			if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Village of Whisper" )
+			var variableWeapons = false;
+
+			if ( variableWeapons ) 
 			{
-				clothColor = 0x96D;		shieldType = 0x1B72;	helmType = 0x140E;		cloakColor = 0x972;		weapon = new Longsword();
-			}
-			else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Town of Glacial Hills" )
-			{
-				clothColor = 0xB70;		shieldType = 0x1B74;	helmType = 0x1412;		cloakColor = 0xB7A;		weapon = new Kryss();	griffon = false;
-			}
-			else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Village of Springvale" )
-			{
-				clothColor = 0x595;		shieldType = 0;			helmType = 0x140E;		cloakColor = 0x593;		weapon = new Pike();
-			}
-			else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the City of Elidor" )
-			{
-				clothColor = 0x665;		shieldType = 0x1B7B;	helmType = 0x1412;		cloakColor = 0x664;		weapon = new Katana();	griffon = false;
-			}
-			else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Village of Islegem" )
-			{
-				clothColor = 0x7D1;		shieldType = 0;			helmType = 0x140E;		cloakColor = 0x7D6;		weapon = new Spear();	weapon.ItemID = 0xF62;
-			}
-			else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "Greensky Village" )
-			{
-				clothColor = 0x7D7;		shieldType = 0;			helmType = 0x1412;		cloakColor = 0x7DA;		weapon = new Bardiche();	griffon = false;
-			}
-			else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Port of Dusk" )
-			{
-				clothColor = 0x601;		shieldType = 0x1B76;	helmType = 0x140E;		cloakColor = 0x600;		weapon = new Cutlass();
-			}
-			else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Port of Starguide" )
-			{
-				clothColor = 0x751;		shieldType = 0;			helmType = 0x1412;		cloakColor = 0x758;		weapon = new BladedStaff();	griffon = false;
-			}
-			else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Village of Portshine" )
-			{
-				clothColor = 0x847;		shieldType = 0x1B7A;	helmType = 0x140E;		cloakColor = 0x851;		weapon = new Mace();
-			}
-			else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Ranger Outpost" )
-			{
-				clothColor = 0x598;		shieldType = 0;			helmType = 0x140E;		cloakColor = 0x83F;		weapon = new Spear();	weapon.ItemID = 0xF62;
-			}
-			else if ( Land == Land.Lodoria )
-			{
-				clothColor = 0x6E4;		shieldType = 0x1BC4;	helmType = 0x1412;		cloakColor = 0x6E7;		weapon = new Scimitar();
-			}
-			else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Lunar City of Dawn" )
-			{
-				clothColor = 0x9C4;		shieldType = 0;			helmType = 11121;		cloakColor = 0x9C4;		weapon = new QuarterStaff();
-			}
-			else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "The Town of Devil Guard" || Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "The Farmland of Devil Guard" )
-			{
-				clothColor = 0x430;		shieldType = 0;			helmType = 0x140E;		cloakColor = 0;			weapon = new LargeBattleAxe();
-			}
-			else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Town of Moon" )
-			{
-				clothColor = 0x8AF;		shieldType = 0x1B72;	helmType = 0x1412;		cloakColor = 0x972;		weapon = new Longsword();
-			}
-			else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Village of Grey" )
-			{
-				clothColor = 0;			shieldType = 0;			helmType = 0x140E;		cloakColor = 0x763;		weapon = new Halberd();
-			}
-			else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the City of Montor" )
-			{
-				clothColor = 0x96F;		shieldType = 0x1B74;	helmType = 0x1412;		cloakColor = 0x529;		weapon = new Broadsword();
-			}
-			else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Village of Fawn" )
-			{
-				clothColor = 0x59D;		shieldType = 0;			helmType = 0x140E;		cloakColor = 0x59C;		weapon = new DoubleAxe();
-			}
-			else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Village of Yew" )
-			{
-				clothColor = 0x83C;		shieldType = 0;			helmType = 0x1412;		cloakColor = 0x850;		weapon = new Spear();	weapon.ItemID = 0xF62;
-			}
-			else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "Iceclad Fisherman's Village" || Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Town of Mountain Crest" || Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "Glacial Coast Village" )
-			{
-				clothColor = 0x482;		shieldType = 0;			helmType = 0x140E;		cloakColor = 0x47E;		weapon = new Bardiche();
-			}
-			else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Undercity of Umbra" )
-			{
-				clothColor = 0x964;		shieldType = 0x1BC3;	helmType = 0x140E;		cloakColor = 0;		weapon = new Longsword();
-			}
-			else if ( Land == Land.UmberVeil )
-			{
-				clothColor = 0xA5D;		shieldType = 0;			helmType = 0x140E;		cloakColor = 0x96D;		weapon = new Halberd();
-			}
-			else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the City of Kuldara" )
-			{
-				clothColor = 0x965;		shieldType = 0x1BC3;	helmType = 0x140E;		cloakColor = 0x845;		weapon = new Maul();
-			}
-			else if ( Land == Land.IslesDread )
-			{
-				clothColor = 0x978;		shieldType = 0x1B7A;	helmType = 0;			cloakColor = 0x973;		weapon = new VikingSword();
-			}
-			else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Village of Barako" )
-			{
-				clothColor = 0x515;		shieldType = 0x1B72;	helmType = 0x2645;		cloakColor = 0x58D;		weapon = new WarMace();
-			}
-			else if ( Land == Land.Savaged )
-			{
-				clothColor = 0x515;		shieldType = 0;			helmType = 0x140E;		cloakColor = 0x59D;		weapon = new Spear();	weapon.ItemID = 0xF62;
-			}
-			else if ( Land == Land.Serpent )
-			{
-				clothColor = 0x515;		shieldType = 0;			helmType = 0x2FBB;		cloakColor = 0;			weapon = new LargeBattleAxe();
-			}
-			else
-			{
-				clothColor = 0x9C4;		shieldType = 0x1BC4;	helmType = 0x140E;		cloakColor = 0x845;		weapon = new VikingSword();
+				if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Village of Whisper" )
+				{
+					clothColor = 0x96D;		shieldType = 0x1B72;	helmType = 0x140E;		cloakColor = 0x972;		weapon = new Longsword();
+				}
+				else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Town of Glacial Hills" )
+				{
+					clothColor = 0xB70;		shieldType = 0x1B74;	helmType = 0x1412;		cloakColor = 0xB7A;		weapon = new Kryss();	griffon = false;
+				}
+				else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Village of Springvale" )
+				{
+					clothColor = 0x595;		shieldType = 0;			helmType = 0x140E;		cloakColor = 0x593;		weapon = new Pike();
+				}
+				else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the City of Elidor" )
+				{
+					clothColor = 0x665;		shieldType = 0x1B7B;	helmType = 0x1412;		cloakColor = 0x664;		weapon = new Katana();	griffon = false;
+				}
+				else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Village of Islegem" )
+				{
+					clothColor = 0x7D1;		shieldType = 0;			helmType = 0x140E;		cloakColor = 0x7D6;		weapon = new Spear();	weapon.ItemID = 0xF62;
+				}
+				else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "Greensky Village" )
+				{
+					clothColor = 0x7D7;		shieldType = 0;			helmType = 0x1412;		cloakColor = 0x7DA;		weapon = new Bardiche();	griffon = false;
+				}
+				else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Port of Dusk" )
+				{
+					clothColor = 0x601;		shieldType = 0x1B76;	helmType = 0x140E;		cloakColor = 0x600;		weapon = new Cutlass();
+				}
+				else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Port of Starguide" )
+				{
+					clothColor = 0x751;		shieldType = 0;			helmType = 0x1412;		cloakColor = 0x758;		weapon = new BladedStaff();	griffon = false;
+				}
+				else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Village of Portshine" )
+				{
+					clothColor = 0x847;		shieldType = 0x1B7A;	helmType = 0x140E;		cloakColor = 0x851;		weapon = new Mace();
+				}
+				else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Ranger Outpost" )
+				{
+					clothColor = 0x598;		shieldType = 0;			helmType = 0x140E;		cloakColor = 0x83F;		weapon = new Spear();	weapon.ItemID = 0xF62;
+				}
+				else if ( Land == Land.Lodoria )
+				{
+					clothColor = 0x6E4;		shieldType = 0x1BC4;	helmType = 0x1412;		cloakColor = 0x6E7;		weapon = new Scimitar();
+				}
+				else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Lunar City of Dawn" )
+				{
+					clothColor = 0x9C4;		shieldType = 0;			helmType = 11121;		cloakColor = 0x9C4;		weapon = new QuarterStaff();
+				}
+				else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "The Town of Devil Guard" || Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "The Farmland of Devil Guard" )
+				{
+					clothColor = 0x430;		shieldType = 0;			helmType = 0x140E;		cloakColor = 0;			weapon = new LargeBattleAxe();
+				}
+				else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Town of Moon" )
+				{
+					clothColor = 0x8AF;		shieldType = 0x1B72;	helmType = 0x1412;		cloakColor = 0x972;		weapon = new Longsword();
+				}
+				else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Village of Grey" )
+				{
+					clothColor = 0;			shieldType = 0;			helmType = 0x140E;		cloakColor = 0x763;		weapon = new Halberd();
+				}
+				else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the City of Montor" )
+				{
+					clothColor = 0x96F;		shieldType = 0x1B74;	helmType = 0x1412;		cloakColor = 0x529;		weapon = new Broadsword();
+				}
+				else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Village of Fawn" )
+				{
+					clothColor = 0x59D;		shieldType = 0;			helmType = 0x140E;		cloakColor = 0x59C;		weapon = new DoubleAxe();
+				}
+				else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Village of Yew" )
+				{
+					clothColor = 0x83C;		shieldType = 0;			helmType = 0x1412;		cloakColor = 0x850;		weapon = new Spear();	weapon.ItemID = 0xF62;
+				}
+				else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "Iceclad Fisherman's Village" || Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Town of Mountain Crest" || Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "Glacial Coast Village" )
+				{
+					clothColor = 0x482;		shieldType = 0;			helmType = 0x140E;		cloakColor = 0x47E;		weapon = new Bardiche();
+				}
+				else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Undercity of Umbra" )
+				{
+					clothColor = 0x964;		shieldType = 0x1BC3;	helmType = 0x140E;		cloakColor = 0;		weapon = new Longsword();
+				}
+				else if ( Land == Land.UmberVeil )
+				{
+					clothColor = 0xA5D;		shieldType = 0;			helmType = 0x140E;		cloakColor = 0x96D;		weapon = new Halberd();
+				}
+				else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the City of Kuldara" )
+				{
+					clothColor = 0x965;		shieldType = 0x1BC3;	helmType = 0x140E;		cloakColor = 0x845;		weapon = new Maul();
+				}
+				else if ( Land == Land.IslesDread )
+				{
+					clothColor = 0x978;		shieldType = 0x1B7A;	helmType = 0;			cloakColor = 0x973;		weapon = new VikingSword();
+				}
+				else if ( Server.Misc.Worlds.GetRegionName( this.Map, this.Location ) == "the Village of Barako" )
+				{
+					clothColor = 0x515;		shieldType = 0x1B72;	helmType = 0x2645;		cloakColor = 0x58D;		weapon = new WarMace();
+				}
+				else if ( Land == Land.Savaged )
+				{
+					clothColor = 0x515;		shieldType = 0;			helmType = 0x140E;		cloakColor = 0x59D;		weapon = new Spear();	weapon.ItemID = 0xF62;
+				}
+				else if ( Land == Land.Serpent )
+				{
+					clothColor = 0x515;		shieldType = 0;			helmType = 0x2FBB;		cloakColor = 0;			weapon = new LargeBattleAxe();
+				}
+				else
+				{
+					clothColor = 0x9C4;		shieldType = 0x1BC4;	helmType = 0x140E;		cloakColor = 0x845;		weapon = new VikingSword();
+				}
 			}
 
 			Item oathWeapon = new OathGuardSword( this );
@@ -581,6 +601,83 @@ namespace Server.Mobiles
 				Server.Mobiles.BaseMount.Ride( mount, this );
 			}
 			ProcessClothing();
+
+			if ( s_OathBreakAlertActive )
+				ApplyOathBreakEnhancement();
+		}
+
+		private void ApplyOathBreakEnhancement()
+		{
+			if ( m_OathBreakEnhanced )
+				return;
+
+			m_OathBreakEnhanced = true;
+			SetDamage( (int)(GuardDamageMin * OathBreakDamageMultiplier), (int)(GuardDamageMax * OathBreakDamageMultiplier) );
+		}
+
+		private void ClearOathBreakEnhancement()
+		{
+			if ( !m_OathBreakEnhanced )
+				return;
+
+			m_OathBreakEnhanced = false;
+			SetDamage( GuardDamageMin, GuardDamageMax );
+		}
+
+		private class OathBreakAlertExpiryTimer : Timer
+		{
+			public OathBreakAlertExpiryTimer() : base( OathBreakAlertDuration )
+			{
+				Priority = TimerPriority.OneMinute;
+			}
+
+			protected override void OnTick()
+			{
+				DeactivateGlobalOathBreakAlert();
+			}
+		}
+
+		private static void ActivateGlobalOathBreakAlert()
+		{
+			if ( s_OathBreakAlertActive )
+				return;
+
+			s_OathBreakAlertActive = true;
+
+			if ( s_OathBreakAlertExpiryTimer != null )
+			{
+				s_OathBreakAlertExpiryTimer.Stop();
+				s_OathBreakAlertExpiryTimer = null;
+			}
+
+			s_OathBreakAlertExpiryTimer = new OathBreakAlertExpiryTimer();
+			s_OathBreakAlertExpiryTimer.Start();
+
+			foreach ( Mobile m in World.Mobiles.Values )
+			{
+				if ( m is TownGuards guard && guard.Alive && !guard.Deleted )
+					guard.ApplyOathBreakEnhancement();
+			}
+		}
+
+		private static void DeactivateGlobalOathBreakAlert()
+		{
+			if ( !s_OathBreakAlertActive )
+				return;
+
+			s_OathBreakAlertActive = false;
+
+			if ( s_OathBreakAlertExpiryTimer != null )
+			{
+				s_OathBreakAlertExpiryTimer.Stop();
+				s_OathBreakAlertExpiryTimer = null;
+			}
+
+			foreach ( Mobile m in World.Mobiles.Values )
+			{
+				if ( m is TownGuards guard && !guard.Deleted )
+					guard.ClearOathBreakEnhancement();
+			}
 		}
 
 		public override void OnGaveMeleeAttack( Mobile defender )
@@ -809,13 +906,34 @@ namespace Server.Mobiles
 		{
 			CloseOathStatusGumps();
 
+			if ( m_OathWindowTimer != null )
+			{
+				m_OathWindowTimer.Stop();
+				m_OathWindowTimer = null;
+			}
+
 			m_OathBreaks = 0;
 			m_OathWindow = DateTime.MinValue;
+			m_LastOathKnockdownUtc = DateTime.MinValue;
 			m_Assailants.Clear();
 			m_AssailantCount = 0;
 			m_EngagementStart = DateTime.MinValue;
 			m_OathWindowLastThresholdIndex = -1;
 			NameMod = null;
+		}
+
+		private static void ResetOathStateOnRegionalGuards( TownGuards except )
+		{
+			Region reg = except != null ? except.Region : null;
+
+			foreach ( Mobile m in World.Mobiles.Values )
+			{
+				if ( m is TownGuards guard && guard != except && guard.Alive && !guard.Deleted )
+				{
+					if ( reg == null || guard.Region == reg )
+						guard.ResetOathState();
+				}
+			}
 		}
 
 		private PlayerMobile GetAnyAssailantActor()
@@ -830,11 +948,53 @@ namespace Server.Mobiles
 			return null;
 		}
 
+		private OathGuardSword FindOathWeapon()
+		{
+			if ( m_OathWeaponSerial.IsValid )
+			{
+				Item item = World.FindItem( m_OathWeaponSerial );
+
+				if ( item is OathGuardSword sword )
+					return sword;
+			}
+
+			Item oneHanded = FindItemOnLayer( Layer.OneHanded );
+
+			if ( oneHanded is OathGuardSword oneHandedSword )
+				return oneHandedSword;
+
+			Item twoHanded = FindItemOnLayer( Layer.TwoHanded );
+
+			if ( twoHanded is OathGuardSword twoHandedSword )
+				return twoHandedSword;
+
+			return null;
+		}
+
+		private void ReleaseOathWeaponToCorpse()
+		{
+			OathGuardSword sword = FindOathWeapon();
+
+			if ( sword == null || sword.PlayerAcquired )
+				return;
+
+			sword.PrepareForGuardCorpseDrop();
+		}
+
 		public override bool OnBeforeDeath()
 		{
-			++m_OathBreaks;
+			DateTime now = DateTime.UtcNow;
 
-			bool withinWindow = ( m_OathWindow != DateTime.MinValue ) && ( DateTime.UtcNow - m_OathWindow <= OathWindowDuration );
+			if ( m_LastOathKnockdownUtc != DateTime.MinValue && ( now - m_LastOathKnockdownUtc ) < OathKnockdownDebounce )
+			{
+				this.Hits = this.HitsMax;
+				return false;
+			}
+
+			++m_OathBreaks;
+			m_LastOathKnockdownUtc = now;
+
+			bool withinWindow = ( m_OathWindow != DateTime.MinValue ) && ( now - m_OathWindow <= OathWindowDuration );
 
 			if ( m_OathBreaks == 1 )
 			{
@@ -885,6 +1045,7 @@ namespace Server.Mobiles
 			{
 				CitizenLocalization.SayLocalized( this, StringCatalog.ResolveByKey( this.Account, "mob.other.oathbreak_phase3" ) );
 				m_KeepCorpseOnOathDeath = true;
+				ReleaseOathWeaponToCorpse();
 				return base.OnBeforeDeath();
 			}
 
@@ -950,7 +1111,11 @@ namespace Server.Mobiles
 			ResetOathState();
 
 			if ( oathDeath )
-				PremiumSpawner.RequestTownGuardImmediateRespawn( spawnerSerial, respawnAt, respawnMap, respawnRange );
+			{
+				ResetOathStateOnRegionalGuards( this );
+				ActivateGlobalOathBreakAlert();
+				PremiumSpawner.RequestTownGuardDelayedRespawn( spawnerSerial, respawnAt, respawnMap, respawnRange, OathGuardRespawnDelay );
+			}
 		}
 
 		public TownGuards( Serial serial ) : base( serial ) 

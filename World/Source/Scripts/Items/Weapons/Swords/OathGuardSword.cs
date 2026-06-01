@@ -13,7 +13,9 @@ namespace Server.Items
 {
 	public class OathGuardSword : VikingSword
 	{
-		private const int PlayerModeMaxHits = 5;
+		public override string DisplayNameLocalizationKey => "item.equip.weapon.oathguardsword";
+
+		private const int PlayerModeMaxHits = 3;
 
 		private bool m_PlayerAcquired;
 		private Serial m_SourceGuardSerial;
@@ -21,6 +23,10 @@ namespace Server.Items
 		private DateTime? m_FirstUsedAt;
 		private int m_HitsUsed;
 		private PlayerMobile m_TransferFromPlayer;
+		private bool m_WasEquippedOnPlayer;
+
+		public override int AosMinDamage{ get{ return 100; } }
+		public override int AosMaxDamage{ get{ return 200; } }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool PlayerAcquired
@@ -49,10 +55,45 @@ namespace Server.Items
 		private void InitializeGuardMode()
 		{
 			m_PlayerAcquired = false;
+			m_DropTime = DateTime.MinValue;
+			m_HitsUsed = 0;
+			m_FirstUsedAt = null;
 			Movable = false;
+			LootType = LootType.Regular;
 			MaxHitPoints = 0;
 			HitPoints = 0;
+			// MinDamage = 100;
+			// MaxDamage = 200;
 			Name = "guard's oath sword";
+		}
+
+		private void ApplyBrokenOathPresentation()
+		{
+			Movable = true;
+			LootType = LootType.Regular;
+			MaxHitPoints = PlayerModeMaxHits;
+			HitPoints = PlayerModeMaxHits;
+			m_HitsUsed = 0;
+			m_FirstUsedAt = null;
+			UpdatePlayerName();
+			InvalidateProperties();
+		}
+
+		public void PrepareForGuardCorpseDrop()
+		{
+			if ( m_PlayerAcquired )
+				return;
+
+			ApplyBrokenOathPresentation();
+			m_DropTime = DateTime.UtcNow;
+		}
+
+		public override DeathMoveResult OnParentDeath( Mobile parent )
+		{
+			if ( !m_PlayerAcquired && parent is TownGuards )
+				return DeathMoveResult.MoveToCorpse;
+
+			return base.OnParentDeath( parent );
 		}
 
 		private void UpdatePlayerName()
@@ -73,13 +114,14 @@ namespace Server.Items
 			if ( pm == null )
 				return false;
 
-			if ( pm.OathCooldownActive )
+			if ( !pm.CanEquipOathWeapon( Serial ) )
 			{
 				pm.SendMessage( StringCatalog.ResolveByKey( pm.Account, "guard.oathbreak.cooldown.blocked" ) );
 				return false;
 			}
 
 			pm.OathWeaponSerial = Serial;
+			m_WasEquippedOnPlayer = true;
 			return base.OnEquip( from );
 		}
 
@@ -105,20 +147,21 @@ namespace Server.Items
 		public override void OnRemoved( object parent )
 		{
 			PlayerMobile oldHolder = ResolveRootPlayer( parent );
+			bool hadBeenEquipped = m_WasEquippedOnPlayer;
 
 			if ( m_PlayerAcquired && oldHolder != null )
 				m_TransferFromPlayer = oldHolder;
 
 			base.OnRemoved( parent );
 
-			if ( !m_PlayerAcquired )
+			if ( parent is Mobile )
+				m_WasEquippedOnPlayer = false;
+
+			if ( !m_PlayerAcquired || oldHolder == null || !hadBeenEquipped )
 				return;
 
-			if ( oldHolder == null )
-				return;
-
-			if ( !oldHolder.OathCooldownActive )
-				oldHolder.SetOathCooldown( DateTime.UtcNow + TimeSpan.FromMinutes( 20 ) );
+			if ( !oldHolder.OathCooldownActive || oldHolder.OathCooldownWeaponSerial != Serial )
+				oldHolder.SetOathCooldown( DateTime.UtcNow + TimeSpan.FromMinutes( 20 ), Serial );
 		}
 
 		public override void OnHit( Mobile attacker, Mobile defender, double damageBonus )
@@ -155,7 +198,7 @@ namespace Server.Items
 				PlayerMobile holder = RootParent as PlayerMobile;
 				if ( holder != null )
 				{
-					holder.SetOathCooldown( DateTime.UtcNow + TimeSpan.FromMinutes( 20 ) );
+					holder.SetOathCooldown( DateTime.UtcNow + TimeSpan.FromMinutes( 20 ), Serial );
 					holder.SendMessage( StringCatalog.ResolveByKey( holder.Account, "guard.oathbreak.cooldown.applied" ) );
 				}
 
@@ -172,17 +215,16 @@ namespace Server.Items
 
 		private void TransitionToPlayerMode( PlayerMobile firstHolder )
 		{
-			m_PlayerAcquired = true;
-			m_DropTime = DateTime.UtcNow;
-			m_HitsUsed = 0;
-			m_FirstUsedAt = null;
+			if ( m_PlayerAcquired )
+				return;
 
-			Movable = true;
-			MinDamage = 500;
-			MaxDamage = 900;
-			MaxHitPoints = PlayerModeMaxHits;
-			HitPoints = PlayerModeMaxHits;
-			UpdatePlayerName();
+			if ( MaxHitPoints != PlayerModeMaxHits )
+				ApplyBrokenOathPresentation();
+
+			m_PlayerAcquired = true;
+
+			if ( m_DropTime == DateTime.MinValue )
+				m_DropTime = DateTime.UtcNow;
 
 			firstHolder.OathWeaponSerial = Serial;
 
@@ -296,7 +338,7 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int)0 );
+			writer.Write( (int)1 );
 			writer.Write( m_PlayerAcquired );
 			writer.Write( m_SourceGuardSerial );
 			writer.Write( m_DropTime );
@@ -304,6 +346,7 @@ namespace Server.Items
 			writer.Write( m_FirstUsedAt.HasValue );
 			if ( m_FirstUsedAt.HasValue )
 				writer.Write( m_FirstUsedAt.Value );
+			writer.Write( m_WasEquippedOnPlayer );
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -319,6 +362,11 @@ namespace Server.Items
 			if ( hasFirstUsedAt )
 				m_FirstUsedAt = reader.ReadDateTime();
 
+			if ( version >= 1 )
+				m_WasEquippedOnPlayer = reader.ReadBool();
+			else
+				m_WasEquippedOnPlayer = false;
+
 			if ( !m_PlayerAcquired )
 				InitializeGuardMode();
 			else
@@ -329,6 +377,9 @@ namespace Server.Items
 				MaxHitPoints = PlayerModeMaxHits;
 				HitPoints = Math.Max( 0, PlayerModeMaxHits - m_HitsUsed );
 				UpdatePlayerName();
+
+				if ( !m_WasEquippedOnPlayer && Parent is Mobile )
+					m_WasEquippedOnPlayer = true;
 			}
 		}
 	}

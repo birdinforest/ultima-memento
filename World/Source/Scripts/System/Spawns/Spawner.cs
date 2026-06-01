@@ -326,11 +326,14 @@ namespace Server.Mobiles
 		}
 
 		/// <summary>
-		/// Spawn a replacement town guard without waiting for MinDelay/MaxDelay (oathbreak death).
+		/// Spawn a replacement town guard after an oathbreak death (default: 1 minute).
 		/// </summary>
-		public static void RequestTownGuardImmediateRespawn( int spawnerSerial, Point3D home, Map map, int rangeHome )
+		public static void RequestTownGuardDelayedRespawn( int spawnerSerial, Point3D home, Map map, int rangeHome, TimeSpan delay )
 		{
-			Timer.DelayCall( TimeSpan.FromSeconds( 1 ), () =>
+			if ( delay < TimeSpan.Zero )
+				delay = TimeSpan.Zero;
+
+			Timer.DelayCall( delay, () =>
 			{
 				PremiumSpawner spawner = FindBySerial( spawnerSerial );
 
@@ -366,6 +369,12 @@ namespace Server.Mobiles
 			} );
 		}
 
+		[Obsolete( "Use RequestTownGuardDelayedRespawn with TownGuards.OathGuardRespawnDelay." )]
+		public static void RequestTownGuardImmediateRespawn( int spawnerSerial, Point3D home, Map map, int rangeHome )
+		{
+			RequestTownGuardDelayedRespawn( spawnerSerial, home, map, rangeHome, TimeSpan.FromMinutes( 1 ) );
+		}
+
 		public void RespawnSlottedCreatureImmediately()
 		{
 			if ( Deleted )
@@ -376,8 +385,6 @@ namespace Server.Mobiles
 				m_Timer.Stop();
 				m_Timer = null;
 			}
-
-			m_Running = true;
 
 			Defrag();
 
@@ -568,7 +575,12 @@ namespace Server.Mobiles
 		{
 			if ( m_Running )
 			{
-				m_Timer.Stop();
+				if ( m_Timer != null )
+				{
+					m_Timer.Stop();
+					m_Timer = null;
+				}
+
 				m_Running = false;
 			}
 		}

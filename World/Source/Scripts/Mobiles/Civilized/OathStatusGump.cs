@@ -85,7 +85,7 @@ namespace Server.Gumps
 				if ( g == null || g.Deleted || !g.IsOathEngaged )
 					continue;
 
-				int dist = pm.GetDistanceToSqrt( g );
+				int dist = (int)pm.GetDistanceToSqrt( g );
 				if ( dist < bestDist )
 				{
 					bestDist = dist;

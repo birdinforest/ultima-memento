@@ -2660,6 +2660,7 @@ namespace Server.Mobiles
 		private DateTime m_SavagePaintExpiration;
 		private Serial m_OathWeaponSerial;
 		private DateTime m_OathCooldownEnd;
+		private Serial m_OathCooldownWeaponSerial;
 		private SkillName m_Learning = (SkillName)(-1);
 
 		public SkillName Learning
@@ -2699,9 +2700,24 @@ namespace Server.Mobiles
 			set { m_OathWeaponSerial = value; }
 		}
 
-		public void SetOathCooldown( DateTime endTime )
+		[CommandProperty( AccessLevel.GameMaster )]
+		public Serial OathCooldownWeaponSerial
+		{
+			get { return m_OathCooldownWeaponSerial; }
+		}
+
+		public bool CanEquipOathWeapon( Serial weaponSerial )
+		{
+			if ( !OathCooldownActive )
+				return true;
+
+			return weaponSerial == m_OathCooldownWeaponSerial;
+		}
+
+		public void SetOathCooldown( DateTime endTime, Serial weaponSerial )
 		{
 			m_OathCooldownEnd = endTime;
+			m_OathCooldownWeaponSerial = weaponSerial;
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -3102,6 +3118,9 @@ namespace Server.Mobiles
 
 			switch ( version )
 			{
+				case 53:
+					m_OathCooldownWeaponSerial = (Serial)reader.ReadInt();
+					goto case 52;
 				case 52:
 					m_OathWeaponSerial = (Serial)reader.ReadInt();
 					m_OathCooldownEnd = reader.ReadDateTime();
@@ -3530,9 +3549,10 @@ namespace Server.Mobiles
 
 			base.Serialize( writer );
 
-			writer.Write( (int) 52 ); // version
+			writer.Write( (int) 53 ); // version
 			writer.Write( m_OathWeaponSerial );
 			writer.Write( m_OathCooldownEnd );
+			writer.Write( m_OathCooldownWeaponSerial );
 
 			Quests.Serialize( writer );
 			SpellBars.Serialize( writer );
