@@ -2,7 +2,6 @@ using System;
 using Scripts.Mythik.Systems.Achievements;
 using Server.Mobiles;
 using Server.Targeting;
-using Server.Localization;
 
 namespace Server.Items
 {
@@ -34,7 +33,6 @@ namespace Server.Items
 			{
 				if ( IsExotic( targeted ) )
 				{
-					from.SendMessage("You... lick the frog.");
 					ExplicitAchievement.TryAward(ExplicitAchievementType.ExoticTaste, from as PlayerMobile);
 				}
 				else if ( targeted is Mobile )
@@ -66,12 +64,12 @@ namespace Server.Items
 						else
 						{
 							food.Eat( from, false );
-							from.SendMessage( StringCatalog.ResolveByKey(from.Account, "skl.tasting.bit_too_much") );
+							from.SendMessage( "You bit off a bit too much!" );
 						}
 					}
 					else
 					{
-						from.SendMessage( StringCatalog.ResolveByKey(from.Account, "skl.tasting.food_safe") );
+						from.SendMessage( "This food looks safe to eat." );
 					}
 				}
 				else if ( targeted is BaseBeverage )
@@ -99,12 +97,12 @@ namespace Server.Items
 						else
 						{
 							drink.Pour_OnTarget( from, from );
-							from.SendMessage( StringCatalog.ResolveByKey(from.Account, "skl.tasting.swallowed") );
+							from.SendMessage( "You swallowed a bit too much!" );
 						}
 					}
 					else
 					{
-						from.SendMessage( StringCatalog.ResolveByKey(from.Account, "skl.tasting.liquid_safe") );
+						from.SendMessage( "This liquid looks safe to drink." );
 					}
 				}
 				else if ( targeted is Item )
