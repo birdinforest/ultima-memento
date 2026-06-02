@@ -1,11 +1,6 @@
 using System;
-using Server;
-using Server.Network;
+using Scripts.Mythik.Systems.Achievements;
 using Server.Mobiles;
-using Server.Items;
-using System.Collections.Generic;
-using Server.Misc;
-using System.Collections;
 using Server.Targeting;
 using Server.Localization;
 
@@ -37,7 +32,11 @@ namespace Server.Items
 
 			protected override void OnTarget( Mobile from, object targeted )
 			{
-				if ( targeted is Mobile )
+				if ( IsExotic( targeted ) )
+				{
+					ExplicitAchievement.TryAward(ExplicitAchievementType.ExoticTaste, from as PlayerMobile);
+				}
+				else if ( targeted is Mobile )
 				{
 					from.SendLocalizedMessage( 502816 ); // You feel that such an action would be inappropriate.
 				}
@@ -112,6 +111,21 @@ namespace Server.Items
 					Item examine = (Item)targeted;
 					RelicFunctions.IDItem( from, from, examine, SkillName.Tasting );
 				}
+			}
+
+			private bool IsExotic( object o )
+			{
+				return o is BullFrog
+					|| o is FireToad
+					|| o is Frog
+					|| o is GiantToad
+					|| o is IceToad
+					|| o is Toad
+					|| o is PoisonFrog
+					
+					|| o is DriedToad
+					
+					|| ( o is Item && ((Item)o).ItemID == 0x2C9B );
 			}
 		}
 	}
