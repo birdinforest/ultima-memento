@@ -195,7 +195,7 @@ namespace Server.Items
 
 					Museums relic = new Museums();
 					relic.ItemID = Int32.Parse( AntiqueInfo( thing, 1, book ) );
-					relic.Hue = Int32.Parse( AntiqueInfo( thing, 3, book ) );
+					relic.Hue = Int32.Parse( AntiqueInfo( thing, 3, book ), NumberStyles.HexNumber | NumberStyles.AllowHexSpecifier);
 
 					if ( relic.ItemID == 0x4FA4 ){ ColorMetal( relic, 0 ); }
 					else if ( relic.ItemID == 0x4FC9 ){ ColorMetal( relic, 0 ); }
