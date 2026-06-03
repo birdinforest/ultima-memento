@@ -625,10 +625,13 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | Gypsy tarot / starting fates | `memento/game-mechanism/GYPSY_TAROT_STARTING_FATES.md` | Before modifying starting-area NPCs or race selection |
 | Trap system (code analysis) | `memento/game-mechanism/trap-system/trap_system_code_analysis.md` | Before modifying trap items or trap-related NPC speech |
 | Magic system docs | `memento/game-mechanism/spell-and-magic/` (8 files) | Before modifying magic, spell, or rune systems |
+| Ancient spell research system | `memento/game-mechanism/ANCIENT_SPELL_RESEARCH_SYSTEM.md` | Before modifying ResearchBag, AncientSpellbook, prepared-spell counters, or any ancient magic casting flow |
 | Death / resurrection / bank tribute | `memento/game-mechanism/death-resurrection-bank-tribute.md` | Before modifying death or tribute handling |
 | Pet taming & Jako system | `memento/game-mechanism/PET_TAMING_AND_JAKO_SYSTEM.md` | Before modifying pet/taming mechanics |
 | Race temptation & potion shelf | `memento/game-mechanism/race-temptation-and-potion-shelf.md` | Before modifying race temptation or potion shelf |
 | Player hazards & threats | `memento/game-mechanism/PLAYER_HAZARDS_AND_THREATS.md` | Before modifying hazard/threat systems |
+| Black Knight NPC / black key / Vault of the Black Knight / Vordo boss / Bottle World of Kuldar | `memento/game-mechanism/BLACK_KNIGHT_VAULT_BOTTLE_WORLD.md` | Before modifying BlackKnight, BlackKnightBox, Vordo, VordoScroll, GateMoon in Kuldar, or the Kuldar Bottle World region logic |
+| Golem Porter (搬运魔像) system | `memento/game-mechanism/GOLEM_PORTER_SYSTEM.md` | Before modifying GolemPorter, GolemPorterItem, GolemManual, or any porter/pack creature |
 | Slayer weapon system | `memento/game-mechanism/SLAYER_WEAPON_SYSTEM.md` | Before modifying slayer mechanics |
 | Endgame boss data & BeefUp | `memento/game-mechanism/ENDGAME_BOSS_ANALYSIS.md` | Before balancing named bosses, champ/world boss stats, or difficulty scaling |
 | Endgame content survey | `memento/game-mechanism/survey_endgame_content.md` | Broad endgame inventory (champs, Avatar, quests, items) |
