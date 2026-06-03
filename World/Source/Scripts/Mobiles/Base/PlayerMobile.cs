@@ -2317,7 +2317,6 @@ namespace Server.Mobiles
 			var newPlayer = new PlayerMobile
 			{
 				Name = Name,
-				StatCap = StatCap,
 
 				_spellBars = SpellBars,
 				_preferences = Preferences,
