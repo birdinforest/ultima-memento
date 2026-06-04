@@ -70,7 +70,10 @@ namespace Server.Engines.Avatar
 				y += CARD_HEIGHT;
 				y += 10;
 
-				AddInformationCard(NO_ITEM_ID, AvatarLocalization.Key(m_From, "avatar.gump.info.avatar_born.title", "An Avatar is Born"), AvatarLocalization.Key(m_From, "avatar.gump.info.avatar_born.body", "You have begun the Avatar's Ascent. This is a challenging journey of self-discovery and growth."), y);
+				AddInformationCard(NO_ITEM_ID, AvatarLocalization.Key(m_From, "avatar.gump.info.avatar_born.title", "An Avatar is Born"), AvatarLocalization.Key(m_From, "avatar.gump.info.avatar_born.body", string.Format(
+					"You have begun the Avatar's Ascent. This is a challenging journey of self-discovery and growth. You may access this gump at any time by double-clicking {0} in your backpack.",
+					TextDefinition.GetColorizedText("The Avatar's Ascent", HtmlColors.ORANGE)
+				)), y);
 				y += CARD_HEIGHT;
 				y += 10;
 
