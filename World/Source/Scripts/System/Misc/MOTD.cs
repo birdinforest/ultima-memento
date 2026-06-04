@@ -174,50 +174,52 @@ namespace Joeku.MOTD
 	{
 		public static void EventSink_OnLogin( LoginEventArgs e )
 		{
-			if( CheckLogin( e.Mobile ) )
-				SendGump( e.Mobile );
-			else if ( (e.Mobile).Region is StartRegion )
-			{
-				if ( ((e.Mobile).Region).Name == "the Forest" )
-					(e.Mobile).SendGump( new WelcomeGump( (e.Mobile) ) );
-				else
-					(e.Mobile).SendGump( new MonsterGump( (e.Mobile) ) );
-			}
+			PlayerMobile player = e.Mobile as PlayerMobile;
+			if ( player == null ) return;
 
-			Mobile from = e.Mobile;
+			ShowMessage( player );
 
-			if ( from is PlayerMobile )
-			{
-				if ( Server.Misc.PlayerSettings.GetQuickConfig( from, 2 ) )
-					(from).SendGump( new QuickBar( from ) );
+			if ( Server.Misc.PlayerSettings.GetQuickConfig( player, 2 ) )
+				player.SendGump( new QuickBar( player ) );
 
-				if ( Server.Misc.PlayerSettings.GetReagentConfig( from, 2 ) )
-					(from).SendGump( new RegBar( from ) );
-			}
+			if ( Server.Misc.PlayerSettings.GetReagentConfig( player, 2 ) )
+				player.SendGump( new RegBar( player ) );
 		}
 
-		public static bool CheckLogin( Mobile m )
+		public static void ShowMessage( PlayerMobile player )
 		{
-			if ( m.Region != null && m.Region is StartRegion )
-				return false;
+			if ( player == null ) return;
 
-			// Version upgrade detection: if the player had disabled "Show at Login"
-			// but the server version has increased since they last saw the MOTD,
-			// force-show it by clearing the disable flag.
-			if ( m is PlayerMobile pm && pm.Preferences.MessageOfTheDay )
+		// Memento: version upgrade detection — force-show the MOTD once when the server updated
+		if ( player.Preferences.MessageOfTheDay && player.Preferences.MotdLastSeenVersion < Server.Misc.ShardInfo.VersionCode )
+		{
+			player.Preferences.MessageOfTheDay = false;
+			player.SendMessage( StringCatalog.ResolveByKey( player.Account, "sys.the_shard_has_been_updated_ex_please_review_the_latest_announcements_dot" ) );
+			SendGump( player );
+			return;
+		}
+
+		// Jascen #79: clear stale gumps before opening the login gump
+		player.CloseGump( typeof( Server.Engines.Avatar.AvatarShopGump ) );
+		player.CloseGump( typeof( WelcomeGump ) );
+		player.CloseGump( typeof( MonsterGump ) );
+
+			if ( player.Region is StartRegion )
 			{
-				if ( pm.Preferences.MotdLastSeenVersion < Server.Misc.ShardInfo.VersionCode )
+				if ( player.Region.Name == "the Forest" )
 				{
-					pm.Preferences.MessageOfTheDay = false;
-					pm.SendMessage( StringCatalog.ResolveByKey( pm.Account, "sys.the_shard_has_been_updated_ex_please_review_the_latest_announcements_dot" ) );
+					if ( player.Avatar.Active )
+						player.SendGump( new Server.Engines.Avatar.AvatarShopGump( player ) );
+					else
+						player.SendGump( new WelcomeGump( player ) );
 				}
 				else
-				{
-					return false;
-				}
+					player.SendGump( new MonsterGump( player ) );
 			}
-
-			return true;
+			else if ( player.Preferences.MessageOfTheDay )
+			{
+				SendGump( player );
+			}
 		}
 
 		[Usage( "MOTD" )]
