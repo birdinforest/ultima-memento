@@ -1,11 +1,11 @@
 using System;
+using Server.Localization;
 using System.Collections;
 using Server.Targeting;
 using Server.Network;
 using Server.Mobiles;
 using Server.Items;
 using Server.Spells;
-using Server.Localization;
 
 namespace Server.Spells.HolyMan
 {
@@ -41,41 +41,43 @@ namespace Server.Spells.HolyMan
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.CheckReflect( (int)SpellCircle.Seventh, Caster, ref m );
-
-				if ( m.Spell != null )
-					m.Spell.OnCasterHurt();
-
-				m.Paralyzed = false;
-				BuffInfo.CleanupIcons( m, true );
-
-				int toDrain = 0;
-
-				if ( m.Karma > 0 )
-					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "The gods will not smite such a kindly soul." ) );
-				else
+				Mobile source = Caster;
+				if ( SpellHelper.ResolveMagicDefense( (int)SpellCircle.Seventh, ref source, ref m ) )
 				{
-					toDrain = (int)(GetDamageSkill( Caster ) - GetResistSkill( m ));
+					if ( m.Spell != null )
+						m.Spell.OnCasterHurt();
 
-					if ( !m.Player )
-						toDrain /= 2;
+					m.Paralyzed = false;
+					BuffInfo.CleanupIcons( m, true );
 
-					if ( toDrain < 0 )
-						toDrain = 0;
-					else if ( toDrain > m.Mana )
-						toDrain = m.Mana;
+					int toDrain = 0;
+
+					if ( m.Karma > 0 )
+						Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "The gods will not smite such a kindly soul." ) );
+					else
+					{
+						toDrain = (int)(GetDamageSkill( Caster ) - GetResistSkill( m ));
+
+						if ( !m.Player )
+							toDrain /= 2;
+
+						if ( toDrain < 0 )
+							toDrain = 0;
+						else if ( toDrain > m.Mana )
+							toDrain = m.Mana;
+					}
+
+					if ( toDrain > (Caster.ManaMax - Caster.Mana) )
+						toDrain = Caster.ManaMax - Caster.Mana;
+
+					m.Mana -= toDrain;
+					Caster.Mana += toDrain;
+
+					m.FixedParticles( 0x374A, 10, 15, 5028, EffectLayer.Waist );
+					m.PlaySound( 0x1FB );
+
+					HarmfulSpell( m );
 				}
-
-				if ( toDrain > (Caster.ManaMax - Caster.Mana) )
-					toDrain = Caster.ManaMax - Caster.Mana;
-
-				m.Mana -= toDrain;
-				Caster.Mana += toDrain;
-
-				m.FixedParticles( 0x374A, 10, 15, 5028, EffectLayer.Waist );
-				m.PlaySound( 0x1FB );
-
-				HarmfulSpell( m );
 			}
 
 			FinishSequence();

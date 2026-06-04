@@ -1,6 +1,6 @@
 using System;
-using Server;
 using Server.Localization;
+using Server;
 
 namespace Server.Items
 {
@@ -19,8 +19,8 @@ namespace Server.Items
 		{
 			if (!CheckMana(attacker, true)) return;
 			ClearCurrentAbility(attacker);
-			attacker.SendMessage(StringCatalog.Resolve(attacker.Account, "You feel like you are extremely protected from most magic!"));
-			attacker.MagicDamageAbsorb = 8;
+			attacker.SendMessage( StringCatalog.Resolve( attacker.Account, "You feel like you are extremely protected from most magic!" ) );
+			attacker.MagicDamageAbsorb += 20;
 		}
 	}
 }

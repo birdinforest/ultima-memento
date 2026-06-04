@@ -1,4 +1,5 @@
 using System;
+using Server.Localization;
 using Server;
 using System.Collections;
 using Server.Network;
@@ -6,7 +7,6 @@ using System.Text;
 using Server.Items;
 using Server.Mobiles;
 using Server.Targeting;
-using Server.Localization;
 
 namespace Server.Spells.Research
 {
@@ -62,29 +62,31 @@ namespace Server.Spells.Research
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.CheckReflect( CirclePower, Caster, ref m );
-
-				TimeSpan duration = TimeSpan.FromSeconds( (DamagingSkill( Caster ) / 4) );
-
-				m.FixedParticles( 0x3789, 10, 25, 5032, Server.Misc.PlayerSettings.GetMySpellHue( true, Caster, 0xBB3 ), 0, EffectLayer.Head );
-				m.PlaySound( 0x19D );
-
-				if ( m is PlayerMobile )
+				Mobile source = Caster;
+				if ( SpellHelper.ResolveMagicDefense( CirclePower, ref source, ref m ) )
 				{
-					m.Paralyze( duration );
-					m.SendMessage( StringCatalog.Resolve( m.Account, "You are frozen in fear." ) );
-					BuffInfo.RemoveBuff( m, BuffIcon.Fear );
-					BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.Fear, 1063688, duration, m ) );
-				}
-				else if ( m is BaseCreature )
-				{
-					BaseCreature bc = (BaseCreature)m;
-					bc.BeginFlee( duration );
-				}
+					TimeSpan duration = TimeSpan.FromSeconds( (DamagingSkill( Caster ) / 4) );
 
-				Server.Misc.Research.ConsumeScroll( Caster, true, spellIndex, alwaysConsume, Scroll );
+					m.FixedParticles( 0x3789, 10, 25, 5032, Server.Misc.PlayerSettings.GetMySpellHue( true, Caster, 0xBB3 ), 0, EffectLayer.Head );
+					m.PlaySound( 0x19D );
 
-				HarmfulSpell( m );
+					if ( m is PlayerMobile )
+					{
+						m.Paralyze( duration );
+						m.SendMessage( StringCatalog.Resolve( m.Account, "You are frozen in fear." ) );
+						BuffInfo.RemoveBuff( m, BuffIcon.Fear );
+						BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.Fear, 1063688, duration, m ) );
+					}
+					else if ( m is BaseCreature )
+					{
+						BaseCreature bc = (BaseCreature)m;
+						bc.BeginFlee( duration );
+					}
+
+					Server.Misc.Research.ConsumeScroll( Caster, true, spellIndex, alwaysConsume, Scroll );
+
+					HarmfulSpell( m );
+				}
 			}
 
 			FinishSequence();
