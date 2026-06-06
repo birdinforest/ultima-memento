@@ -1754,6 +1754,9 @@ namespace Server.Items
 				{
 					DurabilityUtility.DestroyFromWear( this );
 				}
+
+				if ( MaxHitPoints < 1 )
+					Delete();
 			}
 
 			if ( attacker is VampireBatFamiliar )
@@ -3159,6 +3162,10 @@ namespace Server.Items
 			{
 				m_AosSkillBonuses.SetValues(3, SkillName.Alchemy, 0);
 				m_AosSkillBonuses.SetValues(4, SkillName.Tracking, 5);
+			}
+			if (version == 12 && 0 < m_MaxHits)
+			{
+				m_Hits = m_MaxHits;
 			}
 		}
 		#endregion
