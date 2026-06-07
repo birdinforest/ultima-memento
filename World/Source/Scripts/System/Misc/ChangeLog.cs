@@ -939,6 +939,7 @@ namespace Server.Misc
 					builder.Append("- Combat - Ranged weapon slayers now add 50% more damage, down from 100%<br>");
 					builder.Append("- Trap - Remove Trap salvage on stone face and giant spike traps is once per player per trap every 30 minutes (avoidance still works; fire columns still drop no salvage)<br>");
 					builder.Append("- Trap - Remove Trap avoidance on fire column traps no longer drops salvage gold (skill checks unchanged; other trap types still drop salvage)<br>");
+					builder.Append("- Gather - Targeting yourself with a harvesting tool will attempt to harvest the nearest resource<br>");
 					builder.Append("- Gump - Add tooltips for bee hives<br>");
 					builder.Append("- Gump - Add tooltips for plants<br>");
 					builder.Append("- Gump - Add search button to Craft gump<br>");
