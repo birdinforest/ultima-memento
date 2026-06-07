@@ -2730,6 +2730,8 @@ namespace Server.Mobiles
 					party.Remove(this);
 				}
 
+				CustomEventSink.InvokePlayerDeleted(this);
+
 				_recursiveDeleteBlock = false;
 			}
 		}
