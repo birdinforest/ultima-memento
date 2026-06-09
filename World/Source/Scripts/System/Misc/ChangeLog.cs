@@ -935,6 +935,7 @@ namespace Server.Misc
 					builder.Append("- Craft - Targeting oneself with Breakdown now auto-targets the Crafting Container<br>");
 					builder.Append("- Craft - Crafting recipes now support requiring one of multiple skills to craft an item<br>");
 					builder.Append("- Craft - Wizard Staffs, Wizard Staves, and Wizard Sceptres are now Carpentry recipes<br>");
+					builder.Append("- Craft - Tinkerers can now craft power crystals<br>");
 					builder.Append("- Combat - Spellbook slayers now add 50% more damage, down from 100%<br>");
 					builder.Append("- Combat - Ranged weapon slayers now add 50% more damage, down from 100%<br>");
 					builder.Append("- Trap - Remove Trap salvage on stone face and giant spike traps is once per player per trap every 30 minutes (avoidance still works; fire columns still drop no salvage)<br>");
