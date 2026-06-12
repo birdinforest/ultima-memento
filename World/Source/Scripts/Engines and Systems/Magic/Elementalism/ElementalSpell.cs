@@ -18,6 +18,8 @@ namespace Server.Spells.Elementalism
 
 		public abstract SpellCircle Circle { get; }
 
+		public int OneBasedCircle { get { return (int)Circle + 1; } }
+
 		public override bool ConsumeReagents()
 		{
 			return true;
