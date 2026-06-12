@@ -921,7 +921,7 @@ namespace Server.Misc
 					builder.Append("- Spell - Reactive Armor and defensive spell checks no longer incorrectly check Melee Damage Absorb<br>");
 					break;
 
-				// Version 2.3.0
+				// Version 2.3.1
 				case 11:
 					builder.Append(Version());
 					builder.Append("<br>Changes<br>");
