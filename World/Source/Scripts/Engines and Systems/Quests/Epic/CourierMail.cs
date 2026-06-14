@@ -70,19 +70,41 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.Owner)]
 		public int Msg_Reward { get { return MsgReward; } set { MsgReward = value; InvalidateProperties(); } }
 
+		public override bool IsContentLocalized { get { return true; } }
+
 		[Constructable]
 		public CourierMail( Mobile from ) : base( 0x2159 )
 		{
 			Weight = 1.0;
 			Hue = 0x9C4;
+			owner = from;
 			Name = "Message for " + from.Name;
 		}
 
         public override void AddNameProperties(ObjectPropertyList list)
 		{
-            base.AddNameProperties(list);
-			list.Add( 1070722, "From " + ForWho);
-			if ( MsgComplete > 0 ){ list.Add( 1049644, "Complete"); }
+			if ( owner != null && BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "quest.courier.mail.opl.name", owner.Name );
+			else if ( owner != null )
+				list.Add( 1050045, "{0}\t{1}", "Message for", owner.Name );
+			else
+				base.AddNameProperties( list );
+
+			if ( !string.IsNullOrEmpty( ForWho ) )
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "quest.courier.mail.opl.from", ForWho );
+				else
+					list.Add( 1070722, "From " + ForWho );
+			}
+
+			if ( MsgComplete > 0 )
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "quest.courier.mail.opl.complete" );
+				else
+					list.Add( 1049644, "Complete" );
+			}
         }
 
 		public class SearchGump : Gump
@@ -108,7 +130,10 @@ namespace Server.Items
 				m_X2 = scroll.xB;
 				m_Y2 = scroll.yB;
 
-				if ( scroll.MsgComplete > 0 ){ sText = StringCatalog.ResolveFormatByKey(from.Account, "quest.you_have_found_the_n0_dot_return_to_n1_and_bring_them_this_message_dot_br_br", scroll.SearchItem, scroll.ForWho ) + sText; }
+				if ( scroll.MsgComplete > 0 )
+					sText = StringCatalog.ResolveFormatByKey( from.Account, "quest.courier.mail.found.prefix", scroll.SearchItem, scroll.ForWho ) + sText;
+
+				sText = QuestHtmlSegmentCatalogResolver.Resolve( from, sText );
 
 				this.Closable=true;
 				this.Disposable=true;
@@ -155,7 +180,7 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( e.Backpack ) ) 
 			{
-				e.SendMessage( StringCatalog.Resolve( e.Account, "This must be in your backpack to read." ) );
+				e.SendMessage( StringCatalog.ResolveByKey( e.Account, "quest.courier.mail.backpack" ) );
 			}
 			else
 			{
