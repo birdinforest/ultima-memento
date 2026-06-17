@@ -2445,7 +2445,10 @@ namespace Server
 						info = QuestCompositeResolver.ResolveComposite( from, info );
 					}
 				}
-				AddHtml( 12, 10, 311, 241, @"<BODY><BASEFONT Color=#FFFFFF>" + cultInfo.ToTitleCase(item.Name) + "<BR><BR>" + info + "</BASEFONT></BODY>", (bool)false, (bool)true);
+				string displayName = item.Name;
+				if ( string.IsNullOrEmpty( displayName ) )
+					displayName = Utility.AddSpaces( item.GetType().Name );
+				AddHtml( 12, 10, 311, 241, @"<BODY><BASEFONT Color=#FFFFFF>" + cultInfo.ToTitleCase(displayName) + "<BR><BR>" + info + "</BASEFONT></BODY>", (bool)false, (bool)true);
 			}
 		}
 

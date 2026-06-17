@@ -93,6 +93,7 @@ namespace Server.ContextMenus
 		private Mobile m_From;
 		private BaseBeverage m_Drink;
 
+		// Context menu cliloc 3006161 — must stay short; see cliloc.cfg (Drink Up / 飲盡).
 		public GulpMaxEntry( Mobile from, BaseBeverage drink ) : base( 6161, 1 )
 		{
 			m_From = from;
@@ -144,6 +145,7 @@ namespace Server.ContextMenus
 		private Mobile m_From;
 		private Food m_Food;
 
+		// Context menu cliloc 3006160 — must stay short; see cliloc.cfg (Eat Up / 吃盡).
 		public EatMaxEntry( Mobile from, Food food ) : base( 6160, 1 )
 		{
 			m_From = from;

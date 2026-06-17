@@ -40,9 +40,9 @@ namespace Server.Items
 
 		public override int ComputeItemID()
 		{
-			Name = CliLocTable.Lookup( BaseLabelNumber + (int)Content );
+			Name = CliLocTable.Lookup( BaseLabelNumber + (int)Content ) ?? Name;
 			if( IsEmpty )
-				Name = CliLocTable.Lookup( EmptyLabelNumber );
+				Name = CliLocTable.Lookup( EmptyLabelNumber ) ?? Name;
 
 			switch( Content )
 			{
@@ -147,9 +147,9 @@ namespace Server.Items
 
 		public override int ComputeItemID()
 		{
-			Name = CliLocTable.Lookup( BaseLabelNumber + (int)Content );
+			Name = CliLocTable.Lookup( BaseLabelNumber + (int)Content ) ?? Name;
 			if( IsEmpty )
-				Name = CliLocTable.Lookup( EmptyLabelNumber );
+				Name = CliLocTable.Lookup( EmptyLabelNumber ) ?? Name;
 
 			switch( Content )
 			{
@@ -253,9 +253,9 @@ namespace Server.Items
 
 		public override int ComputeItemID()
 		{
-			Name = CliLocTable.Lookup( BaseLabelNumber + (int)Content );
+			Name = CliLocTable.Lookup( BaseLabelNumber + (int)Content ) ?? Name;
 			if( IsEmpty )
-				Name = CliLocTable.Lookup( EmptyLabelNumber );
+				Name = CliLocTable.Lookup( EmptyLabelNumber ) ?? Name;
 
 			if( ItemID >= 0x995 && ItemID <= 0x999 )
 				return ItemID;
@@ -397,9 +397,9 @@ namespace Server.Items
 
 		public override int ComputeItemID()
 		{
-			Name = CliLocTable.Lookup( BaseLabelNumber + (int)Content );
+			Name = CliLocTable.Lookup( BaseLabelNumber + (int)Content ) ?? Name;
 			if( IsEmpty )
-				Name = CliLocTable.Lookup( EmptyLabelNumber );
+				Name = CliLocTable.Lookup( EmptyLabelNumber ) ?? Name;
 
 			if( ItemID >= 0x0FFB && ItemID <= 0x0FFE )
 				return ItemID;
@@ -493,9 +493,9 @@ namespace Server.Items
 
 		public override int ComputeItemID()
 		{
-			Name = CliLocTable.Lookup( BaseLabelNumber + (int)Content );
+			Name = CliLocTable.Lookup( BaseLabelNumber + (int)Content ) ?? Name;
 			if( IsEmpty )
-				Name = CliLocTable.Lookup( EmptyLabelNumber );
+				Name = CliLocTable.Lookup( EmptyLabelNumber ) ?? Name;
 
 			if( ItemID >= 0xFFF && ItemID <= 0x1002 )
 				return ItemID;
@@ -589,9 +589,9 @@ namespace Server.Items
 
 		public override int ComputeItemID()
 		{
-			Name = CliLocTable.Lookup( BaseLabelNumber + (int)Content );
+			Name = CliLocTable.Lookup( BaseLabelNumber + (int)Content ) ?? Name;
 			if( IsEmpty )
-				Name = CliLocTable.Lookup( EmptyLabelNumber );
+				Name = CliLocTable.Lookup( EmptyLabelNumber ) ?? Name;
 
 			if( ItemID == 0x99A || ItemID == 0x9B3 || ItemID == 0x9BF || ItemID == 0x9CB )
 				return ItemID;
@@ -685,9 +685,9 @@ namespace Server.Items
 
 		public override int ComputeItemID()
 		{
-			Name = CliLocTable.Lookup( BaseLabelNumber + (int)Content );
+			Name = CliLocTable.Lookup( BaseLabelNumber + (int)Content ) ?? Name;
 			if( IsEmpty )
-				Name = CliLocTable.Lookup( EmptyLabelNumber );
+				Name = CliLocTable.Lookup( EmptyLabelNumber ) ?? Name;
 
 			if( IsEmpty )
 				return ( ItemID >= 0x1F81 && ItemID <= 0x1F84 ? ItemID : 0x1F81 );
@@ -792,9 +792,9 @@ namespace Server.Items
 
 		public override int ComputeItemID()
 		{
-			Name = CliLocTable.Lookup( BaseLabelNumber + (int)Content );
+			Name = CliLocTable.Lookup( BaseLabelNumber + (int)Content ) ?? Name;
 			if( IsEmpty )
-				Name = CliLocTable.Lookup( EmptyLabelNumber );
+				Name = CliLocTable.Lookup( EmptyLabelNumber ) ?? Name;
 
 			switch( Content )
 			{
