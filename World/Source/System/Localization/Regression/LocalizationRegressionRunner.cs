@@ -204,6 +204,12 @@ namespace Server.Localization.Regression
 			if ( Insensitive.Equals( p, "string_catalog_only" ) )
 				return StringCatalog.TryResolve( "zh-Hans", en ) ?? en;
 
+			if ( Insensitive.Equals( p, "quest_contract_place" ) )
+				return QuestCompositeResolver.FormatAnnotatedPlaceForContract( s_Viewer, en );
+
+			if ( Insensitive.Equals( p, "quest_contract_target" ) )
+				return QuestCompositeResolver.FormatContractTargetForChinese( s_Viewer, en );
+
 			throw new InvalidOperationException( "unknown pipeline: " + pipeline );
 		}
 

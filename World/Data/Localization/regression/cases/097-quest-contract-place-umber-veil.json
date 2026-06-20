@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "quest-contract-place-umber-mausoleum-world",
+  "pipeline": "quest_contract_place",
+  "en": "the Island of Umber Veil",
+  "expectedZh": "安柏迷雾岛（Umber Veil）",
+  "tags": "quest-contract-shotkey-land"
+}

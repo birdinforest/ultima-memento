@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "quest-contract-place-mausoleum",
+  "pipeline": "quest_contract_place",
+  "en": "the Mausoleum",
+  "expectedZh": "陵墓陵寝（the Mausoleum）",
+  "tags": "quest-contract-shotkey-placemap"
+}

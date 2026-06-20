@@ -36,26 +36,31 @@ namespace Server.Misc
 		private static string BuildQuestStatusText( Mobile from, string targetTitle, string targetName, string region, string world, int fee, string category, string storedStory )
 		{
 			string targetDisplay = string.IsNullOrWhiteSpace( targetTitle ) ? targetName : targetTitle;
-			string regionDisplay = QuestCompositeResolver.ResolveComposite( from, ResolveText( from, region ) );
-			string worldDisplay = QuestCompositeResolver.ResolveComposite( from, ResolveText( from, world ) );
-			string targetDisplayLocalized = QuestCompositeResolver.ResolveComposite( from, ResolveText( from, targetDisplay ) );
 			string feeText = fee.ToString( "#,##0" );
 
 			if ( AccountLang.IsChinese( AccountLang.GetLanguageCode( from.Account ) ) )
 			{
+				string worldDisplay = QuestCompositeResolver.FormatAnnotatedPlaceForContract( from, world );
+				string regionDisplay = QuestCompositeResolver.FormatAnnotatedPlaceForContract( from, region );
+				string targetDisplayLocalized = QuestCompositeResolver.FormatContractTargetForChinese( from, targetDisplay );
+
 				if ( category == "Item" )
 					return ResolveFormat( from, "前往{0}的{1}，寻找{2}，完成后可领取{3}金币。", worldDisplay, regionDisplay, targetDisplayLocalized, feeText );
 
 				return ResolveFormat( from, "前往{0}的{1}，击败{2}，完成后可领取{3}金币。", worldDisplay, regionDisplay, targetDisplayLocalized, feeText );
 			}
 
+			string regionDisplayEn = QuestCompositeResolver.ResolveComposite( from, ResolveText( from, region ) );
+			string worldDisplayEn = QuestCompositeResolver.ResolveComposite( from, ResolveText( from, world ) );
+			string targetDisplayLocalizedEn = QuestCompositeResolver.ResolveComposite( from, ResolveText( from, targetDisplay ) );
+
 			if ( !string.IsNullOrWhiteSpace( storedStory ) )
 				return storedStory;
 
 			if ( category == "Item" )
-				return ResolveFormat( from, "Travel to {0} in {1} and recover {2} for {3} gold", regionDisplay, worldDisplay, targetDisplayLocalized, feeText );
+				return ResolveFormat( from, "Travel to {0} in {1} and recover {2} for {3} gold", regionDisplayEn, worldDisplayEn, targetDisplayLocalizedEn, feeText );
 
-			return ResolveFormat( from, "Travel to {0} in {1} and slay {2} for {3} gold", regionDisplay, worldDisplay, targetDisplayLocalized, feeText );
+			return ResolveFormat( from, "Travel to {0} in {1} and slay {2} for {3} gold", regionDisplayEn, worldDisplayEn, targetDisplayLocalizedEn, feeText );
 		}
 
 		public static int ChanceToFindQuestedItem()

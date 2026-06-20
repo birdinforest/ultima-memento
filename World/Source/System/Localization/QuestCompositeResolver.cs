@@ -222,6 +222,79 @@ namespace Server.Localization
 		}
 
 		/// <summary>
+		/// Standard/Fishing contract quest status: place names via shotkey catalogs
+		/// (<c>prop.land.*</c>, placemap-labels hash, …) as <c>中文（English）</c>; random targets stay English.
+		/// </summary>
+		public static string FormatAnnotatedPlaceForContract( Mobile from, string englishStored )
+		{
+			if ( string.IsNullOrWhiteSpace( englishStored ) )
+				return englishStored;
+
+			if ( from == null || !AccountLang.IsChinese( AccountLang.GetLanguageCode( from.Account ) ) )
+				return englishStored;
+
+			EnsureInitialized();
+
+			const string lang = "zh-Hans";
+			string zh = null;
+			string englishParen = englishStored;
+
+			Land land = Lands.LandRef( englishStored );
+
+			if ( land != Land.None )
+			{
+				zh = Lands.LocalizedLandName( land, lang );
+				englishParen = Lands.LandNameShort( land );
+			}
+
+			if ( string.IsNullOrEmpty( zh ) || zh == englishStored )
+			{
+				string catalog = StringCatalog.TryResolve( lang, englishStored );
+
+				if ( !string.IsNullOrEmpty( catalog ) && catalog != englishStored )
+					zh = catalog;
+			}
+
+			if ( string.IsNullOrEmpty( zh ) || zh == englishStored )
+			{
+				string frag;
+
+				if ( s_FragmentZh != null && s_FragmentZh.TryGetValue( englishStored, out frag ) && !string.IsNullOrEmpty( frag ) && frag != englishStored )
+					zh = frag;
+			}
+
+			if ( string.IsNullOrEmpty( zh ) || zh == englishStored )
+				zh = ResolveCompositeToZhHans( englishStored );
+
+			if ( HasInlineEnglishAnnotation( zh ) )
+				return zh;
+
+			return zh + "（" + englishParen + "）";
+		}
+
+		/// <summary>Contract quest target line for zh-Hans accounts: keep the runtime English item/creature name.</summary>
+		public static string FormatContractTargetForChinese( Mobile from, string englishTarget )
+		{
+			if ( string.IsNullOrWhiteSpace( englishTarget ) )
+				return englishTarget;
+
+			if ( from != null && AccountLang.IsChinese( AccountLang.GetLanguageCode( from.Account ) ) )
+				return englishTarget;
+
+			return englishTarget;
+		}
+
+		private static bool HasInlineEnglishAnnotation( string s )
+		{
+			if ( string.IsNullOrEmpty( s ) )
+				return false;
+
+			int idx = s.LastIndexOf( '（' );
+
+			return idx >= 0 && s.EndsWith( "）" );
+		}
+
+		/// <summary>
 		/// After English fragments are swapped to Chinese, normalize leftover English glue in
 		/// citizen/tavern lines: cult-item pattern <c>the 'Name'</c> → corner quotes, <c>and</c> → 和.
 		/// </summary>

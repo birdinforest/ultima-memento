@@ -12,6 +12,8 @@ Required fields:
                    overhead_chain     — StringCatalog.TryResolve(zh viewer) → speaker.LocalizeDynamicOverheadForViewer
                    composite_only     — QuestCompositeResolver.ResolveCompositeToZhHans(en)
                    string_catalog_only — StringCatalog.TryResolve("zh-Hans", en) ?? en
+                   quest_contract_place — QuestCompositeResolver.FormatAnnotatedPlaceForContract(zh viewer, en)
+                   quest_contract_target — QuestCompositeResolver.FormatContractTargetForChinese(zh viewer, en)
   en             Input English (exact game line).
   expectedZh     Golden zh-Hans (entire pipeline output for that pipeline).
 

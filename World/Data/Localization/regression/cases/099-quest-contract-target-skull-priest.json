@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "quest-contract-target-skull-priest",
+  "pipeline": "quest_contract_target",
+  "en": "Rorasem's Skull of the priest",
+  "expectedZh": "Rorasem's Skull of the priest",
+  "tags": "quest-contract-target-english"
+}
