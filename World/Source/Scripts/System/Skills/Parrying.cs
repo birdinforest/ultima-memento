@@ -47,9 +47,7 @@ namespace Server.SkillHandlers
 			m.RevealingAction();
 			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.ResolveByKey(m.Account, "skl.parrying.raise_shield"), m.NetState);
 
-			var duration = TimeSpan.FromSeconds(3);
-
-			Timer.DelayCall(duration, () =>
+			Timer.DelayCall(TimeSpan.FromSeconds(3), () =>
 			{
 				if (0 < m.MagicDamageAbsorb || 0 < m.MeleeDamageAbsorb)
 				{
@@ -60,7 +58,7 @@ namespace Server.SkillHandlers
 				m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.ResolveByKey(m.Account, "skl.parrying.relax_stance"), m.NetState);
 			});
 
-			return duration;
+			return TimeSpan.FromSeconds(5);
 		}
 	}
 }
