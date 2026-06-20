@@ -46,7 +46,7 @@ namespace Server.SkillHandlers
 			m.RevealingAction();
 			m.SendMessage(StringCatalog.ResolveByKey(m.Account, "skl.parrying.raise_shield"));
 
-			var duration = TimeSpan.FromSeconds(5);
+			var duration = TimeSpan.FromSeconds(3);
 
 			Timer.DelayCall(duration, () =>
 			{
