@@ -2,6 +2,7 @@
 using System;
 using Server.Items;
 using Server.Localization;
+using Server.Network;
 
 namespace Server.SkillHandlers
 {
@@ -44,7 +45,7 @@ namespace Server.SkillHandlers
 			m.MeleeDamageAbsorb += amount;
 
 			m.RevealingAction();
-			m.SendMessage(StringCatalog.ResolveByKey(m.Account, "skl.parrying.raise_shield"));
+			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.ResolveByKey(m.Account, "skl.parrying.raise_shield"), m.NetState);
 
 			var duration = TimeSpan.FromSeconds(3);
 
@@ -56,7 +57,7 @@ namespace Server.SkillHandlers
 					if (0 < m.MeleeDamageAbsorb) m.MeleeDamageAbsorb = Math.Max(0, m.MeleeDamageAbsorb - amount);
 				}
 
-				m.SendMessage(StringCatalog.ResolveByKey(m.Account, "skl.parrying.relax_stance"));
+				m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.ResolveByKey(m.Account, "skl.parrying.relax_stance"), m.NetState);
 			});
 
 			return duration;
