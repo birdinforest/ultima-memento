@@ -62,6 +62,9 @@ namespace Server.Engines.MLQuests.Gumps
 		/// <summary>Viewer whose <see cref="Server.Accounting.IAccount"/> language drives <c>StringCatalog</c> resolution for this gump.</summary>
 		public PlayerMobile QuestViewer { get; private set; }
 
+		protected virtual int FooterNavButtonY { get { return 400; } }
+		protected virtual int FooterButtonY { get { return 425; } }
+
 		// RunUO optimized version
 		public BaseQuestGump( int label, PlayerMobile viewer = null )
 			: base( 75, 25 )
@@ -86,13 +89,13 @@ namespace Server.Engines.MLQuests.Gumps
 			AddPage( ++m_Page );
 
 			if ( m_Page > 1 )
-				AddButton( 130, 400, (int)ButtonGraphic.Previous, (int)ButtonGraphic.Previous + 2, 0, GumpButtonType.Page, m_Page - 1 );
+				AddButton( 130, FooterNavButtonY, (int)ButtonGraphic.Previous, (int)ButtonGraphic.Previous + 2, 0, GumpButtonType.Page, m_Page - 1 );
 
 			if ( m_Page < m_MaxPages )
-				AddButton( 325, 400, (int)ButtonGraphic.Continue, (int)ButtonGraphic.Continue + 2, 0, GumpButtonType.Page, m_Page + 1 );
+				AddButton( 325, FooterNavButtonY, (int)ButtonGraphic.Continue, (int)ButtonGraphic.Continue + 2, 0, GumpButtonType.Page, m_Page + 1 );
 
 			foreach ( ButtonInfo button in m_Buttons )
-				AddButton( button.Position == ButtonPosition.Left ? 95 : 363, 425, (int)button.Graphic, (int)button.Graphic + 2, button.ButtonID, GumpButtonType.Reply, 0 );
+				AddButton( button.Position == ButtonPosition.Left ? 95 : 363, FooterButtonY, (int)button.Graphic, (int)button.Graphic + 2, button.ButtonID, GumpButtonType.Reply, 0 );
 
 			if ( m_Title != null && m_Title.Length > 0 )
 			{
