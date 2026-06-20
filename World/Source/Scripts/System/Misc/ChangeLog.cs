@@ -1025,6 +1025,7 @@ namespace Server.Misc
 					builder.Append("- Skill - Parrying activation is now an overhead message<br>");
 
 					builder.Append("<br>Fixes<br>");
+					builder.Append("- Mobs - Fix case where AI would redundantly curse/poison<br>");
 					break;
 			}
 		}
