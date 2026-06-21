@@ -354,7 +354,7 @@ namespace Server.Engines.Craft
 				var scroll = GetRecipeScroll(player, type);
 				if (scroll ==  null) continue;
 
-				container.AddItem(scroll);
+				container.DropItem(scroll);
 			}
 
 			return container;
