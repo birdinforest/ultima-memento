@@ -6,10 +6,9 @@ using Server.ContextMenus;
 using System.Collections.Generic;
 using Server.Misc;
 using Server.Network;
-using Server.Items;
 using Server.Gumps;
 using Server.Mobiles;
-using Server.Commands;
+using Server.Utilities;
 
 namespace Server.Items
 {
@@ -38,28 +37,22 @@ namespace Server.Items
 
 		public override bool OnDragDrop( Mobile from, Item dropped )
 		{          		
-			int iAmount = 0;
 			string sEnd = ".";
 
 			if ( from != null )
 			{
-				if ( dropped is Gold && 50000 > HaveGold )
+				int WhatIsNeeded = 50000 - HaveGold;
+				if ( dropped is Gold && WhatIsNeeded > 0 )
 				{
 					from.SendSound( 0x5AA );
-					int WhatIsDropped = dropped.Amount;
-					int WhatIsNeeded = 50000 - HaveGold;
-					int WhatIsExtra = WhatIsDropped - WhatIsNeeded; if ( WhatIsExtra < 1 ){ WhatIsExtra = 0; }
-					int WhatIsTaken = WhatIsDropped - WhatIsExtra;
-
-					if ( WhatIsExtra > 0 ){ from.AddToBackpack( new Gold( WhatIsExtra ) ); }
-					iAmount = WhatIsTaken;
+					var iAmount = ItemUtilities.ConsumeClamped(dropped, WhatIsNeeded);
 
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
-					HaveGold = HaveGold + iAmount;
+					HaveGold += iAmount;
 					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "prop.special.egg.gold.added", iAmount, sEnd ) );
-					dropped.Delete();
-					return true;
+
+					return dropped.Deleted;
 				}
 			}
 
@@ -174,28 +167,22 @@ namespace Server.Items
 
 		public override bool OnDragDrop( Mobile from, Item dropped )
 		{          		
-			int iAmount = 0;
 			string sEnd = ".";
 
 			if ( from != null )
 			{
-				if ( dropped is Gold && 50000 > HaveGold )
+				int WhatIsNeeded = 50000 - HaveGold;
+				if ( dropped is Gold && WhatIsNeeded > 0 )
 				{
 					from.SendSound( 0x5AA );
-					int WhatIsDropped = dropped.Amount;
-					int WhatIsNeeded = 50000 - HaveGold;
-					int WhatIsExtra = WhatIsDropped - WhatIsNeeded; if ( WhatIsExtra < 1 ){ WhatIsExtra = 0; }
-					int WhatIsTaken = WhatIsDropped - WhatIsExtra;
-
-					if ( WhatIsExtra > 0 ){ from.AddToBackpack( new Gold( WhatIsExtra ) ); }
-					iAmount = WhatIsTaken;
+					var iAmount = ItemUtilities.ConsumeClamped(dropped, WhatIsNeeded);
 
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
-					HaveGold = HaveGold + iAmount;
+					HaveGold += iAmount;
 					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "prop.special.egg.gold.added", iAmount, sEnd ) );
-					dropped.Delete();
-					return true;
+
+					return dropped.Deleted;
 				}
 			}
 

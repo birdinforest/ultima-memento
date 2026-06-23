@@ -1,11 +1,4 @@
-using System;
-using Server; 
-using System.Collections;
-using Server.ContextMenus;
-using System.Collections.Generic;
-using Server.Misc;
 using Server.Network;
-using Server.Items;
 using Server.Gumps;
 using Server.Mobiles;
 using Server.Commands;
@@ -144,23 +137,19 @@ namespace Server.Items
 
 		public override bool OnDragDrop( Mobile from, Item dropped )
 		{          		
-			Container pack = from.Backpack;
-			int iAmount = 0;
-
 			int needGold = 20000 - HaveGold;
 			int needCloth = 10000 - HaveCloth;
 
 			if ( from != null )
 			{
-				iAmount = dropped.Amount;
-
 				if ( dropped is Gold && needGold > 0 )
 				{
 					HaveGold = HaveGold + iAmount;
 									from.SendMessage( StringCatalog.Resolve( from.Account, "You added " + iAmount.ToString() + " gold." ) );
 					dropped.Delete();
 					this.InvalidateProperties();
-					return true;
+
+					return dropped.Deleted;
 				}
 				else if ( dropped is BaseFabric && needCloth > 0 )
 				{
@@ -168,7 +157,8 @@ namespace Server.Items
 									from.SendMessage( StringCatalog.Resolve( from.Account, "You added " + iAmount.ToString() + " cloth." ) );
 					dropped.Delete();
 					this.InvalidateProperties();
-					return true;
+
+					return dropped.Deleted;
 				}
 			}
 
