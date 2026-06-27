@@ -1,10 +1,5 @@
-using System;
-using Server;
 using Server.Network;
-using Server.Multis;
 using Server.Gumps;
-using Server.Mobiles;
-using Server.Accounting;
 using Server.Misc;
 using Server.Localization;
 
@@ -194,10 +189,10 @@ namespace Server.Items
 
 						armor.Name = m_Artifact.PaganName;
 						armor.Hue = m_Artifact.PaganColor;
-        				armor.m_Owner = from;
-        				armor.m_Gifter = "Artifact from Pagan";
-						armor.m_How = "Found by";
-        				armor.m_Points = m_Artifact.PaganPoints;
+        				armor.Owner = from;
+        				armor.Gifter = "Artifact from Pagan";
+						armor.How = "Found by";
+        				armor.Points = m_Artifact.PaganPoints;
 
 						from.AddToBackpack( armor );
 						from.SendMessage( StringCatalog.ResolveFormatByKey(from.Account, "quest.you_take_possession_of_the_pagan_artifact_c_n0_ex", m_Artifact.PaganName ) );
@@ -211,10 +206,10 @@ namespace Server.Items
 
 						shield.Name = m_Artifact.PaganName;
 						shield.Hue = m_Artifact.PaganColor;
-        				shield.m_Owner = from;
-        				shield.m_Gifter = "Artifact from Pagan";
-						shield.m_How = "Found by";
-        				shield.m_Points = m_Artifact.PaganPoints;
+        				shield.Owner = from;
+        				shield.Gifter = "Artifact from Pagan";
+						shield.How = "Found by";
+        				shield.Points = m_Artifact.PaganPoints;
 
 						from.AddToBackpack( shield );
 						from.SendMessage( StringCatalog.ResolveFormatByKey(from.Account, "quest.you_take_possession_of_the_pagan_artifact_c_n0_ex", m_Artifact.PaganName ) );
@@ -236,10 +231,10 @@ namespace Server.Items
 						}
 						mace.Name = m_Artifact.PaganName;
 						mace.Hue = m_Artifact.PaganColor;
-        				mace.m_Owner = from;
-        				mace.m_Gifter = "Artifact from Pagan";
-						mace.m_How = "Found by";
-        				mace.m_Points = m_Artifact.PaganPoints;
+        				mace.Owner = from;
+        				mace.Gifter = "Artifact from Pagan";
+						mace.How = "Found by";
+        				mace.Points = m_Artifact.PaganPoints;
 
 						from.AddToBackpack( mace );
 						from.SendMessage( StringCatalog.ResolveFormatByKey(from.Account, "quest.you_take_possession_of_the_pagan_artifact_c_n0_ex", m_Artifact.PaganName ) );
@@ -252,10 +247,10 @@ namespace Server.Items
 						dagger.ItemID = m_Artifact.PaganItem;
 						dagger.Name = m_Artifact.PaganName;
 						dagger.Hue = m_Artifact.PaganColor;
-        				dagger.m_Owner = from;
-        				dagger.m_Gifter = "Artifact from Pagan";
-						dagger.m_How = "Found by";
-        				dagger.m_Points = m_Artifact.PaganPoints;
+        				dagger.Owner = from;
+        				dagger.Gifter = "Artifact from Pagan";
+						dagger.How = "Found by";
+        				dagger.Points = m_Artifact.PaganPoints;
 						dagger.SkillBonuses.SetValues( 0, SkillName.Poisoning, Utility.RandomMinMax( 15, 30 ) );
 
 						from.AddToBackpack( dagger );
@@ -269,10 +264,10 @@ namespace Server.Items
 						axe.ItemID = m_Artifact.PaganItem;
 						axe.Name = m_Artifact.PaganName;
 						axe.Hue = m_Artifact.PaganColor;
-        				axe.m_Owner = from;
-        				axe.m_Gifter = "Artifact from Pagan";
-						axe.m_How = "Found by";
-        				axe.m_Points = m_Artifact.PaganPoints;
+        				axe.Owner = from;
+        				axe.Gifter = "Artifact from Pagan";
+						axe.How = "Found by";
+        				axe.Points = m_Artifact.PaganPoints;
 						axe.SkillBonuses.SetValues( 0, SkillName.Swords, Utility.RandomMinMax( 15, 30 ) );
 
 						from.AddToBackpack( axe );
@@ -291,10 +286,10 @@ namespace Server.Items
 
 						sword.Name = m_Artifact.PaganName;
 						sword.Hue = m_Artifact.PaganColor;
-        				sword.m_Owner = from;
-        				sword.m_Gifter = "Artifact from Pagan";
-						sword.m_How = "Found by";
-        				sword.m_Points = m_Artifact.PaganPoints;
+        				sword.Owner = from;
+        				sword.Gifter = "Artifact from Pagan";
+						sword.How = "Found by";
+        				sword.Points = m_Artifact.PaganPoints;
 
 						from.AddToBackpack( sword );
 						from.SendMessage( StringCatalog.ResolveFormatByKey(from.Account, "quest.you_take_possession_of_the_pagan_artifact_c_n0_ex", m_Artifact.PaganName ) );
