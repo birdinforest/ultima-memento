@@ -5,6 +5,7 @@ using Server.Commands;
 using System.Globalization;
 using Server.Regions;
 using Server.Localization;
+using Server.Utilities;
 
 namespace Server.Items
 {
@@ -144,18 +145,18 @@ namespace Server.Items
 			{
 				if ( dropped is Gold && needGold > 0 )
 				{
-					HaveGold = HaveGold + iAmount;
-									from.SendMessage( StringCatalog.Resolve( from.Account, "You added " + iAmount.ToString() + " gold." ) );
-					dropped.Delete();
+					var iAmount = ItemUtilities.ConsumeClamped(dropped, needGold);
+					HaveGold += iAmount;
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You added " + iAmount.ToString() + " gold." ) );
 					this.InvalidateProperties();
 
 					return dropped.Deleted;
 				}
 				else if ( dropped is BaseFabric && needCloth > 0 )
 				{
-					HaveCloth = HaveCloth + iAmount;
-									from.SendMessage( StringCatalog.Resolve( from.Account, "You added " + iAmount.ToString() + " cloth." ) );
-					dropped.Delete();
+					var iAmount = ItemUtilities.ConsumeClamped(dropped, needCloth);
+					HaveCloth += iAmount;
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You added " + iAmount.ToString() + " cloth." ) );
 					this.InvalidateProperties();
 
 					return dropped.Deleted;

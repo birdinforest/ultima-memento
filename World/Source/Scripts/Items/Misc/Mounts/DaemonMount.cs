@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using Server.Mobiles;
-using Server.Items;
 
 namespace Server.Items 
 { 
@@ -38,8 +35,6 @@ namespace Server.Items
 		{ 
 			base.Deserialize( reader ); 
 			int version = reader.ReadInt(); 
-			if ( Name != "Daemon Servant" )
-				Name = "Daemon Servant";
 		} 
 	}
 }
