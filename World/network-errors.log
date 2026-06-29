@@ -1,0 +1,42 @@
+# 21/06/2026 3:06:33 PM
+System.Net.Sockets.SocketException (0x80004005): The socket is not connected
+  at System.Net.Sockets.Socket.Shutdown (System.Net.Sockets.SocketShutdown how) [0x00018] in <3d05db74c0154ea0ba79ffba6c4417f9>:0 
+  at Server.Network.NetState.Dispose (System.Boolean flush) [0x0002c] in <c8fd753fd48646cbac75c136f3b5aa3f>:0 
+
+
+# 21/06/2026 3:22:19 PM
+System.Net.Sockets.SocketException (0x80004005): The socket is not connected
+  at System.Net.Sockets.Socket.Shutdown (System.Net.Sockets.SocketShutdown how) [0x00018] in <3d05db74c0154ea0ba79ffba6c4417f9>:0 
+  at Server.Network.NetState.Dispose (System.Boolean flush) [0x0002c] in <c8fd753fd48646cbac75c136f3b5aa3f>:0 
+
+
+# 25/06/2026 1:37:08 PM
+System.Net.Sockets.SocketException (0x80004005): The socket is not connected
+  at System.Net.Sockets.Socket.Shutdown (System.Net.Sockets.SocketShutdown how) [0x00018] in <3d05db74c0154ea0ba79ffba6c4417f9>:0 
+  at Server.Network.NetState.Dispose (System.Boolean flush) [0x0002c] in <c8fd753fd48646cbac75c136f3b5aa3f>:0 
+
+
+# 25/06/2026 1:50:49 PM
+System.Net.Sockets.SocketException (0x80004005): The socket is not connected
+  at System.Net.Sockets.Socket.Shutdown (System.Net.Sockets.SocketShutdown how) [0x00018] in <3d05db74c0154ea0ba79ffba6c4417f9>:0 
+  at Server.Network.NetState.Dispose (System.Boolean flush) [0x0002c] in <c8fd753fd48646cbac75c136f3b5aa3f>:0 
+
+
+# 27/06/2026 11:41:39 PM
+System.Net.Sockets.SocketException (0x80004005): The socket is not connected
+  at System.Net.Sockets.Socket.Shutdown (System.Net.Sockets.SocketShutdown how) [0x00018] in <3d05db74c0154ea0ba79ffba6c4417f9>:0 
+  at Server.Network.NetState.Dispose (System.Boolean flush) [0x0002c] in <fed6a33b4baf4666862a8dc1721c6961>:0 
+
+
+# 28/06/2026 10:12:22 AM
+System.Net.Sockets.SocketException (0x80004005): The socket is not connected
+  at System.Net.Sockets.Socket.Shutdown (System.Net.Sockets.SocketShutdown how) [0x00018] in <3d05db74c0154ea0ba79ffba6c4417f9>:0 
+  at Server.Network.NetState.Dispose (System.Boolean flush) [0x0002c] in <fed6a33b4baf4666862a8dc1721c6961>:0 
+
+
+# 28/06/2026 3:03:02 PM
+System.Net.Sockets.SocketException (0x80004005): The socket is not connected
+  at System.Net.Sockets.Socket.Shutdown (System.Net.Sockets.SocketShutdown how) [0x00018] in <3d05db74c0154ea0ba79ffba6c4417f9>:0 
+  at Server.Network.NetState.Dispose (System.Boolean flush) [0x0002c] in <fed6a33b4baf4666862a8dc1721c6961>:0 
+
+
