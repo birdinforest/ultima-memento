@@ -5,20 +5,35 @@ using System.Text;
 using Server.Mobiles;
 using Server.Gumps;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
 	[Flipable(0x52FE, 0x52FF)]
 	public class WantedMangar : Item
 	{
+		public override bool IsContentLocalized => true;
+
+		public override string DefaultName
+		{
+			get { return "Wanted!"; }
+		}
+
+		public override string DisplayNameLocalizationKey => "item.bulletin.wantedmangar";
+
 		[Constructable]
 		public WantedMangar( ) : base( 0x52FE )
 		{
-			Name = "Wanted!";
 		}
 
 		public class WantedMangarGump : Gump
 		{
+			private static string LocalizedHtml( Mobile from, string color, string key )
+			{
+				string text = StringCatalog.ResolveByKey( from?.Account, key );
+				return @"<BODY><BASEFONT Color=" + color + ">" + text + "</BASEFONT></BODY>";
+			}
+
 			public WantedMangarGump( Mobile from ): base( 50, 50 )
 			{
 				from.SendSound( 0x59 ); 
@@ -42,11 +57,11 @@ namespace Server.Items
 				AddItem(509, 74, 577);
 				AddItem(530, 96, 579);
 				AddItem(288, 90, 5360, 0xB98);
-				AddHtml( 11, 11, 243, 20, @"<BODY><BASEFONT Color=" + color + ">WANTED: Mangar the Dark</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 316, 17, 115, 20, @"<BODY><BASEFONT Color=" + color + ">Magic Mouth</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 496, 34, 115, 20, @"<BODY><BASEFONT Color=" + color + ">Secret Doors</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 339, 94, 115, 20, @"<BODY><BASEFONT Color=" + color + ">Clues</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 10, 169, 563, 160, @"<BODY><BASEFONT Color=" + color + ">You are trapped in Skara Brae, regardless of the rumors that it was destroyed in Sosaria. It seems that Mangar has moved this village into the void for his own nefarious purposes. You can only assume that if you can find Mangar and defeat him, then you may find a way to escape this void. To do that, you will need to explore and talk to any unusual citizens. Searching the dungeons for clues, secret doors, or magic mouths may prove helpful in your quest. You may slay powerful creatures that will drop chests on the floor you can use to acquire more clues or treasure. Keep an eye on your quest log, as it will show you the steps you accomplished. You feel a bit thirsty now, however, so you may want to get some wine in the cellar behind the tavern of the Scarlet Bard.</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 11, 11, 243, 20, LocalizedHtml( from, color, "book.wantedmangar.gump.headline" ), (bool)false, (bool)false);
+				AddHtml( 316, 17, 115, 20, LocalizedHtml( from, color, "book.wantedmangar.gump.magic_mouth" ), (bool)false, (bool)false);
+				AddHtml( 496, 34, 115, 20, LocalizedHtml( from, color, "book.wantedmangar.gump.secret_doors" ), (bool)false, (bool)false);
+				AddHtml( 339, 94, 115, 20, LocalizedHtml( from, color, "book.wantedmangar.gump.clues" ), (bool)false, (bool)false);
+				AddHtml( 10, 169, 563, 160, LocalizedHtml( from, color, "book.wantedmangar.gump.body" ), (bool)false, (bool)false);
 			}
 
 			public override void OnResponse(NetState state, RelayInfo info)

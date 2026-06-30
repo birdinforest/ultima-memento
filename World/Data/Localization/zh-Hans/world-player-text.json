@@ -1,5 +1,10 @@
 {
   "book.these_books_can_be_used_to_write_anything_your_heart_desires_dot_simply_open_the_book_where_you_can_": "你可以用这本书写任何你想写的东西。翻开书就能改标题并开始写作，还能用染料缸给封面换颜色。",
+  "book.wantedmangar.gump.headline": "通缉：黑暗曼加尔（Mangar the Dark）",
+  "book.wantedmangar.gump.magic_mouth": "魔法之口（Magic Mouth）",
+  "book.wantedmangar.gump.secret_doors": "密门",
+  "book.wantedmangar.gump.clues": "线索",
+  "book.wantedmangar.gump.body": "你被困在斯卡拉·布雷（Skara Brae），尽管有传言说它在索萨利亚（Sosaria）已被毁灭。看来曼加尔（Mangar）为了自己的邪恶目的，已将这座村庄移入虚空。你只能设想：若能找到曼加尔并击败他，或许就能找到逃离此虚空的方法。为此，你需要四处探索，与任何不寻常的居民交谈。在地城中搜寻线索、密门或魔法之口（Magic Mouth），也许对你的任务有所帮助。你可以击杀强大的生物——它们会在地面上掉落箱子，你可以借此获取更多线索或财宝。留意你的任务日志，它会显示你已完成的步骤。不过你现在有些口渴，不妨到猩红吟游诗人（Scarlet Bard）酒馆后面的地窖里取些酒来。",
   "eng.dark_core_exodus.body": "这枚黑暗水晶散发着微弱的异界能量脉冲，是名为埃克索达斯（Exodus）的神秘存在之核心——这个存在既非纯粹的恶魔也非机器，由蒙丹（Mondain）与米纳克斯（Minax）所创造。\n\n传说中有两种方法可以驾驭其力量：\n\n• 美德熔炉（Forge of Virtue）——前往野蛮帝域（Savaged Empire）中的古老石像鬼城市，在岩石地城（Dungeon Rock）内找到勤勉神龛（Shrine of Diligence）。在背包中携带黑暗核心的同时，将一件武器、防具、饰品或衣物放在神龛上。熔炉将消耗核心，为你的物品注入强大的魔法属性，并将其材质转化为埃克索达斯（Exodus）锻造之钢。\n\n• 魔偶手册（Manual of Golems）——如果你拥有魔偶手册(Golem Manual)，可以将黑暗核心添加至手册中。成品魔偶将被注入埃克索达斯（Exodus）的力量，呈现出深紫色光泽并拥有更强的能力。\n\n核心在上述任一过程中都会被消耗。谨慎使用，因为埃克索达斯（Exodus）终将重建自身，核心也会回到它的胸膛。",
   "eng.dark_core_exodus.title": "埃克索达斯（Exodus）的黑暗核心",
   "eng.dungeoneer_crates_are_something_that_homeowners_can_secure_in_their_homes_dot_when_secured_in_your_h": "地下探险者货箱（Dungeoneer crates）可以安放在家里。放好之后，商人行会（Merchants Guild）就会把你加入收货路线，商人会留下金币来换货物。放进一件东西就能看到它在箱里的估价。城里工匠很多，所以精工装备对这些商人来说没什么价值。护甲和武器的价值取决于材料，耐久度和品质也会影响价格。药水、卷轴、工具、家具、食物之类的也都能卖钱。<br><br>箱子上会显示当前可提取的金币数量，可以转成银行支票。单击箱子选「转账」就能全取出来。虽然箱子上标了金额，但实际取钱时，如果你是商人行会成员或者营商（Mercantile）技能高，可能拿到更多。这些箱子必须放在家里才有用。",
