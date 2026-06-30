@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "id": "catalog.decoration-skara-brae-merchants",
+  "pipeline": "string_catalog_only",
+  "en": "Skara Brae Merchants",
+  "expectedZh": "斯卡拉·布雷商人公会（Skara Brae Merchants）",
+  "tags": "decoration-sign-labels,skara-brae,string_catalog_only"
+}

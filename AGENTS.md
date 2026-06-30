@@ -141,6 +141,7 @@ Data/Localization/
 | `legend-book-rows.json` | `LegendsBook` / `ManualOfItems` 图鉴 Gump 列表行（`god.legendbook.row.001` …）：**仅 `zh-Hans/`** 维护中文行；英文运行时回退为 C# 表内嵌英文；**`keep_extra`**。 |
 | `trade-commodity.json` | 贸易物资双语 OPL：`trade.suffix.*`（矿石/锭/板等词尾）、`trade.compose.material_suffix`、`trade.custom.*`（马铠/望远镜/十尺杆/装订）、`trade.keg.potion.*`（药剂桶）、`placemap.name.format`（与 `placemap-labels.json` 地名哈希配合）。Pair `en/` + `zh-Hans/`；**`keep_extra`**。 |
 | `placemap-labels.json` | `Worlds.GetAreaEntrance` / `GetTown` 返回的英文地名 → 哈希键；`PlaceMap` 在 OPL 中按账号语言解析。Pair `en/` + `zh-Hans/`；**`keep_extra`**。 |
+| `decoration-sign-labels.json` | `Data/Decoration/*.cfg` 中 `Static … Name=` 门牌/店招英文字符串 → 哈希键；`Static.AddNameProperty` 经 `StringCatalog.TryResolve` 解析。Pair `en/` + `zh-Hans/`；**`keep_extra`**。 |
 | `chat3-ui.json` | Knives.Chat3 UI：`chat3.000`…`chat3.294`（与 `DefaultLocal.Load()` 顺序一致）由 `General.LocalFor` / `General.Local`（shard 默认语言）经 `StringCatalog.TryResolveByKey` 解析；`DefaultLocal` 为缺失键时的回退。Pair `en/` + `zh-Hans/`；**`keep_extra`**。 |
 | `mob-loot-infotext.json` | Boss 战利品 `InfoText1`–`InfoText5` 的 OPL：已知英文行用哈希键（`s.*`，与 `StringCatalog.TryResolve` 一致）+ `mob.loot.infotext.champion.belonged` 模板（`BaseChampion` `[Belonged to: {0}]`）；运行时写入的其它字符串回退为存档原文。Pair `en/` + `zh-Hans/`；**`keep_extra`**。 |
 | `world-player-text.json` | 从「任务 / 系统帮助 / 引擎物品描述 / 书籍默认说明」等迁移出来的 **shotkey** 文案（`quest.*`、`eng.*`、`sys.*`、`mob.*`、`book.*`）；C# 使用 `StringCatalog.ResolveByKey` / `ResolveFormatByKey`。Pair `en/` + `zh-Hans/`；**`keep_extra`**。由 `World/Source/Tools/build_world_player_text_from_queue.py`（自 `llm-queue-*.jsonl` 生成键）与 `patch_cs_resolve_to_shotkeys.py` 批量替换辅助维护。 |
@@ -530,6 +531,7 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-05-15: §3.1 — added `charrestore.json` logical-key bundle for the Character Item Restore system (NPC dialog + GM gump); `CitizenLocalization.SayLocalizedByKey` added for shortkey-based NPC speech broadcast.
 - 2026-05-16: §1 — indexed `World/Documentation/castle-of-knowledge.md` (Lodor Castle of Knowledge + Power Scroll merchants).
 - 2026-05-17: §3.1 — `legend-book-rows.json`（`god.legendbook.row.*`，zh-Hans-only）+ `keep_extra`；§3.2 — **`SendMessage(int hue, string)`** 仍须目录化，hue 仅客户端着色。
+- 2026-06-30: §3.1 — `decoration-sign-labels.json`（`keep_extra`）：装饰物 `Static` 门牌 `Name=` 哈希双语 OPL。
 - 2026-05-17: §3.1 — `trade-commodity.json`、`placemap-labels.json`（`keep_extra`）：动态材料全名、`PotionKeg` 桶名、`PlaceMap` 地名 OPL。
 - 2026-05-17: §3.2 — **`Item.AddColorText3Property`**：OPL 第三条彩色行（1072173）的可覆盖扩展点；用于 `ResolvePropertyText` / 格式化双语估价等，替代依赖 **`ColorText3`** 存英文。
 - 2026-05-18: §3.2 — **`ObjectPropertyList` / `list.Add`**：cliloc 槽或未保护的英文字符串、以及与变量的英文拼接（如 **`count + " Songs"`**）须 **`BuildingPropertyListLocale`** 分支下 **`AddLocalizedProperty` / `ResolveFormatByKey`**（与 tinted **`SendMessage(int hue, string)`** 同约束）；§3.2 增补反例/正例代码块与 **`含 {0} 首歌曲`** 模板说明；稽核模式见 **`World/Documentation/waiting-localization.md`** §9。

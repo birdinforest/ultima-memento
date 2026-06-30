@@ -53,6 +53,7 @@ listed in keep_extra in that script so they are never pruned as stale):
   trade-commodity.json — trade commodity OPL: material+suffix format, suffix words, custom names
   (horse barding, spyglass, …), potion keg names (trade.keg.potion.*), placemap.name.format.
   placemap-labels.json — hash keys for Worlds area/town English labels consumed by PlaceMap OPL.
+  decoration-sign-labels.json — hash keys for decoration cfg Static Name= shop/sign labels; resolved in Static.AddNameProperty via StringCatalog.TryResolve. keep_extra.
 
 Gump & books
 ------------

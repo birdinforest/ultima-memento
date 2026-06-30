@@ -1,10 +1,12 @@
 using System;
 using Server;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class Static : Item
 	{
+		public override bool IsContentLocalized => true;
 		public Static() : base( 0x80 )
 		{
 			Movable = false;
@@ -23,6 +25,28 @@ namespace Server.Items
 
 		public Static( Serial serial ) : base( serial )
 		{
+		}
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				string rawName = Name;
+
+				if ( rawName != null && rawName.Length > 0 )
+				{
+					string display = StringCatalog.TryResolve( BuildingPropertyListLocale, rawName ) ?? rawName;
+
+					if ( Amount <= 1 )
+						list.Add( display );
+					else
+						list.Add( 1050039, "{0}\t{1}", Amount, display );
+
+					return;
+				}
+			}
+
+			base.AddNameProperty( list );
 		}
 
 		public override void Serialize( GenericWriter writer )
