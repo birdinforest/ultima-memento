@@ -6,6 +6,9 @@ namespace Server.Items
     {
         public override string DisplayNameLocalizationKey => "item.sharpening.sharpeningstone.consecrated";
 
+        public override string DefaultDescription { get { return StringCatalog.Resolve(null, "This blessed stone consecrates a bladed weapon (sword, knife, axe, or spear) for 4 hours. While consecrated, each hit converts 100% of damage to the defender's weakest resistance type — making it highly effective against monsters with specific elemental vulnerabilities. Requires 100 Blacksmithing and 80 Knightship. The weapon must be in your backpack when using the stone."); } }
+        public override string InfoDataLocalizationKey { get { return "prop.consecrate.inspect.sharpening.body"; } }
+
         public ConsecratedSharpeningStone(Serial serial) : base(serial)
         {
         }

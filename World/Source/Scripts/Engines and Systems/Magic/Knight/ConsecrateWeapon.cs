@@ -92,6 +92,8 @@ namespace Server.Spells.Chivalry
             if (StopTimer(weapon))
             {
                 weapon.Consecrated = false;
+                weapon.ConsecrateExpiry = default(DateTime);
+                weapon.InvalidateProperties();
                 Effects.PlaySound(weapon.GetWorldLocation(), weapon.Map, 0x1F8);
             }
         }

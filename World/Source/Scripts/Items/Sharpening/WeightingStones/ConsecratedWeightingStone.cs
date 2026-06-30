@@ -6,6 +6,9 @@ namespace Server.Items
     {
         public override string DisplayNameLocalizationKey => "item.sharpening.weightingstone.consecrated";
 
+        public override string DefaultDescription { get { return StringCatalog.Resolve(null, "This blessed stone consecrates a blunt weapon (bashing weapon, staff, or pugilist glove) for 4 hours. While consecrated, each hit converts 100% of damage to the defender's weakest resistance type. Requires 100 Blacksmithing and 80 Knightship."); } }
+        public override string InfoDataLocalizationKey { get { return "prop.consecrate.inspect.weighting.body"; } }
+
         public ConsecratedWeightingStone(Serial serial) : base(serial)
         {
         }

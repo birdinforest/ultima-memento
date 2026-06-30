@@ -1,7 +1,7 @@
-﻿using Server.Localization;
+﻿using System;
+using Server.Localization;
 using Server.Spells.Chivalry;
 using Server.Targeting;
-using System;
 
 namespace Server.Items
 {
@@ -62,8 +62,42 @@ namespace Server.Items
 
         protected bool ApplyBonus(Mobile from, BaseWeapon weapon)
         {
-            ConsecrateWeaponSpell.Apply(from, weapon, TimeSpan.FromHours(4), false);
+            var duration = TimeSpan.FromHours(4);
+
+            ConsecrateWeaponSpell.Apply(from, weapon, duration, false);
+
+            weapon.ConsecrateExpiry = DateTime.Now + duration;
+            weapon.InvalidateProperties();
+
+            PlayConsecrateEffects(from, weapon);
+            SendConsecrateMessage(from);
+
             return true;
+        }
+
+        protected virtual void PlayConsecrateEffects(Mobile from, BaseWeapon weapon)
+        {
+            int itemID, soundID;
+
+            switch (weapon.Skill)
+            {
+                case SkillName.Bludgeoning: itemID = 0xFB4; soundID = 0x232; break;
+                case SkillName.Marksmanship: itemID = 0x13B1; soundID = 0x145; break;
+                default: itemID = 0xF5F; soundID = 0x56; break;
+            }
+
+            from.PlaySound(0x20C);
+            from.PlaySound(soundID);
+            from.FixedParticles(0x3779, 1, 30, 9964, 3, 3, EffectLayer.Waist);
+
+            IEntity start = new Entity(Serial.Zero, new Point3D(from.X, from.Y, from.Z), from.Map);
+            IEntity end = new Entity(Serial.Zero, new Point3D(from.X, from.Y, from.Z + 50), from.Map);
+            Effects.SendMovingParticles(start, end, itemID, 1, 0, false, false, 33, 3, 9501, 1, 0, EffectLayer.Head, 0x100);
+        }
+
+        private void SendConsecrateMessage(Mobile from)
+        {
+            from.SendMessage(68, StringCatalog.ResolveByKey(from.Account, "prop.consecrate.stone.success"));
         }
 
         protected void PromptForTarget(Mobile from, string message)

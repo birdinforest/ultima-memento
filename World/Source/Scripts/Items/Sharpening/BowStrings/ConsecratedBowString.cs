@@ -6,6 +6,9 @@ namespace Server.Items
     {
         public override string DisplayNameLocalizationKey => "item.sharpening.bowstring.consecrated";
 
+        public override string DefaultDescription { get { return StringCatalog.Resolve(null, "This blessed bow string consecrates a ranged weapon for 4 hours. While consecrated, each hit converts 100% of damage to the defender's weakest resistance type. Requires 100 Bowcraft and 80 Knightship."); } }
+        public override string InfoDataLocalizationKey { get { return "prop.consecrate.inspect.bowstring.body"; } }
+
         public ConsecratedBowString(Serial serial) : base(serial)
         {
         }
