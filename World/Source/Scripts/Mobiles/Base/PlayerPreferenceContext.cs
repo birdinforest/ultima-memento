@@ -78,6 +78,8 @@ namespace Server.Mobiles
 				VendorContainerSellLargeItemsPerPage = VendorContainerSellConfigGump.DefaultVendorContainerSellLargeItemsPerPage;
 				VendorContainerSellSelectionBehavior = VendorContainerSellSelectionBehavior.AsManyAsPossible;
 			}
+
+			LegacyCarve = 5 < version ? reader.ReadBool() : false;
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -121,6 +123,9 @@ namespace Server.Mobiles
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool IgnoreVendorGoldSafeguard { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool LegacyCarve { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int MagerySpellHue { get; set; }
@@ -208,6 +213,8 @@ namespace Server.Mobiles
 			writer.Write(VendorContainerSellCompactItemsPerPage);
 			writer.Write(VendorContainerSellLargeItemsPerPage);
 			writer.Write((int)VendorContainerSellSelectionBehavior);
+
+			writer.Write(LegacyCarve);
 		}
 	}
 }
