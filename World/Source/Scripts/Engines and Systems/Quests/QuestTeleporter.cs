@@ -67,6 +67,21 @@ namespace Server.Items
 			TeleporterOpen = 0;
 		}
 
+		/// <summary>Resolves stored teleporter copy (logical shotkey or legacy English literal from world saves).</summary>
+		private static string ResolveStoredLine( Mobile m, string text )
+		{
+			if ( text == null || text.Length == 0 )
+				return text;
+
+			string lang = AccountLang.GetLanguageCode( m.Account );
+			string byKey = StringCatalog.TryResolveByKey( lang, text );
+
+			if ( byKey != null )
+				return byKey;
+
+			return StringCatalog.Resolve( m.Account, text );
+		}
+
 		public void DoQuestTeleporter( Mobile m )
 		{
 			if ( m.InRange( this.GetWorldLocation(), 2 ) )
@@ -80,7 +95,7 @@ namespace Server.Items
 
 				if ( PlayerSettings.GetBardsTaleQuest( m, "BardsTaleWin" ) && this.Name == "a mysterious crystal ball" && this.X == 2830 && this.Y == 1875 )
 				{
-					m.PrivateOverheadMessage(MessageType.Regular, 1150, false, TeleporterLockMsg, m.NetState);
+					m.PrivateOverheadMessage(MessageType.Regular, 1150, false, ResolveStoredLine( m, TeleporterLockMsg ), m.NetState);
 				}
 				else if ( TeleporterOpen == 1 || TeleporterQuest == "blank" )
 				{
@@ -100,7 +115,7 @@ namespace Server.Items
 						BaseCreature.TeleportPets( m, TeleporterPointDest, TeleporterMapDest, false );
 						m.MoveToWorld ( TeleporterPointDest, TeleporterMapDest );
 						m.PlaySound( TeleporterSound );
-						m.PrivateOverheadMessage(MessageType.Regular, 1150, false, TeleporterMessage, m.NetState);
+						m.PrivateOverheadMessage(MessageType.Regular, 1150, false, ResolveStoredLine( m, TeleporterMessage ), m.NetState);
 					}
 				}
 				else if ( PlayerSettings.GetKeys( m, TeleporterQuest ) || PlayerSettings.GetBardsTaleQuest( m, TeleporterQuest ) )
@@ -110,11 +125,11 @@ namespace Server.Items
 					m.MoveToWorld ( TeleporterPointDest, TeleporterMapDest );
 					m.PlaySound( TeleporterSound );
 					Timer.DelayCall( TimeSpan.FromMinutes( 2.0 ), new TimerCallback( CloseQuestTeleporter ) );
-					m.PrivateOverheadMessage(MessageType.Regular, 1150, false, TeleporterMessage, m.NetState);
+					m.PrivateOverheadMessage(MessageType.Regular, 1150, false, ResolveStoredLine( m, TeleporterMessage ), m.NetState);
 				}
 				else
 				{
-					m.PrivateOverheadMessage(MessageType.Regular, 1150, false, TeleporterFail, m.NetState);
+					m.PrivateOverheadMessage(MessageType.Regular, 1150, false, ResolveStoredLine( m, TeleporterFail ), m.NetState);
 				}
 			}
 			else
