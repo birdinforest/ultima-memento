@@ -9,6 +9,7 @@ using Server.Spells;
 using Server.Spells.Necromancy;
 using Server.Spells.Bushido;
 using Server.Spells.Ninjitsu;
+using Server.Spells.Chivalry;
 using Server.Engines.Craft;
 using System.Collections.Generic;
 using Server.SkillHandlers;
@@ -191,7 +192,8 @@ namespace Server.Items
 		private SkillMod m_SkillMod, m_MageMod;
 
 		private bool m_Cursed; // Is this weapon cursed via Curse Weapon necromancer spell? Temporary; not serialized.
-		private bool m_Consecrated; // Is this weapon blessed via Consecrate Weapon paladin ability? Temporary; not serialized.
+		private bool m_Consecrated; // Consecrate Weapon spell or consecration stone; timer restored from m_ConsecrateExpiry on load.
+		private DateTime m_ConsecrateExpiry;
 
 		private AosAttributes m_AosAttributes;
 		private AosWeaponAttributes m_AosWeaponAttributes;
@@ -321,6 +323,13 @@ namespace Server.Items
 		{
 			get{ return m_Consecrated; }
 			set{ m_Consecrated = value; }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public DateTime ConsecrateExpiry
+		{
+			get { return m_ConsecrateExpiry; }
+			set { m_ConsecrateExpiry = value; }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -2599,7 +2608,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 13 ); // version
+			writer.Write( (int) 14 ); // version
 
 			SaveFlag flags = SaveFlag.None;
 
@@ -2727,6 +2736,11 @@ namespace Server.Items
 
 			if ( GetSaveFlag( flags, SaveFlag.TrapDamaged ) )
 				writer.Write( (bool) m_TrapDamaged );
+
+			writer.Write( m_ConsecrateExpiry > DateTime.Now );
+
+			if ( m_ConsecrateExpiry > DateTime.Now )
+				writer.Write( (DateTime) m_ConsecrateExpiry );
 		}
 
 		[Flags]
@@ -2777,6 +2791,7 @@ namespace Server.Items
 
 			switch ( version )
 			{
+			case 14:
 			case 13:
 			case 12:
 			case 11:
@@ -2958,6 +2973,22 @@ namespace Server.Items
 
 					if ( GetSaveFlag( flags, SaveFlag.TrapDamaged ) )
 						m_TrapDamaged = reader.ReadBool();
+
+					if ( version >= 14 && reader.ReadBool() )
+					{
+						m_ConsecrateExpiry = reader.ReadDateTime();
+						TimeSpan remaining = m_ConsecrateExpiry - DateTime.Now;
+
+						if ( remaining > TimeSpan.Zero )
+						{
+							m_Consecrated = true;
+							ConsecrateWeaponSpell.Apply( null, this, remaining, false );
+						}
+						else
+						{
+							m_ConsecrateExpiry = default(DateTime);
+						}
+					}
 
 					break;
 				}
@@ -3829,6 +3860,33 @@ namespace Server.Items
 				else
 					list.Add( 1060639, "{0}\t{1}", m_Hits, m_MaxHits ); // durability ~1_val~ / ~2_val~
 			}
+
+			if ( m_Consecrated && m_ConsecrateExpiry > DateTime.Now )
+			{
+				string timeLabel = FormatConsecrateRemaining( m_ConsecrateExpiry - DateTime.Now );
+
+				if ( localized )
+					AddLocalizedProperty( list, "prop.weapon.consecrated.status", timeLabel );
+				else
+					list.Add( String.Format( "Consecrated [{0} remaining]", timeLabel ) );
+			}
+		}
+
+		private static string FormatConsecrateRemaining( TimeSpan t )
+		{
+			if ( t.TotalMinutes < 1 )
+				return "< 1m";
+
+			if ( t.TotalHours >= 1 )
+				return String.Format( "{0}h {1}m", (int)t.TotalHours, t.Minutes );
+
+			return String.Format( "{0}m", (int)t.TotalMinutes );
+		}
+
+		public override void OnDelete()
+		{
+			ConsecrateWeaponSpell.StopTimer( this );
+			base.OnDelete();
 		}
 
 		public override void OnSingleClick( Mobile from )
