@@ -1,5 +1,4 @@
 using System;
-using Server.Items;
 using Server.Network;
 using Server.Spells;
 using Server.Mobiles;
@@ -7,7 +6,11 @@ using Server.Localization;
 
 namespace Server.Items
 {
-	public class Harpoon : BaseRanged
+	public interface IHarpoon
+	{
+	}
+
+	public class Harpoon : BaseRanged, IHarpoon
 	{
 		public override string DisplayNameLocalizationKey => "item.equip.weapon.harpoon";
 		public override int EffectID{ get{ return 0x528A; } }

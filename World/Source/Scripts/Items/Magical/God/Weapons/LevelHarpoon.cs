@@ -1,5 +1,4 @@
 using System;
-using Server.Items;
 using Server.Network;
 using Server.Spells;
 using Server.Mobiles;
@@ -7,7 +6,7 @@ using Server.Localization;
 
 namespace Server.Items
 {
-	public class LevelHarpoon : BaseLevelRanged
+	public class LevelHarpoon : BaseLevelRanged, IHarpoon
 	{
 		public override int EffectID{ get{ return 0x528A; } }
 		public override Type AmmoType{ get{ return typeof( HarpoonRope ); } }
