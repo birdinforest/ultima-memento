@@ -5,8 +5,12 @@ using Server.Localization;
 
 namespace Server.Items
 {
+	public interface IThrowingGloves
+	{
+	}
+
 	[FlipableAttribute( 0x13C6, 0x13CE )]
-	public class ThrowingGloves : BaseRanged
+	public class ThrowingGloves : BaseRanged, IThrowingGloves
 	{
 		public override string DisplayNameLocalizationKey => "item.equip.weapon.throwinggloves";
 		public string GloveType;

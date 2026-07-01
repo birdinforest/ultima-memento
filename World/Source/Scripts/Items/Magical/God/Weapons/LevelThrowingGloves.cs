@@ -6,7 +6,7 @@ using Server.Localization;
 namespace Server.Items
 {
 	[FlipableAttribute( 0x13C6, 0x13CE )]
-	public class LevelThrowingGloves : BaseLevelRanged
+	public class LevelThrowingGloves : BaseLevelRanged, IThrowingGloves
 	{
 		public string GloveType;
 		
