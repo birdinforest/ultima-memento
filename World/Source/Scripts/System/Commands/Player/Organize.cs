@@ -176,7 +176,7 @@ namespace Server.Commands
 		{
 			AccessLevel = AccessLevel.Player;
 			Supports = CommandSupport.AllItems;
-			Commands = new string[] { "Organize" };
+			Commands = new string[] { "Organize", "OrganizeMe" };
 			ObjectTypes = ObjectTypes.Both;
 			Usage = "Organize [<Horizontal_Space> | NULL] [<Vertical_Space> | NULL]";
 			Description = "Organizes a targeted container and all it's contents into separate bags.";
@@ -184,7 +184,9 @@ namespace Server.Commands
 
 		public static void Initialize()
 		{
-			TargetCommands.Register(new OrganizeCommand());
+			var command = new OrganizeCommand();
+			TargetCommands.Register(command);
+			CommandSystem.Register("OrganizeMe", AccessLevel.Player, args => command.Execute(args, args.Mobile));
 		}
 
 		public override void Execute(CommandEventArgs e, object obj)
