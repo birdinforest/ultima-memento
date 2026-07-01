@@ -122,11 +122,11 @@ namespace Server.Mobiles
 
 			if ( PlayerSettings.GetBardsTaleQuest( m_Mobile, "BardsTaleCatacombKey" ) )
 			{
-				CitizenLocalization.SayToLocalized(m_Giver, m_Mobile, "Have you been meditating in the Catacombs?");
+				CitizenLocalization.SayToLocalizedByKey( m_Giver, m_Mobile, "mob.madgodpriest.meditating_catacombs", "Have you been meditating in the Catacombs?" );
 			}
 			else if ( !( PlayerSettings.GetBardsTaleQuest( m_Mobile, "BardsTaleMadGodName" ) ) )
 			{
-				CitizenLocalization.SayToLocalized(m_Giver, m_Mobile, "Only a true disciple knows the name of the Mad God.");
+				CitizenLocalization.SayToLocalizedByKey( m_Giver, m_Mobile, "mob.madgodpriest.disciple_mad_god_name", "Only a true disciple knows the name of the Mad God." );
 				}
 				else if ( !( PlayerSettings.GetBardsTaleQuest( m_Mobile, "BardsTaleCatacombKey" ) ) )
 				{
@@ -134,7 +134,7 @@ namespace Server.Mobiles
 					{
 						PlayerSettings.SetBardsTaleQuest( m_Mobile, "BardsTaleCatacombKey", true );
 						m_Mobile.SendSound( 0x3D );
-						m_Mobile.SendGump(new SpeechGump( m_Mobile, "The Catacombs Below", SpeechFunctions.SpeechText( m_Giver, m_Mobile, "MadGodPriest" ) ));
+						m_Mobile.SendGump(new SpeechGump( m_Mobile, StringCatalog.ResolveByKey( m_Mobile.Account, "mob.madgodpriest.gump.catacombs_below" ), SpeechFunctions.SpeechText( m_Giver, m_Mobile, "MadGodPriest" ) ));
 					}
 				}
             }
