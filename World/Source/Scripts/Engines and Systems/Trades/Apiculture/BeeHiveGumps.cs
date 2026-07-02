@@ -5,16 +5,19 @@ using Server.Gumps;
 using Server.Network;
 using Server.Multis;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Engines.Apiculture
 {	
 	public class apiBeeHiveMainGump : Gump
 	{
 		apiBeeHive m_hive;
+		private readonly Mobile m_From;
 
 		public apiBeeHiveMainGump( Mobile from, apiBeeHive hive ) : base( 20, 20 )
 		{
 			m_hive = hive;
+			m_From = from;
 
 			Closable=true;
 			Disposable=true;
@@ -115,17 +118,17 @@ namespace Server.Engines.Apiculture
 
 			//misc labels
 			if( hive.HiveStage >= HiveStatus.Producing )
-				AddLabel(100, 42, 92, "Colony : "+hive.Population.ToString()+"0k" );
+				AddLabel(100, 42, 92, ApicultureLocale.FormatMsg( from.Account, "apiculture.gump.colony", hive.Population.ToString() ) );
 			else if( hive.HiveStage >= HiveStatus.Brooding )
-				AddLabel(100, 42, 92, "   Brooding");
+				AddLabel(100, 42, 92, StringCatalog.ResolveByKey( from.Account, "apiculture.gump.brooding" ) );
 			else
-				AddLabel(100, 42, 92, "  Colonizing");
+				AddLabel(100, 42, 92, StringCatalog.ResolveByKey( from.Account, "apiculture.gump.colonizing" ) );
 			switch( hive.OverallHealth ) //overall health
 			{
-				case HiveHealth.Dying: AddLabel(116, 146, 37, "Dying"); break;
-				case HiveHealth.Sickly: AddLabel(116, 146, 52, "Sickly"); break;
-				case HiveHealth.Healthy: AddLabel(116, 146, 67, "Healthy"); break;
-				case HiveHealth.Thriving: AddLabel(116, 146, 92, "Thriving"); break;
+				case HiveHealth.Dying: AddLabel(116, 146, 37, StringCatalog.ResolveByKey( from.Account, "apiculture.gump.health.dying" ) ); break;
+				case HiveHealth.Sickly: AddLabel(116, 146, 52, StringCatalog.ResolveByKey( from.Account, "apiculture.gump.health.sickly" ) ); break;
+				case HiveHealth.Healthy: AddLabel(116, 146, 67, StringCatalog.ResolveByKey( from.Account, "apiculture.gump.health.healthy" ) ); break;
+				case HiveHealth.Thriving: AddLabel(116, 146, 92, StringCatalog.ResolveByKey( from.Account, "apiculture.gump.health.thriving" ) ); break;
 			}  
 
 			//resource
@@ -168,7 +171,7 @@ namespace Server.Engines.Apiculture
 
 			if( !m_hive.IsAccessibleTo( from ) )
 			{
-				m_hive.LabelTo( from, "You cannot use that." );
+				m_hive.LabelTo( from, ApicultureLocale.Msg( from.Account, "apiculture.msg.cannot_use_that" ) );
 				return;
 			}
 
@@ -275,10 +278,12 @@ namespace Server.Engines.Apiculture
 		public static readonly bool PureWax = false; //does the hive produce pure (instead of raw) wax?
 
 		apiBeeHive m_hive;
+		private readonly Mobile m_From;
 
 		public apiBeeHiveProductionGump( Mobile from, apiBeeHive hive ) : base( 20, 20 )
 		{
 			m_hive = hive;
+			m_From = from;
 
 			Closable=true;
 			Disposable=true;
@@ -320,7 +325,7 @@ namespace Server.Engines.Apiculture
 				AddLabel(113, 97, 0x481, m_hive.Wax.ToString() );
 			}			
 
-			AddLabel(110, 43, 92, "Production");  //title
+			AddLabel(110, 43, 92, StringCatalog.ResolveByKey( from.Account, "apiculture.gump.production.title" ) );  //title
 
 			AddItem(44, 47, 6256);
 			AddItem(191, 151, 2540);
@@ -351,7 +356,7 @@ namespace Server.Engines.Apiculture
 
 			if( !m_hive.IsAccessibleTo( from ) )
 			{
-				m_hive.LabelTo( from, "You cannot use that." );
+				m_hive.LabelTo( from, ApicultureLocale.Msg( from.Account, "apiculture.msg.cannot_use_that" ) );
 				return;
 			}
 
@@ -372,7 +377,7 @@ namespace Server.Engines.Apiculture
 					{
 						if( hivetool == null || !(hivetool is HiveTool) )
 						{
-							m_hive.LabelTo( from, "You need a hive tool to extract the excess honey!" );
+							m_hive.LabelTo( from, ApicultureLocale.Msg( from.Account, "apiculture.msg.need_hive_tool_honey" ) );
 							from.SendGump( new apiBeeHiveProductionGump( from, m_hive ) );
 							return;
 						}
@@ -380,7 +385,7 @@ namespace Server.Engines.Apiculture
 
 					if( m_hive.Honey < 3 )
 					{
-						m_hive.LabelTo( from, "There isn't enough honey in the hive to fill a bottle!" );
+						m_hive.LabelTo( from, ApicultureLocale.Msg( from.Account, "apiculture.msg.not_enough_honey" ) );
 						from.SendGump( new apiBeeHiveProductionGump( from, m_hive ) );
 						break;
 					}
@@ -398,19 +403,19 @@ namespace Server.Engines.Apiculture
 							((HiveTool)hivetool).UsesRemaining--;
 							if( ((HiveTool)hivetool).UsesRemaining < 1 )
 							{
-								from.SendMessage("You wear out the hive tool.");
+								from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.hive_tool_worn_out" ) );
 								hivetool.Delete();
 							}
 						}
 
 						m_hive.Honey -= 3;
-						m_hive.LabelTo( from, "You fill a bottle with golden honey and place it in your pack." );
+						m_hive.LabelTo( from, ApicultureLocale.Msg( from.Account, "apiculture.msg.filled_honey_bottle" ) );
 						from.SendGump( new apiBeeHiveProductionGump(from,m_hive) );
 						break;
 					}
 					else
 					{
-						m_hive.LabelTo( from, "You need a bottle to fill with honey!" );
+						m_hive.LabelTo( from, ApicultureLocale.Msg( from.Account, "apiculture.msg.need_bottle" ) );
 						from.SendGump( new apiBeeHiveProductionGump( from, m_hive ) );
 						break;
 					}
@@ -425,7 +430,7 @@ namespace Server.Engines.Apiculture
 					{
 						if( hivetool == null || !(hivetool is HiveTool) )
 						{
-							m_hive.LabelTo( from, "You need a hive tool to scrape the excess beeswax!" );
+							m_hive.LabelTo( from, ApicultureLocale.Msg( from.Account, "apiculture.msg.need_hive_tool_wax" ) );
 							from.SendGump( new apiBeeHiveProductionGump( from, m_hive ) );
 							return;
 						}
@@ -433,7 +438,7 @@ namespace Server.Engines.Apiculture
 
 					if( m_hive.Wax < 1 )
 					{
-						m_hive.LabelTo( from, "There isn't enough excess wax in the hive to harvest!" );
+						m_hive.LabelTo( from, ApicultureLocale.Msg( from.Account, "apiculture.msg.not_enough_wax" ) );
 						return;
 					}
 
@@ -455,13 +460,13 @@ namespace Server.Engines.Apiculture
 						((HiveTool)hivetool).UsesRemaining--;
 						if( ((HiveTool)hivetool).UsesRemaining < 1 )
 						{
-							from.SendMessage("You wear out the hive tool.");
+							from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.hive_tool_worn_out" ) );
 							hivetool.Delete();
 						}
 					}
 
 					m_hive.Wax = 0;
-					m_hive.LabelTo( from, "You collect the excess beeswax and place it in your pack." );
+					m_hive.LabelTo( from, ApicultureLocale.Msg( from.Account, "apiculture.msg.collected_wax" ) );
 					from.SendGump( new apiBeeHiveProductionGump(from,m_hive) );
 					break;
 				}
@@ -485,10 +490,12 @@ namespace Server.Engines.Apiculture
 	public class apiBeeHiveDestroyGump : Gump
 	{
 		apiBeeHive m_hive;
+		private readonly Mobile m_From;
 
 		public apiBeeHiveDestroyGump( Mobile from, apiBeeHive hive ) : base( 20, 20 )
 		{
 			m_hive = hive;
+			m_From = from;
 
 			Closable=true;
 			Disposable=true;
@@ -504,7 +511,7 @@ namespace Server.Engines.Apiculture
 			AddItem(12, 65, 3307);
 			AddItem(206, 69, 3307);
 
-			AddLabel(84, 43, 92, "Destory the hive?");
+			AddLabel(84, 43, 92, StringCatalog.ResolveByKey( from.Account, "apiculture.gump.destroy.confirm" ) );
 					
 			AddItem(73, 68, 2330);
 			AddItem(160, 68, 5359);	
@@ -530,7 +537,7 @@ namespace Server.Engines.Apiculture
 
 			if( !m_hive.IsAccessibleTo( from ) )
 			{
-				m_hive.LabelTo( from, "You cannot use that." );
+				m_hive.LabelTo( from, ApicultureLocale.Msg( from.Account, "apiculture.msg.cannot_use_that" ) );
 				return;
 			}
 
@@ -549,7 +556,7 @@ namespace Server.Engines.Apiculture
 					{
 						deed.Delete();
 
-						m_hive.LabelTo( from, "You cannot destroy the hive with a full backpack!" );
+						m_hive.LabelTo( from, ApicultureLocale.Msg( from.Account, "apiculture.msg.cannot_destroy_full_pack" ) );
 						from.SendGump( new apiBeeHiveMainGump( from, m_hive ) );
 
 						break;

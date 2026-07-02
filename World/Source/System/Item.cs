@@ -980,6 +980,64 @@ namespace Server
 			get { return null; }
 		}
 
+		/// <summary>
+		/// True when vendor/tooltip OPL should use <see cref="GetLocalizedPropertyList"/>.
+		/// </summary>
+		public bool UsesLocalizedPropertyList => ShouldUseLocalizedOpl();
+
+		/// <summary>
+		/// Resolves the vendor buy-menu row label (packet 0x74) for <paramref name="viewer"/>.
+		/// <paramref name="buyCatalogName"/> is the English or cliloc-reference string stored on <see cref="GenericBuyInfo"/>.
+		/// </summary>
+		public string GetVendorBuyListName( Mobile viewer, string buyCatalogName )
+		{
+			Server.Accounting.IAccount acct = viewer?.Account;
+			string key = DisplayNameLocalizationKey;
+
+			if ( key != null && key.Length > 0 )
+				return StringCatalog.ResolveByKey( acct, key );
+
+			string english = buyCatalogName;
+
+			if ( IsClilocReferenceName( english ) && int.TryParse( english, out int cliloc ) )
+			{
+				string viaCliloc = CliLocTable.Lookup( cliloc );
+
+				if ( viaCliloc != null && viaCliloc.Length > 0 )
+					english = viaCliloc;
+			}
+
+			if ( english == null || english.Length == 0 )
+				english = Name;
+
+			if ( ( english == null || english.Length == 0 ) && LabelNumber > 0 )
+			{
+				string viaLabel = CliLocTable.Lookup( LabelNumber );
+
+				if ( viaLabel != null && viaLabel.Length > 0 )
+					english = viaLabel;
+			}
+
+			if ( english != null && english.Length > 0 )
+				return StringCatalog.Resolve( acct, english );
+
+			return english ?? string.Empty;
+		}
+
+		private static bool IsClilocReferenceName( string name )
+		{
+			if ( name == null || name.Length < 6 )
+				return false;
+
+			for ( int i = 0; i < name.Length; ++i )
+			{
+				if ( name[i] < '0' || name[i] > '9' )
+					return false;
+			}
+
+			return true;
+		}
+
 		private bool ShouldUseLocalizedOpl()
 		{
 			if ( IsContentLocalized )

@@ -59,7 +59,7 @@ namespace Server.Engines.Craft
 				if ( craftSystem.GumpTitleNumber > 0 )
 					AddHtmlLocalized( 10, 12, 510, 20, craftSystem.GumpTitleNumber, LabelColor, false, false );
 				else
-					AddHtml( 10, 12, 510, 20, craftSystem.GumpTitleString, false, false );
+					AddHtml( 10, 12, 510, 20, CraftDisplayLocale.Resolve( from, craftSystem.GumpTitleString ), false, false );
 
 				AddButton( 15, 405, 4014, 4016, 0, GumpButtonType.Reply, 0 );
 				AddHtmlLocalized( 50, 408, 150, 18, 1044150, LabelColor, false, false ); // BACK
@@ -81,7 +81,7 @@ namespace Server.Engines.Craft
 				if ( craftItem.NameNumber > 0 )
 					AddHtmlLocalized( 330, 40, 180, 18, craftItem.NameNumber, LabelColor, false, false );
 				else
-					AddLabel( 330, 40, LabelHue, craftItem.NameString );
+					AddLabel( 330, 40, LabelHue, CraftDisplayLocale.Resolve( from, craftItem.NameString ) );
 
 				if ( craftItem.UseAllRes )
 					AddHtmlLocalized( 170, 302 + (m_OtherCount++ * 20), 310, 18, 1048176, LabelColor, false, false ); // Makes as many as possible at once
@@ -281,7 +281,7 @@ namespace Server.Engines.Craft
 				if ( nameNumber > 0 )
 					AddHtmlLocalized( 170, 219 + (i * 20), 310, 18, nameNumber, LabelColor, false, false );
 				else
-					AddLabel( 170, 219 + (i * 20), LabelHue, nameString );
+					AddLabel( 170, 219 + (i * 20), LabelHue, CraftDisplayLocale.Resolve( m_From, nameString ) );
 
 				AddLabel( 430, 219 + (i * 20), LabelHue, craftResource.Amount.ToString() );
 			}

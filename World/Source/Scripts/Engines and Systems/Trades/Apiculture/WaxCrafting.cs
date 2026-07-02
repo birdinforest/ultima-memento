@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class WaxingPot : BaseTool
 	{
+		public override string DisplayNameLocalizationKey => "item.apiculture.wax_crafting_pot";
 		public override CraftSystem CraftSystem{ get{ return DefWaxingPot.CraftSystem; } }
 
 		[Constructable]
@@ -27,7 +28,11 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "For Those Skilled In Cooking");
+
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.apiculture.skilled_in_cooking" );
+			else
+				list.Add( 1070722, "For Those Skilled In Cooking");
         } 
 
 		public WaxingPot( Serial serial ) : base( serial )

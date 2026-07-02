@@ -1,11 +1,14 @@
 using System;
 using Server;
+using Server.Localization;
 using Server.Network;
 
 namespace Server.Items
 {
 	public class HiveTool : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.apiculture.hive_tool";
+
 		private int m_UsesRemaining;
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -24,7 +27,7 @@ namespace Server.Items
 		public HiveTool( int uses ) : base( 2549 )
 		{
 			m_UsesRemaining = uses;
-			Name = "Hive Tool";
+			Name = "hive tool";
 		}
 
 		public HiveTool( Serial serial ) : base( serial )
@@ -35,7 +38,10 @@ namespace Server.Items
 		{
 			base.GetProperties( list );
 
-			list.Add( 1060584, "{0}\t{1}", m_UsesRemaining.ToString(), "Uses" );
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.apiculture.uses", m_UsesRemaining.ToString() );
+			else
+				list.Add( 1060584, "{0}\t{1}", m_UsesRemaining.ToString(), "Uses" );
 		}
 
 		public virtual void DisplayDurabilityTo( Mobile m )
@@ -52,7 +58,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick(Mobile from)
 		{
-			from.PrivateOverheadMessage( 0, 1154, false,  "This tool is used to harvest resources from a beehive.", from.NetState );				
+			from.PrivateOverheadMessage( 0, 1154, false, StringCatalog.ResolveByKey( from.Account, "apiculture.msg.hive_tool_help" ), from.NetState );				
 		}
 
 		public override void Serialize( GenericWriter writer )

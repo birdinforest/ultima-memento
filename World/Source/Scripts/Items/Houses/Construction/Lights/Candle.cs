@@ -6,6 +6,7 @@ namespace Server.Items
 	public class Candle : BaseEquipableLight
 	{
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Wax; } }
+		public override string DisplayNameLocalizationKey => "item.light.candle";
 
 		public override int LitItemID{ get { return 0xA0F; } }
 		public override int UnlitItemID{ get { return 0xA28; } }

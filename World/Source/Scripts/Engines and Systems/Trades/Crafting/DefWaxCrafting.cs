@@ -23,12 +23,12 @@ namespace Server.Engines.Craft
  
         public override string GumpTitleString
         {
-            get { return "<BASEFONT Color=#FBFBFB><CENTER>WAX CRAFTING MENU</CENTER></BASEFONT>"; }
+            get { return "apiculture.craft.gump.title"; }
         }
 
 		public override string CraftSystemTxt
 		{
-			get { return "Crafting: Waxworks"; }
+			get { return "apiculture.craft.system.txt"; }
 		}
 
 		private static CraftSystem m_CraftSystem;
@@ -100,92 +100,92 @@ wax sculptors
 
 			#region Candles
 
-			index = AddCraft(typeof(Candle), "Candles", "Candle, Small", 5.0, 45.0, typeof( Beeswax ), 1025154, 20, 1042081 );
+			index = AddCraft(typeof(Candle), "apiculture.craft.group.candles", "apiculture.craft.recipe.candle_small", 5.0, 45.0, typeof( Beeswax ), 1025154, 20, 1042081 );
 			AddRes( index, typeof( IronIngot ), 1044036, 2, 1042081 );
 
-			index = AddCraft(typeof(CandleLarge), "Candles", "Candle, Large", 15.0, 55.0, typeof( Beeswax ), 1025154, 20, 1042081 );
+			index = AddCraft(typeof(CandleLarge), "apiculture.craft.group.candles", "apiculture.craft.recipe.candle_large", 15.0, 55.0, typeof( Beeswax ), 1025154, 20, 1042081 );
 			AddRes( index, typeof( IronIngot ), 1044036, 2, 1042081 );
 
-			AddCraft( typeof( ColorCandleShort ), "Candles", "Candle, Short, Dyeable", 10.0, 50.0, typeof( Beeswax ), 1025154, 10, 1042081 );
+			AddCraft( typeof( ColorCandleShort ), "apiculture.craft.group.candles", "apiculture.craft.recipe.candle_short_dyeable", 10.0, 50.0, typeof( Beeswax ), 1025154, 10, 1042081 );
 
-			AddCraft( typeof( ColorCandleLong ), "Candles", "Candle, Tall, Dyeable", 20.0, 60.0, typeof( Beeswax ), 1025154, 20, 1042081 );
+			AddCraft( typeof( ColorCandleLong ), "apiculture.craft.group.candles", "apiculture.craft.recipe.candle_tall_dyeable", 20.0, 60.0, typeof( Beeswax ), 1025154, 20, 1042081 );
 
-			index = AddCraft(typeof(WallSconce), "Candles", "Candle, Sconce, Wall", 50.0, 90.0, typeof( Beeswax ), 1025154, 20, 1042081 );
+			index = AddCraft(typeof(WallSconce), "apiculture.craft.group.candles", "apiculture.craft.recipe.candle_sconce_wall", 50.0, 90.0, typeof( Beeswax ), 1025154, 20, 1042081 );
 			AddRes( index, typeof( IronIngot ), 1044036, 2, 1042081 );
 
-			index = AddCraft(typeof(CandleSkull), "Candles", "Candle, Skull", 50.0, 90.0, typeof( Beeswax ), 1025154, 20, 1042081 );
-			AddRes( index, typeof( Head ), "Human Head", 1, 1042081 );
+			index = AddCraft(typeof(CandleSkull), "apiculture.craft.group.candles", "apiculture.craft.recipe.candle_skull", 50.0, 90.0, typeof( Beeswax ), 1025154, 20, 1042081 );
+			AddRes( index, typeof( Head ), "apiculture.craft.res.human_head", 1, 1042081 );
 
-			index = AddCraft(typeof(CandleReligious), "Candles", "Candle, Religious", 80.0, 120.0, typeof( Beeswax ), 1025154, 20, 1042081 );
+			index = AddCraft(typeof(CandleReligious), "apiculture.craft.group.candles", "apiculture.craft.recipe.candle_religious", 80.0, 120.0, typeof( Beeswax ), 1025154, 20, 1042081 );
 			AddRes( index, typeof( IronIngot ), 1044036, 2, 1042081 );
 
 			#endregion
 
 			#region Rub
 
-			index = AddCraft(typeof(JarsOfWaxInstrument), "Wax Polish", "Jar of Instrument Polish", 60.0, 100.0, typeof( Beeswax ), 1025154, 10, 1042081 );
+			index = AddCraft(typeof(JarsOfWaxInstrument), "apiculture.craft.group.wax_polish", "apiculture.craft.recipe.jar_instrument_polish", 60.0, 100.0, typeof( Beeswax ), 1025154, 10, 1042081 );
 			AddRes( index, typeof ( Bottle ), 1044529, 1, 500315 );
 
-			index = AddCraft(typeof(JarsOfWaxLeather), "Wax Polish", "Jar of Leather Polish", 60.0, 100.0, typeof( Beeswax ), 1025154, 10, 1042081 );
+			index = AddCraft(typeof(JarsOfWaxLeather), "apiculture.craft.group.wax_polish", "apiculture.craft.recipe.jar_leather_polish", 60.0, 100.0, typeof( Beeswax ), 1025154, 10, 1042081 );
 			AddRes( index, typeof ( Bottle ), 1044529, 1, 500315 );
 
-			index = AddCraft(typeof(JarsOfWaxMetal), "Wax Polish", "Jar of Metal Polish", 60.0, 100.0, typeof( Beeswax ), 1025154, 10, 1042081 );
+			index = AddCraft(typeof(JarsOfWaxMetal), "apiculture.craft.group.wax_polish", "apiculture.craft.recipe.jar_metal_polish", 60.0, 100.0, typeof( Beeswax ), 1025154, 10, 1042081 );
 			AddRes( index, typeof ( Bottle ), 1044529, 1, 500315 );
 
 			#endregion
 
 			#region Paintings
 
-			index = AddCraft(typeof(WaxPainting), "Encaustic Paintings", "Painting, Large", 60.0, 100.0, typeof( Beeswax ), 1025154, 50, 1042081 );
-			AddRes( index, typeof ( Dyes ), "dyes", 1, 1042081 );
-			AddRes( index, typeof ( PaintCanvas ), "painting canvas", 1, 1042081 );
-			AddRes( index, typeof ( Board ), "boards", 4, 1042081 );
+			index = AddCraft(typeof(WaxPainting), "apiculture.craft.group.encaustic_paintings", "apiculture.craft.recipe.painting_large", 60.0, 100.0, typeof( Beeswax ), 1025154, 50, 1042081 );
+			AddRes( index, typeof ( Dyes ), "apiculture.craft.res.dyes", 1, 1042081 );
+			AddRes( index, typeof ( PaintCanvas ), "apiculture.craft.res.painting_canvas", 1, 1042081 );
+			AddRes( index, typeof ( Board ), "apiculture.craft.res.boards", 4, 1042081 );
 
-			index = AddCraft(typeof(WaxPaintingA), "Encaustic Paintings", "Painting", 60.0, 100.0, typeof( Beeswax ), 1025154, 30, 1042081 );
-			AddRes( index, typeof ( Dyes ), "dyes", 1, 1042081 );
-			AddRes( index, typeof ( PaintCanvas ), "painting canvas", 1, 1042081 );
-			AddRes( index, typeof ( Board ), "boards", 4, 1042081 );
+			index = AddCraft(typeof(WaxPaintingA), "apiculture.craft.group.encaustic_paintings", "apiculture.craft.recipe.painting", 60.0, 100.0, typeof( Beeswax ), 1025154, 30, 1042081 );
+			AddRes( index, typeof ( Dyes ), "apiculture.craft.res.dyes", 1, 1042081 );
+			AddRes( index, typeof ( PaintCanvas ), "apiculture.craft.res.painting_canvas", 1, 1042081 );
+			AddRes( index, typeof ( Board ), "apiculture.craft.res.boards", 4, 1042081 );
 
-			index = AddCraft(typeof(WaxPaintingB), "Encaustic Paintings", "Painting", 60.0, 100.0, typeof( Beeswax ), 1025154, 30, 1042081 );
-			AddRes( index, typeof ( Dyes ), "dyes", 1, 1042081 );
-			AddRes( index, typeof ( PaintCanvas ), "painting canvas", 1, 1042081 );
-			AddRes( index, typeof ( Board ), "boards", 4, 1042081 );
+			index = AddCraft(typeof(WaxPaintingB), "apiculture.craft.group.encaustic_paintings", "apiculture.craft.recipe.painting", 60.0, 100.0, typeof( Beeswax ), 1025154, 30, 1042081 );
+			AddRes( index, typeof ( Dyes ), "apiculture.craft.res.dyes", 1, 1042081 );
+			AddRes( index, typeof ( PaintCanvas ), "apiculture.craft.res.painting_canvas", 1, 1042081 );
+			AddRes( index, typeof ( Board ), "apiculture.craft.res.boards", 4, 1042081 );
 
-			index = AddCraft(typeof(WaxPaintingC), "Encaustic Paintings", "Painting", 60.0, 100.0, typeof( Beeswax ), 1025154, 30, 1042081 );
-			AddRes( index, typeof ( Dyes ), "dyes", 1, 1042081 );
-			AddRes( index, typeof ( PaintCanvas ), "painting canvas", 1, 1042081 );
-			AddRes( index, typeof ( Board ), "boards", 4, 1042081 );
+			index = AddCraft(typeof(WaxPaintingC), "apiculture.craft.group.encaustic_paintings", "apiculture.craft.recipe.painting", 60.0, 100.0, typeof( Beeswax ), 1025154, 30, 1042081 );
+			AddRes( index, typeof ( Dyes ), "apiculture.craft.res.dyes", 1, 1042081 );
+			AddRes( index, typeof ( PaintCanvas ), "apiculture.craft.res.painting_canvas", 1, 1042081 );
+			AddRes( index, typeof ( Board ), "apiculture.craft.res.boards", 4, 1042081 );
 
-			index = AddCraft(typeof(WaxPaintingD), "Encaustic Paintings", "Painting", 60.0, 100.0, typeof( Beeswax ), 1025154, 30, 1042081 );
-			AddRes( index, typeof ( Dyes ), "dyes", 1, 1042081 );
-			AddRes( index, typeof ( PaintCanvas ), "painting canvas", 1, 1042081 );
-			AddRes( index, typeof ( Board ), "boards", 4, 1042081 );
+			index = AddCraft(typeof(WaxPaintingD), "apiculture.craft.group.encaustic_paintings", "apiculture.craft.recipe.painting", 60.0, 100.0, typeof( Beeswax ), 1025154, 30, 1042081 );
+			AddRes( index, typeof ( Dyes ), "apiculture.craft.res.dyes", 1, 1042081 );
+			AddRes( index, typeof ( PaintCanvas ), "apiculture.craft.res.painting_canvas", 1, 1042081 );
+			AddRes( index, typeof ( Board ), "apiculture.craft.res.boards", 4, 1042081 );
 
-			index = AddCraft(typeof(WaxPaintingE), "Encaustic Paintings", "Painting", 60.0, 100.0, typeof( Beeswax ), 1025154, 30, 1042081 );
-			AddRes( index, typeof ( Dyes ), "dyes", 1, 1042081 );
-			AddRes( index, typeof ( PaintCanvas ), "painting canvas", 1, 1042081 );
-			AddRes( index, typeof ( Board ), "boards", 4, 1042081 );
+			index = AddCraft(typeof(WaxPaintingE), "apiculture.craft.group.encaustic_paintings", "apiculture.craft.recipe.painting", 60.0, 100.0, typeof( Beeswax ), 1025154, 30, 1042081 );
+			AddRes( index, typeof ( Dyes ), "apiculture.craft.res.dyes", 1, 1042081 );
+			AddRes( index, typeof ( PaintCanvas ), "apiculture.craft.res.painting_canvas", 1, 1042081 );
+			AddRes( index, typeof ( Board ), "apiculture.craft.res.boards", 4, 1042081 );
 
-			index = AddCraft(typeof(WaxPaintingF), "Encaustic Paintings", "Painting", 60.0, 100.0, typeof( Beeswax ), 1025154, 30, 1042081 );
-			AddRes( index, typeof ( Dyes ), "dyes", 1, 1042081 );
-			AddRes( index, typeof ( PaintCanvas ), "painting canvas", 1, 1042081 );
-			AddRes( index, typeof ( Board ), "boards", 4, 1042081 );
+			index = AddCraft(typeof(WaxPaintingF), "apiculture.craft.group.encaustic_paintings", "apiculture.craft.recipe.painting", 60.0, 100.0, typeof( Beeswax ), 1025154, 30, 1042081 );
+			AddRes( index, typeof ( Dyes ), "apiculture.craft.res.dyes", 1, 1042081 );
+			AddRes( index, typeof ( PaintCanvas ), "apiculture.craft.res.painting_canvas", 1, 1042081 );
+			AddRes( index, typeof ( Board ), "apiculture.craft.res.boards", 4, 1042081 );
 
-			index = AddCraft(typeof(WaxPaintingG), "Encaustic Paintings", "Painting", 60.0, 100.0, typeof( Beeswax ), 1025154, 30, 1042081 );
-			AddRes( index, typeof ( Dyes ), "dyes", 1, 1042081 );
-			AddRes( index, typeof ( PaintCanvas ), "painting canvas", 1, 1042081 );
-			AddRes( index, typeof ( Board ), "boards", 4, 1042081 );
+			index = AddCraft(typeof(WaxPaintingG), "apiculture.craft.group.encaustic_paintings", "apiculture.craft.recipe.painting", 60.0, 100.0, typeof( Beeswax ), 1025154, 30, 1042081 );
+			AddRes( index, typeof ( Dyes ), "apiculture.craft.res.dyes", 1, 1042081 );
+			AddRes( index, typeof ( PaintCanvas ), "apiculture.craft.res.painting_canvas", 1, 1042081 );
+			AddRes( index, typeof ( Board ), "apiculture.craft.res.boards", 4, 1042081 );
 
 			#endregion
 
 			#region Sculptors
 
-			AddCraft(typeof(WaxSculptors), "Wax Scupltors", "Sculptor", 60.0, 100.0, typeof( Beeswax ), 1025154, 40, 1042081 );
-			AddCraft(typeof(WaxSculptorsA), "Wax Scupltors", "Sculptor", 60.0, 100.0, typeof( Beeswax ), 1025154, 40, 1042081 );
-			AddCraft(typeof(WaxSculptorsB), "Wax Scupltors", "Sculptor", 60.0, 100.0, typeof( Beeswax ), 1025154, 40, 1042081 );
-			AddCraft(typeof(WaxSculptorsC), "Wax Scupltors", "Sculptor", 60.0, 100.0, typeof( Beeswax ), 1025154, 40, 1042081 );
-			AddCraft(typeof(WaxSculptorsD), "Wax Scupltors", "Sculptor, Angel", 60.0, 100.0, typeof( Beeswax ), 1025154, 40, 1042081 );
-			AddCraft(typeof(WaxSculptorsE), "Wax Scupltors", "Sculptor, Dragon", 80.0, 120.0, typeof( Beeswax ), 1025154, 60, 1042081 );
+			AddCraft(typeof(WaxSculptors), "apiculture.craft.group.wax_sculptors", "apiculture.craft.recipe.sculptor", 60.0, 100.0, typeof( Beeswax ), 1025154, 40, 1042081 );
+			AddCraft(typeof(WaxSculptorsA), "apiculture.craft.group.wax_sculptors", "apiculture.craft.recipe.sculptor", 60.0, 100.0, typeof( Beeswax ), 1025154, 40, 1042081 );
+			AddCraft(typeof(WaxSculptorsB), "apiculture.craft.group.wax_sculptors", "apiculture.craft.recipe.sculptor", 60.0, 100.0, typeof( Beeswax ), 1025154, 40, 1042081 );
+			AddCraft(typeof(WaxSculptorsC), "apiculture.craft.group.wax_sculptors", "apiculture.craft.recipe.sculptor", 60.0, 100.0, typeof( Beeswax ), 1025154, 40, 1042081 );
+			AddCraft(typeof(WaxSculptorsD), "apiculture.craft.group.wax_sculptors", "apiculture.craft.recipe.sculptor_angel", 60.0, 100.0, typeof( Beeswax ), 1025154, 40, 1042081 );
+			AddCraft(typeof(WaxSculptorsE), "apiculture.craft.group.wax_sculptors", "apiculture.craft.recipe.sculptor_dragon", 80.0, 120.0, typeof( Beeswax ), 1025154, 60, 1042081 );
 
 			#endregion
 

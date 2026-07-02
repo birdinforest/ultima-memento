@@ -5,11 +5,13 @@ using Server.Engines.Craft;
 using Server.Gumps;
 using Server.Engines.Apiculture;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class apiSmallWaxPot : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.apiculture.small_wax_pot";
 		public static readonly int MaxWax = 255; //the maximuum amount the pot can hold
 
 		private int m_UsesRemaining;
@@ -46,7 +48,7 @@ namespace Server.Items
 		public apiSmallWaxPot( int uses ) : base( 2532 )
 		{
 			m_UsesRemaining = uses;
-			Name = "Small Wax Pot";
+			Name = "small wax pot";
 			Weight = 3.0;
 			m_RawBeeswax = 0;
 			m_PureBeeswax = 0;
@@ -60,19 +62,43 @@ namespace Server.Items
 		{
 			base.GetProperties( list );
 
-			list.Add( 1060584, "{0}\t{1}", m_UsesRemaining.ToString(), "Uses" );
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.apiculture.uses", m_UsesRemaining.ToString() );
+			else
+				list.Add( 1060584, "{0}\t{1}", m_UsesRemaining.ToString(), "Uses" );
 
 			if( PureBeeswax < 1 && RawBeeswax < 1 )
-				list.Add( 1049644 , "Empty" );
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.apiculture.pot.empty" );
+				else
+					list.Add( 1049644 , "Empty" );
+			}
 			else if( PureBeeswax > 0 )
 			{
-				list.Add( 1060663,"{0}\t{1}" ,"Wax", PureBeeswax.ToString() );
-				list.Add( 1049644 , "Rendered" );
+				if ( BuildingPropertyListLocale != null )
+				{
+					list.Add( 1060663, "{0}\t{1}", ResolvePropertyText( "prop.apiculture.wax" ), PureBeeswax.ToString() );
+					AddLocalizedProperty( list, "prop.apiculture.wax.rendered" );
+				}
+				else
+				{
+					list.Add( 1060663,"{0}\t{1}" ,"Wax", PureBeeswax.ToString() );
+					list.Add( 1049644 , "Rendered" );
+				}
 			}
 			else
 			{
-				list.Add( 1060663,"{0}\t{1}" ,"Wax", RawBeeswax.ToString() );
-				list.Add( 1049644 , "Raw" );
+				if ( BuildingPropertyListLocale != null )
+				{
+					list.Add( 1060663, "{0}\t{1}", ResolvePropertyText( "prop.apiculture.wax" ), RawBeeswax.ToString() );
+					AddLocalizedProperty( list, "prop.apiculture.wax.raw" );
+				}
+				else
+				{
+					list.Add( 1060663,"{0}\t{1}" ,"Wax", RawBeeswax.ToString() );
+					list.Add( 1049644 , "Raw" );
+				}
 			}
 		}
 
@@ -98,7 +124,7 @@ namespace Server.Items
 			if ( m_RawBeeswax < MaxWax )
 				from.Target = new AddWaxTarget( this );
 			else
-				from.PrivateOverheadMessage( 0, 1154, false,  "The pot cannot hold any more raw beeswax.", from.NetState );
+				from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.pot_full_raw" ), from.NetState );
 		}
 
 		public void EndAdd( Mobile from, object o )
@@ -120,7 +146,7 @@ namespace Server.Items
 						wax.Delete();
 					}
 					
-					from.PrivateOverheadMessage( 0, 1154, false,  "You put raw beeswax in the pot.", from.NetState );
+					from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.put_raw_in_pot" ), from.NetState );
 					
 					if( from.HasGump( typeof(apiBeeHiveSmallPotGump)) )
 						from.CloseGump( typeof(apiBeeHiveSmallPotGump) );
@@ -131,11 +157,11 @@ namespace Server.Items
 						BeginAdd( from );
 				}
 				else
-					from.PrivateOverheadMessage( 0, 1154, false,  "You can only put raw beeswax in the pot.", from.NetState );
+					from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.only_raw_in_pot" ), from.NetState );
 			}
 			else
 			{
-				from.PrivateOverheadMessage( 0, 1154, false,  "The wax must be in your pack to target it.", from.NetState );
+				from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.wax_in_pack" ), from.NetState );
 			}
 		}
 
@@ -220,9 +246,9 @@ namespace Server.Items
 				AddItem(231, 105, 2532);
 
 			//labels
-			AddLabel(76 , 71 , 1153, "Render Beeswax");
-			AddLabel(76 , 40 , 1153, "Add Raw Beeswax");
-			AddLabel(76 , 101, 1153, "Empty Pot");
+			AddLabel(76 , 71 , 1153, StringCatalog.ResolveByKey( from.Account, "apiculture.gump.pot.render" ) );
+			AddLabel(76 , 40 , 1153, StringCatalog.ResolveByKey( from.Account, "apiculture.gump.pot.add_raw" ) );
+			AddLabel(76 , 101, 1153, StringCatalog.ResolveByKey( from.Account, "apiculture.gump.pot.empty" ) );
 			AddLabel(331, 110, 1153, "?");
 
 			//buttons
@@ -232,8 +258,8 @@ namespace Server.Items
 			AddButton(326, 110, 212, 212, (int)Buttons.cmdHelp, GumpButtonType.Reply, 0);
 
 			//wax amounts
-			AddLabel(207, 40, 1153, "Raw Beeswax: " + m_pot.RawBeeswax );
-			AddLabel(207, 71, 1153, "Pure Beeswax: " + m_pot.PureBeeswax );
+			AddLabel(207, 40, 1153, ApicultureLocale.FormatMsg( from.Account, "apiculture.gump.pot.raw_count", m_pot.RawBeeswax ) );
+			AddLabel(207, 71, 1153, ApicultureLocale.FormatMsg( from.Account, "apiculture.gump.pot.pure_count", m_pot.PureBeeswax ) );
 		}
 		
 		public enum Buttons
@@ -253,7 +279,7 @@ namespace Server.Items
 
 			if( !m_pot.IsAccessibleTo( from ) )
 			{
-				from.PrivateOverheadMessage( 0, 1154, false, "I cannot use that.", from.NetState );
+				from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.cannot_use_that_alt" ), from.NetState );
 				return;
 			}
 
@@ -271,11 +297,11 @@ namespace Server.Items
 
 					if ( m_pot.PureBeeswax > 0 )
 					{
-						from.PrivateOverheadMessage( 0, 1154, false,  "You cannot mix raw beeswax with rendered wax.  Please empty the pot first.", from.NetState );
+						from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.cannot_mix_wax" ), from.NetState );
 						return;
 					}
 
-					from.PrivateOverheadMessage( 0, 1154, false,  "Choose the raw beeswax you wish to add to the pot.", from.NetState );
+					from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.choose_raw_wax" ), from.NetState );
 					m_pot.BeginAdd( from );
 					
 					break;
@@ -284,7 +310,7 @@ namespace Server.Items
 				{
 					if( m_pot.PureBeeswax < 1 && m_pot.RawBeeswax < 1 )
 					{
-						from.PrivateOverheadMessage( 0, 1154, false, "There is no wax in the pot.", from.NetState );
+						from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.no_wax_in_pot" ), from.NetState );
 						from.SendGump( new apiBeeHiveSmallPotGump(from,m_pot) );
 						return;
 					}
@@ -308,7 +334,7 @@ namespace Server.Items
 					m_pot.ItemID = 2532; //empty pot
 
 					from.SendGump( new apiBeeHiveSmallPotGump(from, m_pot) );
-					from.PrivateOverheadMessage( 0, 1154, false,  "You place the beeswax in your pack.", from.NetState );
+					from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.place_wax_in_pack" ), from.NetState );
 						
 					break;
 				}
@@ -316,25 +342,25 @@ namespace Server.Items
 				{
 					if( m_pot.UsesRemaining < 1 )
 					{//no uses remaining
-						from.PrivateOverheadMessage( 0, 1154, false,  "The pot is too damamged to render beeswax.", from.NetState );
+						from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.pot_too_damaged_render" ), from.NetState );
 						from.SendGump( new apiBeeHiveSmallPotGump(from, m_pot) );
 						return;
 					}
 					else if( m_pot.PureBeeswax > 1 )
 					{//already rendered
-						from.PrivateOverheadMessage( 0, 1154, false,  "The pot is already full of rendered beeswax.", from.NetState );
+						from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.pot_full_rendered" ), from.NetState );
 						from.SendGump( new apiBeeHiveSmallPotGump(from, m_pot) );
 						return;
 					}
 					else if( m_pot.RawBeeswax < 10 )
 					{//not enough raw beeswax
-						from.PrivateOverheadMessage( 0, 1154, false,  "There is not enough raw beeswax in the pot.", from.NetState );
+						from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.not_enough_raw" ), from.NetState );
 						from.SendGump( new apiBeeHiveSmallPotGump(from, m_pot) );
 						return;
 					}
 					else if( !BeeHiveHelper.Find( from, BeeHiveHelper.m_HeatSources ) )
 					{//need a heat source to melt the wax
-						from.PrivateOverheadMessage( 0, 1154, false,  "You must be near a heat source to render beeswax.", from.NetState );
+						from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.need_heat_render" ), from.NetState );
 						from.SendGump( new apiBeeHiveSmallPotGump(from, m_pot) );
 						return;
 					}
@@ -355,7 +381,7 @@ namespace Server.Items
 					}
 
 					from.PlaySound( 0x21 );
-					from.PrivateOverheadMessage( 0, 1154, false,  "You slowly melt the raw beeswax and remove the impurities.", from.NetState );
+					from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.rendering_wax" ), from.NetState );
 					
 					m_pot.PureBeeswax = m_pot.RawBeeswax - waste;
 					m_pot.RawBeeswax = 0;

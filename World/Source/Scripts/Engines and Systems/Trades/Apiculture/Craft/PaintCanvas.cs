@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class PaintCanvas : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.apiculture.painting_canvas";
 		public override string DefaultDescription{ get{ return StringCatalog.ResolveByKey(null, "eng.these_can_be_handed_to_an_artist_c_where_the_will_create_a_painting_of_you_to_hang_in_your_home_dot_"); } }
 
 		[Constructable]

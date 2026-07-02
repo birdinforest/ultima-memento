@@ -6,6 +6,8 @@ using Server.Targeting;
 using Server.Prompts;
 using Server.Mobiles;
 using Server.Misc;
+using Server.Localization;
+using Server.Engines.Apiculture;
 
 namespace Server.Items
 {
@@ -124,6 +126,7 @@ namespace Server.Items
 	public class WaxSculptorsD : Item
 	{
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Wax; } }
+		public override string DisplayNameLocalizationKey => "item.apiculture.wax_sculptor_angel";
 
 		[Constructable]
 		public WaxSculptorsD() : base( 0x139B )
@@ -155,6 +158,7 @@ namespace Server.Items
 	public class WaxSculptorsE : Item
 	{
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Wax; } }
+		public override string DisplayNameLocalizationKey => "item.apiculture.wax_sculptor_dragon";
 
 		[Constructable]
 		public WaxSculptorsE() : base( 0x42BB )
@@ -185,6 +189,7 @@ namespace Server.Items
 	public class WaxSculptors : Item
 	{
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Wax; } }
+		public override string DisplayNameLocalizationKey => "item.apiculture.wax_sculptor";
 
 		public int SculptorsFlipID1;
 		public int SculptorsFlipID2;
@@ -216,7 +221,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "Select the character you wish to have this sculptor represent." );
+				from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.select_sculptor_subject" ) );
 				t = new WaxTarget( this );
 				from.Target = t;
 			}
@@ -243,11 +248,11 @@ namespace Server.Items
 						if ( carving.Title != null ){ sTitle = carving.Title; }
 						sTitle = sTitle.Replace("  ", String.Empty);
 						m_Wax.Name = "wax sculptor of " + carving.Name + " " + sTitle;
-						from.SendMessage( "This wax sculptor is now of that person." );
+						from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.sculptor_of_person" ) );
 					}
 					else
 					{
-						from.SendMessage( "This wax sculptor doesn't even look like that." );
+						from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.sculptor_not_like_that" ) );
 					}
 				}
 				else if ( (Item)targeted == m_Wax )
@@ -263,13 +268,32 @@ namespace Server.Items
 					}
 					fakeName = fakeName + " " + TavernPatrons.GetTitle();
 					m_Wax.Name = "sculptor of " + fakeName;
-					from.SendMessage( "This wax sculptor is now of a fictional character." );
+					from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.sculptor_fictional" ) );
 				}
 				else
 				{
-					from.SendMessage( "This wax sculptor doesn't even look like that." );
+					from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.sculptor_not_like_that" ) );
 				}
 			}
+		}
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				string n = Name;
+
+				if ( n != null && n.StartsWith( "wax sculptor of " ) )
+					AddLocalizedProperty( list, "item.apiculture.sculptor_of", n.Substring( 16 ) );
+				else if ( n != null && n.StartsWith( "sculptor of " ) )
+					AddLocalizedProperty( list, "item.apiculture.sculptor_of_fictional", n.Substring( 12 ) );
+				else
+					AddLocalizedProperty( list, "item.apiculture.wax_sculptor" );
+
+				return;
+			}
+
+			base.AddNameProperty( list );
 		}
 
 		public WaxSculptors( Serial serial ) : base( serial )

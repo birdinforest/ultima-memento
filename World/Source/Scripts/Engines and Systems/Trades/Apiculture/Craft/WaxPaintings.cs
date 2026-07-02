@@ -6,6 +6,8 @@ using Server.Targeting;
 using Server.Prompts;
 using Server.Mobiles;
 using Server.Misc;
+using Server.Localization;
+using Server.Engines.Apiculture;
 
 namespace Server.Items
 {
@@ -271,6 +273,7 @@ namespace Server.Items
 	public class WaxPainting : Item
 	{
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Wax; } }
+		public override string DisplayNameLocalizationKey => "item.apiculture.painting";
 
 		public int PaintingFlipID1;
 		public int PaintingFlipID2;
@@ -301,7 +304,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "Select the character you wish to have this painting represent." );
+				from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.select_painting_subject" ) );
 				t = new WaxTarget( this );
 				from.Target = t;
 			}
@@ -328,11 +331,11 @@ namespace Server.Items
 						if ( portrait.Title != null ){ sTitle = portrait.Title; }
 						sTitle = sTitle.Replace("  ", String.Empty);
 						m_Wax.Name = "painting of " + portrait.Name + " " + sTitle;
-						from.SendMessage( "This painting is now of that person." );
+						from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.painting_of_person" ) );
 					}
 					else
 					{
-						from.SendMessage( "This painting doesn't even look like that." );
+						from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.painting_not_like_that" ) );
 					}
 				}
 				else if ( targeted is Item && (Item)targeted == m_Wax )
@@ -348,13 +351,30 @@ namespace Server.Items
 					}
 					fakeName = fakeName + " " + TavernPatrons.GetTitle();
 					m_Wax.Name = "painting of " + fakeName;
-					from.SendMessage( "This painting is now of a fictional character." );
+					from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.painting_fictional" ) );
 				}
 				else
 				{
-					from.SendMessage( "This painting doesn't even look like that." );
+					from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.painting_not_like_that" ) );
 				}
 			}
+		}
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null )
+			{
+				string n = Name;
+
+				if ( n != null && n.StartsWith( "painting of " ) )
+					AddLocalizedProperty( list, "item.apiculture.painting_of", n.Substring( 12 ) );
+				else
+					AddLocalizedProperty( list, "item.apiculture.painting" );
+
+				return;
+			}
+
+			base.AddNameProperty( list );
 		}
 
 		public WaxPainting( Serial serial ) : base( serial )

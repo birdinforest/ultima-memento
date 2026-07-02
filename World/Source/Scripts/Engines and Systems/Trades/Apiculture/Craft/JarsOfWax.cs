@@ -4,12 +4,15 @@ using System.Collections;
 using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
+using Server.Localization;
+using Server.Engines.Apiculture;
 
 namespace Server.Items
 {
 	public class JarsOfWaxMetal : Item
 	{
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Wax; } }
+		public override string DisplayNameLocalizationKey => "item.apiculture.jar_metal_wax";
 
 		[Constructable]
 		public JarsOfWaxMetal( ) : base( 0x1007 )
@@ -24,7 +27,11 @@ namespace Server.Items
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
 			base.AddNameProperties( list );
-			list.Add( 1070722, "Adds Durability To Metal" );
+
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.apiculture.wax.metal_durability" );
+			else
+				list.Add( 1070722, "Adds Durability To Metal" );
 		}
 
 		public override void OnDoubleClick( Mobile from )
@@ -37,7 +44,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "What metal object do you want to rub this wax on?" );
+				from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.target_metal" ) );
 				t = new WaxTarget( this );
 				from.Target = t;
 			}
@@ -62,13 +69,13 @@ namespace Server.Items
 
 					if ( !iWax.IsChildOf( from.Backpack ) )
 					{
-						from.SendMessage( "You can only use this wax on items in your pack." );
+						from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.wax_items_in_pack" ) );
 					}
 					else if ( iWax.IsChildOf( from.Backpack ) && CraftResources.GetType( iWax.Resource ) == CraftResourceType.Metal )
 					{
 						int cBonus = xWax.WeaponAttributes.DurabilityBonus;
 
-						if ( cBonus > 50 ){ from.SendMessage( "That metal is already in good condition." ); }
+						if ( cBonus > 50 ){ from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.metal_good_condition" ) ); }
 						else
 						{
 							xWax.WeaponAttributes.DurabilityBonus = ( cBonus + 10 );
@@ -80,7 +87,7 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage( "You cannot rub this wax on that." );
+						from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.cannot_rub_wax" ) );
 					}
 				}
 				else if ( iWax is BaseArmor )
@@ -89,13 +96,13 @@ namespace Server.Items
 
 					if ( !iWax.IsChildOf( from.Backpack ) )
 					{
-						from.SendMessage( "You can only use this wax on items in your pack." );
+						from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.wax_items_in_pack" ) );
 					}
 					else if ( iWax.IsChildOf( from.Backpack ) && CraftResources.GetType( iWax.Resource ) == CraftResourceType.Metal )
 					{
 						int cBonus = xWax.ArmorAttributes.DurabilityBonus;
 
-						if ( cBonus > 50 ){ from.SendMessage( "That metal is already in good condition." ); }
+						if ( cBonus > 50 ){ from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.metal_good_condition" ) ); }
 						else
 						{
 							xWax.ArmorAttributes.DurabilityBonus = ( cBonus + 10 );
@@ -107,12 +114,12 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage( "You cannot rub this wax on that." );
+						from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.cannot_rub_wax" ) );
 					}
 				}
 				else
 				{
-					from.SendMessage( "You cannot rub this wax on that." );
+					from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.cannot_rub_wax" ) );
 				}
 			}
 		}
@@ -137,6 +144,7 @@ namespace Server.Items
 	public class JarsOfWaxLeather : Item
 	{
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Wax; } }
+		public override string DisplayNameLocalizationKey => "item.apiculture.jar_leather_wax";
 
 		[Constructable]
 		public JarsOfWaxLeather( ) : base( 0x1007 )
@@ -151,7 +159,11 @@ namespace Server.Items
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
 			base.AddNameProperties( list );
-			list.Add( 1070722, "Adds Durability To Leather" );
+
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.apiculture.wax.leather_durability" );
+			else
+				list.Add( 1070722, "Adds Durability To Leather" );
 		}
 
 		public override void OnDoubleClick( Mobile from )
@@ -164,7 +176,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "What leather object do you want to rub this wax on?" );
+				from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.target_leather" ) );
 				t = new WaxTarget( this );
 				from.Target = t;
 			}
@@ -189,13 +201,13 @@ namespace Server.Items
 
 					if ( !iWax.IsChildOf( from.Backpack ) )
 					{
-						from.SendMessage( "You can only use this wax on items in your pack." );
+						from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.wax_items_in_pack" ) );
 					}
 					else if ( iWax.IsChildOf( from.Backpack ) && CraftResources.GetType( iWax.Resource ) == CraftResourceType.Leather )
                     {
 						int cBonus = xWax.ArmorAttributes.DurabilityBonus;
 
-						if ( cBonus > 50 ){ from.SendMessage( "That leather is already in good condition." ); }
+						if ( cBonus > 50 ){ from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.leather_good_condition" ) ); }
 						else
 						{
 							xWax.ArmorAttributes.DurabilityBonus = ( cBonus + 10 );
@@ -207,12 +219,12 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage( "You cannot rub this wax on that." );
+						from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.cannot_rub_wax" ) );
 					}
 				}
 				else
 				{
-					from.SendMessage( "You cannot rub this wax on that." );
+					from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.cannot_rub_wax" ) );
 				}
 			}
 		}
@@ -237,6 +249,7 @@ namespace Server.Items
 	public class JarsOfWaxInstrument : Item
 	{
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Wax; } }
+		public override string DisplayNameLocalizationKey => "item.apiculture.jar_instrument_wax";
 
 		[Constructable]
 		public JarsOfWaxInstrument( ) : base( 0x1007 )
@@ -251,7 +264,11 @@ namespace Server.Items
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
 			base.AddNameProperties( list );
-			list.Add( 1070722, "Restores Instruments" );
+
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.apiculture.wax.restores_instruments" );
+			else
+				list.Add( 1070722, "Restores Instruments" );
 		}
 
 		public override void OnDoubleClick( Mobile from )
@@ -264,7 +281,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.SendMessage( "What instrument do you want to rub this wax on?" );
+				from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.target_instrument" ) );
 				t = new WaxTarget( this );
 				from.Target = t;
 			}
@@ -289,13 +306,13 @@ namespace Server.Items
 
 					if ( !iWax.IsChildOf( from.Backpack ) )
 					{
-						from.SendMessage( "You can only use this wax on items in your pack." );
+						from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.wax_items_in_pack" ) );
 					}
 					else
 					{
 						int cBonus = xWax.UsesRemaining;
 
-						if ( cBonus > 300 ){ from.SendMessage( "That instrument is already in good condition." ); }
+						if ( cBonus > 300 ){ from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.instrument_good_condition" ) ); }
 						else
 						{
 							xWax.UsesRemaining = ( cBonus + 50 );
@@ -308,7 +325,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage( "You cannot rub this wax on that." );
+					from.SendMessage( ApicultureLocale.Msg( from.Account, "apiculture.msg.cannot_rub_wax" ) );
 				}
 			}
 		}

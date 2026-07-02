@@ -945,7 +945,7 @@ namespace Server.Mobiles
 					if (MutatePurchase(item, from, false))
 					{
 						price = GetMutationCost(buyItem.Price, from);
-						name = string.Format("(Magical) {0}", item.Name);
+						name = string.Format( "(Magical) {0}", item.GetVendorBuyListName( from, item.Name ) );
 
 						int minAttr, maxAttr, minI, maxI;
 						if ( GetMutationTierInfo( from, out minAttr, out maxAttr, out minI, out maxI ) )
@@ -970,10 +970,12 @@ namespace Server.Mobiles
 					}
                     else
                     {
-						if ( item.IsContentLocalized )
+						if ( item.UsesLocalizedPropertyList )
 							opls.Add( item.GetLocalizedPropertyList( locale ) );
 						else
 							opls.Add( ((Item)disp).PropertyList );
+
+						name = item.GetVendorBuyListName( from, name );
                     }
                 } else if ( disp is Mobile ) {
 					opls.Add( ( ( Mobile ) disp ).PropertyList );
@@ -1015,6 +1017,7 @@ namespace Server.Mobiles
 
 				if ( name != null && list.Count < 250 )
 				{
+					name = item.GetVendorBuyListName( from, name );
 					list.Add( new BuyItemState( name, cont.Serial, item.Serial, price, item.Amount, item.ItemID, item.Hue ) );
 					count++;
 
@@ -1022,7 +1025,7 @@ namespace Server.Mobiles
 						opls = new List<ObjectPropertyList>();
 					}
 
-					if ( item.IsContentLocalized )
+					if ( item.UsesLocalizedPropertyList )
 						opls.Add( item.GetLocalizedPropertyList( locale ) );
 					else
 						opls.Add( item.PropertyList );

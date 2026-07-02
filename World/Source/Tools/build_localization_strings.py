@@ -811,6 +811,7 @@ def main() -> int:
             "mob-loot-infotext.json",
             "world-player-text.json",
             "weather-system.json",
+            "apiculture-system.json",
         }
     )
     if args.prune_stale_locale_files:

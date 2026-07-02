@@ -6,6 +6,7 @@ namespace Server.Items
 	public class ColorCandleLong : BaseLight
 	{
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Wax; } }
+		public override string DisplayNameLocalizationKey => "item.apiculture.colored_candle";
 
 		public override int LitItemID{ get { return 0x1430; } }
 		public override int UnlitItemID{ get { return 0x1433; } }

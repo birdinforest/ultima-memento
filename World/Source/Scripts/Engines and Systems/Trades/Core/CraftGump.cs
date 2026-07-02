@@ -83,7 +83,7 @@ namespace Server.Engines.Craft
 				if ( craftSystem.GumpTitleNumber > 0 )
 					AddHtmlLocalized( 10, 12, 510, 20, craftSystem.GumpTitleNumber, LabelColor, false, false );
 				else
-					AddHtml( 10, 12, 510, 20, craftSystem.GumpTitleString, false, false );
+					AddHtml( 10, 12, 510, 20, CraftDisplayLocale.Resolve( from, craftSystem.GumpTitleString ), false, false );
 
 				AddHtmlLocalized( 10, 37+moveDown, 200, 22, 1044010, LabelColor, false, false ); // <CENTER>CATEGORIES</CENTER>
 				AddHtmlLocalized( 215, 37+moveDown, 305, 22, 1044011, LabelColor, false, false ); // <CENTER>SELECTIONS</CENTER>
@@ -205,7 +205,7 @@ namespace Server.Engines.Craft
 					if ( nameNumber > 0 )
 						AddHtmlLocalized( 184, 405+moveUp, 250, 18, nameNumber, resourceCount.ToString(), LabelColor, false, false );
 					else
-						AddLabel( 184, 405+moveUp, LabelHue, String.Format( "{0} ({1} Available)", nameString, resourceCount ) );
+						AddLabel( 184, 405+moveUp, LabelHue, String.Format( "{0} ({1} Available)", CraftDisplayLocale.Resolve( from, nameString ), resourceCount ) );
 				}
 
 				CreateGroupList();
@@ -275,7 +275,7 @@ namespace Server.Engines.Craft
 				if ( subResource.NameNumber > 0 )
 					AddHtmlLocalized( 255, 82+moveDown + (index * 20), 250, 18, subResource.NameNumber, resourceCount.ToString(), LabelColor, false, false );
 				else
-					AddLabel( 255, 82+moveDown + ( index * 20 ), LabelHue, String.Format( "{0} ({1})", subResource.NameString, resourceCount ) );
+					AddLabel( 255, 82+moveDown + ( index * 20 ), LabelHue, String.Format( "{0} ({1})", CraftDisplayLocale.Resolve( m_From, subResource.NameString ), resourceCount ) );
 
 				TextDefinition.AddHtmlText(this, 255 + 172 + 56, 82+moveDown + ( index * 20 ), 35, 20, string.Format("<RIGHT>{0:F1}</RIGHT>", subResource.RequiredSkill), HtmlColors.WHITE);
 			}
@@ -331,7 +331,7 @@ namespace Server.Engines.Craft
 					if ( craftItem.NameNumber > 0 )
 						AddHtmlLocalized( 255, 62+moveDown + (index * 20), 220, 18, craftItem.NameNumber, LabelColor, false, false );
 					else
-						AddLabel( 255, 62+moveDown + (index * 20), LabelHue, craftItem.NameString );
+						AddLabel( 255, 62+moveDown + (index * 20), LabelHue, CraftDisplayLocale.Resolve( m_From, craftItem.NameString ) );
 				}
 			}
 			else
@@ -390,7 +390,7 @@ namespace Server.Engines.Craft
 					if (0 < craftItem.NameNumber)
 						AddTooltip(craftItem.NameNumber);
 					else
-						AddTooltip(craftItem.NameString);
+						AddTooltip( CraftDisplayLocale.Resolve( from, craftItem.NameString ) );
 
 					if ( !needsRecipe )
 					{
@@ -423,13 +423,13 @@ namespace Server.Engines.Craft
 					if (0 < craftItem.NameNumber)
 						AddTooltip(craftItem.NameNumber);
 					else
-						AddTooltip(craftItem.NameString);
+						AddTooltip( CraftDisplayLocale.Resolve( from, craftItem.NameString ) );
 				}
 
 				if ( craftItem.NameNumber > 0 )
 					AddHtmlLocalized( 265, 62+moveDown + (index * 20), 220, 18, craftItem.NameNumber, LabelColor, false, false );
 				else
-					AddLabel( 265, 62+moveDown + (index * 20), LabelHue, craftItem.NameString );
+					AddLabel( 265, 62+moveDown + (index * 20), LabelHue, CraftDisplayLocale.Resolve( from, craftItem.NameString ) );
 			}
 		}
 
@@ -449,7 +449,7 @@ namespace Server.Engines.Craft
 				if ( craftGroup.NameNumber > 0 )
 					AddHtmlLocalized( 50, 82+moveDown + (i * 20), 150, 18, craftGroup.NameNumber, LabelColor, false, false );
 				else
-					AddLabel( 50, 82+moveDown + (i * 20), LabelHue, craftGroup.NameString );
+					AddLabel( 50, 82+moveDown + (i * 20), LabelHue, CraftDisplayLocale.Resolve( m_From, craftGroup.NameString ) );
 			}
 
 			return craftGroupCol.Count;

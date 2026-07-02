@@ -7,6 +7,7 @@ namespace Server.Items
 	public class CandleReligious : BaseLight 
 	{
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Wax; } }
+		public override string DisplayNameLocalizationKey => "item.apiculture.religious_candle";
 
 		public override int LitItemID
 		{

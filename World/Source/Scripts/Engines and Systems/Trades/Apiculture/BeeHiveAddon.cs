@@ -7,6 +7,7 @@ using Server.Multis;
 using Server.Targeting;
 using Server.ContextMenus;
 using System.Collections;
+using Server.Localization;
 
 namespace Server.Engines.Apiculture
 {	
@@ -410,7 +411,7 @@ namespace Server.Engines.Apiculture
 			
 			if( !IsAccessibleTo( from ) )
 			{
-				LabelTo( from,"You cannot pour potions on that.");
+				LabelTo( from, ApicultureLocale.Msg( from.Account, "apiculture.msg.cannot_pour_potions" ) );
 				return;
 			}
 
@@ -429,7 +430,7 @@ namespace Server.Engines.Apiculture
 					from.PlaySound( 0x240 );
 					from.AddToBackpack( new Bottle() );
 				}
-				LabelTo( from, message );
+				LabelTo( from, ApicultureLocale.Msg( from.Account, message ) );
 			}
 			else if ( item is PotionKeg )
 			{
@@ -437,7 +438,7 @@ namespace Server.Engines.Apiculture
 
 				if ( keg.Held <= 0 )
 				{
-					LabelTo( from, "You cannot use that on a beehive!");
+					LabelTo( from, ApicultureLocale.Msg( from.Account, "apiculture.msg.cannot_use_on_hive" ) );
 					return;
 				}
 
@@ -447,11 +448,11 @@ namespace Server.Engines.Apiculture
 					keg.Held--;
 					from.PlaySound( 0x240 );
 				}
-				LabelTo( from, message );
+				LabelTo( from, ApicultureLocale.Msg( from.Account, message ) );
 			}
 			else
 			{
-				LabelTo( from, "You cannot use that on a beehive!");
+				LabelTo( from, ApicultureLocale.Msg( from.Account, "apiculture.msg.cannot_use_on_hive" ) );
 			}
 		}
 
@@ -498,23 +499,23 @@ namespace Server.Engines.Apiculture
 			else if ( effect == PotionEffect.PoisonLesser || effect == PotionEffect.Poison || effect == PotionEffect.CureLesser || effect == PotionEffect.Cure ||
 				effect == PotionEffect.HealLesser || effect == PotionEffect.Heal ||	effect == PotionEffect.Strength )
 			{
-				message = "This potion is not powerful enough to use on a beehive!";
+				message = "apiculture.msg.potion_not_powerful_enough";
 				return false;
 			}
 			else
 			{
-				message = "You cannot use that on a beehive!";
+				message = "apiculture.msg.cannot_use_on_hive";
 				return false;
 			}
 
 			if ( full )
 			{
-				message = "The beehive is already soaked with this type of potion!";
+				message = "apiculture.msg.hive_already_soaked";
 				return false;
 			}
 			else
 			{
-				message = "You pour the potion into the beehive.";
+				message = "apiculture.msg.poured_potion";
 				return true;
 			}
 		}
@@ -777,6 +778,7 @@ namespace Server.Engines.Apiculture
 	{
 		apiBeeHive m_Hive;
 
+		public override bool IsContentLocalized => true;
 		public override bool ForceShowProperties{ get{ return true;} }
 		
 		public apiBeeHiveComponent(apiBeeHive hive) : base (2330)
@@ -788,13 +790,13 @@ namespace Server.Engines.Apiculture
 		{
 			if( m_Hive == null )
 			{
-				LabelTo( from, "That beehive is invalid.  Use an axe to redeed it." );
+				LabelTo( from, ApicultureLocale.Msg( from.Account, "apiculture.msg.hive_invalid_redeed" ) );
 				return;
 			}
 
 			if( m_Hive.HiveStage == HiveStatus.Empty )
 			{
-				LabelTo( from, "That beehive is empty.  Use an axe to redeed it." );
+				LabelTo( from, ApicultureLocale.Msg( from.Account, "apiculture.msg.hive_empty_redeed" ) );
 				return;
 			}
 			from.SendGump( new apiBeeHiveMainGump( from, m_Hive ) );
@@ -821,7 +823,7 @@ namespace Server.Engines.Apiculture
 			else
 			{
 				if ( BuildingPropertyListLocale != null )
-					AddLocalizedProperty( list, "prop.apiculture.status", m_Hive.OverallHealth.ToString() );
+					AddLocalizedProperty( list, "prop.apiculture.status", ResolvePropertyText( ApicultureLocale.HealthShotkey( m_Hive.OverallHealth ) ) );
 				else
 					list.Add( m_Hive.OverallHealth.ToString()+" BeeHive" );
 			}
@@ -864,9 +866,22 @@ namespace Server.Engines.Apiculture
 			}
 
 			if( m_Hive.HiveStage != HiveStatus.Empty )
-				list.Add( 1060663,"{0}\t{1}" ,"Age", m_Hive.HiveAge + (m_Hive.HiveAge==1 ? " day" : " days") );
+			{
+				if ( BuildingPropertyListLocale != null )
+				{
+					string ageKey = m_Hive.HiveAge == 1 ? "prop.apiculture.age.day" : "prop.apiculture.age.days";
+					list.Add( 1060663, "{0}\t{1}", ResolvePropertyText( "prop.apiculture.age" ), string.Format( ResolvePropertyText( ageKey ), m_Hive.HiveAge ) );
+				}
+				else
+					list.Add( 1060663,"{0}\t{1}" ,"Age", m_Hive.HiveAge + (m_Hive.HiveAge==1 ? " day" : " days") );
+			}
 			if( m_Hive.HiveStage >= HiveStatus.Producing )
-				list.Add( 1060662,"{0}\t{1}" ,"Colony", m_Hive.Population + "0k bees" );
+			{
+				if ( BuildingPropertyListLocale != null )
+					list.Add( 1060662, "{0}\t{1}", ResolvePropertyText( "prop.apiculture.colony" ), string.Format( ResolvePropertyText( "prop.apiculture.colony.bees" ), m_Hive.Population ) );
+				else
+					list.Add( 1060662,"{0}\t{1}" ,"Colony", m_Hive.Population + "0k bees" );
+			}
 		}
 
 		public apiBeeHiveComponent( Serial serial ) : base( serial )
@@ -890,6 +905,7 @@ namespace Server.Engines.Apiculture
 
 	public class apiBeeHiveDeed : BaseAddonDeed
 	{
+		public override string DisplayNameLocalizationKey => "item.apiculture.beehive_deed";
 		public override BaseAddon Addon{ get{ return new apiBeeHive(); } }
 	
 		[Constructable]

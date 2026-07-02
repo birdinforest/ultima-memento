@@ -18,6 +18,7 @@
 | Update or add glossary terms | [§3.5 Glossary](#35-glossary-management) |
 | Website: images/GIFs, wiki index from glossary | [§7 Website (`ultima-memento-web`)](#7-website--player-facing-docs-ultima-memento-web) |
 | Build and test the server | [§4 Build & Test](#4-build--test) |
+| **Existing save compatibility** (final step before declaring done) | [§4.5](#45-existing-save-compatibility-mandatory-final-review) |
 | Localization regression (lightweight host, CI) | [§4.4](#44-localization-regression-lightweight-host) |
 | Understand what an AI agent may/must not do | [§5 Boundaries & Verification](#5-agent-boundaries--verification) |
 | **Global Shoppe system** (player workshops, customer contracts, bulk orders, rewards) | [`World/Documentation/global-shoppe-system.md`](World/Documentation/global-shoppe-system.md) — architecture, order context types, calculators, shoppe catalog |
@@ -424,6 +425,7 @@ The server outputs to stdout/stderr and writes logs under `World/`. Do not commi
 | Glossary edit | `sync_localization_glossary.py --check` exits 0 |
 | Quest system changes | No null reference exceptions on quest board load |
 | Localization dynamic pipelines (tavern/composite/overhead) | After the lightweight host is implemented: regression suite passes in CI (see §4.4). |
+| Any C# change touching `Item`/`Mobile`, serialization, OPL, gumps, or persisted player state | [§4.5](#45-existing-save-compatibility-mandatory-final-review) save-compatibility review (mandatory final step) |
 
 ### 4.4 Localization regression (lightweight host)
 
@@ -442,6 +444,52 @@ bash World/Source/Tools/run_localization_regression.sh
 **Authoritative detail** (pipelines, `Data/Localization/regression/cases/`, T0–T3 test-tier framework): [`World/Documentation/localization-regression-testing.md`](World/Documentation/localization-regression-testing.md).
 
 **Implemented** — run the command above after changing `CommonTalkDynamicZh`, `QuestCompositeResolver`, `NpcSpeechTokenZh`, **`resource-harvest-extra.json`**, harvest-related **`StringCatalog`** English literals, or related data.
+
+### 4.5 Existing save compatibility (mandatory final review)
+
+> **When:** After every implementation or recommendation that touches server C# (`Item`/`Mobile`/`CraftSystem`/gumps), **`Serialize`/`Deserialize`**, OPL, timers, or anything that could affect **`World/Saves/`** at load time. **Skip** for docs-only, localization JSON-only, or `ultima-memento-web` work with no server code impact — state **N/A** explicitly in self-report (§5.4).
+>
+> **Role:** This is the **last verification step** before declaring a task complete or handing off a plan. Agents must run this review themselves and **summarize the outcome** in the final reply (compatible / risks noted / could not verify).
+
+**Do not edit `World/Saves/`** to test. Review is read-only against code paths and, when possible, a normal server startup against the developer’s existing save tree.
+
+#### 4.5.1 Serialization contract
+
+- [ ] **`Serialize`/`Deserialize` version** unchanged, **or** version incremented with a branch that reads **all** bytes written by older saves (no stream misalignment).
+- [ ] **No new persisted fields** without a version bump and read path for old saves; **or** new data is provably runtime-only (not written in `Serialize`).
+- [ ] **Field order** in `Deserialize` still matches what older saves wrote.
+
+#### 4.5.2 Display-only vs on-disk state
+
+- [ ] **`DisplayNameLocalizationKey`**, shotkeys, `StringCatalog`, gump label keys, and similar are **display-layer only** unless you also changed what is stored in `Name`, `InfoText*`, custom `m_*` fields, or addon/component references.
+- [ ] **In-memory-only state** (e.g. `CraftContext`, craft menu strings resolved at draw time) is not assumed to exist on disk from before the change.
+- [ ] If code **reads English literals from saved `Name`/`InfoText`** (e.g. `StartsWith("painting of ")`), old saves still match; new logic does not require reserializing existing items.
+
+#### 4.5.3 Load-time behavior & stability
+
+- [ ] **`Deserialize` does not assume** the world is fully loaded unless guarded with `World.Loading` (or the same pattern as neighboring types).
+- [ ] **OPL paths** (`GetProperties`, `AddNameProperties`, `AddColorText*Property`) do not assign **`ColorText*` setters** during property-list build (see [`server-stability-crash-patterns.md`](World/Documentation/server-stability-crash-patterns.md) §1).
+- [ ] **Null-safe paths** for `Mobile`/`Item`/`Map`/`Account`/`NetState` on loaded or opened UI (gumps, `LabelTo`, localization resolve).
+- [ ] **Enum/int fields from saves**: invalid or legacy values handled (default branch, clamp, or explicit guard) — no unhandled cast assumptions.
+- [ ] **Localization fallbacks**: missing keys or null `Account` fall back to English/key text without throwing (see `StringCatalog.ResolveByKey`, `CraftDisplayLocale`-style pass-through for non-keys).
+
+#### 4.5.4 Runtime verification (when feasible)
+
+- [ ] **Compile** succeeds.
+- [ ] **Start server** against existing saves (or confirm `World/server-start.log` / stdout shows `Game: Loading...` completes with **no** deserialize/exception spam for the touched types).
+- [ ] If startup cannot be run, state **“save compatibility: not runtime-verified”** and list what was checked statically.
+
+#### 4.5.5 Report template (include in §5.4 self-report)
+
+Use a short block such as:
+
+```text
+Save compatibility: [Compatible | Risk noted | N/A | Not runtime-verified]
+- Serialization: …
+- On-disk fields: …
+- Load/OPL/null paths: …
+- Startup test: …
+```
 
 ---
 
@@ -466,6 +514,7 @@ Before declaring a task complete, you must verify:
 2. **Localization extractor runs without error** (if C# strings were added/changed).
 3. **Glossary sync check passes** (if any ZH files were modified).
 4. **No unintended files modified.** Run `git diff --name-only` and confirm the list matches your intent.
+5. **Existing save compatibility** — complete [§4.5](#45-existing-save-compatibility-mandatory-final-review) as the **final** step (after compile/localization checks). Include the §4.5.5 summary in self-report (§5.4). Pure docs / locale-JSON / web-only changes: mark **N/A** with one-line reason.
 
 ### 5.3 When to Pause and Ask
 
@@ -482,6 +531,7 @@ Pause and ask the user before proceeding when:
 At the end of every substantial task, report:
 - Files modified (list them).
 - Verification steps completed (and their outcome).
+- **Save compatibility** (§4.5.5 block) when server C# or serialization was in scope; otherwise **N/A**.
 - Any deferred items or open questions.
 - Any discovered conventions that contradict this guide (propose an update).
 
@@ -502,6 +552,7 @@ Update `AGENTS.md` when:
 - An AI agent discovers a recurring mistake pattern (add it to §5.1 or §5.2).
 - A new **authoritative design pack** is added under `World/Documentation/` that agents should routinely consult (index it in §1 bullet list and here).
 - **Stability / crash-pattern** guidance changes (`server-stability-crash-patterns.md`) — keep §0 index, §1 bullets, and §5.1 in sync.
+- **Save compatibility review** process changes — keep §0, §4.3, §4.5, §5.2, and §5.4 in sync.
 
 ### 6.2 Language Expansion Protocol
 
@@ -538,6 +589,7 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-05-18: §0 / §1 / §5.1 / §6.1 — [`server-stability-crash-patterns.md`](World/Documentation/server-stability-crash-patterns.md)：常见崩溃模式与 Agent 检查清单（OPL 重入、序列化、定时器等）。
 - 2026-05-20: §3.1 — `mob-loot-infotext.json`（`keep_extra`）：Boss 战利品与冠军掉落 `InfoText` OPL 双语；`Item` 内 `ResolveInfoTextForPropertyList` 使用哈希 `TryResolve` + `mob.loot.infotext.champion.belonged` 模板。
 - 2026-06-28: §8.1 — indexed `PVP_COMBAT_SYSTEM.md` (guild-gated PvP, attack pipeline, notoriety/murder, region matrix).
+- 2026-07-03: §0 / §4.3 / §4.5 / §5.2 / §5.4 / §6.1 — mandatory **existing save compatibility** final review (§4.5 checklist + §5.2 step 5 + self-report template); cross-ref in `server-stability-crash-patterns.md` Agent checklist.
 - 2026-05-23: §1 — defined `UO_DEV_DOCS_ROOT` variable (_cross-repo documentation root_); §0 / §1 / §5 / §8 — added cross-repo doc index table, document-first exploration guidance, and `UO_DEV_DOCS_ROOT` resolution rule.
 
 > **Canonical detail:** `ultima-memento-web/AGENTS.md` (Next.js, routes, MDX).  

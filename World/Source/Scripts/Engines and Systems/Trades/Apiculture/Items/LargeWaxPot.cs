@@ -5,11 +5,13 @@ using Server.Engines.Craft;
 using Server.Gumps;
 using Server.Engines.Apiculture;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class apiLargeWaxPot : Item
 	{
+		public override string DisplayNameLocalizationKey => "item.apiculture.large_wax_pot";
 		public static readonly int MaxWax = 999; //the maximum amount the pot can hold
 
 		private int m_UsesRemaining;
@@ -38,7 +40,7 @@ namespace Server.Items
 		public apiLargeWaxPot( int uses ) : base( 2541 )
 		{
 			m_UsesRemaining = uses;
-			Name = "Large Wax Pot";
+			Name = "large wax pot";
 			Weight = 5.0;
 			m_Beeswax = 0;
 		}
@@ -51,10 +53,20 @@ namespace Server.Items
 		{
 			base.GetProperties( list );
 
-			list.Add( 1060584, "{0}\t{1}", m_UsesRemaining.ToString(), "Uses" );
+			if ( BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "prop.apiculture.uses", m_UsesRemaining.ToString() );
+			else
+				list.Add( 1060584, "{0}\t{1}", m_UsesRemaining.ToString(), "Uses" );
 
 			if( MeltedBeeswax < 1 )
-				list.Add( 1049644 , "Empty" );
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.apiculture.pot.empty" );
+				else
+					list.Add( 1049644 , "Empty" );
+			}
+			else if ( BuildingPropertyListLocale != null )
+				list.Add( 1060663, "{0}\t{1}", ResolvePropertyText( "prop.apiculture.melted_wax" ), MeltedBeeswax.ToString() );
 			else
 				list.Add( 1060663,"{0}\t{1}" ,"Melted Wax", MeltedBeeswax.ToString() );
 		}
@@ -77,7 +89,7 @@ namespace Server.Items
 				from.SendLocalizedMessage( 1042001 ); // That must be in your pack for you to use it.
 			else
 			{
-				from.PrivateOverheadMessage( 0, 1154, false,  "Choose the beeswax you wish to melt or target the pot to empty it.", from.NetState );
+				from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.choose_wax_melt" ), from.NetState );
 				BeginAdd( from );
 			}
 		}
@@ -96,17 +108,17 @@ namespace Server.Items
 					//error checking
 					if ( UsesRemaining < 1 )
 					{
-						from.PrivateOverheadMessage( 0, 1154, false,  "The pot is too damaged to melt any more wax.", from.NetState );
+						from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.pot_too_damaged_melt" ), from.NetState );
 						return;
 					}
 					else if ( m_Beeswax >= MaxWax )
 					{
-						from.PrivateOverheadMessage( 0, 1154, false,  "The pot cannot hold any more wax.", from.NetState );
+						from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.pot_full_wax" ), from.NetState );
 						return;
 					}
 					else if( !BeeHiveHelper.Find( from, BeeHiveHelper.m_HeatSources ) )
 					{
-						from.PrivateOverheadMessage( 0, 1154, false,  "You must be near a heat source to melt beeswax.", from.NetState );
+						from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.need_heat_melt" ), from.NetState );
 						return;
 					}
 	
@@ -123,7 +135,7 @@ namespace Server.Items
 						wax.Delete();
 					}
 					
-					from.PrivateOverheadMessage( 0, 1154, false,  "You slowly melt the beeswax and mix it in the pot.", from.NetState );
+					from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.melting_wax" ), from.NetState );
 
 					this.ItemID = 5162; //change the graphic					
 
@@ -139,7 +151,7 @@ namespace Server.Items
 				{
 					//empty the pot
 					if( MeltedBeeswax < 1 )
-						from.PrivateOverheadMessage( 0, 1154, false, "There is no wax in the pot.", from.NetState );
+						from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.no_wax_in_pot" ), from.NetState );
 					else
 					{
 						Item wax = new Beeswax( MeltedBeeswax );
@@ -150,15 +162,15 @@ namespace Server.Items
 					
 						ItemID = 2541; //empty pot
 
-						from.PrivateOverheadMessage( 0, 1154, false,  "You empty the pot and place the beeswax in your pack.", from.NetState );
+						from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.empty_pot_to_pack" ), from.NetState );
 					}
 				}
 				else
-					from.PrivateOverheadMessage( 0, 1154, false,  "You can only melt pure beeswax in the pot.", from.NetState );
+					from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.only_pure_in_pot" ), from.NetState );
 			}
 			else
 			{
-				from.PrivateOverheadMessage( 0, 1154, false,  "The wax must be in your pack to target it.", from.NetState );
+				from.PrivateOverheadMessage( 0, 1154, false, ApicultureLocale.Msg( from.Account, "apiculture.msg.wax_in_pack" ), from.NetState );
 			}
 		}
 
