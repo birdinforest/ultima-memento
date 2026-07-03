@@ -558,6 +558,42 @@ namespace Server.Misc
 			return CheckLuck( luck, freePercentBonus, 50 );
 		}
 
+		/// <summary>
+		/// Returns true with linear chance from 0% (luck 0) up to 5% (luck 2000).
+		/// Used for DragonRidingScroll drop from Dragon King only.
+		/// </summary>
+		public static bool DragonRidingScrollLuckyDrop( int luck )
+		{
+			if ( luck <= 0 )
+				return false;
+
+			const int MAX_LUCK = 2000;
+			const int MAX_CHANCE = 5;
+
+			luck = Math.Min( MAX_LUCK, luck );
+			int playerChance = (int)( luck * (long)MAX_CHANCE / MAX_LUCK );
+
+			return Utility.RandomMinMax( 1, 100 ) <= playerChance;
+		}
+
+		/// <summary>
+		/// Returns true with linear chance from 0% (luck 0) up to 10% (luck 2000).
+		/// Used for Dragon King ManualOfItems / DropSpecial (mutually exclusive pick).
+		/// </summary>
+		public static bool DragonKingOtherRareLuckyDrop( int luck )
+		{
+			if ( luck <= 0 )
+				return false;
+
+			const int MAX_LUCK = 2000;
+			const int MAX_CHANCE = 10;
+
+			luck = Math.Min( MAX_LUCK, luck );
+			int playerChance = (int)( luck * (long)MAX_CHANCE / MAX_LUCK );
+
+			return Utility.RandomMinMax( 1, 100 ) <= playerChance;
+		}
+
 		public static bool EvilPlayer( Mobile m )
 		{
 			if ( m is BaseCreature )
