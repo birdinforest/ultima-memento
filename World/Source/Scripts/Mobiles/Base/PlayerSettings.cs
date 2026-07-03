@@ -970,7 +970,7 @@ namespace Server.Misc
 					else if ( nEntry == 17 && found == "1" && who == StringCatalog.ResolveByKey(null, "mob.other.titanlithos") ){ AlreadyDid = true; }
 					else if ( nEntry == 18 && found == "1" && who == StringCatalog.ResolveByKey(null, "mob.other.titanpyros") ){ AlreadyDid = true; }
 					else if ( nEntry == 19 && found == "1" && who == StringCatalog.ResolveByKey(null, "mob.other.titanhydros") ){ AlreadyDid = true; }
-					else if ( nEntry == 20 && found == "1" && who == "TitanStatos" ){ AlreadyDid = true; }
+					else if ( nEntry == 20 && found == "1" && who == StringCatalog.ResolveByKey(null, "mob.other.titanstratos") ){ AlreadyDid = true; }
 					else if ( nEntry == 21 && found == "1" && who == StringCatalog.ResolveByKey(null, "mob.other.jormungandr") ){ AlreadyDid = true; }
 					else if ( nEntry == 22 && found == "1" && who == "Exodus" ){ AlreadyDid = true; }
 
@@ -1015,7 +1015,7 @@ namespace Server.Misc
 					else if ( nEntry == 17 && who == StringCatalog.ResolveByKey(null, "mob.other.titanlithos") ){ entry = entry + "1#"; }
 					else if ( nEntry == 18 && who == StringCatalog.ResolveByKey(null, "mob.other.titanpyros") ){ entry = entry + "1#"; }
 					else if ( nEntry == 19 && who == StringCatalog.ResolveByKey(null, "mob.other.titanhydros") ){ entry = entry + "1#"; }
-					else if ( nEntry == 20 && who == "TitanStatos" ){ entry = entry + "1#"; }
+					else if ( nEntry == 20 && who == StringCatalog.ResolveByKey(null, "mob.other.titanstratos") ){ entry = entry + "1#"; }
 					else if ( nEntry == 21 && who == StringCatalog.ResolveByKey(null, "mob.other.jormungandr") ){ entry = entry + "1#"; }
 					else if ( nEntry == 22 && who == "Exodus" ){ entry = entry + "1#"; }
 

@@ -161,9 +161,9 @@ namespace Server.Mobiles
 						{
 							foreach ( PartyMemberInfo pmi in p.Members )
 							{
-								if ( pmi.Mobile is PlayerMobile && pmi.Mobile.InRange(this.Location, 20) && pmi.Mobile.Map == this.Map && !pmi.Mobile.Blessed && !Server.Misc.PlayerSettings.GetSpecialsKilled( pmi.Mobile, StringCatalog.ResolveByKey(this.Account, "mob.other.titanstratos") ) )
+								if ( pmi.Mobile is PlayerMobile && pmi.Mobile.InRange(this.Location, 20) && pmi.Mobile.Map == this.Map && !pmi.Mobile.Blessed && !Server.Misc.PlayerSettings.GetSpecialsKilled( pmi.Mobile, StringCatalog.ResolveByKey(null, "mob.other.titanstratos") ) )
 								{
-									Server.Misc.PlayerSettings.SetSpecialsKilled( pmi.Mobile, StringCatalog.ResolveByKey(this.Account, "mob.other.titanstratos"), true );
+									Server.Misc.PlayerSettings.SetSpecialsKilled( pmi.Mobile, StringCatalog.ResolveByKey(null, "mob.other.titanstratos"), true );
 									ManualOfItems book = new ManualOfItems();
 										book.Hue = RewardColor;
 										book.ItemID = 0x1A97;
@@ -193,9 +193,9 @@ namespace Server.Mobiles
 								}
 							}
 						}
-						else if ( !Server.Misc.PlayerSettings.GetSpecialsKilled( winner, StringCatalog.ResolveByKey(this.Account, "mob.other.titanstratos") ) )
+						else if ( !Server.Misc.PlayerSettings.GetSpecialsKilled( winner, StringCatalog.ResolveByKey(null, "mob.other.titanstratos") ) )
 						{
-							Server.Misc.PlayerSettings.SetSpecialsKilled( winner, StringCatalog.ResolveByKey(this.Account, "mob.other.titanstratos"), true );
+							Server.Misc.PlayerSettings.SetSpecialsKilled( winner, StringCatalog.ResolveByKey(null, "mob.other.titanstratos"), true );
 							ManualOfItems book = new ManualOfItems();
 								book.Hue = RewardColor;
 								book.ItemID = 0x1A97;
