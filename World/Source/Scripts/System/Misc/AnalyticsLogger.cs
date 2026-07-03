@@ -241,6 +241,52 @@ namespace Server.Misc
 			Emit( d );
 		}
 
+		public static void LogRelicsChestOpened( PlayerMobile pm, ManualOfItems chest )
+		{
+			if ( !MySettings.S_AnalyticsEnabled || pm == null || chest == null )
+				return;
+
+			var acc = pm.Account as Account;
+			var d = BaseAccountFields( acc, pm );
+			d["event_type"] = "relics_chest_opened";
+			d["feature_name"] = "manual_of_items";
+			d["feature_variant"] = chest.m_FromWho ?? "";
+			AppendRelicsChestFields( d, chest );
+			Emit( d );
+		}
+
+		public static void LogRelicsGiftChosen( PlayerMobile pm, ManualOfItems chest, Item gift, int artifactId, string giftTypeName, string giftDisplayName )
+		{
+			if ( !MySettings.S_AnalyticsEnabled || pm == null || chest == null || gift == null )
+				return;
+
+			var acc = pm.Account as Account;
+			var d = BaseAccountFields( acc, pm );
+			d["event_type"] = "relics_gift_chosen";
+			d["feature_name"] = "manual_of_items";
+			d["feature_variant"] = chest.m_FromWho ?? "";
+			AppendRelicsChestFields( d, chest );
+			d["gift_item_serial"] = gift.Serial.Value.ToString( CultureInfo.InvariantCulture );
+			d["gift_artifact_id"] = artifactId.ToString( CultureInfo.InvariantCulture );
+			d["gift_type_name"] = giftTypeName ?? "";
+			d["gift_display_name"] = giftDisplayName ?? "";
+			Emit( d );
+		}
+
+		private static void AppendRelicsChestFields( Dictionary<string, string> d, ManualOfItems chest )
+		{
+			d["item_serial"] = chest.Serial.Value.ToString( CultureInfo.InvariantCulture );
+			d["item_type"] = chest.GetType().Name;
+			d["chest_name"] = chest.Name ?? "";
+			d["chest_hue"] = chest.Hue.ToString( CultureInfo.InvariantCulture );
+			d["enchant_points"] = chest.m_Points.ToString( CultureInfo.InvariantCulture );
+			d["slayer_1"] = chest.m_Slayer_1.ToString( CultureInfo.InvariantCulture );
+			d["slayer_2"] = chest.m_Slayer_2.ToString( CultureInfo.InvariantCulture );
+			d["owner_bound"] = chest.m_Owner != null ? "true" : "false";
+			d["from_who"] = chest.m_FromWho ?? "";
+			d["chest_charges"] = chest.m_Charges.ToString( CultureInfo.InvariantCulture );
+		}
+
 		private static void AppendRelicsContextFields( Dictionary<string, string> d, RelicsDropContext ctx )
 		{
 			d["drop_gate"] = ctx.DropGate ?? "";

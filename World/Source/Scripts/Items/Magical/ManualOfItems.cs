@@ -7,6 +7,7 @@ using Server.Items;
 using Server.Misc;
 using Server.Gumps;
 using Server.Localization;
+using Server.Mobiles;
 
 namespace Server.Items
 {
@@ -87,6 +88,11 @@ namespace Server.Items
 
 			if ( CanOpen == true )
 			{
+				PlayerMobile opener = from as PlayerMobile;
+
+				if ( opener != null )
+					AnalyticsLogger.LogRelicsChestOpened( opener, this );
+
 				from.SendSound( 0x02D );
 				from.CloseGump( typeof( RelicBoxGump ) );
 				from.SendGump( new RelicBoxGump( from, this, 999999 ) );
@@ -334,6 +340,11 @@ namespace Server.Items
 						reward.Hue = m_Book.m_Hue;
 
 						GiveItemBonus( reward, m_Book.m_Skill_1, m_Book.m_Skill_2, m_Book.m_Skill_3, m_Book.m_Skill_4, m_Book.m_Skill_5, m_Book.m_Value_1, m_Book.m_Value_2, m_Book.m_Value_3, m_Book.m_Value_4, m_Book.m_Value_5, m_Book.m_Slayer_1, m_Book.m_Slayer_2 );
+
+						PlayerMobile chooser = from as PlayerMobile;
+
+						if ( chooser != null )
+							AnalyticsLogger.LogRelicsGiftChosen( chooser, m_Book, reward, info.ButtonID, sType, sName );
 
 						from.AddToBackpack ( reward );
 						from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "god.msg.relic.chest.received", sArty ) );

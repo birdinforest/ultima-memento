@@ -95,6 +95,28 @@ namespace Server
 			return Utility.RandomMinMax( 1, 10000 ) <= threshold;
 		}
 
+		/// <summary>Repeat kills: random Enchant points in [50% of base, base] (§5.3).</summary>
+		public static int RollRepeatEnchantPoints( int basePoints )
+		{
+			if ( basePoints <= 0 )
+				return basePoints;
+
+			int minPts = basePoints / 2;
+
+			if ( minPts < 1 )
+				minPts = 1;
+
+			return Utility.RandomMinMax( minPts, basePoints );
+		}
+
+		public static void FinalizeAwardedChest( ManualOfItems chest, bool isFirst )
+		{
+			if ( chest == null || isFirst )
+				return;
+
+			chest.m_Points = RollRepeatEnchantPoints( chest.m_Points );
+		}
+
 		public static List<RelicEligiblePlayer> GetEligibleTopPlayers( BaseCreature boss, int topN, int range )
 		{
 			var result = new List<RelicEligiblePlayer>();
@@ -337,7 +359,10 @@ namespace Server
 				AnalyticsLogger.LogRelicsRollAttempted( player, ctx );
 
 				if ( !success )
+				{
+					player.SendMessage( StringCatalog.ResolveByKey( player.Account, "sys.relics.roll_missed" ) );
 					continue;
+				}
 
 				if ( isFirst )
 					PlayerSettings.SetSpecialsKilled( player, bossKey, true );
@@ -347,8 +372,10 @@ namespace Server
 				if ( chest == null )
 					continue;
 
+				FinalizeAwardedChest( chest, isFirst );
 				deliver( player, chest );
 				AnalyticsLogger.LogRelicsChestAwarded( player, chest, ctx );
+				player.SendMessage( StringCatalog.ResolveByKey( player.Account, "sys.relics.chest_awarded" ) );
 			}
 		}
 
@@ -404,7 +431,10 @@ namespace Server
 			AnalyticsLogger.LogRelicsRollAttempted( pm, ctx );
 
 			if ( !success )
+			{
+				pm.SendMessage( StringCatalog.ResolveByKey( pm.Account, "sys.relics.roll_missed" ) );
 				return true;
+			}
 
 			if ( isFirst )
 			{
@@ -418,8 +448,10 @@ namespace Server
 
 			if ( lexicon != null )
 			{
+				FinalizeAwardedChest( lexicon, isFirst );
 				targetChest.DropItem( lexicon );
 				AnalyticsLogger.LogRelicsChestAwarded( pm, lexicon, ctx );
+				pm.SendMessage( StringCatalog.ResolveByKey( pm.Account, "sys.relics.chest_awarded" ) );
 			}
 
 			return true;
