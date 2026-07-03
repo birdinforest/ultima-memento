@@ -419,9 +419,9 @@ namespace Server.Misc
 					Server.Misc.Research.SetPrepared( bag, spellIndex, -1 );
 					int remaining = Server.Misc.Research.GetPrepared( bag, spellIndex );
 
-					if ( remaining == 1 ){ from.SendMessage( StringCatalog.Resolve( from.Account, "You have 1 scroll left for this spell." ) ); }
-					else if ( remaining < 1 ){ from.SendMessage( StringCatalog.Resolve( from.Account, "You have no scrolls left for this spell." ) ); }
-					else if ( remaining < 11 ){ from.SendMessage( "You have " + remaining + " scrolls left for this spell." ); }
+					if ( remaining == 1 ){ ResearchLocalization.Send( from, "research.msg.scroll_one_left", "You have 1 scroll left for this spell." ); }
+					else if ( remaining < 1 ){ ResearchLocalization.Send( from, "research.msg.scroll_none_left", "You have no scrolls left for this spell." ); }
+					else if ( remaining < 11 ){ ResearchLocalization.SendFormat( from, "research.msg.scroll_count_left", "You have {0} scrolls left for this spell.", remaining ); }
 
 					if ( from.HasGump( typeof( Server.Items.ResearchBag.ResearchGump ) ) ) {
 						from.CloseGump( typeof( Server.Items.ResearchBag.ResearchGump ) );
@@ -504,6 +504,20 @@ namespace Server.Misc
 			return symbol;
 		}
 
+		public static string RuneName( Mobile viewer, int index, int type )
+		{
+			string raw = RuneName( index, type );
+
+			if ( viewer == null )
+				return raw;
+
+			string key = type > 0
+				? string.Format( "research.rune.{0:00}.upper", index )
+				: string.Format( "research.rune.{0:00}.lower", index );
+
+			return ResearchLocalization.Key( viewer, key, raw );
+		}
+
 		public static string CapsCast( string words ) ///////////////////////////////////////////////////////////////////////////////////////////////
 		{
 			TextInfo cultInfo = new CultureInfo("en-US", false).TextInfo;
@@ -514,6 +528,11 @@ namespace Server.Misc
 
 		public static bool GetRunes( ResearchBag bag, int cube ) ////////////////////////////////////////////////////////////////////////////////////
 		{
+			if ( bag == null )
+				return false;
+
+			EnsureBagSpellData( bag );
+
 			string found = bag.RuneFound;
 
 			bool HaveRune = false;
@@ -535,6 +554,11 @@ namespace Server.Misc
 
 		public static void SetRunes( ResearchBag bag, Mobile from ) /////////////////////////////////////////////////////////////////////////////////
 		{
+			if ( bag == null || from == null )
+				return;
+
+			EnsureBagSpellData( bag );
+
 			string found = bag.RuneFound;
 			string got = "";
 			int cube = 0;
@@ -567,7 +591,7 @@ namespace Server.Misc
 			}
 
 			string runic = RuneName( cube, 1 );
-			from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found the Cube of " + runic + "!");
+			from.LocalOverheadMessage( MessageType.Emote, 1150, true, ResearchLocalization.KeyFormat( from, "research.msg.found_cube", "You found the Cube of {0}!", runic ) );
 			Server.Items.QuestSouvenir.GiveReward( from, "Cube of " + runic + "", 0, RuneIndex( RuneName( cube, 0 ), 0 ) );
 			from.SendSound( 0x3D );
 			LoggingFunctions.LogGeneric( from, "has found the Cube of " + runic + "." );
@@ -613,7 +637,7 @@ namespace Server.Misc
 		{
 			if ( bag.BagInk >= 50000 )
 			{
-				from.SendMessage( StringCatalog.Resolve( from.Account, "This pack can only hold 50000 bottles of octupus ink so you dump out what you found." ) );
+				ResearchLocalization.Send( from, "research.msg.ink_full_dump", "This pack can only hold 50000 bottles of octupus ink so you dump out what you found." );
 			}
 			else
 			{
@@ -627,7 +651,7 @@ namespace Server.Misc
 				bag.BagInk = bag.BagInk + qty;
 				if ( bag.BagInk > 50000 ){ bag.BagInk = 50000; }
 
-				from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found some octopus ink!");
+				from.LocalOverheadMessage( MessageType.Emote, 1150, true, ResearchLocalization.Key( from, "research.msg.found_ink", "You found some octopus ink!" ) );
 				from.SendSound( 0x3D );
 			}
 
@@ -841,6 +865,16 @@ namespace Server.Misc
 			return value;
 		}
 
+		public static string SpellInformation( Mobile viewer, int index, int slice )
+		{
+			string raw = SpellInformation( index, slice );
+
+			if ( viewer == null )
+				return raw;
+
+			return ResearchLocalization.FormatAncientSpellSlice( viewer, index, slice, raw );
+		}
+
 		public static string ScrollInformation( int index, int slice ) //////////////////////////////////////////////////////////////////////////////
 		{
 			string value = "";
@@ -941,6 +975,22 @@ namespace Server.Misc
 			else { value = cliloc; }
 
 			return value;
+		}
+
+		public static string ScrollInformation( Mobile viewer, int index, int slice )
+		{
+			string raw = ScrollInformation( index, slice );
+
+			if ( viewer == null )
+				return raw;
+
+			if ( slice == 2 )
+				return ResearchLocalization.Key( viewer, string.Format( "research.scroll.{0:000}.name", index ), raw );
+
+			if ( slice == 3 )
+				return ResearchLocalization.LocalizeReagentList( viewer, raw );
+
+			return raw;
 		}
 
 		public static void GiveScroll( int index, Mobile from ) //////////////////////////////////////////////////////////////////////////////
@@ -1146,7 +1196,7 @@ namespace Server.Misc
 		{
 			bool canMake = true;
 
-			string name = Research.ScrollInformation( spell, 2 );
+			string name = Research.ScrollInformation( from, spell, 2 );
 			int mana = Int32.Parse( Research.ScrollInformation( spell, 4 ) );
 			int skill = Int32.Parse( Research.ScrollInformation( spell, 5 ) );
 			int ink = Int32.Parse( Research.ScrollInformation( spell, 1 ) );
@@ -1154,27 +1204,27 @@ namespace Server.Misc
 
 			if ( from.Mana < mana )
 			{
-				msg = "You lack the mana to scribe this spell to parchment."; canMake = false;
+				msg = ResearchLocalization.Key( from, "research.msg.lack_mana", "You lack the mana to scribe this spell to parchment." ); canMake = false;
 			}
 			else if ( from.Skills[SkillName.Inscribe].Value < skill )
 			{
-				msg = "You lack the skill to scribe this spell to parchment."; canMake = false;
+				msg = ResearchLocalization.Key( from, "research.msg.lack_skill", "You lack the skill to scribe this spell to parchment." ); canMake = false;
 			}
 			else if ( bag.BagInk < ink )
 			{
-				msg = "You do not have enough octopus ink in your bag."; canMake = false;
+				msg = ResearchLocalization.Key( from, "research.msg.lack_ink", "You do not have enough octopus ink in your bag." ); canMake = false;
 			}
 			else if ( bag.BagQuills < 1 )
 			{
-				msg = "You need at least one quill in your bag."; canMake = false;
+				msg = ResearchLocalization.Key( from, "research.msg.need_quill", "You need at least one quill in your bag." ); canMake = false;
 			}
 			else if ( bag.BagScrolls < 1 )
 			{
-				msg = "You need at least one blank scroll in your bag."; canMake = false;
+				msg = ResearchLocalization.Key( from, "research.msg.need_scroll", "You need at least one blank scroll in your bag." ); canMake = false;
 			}
 			else if ( !CheckReagents( from, spell, false, false, 1 ) )
 			{
-				msg = "You do not have the right reagents to scribe this spell."; canMake = false;
+				msg = ResearchLocalization.Key( from, "research.msg.lack_reagents", "You do not have the right reagents to scribe this spell." ); canMake = false;
 			}
 			else if ( from.Skills[SkillName.Inscribe].Value < Utility.RandomMinMax( skill-25, skill+25 ) && canMake )
 			{
@@ -1186,7 +1236,7 @@ namespace Server.Misc
 				if ( from.Skills[SkillName.Inscribe].Value < Utility.RandomMinMax( 0, 125 ) ){ bag.BagQuills = bag.BagQuills - 1; if ( bag.BagQuills < 1 ){ bag.BagQuills = 0; } }
 				if ( from.Skills[SkillName.Inscribe].Value < Utility.RandomMinMax( 0, 125 ) ){ CheckReagents( from, spell, true, false, 1 ); }
 				from.PlaySound(0x249);
-				msg = "You fail to scribe the " + name + " scroll and some of your materials may be lost.";
+				msg = ResearchLocalization.KeyFormat( from, "research.msg.scribe_fail", "You fail to scribe the {0} scroll and some of your materials may be lost.", name );
 			}
 
 			if ( canMake )
@@ -1199,7 +1249,7 @@ namespace Server.Misc
 				CheckReagents( from, spell, true, false, 1 );
 				from.PlaySound(0x249);
 				GiveScroll( spell, from );
-				bag.BagMsgString = "You successfully scribe the " + name + " scroll.";
+				bag.BagMsgString = ResearchLocalization.KeyFormat( from, "research.msg.scribe_success", "You successfully scribe the {0} scroll.", name );
 				bag.BagMessage = 2;
 				bag.InvalidateProperties();
 			}
@@ -1236,8 +1286,50 @@ namespace Server.Misc
 			return scroll;
 		}
 
+		public static string NextWizardryForDisplay( Mobile viewer, ResearchBag bag )
+		{
+			string found = bag.SpellsMagery;
+			bool check = true;
+			int count = 0;
+			int nextEntry = 1;
+
+			if ( found.Length > 0 )
+			{
+				string[] spells = found.Split( '#' );
+				int entry = 1;
+
+				foreach ( string spell in spells )
+				{
+					if ( spell == "0" && check )
+					{
+						nextEntry = entry;
+						check = false;
+					}
+					else if ( spell == "1" )
+					{
+						count++;
+					}
+
+					entry++;
+				}
+			}
+
+			if ( check )
+				nextEntry = 1;
+
+			if ( count > 63 )
+				return "";
+
+			return ScrollInformation( viewer, nextEntry, 2 );
+		}
+
 		public static bool GetWizardry( ResearchBag bag, int index ) ////////////////////////////////////////////////////////////////////////////////
 		{
+			if ( bag == null )
+				return false;
+
+			EnsureBagSpellData( bag );
+
 			string found = bag.SpellsMagery;
 
 			bool HaveSpell = false;
@@ -1280,7 +1372,7 @@ namespace Server.Misc
 				bag.SpellsMagery = got;
 			}
 
-			from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found " + bag.SpellsMageItem + "!");
+			from.LocalOverheadMessage( MessageType.Emote, 1150, true, ResearchLocalization.KeyFormat( from, "research.msg.found_item", "You found {0}!", bag.SpellsMageItem ) );
 			from.SendSound( 0x3D );
 			LoggingFunctions.LogGeneric( from, "has found " + bag.SpellsMageItem + "." );
 
@@ -1329,8 +1421,50 @@ namespace Server.Misc
 			return scroll;
 		}
 
+		public static string NextNecromancyForDisplay( Mobile viewer, ResearchBag bag )
+		{
+			string found = bag.SpellsNecromancy;
+			bool check = true;
+			int count = 0;
+			int nextEntry = 1;
+
+			if ( found.Length > 0 )
+			{
+				string[] spells = found.Split( '#' );
+				int entry = 1;
+
+				foreach ( string spell in spells )
+				{
+					if ( spell == "0" && check )
+					{
+						nextEntry = entry;
+						check = false;
+					}
+					else if ( spell == "1" )
+					{
+						count++;
+					}
+
+					entry++;
+				}
+			}
+
+			if ( check )
+				nextEntry = 1;
+
+			if ( count > 16 )
+				return "";
+
+			return ScrollInformation( viewer, nextEntry + 64, 2 );
+		}
+
 		public static bool GetNecromancy( ResearchBag bag, int index ) //////////////////////////////////////////////////////////////////////////////
 		{
+			if ( bag == null )
+				return false;
+
+			EnsureBagSpellData( bag );
+
 			string found = bag.SpellsNecromancy;
 
 			bool HaveSpell = false;
@@ -1373,7 +1507,7 @@ namespace Server.Misc
 				bag.SpellsNecromancy = got;
 			}
 
-			from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found " + bag.SpellsNecroItem + "!");
+			from.LocalOverheadMessage( MessageType.Emote, 1150, true, ResearchLocalization.KeyFormat( from, "research.msg.found_item", "You found {0}!", bag.SpellsNecroItem ) );
 			from.SendSound( 0x3D );
 			LoggingFunctions.LogGeneric( from, "has found " + bag.SpellsNecroItem + "." );
 
@@ -1422,8 +1556,53 @@ namespace Server.Misc
 			return scroll;
 		}
 
+		public static string NextResearchForDisplay( Mobile viewer, ResearchBag bag )
+		{
+			string found = bag.ResearchSpells;
+			bool check = true;
+			int count = 0;
+			int nextEntry = 1;
+
+			if ( found.Length > 0 )
+			{
+				string[] spells = found.Split( '#' );
+				int entry = 1;
+
+				foreach ( string spell in spells )
+				{
+					if ( spell == "0" && check )
+					{
+						nextEntry = entry;
+						check = false;
+					}
+					else if ( spell == "1" )
+					{
+						count++;
+					}
+
+					entry++;
+				}
+			}
+
+			if ( check )
+				nextEntry = 1;
+
+			if ( count > 63 )
+				return "";
+
+			return ResearchLocalization.KeyFormat( viewer, "research.gump.next_ancient_spell",
+				"{0} from the School of {1}",
+				SpellInformation( viewer, nextEntry, 2 ),
+				SpellInformation( viewer, nextEntry, 3 ) );
+		}
+
 		public static bool GetResearch( ResearchBag bag, int index ) ////////////////////////////////////////////////////////////////////////////////
 		{
+			if ( bag == null )
+				return false;
+
+			EnsureBagSpellData( bag );
+
 			string found = bag.ResearchSpells;
 
 			bool HaveSpell = false;
@@ -1466,7 +1645,7 @@ namespace Server.Misc
 				bag.ResearchSpells = got;
 			}
 
-			from.LocalOverheadMessage(MessageType.Emote, 1150, true, "You found " + bag.ResearchItem + "!");
+			from.LocalOverheadMessage( MessageType.Emote, 1150, true, ResearchLocalization.KeyFormat( from, "research.msg.found_item", "You found {0}!", bag.ResearchItem ) );
 			from.SendSound( 0x3D );
 			LoggingFunctions.LogGeneric( from, "has found " + bag.ResearchItem + "." );
 
@@ -1494,34 +1673,34 @@ namespace Server.Misc
 		{
 			bool canMake = true;
 
-			string name = Research.SpellInformation( spell, 2 );
+			string name = Research.SpellInformation( from, spell, 2 );
 			int mana = Int32.Parse( Research.SpellInformation( spell, 7 ) );
 			int skill = Int32.Parse( Research.SpellInformation( spell, 8 ) );
 			string msg = "";
 
 			if ( from.Mana < mana )
 			{
-				msg = "You lack the mana to scribe this spell to parchment."; canMake = false;
+				msg = ResearchLocalization.Key( from, "research.msg.lack_mana", "You lack the mana to scribe this spell to parchment." ); canMake = false;
 			}
 			else if ( from.Skills[SkillName.Inscribe].Value < skill )
 			{
-				msg = "You lack the skill to scribe this spell to parchment."; canMake = false;
+				msg = ResearchLocalization.Key( from, "research.msg.lack_skill", "You lack the skill to scribe this spell to parchment." ); canMake = false;
 			}
 			else if ( bag.BagQuills < 1 )
 			{
-				msg = "You need at least one quill in your bag."; canMake = false;
+				msg = ResearchLocalization.Key( from, "research.msg.need_quill", "You need at least one quill in your bag." ); canMake = false;
 			}
 			else if ( bag.BagScrolls < 1 )
 			{
-				msg = "You need at least one blank scroll in your bag."; canMake = false;
+				msg = ResearchLocalization.Key( from, "research.msg.need_scroll", "You need at least one blank scroll in your bag." ); canMake = false;
 			}
 			else if ( !CheckReagents( from, spell, false, true, 1 ) )
 			{
-				msg = "You do not have the right reagents to scribe this spell."; canMake = false;
+				msg = ResearchLocalization.Key( from, "research.msg.lack_reagents", "You do not have the right reagents to scribe this spell." ); canMake = false;
 			}
 			else if ( GetPrepared( bag, spell ) >= 500 )
 			{
-				msg = "You have too many of these spells in your bag already."; canMake = false;
+				msg = ResearchLocalization.Key( from, "research.msg.too_many_spells", "You have too many of these spells in your bag already." ); canMake = false;
 			}
 			else if ( from.Skills[SkillName.Inscribe].Value < Utility.RandomMinMax( skill-25, skill+25 ) && canMake )
 			{
@@ -1532,7 +1711,7 @@ namespace Server.Misc
 				if ( from.Skills[SkillName.Inscribe].Value < Utility.RandomMinMax( 0, 125 ) ){ bag.BagQuills = bag.BagQuills - 1; if ( bag.BagQuills < 1 ){ bag.BagQuills = 0; } }
 				if ( from.Skills[SkillName.Inscribe].Value < Utility.RandomMinMax( 0, 125 ) ){ CheckReagents( from, spell, true, true, 1 ); }
 				from.PlaySound(0x249);
-				msg = "You fail to scribe the " + name + " scroll and some of your materials may be lost.";
+				msg = ResearchLocalization.KeyFormat( from, "research.msg.scribe_fail", "You fail to scribe the {0} scroll and some of your materials may be lost.", name );
 			}
 
 			if ( canMake )
@@ -1544,7 +1723,7 @@ namespace Server.Misc
 				CheckReagents( from, spell, true, true, 1 );
 				from.PlaySound(0x249);
 				SetPrepared( bag, spell, 1 );
-				bag.BagMsgString = "You successfully scribe the " + name + " scroll.";
+				bag.BagMsgString = ResearchLocalization.KeyFormat( from, "research.msg.scribe_success", "You successfully scribe the {0} scroll.", name );
 				bag.BagMessage = 2;
 				bag.InvalidateProperties();
 			}
@@ -1562,7 +1741,7 @@ namespace Server.Misc
 			bool stopAll = false;
 			bool manaCheck = true;
 			bool playSound = false;
-			string name = Research.SpellInformation( spell, 2 );
+			string name = Research.SpellInformation( from, spell, 2 );
 			int mana = Int32.Parse( Research.SpellInformation( spell, 7 ) );
 			int skill = Int32.Parse( Research.SpellInformation( spell, 8 ) );
 			string msg = "";
@@ -1575,27 +1754,27 @@ namespace Server.Misc
 
 				if ( from.Mana < mana && manaCheck)
 				{
-					msg = "You lack the mana to scribe this spell to parchment."; canMake = false; stopAll = true;
+					msg = ResearchLocalization.Key( from, "research.msg.lack_mana", "You lack the mana to scribe this spell to parchment." ); canMake = false; stopAll = true;
 				}
 				else if ( from.Skills[SkillName.Inscribe].Value < skill )
 				{
-					msg = "You lack the skill to scribe this spell to parchment."; canMake = false; stopAll = true;
+					msg = ResearchLocalization.Key( from, "research.msg.lack_skill", "You lack the skill to scribe this spell to parchment." ); canMake = false; stopAll = true;
 				}
 				else if ( bag.BagQuills < 1 )
 				{
-					msg = "You need at least one quill in your bag."; canMake = false; stopAll = true;
+					msg = ResearchLocalization.Key( from, "research.msg.need_quill", "You need at least one quill in your bag." ); canMake = false; stopAll = true;
 				}
 				else if ( bag.BagScrolls < 1 )
 				{
-					msg = "You need at least one blank scroll in your bag."; canMake = false; stopAll = true;
+					msg = ResearchLocalization.Key( from, "research.msg.need_scroll", "You need at least one blank scroll in your bag." ); canMake = false; stopAll = true;
 				}
 				else if ( !CheckReagents( from, spell, false, true, reagents+1 ) )
 				{
-					msg = "You do not have the right reagents to scribe this spell."; canMake = false; stopAll = true;
+					msg = ResearchLocalization.Key( from, "research.msg.lack_reagents", "You do not have the right reagents to scribe this spell." ); canMake = false; stopAll = true;
 				}
 				else if ( GetPrepared( bag, spell ) >= 500 )
 				{
-					msg = "You have too many of these spells in your bag already."; canMake = false; stopAll = true;
+					msg = ResearchLocalization.Key( from, "research.msg.too_many_spells", "You have too many of these spells in your bag already." ); canMake = false; stopAll = true;
 				}
 				else if ( from.Skills[SkillName.Inscribe].Value < Utility.RandomMinMax( skill-25, skill+25 ) && canMake )
 				{
@@ -1606,7 +1785,7 @@ namespace Server.Misc
 					if ( from.Skills[SkillName.Inscribe].Value < Utility.RandomMinMax( 0, 125 ) ){ bag.BagQuills = bag.BagQuills - 1; if ( bag.BagQuills < 1 ){ bag.BagQuills = 0; } }
 					if ( from.Skills[SkillName.Inscribe].Value < Utility.RandomMinMax( 0, 125 ) ){ reagents++; }
 					playSound = true;
-					msg = "You fail to scribe the " + name + " scrolls and some of your materials may be lost.";
+					msg = ResearchLocalization.KeyFormat( from, "research.msg.scribe_fail_many", "You fail to scribe the {0} scrolls and some of your materials may be lost.", name );
 				}
 
 				if ( canMake )
@@ -1624,8 +1803,8 @@ namespace Server.Misc
 
 			if ( reagents > 0 ){ CheckReagents( from, spell, true, true, reagents ); }
 
-			if ( total == 1 ){ bag.BagMsgString = "You successfully scribe a single " + name + " scroll."; bag.BagMessage = 2; }
-			else if ( total > 0 ){ bag.BagMsgString = "You successfully scribe " + total + " " + name + " scrolls."; bag.BagMessage = 2; }
+			if ( total == 1 ){ bag.BagMsgString = ResearchLocalization.KeyFormat( from, "research.msg.scribe_success_one", "You successfully scribe a single {0} scroll.", name ); bag.BagMessage = 2; }
+			else if ( total > 0 ){ bag.BagMsgString = ResearchLocalization.KeyFormat( from, "research.msg.scribe_success_many", "You successfully scribe {0} {1} scrolls.", total, name ); bag.BagMessage = 2; }
 			else { bag.BagMsgString = msg; bag.BagMessage = 1; }
 			if ( playSound ){ from.PlaySound(0x249); }
 			bag.InvalidateProperties();

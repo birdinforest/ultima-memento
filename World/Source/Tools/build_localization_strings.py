@@ -813,6 +813,8 @@ def main() -> int:
             "weather-system.json",
             "apiculture-system.json",
             "avatar-system.json",
+            "research-system.json",
+            "research-spell-catalog.json",
         }
     )
     if args.prune_stale_locale_files:

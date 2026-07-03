@@ -7,7 +7,6 @@ using Server.Network;
 using Server.Spells; 
 using Server.Spells.Research; 
 using Server.Prompts;
-using Server.Localization;
 
 namespace Server.Gumps 
 { 
@@ -78,10 +77,10 @@ namespace Server.Gumps
 			AddButton(72, 45, 4014, 4014, PriorPage, GumpButtonType.Reply, 0);
 			AddButton(590, 48, 4005, 4005, NextPage, GumpButtonType.Reply, 0);
 
-			AddHtml( 107, 46, 186, 20, @"<BODY><BASEFONT Color=#ffff00><CENTER>" + spellHeader( page, 1 ) + "</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 107, 46, 186, 20, @"<BODY><BASEFONT Color=#ffff00><CENTER>" + ResearchLocalization.AncientSpellbookHeader( from, page, 1 ) + "</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
 				if ( page < 5 )
 					AddImage(300, 48, spellImage( page, 1 ));
-			AddHtml( 398, 48, 186, 20, @"<BODY><BASEFONT Color=#ffff00><CENTER>" + spellHeader( page, 2 ) + "</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 398, 48, 186, 20, @"<BODY><BASEFONT Color=#ffff00><CENTER>" + ResearchLocalization.AncientSpellbookHeader( from, page, 2 ) + "</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
 				if ( page < 5 )
 					AddImage(362, 48, spellImage( page, 2 ));
 
@@ -102,7 +101,7 @@ namespace Server.Gumps
 					SpellsOnPage--;
 
 					spellListing = spellList( page, SafetyCatch );
-					AddHtml( x+30, y, 200, 20, @"<BODY><BASEFONT Color=#ffff00>" + Research.SpellInformation( spellListing, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( x+30, y, 200, 20, @"<BODY><BASEFONT Color=#ffff00>" + Research.SpellInformation( from, spellListing, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 					if ( HasSpell( from, Int32.Parse( Research.SpellInformation( spellListing, 12 ) ) ) )
 						AddButton(x, y+2, 2117, 2117, Int32.Parse( Research.SpellInformation( spellListing, 12 ) ), GumpButtonType.Reply, 0);
@@ -121,11 +120,11 @@ namespace Server.Gumps
 			}
 			else if ( page == 37 )
 			{
-				info = StringCatalog.Resolve( from.Account, "This book will be yours alone to use and you can only have one book at any given time. Creating a new book will cause this book to crumple to dust. Using ancient spellbooks requires the caster to carry reagents with them. The book pages may also turn to dust when spells are cast, so the wizard will need to keep extra pages (blank scrolls) within the book. They will also need to keep quills (scribe pens) set aside as well. Simply place these items on this book in order to maintain a supply of each. If you run out, you will not be able to cast any spells until you acquire more. You might find that you don't consume any scrolls or quills when reagent lowering attributes exist. These books can be equipped like other spellbooks.<BR><BR>" ) + Server.Misc.ResearchSettings.BagOrBook() + StringCatalog.Resolve( from.Account, "<BR><BR>Spells are cast with those skilled in either magery or necromancy, whichever is higher. The effectiveness of the spells is dependent on the combination of magery, necromancy, spiritualism, and psychology. If you are simply skilled in only a couple of these skills, then the spells will have only an average effect. It is those that pursue all four of the skills of wizardry, that will gain the most benefit. When ancient spells are performed, it helps a researcher practice inscription, magery, necromancy, spiritualism, and psychology at the same time. This is why ancient spell research interests archmages, as they have achieved the level of grandmaster in both areas of magic. Some ancient magic has similarities to spells used today, as is to be expected that some of the knowledge survived the ages. So very few spells will be similar to current magery spells, and even fewer spells that are similar to modern necromancer spells. Although they are similar, the ancient spell usually proves to be much more powerful." );
+				info = ResearchLocalization.BuildAncientSpellbookHelpLeftHtml( from );
 
 				AddHtml( 78, 80, 250, 314, @"<BODY><BASEFONT Color=#ffff00>" + info + "</BASEFONT></BODY>", (bool)false, (bool)true);
 
-				info = StringCatalog.Resolve( from.Account, "Magic Toolbars: Here are the commands you can use (include the bracket) to manage magic toolbars that might help you play better.<BR><BR>[ancient - Switches between using the book or bag.<BR><BR>[archspell1 - Opens the 1st ancient spell bar editor.<BR><BR>[archspell2 - Opens the 2nd ancient spell bar editor.<BR><BR>[archspell3 - Opens the 3rd ancient spell bar editor.<BR><BR>[archspell4 - Opens the 4th ancient spell bar editor.<BR><BR>[archtool1 - Opens the 1st ancient spell bar.<BR><BR>[archtool2 - Opens the 2nd ancient spell bar.<BR><BR>[archtool3 - Opens the 3rd ancient spell bar.<BR><BR>[archtool4 - Opens the 4th ancient spell bar.<BR><BR>[archclose1 - Closes the 1st ancient spell bar.<BR><BR>[archclose2 - Closes the 2nd ancient spell bar.<BR><BR>[archclose3 - Closes the 3rd ancient spell bar.<BR><BR>[archclose4 - Closes the 4th ancient spell bar.<BR><BR>Below are the [ commands you can either type to quickly cast a particular spell, or set a hot key to issue this command and cast the spell." ) + Server.Misc.ResearchSettings.AncientKeywords() + "";
+				info = ResearchLocalization.BuildAncientSpellbookHelpRightHtml( from );
 
 				AddHtml( 366, 80, 250, 314, @"<BODY><BASEFONT Color=#ffff00>" + info + "</BASEFONT></BODY>", (bool)false, (bool)true);
 			}
@@ -148,23 +147,17 @@ namespace Server.Gumps
 
 				AddImage(285, 85, Int32.Parse( Research.SpellInformation( spellName, 10 ) ));
 
-				AddHtml( 129, 93, 200, 20, @"<BODY><BASEFONT Color=#ffff00>" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 129, 93, 200, 20, @"<BODY><BASEFONT Color=#ffff00>" + Research.SpellInformation( from, spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
-				AddHtml( 134, 130, 57, 20, @"<BODY><BASEFONT Color=#ffff00>" + StringCatalog.Resolve( from.Account, "Skill:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 134, 130, 57, 20, @"<BODY><BASEFONT Color=#ffff00>" + ResearchLocalization.Key( from, "research.gump.spellinfo.skill", "Skill:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 196, 130, 57, 20, @"<BODY><BASEFONT Color=#ffff00>" + Research.SpellInformation( spellName, 8 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
-				AddHtml( 236, 130, 57, 20, @"<BODY><BASEFONT Color=#ffff00>" + StringCatalog.Resolve( from.Account, "Mana:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 236, 130, 57, 20, @"<BODY><BASEFONT Color=#ffff00>" + ResearchLocalization.Key( from, "research.gump.spellinfo.mana", "Mana:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 298, 130, 57, 20, @"<BODY><BASEFONT Color=#ffff00>" + Research.SpellInformation( spellName, 7 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
-				AddHtml( 78, 160, 250, 60, @"<BODY><BASEFONT Color=#ffff00>" + StringCatalog.Resolve( from.Account, "Reagents: " ) + Research.SpellInformation( spellName, 5 ) + ".</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 78, 160, 250, 60, @"<BODY><BASEFONT Color=#ffff00>" + ResearchLocalization.Key( from, "research.gump.ancientbook.reagents_prefix", "Reagents: " ) + Research.SpellInformation( from, spellName, 5 ) + ".</BASEFONT></BODY>", (bool)false, (bool)false);
 
-				description = Research.SpellInformation( spellName, 6 );
-
-				if ( description.Contains("That means that the spell scroll will always crumble to dust when cast") )
-					description = description.Replace("That means that the spell scroll will always crumble to dust when cast", StringCatalog.Resolve( from.Account, "That means that the spell will always consume the reagents when cast" ));
-
-				else if ( description.Contains("spell is powerful enough that the scroll will always crumble to dust when cast") )
-					description = description.Replace("spell is powerful enough that the scroll will always crumble to dust when cast", StringCatalog.Resolve( from.Account, "spell is powerful enough that it will always consume the reagents when cast" ));
+				description = Research.SpellInformation( from, spellName, 6 );
 
 				AddHtml( 78, 210, 250, 185, @"<BODY><BASEFONT Color=#ffff00>" + description + "</BASEFONT></BODY>", (bool)false, spellNav);
 
@@ -186,57 +179,22 @@ namespace Server.Gumps
 
 				AddImage(572, 85, Int32.Parse( Research.SpellInformation( spellName, 10 ) ));
 
-				AddHtml( 417, 93, 200, 20, @"<BODY><BASEFONT Color=#ffff00>" + Research.SpellInformation( spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 417, 93, 200, 20, @"<BODY><BASEFONT Color=#ffff00>" + Research.SpellInformation( from, spellName, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
-				AddHtml( 422, 130, 57, 20, @"<BODY><BASEFONT Color=#ffff00>" + StringCatalog.Resolve( from.Account, "Skill:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 422, 130, 57, 20, @"<BODY><BASEFONT Color=#ffff00>" + ResearchLocalization.Key( from, "research.gump.spellinfo.skill", "Skill:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 484, 130, 57, 20, @"<BODY><BASEFONT Color=#ffff00>" + Research.SpellInformation( spellName, 8 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
-				AddHtml( 524, 130, 57, 20, @"<BODY><BASEFONT Color=#ffff00>" + StringCatalog.Resolve( from.Account, "Mana:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 524, 130, 57, 20, @"<BODY><BASEFONT Color=#ffff00>" + ResearchLocalization.Key( from, "research.gump.spellinfo.mana", "Mana:" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 586, 130, 57, 20, @"<BODY><BASEFONT Color=#ffff00>" + Research.SpellInformation( spellName, 7 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
-				AddHtml( 366, 160, 250, 60, @"<BODY><BASEFONT Color=#ffff00>" + StringCatalog.Resolve( from.Account, "Reagents: " ) + Research.SpellInformation( spellName, 5 ) + ".</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 366, 160, 250, 60, @"<BODY><BASEFONT Color=#ffff00>" + ResearchLocalization.Key( from, "research.gump.ancientbook.reagents_prefix", "Reagents: " ) + Research.SpellInformation( from, spellName, 5 ) + ".</BASEFONT></BODY>", (bool)false, (bool)false);
 
-				description = Research.SpellInformation( spellName, 6 );
-
-				if ( description.Contains("That means that the spell scroll will always crumble to dust when cast") )
-					description = description.Replace("That means that the spell scroll will always crumble to dust when cast", StringCatalog.Resolve( from.Account, "That means that the spell will always consume the reagents when cast" ));
-
-				else if ( description.Contains("spell is powerful enough that the scroll will always crumble to dust when cast") )
-					description = description.Replace("spell is powerful enough that the scroll will always crumble to dust when cast", StringCatalog.Resolve( from.Account, "spell is powerful enough that it will always consume the reagents when cast" ));
+				description = Research.SpellInformation( from, spellName, 6 );
 
 				AddHtml( 366, 210, 250, 185, @"<BODY><BASEFONT Color=#ffff00>" + description + "</BASEFONT></BODY>", (bool)false, spellNav);
 
 				// --------------------------------------------------------------------------------
 			}
-		}
-
-		public string spellHeader( int page, int entry )
-		{
-			if ( ( page == 1 && entry == 1 ) || ( page >= 5 && page <= 8 ) )
-				return "CONJURATION MAGIC";
-
-			else if ( ( page == 1 && entry == 2 ) || ( page >= 9 && page <= 12 ) )
-				return "DEATH MAGIC";
-
-			else if ( ( page == 2 && entry == 1 ) || ( page >= 13 && page <= 16 ) )
-				return "ENCHANTING MAGIC";
-
-			else if ( ( page == 2 && entry == 2 ) || ( page >= 17 && page <= 20 ) )
-				return "SORCERY MAGIC";
-
-			else if ( ( page == 3 && entry == 1 ) || ( page >= 21 && page <= 24 ) )
-				return "SUMMONING MAGIC";
-
-			else if ( ( page == 3 && entry == 2 ) || ( page >= 25 && page <= 28 ) )
-				return "THAUMATURGY MAGIC";
-
-			else if ( ( page == 4 && entry == 1 ) || ( page >= 29 && page <= 32 ) )
-				return "THEURGY MAGIC";
-
-			else if ( ( page == 4 && entry == 2 ) || ( page >= 33 && page <= 36 ) )
-				return "WIZARDRY MAGIC";
-
-			return "ANCIENT MAGIC";
 		}
 
 		public int spellImage( int page, int entry )

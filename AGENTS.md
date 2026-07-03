@@ -590,7 +590,7 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-05-18: §0 / §1 / §5.1 / §6.1 — [`server-stability-crash-patterns.md`](World/Documentation/server-stability-crash-patterns.md)：常见崩溃模式与 Agent 检查清单（OPL 重入、序列化、定时器等）。
 - 2026-05-20: §3.1 — `mob-loot-infotext.json`（`keep_extra`）：Boss 战利品与冠军掉落 `InfoText` OPL 双语；`Item` 内 `ResolveInfoTextForPropertyList` 使用哈希 `TryResolve` + `mob.loot.infotext.champion.belonged` 模板。
 - 2026-06-28: §8.1 — indexed `PVP_COMBAT_SYSTEM.md` (guild-gated PvP, attack pipeline, notoriety/murder, region matrix).
-- 2026-07-03: §8.1 — indexed `MANUAL_OF_ITEMS_RELICS_SYSTEM.md`（Relics 遗物箱 / `ManualOfItems`、Gift 附魔、龙王专节 cross-ref）。
+- 2026-07-03: §1 — indexed `RESEARCH_BAG_SYSTEM.md`（ResearchBag 初始化、字段、NPC 发放、GM/Avatar 死亡测试基线）；§8.1 交叉索引。
 - 2026-07-03: §8.1 — indexed `RELICS_DROP_REFORM_TOP3_DAMAGE_SYSTEM.md`（Feature Request：Gate A/B/C Top-3 伤害贡献制掉落改革，首次/Repeat 双概率，OSI Champ 基准评估与修改意见）。
 - 2026-07-03: §8.1 — indexed `DRAGON_KING_SYSTEM.md`、`DRAGON_EGG_SYSTEM.md`；`DRAGON_RIDING_SCROLL_SYSTEM.md` 范围收窄为骑卷轴 + 门禁。
 - 2026-07-03: §8.1 — indexed `DRAGON_RIDING_SCROLL_SYSTEM.md`（DragonRidingScroll / Dragon King 掉落 / 龙类骑乘门禁）。
@@ -687,6 +687,7 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | Trap system (code analysis) | `memento/game-mechanism/trap-system/trap_system_code_analysis.md` | Before modifying trap items or trap-related NPC speech |
 | Magic system docs | `memento/game-mechanism/spell-and-magic/` (8 files) | Before modifying magic, spell, or rune systems |
 | Ancient spell research system | `memento/game-mechanism/ANCIENT_SPELL_RESEARCH_SYSTEM.md` | Before modifying ResearchBag, AncientSpellbook, prepared-spell counters, or any ancient magic casting flow |
+| Research Bag (ResearchBag item / GM test) | `memento/game-mechanism/RESEARCH_BAG_SYSTEM.md` | Before modifying ResearchBag initialization, BagOwner, GM issuance, or Avatar death ResearchBag debug |
 | Death / resurrection / bank tribute | `memento/game-mechanism/death-resurrection-bank-tribute.md` | Before modifying death or tribute handling |
 | Pet taming & Jako system | `memento/game-mechanism/PET_TAMING_AND_JAKO_SYSTEM.md` | Before modifying pet/taming mechanics |
 | Dragon riding scroll / Dragon King / draconic mounts | `memento/game-mechanism/DRAGON_RIDING_SCROLL_SYSTEM.md` | Before modifying `DragonRidingScroll`, `DragonRiding` keys, or `RidingDragon`/`Dragoon`/`GemDragon` mount gate |

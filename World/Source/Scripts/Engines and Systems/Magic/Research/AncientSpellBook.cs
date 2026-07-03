@@ -3,12 +3,15 @@ using Server.Network;
 using Server.Gumps;
 using Server.Spells;
 using Server.Localization;
+using Server.Misc;
 
 namespace Server.Items
 {
 	[FlipableAttribute( 0x65EC, 0x6711 )]
 	public class AncientSpellbook : Spellbook
 	{
+		public override bool IsContentLocalized => true;
+
 		public override string DefaultDescription{ get{ return StringCatalog.ResolveByKey(null, "eng.this_book_is_used_by_archmages_c_where_they_can_cast_ancient_spells_thought_to_be_lost_forever_dot_t"); } }
 
 		public Mobile owner;
@@ -51,7 +54,7 @@ namespace Server.Items
 
 			if ( owner != from )
 			{
-				from.SendMessage( StringCatalog.Resolve( from.Account, "These pages appears as scribbles to you." ) );
+				ResearchLocalization.Send( from, "research.msg.ancient_pages_scribbles", "These pages appears as scribbles to you." );
 			}
 			else if ( Parent == from || ( pack != null && Parent == pack ) )
 			{
@@ -64,8 +67,20 @@ namespace Server.Items
 
         public override void AddNameProperties(ObjectPropertyList list)
 		{
-            base.AddNameProperties(list);
-            if ( owner != null ){ list.Add( 1070722, StringCatalog.ResolveFormat( null, "Belongs to {0}", owner.Name ) ); }
+			if ( BuildingPropertyListLocale != null )
+			{
+				AddLocalizedProperty( list, "item.research.ancient_spellbook" );
+
+				if ( owner != null )
+					AddLocalizedProperty( list, "research.prop.belongs_to", owner.Name );
+			}
+			else
+			{
+				base.AddNameProperties( list );
+
+				if ( owner != null )
+					list.Add( 1070722, StringCatalog.ResolveFormat( null, "Belongs to {0}", owner.Name ) );
+			}
         }
 
 		public AncientSpellbook( Serial serial ) : base( serial )
