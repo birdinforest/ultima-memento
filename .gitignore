@@ -78,3 +78,4 @@ World/Data/Localization/tools-output/extractor-key-drop-report.json
 World/Data/Localization/tools-output/llm-translation-queue.jsonl
 World/Data/Localization/tools-output/llm-translation-response.json
 World/Data/Localization/tools-output/llm-batch-*.jsonl
+doc/code-review/*
