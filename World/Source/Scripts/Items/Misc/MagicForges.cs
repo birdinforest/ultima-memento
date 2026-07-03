@@ -559,31 +559,36 @@ namespace Server.Items
 										if ( ((PlayerMobile)(pmi.Mobile)).KarmaLocked == true ){ Titles.AwardKarma( pmi.Mobile, -300, true ); }
 										else { Titles.AwardKarma( pmi.Mobile, 300, true ); }
 
-										ManualOfItems book = new ManualOfItems();
-											book.Hue = 0x835;
-											book.Name = "Chest of Exodus Relics";
-											book.m_Charges = 1;
-											book.m_Skill_1 = 99;
-											book.m_Skill_2 = 32;
-											book.m_Skill_3 = 0;
-											book.m_Skill_4 = 0;
-											book.m_Skill_5 = 0;
-											book.m_Value_1 = 15.0;
-											book.m_Value_2 = 10.0;
-											book.m_Value_3 = 0.0;
-											book.m_Value_4 = 0.0;
-											book.m_Value_5 = 0.0;
-											book.m_Slayer_1 = 32;
-											book.m_Slayer_2 = 13;
-											book.m_Owner = pmi.Mobile;
-											book.m_Extra = "of Exodus";
-											book.m_FromWho = "From the Destruction of the Dark Core";
-											book.m_HowGiven = "Acquired by";
-											book.m_Points = 250;
-											book.m_Hue = 0x835;
-											pmi.Mobile.AddToBackpack( book );
+										if ( !PlayerSettings.GetSpecialsKilled( pmi.Mobile, "Exodus" ) )
+										{
+											PlayerSettings.SetSpecialsKilled( pmi.Mobile, "Exodus", true );
 
-										pmi.Mobile.SendMessage(StringCatalog.Resolve(pmi.Mobile.Account, "An item has appeared in your backpack!"));
+											ManualOfItems book = new ManualOfItems();
+												book.Hue = 0x835;
+												book.Name = "Chest of Exodus Relics";
+												book.m_Charges = 1;
+												book.m_Skill_1 = 99;
+												book.m_Skill_2 = 32;
+												book.m_Skill_3 = 0;
+												book.m_Skill_4 = 0;
+												book.m_Skill_5 = 0;
+												book.m_Value_1 = 15.0;
+												book.m_Value_2 = 10.0;
+												book.m_Value_3 = 0.0;
+												book.m_Value_4 = 0.0;
+												book.m_Value_5 = 0.0;
+												book.m_Slayer_1 = 32;
+												book.m_Slayer_2 = 13;
+												book.m_Owner = pmi.Mobile;
+												book.m_Extra = "of Exodus";
+												book.m_FromWho = "From the Destruction of the Dark Core";
+												book.m_HowGiven = "Acquired by";
+												book.m_Points = 250;
+												book.m_Hue = 0x835;
+												pmi.Mobile.AddToBackpack( book );
+
+											pmi.Mobile.SendMessage(StringCatalog.Resolve(pmi.Mobile.Account, "An item has appeared in your backpack!"));
+										}
 									}
 								}
 							}
@@ -594,30 +599,35 @@ namespace Server.Items
 								if ( ((PlayerMobile)m).KarmaLocked == true ){ Titles.AwardKarma( m, -300, true ); }
 								else { Titles.AwardKarma( m, 300, true ); }
 
-								ManualOfItems book = new ManualOfItems();
-									book.Hue = 0x835;
-									book.Name = "Chest of Exodus Relics";
-									book.m_Charges = 1;
-									book.m_Skill_1 = 99;
-									book.m_Skill_2 = 32;
-									book.m_Skill_3 = 0;
-									book.m_Skill_4 = 0;
-									book.m_Skill_5 = 0;
-									book.m_Value_1 = 15.0;
-									book.m_Value_2 = 10.0;
-									book.m_Value_3 = 0.0;
-									book.m_Value_4 = 0.0;
-									book.m_Value_5 = 0.0;
-									book.m_Slayer_1 = 32;
-									book.m_Slayer_2 = 13;
-									book.m_Owner = m;
-									book.m_Extra = "of Exodus";
-									book.m_FromWho = "From the Destruction of the Dark Core";
-									book.m_HowGiven = "Acquired by";
-									book.m_Points = 250;
-									book.m_Hue = 0x835;
-									m.AddToBackpack( book );
-									m.SendMessage(StringCatalog.Resolve(m.Account, "An item has appeared in your backpack!"));
+								if ( !PlayerSettings.GetSpecialsKilled( m, "Exodus" ) )
+								{
+									PlayerSettings.SetSpecialsKilled( m, "Exodus", true );
+
+									ManualOfItems book = new ManualOfItems();
+										book.Hue = 0x835;
+										book.Name = "Chest of Exodus Relics";
+										book.m_Charges = 1;
+										book.m_Skill_1 = 99;
+										book.m_Skill_2 = 32;
+										book.m_Skill_3 = 0;
+										book.m_Skill_4 = 0;
+										book.m_Skill_5 = 0;
+										book.m_Value_1 = 15.0;
+										book.m_Value_2 = 10.0;
+										book.m_Value_3 = 0.0;
+										book.m_Value_4 = 0.0;
+										book.m_Value_5 = 0.0;
+										book.m_Slayer_1 = 32;
+										book.m_Slayer_2 = 13;
+										book.m_Owner = m;
+										book.m_Extra = "of Exodus";
+										book.m_FromWho = "From the Destruction of the Dark Core";
+										book.m_HowGiven = "Acquired by";
+										book.m_Points = 250;
+										book.m_Hue = 0x835;
+										m.AddToBackpack( book );
+										m.SendMessage(StringCatalog.Resolve(m.Account, "An item has appeared in your backpack!"));
+								}
 							}
 						}
 					}
