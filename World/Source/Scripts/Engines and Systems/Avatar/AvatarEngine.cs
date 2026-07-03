@@ -149,7 +149,7 @@ namespace Server.Engines.Avatar
 			context.PointsFarmed += value;
 			CombatBar.Refresh(player);
 
-			player.SendMessage("You have gained {0} coins.", value);
+			player.SendMessage(AvatarLocalization.KeyFormat(player, "avatar.msg.gained_coins", "You have gained {0} coins.", value));
 		}
 
 		private void OnCombatQuestCompleted(CombatQuestCompletedArgs e)
@@ -228,11 +228,11 @@ namespace Server.Engines.Avatar
 							if (Constants.RIVAL_BONUS_MAX_POINTS <= context.RivalBonusPoints)
 							{
 								context.RivalBonusEnabled = false;
-								player.SendMessage("You have avenged your family by vanquishing all members of '{0}'.", context.RivalFactionName);
+								player.SendMessage(AvatarLocalization.KeyFormat(player, "avatar.msg.avenged_family", "You have avenged your family by vanquishing all members of '{0}'.", AvatarLocalization.RivalFactionName(player, context.RivalSlayerName)));
 							}
 							else
 							{
-								player.SendMessage("You have eliminated another member of '{0}'.", context.RivalFactionName);
+								player.SendMessage(AvatarLocalization.KeyFormat(player, "avatar.msg.eliminated_faction_member", "You have eliminated another member of '{0}'.", AvatarLocalization.RivalFactionName(player, context.RivalSlayerName)));
 							}
 						}
 					}

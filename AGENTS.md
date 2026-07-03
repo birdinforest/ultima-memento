@@ -148,6 +148,7 @@ Data/Localization/
 | `world-player-text.json` | 从「任务 / 系统帮助 / 引擎物品描述 / 书籍默认说明」等迁移出来的 **shotkey** 文案（`quest.*`、`eng.*`、`sys.*`、`mob.*`、`book.*`）；C# 使用 `StringCatalog.ResolveByKey` / `ResolveFormatByKey`。Pair `en/` + `zh-Hans/`；**`keep_extra`**。由 `World/Source/Tools/build_world_player_text_from_queue.py`（自 `llm-queue-*.jsonl` 生成键）与 `patch_cs_resolve_to_shotkeys.py` 批量替换辅助维护。 |
 | `trap-system.json` | HiddenTrap subsystem logical keys: 25 trap-type trigger messages, proximity/perception strings, trap item names, avoidance/removal messages, direction/distance descriptors, SpellTrap/SetTrap/TrapKit/TenFootPole/TrapWand copy, CurseItem tooltip, base-trap detection suffixes. Uses `StringCatalog.ResolveByKey` / `ResolveFormatByKey` in C#. |
 | `charrestore.json` | Character Item Restore system (`Scripts/Engines and Systems/CharacterRestore/` + `Scripts/Mobiles/Civilized/Special/LostItemsRestorerNPC.cs`): NPC speech (`charrestore.npc.*`), three-stage dialog gump titles/body/buttons (`charrestore.dialog.*`), GM gump labels/buttons/messages (`charrestore.gump.*`). Uses `StringCatalog.TryResolveByKey` via `CitizenLocalization.SayLocalizedByKey` and inline helpers. |
+| `avatar-system.json` | Avatar's Ascent subsystem (`Scripts/Engines and Systems/Avatar/`): `avatar-enable` / `avatar-shop` commands, confirmation gumps, `AvatarShopGump` UI, ascension/template/reward copy, rival faction names, `AvatarBook` / `SafetyDepositBox` OPL names (`avatar.book.*`, `avatar.item.*`, `avatar.msg.*`, `avatar.gump.*`, `avatar.reward.*`). C# via `AvatarLocalization.Key` / `KeyFormat` / `Send` + `StringCatalog.TryResolveByKey`. Pair `en/` + `zh-Hans/`; **`keep_extra`**. |
 
 Other non-category locale files (also whitelisted, not scanner-owned): `vendor_npc_speech.json` (see `World/Source/Tools/` vendor speech scripts). Authoritative notes: `World/Data/Localization/README.txt`.
 
@@ -589,6 +590,9 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-05-18: §0 / §1 / §5.1 / §6.1 — [`server-stability-crash-patterns.md`](World/Documentation/server-stability-crash-patterns.md)：常见崩溃模式与 Agent 检查清单（OPL 重入、序列化、定时器等）。
 - 2026-05-20: §3.1 — `mob-loot-infotext.json`（`keep_extra`）：Boss 战利品与冠军掉落 `InfoText` OPL 双语；`Item` 内 `ResolveInfoTextForPropertyList` 使用哈希 `TryResolve` + `mob.loot.infotext.champion.belonged` 模板。
 - 2026-06-28: §8.1 — indexed `PVP_COMBAT_SYSTEM.md` (guild-gated PvP, attack pipeline, notoriety/murder, region matrix).
+- 2026-07-03: §8.1 — indexed `DRAGON_KING_SYSTEM.md`、`DRAGON_EGG_SYSTEM.md`；`DRAGON_RIDING_SCROLL_SYSTEM.md` 范围收窄为骑卷轴 + 门禁。
+- 2026-07-03: §8.1 — indexed `DRAGON_RIDING_SCROLL_SYSTEM.md`（DragonRidingScroll / Dragon King 掉落 / 龙类骑乘门禁）。
+- 2026-07-03: §3.1 — `avatar-system.json`（`keep_extra`）：Avatar's Ascent 子系统（`AvatarLocalization` + `avatar.*` shotkeys；命令、商店 Gump、飞升/模板/奖励文案、世仇派系名、物品 OPL）。
 - 2026-07-03: §0 / §4.3 / §4.5 / §5.2 / §5.4 / §6.1 — mandatory **existing save compatibility** final review (§4.5 checklist + §5.2 step 5 + self-report template); cross-ref in `server-stability-crash-patterns.md` Agent checklist.
 - 2026-05-23: §1 — defined `UO_DEV_DOCS_ROOT` variable (_cross-repo documentation root_); §0 / §1 / §5 / §8 — added cross-repo doc index table, document-first exploration guidance, and `UO_DEV_DOCS_ROOT` resolution rule.
 
@@ -683,6 +687,9 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | Ancient spell research system | `memento/game-mechanism/ANCIENT_SPELL_RESEARCH_SYSTEM.md` | Before modifying ResearchBag, AncientSpellbook, prepared-spell counters, or any ancient magic casting flow |
 | Death / resurrection / bank tribute | `memento/game-mechanism/death-resurrection-bank-tribute.md` | Before modifying death or tribute handling |
 | Pet taming & Jako system | `memento/game-mechanism/PET_TAMING_AND_JAKO_SYSTEM.md` | Before modifying pet/taming mechanics |
+| Dragon riding scroll / Dragon King / draconic mounts | `memento/game-mechanism/DRAGON_RIDING_SCROLL_SYSTEM.md` | Before modifying `DragonRidingScroll`, `DragonRiding` keys, or `RidingDragon`/`Dragoon`/`GemDragon` mount gate |
+| Dragon King boss | `memento/game-mechanism/DRAGON_KING_SYSTEM.md` | Before modifying `DragonKing`, lucky kills, ManualOfItems relics book, or dragon `DropSpecial` on Great Dragons |
+| Dragon egg hatch | `memento/game-mechanism/DRAGON_EGG_SYSTEM.md` | Before modifying `DragonEgg`, Search potions, or hatch-at-vet flow |
 | Race temptation & potion shelf | `memento/game-mechanism/race-temptation-and-potion-shelf.md` | Before modifying race temptation or potion shelf |
 | Player hazards & threats | `memento/game-mechanism/PLAYER_HAZARDS_AND_THREATS.md` | Before modifying hazard/threat systems |
 | Black Knight NPC / black key / Vault of the Black Knight / Vordo boss / Bottle World of Kuldar | `memento/game-mechanism/BLACK_KNIGHT_VAULT_BOTTLE_WORLD.md` | Before modifying BlackKnight, BlackKnightBox, Vordo, VordoScroll, GateMoon in Kuldar, or the Kuldar Bottle World region logic |

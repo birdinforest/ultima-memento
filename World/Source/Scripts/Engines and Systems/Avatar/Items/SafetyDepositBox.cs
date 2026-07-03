@@ -1,4 +1,5 @@
 using Server.Items;
+using Server.Localization;
 using Server.Network;
 
 namespace Server.Engines.Avatar
@@ -17,6 +18,16 @@ namespace Server.Engines.Avatar
 			Owner = owner;
 			GumpID = 0x4A;
 			MaxItems = 1;
+		}
+
+		public override bool IsContentLocalized => true;
+
+		public override void AddNameProperties(ObjectPropertyList list)
+		{
+			if (BuildingPropertyListLocale != null)
+				AddLocalizedProperty(list, "avatar.item.safety_deposit_box");
+			else
+				base.AddNameProperties(list);
 		}
 
 		public override int DefaultMaxWeight { get { return 0; } }

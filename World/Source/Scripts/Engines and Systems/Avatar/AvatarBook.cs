@@ -1,3 +1,4 @@
+using Server.Localization;
 using Server.Mobiles;
 using Server.Network;
 
@@ -10,6 +11,16 @@ namespace Server.Engines.Avatar
 		{
 			Name = "The Avatar's Ascent";
 			LootType = LootType.Blessed;
+		}
+
+		public override bool IsContentLocalized => true;
+
+		public override void AddNameProperties(ObjectPropertyList list)
+		{
+			if (BuildingPropertyListLocale != null)
+				AddLocalizedProperty(list, "avatar.book.name");
+			else
+				base.AddNameProperties(list);
 		}
 
 		public override void OnDoubleClick(Mobile from)
@@ -25,7 +36,7 @@ namespace Server.Engines.Avatar
 
 			if (!player.Avatar.Active)
 			{
-				from.SendMessage("You must be an Avatar to use this book.");
+				AvatarLocalization.Send(from, "avatar.msg.must_be_avatar_book", "You must be an Avatar to use this book.");
 				return;
 			}
 

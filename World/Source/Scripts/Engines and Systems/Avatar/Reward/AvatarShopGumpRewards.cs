@@ -77,150 +77,150 @@ namespace Server.Engines.Avatar
 									context.HasSafetyDepositBox,
 									ONE_HUNDRED_GOLD,
 									AvatarShopGump.NO_ITEM_ID,
-									"Persistent Storage Container",
-									"A safety deposit box is placed in your bankbox. Items in this container will persist through death.",
+									AvatarLocalization.Key(m_From, "avatar.reward.persistent_storage.name", "Persistent Storage Container"),
+									AvatarLocalization.Key(m_From, "avatar.reward.persistent_storage.desc", "A safety deposit box is placed in your bankbox. Items in this container will persist through death."),
 									() => {
 										var box = context.GetOrCreateSafetyDepositBox(m_From);
 										context.SafetyDepositBoxLevel = Math.Max(1, context.SafetyDepositBoxLevel);
-										m_From.SendMessage("A safety deposit box has been placed in your bank box.");
+										AvatarLocalization.Send(m_From, "avatar.msg.safety_deposit_placed", "A safety deposit box has been placed in your bank box.");
 									}
 								)
 								: ActionReward.Create(
 									Constants.SAFETY_DEPOSIT_BOX_MAX_LEVEL <= context.SafetyDepositBoxLevel,
 									SecondOrderCost(ONE_HUNDRED_GOLD, context.SafetyDepositBoxLevel + 1),
 									AvatarShopGump.NO_ITEM_ID,
-									string.Format("Safety Deposit Box ({0} of {1})", context.SafetyDepositBoxLevel, Constants.SAFETY_DEPOSIT_BOX_MAX_LEVEL),
-									string.Format("Increase storage capacity of your safety deposit box. Current capacity: {0}", context.SafetyDepositBoxLevel),
+									AvatarLocalization.KeyFormat(m_From, "avatar.reward.safety_deposit.name", "Safety Deposit Box ({0} of {1})", context.SafetyDepositBoxLevel, Constants.SAFETY_DEPOSIT_BOX_MAX_LEVEL),
+									AvatarLocalization.KeyFormat(m_From, "avatar.reward.safety_deposit.desc", "Increase storage capacity of your safety deposit box. Current capacity: {0}", context.SafetyDepositBoxLevel),
 									() => {
 										var box = context.GetOrCreateSafetyDepositBox(m_From);
 										context.SafetyDepositBoxLevel += 1;
 										box.MaxItems = context.SafetyDepositBoxLevel;
-										m_From.SendMessage("Your safety deposit box can now hold {0} items.", context.SafetyDepositBoxLevel);
+										AvatarLocalization.SendFormat(m_From, "avatar.msg.safety_deposit_capacity", "Your safety deposit box can now hold {0} items.", context.SafetyDepositBoxLevel);
 									}
 								),
 							ActionReward.Create(
 								context.UnlockRecordSkillCaps,
 								ONE_HUNDRED_GOLD,
 								AvatarShopGump.NO_ITEM_ID,
-								"Erudian Teachings",
-								"Reinforce your mind. Higher learning will become second nature.",
+								AvatarLocalization.Key(m_From, "avatar.reward.erudian_teachings.name", "Erudian Teachings"),
+								AvatarLocalization.Key(m_From, "avatar.reward.erudian_teachings.desc", "Reinforce your mind. Higher learning will become second nature."),
 								() => {
 									context.UnlockRecordSkillCaps = true;
 									context.ClearRewardCache(Categories.PrimaryBoosts);
 									context.ClearRewardCache(Categories.SecondaryBoosts);
-									m_From.SendMessage("Your increased skill caps are now permanently unlocked.");
+									AvatarLocalization.Send(m_From, "avatar.msg.skill_caps_unlocked", "Your increased skill caps are now permanently unlocked.");
 								}
 							),
 							ActionReward.Create(
 								context.UnlockPrimarySkillBoost,
 								2 * ONE_HUNDRED_GOLD,
 								AvatarShopGump.NO_ITEM_ID,
-								"Jack of No Trades",
-								"Learn from the greatest masters. Unlock the ability to restore Primary skills.",
+								AvatarLocalization.Key(m_From, "avatar.reward.jack_of_no_trades.name", "Jack of No Trades"),
+								AvatarLocalization.Key(m_From, "avatar.reward.jack_of_no_trades.desc", "Learn from the greatest masters. Unlock the ability to restore Primary skills."),
 								() => {
 									context.UnlockPrimarySkillBoost = true;
 									context.ClearRewardCache(Categories.PrimaryBoosts);
 									context.ClearRewardCache(Categories.SecondaryBoosts);
-									m_From.SendMessage("Some of your Primary skills are now available in the Skill Archive.");
+									AvatarLocalization.Send(m_From, "avatar.msg.primary_skills_archive", "Some of your Primary skills are now available in the Skill Archive.");
 								}
 							).WithPrereq(
 								context.UnlockRecordSkillCaps,
-								"Requires Erudian Knowledge to be unlocked."
+								AvatarLocalization.Key(m_From, "avatar.prereq.erudian_knowledge", "Requires Erudian Knowledge to be unlocked.")
 							),
 							ActionReward.Create(
 								context.UnlockSecondarySkillBoost,
 								2 * ONE_HUNDRED_GOLD,
 								AvatarShopGump.NO_ITEM_ID,
-								"Artisan's Mastery",
-								"Master the crafts. Unlock the ability to restore Secondary skills.",
+								AvatarLocalization.Key(m_From, "avatar.reward.artisans_mastery.name", "Artisan's Mastery"),
+								AvatarLocalization.Key(m_From, "avatar.reward.artisans_mastery.desc", "Master the crafts. Unlock the ability to restore Secondary skills."),
 								() => {
 									context.UnlockSecondarySkillBoost = true;
 									context.ClearRewardCache(Categories.PrimaryBoosts);
 									context.ClearRewardCache(Categories.SecondaryBoosts);
-									m_From.SendMessage("Some of your Secondary skills are now available in the Skill Archive.");
+									AvatarLocalization.Send(m_From, "avatar.msg.secondary_skills_archive", "Some of your Secondary skills are now available in the Skill Archive.");
 								}
 							).WithPrereq(
 								context.UnlockRecordSkillCaps,
-								"Requires Erudian Knowledge to be unlocked."
+								AvatarLocalization.Key(m_From, "avatar.prereq.erudian_knowledge", "Requires Erudian Knowledge to be unlocked.")
 							),
 							ActionReward.Create(
 								context.UnlockRecordRecipes,
 								ONE_THOUSAND_GOLD,
 								AvatarShopGump.NO_ITEM_ID,
-								"Crafter Lineage",
-								"Record recipes that you have learned.",
+								AvatarLocalization.Key(m_From, "avatar.reward.crafter_lineage.name", "Crafter Lineage"),
+								AvatarLocalization.Key(m_From, "avatar.reward.crafter_lineage.desc", "Record recipes that you have learned."),
 								() => {
 									context.UnlockRecordRecipes = true;
-									m_From.SendMessage("Your recipes are now permanently unlocked.");
+									AvatarLocalization.Send(m_From, "avatar.msg.recipes_unlocked", "Your recipes are now permanently unlocked.");
 								}
 							),
 							ActionReward.Create(
 								context.UnlockRecordDiscovered,
 								5 * ONE_THOUSAND_GOLD,
 								AvatarShopGump.NO_ITEM_ID,
-								"World Class Cartographer",
-								"Discover the world and its wonders. Permanently record your travels to every land.",
+								AvatarLocalization.Key(m_From, "avatar.reward.cartographer.name", "World Class Cartographer"),
+								AvatarLocalization.Key(m_From, "avatar.reward.cartographer.desc", "Discover the world and its wonders. Permanently record your travels to every land."),
 								() => {
 									context.UnlockRecordDiscovered = true;
-									m_From.SendMessage("Your facet discoveries are now permanently recorded.");
+									AvatarLocalization.Send(m_From, "avatar.msg.facets_recorded", "Your facet discoveries are now permanently recorded.");
 								}
 							),
 							ActionReward.Create(
 								Constants.BOAT_SPEED_MAX_LEVEL <= context.BoatSpeedLevel,
 								ExponentialCost(5 * ONE_THOUSAND_GOLD, context.BoatSpeedLevel + 1),
 								AvatarShopGump.NO_ITEM_ID,
-								string.Format("Fast Seaman ({0} of {1})", context.BoatSpeedLevel, Constants.BOAT_SPEED_MAX_LEVEL),
-								"Increase your sailing speed.",
+								AvatarLocalization.KeyFormat(m_From, "avatar.reward.fast_seaman.name", "Fast Seaman ({0} of {1})", context.BoatSpeedLevel, Constants.BOAT_SPEED_MAX_LEVEL),
+								AvatarLocalization.Key(m_From, "avatar.reward.fast_seaman.desc", "Increase your sailing speed."),
 								() => {
 									context.BoatSpeedLevel += 1;
-									m_From.SendMessage("Your sailing speed has been increased.");
+									AvatarLocalization.Send(m_From, "avatar.msg.sailing_speed_increased", "Your sailing speed has been increased.");
 								}
 							),
 							ActionReward.Create(
 								context.UnlockTemptations,
 								10 * ONE_THOUSAND_GOLD,
 								AvatarShopGump.NO_ITEM_ID,
-								"Power Overwhelming",
-								"Answer the seductive call of power. Gain strength through temptation and desire.",
+								AvatarLocalization.Key(m_From, "avatar.reward.power_overwhelming.name", "Power Overwhelming"),
+								AvatarLocalization.Key(m_From, "avatar.reward.power_overwhelming.desc", "Answer the seductive call of power. Gain strength through temptation and desire."),
 								() => {
 									context.UnlockTemptations = true;
-									m_From.SendMessage("You have unlocked the ability to use Temptations.");
+									AvatarLocalization.Send(m_From, "avatar.msg.temptations_unlocked", "You have unlocked the ability to use Temptations.");
 								}
 							),
 							ActionReward.Create(
 								context.UnlockSavageRace,
 								25 * ONE_THOUSAND_GOLD,
 								AvatarShopGump.NO_ITEM_ID,
-								"Primal Awakening",
-								"Return to your untamed roots. Live life as a savage and embrace your barbaric heritage.",
+								AvatarLocalization.Key(m_From, "avatar.reward.primal_awakening.name", "Primal Awakening"),
+								AvatarLocalization.Key(m_From, "avatar.reward.primal_awakening.desc", "Return to your untamed roots. Live life as a savage and embrace your barbaric heritage."),
 								() => {
 									context.UnlockSavageRace = true;
-									m_From.SendMessage("You have unlocked a new tarot card for Humans.");
+									AvatarLocalization.Send(m_From, "avatar.msg.tarot_humans_unlocked", "You have unlocked a new tarot card for Humans.");
 								}
 							).WithPrereq(
 								context.UnlockRecordDiscovered,
-								"Requires World Class Cartographer to be unlocked."
+								AvatarLocalization.Key(m_From, "avatar.prereq.cartographer", "Requires World Class Cartographer to be unlocked.")
 							),
 							ActionReward.Create(
 								context.UnlockMonsterRaces,
 								50 * ONE_THOUSAND_GOLD,
 								AvatarShopGump.NO_ITEM_ID,
-								"Bestial Transformation",
-								"Embrace your monstrous nature. Live among the supernatural and the beastly races of Ultima.",
+								AvatarLocalization.Key(m_From, "avatar.reward.bestial_transformation.name", "Bestial Transformation"),
+								AvatarLocalization.Key(m_From, "avatar.reward.bestial_transformation.desc", "Embrace your monstrous nature. Live among the supernatural and the beastly races of Ultima."),
 								() => {
 									context.UnlockMonsterRaces = true;
-									m_From.SendMessage("You have unlocked the option to select a non-human race.");
+									AvatarLocalization.Send(m_From, "avatar.msg.monster_races_unlocked", "You have unlocked the option to select a non-human race.");
 								}
 							),
 							ActionReward.Create(
 								context.UnlockFugitiveMode,
 								150 * ONE_THOUSAND_GOLD,
 								AvatarShopGump.NO_ITEM_ID,
-								"Outlaw's Mark",
-								"Bear the mark of the hunted. Strengthen your core and live as an exile.",
+								AvatarLocalization.Key(m_From, "avatar.reward.outlaws_mark.name", "Outlaw's Mark"),
+								AvatarLocalization.Key(m_From, "avatar.reward.outlaws_mark.desc", "Bear the mark of the hunted. Strengthen your core and live as an exile."),
 								() => {
 									context.UnlockFugitiveMode = true;
-									m_From.SendMessage("You have unlocked a new tarot card for Monsters and Humans.");
+									AvatarLocalization.Send(m_From, "avatar.msg.tarot_monsters_humans_unlocked", "You have unlocked a new tarot card for Monsters and Humans.");
 								}
 							),
 
@@ -228,11 +228,11 @@ namespace Server.Engines.Avatar
 								Constants.IMPROVED_TEMPLATE_MAX_COUNT <= context.ImprovedTemplateCount,
 								ONE_HUNDRED_GOLD * (context.ImprovedTemplateCount + 1),
 								AvatarShopGump.NO_ITEM_ID,
-								string.Format("Blessed Beginnings ({0} of {1})", context.ImprovedTemplateCount, Constants.IMPROVED_TEMPLATE_MAX_COUNT),
-								string.Format("Awaken to your true potential. Ancestral relatives may enhance your template choices."),
+								AvatarLocalization.KeyFormat(m_From, "avatar.reward.blessed_beginnings.name", "Blessed Beginnings ({0} of {1})", context.ImprovedTemplateCount, Constants.IMPROVED_TEMPLATE_MAX_COUNT),
+								AvatarLocalization.Key(m_From, "avatar.reward.blessed_beginnings.desc", "Awaken to your true potential. Ancestral relatives may enhance your template choices."),
 								() => {
 									context.ImprovedTemplateCount += 1;
-									m_From.SendMessage("Your templates may now spawn as (Improved).");
+									AvatarLocalization.Send(m_From, "avatar.msg.improved_templates_unlocked", "Your templates may now spawn as (Improved).");
 								}
 							),
 
@@ -241,8 +241,8 @@ namespace Server.Engines.Avatar
 								Constants.RECORDED_SKILL_CAP_MAX_LEVEL <= context.RecordedSkillCapLevel,
 								erudianCapCost,
 								AvatarShopGump.NO_ITEM_ID,
-								string.Format("Erudian Knowledge ({0} of {1})", context.RecordedSkillCapLevel, Constants.RECORDED_SKILL_CAP_MAX_LEVEL),
-								string.Format("Increases the maximum of skill that your Skill Archive can provide by {0}. Current maximum: {1}", Constants.RECORDED_SKILL_CAP_INTERVAL, context.GetRecordedSkillCap()),
+								AvatarLocalization.KeyFormat(m_From, "avatar.reward.erudian_knowledge.name", "Erudian Knowledge ({0} of {1})", context.RecordedSkillCapLevel, Constants.RECORDED_SKILL_CAP_MAX_LEVEL),
+								AvatarLocalization.KeyFormat(m_From, "avatar.reward.erudian_knowledge.desc", "Increases the maximum of skill that your Skill Archive can provide by {0}. Current maximum: {1}", Constants.RECORDED_SKILL_CAP_INTERVAL, context.GetRecordedSkillCap()),
 								() => {
 									context.RecordedSkillCapLevel += 1;
 									context.ClearRewardCache(Categories.PrimaryBoosts);
@@ -250,22 +250,22 @@ namespace Server.Engines.Avatar
 								}
 							).WithPrereq(
 								context.UnlockPrimarySkillBoost || context.UnlockSecondarySkillBoost,
-								"Requires Jack of No Trades or Artisan's Mastery to be unlocked."
+								AvatarLocalization.Key(m_From, "avatar.prereq.jack_or_artisan", "Requires Jack of No Trades or Artisan's Mastery to be unlocked.")
 							),
 							ActionReward.Create(
 								Constants.SKILL_CAP_MAX_LEVEL <= context.SkillCapLevel,
 								skillCapCost,
 								AvatarShopGump.NO_ITEM_ID,
-								string.Format("Skill Cap ({0} of {1})", context.SkillCapLevel, Constants.SKILL_CAP_MAX_LEVEL),
-								string.Format("Increases the skill cap by {0}. Current bonus: {1}", Constants.SKILL_CAP_PER_LEVEL, Constants.SKILL_CAP_PER_LEVEL * context.SkillCapLevel),
+								AvatarLocalization.KeyFormat(m_From, "avatar.reward.skill_cap.name", "Skill Cap ({0} of {1})", context.SkillCapLevel, Constants.SKILL_CAP_MAX_LEVEL),
+								AvatarLocalization.KeyFormat(m_From, "avatar.reward.skill_cap.desc", "Increases the skill cap by {0}. Current bonus: {1}", Constants.SKILL_CAP_PER_LEVEL, Constants.SKILL_CAP_PER_LEVEL * context.SkillCapLevel),
 								() => context.SkillCapLevel += 1
 							),
 							ActionReward.Create(
 								Constants.STAT_CAP_MAX_LEVEL <= context.StatCapLevel,
 								statCapCost,
 								AvatarShopGump.NO_ITEM_ID,
-								string.Format("Stat Cap ({0} of {1})", context.StatCapLevel, Constants.STAT_CAP_MAX_LEVEL),
-								string.Format("Increases the stat cap by {0}. Current bonus: {1}", Constants.STAT_CAP_PER_LEVEL, Constants.STAT_CAP_PER_LEVEL * context.StatCapLevel),
+								AvatarLocalization.KeyFormat(m_From, "avatar.reward.stat_cap.name", "Stat Cap ({0} of {1})", context.StatCapLevel, Constants.STAT_CAP_MAX_LEVEL),
+								AvatarLocalization.KeyFormat(m_From, "avatar.reward.stat_cap.desc", "Increases the stat cap by {0}. Current bonus: {1}", Constants.STAT_CAP_PER_LEVEL, Constants.STAT_CAP_PER_LEVEL * context.StatCapLevel),
 								() => context.StatCapLevel += 1
 							),
 
@@ -274,16 +274,16 @@ namespace Server.Engines.Avatar
 								Constants.POINT_GAIN_RATE_MAX_LEVEL <= context.PointGainRateLevel,
 								pointGainRateCost,
 								AvatarShopGump.NO_ITEM_ID,
-								string.Format("Coins Gain Rate ({0} of {1})", context.PointGainRateLevel, Constants.POINT_GAIN_RATE_MAX_LEVEL),
-								string.Format("Increases the coins gain rate by {0}%. Current bonus: {1}%", Constants.POINT_GAIN_RATE_PER_LEVEL, Constants.POINT_GAIN_RATE_PER_LEVEL * context.PointGainRateLevel),
+								AvatarLocalization.KeyFormat(m_From, "avatar.reward.coins_gain_rate.name", "Coins Gain Rate ({0} of {1})", context.PointGainRateLevel, Constants.POINT_GAIN_RATE_MAX_LEVEL),
+								AvatarLocalization.KeyFormat(m_From, "avatar.reward.coins_gain_rate.desc", "Increases the coins gain rate by {0}%. Current bonus: {1}%", Constants.POINT_GAIN_RATE_PER_LEVEL, Constants.POINT_GAIN_RATE_PER_LEVEL * context.PointGainRateLevel),
 								() => context.PointGainRateLevel += 1
 							),
 							ActionReward.Create(
 								Constants.SKILL_GAIN_RATE_MAX_LEVEL <= context.SkillGainRateLevel,
 								skillGainRateCost,
 								AvatarShopGump.NO_ITEM_ID,
-								string.Format("Skill Gain Rate ({0} of {1})", context.SkillGainRateLevel, Constants.SKILL_GAIN_RATE_MAX_LEVEL),
-								string.Format("Increases the skill gain rate by {0}%. Current bonus: {1}%", Constants.SKILL_GAIN_RATE_PER_LEVEL, Constants.SKILL_GAIN_RATE_PER_LEVEL * context.SkillGainRateLevel),
+								AvatarLocalization.KeyFormat(m_From, "avatar.reward.skill_gain_rate.name", "Skill Gain Rate ({0} of {1})", context.SkillGainRateLevel, Constants.SKILL_GAIN_RATE_MAX_LEVEL),
+								AvatarLocalization.KeyFormat(m_From, "avatar.reward.skill_gain_rate.desc", "Increases the skill gain rate by {0}%. Current bonus: {1}%", Constants.SKILL_GAIN_RATE_PER_LEVEL, Constants.SKILL_GAIN_RATE_PER_LEVEL * context.SkillGainRateLevel),
 								() => context.SkillGainRateLevel += 1
 							),
 						}.Where(r => r != null).ToList();
@@ -297,8 +297,8 @@ namespace Server.Engines.Avatar
 
 							var confirmation = new ConfirmationGump(
 								m_From,
-								"Select Template?",
-								string.Format("Are you sure you wish to select this template? This is a {0} that will recreate your backpack, reduce existing stats, and change skills.", TextDefinition.GetColorizedText("destructive action", HtmlColors.RED)),
+								AvatarLocalization.Key(m_From, "avatar.confirm.select_template_title", "Select Template?"),
+								string.Format(AvatarLocalization.Key(m_From, "avatar.confirm.select_template_body", "Are you sure you wish to select this template? This is a {0} that will recreate your backpack, reduce existing stats, and change skills."), TextDefinition.GetColorizedText(AvatarLocalization.Key(m_From, "avatar.term.destructive_action", "destructive action"), HtmlColors.RED)),
 								() =>
 								{
 									SkillCheck.DisableSkillGains = true;
@@ -334,7 +334,7 @@ namespace Server.Engines.Avatar
 
 									AvatarEngine.Instance.ApplyContext(m_From, m_From.Avatar);
 									m_From.OnSkillsQuery(m_From);
-									m_From.SendMessage("Your skills have been set to the chosen template. Focus and Meditation have been set to Locked.");
+									m_From.SendMessage(AvatarLocalization.Key(m_From, "avatar.msg.template_skills_applied", "Your skills have been set to the chosen template. Focus and Meditation have been set to Locked."));
 								}
 							);
 							m_From.SendGump(confirmation);
@@ -344,8 +344,8 @@ namespace Server.Engines.Avatar
 							ActionReward.Create(
 								AvatarShopGump.COST_FREE,
 								AvatarShopGump.NO_ITEM_ID,
-								"The Brute",
-								"Starts with 60 strength, 10 dexterity, and 10 intelligence.",
+								AvatarLocalization.Key(m_From, "avatar.template.brute", "The Brute"),
+								AvatarLocalization.Key(m_From, "avatar.template.brute.desc", "Starts with 60 strength, 10 dexterity, and 10 intelligence."),
 								() =>
 								{
 									applyTemplate(
@@ -361,8 +361,8 @@ namespace Server.Engines.Avatar
 							ActionReward.Create(
 								AvatarShopGump.COST_FREE,
 								AvatarShopGump.NO_ITEM_ID,
-								"The Acrobat",
-								"Starts with 10 strength, 60 dexterity, and 10 intelligence.",
+								AvatarLocalization.Key(m_From, "avatar.template.acrobat", "The Acrobat"),
+								AvatarLocalization.Key(m_From, "avatar.template.acrobat.desc", "Starts with 10 strength, 60 dexterity, and 10 intelligence."),
 								() =>
 								{
 									applyTemplate(
@@ -378,8 +378,8 @@ namespace Server.Engines.Avatar
 							ActionReward.Create(
 								AvatarShopGump.COST_FREE,
 								AvatarShopGump.NO_ITEM_ID,
-								"The Scholar",
-								"Starts with 10 strength, 10 dexterity, and 60 intelligence.",
+								AvatarLocalization.Key(m_From, "avatar.template.scholar", "The Scholar"),
+								AvatarLocalization.Key(m_From, "avatar.template.scholar.desc", "Starts with 10 strength, 10 dexterity, and 60 intelligence."),
 								() =>
 								{
 									applyTemplate(
@@ -425,11 +425,12 @@ namespace Server.Engines.Avatar
 						foreach (var template in templates.OrderBy(p => p.ToString()))
 						{
 							var boosted = 0 < boostedTemplates.Count && boostedTemplates.Contains(template);
+							var templateName = AvatarLocalization.StarterTemplateName(m_From, template);
 							rewards.Add(ActionReward.Create(
 								AvatarShopGump.COST_FREE,
 								AvatarShopGump.NO_ITEM_ID,
-								string.Format("The {0}{1}", template.ToString(), boosted ? " (Improved)" : ""),
-								string.Format("Start with the stats, skills, and items of a {0}.", template.ToString()),
+								AvatarLocalization.KeyFormat(m_From, "avatar.template.profession.name", "The {0}{1}", templateName, boosted ? AvatarLocalization.Key(m_From, "avatar.term.improved_suffix", " (Improved)") : string.Empty),
+								AvatarLocalization.KeyFormat(m_From, "avatar.template.profession.desc", "Start with the stats, skills, and items of a {0}.", templateName),
 								() =>
 								{
 									applyTemplate(
@@ -472,7 +473,7 @@ namespace Server.Engines.Avatar
 									AvatarShopGump.COST_NO_BUY,
 									AvatarShopGump.NO_ITEM_ID,
 									skill.Name,
-									string.Format("{0} skill. Your highest value was: {1:n1}", !skill.IsSecondarySkill() ? "Primary" : "Secondary", value),
+									AvatarLocalization.KeyFormat(m_From, "avatar.skill_archive.entry.desc", "{0} skill. Your highest value was: {1:n1}", !skill.IsSecondarySkill() ? AvatarLocalization.Key(m_From, "avatar.term.primary", "Primary") : AvatarLocalization.Key(m_From, "avatar.term.secondary", "Secondary"), value),
 									() => { }
 								)
 							);
@@ -525,7 +526,7 @@ namespace Server.Engines.Avatar
 										AvatarShopGump.COST_FREE,
 										AvatarShopGump.NO_ITEM_ID,
 										string.Format("{0}", skill.Name),
-										string.Format("Raise your skill in {0} up to {1:n1}", skill.Name, maxValue),
+										AvatarLocalization.KeyFormat(m_From, "avatar.skill_boost.desc", "Raise your skill in {0} up to {1:n1}", skill.Name, maxValue),
 										() =>
 										{
 											if (skill.IsSecondarySkill())
@@ -569,7 +570,9 @@ namespace Server.Engines.Avatar
 										}
 									).WithPrereq(
 										showPrimarySkills ? context.UnlockPrimarySkillBoost : context.UnlockSecondarySkillBoost,
-										string.Format("Requires {0} to be unlocked.", showPrimarySkills ? "Jack of No Trades" : "Artisan's Mastery")
+										showPrimarySkills
+											? AvatarLocalization.Key(m_From, "avatar.prereq.jack_of_no_trades", "Requires Jack of No Trades to be unlocked.")
+											: AvatarLocalization.Key(m_From, "avatar.prereq.artisans_mastery", "Requires Artisan's Mastery to be unlocked.")
 									)
 								);
 							}
@@ -604,19 +607,19 @@ namespace Server.Engines.Avatar
 								true,
 								() => { return new IronIngot(50); },
 								50
-							).WithDescription("A handful of ingots to get you started."),
+							).WithDescription(AvatarLocalization.Key(m_From, "avatar.reward.item.ingots.desc", "A handful of ingots to get you started.")),
 							ItemReward.Create(
 								ONE_HUNDRED_GOLD,
 								true,
 								() => { return new Fabric(50); },
 								50
-							).WithDescription("A handful of fabric to get you started."),
+							).WithDescription(AvatarLocalization.Key(m_From, "avatar.reward.item.fabric.desc", "A handful of fabric to get you started.")),
 							ItemReward.Create(
 								5 * TEN_GOLD,
 								true,
 								() => { return new Bottle(); },
 								10
-							).WithDescription("A handful of bottles to get you started."),
+							).WithDescription(AvatarLocalization.Key(m_From, "avatar.reward.item.bottles.desc", "A handful of bottles to get you started.")),
 
 							// Tools
 							ItemReward.Create(
@@ -675,17 +678,17 @@ namespace Server.Engines.Avatar
 								5 * ONE_HUNDRED_GOLD,
 								true,
 								() => { return new NecromancerSpellbook(); }
-							).WithName("Necromancer Spellbook (Empty)"),
+							).WithName(AvatarLocalization.Key(m_From, "avatar.reward.item.necro_spellbook.name", "Necromancer Spellbook (Empty)")),
 							ItemReward.Create(
 								5 * ONE_HUNDRED_GOLD,
 								true,
 								() => { return new Spellbook(); }
-							).WithName("Mage's Spellbook (Empty)"),
+							).WithName(AvatarLocalization.Key(m_From, "avatar.reward.item.mage_spellbook.name", "Mage's Spellbook (Empty)")),
 							ItemReward.Create(
 								5 * ONE_HUNDRED_GOLD,
 								true,
 								() => { return new ElementalSpellbook(); }
-							).WithName("Elementalist Spellbook (Empty)"),
+							).WithName(AvatarLocalization.Key(m_From, "avatar.reward.item.elementalist_spellbook.name", "Elementalist Spellbook (Empty)")),
 
 							// Utility
 							ItemReward.Create(
@@ -698,7 +701,7 @@ namespace Server.Engines.Avatar
 
 									return bag;
 								 }
-							).WithName("Healer's Kit").WithDescription("Contains scissors and fabric."),
+							).WithName(AvatarLocalization.Key(m_From, "avatar.reward.item.healer_kit.name", "Healer's Kit")).WithDescription(AvatarLocalization.Key(m_From, "avatar.reward.item.healer_kit.desc", "Contains scissors and fabric.")),
 							ItemReward.Create(
 								5 * ONE_HUNDRED_GOLD,
 								true,
@@ -710,39 +713,39 @@ namespace Server.Engines.Avatar
 
 									return bag;
 								 }
-							).WithName("Warrior's Potion Bag").WithDescription("Contains healing, cure, and refresh potions."),
+							).WithName(AvatarLocalization.Key(m_From, "avatar.reward.item.warrior_potions.name", "Warrior's Potion Bag")).WithDescription(AvatarLocalization.Key(m_From, "avatar.reward.item.warrior_potions.desc", "Contains healing, cure, and refresh potions.")),
 							ItemReward.Create(
 								ONE_THOUSAND_GOLD,
 								true,
 								() => { return new BagOfReagents(); }
-							).WithName("Bag of Reagents").WithDescription("Contains magery reagents for spells."),
+							).WithName(AvatarLocalization.Key(m_From, "avatar.reward.item.reagents.name", "Bag of Reagents")).WithDescription(AvatarLocalization.Key(m_From, "avatar.reward.item.reagents.desc", "Contains magery reagents for spells.")),
 							ItemReward.Create(
 								5 * ONE_HUNDRED_GOLD,
 								true,
 								() => { return new BagOfNecroReagents(); }
-							).WithName("Bag of Necro Reagents").WithDescription("Contains necromancy reagents for spells."),
+							).WithName(AvatarLocalization.Key(m_From, "avatar.reward.item.necro_reagents.name", "Bag of Necro Reagents")).WithDescription(AvatarLocalization.Key(m_From, "avatar.reward.item.necro_reagents.desc", "Contains necromancy reagents for spells.")),
 							ItemReward.Create(
 								10 * ONE_THOUSAND_GOLD,
 								true,
 								() => { return new SmallBoatDeed(); }
-							).WithDescription("Hit the seas sailing!"),
+							).WithDescription(AvatarLocalization.Key(m_From, "avatar.reward.item.boat.desc", "Hit the seas sailing!")),
 							ItemReward.Create(
 								30 * ONE_THOUSAND_GOLD,
 								true,
 								() => { return new MagicCarpetADeed(); }
-							).WithDescription("I can show you the world!"),
+							).WithDescription(AvatarLocalization.Key(m_From, "avatar.reward.item.carpet.desc", "I can show you the world!")),
 
 							// Tames
 							ItemReward.Create(
 								ONE_HUNDRED_GOLD,
 								true,
 								() => { return new CagedHorse(); }
-							).WithDescription("A horse is a great way to get around."),
+							).WithDescription(AvatarLocalization.Key(m_From, "avatar.reward.item.horse.desc", "A horse is a great way to get around.")),
 							ItemReward.Create(
 								ONE_THOUSAND_GOLD,
 								true,
 								() => { return new CagedPackHorse(); }
-							).WithDescription("For when you're too weak to carry things yourself."),
+							).WithDescription(AvatarLocalization.Key(m_From, "avatar.reward.item.pack_horse.desc", "For when you're too weak to carry things yourself.")),
 						};
 					}
 			}

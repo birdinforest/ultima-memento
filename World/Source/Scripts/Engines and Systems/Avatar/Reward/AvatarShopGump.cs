@@ -58,7 +58,7 @@ namespace Server.Engines.Avatar
 
 			const int GUMP_WIDTH = BACKGROUND_WIDTH;
 			const int GUMP_HEIGHT = BACKGROUND_HEIGHT;
-			TextDefinition.AddHtmlText(this, 11, 11, GUMP_WIDTH, 20, "<CENTER>The Avatar's Ascent</CENTER>", HtmlColors.COOL_BLUE);
+			TextDefinition.AddHtmlText(this, 11, 11, GUMP_WIDTH, 20, AvatarLocalization.Key(m_From, "avatar.gump.title", "<CENTER>The Avatar's Ascent</CENTER>"), HtmlColors.COOL_BLUE);
 
 			AddCategoryList(selectedCategory, 27, 48);
 
@@ -70,40 +70,40 @@ namespace Server.Engines.Avatar
 				y += CARD_HEIGHT;
 				y += 10;
 
-				AddInformationCard(NO_ITEM_ID, "An Avatar is Born", "You have begun the Avatar's Ascent. This is a challenging journey of self-discovery and growth.", y);
+				AddInformationCard(NO_ITEM_ID, AvatarLocalization.Key(m_From, "avatar.gump.info.avatar_born.title", "An Avatar is Born"), AvatarLocalization.Key(m_From, "avatar.gump.info.avatar_born.body", "You have begun the Avatar's Ascent. This is a challenging journey of self-discovery and growth."), y);
 				y += CARD_HEIGHT;
 				y += 10;
 
-				AddInformationCard(NO_ITEM_ID, "Everything is Temporary", "Unless explicitly stated, everything your character owns will be deleted when your character dies. The only exception to this is your house, which will be inherited by your new character.", y);
+				AddInformationCard(NO_ITEM_ID, AvatarLocalization.Key(m_From, "avatar.gump.info.temporary.title", "Everything is Temporary"), AvatarLocalization.Key(m_From, "avatar.gump.info.temporary.body", "Unless explicitly stated, everything your character owns will be deleted when your character dies. The only exception to this is your house, which will be inherited by your new character."), y);
 				y += CARD_HEIGHT;
 				y += 10;
 
-				AddInformationCard(NO_ITEM_ID, "Meta Progression", string.Format(
-					"{0} are permanent and may be purchased for a fee. {0} can enable permanence between runs, unlock new features, accelerate progression, or even raise the ceiling of your character.",
-					TextDefinition.GetColorizedText("Ascensions", HtmlColors.ORANGE)
+				AddInformationCard(NO_ITEM_ID, AvatarLocalization.Key(m_From, "avatar.gump.info.meta.title", "Meta Progression"), string.Format(
+					AvatarLocalization.Key(m_From, "avatar.gump.info.meta.body", "{0} are permanent and may be purchased for a fee. {0} can enable permanence between runs, unlock new features, accelerate progression, or even raise the ceiling of your character."),
+					TextDefinition.GetColorizedText(AvatarLocalization.Key(m_From, "avatar.term.ascensions", "Ascensions"), HtmlColors.ORANGE)
 				), y);
 				y += CARD_HEIGHT;
 				y += 10;
 
-				AddInformationCard(NO_ITEM_ID, "Your Template", string.Format(
-					"Your Avatar is weak when they are reborn. It is recommended that you select a {0} each run. The Erudian Ascensions will allw you to recover skills using the {1} and {2} skill pages.",
-					TextDefinition.GetColorizedText("Template", HtmlColors.ORANGE),
-					TextDefinition.GetColorizedText("Primary", HtmlColors.ORANGE),
-					TextDefinition.GetColorizedText("Secondary", HtmlColors.ORANGE)
+				AddInformationCard(NO_ITEM_ID, AvatarLocalization.Key(m_From, "avatar.gump.info.template.title", "Your Template"), string.Format(
+					AvatarLocalization.Key(m_From, "avatar.gump.info.template.body", "Your Avatar is weak when they are reborn. It is recommended that you select a {0} each run. The Erudian Ascensions will allow you to recover skills using the {1} and {2} skill pages."),
+					TextDefinition.GetColorizedText(AvatarLocalization.Key(m_From, "avatar.term.template", "Template"), HtmlColors.ORANGE),
+					TextDefinition.GetColorizedText(AvatarLocalization.Key(m_From, "avatar.term.primary", "Primary"), HtmlColors.ORANGE),
+					TextDefinition.GetColorizedText(AvatarLocalization.Key(m_From, "avatar.term.secondary", "Secondary"), HtmlColors.ORANGE)
 				), y);
 				y += CARD_HEIGHT;
 				y += 10;
 
 				if (m_Context.HasRivalFaction)
 				{
-					AddInformationCard(NO_ITEM_ID, "Enemy Faction", string.Format("Your family has been wronged by {0}. You will receive a bonus each time you kill monsters of this faction. Once you have avenged your family, you will no longer receive the bonus.", TextDefinition.GetColorizedText(m_Context.RivalFactionName, HtmlColors.ORANGE)), y);
+					AddInformationCard(NO_ITEM_ID, AvatarLocalization.Key(m_From, "avatar.gump.info.enemy_faction.title", "Enemy Faction"), string.Format(AvatarLocalization.Key(m_From, "avatar.gump.info.enemy_faction.body", "Your family has been wronged by {0}. You will receive a bonus each time you kill monsters of this faction. Once you have avenged your family, you will no longer receive the bonus."), TextDefinition.GetColorizedText(AvatarLocalization.RivalFactionName(m_From, m_Context.RivalSlayerName), HtmlColors.ORANGE)), y);
 					y += CARD_HEIGHT;
 					y += 10;
 				}
 
-				AddInformationCard(NO_ITEM_ID, "Opportunity Only Knocks Once...", string.Format(
-					"Your vessel is frail; once you leave the {0} you may not purchase anything from this gump.",
-					TextDefinition.GetColorizedText("Gypsy Encampment", HtmlColors.ORANGE)
+				AddInformationCard(NO_ITEM_ID, AvatarLocalization.Key(m_From, "avatar.gump.info.once.title", "Opportunity Only Knocks Once..."), string.Format(
+					AvatarLocalization.Key(m_From, "avatar.gump.info.once.body", "Your vessel is frail; once you leave the {0} you may not purchase anything from this gump."),
+					TextDefinition.GetColorizedText(AvatarLocalization.Key(m_From, "avatar.term.gypsy_encampment", "Gypsy Encampment"), HtmlColors.ORANGE)
 				), y);
 				y += CARD_HEIGHT;
 				y += 10;
@@ -117,13 +117,13 @@ namespace Server.Engines.Avatar
 				{
 					case Categories.Ascensions:
 						{
-							AddInformationCard(BLANK_ITEM_ID, "Ascensions - Unlock Permanent Enhancements", "Ascensions are a way to apply permanent changes to your lineage. Some of these changes may allow you to persist knowledge between runs while others may simply make you stronger.", y, addBackground: false);
+							AddInformationCard(BLANK_ITEM_ID, AvatarLocalization.Key(m_From, "avatar.gump.info.ascensions.title", "Ascensions - Unlock Permanent Enhancements"), AvatarLocalization.Key(m_From, "avatar.gump.info.ascensions.body", "Ascensions are a way to apply permanent changes to your lineage. Some of these changes may allow you to persist knowledge between runs while others may simply make you stronger."), y, addBackground: false);
 							break;
 						}
 
 					case Categories.Templates:
 						{
-							AddInformationCard(BLANK_ITEM_ID, "Templates - Select Your Beginning", "A template can provide a fixed combination of skills, stats, and/or items to aid with your run. The templates available to you will change each run.", y, addBackground: false);
+							AddInformationCard(BLANK_ITEM_ID, AvatarLocalization.Key(m_From, "avatar.gump.info.templates.title", "Templates - Select Your Beginning"), AvatarLocalization.Key(m_From, "avatar.gump.info.templates.body", "A template can provide a fixed combination of skills, stats, and/or items to aid with your run. The templates available to you will change each run."), y, addBackground: false);
 							break;
 						}
 
@@ -133,10 +133,10 @@ namespace Server.Engines.Avatar
 							var isPrimary = m_SelectedCategory == Categories.PrimaryBoosts;
 							AddInformationCard(
 								BLANK_ITEM_ID,
-								isPrimary ? "Available Primary Skills" : "Available Secondary Skills",
+								isPrimary ? AvatarLocalization.Key(m_From, "avatar.gump.info.primary_skills.title", "Available Primary Skills") : AvatarLocalization.Key(m_From, "avatar.gump.info.secondary_skills.title", "Available Secondary Skills"),
 								string.Format(
-									"Only half the {0} skills that you've ever become proficient in ({1} skill) are available for selection. As long as you have capacity, selecting a skill will immediately raise it to the displayed value.",
-									isPrimary ? "Primary" : "Secondary",
+									AvatarLocalization.Key(m_From, "avatar.gump.info.skills.body", "Only half the {0} skills that you've ever become proficient in ({1} skill) are available for selection. As long as you have capacity, selecting a skill will immediately raise it to the displayed value."),
+									isPrimary ? AvatarLocalization.Key(m_From, "avatar.term.primary", "Primary") : AvatarLocalization.Key(m_From, "avatar.term.secondary", "Secondary"),
 									Constants.RECORDED_SKILL_CAP_MIN_AMOUNT
 									),
 								y,
@@ -149,9 +149,9 @@ namespace Server.Engines.Avatar
 						{
 							AddInformationCard(
 								BLANK_ITEM_ID,
-								"Skill Archive",
+								AvatarLocalization.Key(m_From, "avatar.gump.info.skill_archive.title", "Skill Archive"),
 								string.Format(
-									"Review the highest you've ever reached in each skill. Once you become proficient ({0} skill), you may be able to restore the skill to that value for free.",
+									AvatarLocalization.Key(m_From, "avatar.gump.info.skill_archive.body", "Review the highest you've ever reached in each skill. Once you become proficient ({0} skill), you may be able to restore the skill to that value for free."),
 									Constants.RECORDED_SKILL_CAP_MIN_AMOUNT
 									),
 								y,
@@ -162,7 +162,7 @@ namespace Server.Engines.Avatar
 
 					case Categories.Items:
 						{
-							AddInformationCard(BLANK_ITEM_ID, "Items - Purchase Temporary Conveniences", "Items can be purchased to assist you with your next run. Be wary of how much you invest, as these items are lost upon death.", y, addBackground: false);
+							AddInformationCard(BLANK_ITEM_ID, AvatarLocalization.Key(m_From, "avatar.gump.info.items.title", "Items - Purchase Temporary Conveniences"), AvatarLocalization.Key(m_From, "avatar.gump.info.items.body", "Items can be purchased to assist you with your next run. Be wary of how much you invest, as these items are lost upon death."), y, addBackground: false);
 							break;
 						}
 
@@ -268,7 +268,7 @@ namespace Server.Engines.Avatar
 			{
 				m_Rewards.Add(reward);
 
-				var tooltip = reward is ActionReward ? ((ActionReward)reward).PrequisiteTooltip : null;
+				var tooltip = reward is ActionReward ? AvatarLocalization.ResolveEnglish(m_From, ((ActionReward)reward).PrequisiteTooltip) : null;
 				var canPurchase = m_InGypsyEncampment && reward.CanSelect && string.IsNullOrWhiteSpace(tooltip);
 				var cost = reward is ActionReward && ((ActionReward)reward).IsComplete ? COST_NO_BUY : reward.Cost;
 
@@ -330,7 +330,7 @@ namespace Server.Engines.Avatar
 				var cost = Math.Max(0, reward.Cost);
 				if (m_Context.PointsSaved < cost)
 				{
-					player.SendMessage("You do not have enough coins to purchase this.");
+					AvatarLocalization.Send(player, "avatar.msg.not_enough_coins", "You do not have enough coins to purchase this.");
 				}
 				else
 				{
@@ -340,7 +340,7 @@ namespace Server.Engines.Avatar
 						var item = itemReward.OnSelect();
 						if (item != null)
 						{
-							player.SendMessage("You have purchased '{0}' for '{1:n0}' coins.", reward.Name, cost);
+							AvatarLocalization.SendFormat(player, "avatar.msg.purchased_for_coins", "You have purchased '{0}' for '{1:n0}' coins.", reward.Name, cost);
 							m_Context.PointsSaved -= cost;
 							player.AddToBackpack(item);
 						}
@@ -352,12 +352,12 @@ namespace Server.Engines.Avatar
 						{
 							if (m_SelectedCategory == Categories.Templates)
 							{
-								player.SendMessage("You have selected a template.");
+								AvatarLocalization.Send(player, "avatar.msg.selected_template", "You have selected a template.");
 								Timer.DelayCall(TimeSpan.FromSeconds(0.25), () => actionReward.OnSelect());
 							}
 							else
 							{
-								player.SendMessage("You have purchased '{0}' for '{1:n0}' coins.", reward.Name, cost);
+								AvatarLocalization.SendFormat(player, "avatar.msg.purchased_for_coins", "You have purchased '{0}' for '{1:n0}' coins.", reward.Name, cost);
 								m_Context.PointsSaved -= cost;
 								actionReward.OnSelect();
 								AvatarEngine.Instance.ApplyContext(player, player.Avatar);
@@ -419,6 +419,9 @@ namespace Server.Engines.Avatar
 			int DESCRIPTION_WIDTH = CARD_WIDTH - (x - START_X);
 			if (0 <= cost) DESCRIPTION_WIDTH -= PURCHASE_WIDTH;
 
+			name = AvatarLocalization.ResolveEnglish(m_From, name);
+			description = AvatarLocalization.ResolveEnglish(m_From, description);
+
 			const int LAZY_AMOUNT = 30; // Arbitrary value to account for left padding
 			TextDefinition.AddHtmlText(this, x, y, DESCRIPTION_WIDTH - LAZY_AMOUNT, 20, name, HtmlColors.ORANGE);
 			TextDefinition.AddHtmlText(this, x + 10, y + 20, DESCRIPTION_WIDTH - LAZY_AMOUNT, 40, TextDefinition.GetColorizedText(description, HtmlColors.COOL_BLUE), false, scrollable);
@@ -454,22 +457,22 @@ namespace Server.Engines.Avatar
 					switch (m_SelectedCategory)
 					{
 						case Categories.Templates:
-							purchaseText = "Select";
+							purchaseText = AvatarLocalization.Key(m_From, "avatar.gump.btn.select", "Select");
 							break;
 
 						case Categories.PrimaryBoosts:
 						case Categories.SecondaryBoosts:
-							purchaseText = "Teach Me";
+							purchaseText = AvatarLocalization.Key(m_From, "avatar.gump.btn.teach_me", "Teach Me");
 							break;
 
 						case Categories.Ascensions:
-							purchaseText = "Unlock";
+							purchaseText = AvatarLocalization.Key(m_From, "avatar.gump.btn.unlock", "Unlock");
 							break;
 
 						case Categories.Items:
 						case Categories.Information:
 						default:
-							purchaseText = "Purchase";
+							purchaseText = AvatarLocalization.Key(m_From, "avatar.gump.btn.purchase", "Purchase");
 							break;
 					}
 
@@ -487,9 +490,9 @@ namespace Server.Engines.Avatar
 
 				AddBackground(x, y, CATEGORY_WIDTH, CARD_HEIGHT + 5, 2620);
 				GumpUtilities.AddCenteredItemToGump(this, GIANT_COIN_ITEM_ID, x + 10, y, 40, CARD_HEIGHT + 5);
-				AddTooltip("Coins are earned by killing monsters and completing combat-based quests.");
+				AddTooltip(AvatarLocalization.Key(m_From, "avatar.gump.coins_tooltip", "Coins are earned by killing monsters and completing combat-based quests."));
 				TextDefinition.AddHtmlText(this, x + 60, firstRowY, CATEGORY_WIDTH - 20, 40, string.Format("{0}", (m_From.Avatar.PointsSaved + m_From.Avatar.PointsFarmed).ToString("n0")), HtmlColors.ORANGE);
-				TextDefinition.AddHtmlText(this, x + 60, secondRowY, CATEGORY_WIDTH - 20, 40, "Coins", HtmlColors.COOL_BLUE);
+				TextDefinition.AddHtmlText(this, x + 60, secondRowY, CATEGORY_WIDTH - 20, 40, AvatarLocalization.Key(m_From, "avatar.gump.coins_label", "Coins"), HtmlColors.COOL_BLUE);
 				y += CARD_HEIGHT + 10;
 			}
 
@@ -521,29 +524,7 @@ namespace Server.Engines.Avatar
 
 				var color = isSelected ? HtmlColors.ORANGE : HtmlColors.COOL_BLUE;
 
-				string categoryName;
-				switch (category)
-				{
-					case Categories.PrimaryBoosts:
-						categoryName = "Primary Skills";
-						break;
-
-					case Categories.SecondaryBoosts:
-						categoryName = "Secondary Skills";
-						break;
-
-					case Categories.FullSkillArchive:
-						categoryName = "Skill Archive";
-						break;
-
-					case Categories.Information:
-					case Categories.Ascensions:
-					case Categories.Templates:
-					case Categories.Items:
-					default:
-						categoryName = category.ToString();
-						break;
-				}
+				string categoryName = AvatarLocalization.CategoryName(m_From, category);
 
 				TextDefinition.AddHtmlText(this, x + LEFT_PADDING, y + 7 + (i * HEIGHT_PER_ITEM), CATEGORY_WIDTH - LEFT_PADDING, 16, categoryName, color);
 				++i;
@@ -578,16 +559,16 @@ namespace Server.Engines.Avatar
 			var secondRowY = firstRowY + 20;
 
 			TextDefinition.AddHtmlText(this, x, firstRowY, cardWidth, 40, string.Format("<CENTER>{0}</CENTER>", m_From.StatCap), HtmlColors.ORANGE);
-			TextDefinition.AddHtmlText(this, x, secondRowY, cardWidth, 40, "<CENTER>Stat Cap</CENTER>", HtmlColors.COOL_BLUE);
+			TextDefinition.AddHtmlText(this, x, secondRowY, cardWidth, 40, AvatarLocalization.Key(m_From, "avatar.gump.stat_cap", "<CENTER>Stat Cap</CENTER>"), HtmlColors.COOL_BLUE);
 
 			x += space;
 			TextDefinition.AddHtmlText(this, x, firstRowY, cardWidth, 40, string.Format("<CENTER>{0}</CENTER>", (m_From.SkillsCap / 10).ToString("n0")), HtmlColors.ORANGE);
-			TextDefinition.AddHtmlText(this, x, secondRowY, cardWidth, 40, "<CENTER>Skill Cap</CENTER>", HtmlColors.COOL_BLUE);
+			TextDefinition.AddHtmlText(this, x, secondRowY, cardWidth, 40, AvatarLocalization.Key(m_From, "avatar.gump.skill_cap", "<CENTER>Skill Cap</CENTER>"), HtmlColors.COOL_BLUE);
 
 			x += space;
 			TextDefinition.AddHtmlText(this, x, firstRowY, cardWidth, 40, string.Format("<CENTER>{0}</CENTER>", Math.Min(Constants.RIVAL_BONUS_MAX_POINTS, m_Context.RivalBonusPoints).ToString("n0")), HtmlColors.ORANGE);
-			TextDefinition.AddHtmlText(this, x, secondRowY, cardWidth, 40, "<CENTER>Faction Bonus</CENTER>", HtmlColors.COOL_BLUE);
-			AddTooltip("The amount of coins you have received for killing your enemy faction.");
+			TextDefinition.AddHtmlText(this, x, secondRowY, cardWidth, 40, AvatarLocalization.Key(m_From, "avatar.gump.faction_bonus", "<CENTER>Faction Bonus</CENTER>"), HtmlColors.COOL_BLUE);
+			AddTooltip(AvatarLocalization.Key(m_From, "avatar.gump.faction_bonus_tooltip", "The amount of coins you have received for killing your enemy faction."));
 		}
 	}
 }
