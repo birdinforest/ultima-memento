@@ -90,6 +90,37 @@ namespace Server.Misc
 
     class Research
     {
+		private const string DefaultResearchSpells = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#";
+		private const string DefaultResearchPrep = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#";
+		private const string DefaultSpellsMagery = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#";
+		private const string DefaultSpellsNecromancy = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#";
+		private const string DefaultRuneFound = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#";
+
+		/// <summary>GM-spawned or legacy saves may leave spell progress strings null; guard before .Length access.</summary>
+		public static void EnsureBagSpellData( ResearchBag bag )
+		{
+			if ( bag == null )
+				return;
+
+			if ( string.IsNullOrEmpty( bag.ResearchSpells ) )
+				bag.ResearchSpells = DefaultResearchSpells;
+
+			if ( string.IsNullOrEmpty( bag.ResearchPrep1 ) )
+				bag.ResearchPrep1 = DefaultResearchPrep;
+
+			if ( string.IsNullOrEmpty( bag.ResearchPrep2 ) )
+				bag.ResearchPrep2 = DefaultResearchPrep;
+
+			if ( string.IsNullOrEmpty( bag.SpellsMagery ) )
+				bag.SpellsMagery = DefaultSpellsMagery;
+
+			if ( string.IsNullOrEmpty( bag.SpellsNecromancy ) )
+				bag.SpellsNecromancy = DefaultSpellsNecromancy;
+
+			if ( string.IsNullOrEmpty( bag.RuneFound ) )
+				bag.RuneFound = DefaultRuneFound;
+		}
+
         public static void InvokeCommand( string c, Mobile from )
         {
             CommandSystem.Handle(from, String.Format("{0}{1}", CommandSystem.Prefix, c));
@@ -151,13 +182,13 @@ namespace Server.Misc
 			FindLocation( from, 0, "rune", bag );
 			FindLocation( from, 0, "research", bag );
 
-			bag.ResearchSpells = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#";
-			bag.ResearchPrep1 = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#";
-			bag.ResearchPrep2 = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#";
+			bag.ResearchSpells = DefaultResearchSpells;
+			bag.ResearchPrep1 = DefaultResearchPrep;
+			bag.ResearchPrep2 = DefaultResearchPrep;
 
-			bag.SpellsMagery = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#";
-			bag.SpellsNecromancy = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#";
-			bag.RuneFound = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#";
+			bag.SpellsMagery = DefaultSpellsMagery;
+			bag.SpellsNecromancy = DefaultSpellsNecromancy;
+			bag.RuneFound = DefaultRuneFound;
 		}
 
 		public static Land PickWorld( int level ) /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -181,6 +212,11 @@ namespace Server.Misc
 
 		public static int GetMaxCircleResearched( ResearchBag bag ) /////////////////////////////////////////////////////////////////////////////////
 		{
+			if ( bag == null )
+				return 0;
+
+			EnsureBagSpellData( bag );
+
 			string found = bag.SpellsMagery;
 			int circle = 0;
 			int current = 0;
@@ -220,6 +256,11 @@ namespace Server.Misc
 
 		public static int GetMaxSchoolResearched( ResearchBag bag ) /////////////////////////////////////////////////////////////////////////////////
 		{
+			if ( bag == null )
+				return 0;
+
+			EnsureBagSpellData( bag );
+
 			string found = bag.ResearchSpells;
 			int school = 0;
 			int current = 0;

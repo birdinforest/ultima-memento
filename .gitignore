@@ -79,3 +79,4 @@ World/Data/Localization/tools-output/llm-translation-queue.jsonl
 World/Data/Localization/tools-output/llm-translation-response.json
 World/Data/Localization/tools-output/llm-batch-*.jsonl
 doc/code-review/*
+World/Crash *.log

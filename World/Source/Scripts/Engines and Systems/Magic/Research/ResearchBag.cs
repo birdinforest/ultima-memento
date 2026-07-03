@@ -37,7 +37,7 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( from.Backpack ) )
 			{
-				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your pack to do any research. " ) + Research.GetMaxSchoolResearched( this ) + " - " + Research.GetMaxCircleResearched( this ) + "" );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your pack to do any research. " ) );
 			}
 			else if ( from.Skills[SkillName.Inscribe].Value < 30 )
 			{
@@ -1351,6 +1351,8 @@ namespace Server.Items
 				nul = reader.ReadString();
 				nul = reader.ReadString();
 			}
+
+			Research.EnsureBagSpellData( this );
 		}
 
 		private class SpellInformation : Gump
