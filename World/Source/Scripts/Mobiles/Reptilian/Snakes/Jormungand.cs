@@ -131,9 +131,9 @@ namespace Server.Mobiles
 					}
 				}
 
-				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, StringCatalog.ResolveByKey(this.Account, "mob.other.jormungandr") ) )
+				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, StringCatalog.ResolveByKey(null, "mob.other.jormungandr") ) )
 				{
-					Server.Misc.PlayerSettings.SetSpecialsKilled( killer, StringCatalog.ResolveByKey(this.Account, "mob.other.jormungandr"), true );
+					Server.Misc.PlayerSettings.SetSpecialsKilled( killer, StringCatalog.ResolveByKey(null, "mob.other.jormungandr"), true );
 					ManualOfItems book = new ManualOfItems();
 						book.Hue = 0xB3D;
 						book.Name = "Chest of Midgard Relics";
