@@ -64,13 +64,17 @@ namespace Server.Mobiles
    			ingut.Amount = Utility.RandomMinMax( 1, 3 );
    			c.DropItem(ingut);
 
-			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
-			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
-
-			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "BloodDemigod" ) )
-			{
-				Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "BloodDemigod", true );
-				ManualOfItems book = new ManualOfItems();
+			string encounterId = RelicChestDropHelper.BuildEncounterId( this );
+			RelicChestDropHelper.TryAwardRelics(
+				this,
+				encounterId,
+				"A",
+				"BloodDemigod",
+				"ground",
+				20,
+				delegate( PlayerMobile player, bool isFirst )
+				{
+					ManualOfItems book = new ManualOfItems();
 					book.Hue = 0x870;
 					book.Name = "Chest of Bloody Relics";
 					book.m_Charges = 1;
@@ -92,8 +96,12 @@ namespace Server.Mobiles
 					book.m_HowGiven = "Acquired by";
 					book.m_Points = 150;
 					book.m_Hue = 0x870;
+					return book;
+				},
+				delegate( PlayerMobile player, ManualOfItems book )
+				{
 					c.DropItem( book );
-			}
+				} );
 		}
 
 		public override int Meat{ get{ return 1; } }

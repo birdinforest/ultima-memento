@@ -56,15 +56,17 @@ namespace Server.Mobiles
    			ingut.Amount = Utility.RandomMinMax( 1, 3 );
    			c.DropItem(ingut);
 
-			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
-			if ( killer != null )
-			{
-				int killerLuck = MobileUtilities.GetLuckFromKiller( this );
-
-				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "LichKing" ) )
-				{
-					Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "LichKing", true );
-					ManualOfItems book = new ManualOfItems();
+			string encounterId = RelicChestDropHelper.BuildEncounterId( this );
+			RelicChestDropHelper.TryAwardRelics(
+				this,
+				encounterId,
+				"A",
+				"LichKing",
+				"ground",
+					20,
+					delegate( PlayerMobile player, bool isFirst )
+					{
+						ManualOfItems book = new ManualOfItems();
 						book.Hue = 0x845;
 						book.Name = "Chest of Lich King Relics";
 						book.m_Charges = 1;
@@ -86,8 +88,17 @@ namespace Server.Mobiles
 						book.m_HowGiven = "Acquired by";
 						book.m_Points = 150;
 						book.m_Hue = 0x845;
-						c.DropItem( book );
-				}
+						return book;
+					},
+				delegate( PlayerMobile player, ManualOfItems book )
+				{
+					c.DropItem( book );
+				} );
+
+			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
+			if ( killer != null )
+			{
+				int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
 				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )
 				{

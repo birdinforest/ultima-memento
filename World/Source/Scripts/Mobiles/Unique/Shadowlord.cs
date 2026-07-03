@@ -164,74 +164,47 @@ namespace Server.Mobiles
 					if ( winner is BaseCreature )
 						winner = ((BaseCreature)winner).GetMaster();
 
-					if ( winner is PlayerMobile && !winner.Blessed )
-					{
-						Party p = Engines.PartySystem.Party.Get( winner );
-						if ( p != null )
-						{
-							foreach ( PartyMemberInfo pmi in p.Members )
-							{
-								if ( pmi.Mobile is PlayerMobile && pmi.Mobile.InRange(this.Location, 20) && pmi.Mobile.Map == this.Map && !pmi.Mobile.Blessed && !Server.Misc.PlayerSettings.GetSpecialsKilled( pmi.Mobile, this.Name ) )
-								{
-									Server.Misc.PlayerSettings.SetSpecialsKilled( pmi.Mobile, this.Name, true );
-									ManualOfItems book = new ManualOfItems();
-										book.Hue = 0x541;
-										book.Name = "Chest of Shadowlord Relics";
-										book.m_Charges = 1;
-										book.m_Skill_1 = 99;
-										book.m_Skill_2 = 32;
-										book.m_Skill_3 = 0;
-										book.m_Skill_4 = 0;
-										book.m_Skill_5 = 0;
-										book.m_Value_1 = 10.0;
-										book.m_Value_2 = 10.0;
-										book.m_Value_3 = 0.0;
-										book.m_Value_4 = 0.0;
-										book.m_Value_5 = 0.0;
-										book.m_Slayer_1 = 5;
-										book.m_Slayer_2 = 0;
-										book.m_Owner = pmi.Mobile;
-										book.m_Extra = "of the Shadows";
-										book.m_FromWho = "Spawned from the Shadowlords";
-										book.m_HowGiven = "Acquired by";
-										book.m_Points = 200;
-										book.m_Hue = 0x541;
-										pmi.Mobile.AddToBackpack( book );
+					string encounterId = RelicChestDropHelper.BuildEncounterId( this );
+					string shadowName = this.Name;
 
-									pmi.Mobile.SendMessage("An item has appeared in your backpack!");
-								}
-							}
-						}
-						else if ( !Server.Misc.PlayerSettings.GetSpecialsKilled( winner, this.Name ) )
+					RelicChestDropHelper.TryAwardRelics(
+						this,
+						encounterId,
+						"shadowlord",
+						shadowName,
+						"backpack",
+						20,
+						delegate( PlayerMobile player, bool isFirst )
 						{
-							Server.Misc.PlayerSettings.SetSpecialsKilled( winner, this.Name, true );
 							ManualOfItems book = new ManualOfItems();
-								book.Hue = 0x541;
-								book.Name = "Chest of Shadowlord Relics";
-								book.m_Charges = 1;
-								book.m_Skill_1 = 99;
-								book.m_Skill_2 = 32;
-								book.m_Skill_3 = 0;
-								book.m_Skill_4 = 0;
-								book.m_Skill_5 = 0;
-								book.m_Value_1 = 10.0;
-								book.m_Value_2 = 10.0;
-								book.m_Value_3 = 0.0;
-								book.m_Value_4 = 0.0;
-								book.m_Value_5 = 0.0;
-								book.m_Slayer_1 = 5;
-								book.m_Slayer_2 = 0;
-								book.m_Owner = winner;
-								book.m_Extra = "of the Shadows";
-								book.m_FromWho = "Spawned from the Shadowlords";
-								book.m_HowGiven = "Acquired by";
-								book.m_Points = 200;
-								book.m_Hue = 0x541;
-								winner.AddToBackpack( book );
-
-							winner.SendMessage("An item has appeared in your backpack!");
-						}
-					}
+							book.Hue = 0x541;
+							book.Name = "Chest of Shadowlord Relics";
+							book.m_Charges = 1;
+							book.m_Skill_1 = 99;
+							book.m_Skill_2 = 32;
+							book.m_Skill_3 = 0;
+							book.m_Skill_4 = 0;
+							book.m_Skill_5 = 0;
+							book.m_Value_1 = 10.0;
+							book.m_Value_2 = 10.0;
+							book.m_Value_3 = 0.0;
+							book.m_Value_4 = 0.0;
+							book.m_Value_5 = 0.0;
+							book.m_Slayer_1 = 5;
+							book.m_Slayer_2 = 0;
+							book.m_Owner = player;
+							book.m_Extra = "of the Shadows";
+							book.m_FromWho = "Spawned from the Shadowlords";
+							book.m_HowGiven = "Acquired by";
+							book.m_Points = 200;
+							book.m_Hue = 0x541;
+							return book;
+						},
+						delegate( PlayerMobile player, ManualOfItems book )
+						{
+							player.AddToBackpack( book );
+							player.SendMessage( "An item has appeared in your backpack!" );
+						} );
 				}
 			}
 			return base.OnBeforeDeath();

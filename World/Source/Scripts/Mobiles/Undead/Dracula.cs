@@ -191,16 +191,17 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
-
-			if ( killer != null )
-			{
-				int killerLuck = MobileUtilities.GetLuckFromKiller( this );
-
-				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "Dracula" ) )
-				{
-					Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "Dracula", true );
-					ManualOfItems book = new ManualOfItems();
+			string encounterId = RelicChestDropHelper.BuildEncounterId( this );
+			RelicChestDropHelper.TryAwardRelics(
+				this,
+				encounterId,
+				"A",
+				"Dracula",
+				"backpack",
+					20,
+					delegate( PlayerMobile player, bool isFirst )
+					{
+						ManualOfItems book = new ManualOfItems();
 						book.Hue = 0x497;
 						book.Name = "Chest of Dracula's Relics";
 						book.m_Charges = 1;
@@ -216,15 +217,24 @@ namespace Server.Mobiles
 						book.m_Value_5 = 0.0;
 						book.m_Slayer_1 = 24;
 						book.m_Slayer_2 = 0;
-						book.m_Owner = killer;
+						book.m_Owner = player;
 						book.m_Extra = "of the Vampire";
 						book.m_FromWho = "from Dracula";
 						book.m_HowGiven = "Acquired by";
 						book.m_Points = 250;
 						book.m_Hue = 0x497;
-						killer.AddToBackpack( book );
-						killer.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.ResolveByKey(this.Account, "mob.other.you_found_a_book_and_put_it_in_your_pack"), killer.NetState);
-				}
+						return book;
+					},
+				delegate( PlayerMobile player, ManualOfItems book )
+				{
+					player.AddToBackpack( book );
+					player.PrivateOverheadMessage( MessageType.Regular, 1153, false, StringCatalog.ResolveByKey( this.Account, "mob.other.you_found_a_book_and_put_it_in_your_pack" ), player.NetState );
+				} );
+
+			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
+			if ( killer != null )
+			{
+				int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
 				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Server.Misc.IntelligentAction.FameBasedEvent( this ) )
 				{

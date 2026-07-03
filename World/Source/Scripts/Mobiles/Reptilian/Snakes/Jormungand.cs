@@ -130,11 +130,20 @@ namespace Server.Mobiles
 						corpse.VisitedByTaxidermist = true;
 					}
 				}
+			}
 
-				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, StringCatalog.ResolveByKey(null, "mob.other.jormungandr") ) )
-				{
-					Server.Misc.PlayerSettings.SetSpecialsKilled( killer, StringCatalog.ResolveByKey(null, "mob.other.jormungandr"), true );
-					ManualOfItems book = new ManualOfItems();
+			string jormKey = StringCatalog.ResolveByKey( null, "mob.other.jormungandr" );
+			string encounterId = RelicChestDropHelper.BuildEncounterId( this );
+			RelicChestDropHelper.TryAwardRelics(
+				this,
+				encounterId,
+				"A",
+				jormKey,
+				"ground",
+					20,
+					delegate( PlayerMobile player, bool isFirst )
+					{
+						ManualOfItems book = new ManualOfItems();
 						book.Hue = 0xB3D;
 						book.Name = "Chest of Midgard Relics";
 						book.m_Charges = 1;
@@ -156,9 +165,12 @@ namespace Server.Mobiles
 						book.m_HowGiven = "Acquired by";
 						book.m_Points = 200;
 						book.m_Hue = 0xB3D;
-						c.DropItem( book );
-				}
-			}
+						return book;
+					},
+				delegate( PlayerMobile player, ManualOfItems book )
+				{
+					c.DropItem( book );
+				} );
 
 			LootChest MyChest = new LootChest( 10 );
 			Server.Misc.ContainerFunctions.MakeDemonBox( MyChest, this );

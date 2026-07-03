@@ -108,13 +108,17 @@ namespace Server.Mobiles
 			MyChest.Hue = 0x966;
 			MyChest.MoveToWorld( Location, Map );
 
-			int killerLuck = MobileUtilities.GetLuckFromKiller( this );
-			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
-
-			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "BlackGateDemon" ) )
-			{
-				Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "BlackGateDemon", true );
-				ManualOfItems book = new ManualOfItems();
+			string encounterId = RelicChestDropHelper.BuildEncounterId( this );
+			RelicChestDropHelper.TryAwardRelics(
+				this,
+				encounterId,
+				"A",
+				"BlackGateDemon",
+				"ground",
+				20,
+				delegate( PlayerMobile player, bool isFirst )
+				{
+					ManualOfItems book = new ManualOfItems();
 					book.Hue = 0x497;
 					book.Name = "Chest of Demonic Relics";
 					book.m_Charges = 1;
@@ -136,8 +140,12 @@ namespace Server.Mobiles
 					book.m_HowGiven = "Acquired by";
 					book.m_Points = 150;
 					book.m_Hue = 0x497;
+					return book;
+				},
+				delegate( PlayerMobile player, ManualOfItems book )
+				{
 					MyChest.AddItem( book );
-			}
+				} );
 
 			m_MoonTimer = new InternalTimer (this);
 			m_MoonTimer.Start ();

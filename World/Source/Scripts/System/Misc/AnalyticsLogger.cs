@@ -12,6 +12,7 @@ using Server.Engines.Avatar;
 using Server.Mobiles;
 using Server.Network;
 using Server.Temptation;
+using Server.Items;
 
 namespace Server.Misc
 {
@@ -201,6 +202,65 @@ namespace Server.Misc
 			d["shoppe_craft_system"] = craftSystemName ?? "";
 			d["feature_variant"] = d["reward_type"];
 			Emit( d );
+		}
+
+		public static void LogRelicsRollAttempted( PlayerMobile pm, RelicsDropContext ctx )
+		{
+			if ( !MySettings.S_AnalyticsEnabled || pm == null || ctx == null )
+				return;
+
+			var acc = pm.Account as Account;
+			var d = BaseAccountFields( acc, pm );
+			d["event_type"] = "relics_roll_attempted";
+			d["feature_name"] = "manual_of_items";
+			d["feature_variant"] = ctx.BossKey ?? "";
+			AppendRelicsContextFields( d, ctx );
+			Emit( d );
+		}
+
+		public static void LogRelicsChestAwarded( PlayerMobile pm, ManualOfItems chest, RelicsDropContext ctx )
+		{
+			if ( !MySettings.S_AnalyticsEnabled || pm == null || chest == null || ctx == null )
+				return;
+
+			var acc = pm.Account as Account;
+			var d = BaseAccountFields( acc, pm );
+			d["event_type"] = "relics_chest_awarded";
+			d["feature_name"] = "manual_of_items";
+			d["feature_variant"] = ctx.BossKey ?? "";
+			AppendRelicsContextFields( d, ctx );
+			d["item_serial"] = chest.Serial.Value.ToString( CultureInfo.InvariantCulture );
+			d["item_type"] = chest.GetType().Name;
+			d["chest_name"] = chest.Name ?? "";
+			d["chest_hue"] = chest.Hue.ToString( CultureInfo.InvariantCulture );
+			d["enchant_points"] = chest.m_Points.ToString( CultureInfo.InvariantCulture );
+			d["slayer_1"] = chest.m_Slayer_1.ToString( CultureInfo.InvariantCulture );
+			d["slayer_2"] = chest.m_Slayer_2.ToString( CultureInfo.InvariantCulture );
+			d["owner_bound"] = chest.m_Owner != null ? "true" : "false";
+			d["from_who"] = chest.m_FromWho ?? "";
+			Emit( d );
+		}
+
+		private static void AppendRelicsContextFields( Dictionary<string, string> d, RelicsDropContext ctx )
+		{
+			d["drop_gate"] = ctx.DropGate ?? "";
+			d["boss_key"] = ctx.BossKey ?? "";
+			d["boss_type"] = ctx.BossType ?? "";
+			d["encounter_id"] = ctx.EncounterId ?? "";
+			d["delivery_path"] = ctx.DeliveryPath ?? "";
+			d["damage_rank"] = ctx.DamageRank.ToString( CultureInfo.InvariantCulture );
+			d["damage_dealt"] = ctx.DamageDealt.ToString( CultureInfo.InvariantCulture );
+			d["damage_total"] = ctx.DamageTotal.ToString( CultureInfo.InvariantCulture );
+			d["damage_share_pct"] = ctx.DamageTotal > 0
+				? ( ( ctx.DamageDealt * 100.0 ) / ctx.DamageTotal ).ToString( "0.##", CultureInfo.InvariantCulture )
+				: "0";
+			d["has_loot_right"] = ctx.HasLootRight ? "true" : "false";
+			d["eligible_top3_count"] = ctx.EligibleTop3Count.ToString( CultureInfo.InvariantCulture );
+			d["is_first_time"] = ctx.IsFirstTime ? "true" : "false";
+			d["luck"] = ctx.Luck.ToString( CultureInfo.InvariantCulture );
+			d["roll_max_pct"] = ctx.RollMaxPct.ToString( "0.##", CultureInfo.InvariantCulture );
+			d["roll_actual_pct"] = ctx.RollActualPct.ToString( "0.##", CultureInfo.InvariantCulture );
+			d["roll_success"] = ctx.RollSuccess ? "true" : "false";
 		}
 
 		private static void OnLogin( LoginEventArgs e )

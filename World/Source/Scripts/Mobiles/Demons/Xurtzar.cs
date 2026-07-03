@@ -100,7 +100,9 @@ namespace Server.Mobiles
 
 		public override bool OnBeforeDeath()
 		{
+			VaultRelicSnapshot snap = RelicChestDropHelper.BuildVaultSnapshot( this, 20 );
 			XurtzarChest MyChest = new XurtzarChest();
+			RelicChestDropHelper.ApplyVaultSnapshot( snap, MyChest );
 			MyChest.MoveToWorld( Location, Map );
 
 			QuestGlow MyGlow = new QuestGlow();
@@ -131,8 +133,20 @@ namespace Server.Mobiles
 
 namespace Server.Items
 {
-	public class XurtzarChest : Item
+	public class XurtzarChest : Item, IVaultRelicEligible
 	{
+		private VaultRelicSnapshot m_VaultSnapshot;
+
+		public void SetVaultRelicSnapshot( VaultRelicSnapshot snap )
+		{
+			m_VaultSnapshot = snap;
+		}
+
+		public VaultRelicSnapshot GetVaultRelicSnapshot()
+		{
+			return m_VaultSnapshot;
+		}
+
 		[Constructable]
 		public XurtzarChest() : base( 0xE40 )
 		{
@@ -158,40 +172,43 @@ namespace Server.Items
 				MyChest.Name = "Xurtzar's Vault";
 				MyChest.Hue = 0x490;
 
-				if ( from is PlayerMobile )
-				{
-					if ( GetPlayerInfo.LuckyKiller( from.Luck ) && !Server.Misc.PlayerSettings.GetSpecialsKilled( from, "Xurtzar" ) )
+				VaultRelicSnapshot snap = m_VaultSnapshot ?? new VaultRelicSnapshot();
+
+				if ( !RelicChestDropHelper.TryProcessVaultOpen(
+					from,
+					snap,
+					"Xurtzar",
+					"B",
+					delegate( PlayerMobile player, bool isFirst )
 					{
-						if ( GetPlayerInfo.LuckyKiller( from.Luck ) )
-						{
-							Item arty = Loot.RandomArty();
-							MyChest.DropItem( arty );
-						}
-						Server.Misc.PlayerSettings.SetSpecialsKilled( from, "Xurtzar", true );
 						ManualOfItems lexicon = new ManualOfItems();
-							lexicon.Hue = 0x490;
-							lexicon.Name = "Chest of Xurtzar Relics";
-							lexicon.m_Charges = 1;
-							lexicon.m_Skill_1 = 0;
-							lexicon.m_Skill_2 = 0;
-							lexicon.m_Skill_3 = 0;
-							lexicon.m_Skill_4 = 0;
-							lexicon.m_Skill_5 = 0;
-							lexicon.m_Value_1 = 0.0;
-							lexicon.m_Value_2 = 0.0;
-							lexicon.m_Value_3 = 0.0;
-							lexicon.m_Value_4 = 0.0;
-							lexicon.m_Value_5 = 0.0;
-							lexicon.m_Slayer_1 = 11;
-							lexicon.m_Slayer_2 = 0;
-							lexicon.m_Owner = from;
-							lexicon.m_Extra = "of Xurtzar the caddellite dragon";
-							lexicon.m_FromWho = "Taken from Xurtzar";
-							lexicon.m_HowGiven = "Acquired by";
-							lexicon.m_Points = 200;
-							lexicon.m_Hue = 0x490;
-							MyChest.DropItem( lexicon );
-					}
+						lexicon.Hue = 0x490;
+						lexicon.Name = "Chest of Xurtzar Relics";
+						lexicon.m_Charges = 1;
+						lexicon.m_Skill_1 = 0;
+						lexicon.m_Skill_2 = 0;
+						lexicon.m_Skill_3 = 0;
+						lexicon.m_Skill_4 = 0;
+						lexicon.m_Skill_5 = 0;
+						lexicon.m_Value_1 = 0.0;
+						lexicon.m_Value_2 = 0.0;
+						lexicon.m_Value_3 = 0.0;
+						lexicon.m_Value_4 = 0.0;
+						lexicon.m_Value_5 = 0.0;
+						lexicon.m_Slayer_1 = 11;
+						lexicon.m_Slayer_2 = 0;
+						lexicon.m_Owner = player;
+						lexicon.m_Extra = "of Xurtzar the caddellite dragon";
+						lexicon.m_FromWho = "Taken from Xurtzar";
+						lexicon.m_HowGiven = "Acquired by";
+						lexicon.m_Points = 200;
+						lexicon.m_Hue = 0x490;
+						return lexicon;
+					},
+					MyChest,
+					true ) )
+				{
+					return;
 				}
 
 				MyChest.MoveToWorld( from.Location, from.Map );
@@ -208,14 +225,24 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 );
+			RelicChestDropHelper.SerializeVaultSnapshot( writer, m_VaultSnapshot );
 		}
 
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
-			this.Delete(); // none when the world starts 
+
+			switch ( version )
+			{
+				case 0:
+					this.Delete();
+					break;
+				case 1:
+					m_VaultSnapshot = RelicChestDropHelper.DeserializeVaultSnapshot( reader );
+					break;
+			}
 		}
 
 		public class ItemRemovalTimer : Timer 

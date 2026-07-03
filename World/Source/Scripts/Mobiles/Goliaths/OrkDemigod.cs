@@ -59,16 +59,17 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
-
-			if ( killer != null )
-			{
-				int killerLuck = MobileUtilities.GetLuckFromKiller( this );
-
-				if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 1, 5 ) == 1 && !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "OrkDemigod" ) )
-				{
-					Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "OrkDemigod", true );
-					ManualOfItems book = new ManualOfItems();
+			string encounterId = RelicChestDropHelper.BuildEncounterId( this );
+			RelicChestDropHelper.TryAwardRelics(
+				this,
+				encounterId,
+				"A",
+				"OrkDemigod",
+				"ground",
+					20,
+					delegate( PlayerMobile player, bool isFirst )
+					{
+						ManualOfItems book = new ManualOfItems();
 						book.Hue = 0x7D4;
 						book.Name = "Chest of Orcish Relics";
 						book.m_Charges = 1;
@@ -90,9 +91,12 @@ namespace Server.Mobiles
 						book.m_HowGiven = "Acquired by";
 						book.m_Points = 150;
 						book.m_Hue = 0x7D4;
-						c.DropItem( book );
-				}
-			}
+						return book;
+					},
+				delegate( PlayerMobile player, ManualOfItems book )
+				{
+					c.DropItem( book );
+				} );
 		}
 
 		public override void GenerateLoot()

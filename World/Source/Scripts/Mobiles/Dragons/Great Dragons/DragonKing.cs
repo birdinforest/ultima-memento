@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Server;
 using Server.Items;
 using Server.Misc;
@@ -65,56 +66,106 @@ namespace Server.Mobiles
 				{
 					c.DropItem( new DragonRidingScroll() );
 				}
+			}
 
-				if ( GetPlayerInfo.DragonKingOtherRareLuckyDrop( killerLuck ) )
+			bool canDropSpecial = !Controlled;
+			bool specialDropped = false;
+			bool rank1ChestAwarded = false;
+			string encounterId = RelicChestDropHelper.BuildEncounterId( this );
+			int damageTotal = RelicChestDropHelper.SumEncounterDamage( this );
+			List<RelicEligiblePlayer> eligibleTop = RelicChestDropHelper.GetEligibleTopPlayers( this, 3, 20 );
+
+			RelicChestDropHelper.TryAwardRelics(
+				this,
+				encounterId,
+				"C",
+				"DragonKing",
+				"ground",
+				20,
+				delegate( PlayerMobile player, bool isFirst )
 				{
-					bool canRelics = !PlayerSettings.GetSpecialsKilled( killer, "DragonKing" );
-					bool canDropSpecial = !Controlled;
+					ManualOfItems book = new ManualOfItems();
+					book.Hue = 0x6DF;
+					book.Name = "Chest of Dragon King Relics";
+					book.m_Charges = 1;
+					book.m_Skill_1 = 99;
+					book.m_Skill_2 = 0;
+					book.m_Skill_3 = 0;
+					book.m_Skill_4 = 0;
+					book.m_Skill_5 = 0;
+					book.m_Value_1 = 20.0;
+					book.m_Value_2 = 0.0;
+					book.m_Value_3 = 0.0;
+					book.m_Value_4 = 0.0;
+					book.m_Value_5 = 0.0;
+					book.m_Slayer_1 = 6;
+					book.m_Slayer_2 = 0;
+					book.m_Owner = player;
+					book.m_Extra = "of the Dragon King";
+					book.m_FromWho = "Taken from the King of Dragons";
+					book.m_HowGiven = "Acquired by";
+					book.m_Points = 150;
+					return book;
+				},
+				delegate( PlayerMobile player, ManualOfItems book )
+				{
+					c.DropItem( book );
 
-					if ( canRelics && canDropSpecial )
+					if ( eligibleTop.Count > 0 && eligibleTop[0].Player == player )
+					{
+						rank1ChestAwarded = true;
+						specialDropped = true;
+					}
+				},
+				delegate( PlayerMobile player, int rank, bool isFirst )
+				{
+					if ( rank == 1 && isFirst && canDropSpecial && !specialDropped )
 					{
 						if ( Utility.RandomBool() )
-							DropDragonKingRelics( killer, c );
-						else
+						{
 							DropDragonKingSpecial( c );
+							specialDropped = true;
+
+							int damageDealt = 0;
+
+							for ( int i = 0; i < eligibleTop.Count; i++ )
+							{
+								if ( eligibleTop[i].Player == player )
+								{
+									damageDealt = eligibleTop[i].Damage;
+									break;
+								}
+							}
+
+							RelicChestDropHelper.LogRelicsRollFork(
+								player,
+								this,
+								encounterId,
+								"C",
+								"DragonKing",
+								rank,
+								damageDealt,
+								damageTotal,
+								eligibleTop.Count,
+								isFirst,
+								"dragon_king_special_fork" );
+
+							return false;
+						}
 					}
-					else if ( canRelics )
-					{
-						DropDragonKingRelics( killer, c );
-					}
-					else if ( canDropSpecial )
-					{
-						DropDragonKingSpecial( c );
-					}
+
+					return true;
+				} );
+
+			if ( canDropSpecial && !specialDropped && !rank1ChestAwarded )
+			{
+				List<RelicEligiblePlayer> top = RelicChestDropHelper.GetEligibleTopPlayers( this, 1, 20 );
+
+				if ( top.Count > 0 && top[0].Player != null && PlayerSettings.GetSpecialsKilled( top[0].Player, "DragonKing" ) )
+				{
+					DropDragonKingSpecial( c );
 				}
 			}
-		}
-
-		private void DropDragonKingRelics( PlayerMobile killer, Container c )
-		{
-			PlayerSettings.SetSpecialsKilled( killer, "DragonKing", true );
-			ManualOfItems book = new ManualOfItems();
-			book.Hue = 0x6DF;
-			book.Name = "Chest of Dragon King Relics";
-			book.m_Charges = 1;
-			book.m_Skill_1 = 99;
-			book.m_Skill_2 = 0;
-			book.m_Skill_3 = 0;
-			book.m_Skill_4 = 0;
-			book.m_Skill_5 = 0;
-			book.m_Value_1 = 20.0;
-			book.m_Value_2 = 0.0;
-			book.m_Value_3 = 0.0;
-			book.m_Value_4 = 0.0;
-			book.m_Value_5 = 0.0;
-			book.m_Slayer_1 = 6;
-			book.m_Slayer_2 = 0;
-			book.m_Owner = killer;
-			book.m_Extra = "of the Dragon King";
-			book.m_FromWho = "Taken from the King of Dragons";
-			book.m_HowGiven = "Acquired by";
-			book.m_Points = 150;
-			c.DropItem( book );
 		}
 
 		private void DropDragonKingSpecial( Container c )
