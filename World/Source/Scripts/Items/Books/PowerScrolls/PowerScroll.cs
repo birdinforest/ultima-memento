@@ -1,4 +1,5 @@
 using System;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -134,9 +135,7 @@ namespace Server.Items
         {
             base.AddNameProperties(list);
 
-            string locale = BuildingPropertyListLocale;
-
-            if (locale != null)
+            if (BuildingPropertyListLocale != null)
             {
                 AddLocalizedProperty(list, "prop.scroll.power.skill", (int)Value);
 
@@ -157,6 +156,15 @@ namespace Server.Items
                 else if (Value == 120) { list.Add(1049644, "Legendary Scroll"); }
                 else if (Value == 125) { list.Add(1049644, "Power Scroll"); }
             }
+
+			var shrine = GetShrineRegion(Skill);
+			if (!string.IsNullOrEmpty(shrine))
+			{
+				if (BuildingPropertyListLocale != null)
+					AddLocalizedProperty(list, "prop.scroll.power.shrine", shrine);
+				else
+					list.Add(1070722, string.Format("Requires the {0}", shrine));
+			}
         }
 
         public override bool CanUse(Mobile from)
@@ -177,11 +185,23 @@ namespace Server.Items
 
             if (MyServerSettings.RequirePowerscrollsInOrder() && skill.Cap < (Value - 5))
             {
-                from.SendMessage(TradesBookLocalization.ResolveFormat(from, "Your current cap has to be at {0} to use this scroll", Convert.ToString(Value - 5)));
+                from.SendMessage("Your current cap has to be at {0} to use this scroll", Convert.ToString(Value - 5));
                 return false;
             }
 
-            switch (Skill)
+			var shrine = GetShrineRegion(Skill);
+			if (!string.IsNullOrEmpty(shrine) && !from.Region.IsPartOf(shrine))
+			{
+				from.SendMessage( StringCatalog.ResolveFormat( from.Account, "This magic can only be unleashed at the {0}.", shrine ) );
+				return false;
+			}
+
+			return true;
+        }
+
+		private static string GetShrineRegion(SkillName skill)
+		{
+            switch (skill)
             {
                 case SkillName.FistFighting:
                 case SkillName.Bushido:
@@ -195,10 +215,7 @@ namespace Server.Items
                 case SkillName.Tactics:
                 case SkillName.Parry:
                 case SkillName.Fencing:
-                    if (from.Region.IsPartOf("Shrine of Strength")) return true;
-
-                    from.SendMessage(TradesBookLocalization.Resolve(from, "This magic can only be unleashed at the Shrine of Strength."));
-                    return false;
+                    return "Shrine of Strength";
 
                 case SkillName.Forensics:
                 case SkillName.Tasting:
@@ -216,10 +233,7 @@ namespace Server.Items
                 case SkillName.Tailoring:
                 case SkillName.Tinkering:
                 case SkillName.Inscribe:
-                    if (from.Region.IsPartOf("Shrine of Intelligence")) return true;
-
-                    from.SendMessage(TradesBookLocalization.Resolve(from, "This magic can only be unleashed at the Shrine of Intelligence."));
-                    return false;
+                    return "Shrine of Intelligence";
 
                 case SkillName.Begging:
                 case SkillName.Camping:
@@ -235,10 +249,7 @@ namespace Server.Items
                 case SkillName.Searching:
                 case SkillName.Ninjitsu:
                 case SkillName.Lockpicking:
-                    if (from.Region.IsPartOf("Shrine of Dexterity")) return true;
-
-                    from.SendMessage(TradesBookLocalization.Resolve(from, "This magic can only be unleashed at the Shrine of Dexterity."));
-                    return false;
+                    return "Shrine of Dexterity";
 
                 case SkillName.Mercantile:
                 case SkillName.Spiritualism:
@@ -253,14 +264,11 @@ namespace Server.Items
                 case SkillName.Focus:
                 case SkillName.Seafaring:
                 case SkillName.Healing:
-                    if (from.Region.IsPartOf("Shrine of Wisdom")) return true;
-
-                    from.SendMessage(TradesBookLocalization.Resolve(from, "This magic can only be unleashed at the Shrine of Wisdom."));
-                    return false;
+                    return "Shrine of Wisdom";
 
                 default:
-                    Console.WriteLine("Attempted to use unknown powerscroll {0} ({1}))", skill.ToString(), skill);
-                    return false;
+                    Console.WriteLine("Unknown powerscroll type {0} ({1}))", skill.ToString(), skill);
+                    return string.Empty;
             }
         }
 

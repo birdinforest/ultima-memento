@@ -1792,6 +1792,7 @@
   "prop.scroll.power.tier.mythical": "Mythical Scroll",
   "prop.scroll.power.tier.legendary": "Legendary Scroll",
   "prop.scroll.power.tier.power": "Power Scroll",
+  "prop.scroll.power.shrine": "Requires the {0}",
   "item.explorer.tent.camping": "camping tent",
   "item.explorer.tent.small": "small tent",
   "item.explorer.stable.hitchingpost": "hitching post",

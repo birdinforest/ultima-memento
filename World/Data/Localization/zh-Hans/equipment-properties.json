@@ -1792,6 +1792,7 @@
   "prop.scroll.power.tier.mythical": "神话卷轴（Mythical Scroll）",
   "prop.scroll.power.tier.legendary": "传说卷轴（Legendary Scroll）",
   "prop.scroll.power.tier.power": "力量卷轴（Power Scroll）",
+  "prop.scroll.power.shrine": "需前往{0}释放",
   "item.explorer.tent.camping": "露营帐篷（Camping Tent）",
   "item.explorer.tent.small": "小型帐篷（Small Tent）",
   "item.explorer.stable.hitchingpost": "拴马桩（Hitching Post）",
