@@ -1,5 +1,6 @@
 {
   "motd.title": "今日公告",
   "motd.show_at_login": "登录时显示",
+  "motd.update_log": "网站更新页",
   "motd.website": "网站"
 }

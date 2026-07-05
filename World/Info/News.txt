@@ -1,32 +1,31 @@
 [*]2026年7月5日
 版本升级至3.0.8
 <br>
-功能:
+<b>功能</b>:
   - <b>化身飞升 · 远古研究死亡保护</b> — 圣者角色死亡并重建后，远古魔法师的<b>研究包（Research Bag）</b>与<b>上古法术书（Ancient Spellbook）</b>会迁入银行并进入<b>沉睡（待共鸣）</b>状态；已研究的力量方块（Cubes of Power）与法术知识保留在角色身上，墨汁、卷轴、羽毛笔与已准备法术按规则折损。
   - <b>化身飞升 · 记忆回响共鸣礼</b> — 前往重生报告所示的<b>记忆回响</b>地点，点击对应区域的<b>远古搜寻箱（例如 A Curious Agapite Chest）</b>完成记忆共鸣，即可唤醒研究包与法术书。
   - <b>终局 Boss 遗物箱（ManualOfItems）掉落规则调整</b> — 详见下方「遗物箱掉落说明」。
 <br>
-汉化:
+<b>汉化</b>:
   - 化身飞升（Avatar Ascent）相关文本
   - 记忆回响共鸣礼相关界面与提示（research.resonance.*）
 <br>
 <b>【遗物箱掉落说明】</b>
-<br>
 适用 Boss：巫妖王（Lich King）、血半神（Blood Demigod）、兽人半神（Ork Demigod）、黑门恶魔（Black Gate Demon）、德古拉（Dracula）、耶梦加得（Jormungandr）、龙王（Dragon King）遗物箱、三位暗影领主（Shadowlord），以及五名宝库（Vault）Boss（Cadellite 龙 / 沃尔丁纳克斯、苏尔扎、沃克鲁姆、阿拉克纳、许尔扎等对应宝库）。
-<br>
-<b>组队协作</b>：不再仅由「最后一击」或「开箱者」一人决定。每次击杀时，伤害贡献<b>前三名</b>且具备战利品资格的冒险者，将<b>各自独立</b>进行一次命运判定；多人协作比单人更有机会获得遗物箱。
-<br>
-<b>参与条件</b>（须同时满足）：对 Boss 造成足够伤害以获得战利品资格；Boss 死亡时与其处于<b>同一地图</b>且在<b>附近</b>；角色<b>未处于祝福（Blessed）状态</b>。
-<br>
-<b>幸运（Luck）</b>：幸运值越高，获得遗物箱的机会越大；伤害排名越靠前，机会通常也越高。幸运为 0 时无法通过此机制获得箱子——请通过装备与 buff 提升幸运后再挑战。
-<br>
-<b>首次与重复</b>：每个 Boss 的「首次」里程碑仍由现有进度记录；首次击杀的中奖机会高于已获得过该 Boss 遗物箱之后的重复刷取。重复获得的遗物箱，其附魔点数（Enchant points）可能略低于首次，但 Slayer 等预设仍按原规则发放。
-<br>
-<b>宝库（Vault）</b>：Boss 被击败后生成的宝库，仅<b>参与该场战斗且进入前三名名单</b>的冒险者可尝试开启并参与判定；路人拾取宝库将无法领取遗物。
-<br>
-<b>未改动</b>：龙王龙骑卷轴池、四泰坦任务必得遗物、剧情/任务交互发箱、熔炉与监狱等路径<b>维持原样</b>。
-<br>
-<b>游戏内提示</b>：判定成功或失败时，角色会收到简短系统消息。
+<b>组队协作</b>：
+不再仅由「最后一击」或「开箱者」一人决定。每次击杀时，伤害贡献<b>前三名</b>且具备战利品资格的冒险者，将<b>各自独立</b>进行一次命运判定；多人协作比单人更有机会获得遗物箱。
+<b>参与条件</b>（须同时满足）：
+对 Boss 造成足够伤害以获得战利品资格；Boss 死亡时与其处于<b>同一地图</b>且在<b>附近</b>；角色<b>未处于祝福（Blessed）状态</b>。
+<b>幸运（Luck）</b>：
+幸运值越高，获得遗物箱的机会越大；伤害排名越靠前，机会通常也越高。幸运为 0 时无法通过此机制获得箱子——请通过装备与 buff 提升幸运后再挑战。
+<b>首次与重复</b>：
+每个 Boss 的「首次」里程碑仍由现有进度记录；首次击杀的中奖机会高于已获得过该 Boss 遗物箱之后的重复刷取。重复获得的遗物箱，其附魔点数（Enchant points）可能略低于首次，但 Slayer 等预设仍按原规则发放。
+<b>宝库（Vault）</b>：
+Boss 被击败后生成的宝库，仅<b>参与该场战斗且进入前三名名单</b>的冒险者可尝试开启并参与判定；路人拾取宝库将无法领取遗物。
+<b>未改动</b>：
+龙王龙骑卷轴池、四泰坦任务必得遗物、剧情/任务交互发箱、熔炉与监狱等路径<b>维持原样</b>。
+<b>游戏内提示</b>：
+判定成功或失败时，角色会收到简短系统消息。
 <br>
 
 [*]2026年7月3日
@@ -108,23 +107,3 @@ Bug修复：
 - 怪物可以触发陷阱收到伤害（感知陷阱后可以引怪过去）
 <br>
 请在网站上的”游戏机制“-”地板隐藏陷阱“中查看详细信息。
-
-[*]August 4th, 2024
-Dungeon Master
-
-Welcome, adventurers, to Ultima: Memento! Embark on epic quests, forge alliances, and conquer mythical realms in our immersive fantasy world. May your journeys be filled with valor, magic, and countless tales of triumph. Ready your swords and spells, adventure awaits!
-<br>
-NEW PLAYERS:
-- Death is punishing at an early start. You must have gold to resurrect without penalty as early as 200 total (real) skill points. 
-- You can, and will, lose items. Don't get attached.
-- Start in Britain: minimap markers have been provided to give you better guidance. Add your own custom markers as you adventure!
-- Seek multiple methods to generate gold: gather ingots, wood, or farm animals for their leather, meat, feathers, etc. and sell to vendors. Note that vendor gold purses are limited and restock over time - consider visiting other vendors or towns to continue selling your wares.
-- Join a guild - this gives you a ring with +skills, and those specific skills gain at a quicker rate!
-  - Be sure to speak to your Guild Masters and check their wares.
-- Hiking boots can help you traverse the world swiftly.
-- Make friends in game or via Discord, they can help!
-<br>
-Players familiar with Ruins & Riches and it's variants: 
-- This server is a more challenging variant with Quality of Life updates.
-- Do not rely solely on your recollection - while many aspects will be the same, we've made every effort to better streamline progression (e.g. item drops, crafting, etc.).
-- All hail Djeryv, Mangar, and Xork! Credit where credit is due. This server exists because of them and their impressive groundwork. This is our little Memento.

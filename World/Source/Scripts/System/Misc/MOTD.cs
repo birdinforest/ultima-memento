@@ -54,11 +54,21 @@ namespace Joeku.MOTD
 			AddButton(607, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
 			AddButton(14, 399, button, button, 1, GumpButtonType.Reply, 0);
 			AddBody( user );
-			AddHtml( 51, 402, 141, 20, @"<BODY><BASEFONT Color=" + color + ">" + ResolveKey( user, "motd.show_at_login", "SHOW AT LOGIN" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
-			// Website button — always visible, hardcoded to uo-expedition.com
-			AddButton(193, 399, 4011, 4011, 9, GumpButtonType.Reply, 0);
-			AddHtml( 230, 402, 400, 20, @"<BODY><BASEFONT Color=" + color + ">" + ResolveKey( user, "motd.website", "Website" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+			// Bottom bar: three equal columns (btn + label), x=14..584 before close at 607
+			int barLeft = 14;
+			int colWidth = 190;
+			int labelOffset = 37;
+
+			AddHtml( barLeft + labelOffset, 402, colWidth - labelOffset, 20, @"<BODY><BASEFONT Color=" + color + ">" + ResolveKey( user, "motd.show_at_login", "SHOW AT LOGIN" ) + "</BASEFONT></BODY>", (bool)false, (bool)false );
+
+			int col2 = barLeft + colWidth;
+			AddButton( col2, 399, 4011, 4011, 10, GumpButtonType.Reply, 0 );
+			AddHtml( col2 + labelOffset, 402, colWidth - labelOffset, 20, @"<BODY><BASEFONT Color=" + color + ">" + ResolveKey( user, "motd.update_log", "Update log" ) + "</BASEFONT></BODY>", (bool)false, (bool)false );
+
+			int col3 = barLeft + colWidth * 2;
+			AddButton( col3, 399, 4011, 4011, 9, GumpButtonType.Reply, 0 );
+			AddHtml( col3 + labelOffset, 402, colWidth - labelOffset, 20, @"<BODY><BASEFONT Color=" + color + ">" + ResolveKey( user, "motd.website", "Website" ) + "</BASEFONT></BODY>", (bool)false, (bool)false );
 		}
 
 		public void AddBody( Mobile m )
@@ -67,6 +77,7 @@ namespace Joeku.MOTD
 		}
 
 		private const string WebsiteUrl = "https://www.uo-expedition.com/";
+		private const string UpdateLogUrl = "https://www.uo-expedition.com/dev-log";
 
 		public override void OnResponse( NetState sender, RelayInfo info )
 		{
@@ -84,6 +95,10 @@ namespace Joeku.MOTD
 			else if ( info.ButtonID == 9 )
 			{
 				from.LaunchBrowser( WebsiteUrl );
+			}
+			else if ( info.ButtonID == 10 )
+			{
+				from.LaunchBrowser( UpdateLogUrl );
 			}
 			else if ( m_Origin > 0 )
 			{

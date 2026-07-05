@@ -1,5 +1,6 @@
 {
   "motd.title": "MESSAGE OF THE DAY",
   "motd.show_at_login": "SHOW AT LOGIN",
+  "motd.update_log": "Update log",
   "motd.website": "Website"
 }
