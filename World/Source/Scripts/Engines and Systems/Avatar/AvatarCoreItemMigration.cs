@@ -155,9 +155,6 @@ namespace Server.Engines.Avatar
 
 			var ctx = player.Avatar;
 
-			if ( ctx.AvatarDeathCount >= 4 && !TryConsumeMemoryToken( bag ) )
-				return;
-
 			bag.RestoreFromContext( ctx );
 			bag.ActivateResonance( player );
 
@@ -492,37 +489,6 @@ namespace Server.Engines.Avatar
 			}
 
 			return string.Join( "#", parts );
-		}
-
-		private static bool TryConsumeMemoryToken( ResearchBag bag )
-		{
-			if ( bag == null )
-				return false;
-
-			Mobile player = bag.BagOwner;
-
-			if ( bag.BagInk >= 1 )
-			{
-				bag.BagInk--;
-				return true;
-			}
-
-			if ( bag.BagScrolls >= 1 )
-			{
-				bag.BagScrolls--;
-				return true;
-			}
-
-			if ( bag.BagQuills >= 1 )
-			{
-				bag.BagQuills--;
-				return true;
-			}
-
-			if ( player != null )
-				ResearchLocalization.Send( player, "research.resonance.msg.token_required", "The Rite requires one Memory token (ink or scribing supplies)." );
-
-			return false;
 		}
 
 		private static bool TryPayMaterialResonance( PlayerMobile player )
