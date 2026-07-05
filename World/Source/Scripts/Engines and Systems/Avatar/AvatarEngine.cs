@@ -248,15 +248,37 @@ namespace Server.Engines.Avatar
 			if (player == null) return;
 
 			var context = GetContextOrDefault(player);
-			if (!context.Active) return;
+			// Avatar ascent permanent death allows data inheritance.
+			bool isAvatarAscentPermadeath = context.Active;
+			// Temptation permanent death is a hard core death, no data inheritance.
+			bool isTemptationPermadeath = player.Temptations.HasPermanentDeath;
 
-			DeathContext.TrySave(player, context);
+			if (!isAvatarAscentPermadeath && !isTemptationPermadeath)
+				return;
 
-			context.LifetimeDeaths += 1;
-			context.LifetimePointsGained += context.PointsFarmed;
-			context.PointsSaved += context.PointsFarmed + context.RivalBonusPoints;
-			context.PointsFarmed = 0;
-			context.RivalBonusPoints = 0;
+			if (isAvatarAscentPermadeath)
+			{
+				DeathContext.TrySave(player, context);
+
+				AvatarCoreItemMigration.SnapshotCoreItemsOnDeath( player, context );
+
+				context.LifetimeDeaths += 1;
+				context.LifetimePointsGained += context.PointsFarmed;
+				context.PointsSaved += context.PointsFarmed + context.RivalBonusPoints;
+				context.PointsFarmed = 0;
+				context.RivalBonusPoints = 0;
+			}
+
+			Timer.DelayCall( TimeSpan.FromSeconds( 1.0 ), () =>
+			{
+				if ( player.Deleted || player.NetState == null )
+					return;
+
+				if ( player.Alive )
+					return;
+
+				player.PromptAvatarPermadeathDecision();
+			} );
 		}
 
 		private void OnSkillGain(SkillGainArgs e)

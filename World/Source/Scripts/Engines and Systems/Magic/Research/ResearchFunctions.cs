@@ -580,6 +580,12 @@ namespace Server.Misc
 				bag.RuneFound = got;
 			}
 
+			if ( cube > 0 && from.Map != null )
+			{
+				bag.LastRuneFoundLocation = Server.Misc.Worlds.GetRegionName( from.Map, from.Location );
+				bag.LastRuneFoundWorld = bag.RuneWorld;
+			}
+
 			if ( cube > 25 )
 			{
 				bag.RuneLocation = "";
@@ -1620,6 +1626,72 @@ namespace Server.Misc
 			}
 
 			return HaveSpell;
+		}
+
+		/// <summary>
+		/// Rebuild ancient spellbook Content from bag research progress only (no unfound spells).
+		/// </summary>
+		public static void SyncAncientSpellbookFromBag( ResearchBag bag, AncientSpellbook book )
+		{
+			if ( bag == null || book == null )
+				return;
+
+			EnsureBagSpellData( bag );
+
+			ulong content = 0;
+
+			for ( int spell = 1; spell <= 64; ++spell )
+			{
+				if ( !GetResearch( bag, spell ) )
+					continue;
+
+				int spellId = Int32.Parse( SpellInformation( spell, 12 ) );
+				int val = spellId - book.BookOffset;
+
+				if ( val >= 0 && val < book.BookCount )
+					content |= (ulong)1 << val;
+			}
+
+			book.Content = content;
+		}
+
+		/// <summary>
+		/// Merge soul-layer snapshot with live bag strings; a slot stays "1" only if either side had it.
+		/// </summary>
+		public static void RestoreResearchBagFromSnapshot( ResearchBag bag, PlayerContext ctx )
+		{
+			if ( bag == null || ctx == null )
+				return;
+
+			EnsureBagSpellData( bag );
+
+			bag.RuneFound = MergeBinaryProgress( bag.RuneFound, ctx.SnapshotRuneFound );
+			bag.SpellsMagery = MergeBinaryProgress( bag.SpellsMagery, ctx.SnapshotSpellsMagery );
+			bag.SpellsNecromancy = MergeBinaryProgress( bag.SpellsNecromancy, ctx.SnapshotSpellsNecromancy );
+			bag.ResearchSpells = MergeBinaryProgress( bag.ResearchSpells, ctx.SnapshotResearchSpells );
+		}
+
+		private static string MergeBinaryProgress( string current, string snapshot )
+		{
+			if ( string.IsNullOrEmpty( snapshot ) )
+				return current ?? "";
+
+			if ( string.IsNullOrEmpty( current ) )
+				return snapshot;
+
+			string[] a = current.Split( '#' );
+			string[] b = snapshot.Split( '#' );
+			int len = Math.Max( a.Length, b.Length );
+			var parts = new string[len];
+
+			for ( int i = 0; i < len; ++i )
+			{
+				string ca = i < a.Length ? a[i] : "0";
+				string cb = i < b.Length ? b[i] : "0";
+				parts[i] = ca == "1" || cb == "1" ? "1" : ( ca != "" ? ca : "0" );
+			}
+
+			return string.Join( "#", parts );
 		}
 
 		public static void SetResearch( ResearchBag bag, Mobile from ) //////////////////////////////////////////////////////////////////////////////

@@ -4,11 +4,13 @@ using Server.Gumps;
 using Server.Spells;
 using Server.Localization;
 using Server.Misc;
+using Server.Engines.Avatar;
+using Server.Mobiles;
 
 namespace Server.Items
 {
 	[FlipableAttribute( 0x65EC, 0x6711 )]
-	public class AncientSpellbook : Spellbook
+	public class AncientSpellbook : Spellbook, IAvatarCoreItem
 	{
 		public override bool IsContentLocalized => true;
 
@@ -56,13 +58,17 @@ namespace Server.Items
 			{
 				ResearchLocalization.Send( from, "research.msg.ancient_pages_scribbles", "These pages appears as scribbles to you." );
 			}
+			else if ( IsDormant )
+			{
+				ResearchLocalization.Send( from, "research.resonance.msg.book_departed_soul", "Names belong to a departed form… knowledge waits in the dormant pack. After the Rite, pages clear." );
+			}
 			else if ( Parent == from || ( pack != null && Parent == pack ) )
 			{
 				from.SendSound( 0x55 );
 				from.CloseGump( typeof( AncientSpellbookGump ) );
 				from.SendGump( new AncientSpellbookGump( from, this, 1 ) );
 			}
-			else from.SendLocalizedMessage(500207); // The spellbook must be in your backpack (and not in a container within) to open.
+			else from.SendLocalizedMessage(500207);
 		}
 
         public override void AddNameProperties(ObjectPropertyList list)
@@ -71,7 +77,9 @@ namespace Server.Items
 			{
 				AddLocalizedProperty( list, "item.research.ancient_spellbook" );
 
-				if ( owner != null )
+				if ( owner != null && IsDormant )
+					AddLocalizedProperty( list, "research.resonance.prop.book_awaiting", owner.Name );
+				else if ( owner != null )
 					AddLocalizedProperty( list, "research.prop.belongs_to", owner.Name );
 			}
 			else
@@ -83,6 +91,98 @@ namespace Server.Items
 			}
         }
 
+
+		private int m_StoredHue;
+		private bool m_IsDormant;
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool IsDormant
+		{
+			get { return m_IsDormant; }
+			set
+			{
+				if ( m_IsDormant == value )
+					return;
+
+				m_IsDormant = value;
+
+				if ( m_IsDormant )
+				{
+					if ( m_StoredHue == 0 && Hue != 1109 )
+						m_StoredHue = Hue;
+					Hue = 1109;
+				}
+				else if ( m_StoredHue > 0 )
+				{
+					Hue = m_StoredHue;
+					m_StoredHue = 0;
+				}
+
+				InvalidateProperties();
+			}
+		}
+
+		public void SnapshotToContext( PlayerContext ctx )
+		{
+			if ( ctx == null )
+				return;
+
+			ctx.SnapshotAncientSpellbookOwnerSerial = owner != null ? owner.Serial : Serial.Zero;
+			ctx.SnapshotAncientSpellbookNames = names;
+			ctx.SnapshotAncientSpellbookPaper = paper;
+			ctx.SnapshotAncientSpellbookQuill = quill;
+			ctx.SnapshotAncientSpellbookContent = Content;
+			ctx.SnapshotAncientSpellbookSlayer = (int)Slayer;
+			ctx.SnapshotAncientSpellbookSlayer2 = (int)Slayer2;
+		}
+
+		public void RestoreFromContext( PlayerContext ctx )
+		{
+			if ( ctx == null )
+				return;
+
+			if ( !string.IsNullOrEmpty( ctx.SnapshotAncientSpellbookNames ) )
+				names = ctx.SnapshotAncientSpellbookNames;
+
+			paper = ctx.SnapshotAncientSpellbookPaper;
+			quill = ctx.SnapshotAncientSpellbookQuill;
+
+			Slayer = (SlayerName)ctx.SnapshotAncientSpellbookSlayer;
+			Slayer2 = (SlayerName)ctx.SnapshotAncientSpellbookSlayer2;
+		}
+
+		public void ApplyResourceDecay()
+		{
+			paper = (int)( paper * 0.5 );
+			quill = (int)( quill * 0.5 );
+		}
+
+		public void RebindOwner( PlayerMobile newOwner )
+		{
+			owner = newOwner;
+			names = newOwner != null ? newOwner.Name : names;
+		}
+
+		public void ActivateResonance( PlayerMobile player )
+		{
+			IsDormant = false;
+			if ( player != null )
+			{
+				names = player.Name;
+				Name = "ancient spells of " + player.Name;
+
+				ResearchBag bag = player.Avatar.GetResearchBag();
+
+				if ( bag == null )
+					bag = AvatarCoreItemMigration.FindResearchBag( player );
+
+				if ( bag != null )
+					Research.SyncAncientSpellbookFromBag( bag, this );
+			}
+
+			ResearchLocalization.Send( player, "research.resonance.msg.book_awakened", "The name upon the book slowly becomes your own." );
+		}
+
 		public AncientSpellbook( Serial serial ) : base( serial )
 		{
 		}
@@ -90,11 +190,13 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 ); // version
 			writer.Write( (Mobile)owner);
 			writer.Write( paper );
 			writer.Write( quill );
 			writer.Write( names );
+			writer.Write( m_IsDormant );
+			writer.Write( m_StoredHue );
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -105,6 +207,18 @@ namespace Server.Items
 			paper = reader.ReadInt();
 			quill = reader.ReadInt();
 			names = reader.ReadString();
+
+			if ( version >= 1 )
+			{
+				m_IsDormant = reader.ReadBool();
+				m_StoredHue = reader.ReadInt();
+				if ( m_IsDormant && Hue != 1109 )
+				{
+					if ( m_StoredHue == 0 )
+						m_StoredHue = Hue;
+					Hue = 1109;
+				}
+			}
 		}
 	}
 }

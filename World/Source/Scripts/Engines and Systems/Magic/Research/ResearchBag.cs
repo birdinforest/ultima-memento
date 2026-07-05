@@ -11,11 +11,12 @@ using System.Collections.Generic;
 using Server.Commands;
 using Server.SpellBars;
 using Server.Localization;
+using Server.Engines.Avatar;
 
 namespace Server.Items
 {
 	[Flipable(0x4C53, 0x4C54)]
-	public class ResearchBag : Item
+	public class ResearchBag : Item, IAvatarCoreItem
 	{
 		public override bool DisplayWeight { get { return false; } }
 		public override bool IsContentLocalized => true;
@@ -37,6 +38,14 @@ namespace Server.Items
 
 				if ( BagOwner != null )
 					AddLocalizedProperty( list, "research.prop.belongs_to", BagOwner.Name );
+
+				if ( IsDormant )
+				{
+					AddLocalizedProperty( list, "research.resonance.prop.dormant" );
+					string echoLoc = ResolveMemoryEchoLabel();
+					if ( !string.IsNullOrEmpty( echoLoc ) )
+						AddLocalizedProperty( list, "research.resonance.prop.echo", echoLoc, ResolveMemoryEchoType() );
+				}
 			}
 			else
 			{
@@ -44,6 +53,9 @@ namespace Server.Items
 
 				if ( BagOwner != null )
 					list.Add( 1049644, "Belongs to " + BagOwner.Name + "" );
+
+				if ( IsDormant )
+					list.Add( 1060658, "Status: Dormant (awaiting resonance)" );
 			}
         }
 
@@ -89,6 +101,18 @@ namespace Server.Items
 					this.Delete();
 				}
 			}
+			else if ( IsDormant )
+			{
+				if ( from is PlayerMobile )
+				{
+					from.CloseGump( typeof( Server.Gumps.ResearchBagDormantSummaryGump ) );
+					from.SendGump( new Server.Gumps.ResearchBagDormantSummaryGump( this, (PlayerMobile)from ) );
+				}
+				else
+				{
+					ResearchLocalization.Send( from, "research.resonance.msg.dormant_hint", "The pack slumbers. Complete the Rite of Memory Echo Resonance first." );
+				}
+			}
 			else
 			{
 				Research.EnsureBagSpellData( this );
@@ -100,6 +124,12 @@ namespace Server.Items
 
 		public override bool OnDragDrop( Mobile from, Item dropped )
 		{
+			if ( IsDormant && BagOwner == from )
+			{
+				ResearchLocalization.Send( from, "research.resonance.msg.dormant_no_store", "A dormant pack cannot hold supplies. Complete the Rite first." );
+				return false;
+			}
+
 			if ( BagOwner == from )
 			{
 				if ( dropped is BlankScroll )
@@ -1214,6 +1244,10 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.Owner)]
 		public Land Rune_World { get { return RuneWorld; } set { RuneWorld = value; InvalidateProperties(); } }
 
+		/// <summary>Region where the player last found a Cube of Power (Memory Echo candidate).</summary>
+		public string LastRuneFoundLocation;
+		public Land LastRuneFoundWorld;
+
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		public string ResearchSpells;
@@ -1242,6 +1276,127 @@ namespace Server.Items
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+		private int m_StoredHue;
+		private bool m_IsDormant;
+		private bool m_BankReminderSent;
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool IsDormant
+		{
+			get { return m_IsDormant; }
+			set
+			{
+				if ( m_IsDormant == value )
+					return;
+
+				m_IsDormant = value;
+
+				if ( m_IsDormant )
+				{
+					if ( m_StoredHue == 0 && Hue != 1102 )
+						m_StoredHue = Hue;
+					Hue = 1102;
+				}
+				else if ( m_StoredHue > 0 )
+				{
+					Hue = m_StoredHue;
+					m_StoredHue = 0;
+				}
+
+				InvalidateProperties();
+			}
+		}
+
+		public void SnapshotToContext( PlayerContext ctx )
+		{
+			if ( ctx == null )
+				return;
+
+			ctx.SnapshotRuneFound = RuneFound;
+			ctx.SnapshotSpellsMagery = SpellsMagery;
+			ctx.SnapshotSpellsNecromancy = SpellsNecromancy;
+			ctx.SnapshotResearchSpells = ResearchSpells;
+			ctx.SnapshotRuneLocation = RuneLocation;
+			ctx.SnapshotSpellsMageLocation = SpellsMageLocation;
+			ctx.SnapshotSpellsNecroLocation = SpellsNecroLocation;
+			ctx.SnapshotBagInkLocation = BagInkLocation;
+			ctx.SnapshotResearchLocation = ResearchLocation;
+		}
+
+		public void RestoreFromContext( PlayerContext ctx )
+		{
+			if ( ctx == null )
+				return;
+
+			Research.RestoreResearchBagFromSnapshot( this, ctx );
+		}
+
+		public void ApplyResourceDecay()
+		{
+			BagInk = (int)( BagInk * 0.5 );
+			BagScrolls = (int)( BagScrolls * 0.5 );
+			BagQuills = (int)( BagQuills * 0.5 );
+			ResearchPrep1 = AvatarCoreItemMigration.HalvePrepString( ResearchPrep1 );
+			ResearchPrep2 = AvatarCoreItemMigration.HalvePrepString( ResearchPrep2 );
+		}
+
+		public void RebindOwner( PlayerMobile newOwner )
+		{
+			BagOwner = newOwner;
+		}
+
+		public void ActivateResonance( PlayerMobile player )
+		{
+			IsDormant = false;
+			Research.EnsureBagSpellData( this );
+			ResearchLocalization.Send( player, "research.resonance.msg.awakened", "The runes answer—the pack binds to you again." );
+		}
+
+		private string ResolveMemoryEchoLabel()
+		{
+			if ( BagOwner is PlayerMobile )
+			{
+				var ctx = ((PlayerMobile)BagOwner).Avatar;
+				if ( ctx != null && !string.IsNullOrEmpty( ctx.CurrentResonanceLocation ) )
+					return ctx.CurrentResonanceLocation;
+			}
+
+			return ResearchLocation ?? RuneLocation ?? SpellsMageLocation;
+		}
+
+		private string ResolveMemoryEchoType()
+		{
+			if ( BagOwner is PlayerMobile )
+			{
+				var ctx = ((PlayerMobile)BagOwner).Avatar;
+				if ( ctx != null && !string.IsNullOrEmpty( ctx.ResonanceLocationType ) )
+					return ctx.ResonanceLocationType;
+			}
+
+			return "research";
+		}
+
+		public override void OnAdded( object parent )
+		{
+			base.OnAdded( parent );
+
+			if ( !IsDormant || m_BankReminderSent || !( BagOwner is PlayerMobile ) )
+				return;
+
+			if ( parent is Backpack )
+			{
+				var player = (PlayerMobile)BagOwner;
+				string echo = player.Avatar.CurrentResonanceLocation;
+				if ( !string.IsNullOrEmpty( echo ) )
+				{
+					ResearchLocalization.SendFormat( player, "research.resonance.msg.bank_reminder",
+						"Your pack awaits resonance in the bank. Memory Echo: {0}.", echo );
+					m_BankReminderSent = true;
+				}
+			}
+		}
+
 		public ResearchBag(Serial serial) : base(serial)
 		{
 		}
@@ -1249,7 +1404,7 @@ namespace Server.Items
 		public override void Serialize(GenericWriter writer)
 		{
 			base.Serialize(writer);
-			writer.Write((int)2);
+			writer.Write((int)4);
 
             writer.Write( (Mobile)BagOwner );
             writer.Write( BagInk );
@@ -1280,6 +1435,11 @@ namespace Server.Items
             writer.Write( ResearchItem );
             writer.Write( ResearchPrep1 );
             writer.Write( ResearchPrep2 );
+            writer.Write( m_IsDormant );
+            writer.Write( m_StoredHue );
+            writer.Write( m_BankReminderSent );
+            writer.Write( LastRuneFoundLocation );
+            writer.Write( (int)LastRuneFoundWorld );
 		}
 
 		public override void Deserialize(GenericReader reader)
@@ -1348,6 +1508,30 @@ namespace Server.Items
 				nul = reader.ReadString();
 				nul = reader.ReadString();
 				nul = reader.ReadString();
+			}
+
+			if ( version >= 3 )
+			{
+				m_IsDormant = reader.ReadBool();
+				m_StoredHue = reader.ReadInt();
+				m_BankReminderSent = reader.ReadBool();
+				if ( m_IsDormant && Hue != 1102 )
+				{
+					if ( m_StoredHue == 0 )
+						m_StoredHue = Hue;
+					Hue = 1102;
+				}
+			}
+
+			if ( version >= 4 )
+			{
+				LastRuneFoundLocation = reader.ReadString();
+				LastRuneFoundWorld = (Land)reader.ReadInt();
+			}
+			else
+			{
+				LastRuneFoundLocation = "";
+				LastRuneFoundWorld = Land.None;
 			}
 
 			Research.EnsureBagSpellData( this );

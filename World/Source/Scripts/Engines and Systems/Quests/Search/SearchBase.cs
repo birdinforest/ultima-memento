@@ -8,6 +8,8 @@ using Server.Network;
 using Server.Mobiles;
 using Server.Localization;
 using Server.Accounting;
+using Server.Engines.Avatar;
+using Server.Gumps;
 
 namespace Server.Items
 {
@@ -203,7 +205,7 @@ namespace Server.Items
 						from.Backpack.FindItemByType( typeof ( DDRelicTablet ) ) != null || 
 						from.Backpack.FindItemByType( typeof ( VortexCube ) ) != null || 
 						from.Backpack.FindItemByType( typeof ( AlienEgg ) ) != null || 
-						from.Backpack.FindItemByType( typeof ( ResearchBag ) ) != null || 
+						AvatarCoreItemMigration.FindResearchBag( from ) != null || 
 						from.Backpack.FindItemByType( typeof ( DragonEgg ) ) != null || 
 						from.Backpack.FindItemByType( typeof ( DracolichSkull ) ) != null || 
 						from.Backpack.FindItemByType( typeof ( MuseumBook ) ) != null || 
@@ -243,13 +245,28 @@ namespace Server.Items
 					}
 				}
 
-				if ( from.Backpack.FindItemByType( typeof ( ResearchBag ) ) != null )
-				{
-					ResearchBag bag = (ResearchBag)from.Backpack.FindItemByType( typeof ( ResearchBag ) );
+				ResearchBag bag = AvatarCoreItemMigration.FindResearchBag( from );
 
-					if ( bag.BagOwner == from )
+				if ( bag != null && bag.BagOwner == from )
+				{
+					if ( bag.IsDormant && from is PlayerMobile )
 					{
-						if ( Server.Misc.Research.SearchResult( from, bag ) ){ EmptyBox = 0; }
+						PlayerMobile pm = (PlayerMobile)from;
+
+						if ( AvatarCoreItemMigration.IsAtMemoryEcho( from, pm.Avatar ) )
+						{
+							from.LocalOverheadMessage( MessageType.Emote, 1150, true,
+								ResearchLocalization.Key( from, "research.resonance.overhead.echo_resonance", "The runes in your pack resonate with the chest…" ) );
+							from.SendGump( new ResearchResonanceConfirmGump( pm, bag ) );
+							EmptyBox = 0;
+						}
+					}
+					else
+					{
+						bool searchOk = Server.Misc.Research.SearchResult( from, bag );
+
+						if ( searchOk )
+							EmptyBox = 0;
 					}
 				}
 

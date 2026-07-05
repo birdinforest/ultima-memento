@@ -4,6 +4,7 @@ using Server.Mobiles;
 using Server.Multis;
 using Server.Network;
 using Server.Utilities;
+using Server.Engines.Avatar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -147,13 +148,17 @@ namespace Server.Misc
 				newChar.Avatar.LifetimeGameTime.Add(existingCharacter.GameTime);
 				if (newChar.Avatar.UnlockRecordDiscovered)
 					newChar.CharacterDiscovered = existingCharacter.CharacterDiscovered;
-				
+
+				AvatarCoreItemMigration.MigrateItems( existingCharacter, newChar, newChar.Avatar );
+
 				if (newChar.Avatar.HasSafetyDepositBox)
 				{
 					var box = newChar.Avatar.GetOrCreateSafetyDepositBox(newChar);
 					box.Owner = newChar;
 					newChar.BankBox.AddItem(box);
 				}
+
+				AvatarCoreItemMigration.ReattachCoreItems( newChar );
 			}
 
 			existingCharacter.Delete();

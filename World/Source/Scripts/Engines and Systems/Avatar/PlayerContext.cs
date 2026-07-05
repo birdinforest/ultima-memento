@@ -90,6 +90,8 @@ namespace Server.Engines.Avatar
 			}
 
 			BoatSpeedLevel = 9 < version ? reader.ReadInt() : 0;
+
+			DeserializeResearchFields( reader, version );
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -203,7 +205,7 @@ namespace Server.Engines.Avatar
 
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(10); // version
+			writer.Write(12); // version
 
 			writer.Write(PointsFarmed);
 			writer.Write(PointsSaved);
@@ -236,6 +238,8 @@ namespace Server.Engines.Avatar
 			writer.Write(_safetyDepositBoxSerial);
 			writer.Write(SafetyDepositBoxLevel);
 			writer.Write(BoatSpeedLevel);
+
+			SerializeResearchFields( writer );
 		}
 
 		public override string ToString()

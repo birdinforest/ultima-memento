@@ -785,6 +785,11 @@ namespace Server.Mobiles
 			if ( from == null ) return;
 
 			// Move ID skills off the Player
+			if ( from.Avatar.Active && from.Avatar.HasPendingRebirthReport && !from.Avatar.SuppressRebirthReport )
+			{
+				Timer.DelayCall( TimeSpan.FromSeconds( 2 ), () => AvatarCoreItemMigration.TryShowRebirthReport( from ) );
+			}
+
 			if ( from.m_NeedRemoveIDSkills )
 			{
 				from.m_NeedRemoveIDSkills = false;
@@ -2200,36 +2205,73 @@ namespace Server.Mobiles
 
 		public override void Resurrect()
 		{
-			if (Temptations.HasPermanentDeath || Avatar.Active)
+			if ( Temptations.HasPermanentDeath || Avatar.Active )
 			{
-				var confirmation = new ConfirmationGump(
-					this,
-					"Permanent Death",
-					"Your character has died and cannot resurrect. Would you like to return to the Gypsy encampment to start over?",
-					() =>
-					{
-						SendMessage("Your character will be recreated and you will be disconnected shortly...");
-
-						Timer.DelayCall(TimeSpan.FromSeconds(1), () => {
-
-							if (Avatar.Active)
-							{
-								var newPlayer = CharacterCreation.ResetCharacter( this, true, false );
-								AvatarEngine.InitializePlayer(newPlayer);
-								AvatarEngine.Instance.ApplyContext(newPlayer, newPlayer.Avatar);
-							}
-							else
-							{
-								CharacterCreation.ResetCharacter( this, false, true);
-							}
-						});
-					}
-				);
-				SendGump(confirmation);
+				PromptAvatarPermadeathDecision();
 				return;
 			}
 
 			DoResurrect();
+		}
+
+		public void PromptAvatarPermadeathDecision()
+		{
+			if ( Alive || Avatar.RebirthInProgress )
+				return;
+
+			if ( !Temptations.HasPermanentDeath && !Avatar.Active )
+				return;
+
+			if ( HasGump( typeof( ResearchDeathWarningGump ) ) || HasGump( typeof( ConfirmationGump ) ) )
+				return;
+
+			Action showDeathConfirm = () =>
+			{
+				var confirmation = new ConfirmationGump(
+					this,
+					AvatarLocalization.Key( this, "avatar.confirm.permadeath_title", "Permanent Death" ),
+					AvatarLocalization.Key( this, "avatar.confirm.permadeath_body", "Your character has died and cannot resurrect. Would you like to return to the Gypsy encampment to start over?" ),
+					() => BeginAvatarRebirth()
+				);
+				SendGump( confirmation );
+			};
+
+			if ( Avatar.Active && AvatarCoreItemMigration.HasMigratableCoreItems( this ) )
+				SendGump( new ResearchDeathWarningGump( this, showDeathConfirm ) );
+			else
+				showDeathConfirm();
+		}
+
+		private void BeginAvatarRebirth()
+		{
+			var player = this;
+			bool wasAvatarAscent = player.Avatar.Active;
+
+			if ( wasAvatarAscent )
+				player.Avatar.RebirthInProgress = true;
+
+			AvatarLocalization.Send( player, "avatar.msg.character_recreated_disconnect", "Your character will be recreated and you will be disconnected shortly..." );
+
+			Timer.DelayCall( TimeSpan.FromSeconds( 1 ), () =>
+			{
+				if ( wasAvatarAscent )
+				{
+					var newPlayer = CharacterCreation.ResetCharacter( player, true, false );
+					if ( newPlayer == null )
+						return;
+
+					newPlayer.Avatar.RebirthInProgress = false;
+					AvatarEngine.InitializePlayer( newPlayer );
+					AvatarEngine.Instance.ApplyContext( newPlayer, newPlayer.Avatar );
+					AvatarCoreItemMigration.ReattachCoreItems( newPlayer );
+
+					Timer.DelayCall( TimeSpan.FromSeconds( 2 ), () => AvatarCoreItemMigration.TryShowRebirthReport( newPlayer ) );
+				}
+				else
+				{
+					CharacterCreation.ResetCharacter( player, false, true );
+				}
+			} );
 		}
 
 		private void DoResurrect()
@@ -2249,13 +2291,13 @@ namespace Server.Mobiles
 
 			switch( Utility.Random( 7 ) )
 			{
-				case 0: LoggingFunctions.LogStandard( this, "has returned from the realm of the dead", false );		break;
-				case 1: LoggingFunctions.LogStandard( this, "was brought back to the world of the living", false );	break;
-				case 2: LoggingFunctions.LogStandard( this, "has been restored to life", false );					break;
-				case 3: LoggingFunctions.LogStandard( this, "has been brought back from the grave", false );		break;
-				case 4: LoggingFunctions.LogStandard( this, "has been resurrected to this world", false );			break;
-				case 5: LoggingFunctions.LogStandard( this, "has returned to life after death", false );			break;
-				case 6: LoggingFunctions.LogStandard( this, "was resurrected for another chance at life", false );	break;
+				case 0: LoggingFunctions.LogStandard( this, StringCatalog.ResolveByKey( this.Account, "player.log.resurrect.realm_of_dead" ), false );		break;
+				case 1: LoggingFunctions.LogStandard( this, StringCatalog.ResolveByKey( this.Account, "player.log.resurrect.world_of_living" ), false );	break;
+				case 2: LoggingFunctions.LogStandard( this, StringCatalog.ResolveByKey( this.Account, "player.log.resurrect.restored_to_life" ), false );	break;
+				case 3: LoggingFunctions.LogStandard( this, StringCatalog.ResolveByKey( this.Account, "player.log.resurrect.from_grave" ), false );		break;
+				case 4: LoggingFunctions.LogStandard( this, StringCatalog.ResolveByKey( this.Account, "player.log.resurrect.to_this_world" ), false );		break;
+				case 5: LoggingFunctions.LogStandard( this, StringCatalog.ResolveByKey( this.Account, "player.log.resurrect.after_death" ), false );		break;
+				case 6: LoggingFunctions.LogStandard( this, StringCatalog.ResolveByKey( this.Account, "player.log.resurrect.another_chance" ), false );	break;
 			}
 
 			if ( this.QuestArrow != null ){ this.QuestArrow.Stop(); }

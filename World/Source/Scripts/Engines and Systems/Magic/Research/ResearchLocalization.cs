@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Server.Gumps;
 using Server.Localization;
 using Server.Mobiles;
 
@@ -106,6 +107,47 @@ namespace Server.Misc
 		public static string GumpHtmlRaw( string text )
 		{
 			return "<BODY><BASEFONT Color=#6cb89a>" + text + "</BASEFONT></BODY>";
+		}
+
+		public static string EchoTypeLabel( Mobile viewer, string typeKey )
+		{
+			if ( string.IsNullOrEmpty( typeKey ) )
+				typeKey = "research";
+
+			switch ( typeKey.ToLowerInvariant() )
+			{
+				case "rune":
+					return Key( viewer, "research.resonance.echo_type.rune", "Cubes of Power search site" );
+				case "mage":
+					return Key( viewer, "research.resonance.echo_type.mage", "magery research site" );
+				case "necro":
+					return Key( viewer, "research.resonance.echo_type.necro", "necromancy research site" );
+				case "ink":
+					return Key( viewer, "research.resonance.echo_type.ink", "octopus ink search site" );
+				case "starter":
+					return Key( viewer, "research.resonance.echo_type.starter", "starting research foothold" );
+				default:
+					return Key( viewer, "research.resonance.echo_type.research", "ancient spell research site" );
+			}
+		}
+
+		/// <summary>Localized HTML block for gumps (ClassicUO/TazUO require &lt;BODY&gt;/&lt;BASEFONT&gt;).</summary>
+		public static void AddLocalizedHtml( Gump g, int x, int y, int width, int height, Mobile viewer, string logicalKey, string englishIfMissing, bool scroll = false )
+		{
+			TextDefinition.AddHtmlText( g, x, y, width, height, GumpHtml( viewer, logicalKey, englishIfMissing ), false, scroll );
+		}
+
+		public static void AddLocalizedHtmlFormat( Gump g, int x, int y, int width, int height, Mobile viewer, string logicalKey, string englishIfMissing, bool scroll, params object[] args )
+		{
+			TextDefinition.AddHtmlText( g, x, y, width, height, GumpHtmlRaw( KeyFormat( viewer, logicalKey, englishIfMissing, args ) ), false, scroll );
+		}
+
+		public static void AddLocalizedHtmlRaw( Gump g, int x, int y, int width, int height, string text, bool scroll = false )
+		{
+			if ( string.IsNullOrEmpty( text ) )
+				return;
+
+			TextDefinition.AddHtmlText( g, x, y, width, height, GumpHtmlRaw( text ), false, scroll );
 		}
 
 		public static string GumpTitle( Mobile viewer, string englishTitle )

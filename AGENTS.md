@@ -590,6 +590,7 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-05-18: §0 / §1 / §5.1 / §6.1 — [`server-stability-crash-patterns.md`](World/Documentation/server-stability-crash-patterns.md)：常见崩溃模式与 Agent 检查清单（OPL 重入、序列化、定时器等）。
 - 2026-05-20: §3.1 — `mob-loot-infotext.json`（`keep_extra`）：Boss 战利品与冠军掉落 `InfoText` OPL 双语；`Item` 内 `ResolveInfoTextForPropertyList` 使用哈希 `TryResolve` + `mob.loot.infotext.champion.belonged` 模板。
 - 2026-06-28: §8.1 — indexed `PVP_COMBAT_SYSTEM.md` (guild-gated PvP, attack pipeline, notoriety/murder, region matrix).
+- 2026-07-05: §8.1 — indexed `BLOOD_TEMPLE_SYSTEM.md`（惧怖群岛鲜血神殿：双地图、刷怪、魔法监狱 #44、Search area 50）.
 - 2026-07-03: §1 — indexed `RESEARCH_BAG_SYSTEM.md`（ResearchBag 初始化、字段、NPC 发放、GM/Avatar 死亡测试基线）；§8.1 交叉索引。
 - 2026-07-03: §8.1 — indexed `RELICS_DROP_REFORM_TOP3_DAMAGE_SYSTEM.md`（Feature Request：Gate A/B/C Top-3 伤害贡献制掉落改革，首次/Repeat 双概率，OSI Champ 基准评估与修改意见）。
 - 2026-07-03: §8.1 — indexed `DRAGON_KING_SYSTEM.md`、`DRAGON_EGG_SYSTEM.md`；`DRAGON_RIDING_SCROLL_SYSTEM.md` 范围收窄为骑卷轴 + 门禁。
@@ -719,6 +720,7 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | Bard's Tale / Skara Brae questline | `memento/quest/bottle-world-skara-brae/` (4 files) | Before modifying Skara Brae quest NPCs or texts |
 | Unsent letter quest | `memento/quest/quest-unsent-letter-design.md` | Before modifying unsent letter quest NPCs |
 | Magical prison | `memento/game-mechanism/MAGICAL_PRISON.md` | Before modifying prison system |
+| Blood Temple (Isles of Dread dungeon / prison key #44) | `memento/game-mechanism/BLOOD_TEMPLE_SYSTEM.md` | Before modifying the Blood Temple region, spawns, SummonCarriers #44, or SearchBase area 50 |
 
 ### 8.4 Starting a New Analysis
 

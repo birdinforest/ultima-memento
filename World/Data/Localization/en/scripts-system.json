@@ -475,6 +475,7 @@
   "s.68511fc9d2354d9d": "Causes the weapon to do an extra amount of energy damage.",
   "s.6885635ba820a3d2": "Monk Abilities",
   "s.68fd9a175ddd8fdb": "A strike from the weapon will greatly hurt the target's Achilles tendon.",
+  "s.6931fce089a9cd02": "You found ",
   "s.6979819266bd6b6a": "We are sorry, but no staff members are currently available to assist you.  Your page will remain in the queue until one becomes available, or until you cancel it manually.",
   "s.6997d7429c0691e5": "This command was made to UNLOAD your own custom maps. This will REMOVE the spawners with the specified ID. Type '[get spawnid' in a spawner to know your ID. Remember: 'By Hand' spawns, i.e., those done with '[add premiumspawner' have ID = 1.",
   "s.69987e6d610a5e94": "Object table has been generated. See the file : <runuo root>/objects.log",

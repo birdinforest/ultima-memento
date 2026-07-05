@@ -30,6 +30,8 @@
   "avatar.confirm.enable_body": "Are you sure you wish to enable the Avatar status? This will reset your character and allow you to use the Avatar features.",
   "avatar.confirm.select_template_title": "Select Template?",
   "avatar.confirm.select_template_body": "Are you sure you wish to select this template? This is a {0} that will recreate your backpack, reduce existing stats, and change skills.",
+  "avatar.confirm.permadeath_title": "Permanent Death",
+  "avatar.confirm.permadeath_body": "Your character has died and cannot resurrect. Would you like to return to the Gypsy encampment to start over?",
   "avatar.term.destructive_action": "destructive action",
   "avatar.gump.title": "<CENTER>The Avatar's Ascent</CENTER>",
   "avatar.gump.coins_label": "Coins",

@@ -30,6 +30,8 @@
   "avatar.confirm.enable_body": "确定要启用化身（Avatar）状态吗？这将重置您的角色，并开放化身相关功能。",
   "avatar.confirm.select_template_title": "选择模板？",
   "avatar.confirm.select_template_body": "确定要选择此模板吗？这是一项{0}，将重建您的背包、降低现有属性并更改技能。",
+  "avatar.confirm.permadeath_title": "永久死亡",
+  "avatar.confirm.permadeath_body": "您的角色已死亡，无法复活。是否返回吉普赛营地（Gypsy Encampment）重新开始？",
   "avatar.term.destructive_action": "破坏性操作",
   "avatar.gump.title": "<CENTER>化身飞升（The Avatar's Ascent）</CENTER>",
   "avatar.gump.coins_label": "金币",
