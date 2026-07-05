@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Server.Engines.Avatar;
 using Server.Items;
 using Server.Network;
 using Server.Commands;
