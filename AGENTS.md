@@ -689,6 +689,7 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | Magic system docs | `memento/game-mechanism/spell-and-magic/` (8 files) | Before modifying magic, spell, or rune systems |
 | Ancient spell research system | `memento/game-mechanism/ANCIENT_SPELL_RESEARCH_SYSTEM.md` | Before modifying ResearchBag, AncientSpellbook, prepared-spell counters, or any ancient magic casting flow |
 | Research Bag (ResearchBag item / GM test) | `memento/game-mechanism/RESEARCH_BAG_SYSTEM.md` | Before modifying ResearchBag initialization, BagOwner, GM issuance, or Avatar death ResearchBag debug |
+| Avatar core item death / Memory Echo Resonance | `memento/game-mechanism/AVATAR_CORE_ITEM_RESEARCH_RESONANCE_SYSTEM.md` | Before modifying `AvatarCoreItemMigration`, Dormant/Resonance gumps, `SearchBase` dormant branch, or research snapshot merge on rebirth |
 | Death / resurrection / bank tribute | `memento/game-mechanism/death-resurrection-bank-tribute.md` | Before modifying death or tribute handling |
 | Pet taming & Jako system | `memento/game-mechanism/PET_TAMING_AND_JAKO_SYSTEM.md` | Before modifying pet/taming mechanics |
 | Dragon riding scroll / Dragon King / draconic mounts | `memento/game-mechanism/DRAGON_RIDING_SCROLL_SYSTEM.md` | Before modifying `DragonRidingScroll`, `DragonRiding` keys, or `RidingDragon`/`Dragoon`/`GemDragon` mount gate |
