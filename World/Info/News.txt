@@ -1,3 +1,11 @@
+[*]2026年7月9日
+版本升级至3.0.9
+<br>
+<b>汉化</b>:
+  - <b>优化统一4个神殿的翻译名称</b> — 智力神殿(Shrine of Intelligence), 智慧神殿(Shrine of Wisdom),	
+力量神殿(Shrine of Strength),敏捷神殿(Shrine of Dexterity)。
+<br>
+
 [*]2026年7月5日
 版本升级至3.0.8
 <br>

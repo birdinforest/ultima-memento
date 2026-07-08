@@ -589,6 +589,7 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-05-18: §3.2 — **`ObjectPropertyList` / `list.Add`**：cliloc 槽或未保护的英文字符串、以及与变量的英文拼接（如 **`count + " Songs"`**）须 **`BuildingPropertyListLocale`** 分支下 **`AddLocalizedProperty` / `ResolveFormatByKey`**（与 tinted **`SendMessage(int hue, string)`** 同约束）；§3.2 增补反例/正例代码块与 **`含 {0} 首歌曲`** 模板说明；稽核模式见 **`World/Documentation/waiting-localization.md`** §9。
 - 2026-05-18: §0 / §1 / §5.1 / §6.1 — [`server-stability-crash-patterns.md`](World/Documentation/server-stability-crash-patterns.md)：常见崩溃模式与 Agent 检查清单（OPL 重入、序列化、定时器等）。
 - 2026-05-20: §3.1 — `mob-loot-infotext.json`（`keep_extra`）：Boss 战利品与冠军掉落 `InfoText` OPL 双语；`Item` 内 `ResolveInfoTextForPropertyList` 使用哈希 `TryResolve` + `mob.loot.infotext.champion.belonged` 模板。
+- 2026-07-06: §8.1 — indexed `TREASURE_HOARD_SYSTEM.md`（宝藏堆：HoardTile 锚点、Fame≥15000 击杀触发、HoardPiles 战利品表、Hoard Minion）.
 - 2026-06-28: §8.1 — indexed `PVP_COMBAT_SYSTEM.md` (guild-gated PvP, attack pipeline, notoriety/murder, region matrix).
 - 2026-07-05: §8.1 — indexed `BLOOD_TEMPLE_SYSTEM.md`（惧怖群岛鲜血神殿：双地图、刷怪、魔法监狱 #44、Search area 50）.
 - 2026-07-03: §1 — indexed `RESEARCH_BAG_SYSTEM.md`（ResearchBag 初始化、字段、NPC 发放、GM/Avatar 死亡测试基线）；§8.1 交叉索引。
@@ -695,12 +696,14 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | Dragon riding scroll / Dragon King / draconic mounts | `memento/game-mechanism/DRAGON_RIDING_SCROLL_SYSTEM.md` | Before modifying `DragonRidingScroll`, `DragonRiding` keys, or `RidingDragon`/`Dragoon`/`GemDragon` mount gate |
 | Dragon King boss | `memento/game-mechanism/DRAGON_KING_SYSTEM.md` | Before modifying `DragonKing`, lucky kills, ManualOfItems relics book, or dragon `DropSpecial` on Great Dragons |
 | ManualOfItems / Relics chest | `memento/game-mechanism/MANUAL_OF_ITEMS_RELICS_SYSTEM.md` | Before modifying `ManualOfItems`, `RelicBoxGump`, `GiveItemBonus`, `Gift*` enchant flow, or boss relic drop tables |
+| Legendary / Relics / Standard / Sage 高级装备横向分析 | `memento/game-design-idea/ADVANCED_EQUIPMENT_ARTIFACT_SYSTEMS_COMPARATIVE_ANALYSIS.md` | Before balancing or documenting Legendary vs Relics vs Standard/Sage artefact acquisition and power ceiling |
 | Relics 掉落改革 Feature Request（Top-3 伤害制） | `memento/game-design-idea/RELICS_DROP_REFORM_TOP3_DAMAGE_SYSTEM.md` | Before implementing the Top-3 damage contributor drop reform (Gate A/B/C, Dragon King, Shadowlord, RelicChestDropHelper) |
 | Dragon egg hatch | `memento/game-mechanism/DRAGON_EGG_SYSTEM.md` | Before modifying `DragonEgg`, Search potions, or hatch-at-vet flow |
 | Race temptation & potion shelf | `memento/game-mechanism/race-temptation-and-potion-shelf.md` | Before modifying race temptation or potion shelf |
 | Player hazards & threats | `memento/game-mechanism/PLAYER_HAZARDS_AND_THREATS.md` | Before modifying hazard/threat systems |
 | Black Knight NPC / black key / Vault of the Black Knight / Vordo boss / Bottle World of Kuldar | `memento/game-mechanism/BLACK_KNIGHT_VAULT_BOTTLE_WORLD.md` | Before modifying BlackKnight, BlackKnightBox, Vordo, VordoScroll, GateMoon in Kuldar, or the Kuldar Bottle World region logic |
 | Golem Porter (搬运魔像) system | `memento/game-mechanism/GOLEM_PORTER_SYSTEM.md` | Before modifying GolemPorter, GolemPorterItem, GolemManual, or any porter/pack creature |
+| Treasure Hoard (宝藏堆) | `memento/game-mechanism/TREASURE_HOARD_SYSTEM.md` | Before modifying HoardPiles, HoardTile, HoardPile.MakeHoard, or HoardMinionFamiliar |
 | PvP / harmful actions / notoriety / murder | `memento/game-mechanism/PVP_COMBAT_SYSTEM.md` | Before modifying player combat, `Mobile_AllowHarmful`, criminal/murder reporting, or region combat rules |
 | Slayer weapon system | `memento/game-mechanism/SLAYER_WEAPON_SYSTEM.md` | Before modifying slayer mechanics |
 | Endgame boss data & BeefUp | `memento/game-mechanism/ENDGAME_BOSS_ANALYSIS.md` | Before balancing named bosses, champ/world boss stats, or difficulty scaling |

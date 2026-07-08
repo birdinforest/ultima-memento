@@ -81,8 +81,10 @@
 | 【Dracula's island】 | 德古拉之岛 | 其领地所在小岛。 |
 | 【Tomb of Kas】 | 卡斯之墓 | 死亡骑士 Kas 的陵墓。 |
 | 【Tomb of Durmas】 | 杜尔马斯家族墓地 | King Durmas IV 家族墓穴。 |
-| 【Shrine of Intelligence】 | 智慧神殿 | 属性神殿之一。 |
-| 【Shrine of Dexterity】 | 敏捷神殿 | 属性神殿之一。 |
+| Shrine of Intelligence | 智力神殿 | 属性神殿之一；对应 Intelligence（智力）。 |
+| Shrine of Wisdom | 智慧神殿 | 属性神殿之一；对应 Wisdom（智慧），非 Intelligence。 |
+| Shrine of Strength | 力量神殿 | 属性神殿之一。 |
+| Shrine of Dexterity | 敏捷神殿 | 属性神殿之一。 |
 | 【Shrine of Diligence】 | 勤勉神龛 | 与黑暗核心剧情相关的祭坛。 |
 | 【Shrine of Wizardry】 | 巫术神龛 | 供法师登月之用的神龛。 |
 | 【Dawn】（城） | 曙光城 | 月面城市名。 |

@@ -444,13 +444,31 @@
       "translation_basis_zh": "参考词表建议「巫术神龛」。供法师登月之用的神龛。"
     },
     "Shrine of Intelligence": {
+      "canonical": "智力神殿",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Shrine testing the Virtue of Intelligence (INT-related power scrolls). Distinct from Shrine of Wisdom.",
+      "reference_suggestion_zh": "智力神殿",
+      "reference_note_zh": "属性神殿之一；对应 Intelligence，非 Wisdom。",
+      "translation_basis_zh": "Intelligence 对译「智力」，与 Wisdom「智慧」区分；与 Strength/Dexterity 神殿统一用「神殿」后缀。"
+    },
+    "Shrine of Wisdom": {
       "canonical": "智慧神殿",
       "alternatives": [],
       "category": "place",
-      "notes": "Shrine testing the Virtue of Intelligence.",
+      "notes": "Shrine for Wisdom-virtue power scroll skills (Spiritualism, Taming, Healing, etc.). Not Intelligence.",
       "reference_suggestion_zh": "智慧神殿",
+      "reference_note_zh": "属性神殿之一；对应 Wisdom，非 Intelligence。",
+      "translation_basis_zh": "Wisdom 对译「智慧」；与智力神殿（Shrine of Intelligence）不可混译。"
+    },
+    "Shrine of Strength": {
+      "canonical": "力量神殿",
+      "alternatives": [],
+      "category": "place",
+      "notes": "Shrine testing the Virtue of Strength.",
+      "reference_suggestion_zh": "力量神殿",
       "reference_note_zh": "属性神殿之一。",
-      "translation_basis_zh": "参考词表建议「智慧神殿」。属性神殿之一。"
+      "translation_basis_zh": "Strength 对译「力量」；四座属性神殿统一「神殿」后缀。"
     },
     "Shrine of Diligence": {
       "canonical": "勤勉神龛",
