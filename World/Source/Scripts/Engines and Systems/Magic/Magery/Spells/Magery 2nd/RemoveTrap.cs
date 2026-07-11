@@ -50,9 +50,7 @@ namespace Server.Spells.Second
 
 					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Any traps on that container are now disabled." ) );
 
-					item.TrapType = TrapType.None;
-					item.TrapPower = 0;
-					item.TrapLevel = 0;
+					item.DisableTrap();
 				}
 				else
 				{
