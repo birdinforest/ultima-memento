@@ -5,7 +5,7 @@ namespace Server.Spells
 {
 	public class SpellRegistry
 	{
-		const int MAX_SPELL_ID = 800; // covers Magical 700-706, DeathKnight 750-763, HolyMan 770-783 (see pending-fixes.md #1)
+		const int MAX_SPELL_ID = 1000;
 		private static Type[] m_Types = new Type[MAX_SPELL_ID];
 		private static int m_Count;
 
