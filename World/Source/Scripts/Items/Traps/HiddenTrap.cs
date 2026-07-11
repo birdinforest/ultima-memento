@@ -1410,7 +1410,7 @@ namespace Server.Items
 
 		public static bool IsActiveTrap( Item trap )
 		{
-			return trap is HiddenTrap && 5 < trap.Weight;
+			return trap is HiddenTrap && trap.Weight < 5;
 		}
 
 		private static bool IsRateLimitedFixtureSalvage( Item trap )
