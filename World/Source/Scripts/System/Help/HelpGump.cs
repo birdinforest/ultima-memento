@@ -13,6 +13,7 @@ using Server.Items;
 using Server.Engines.MLQuests.Gumps;
 using Scripts.Mythik.Systems.Achievements;
 using Server.SpellBars;
+using Server.ModernSkill;
 
 namespace Server.Engines.Help
 {
@@ -247,6 +248,8 @@ namespace Server.Engines.Help
 			Setting_DoubleClickToTalk_Info,
 			Setting_VendorContainerSell,
 			Setting_VendorContainerSell_Info,
+			Setting_ModernSkills,
+			Setting_ModernSkills_Info,
 			Setting_LegacyCarve_Info,
 			Changelog_PageBase = 9000,
 		}
@@ -673,6 +676,9 @@ namespace Server.Engines.Help
 				AddSetting(xs, g, from, "Container Sell", PageActionType.Setting_VendorContainerSell, PageActionType.Setting_VendorContainerSell_Info);
 				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
+				AddSetting(xs, g, from, "Modern Skills", PageActionType.Setting_ModernSkills, PageActionType.Setting_ModernSkills_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+
 				AddSetting(xs, g, from, "Legacy Carve", PageActionType.Setting_LegacyCarve, PageActionType.Setting_LegacyCarve_Info);
 				// Last setting, don't add a row
 
@@ -940,6 +946,7 @@ namespace Server.Engines.Help
 				case PageActionType.Setting_SetHarvestingContainer: 
 				case PageActionType.Setting_SetLootContainer:
 				case PageActionType.Setting_VendorContainerSell: return true;
+				case PageActionType.Setting_ModernSkills: return true;
 			}
 
 			return false;
@@ -1509,6 +1516,12 @@ namespace Server.Engines.Help
 					{
 						from.CloseGump( typeof( VendorContainerSellConfigGump ) );
 						from.SendGump( new VendorContainerSellConfigGump( from, 12 ) );
+						break;
+					}
+					case PageActionType.Setting_ModernSkills:
+					{
+						from.CloseGump( typeof( ModernSkillSetupGump ) );
+						from.SendGump( new ModernSkillSetupGump( from, 12 ) );
 						break;
 					}
 					case PageActionType.Setting_SingleAttemptID:
@@ -2287,6 +2300,13 @@ namespace Server.Engines.Help
 				{
 					title = "Container Sell";
 					info = "Configure the gump shown when you drop a container on a vendor to sell its contents. If the new gump is disabled, sellable items from the container are sent through the classic vendor sell list instead.";
+					break;
+				}
+
+				case PageActionType.Setting_ModernSkills_Info:
+				{
+					title = "Modern Skill Settings";
+					info = "Configure the gump shown to configure modernization of skills.";
 					break;
 				}
 
