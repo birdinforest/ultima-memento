@@ -7,6 +7,7 @@ namespace Server.Mobiles
 	{
 		public PlayerPreferenceContext()
 		{
+			CharacterWepAbNames = true;
 			ColorlessFabricBreakdown = true;
 			ModernLockpickingEnabled = true;
 			ModernRemoveTrapEnabled = true;
