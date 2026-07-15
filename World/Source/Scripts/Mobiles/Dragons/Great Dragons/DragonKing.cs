@@ -62,7 +62,7 @@ namespace Server.Mobiles
 			{
 				int killerLuck = MobileUtilities.GetLuckFromKiller( this );
 
-				if ( GetPlayerInfo.DragonRidingScrollLuckyDrop( killerLuck ) && !PlayerSettings.GetKeys( killer, "DragonRiding" ) )
+				if ( GetPlayerInfo.DragonRidingScrollLuckyDrop( killerLuck ) )
 				{
 					c.DropItem( new DragonRidingScroll() );
 				}
