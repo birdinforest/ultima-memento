@@ -30,7 +30,7 @@ namespace Server.Items
 			public KillGump( Mobile from, Item parchment ): base( 100, 100 )
 			{
 				AssassinNote note = (AssassinNote)parchment;
-				string sText = note.LetterMessage;
+				string sText = TradesBookLocalization.Resolve( from, note.LetterMessage );
 				from.PlaySound( 0x249 );
 
 				this.Closable=true;
@@ -42,7 +42,7 @@ namespace Server.Items
 
 				AddImage(0, 0, 10901, 2786);
 				AddImage(0, 0, 10899, 2117);
-				AddHtml( 45, 78, 386, 218, @"<BODY><BASEFONT Color=#d9c781>" + sText + "</BASEFONT></BODY>", (bool)false, (bool)true);
+				AddHtml( 45, 78, 386, 218, TradesBookLocalization.BodyRaw( "#d9c781", sText ), (bool)false, (bool)true);
 			}
 
 			public override void OnResponse( NetState state, RelayInfo info ) 

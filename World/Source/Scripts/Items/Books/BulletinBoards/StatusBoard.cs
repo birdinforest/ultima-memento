@@ -131,30 +131,30 @@ namespace Server.Gumps
 		}
 
 		AddImageTiled( 15, 37, 190, 17, 5154 );
-		AddLabel( 17, 36, 0x25, "Online :" );
+		AddLabel( 17, 36, 0x25, TradesBookLocalization.Resolve( from, "Online :" ) );
 		AddHtml( 160, 37, 30, 17, "<div align=\"right\" color=\"2100\">"+ t.ToString() +"</div>", false, false );
 
 		AddImageTiled( 210, 37, 190, 17, 5154 );
-		AddLabel( 212, 36, 0x68, "Accounts :" );
+		AddLabel( 212, 36, 0x68, TradesBookLocalization.Resolve( from, "Accounts :" ) );
 		AddHtml( 357, 37, 30, 17, "<div align=\"right\" color=\"2100\">"+ Accounts.Count.ToString() +"</div>", false, false );
 
 		AddImageTiled( 405, 37, 190, 17, 5154 );
-		AddLabel( 407, 36, 2100, "Uptime :" );
+		AddLabel( 407, 36, 2100, TradesBookLocalization.Resolve( from, "Uptime :" ) );
 		AddHtml( 485, 37, 109, 17, "<div align=\"right\" color=\"2100\">"+ FormatTimeSpan( DateTime.Now - Clock.ServerStart) +"</div>", false, false );
 
 		AddImageTiled( 600, 37, 185, 17, 5154 );
-		AddLabel( 602, 36, 2100, "RAM in use :" );
+		AddLabel( 602, 36, 2100, TradesBookLocalization.Resolve( from, "RAM in use :" ) );
 		AddHtml( 700, 37, 75, 17, "<div align=\"right\" color=\"2100\">"+ FormatByteAmount( GC.GetTotalMemory( false ) ) +"</div>", false, false );
 		// A3C BB8 DAC E10 13BE 13EC 1400 1432 23F0 238C 23BE 2422 242C 2436 2454 2486 24A4 24AE 24B8 24EA 251C 254E 2557 2560 ?2776?
 		AddBackground( 15, 59, 770, 526, 0x2454);
 		AddBlackAlpha( 18, 62, 763, 520);
-		AddLabelCropped(  20, 60, 220, 20, 2100, "Name" );
-		AddLabelCropped( 222, 60, 209, 20, 2100, "Guild" );
-		AddLabelCropped( 453, 60, 60, 20, 2100, "Stats" );
-		AddLabelCropped( 515, 60, 60, 20, 2100, "Skills" );
-		AddLabelCropped( 577, 60, 60, 20, 2100, "Karma" );
-		AddLabelCropped( 639, 60, 60, 20, 2100, "Fame" );
-		AddLabelCropped( 701, 60, 60, 20, 2100, "Kills" );
+		AddLabelCropped(  20, 60, 220, 20, 2100, TradesBookLocalization.Resolve( from, "Name" ) );
+		AddLabelCropped( 222, 60, 209, 20, 2100, TradesBookLocalization.Resolve( from, "Guild" ) );
+		AddLabelCropped( 453, 60, 60, 20, 2100, TradesBookLocalization.Resolve( from, "Stats" ) );
+		AddLabelCropped( 515, 60, 60, 20, 2100, TradesBookLocalization.Resolve( from, "Skills" ) );
+		AddLabelCropped( 577, 60, 60, 20, 2100, TradesBookLocalization.Resolve( from, "Karma" ) );
+		AddLabelCropped( 639, 60, 60, 20, 2100, TradesBookLocalization.Resolve( from, "Fame" ) );
+		AddLabelCropped( 701, 60, 60, 20, 2100, TradesBookLocalization.Resolve( from, "Kills" ) );
 
          if ( m_List == null )
             m_List = new ArrayList( NetState.Instances );
@@ -173,7 +173,7 @@ namespace Server.Gumps
             AddImage( 761, 62, 0x25E6 );
 
          if ( m_List.Count == 0 )
-            AddLabel( 20, 80, 0x25, "There are no clients to display." );
+            AddLabel( 20, 80, 0x25, TradesBookLocalization.Resolve( from, "There are no clients to display." ) );
 
          int k = 0;
 
@@ -199,9 +199,9 @@ namespace Server.Gumps
             if ( m == null )
             {
                if ( RemoteAdmin.AdminNetwork.IsAuth( ns ) )
-                  AddLabelCropped( 20, offset, 220, 20, 2100, "(remote admin)" );
+                  AddLabelCropped( 20, offset, 220, 20, 2100, TradesBookLocalization.Resolve( from, "(remote admin)" ) );
                else
-                  AddLabelCropped( 20, offset, 220, 20, 2100, "(logging in)" );
+                  AddLabelCropped( 20, offset, 220, 20, 2100, TradesBookLocalization.Resolve( from, "(logging in)" ) );
             }
             else
             {

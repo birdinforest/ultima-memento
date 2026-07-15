@@ -186,6 +186,11 @@ RE_RESOLVE_FORMAT = re.compile(
     r"\bResolveFormat\s*\(\s*[^,\n]+,\s*\"((?:\\.|[^\"\\])*)\"",
     re.MULTILINE,
 )
+# TradesBookLocalization.Body( from, color, "English" ) — third arg is the cataloged player text
+RE_BOOK_BODY_LITERAL = re.compile(
+    r"\bBody\s*\(\s*[^,\n]+,\s*[^,\n]+,\s*\"((?:\\.|[^\"\\])*)\"",
+    re.MULTILINE,
+)
 # Item / gump: Name = "English";
 RE_SCRIPT_NAME_ASSIGN = re.compile(
     r"^\s*Name\s*=\s*\"((?:\\.|[^\"\\])*)\"\s*;",
@@ -477,6 +482,14 @@ def collect_targeted_ui_strings(path: str, data: str) -> List[str]:
         for m in RE_ABILITY_ASSIGN.finditer(data):
             texts.append(csharp_unescape(m.group(1)))
 
+    if rel.endswith("/AdminBoard.cs"):
+        for m in re.finditer(r'\bname\s*=\s*"((?:\\.|[^"\\])*)"', data):
+            texts.append(csharp_unescape(m.group(1)))
+
+    if rel.endswith("/PowerScrollBuy.cs"):
+        for m in re.finditer(r'\bcat\s*=\s*"((?:\\.|[^"\\])*)"', data):
+            texts.append(csharp_unescape(m.group(1)))
+
     return texts
 
 
@@ -508,6 +521,7 @@ def collect_strings_from_file(path: str, data: str) -> List[str]:
             RE_RESOLVE_PLAIN,
             RE_TRY_RESOLVE,
             RE_RESOLVE_FORMAT,
+            RE_BOOK_BODY_LITERAL,
             RE_RESOLVE_QUEST_CATALOG,
             RE_ADD_HTML_TEXT_RESOLVE,
         ):

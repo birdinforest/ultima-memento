@@ -5,11 +5,14 @@ using System.Text;
 using Server.Mobiles;
 using Server.Gumps;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class LearnStealingBook : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public LearnStealingBook( ) : base( 0x02DD )
 		{
@@ -21,7 +24,11 @@ namespace Server.Items
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-			list.Add( "What To Steal For Better Profit" );
+
+			if ( BuildingPropertyListLocale != null )
+				list.Add( StringCatalog.TryResolve( BuildingPropertyListLocale, "What To Steal For Better Profit" ) ?? "What To Steal For Better Profit" );
+			else
+				list.Add( "What To Steal For Better Profit" );
 		}
 
 		public class LearnStealingGump : Gump
@@ -39,11 +46,11 @@ namespace Server.Items
 
 				AddImage(0, 0, 9547, Server.Misc.PlayerSettings.GetGumpHue( from ));
 
-				AddHtml( 15, 15, 398, 20, @"<BODY><BASEFONT Color=" + color + ">THE ART OF THIEVERY</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 15, 15, 398, 20, TradesBookLocalization.Body( from, color, "THE ART OF THIEVERY" ), (bool)false, (bool)false);
 
 				AddButton(567, 11, 4017, 4017, 0, GumpButtonType.Reply, 0);
 
-				AddHtml( 14, 50, 579, 388, @"<BODY><BASEFONT Color=" + color + ">For those skilled in the art of snooping and stealing, the search for ancient artifacts can be a profitable venture. Searching some of the crypts, tombs, and dungeons...you may find pedestals with ornately crafted boxes and bags that might contain something of great value. It may be a rare item, a fine piece of art, or an ancient weapon. The finely crafted bags and boxes can be kept for oneself, or they may be sold to a thief in the guild where they will gladly pay some gold for each one. These are highly collectible and they have guild contacts to resell them to royalty, art dealers, or collectors. When you come across these pedestals, and there is an item upon it, double click it to attempt to steal the item. If you are not well trained in snooping, you may set off a deadly trap. Having a good trap removing skill may avoid the effects of such traps. Once the trap is avoided, then your skill in stealing will be put to the test. If you succeed at getting the item, look inside and claim your prize.<br><br>Many people in town are looking for rare artifacts, and may pay handsomely for them.<br><br>There are also footlockers, chests, bags, and boxes that contain treasure in these places. You can attempt to steal these containers. Make sure to take what you want from them before stealing them, as you will empty the container on your escape. A thief in the guild may also pay money for these containers by selling it to them, as they are also collectible to others and they may fetch a good price. If you want to take one of these dungeon containers, use your stealing skill and then target the container. Maybe you will be quick enough.<br><br>Although you can also seek gold by picking the pockets of merchants, you can also steal gold from their coffers. You can snoop the coffers to see how much gold is in it, and then you can use your stealing skill on the coffer to try and take the gold. This may practice your skill, but it is a tricky maneuver if you are caught. You can steal coins and such from other creatures by standing next to them and attacking them, where you may automatically steal such items when giving the attack.</BASEFONT></BODY>", (bool)false, (bool)true);
+				AddHtml( 14, 50, 579, 388, TradesBookLocalization.Body( from, color, "For those skilled in the art of snooping and stealing, the search for ancient artifacts can be a profitable venture. Searching some of the crypts, tombs, and dungeons...you may find pedestals with ornately crafted boxes and bags that might contain something of great value. It may be a rare item, a fine piece of art, or an ancient weapon. The finely crafted bags and boxes can be kept for oneself, or they may be sold to a thief in the guild where they will gladly pay some gold for each one. These are highly collectible and they have guild contacts to resell them to royalty, art dealers, or collectors. When you come across these pedestals, and there is an item upon it, double click it to attempt to steal the item. If you are not well trained in snooping, you may set off a deadly trap. Having a good trap removing skill may avoid the effects of such traps. Once the trap is avoided, then your skill in stealing will be put to the test. If you succeed at getting the item, look inside and claim your prize.<br><br>Many people in town are looking for rare artifacts, and may pay handsomely for them.<br><br>There are also footlockers, chests, bags, and boxes that contain treasure in these places. You can attempt to steal these containers. Make sure to take what you want from them before stealing them, as you will empty the container on your escape. A thief in the guild may also pay money for these containers by selling it to them, as they are also collectible to others and they may fetch a good price. If you want to take one of these dungeon containers, use your stealing skill and then target the container. Maybe you will be quick enough.<br><br>Although you can also seek gold by picking the pockets of merchants, you can also steal gold from their coffers. You can snoop the coffers to see how much gold is in it, and then you can use your stealing skill on the coffer to try and take the gold. This may practice your skill, but it is a tricky maneuver if you are caught. You can steal coins and such from other creatures by standing next to them and attacking them, where you may automatically steal such items when giving the attack." ), (bool)false, (bool)true);
 
 				AddItem(554, 449, 4643);
 				AddItem(19, 457, 13042);
@@ -65,7 +72,7 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( e.Backpack ) && this.Weight != -50.0 ) 
 			{
-				e.SendMessage( "This must be in your backpack to read." );
+				e.SendMessage( TradesBookLocalization.Resolve( e, "This must be in your backpack to read." ) );
 			}
 			else
 			{

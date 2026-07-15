@@ -57,9 +57,9 @@ namespace Server.Items
 				AddButton(609, 8, 4017, 4017, 0, GumpButtonType.Reply, 0);
 				AddImage(8, 8, 1127);
 				AddImage(8, 8, face);
-				AddHtml( 130, 13, 424, 20, @"<BODY><BASEFONT Color=" + color + ">" + title + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 130, 43, 424, 20, @"<BODY><BASEFONT Color=" + color + ">Recent Messages from Throughout the Land</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 130, 73, 424, 20, @"<BODY><BASEFONT Color=" + color + ">Select an Article Below to Read</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 130, 13, 424, 20, TradesBookLocalization.Body( from, color, title ), (bool)false, (bool)false);
+				AddHtml( 130, 43, 424, 20, TradesBookLocalization.Body( from, color, "Recent Messages from Throughout the Land" ), (bool)false, (bool)false);
+				AddHtml( 130, 73, 424, 20, TradesBookLocalization.Body( from, color, "Select an Article Below to Read" ), (bool)false, (bool)false);
 
 				int i = 115;
 
@@ -178,7 +178,7 @@ namespace Server.Items
 				AddButton(609, 8, 4017, 4017, 0, GumpButtonType.Reply, 0);
 				AddImage(8, 8, 1127);
 				AddImage(8, 8, face);
-				AddHtml( 130, 13, 424, 20, @"<BODY><BASEFONT Color=" + color + ">" + title + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 130, 13, 424, 20, TradesBookLocalization.Body( from, color, title ), (bool)false, (bool)false);
 				AddHtml( 130, 43, 424, 20, @"<BODY><BASEFONT Color=" + color + ">" + Server.Misc.LoggingFunctions.LogArticles( message, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 130, 73, 424, 20, @"<BODY><BASEFONT Color=" + color + ">" + Server.Misc.LoggingFunctions.LogArticles( message, 2 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 11, 144, 625, 278, @"<BODY><BASEFONT Color=" + color + ">" + Server.Misc.LoggingFunctions.LogArticles( message, 3 ) + "</BASEFONT></BODY>", (bool)false, (bool)true);

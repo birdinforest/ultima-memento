@@ -29,7 +29,7 @@ namespace Server.Items
 			public ReadGump( Mobile from, Item parchment ): base( 100, 100 )
 			{
 				GuardNote scroll = (GuardNote)parchment;
-				string sText = scroll.ScrollText;
+				string sText = TradesBookLocalization.Resolve( from, scroll.ScrollText );
 
 				this.Closable=true;
 				this.Disposable=true;
@@ -39,7 +39,7 @@ namespace Server.Items
 				AddPage(0);
 				AddImage(0, 0, 10901, 2786);
 				AddImage(0, 0, 10899, 2117);
-				AddHtml( 45, 78, 386, 218, @"<BODY><BASEFONT Color=#d9c781>" + sText + "</BASEFONT></BODY>", (bool)false, (bool)true);
+				AddHtml( 45, 78, 386, 218, TradesBookLocalization.BodyRaw( "#d9c781", sText ), (bool)false, (bool)true);
 			}
 		}
 
@@ -47,7 +47,7 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( e.Backpack ) ) 
 			{
-				e.SendMessage( "This must be in your backpack to read." );
+				e.SendMessage( TradesBookLocalization.Resolve( e, "This must be in your backpack to read." ) );
 				return;
 			}
 			else

@@ -24,7 +24,7 @@ namespace Server.Items
 			public ClueGump( Mobile from ): base( 100, 100 )
 			{
 				from.PlaySound( 0x249 );
-				string sText = "The demon opened the black gate and unleashed chaos across Lodoria. Where the dwarven armies had fallen, the elven forces assembled all of their magic and sent the beast back to the void. While the world itself provided the natural forces to summon the demon, now it has diminished to the core of the world. This is where we have been searching for centuries, deep below the city of Lodoria. The drow have joined our cause and aided us in constructing our city deep below, where we can keep searching in secret. Now that my research in Doom is complete, I will return to the cemetery at night as not to be seen.";
+				string sText = TradesBookLocalization.Resolve( from, "The demon opened the black gate and unleashed chaos across Lodoria. Where the dwarven armies had fallen, the elven forces assembled all of their magic and sent the beast back to the void. While the world itself provided the natural forces to summon the demon, now it has diminished to the core of the world. This is where we have been searching for centuries, deep below the city of Lodoria. The drow have joined our cause and aided us in constructing our city deep below, where we can keep searching in secret. Now that my research in Doom is complete, I will return to the cemetery at night as not to be seen." );
 
 				this.Closable=true;
 				this.Disposable=true;
@@ -35,7 +35,7 @@ namespace Server.Items
 
 				AddImage(0, 0, 10901, 2786);
 				AddImage(0, 0, 10899, 2117);
-				AddHtml( 45, 78, 386, 218, @"<BODY><BASEFONT Color=#d9c781>" + sText + "</BASEFONT></BODY>", (bool)false, (bool)true);
+				AddHtml( 45, 78, 386, 218, TradesBookLocalization.BodyRaw( "#d9c781", sText ), (bool)false, (bool)true);
 			}
 
 			public override void OnResponse( NetState state, RelayInfo info ) 

@@ -5,11 +5,14 @@ using System.Text;
 using Server.Mobiles;
 using Server.Gumps;
 using Server.Network;
+using Server.Localization;
 
 namespace Server.Items
 {
 	public class LearnReagentsBook : Item
 	{
+		public override bool IsContentLocalized => true;
+
 		[Constructable]
 		public LearnReagentsBook( ) : base( 0x02DD )
 		{
@@ -21,7 +24,11 @@ namespace Server.Items
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-			list.Add( "A Listing Of Reagents" );
+
+			if ( BuildingPropertyListLocale != null )
+				list.Add( StringCatalog.TryResolve( BuildingPropertyListLocale, "A Listing Of Reagents" ) ?? "A Listing Of Reagents" );
+			else
+				list.Add( "A Listing Of Reagents" );
 		}
 
 		public class LearnReagentsGump : Gump
@@ -39,7 +46,7 @@ namespace Server.Items
 
 				AddImage(0, 0, 9546, Server.Misc.PlayerSettings.GetGumpHue( from ));
 
-				AddHtml( 15, 15, 600, 20, @"<BODY><BASEFONT Color=" + color + ">INFORMATION ON VARIOUS REAGENTS</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 15, 15, 600, 20, TradesBookLocalization.Body( from, color, "INFORMATION ON VARIOUS REAGENTS" ), (bool)false, (bool)false);
 
 				AddButton(867, 11, 4017, 4017, 0, GumpButtonType.Reply, 0);
 
@@ -87,49 +94,49 @@ namespace Server.Items
 				int i = 45;
 				int o = 790;
 
-				AddHtml( 15, 60, 100, 20, @"<BODY><BASEFONT Color=" + color + ">COMMON</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( i, 90, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Black Pearl</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( i, 120, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Bloodmoss</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( i, 150, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Garlic</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( i, 180, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Ginseng</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( i, 210, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Mandrake Root</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( i, 240, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Nightshade</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( i, 270, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Spider Silk</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( i, 300, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Sulfurous Ash</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 15, 60, 100, 20, TradesBookLocalization.Body( from, color, "COMMON" ), (bool)false, (bool)false);
+				AddHtml( i, 90, 100, 20, TradesBookLocalization.Body( from, color, "Black Pearl" ), (bool)false, (bool)false);
+				AddHtml( i, 120, 100, 20, TradesBookLocalization.Body( from, color, "Bloodmoss" ), (bool)false, (bool)false);
+				AddHtml( i, 150, 100, 20, TradesBookLocalization.Body( from, color, "Garlic" ), (bool)false, (bool)false);
+				AddHtml( i, 180, 100, 20, TradesBookLocalization.Body( from, color, "Ginseng" ), (bool)false, (bool)false);
+				AddHtml( i, 210, 100, 20, TradesBookLocalization.Body( from, color, "Mandrake Root" ), (bool)false, (bool)false);
+				AddHtml( i, 240, 100, 20, TradesBookLocalization.Body( from, color, "Nightshade" ), (bool)false, (bool)false);
+				AddHtml( i, 270, 100, 20, TradesBookLocalization.Body( from, color, "Spider Silk" ), (bool)false, (bool)false);
+				AddHtml( i, 300, 100, 20, TradesBookLocalization.Body( from, color, "Sulfurous Ash" ), (bool)false, (bool)false);
 
-				AddHtml( 15, 360, 100, 20, @"<BODY><BASEFONT Color=" + color + ">NECROMANCY</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( i, 390, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Bat Wing</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( i, 420, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Daemon Blood</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( i, 450, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Grave Dust</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( i, 480, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Nox Crystal</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( i, 510, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Pig Iron</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 15, 360, 100, 20, TradesBookLocalization.Body( from, color, "NECROMANCY" ), (bool)false, (bool)false);
+				AddHtml( i, 390, 100, 20, TradesBookLocalization.Body( from, color, "Bat Wing" ), (bool)false, (bool)false);
+				AddHtml( i, 420, 100, 20, TradesBookLocalization.Body( from, color, "Daemon Blood" ), (bool)false, (bool)false);
+				AddHtml( i, 450, 100, 20, TradesBookLocalization.Body( from, color, "Grave Dust" ), (bool)false, (bool)false);
+				AddHtml( i, 480, 100, 20, TradesBookLocalization.Body( from, color, "Nox Crystal" ), (bool)false, (bool)false);
+				AddHtml( i, 510, 100, 20, TradesBookLocalization.Body( from, color, "Pig Iron" ), (bool)false, (bool)false);
 
-				AddHtml( 760, 60, 100, 20, @"<BODY><BASEFONT Color=" + color + ">HERBALIST</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 90, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Beetle Shell</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 120, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Brimstone</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 150, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Butterfly Wings</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 180, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Eye of Toad</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 210, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Fairy Egg</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 240, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Gargoyle Ear</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 270, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Moon Crystal</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 300, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Pixie Skull</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 330, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Red Lotus</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 360, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Sea Salt</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 390, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Silver Widow</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 420, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Swamp Berries</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 760, 60, 100, 20, TradesBookLocalization.Body( from, color, "HERBALIST" ), (bool)false, (bool)false);
+				AddHtml( o, 90, 100, 20, TradesBookLocalization.Body( from, color, "Beetle Shell" ), (bool)false, (bool)false);
+				AddHtml( o, 120, 100, 20, TradesBookLocalization.Body( from, color, "Brimstone" ), (bool)false, (bool)false);
+				AddHtml( o, 150, 100, 20, TradesBookLocalization.Body( from, color, "Butterfly Wings" ), (bool)false, (bool)false);
+				AddHtml( o, 180, 100, 20, TradesBookLocalization.Body( from, color, "Eye of Toad" ), (bool)false, (bool)false);
+				AddHtml( o, 210, 100, 20, TradesBookLocalization.Body( from, color, "Fairy Egg" ), (bool)false, (bool)false);
+				AddHtml( o, 240, 100, 20, TradesBookLocalization.Body( from, color, "Gargoyle Ear" ), (bool)false, (bool)false);
+				AddHtml( o, 270, 100, 20, TradesBookLocalization.Body( from, color, "Moon Crystal" ), (bool)false, (bool)false);
+				AddHtml( o, 300, 100, 20, TradesBookLocalization.Body( from, color, "Pixie Skull" ), (bool)false, (bool)false);
+				AddHtml( o, 330, 100, 20, TradesBookLocalization.Body( from, color, "Red Lotus" ), (bool)false, (bool)false);
+				AddHtml( o, 360, 100, 20, TradesBookLocalization.Body( from, color, "Sea Salt" ), (bool)false, (bool)false);
+				AddHtml( o, 390, 100, 20, TradesBookLocalization.Body( from, color, "Silver Widow" ), (bool)false, (bool)false);
+				AddHtml( o, 420, 100, 20, TradesBookLocalization.Body( from, color, "Swamp Berries" ), (bool)false, (bool)false);
 
-				AddHtml( 760, 480, 100, 20, @"<BODY><BASEFONT Color=" + color + ">WITCHERY</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 510, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Bitter Root</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 540, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Black Sand</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 570, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Blood Rose</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 600, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Dried Toad</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 630, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Maggot</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 660, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Mummy Wrap</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 690, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Violet Fungus</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 720, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Werewolf Claw</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( o, 750, 100, 20, @"<BODY><BASEFONT Color=" + color + ">Wolfsbane</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 760, 480, 100, 20, TradesBookLocalization.Body( from, color, "WITCHERY" ), (bool)false, (bool)false);
+				AddHtml( o, 510, 100, 20, TradesBookLocalization.Body( from, color, "Bitter Root" ), (bool)false, (bool)false);
+				AddHtml( o, 540, 100, 20, TradesBookLocalization.Body( from, color, "Black Sand" ), (bool)false, (bool)false);
+				AddHtml( o, 570, 100, 20, TradesBookLocalization.Body( from, color, "Blood Rose" ), (bool)false, (bool)false);
+				AddHtml( o, 600, 100, 20, TradesBookLocalization.Body( from, color, "Dried Toad" ), (bool)false, (bool)false);
+				AddHtml( o, 630, 100, 20, TradesBookLocalization.Body( from, color, "Maggot" ), (bool)false, (bool)false);
+				AddHtml( o, 660, 100, 20, TradesBookLocalization.Body( from, color, "Mummy Wrap" ), (bool)false, (bool)false);
+				AddHtml( o, 690, 100, 20, TradesBookLocalization.Body( from, color, "Violet Fungus" ), (bool)false, (bool)false);
+				AddHtml( o, 720, 100, 20, TradesBookLocalization.Body( from, color, "Werewolf Claw" ), (bool)false, (bool)false);
+				AddHtml( o, 750, 100, 20, TradesBookLocalization.Body( from, color, "Wolfsbane" ), (bool)false, (bool)false);
 
-				AddHtml( 237, 62, 434, 707, @"<BODY><BASEFONT Color=" + color + ">Mages, necromancers, witches, alchemists, and druids all use reagents of some type. This is a listing of the kinds of reagents you may find while traveling the world. This is not a complete list, as legends and rumors tell of other types that may exist. Reagents can be purchased from merchants, picked from some gardens, found on some creatures, or discovered with other treasure. One will commonly find reagents that may be used in their current trade, but if they have no such trade, then they may find any type that they can leave behind or sell.<br><br>Mages use the common reagents in the casting of spells, where necromancers use the necromancy reagents for their magic. Witches and druids use some of these reagents listed here as well.<br><br>You may find many reagents you need to identify. If you have practiced your tasting, you will able to discover what these are. Mages and necromancers simply carry the reagents with them to use as the cast spells. Alchemists use a mortar and pestle to create potions, while witches and druids use cauldrons.</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 237, 62, 434, 707, TradesBookLocalization.Body( from, color, "Mages, necromancers, witches, alchemists, and druids all use reagents of some type. This is a listing of the kinds of reagents you may find while traveling the world. This is not a complete list, as legends and rumors tell of other types that may exist. Reagents can be purchased from merchants, picked from some gardens, found on some creatures, or discovered with other treasure. One will commonly find reagents that may be used in their current trade, but if they have no such trade, then they may find any type that they can leave behind or sell.<br><br>Mages use the common reagents in the casting of spells, where necromancers use the necromancy reagents for their magic. Witches and druids use some of these reagents listed here as well.<br><br>You may find many reagents you need to identify. If you have practiced your tasting, you will able to discover what these are. Mages and necromancers simply carry the reagents with them to use as the cast spells. Alchemists use a mortar and pestle to create potions, while witches and druids use cauldrons." ), (bool)false, (bool)false);
 			}
 
 			public override void OnResponse( NetState state, RelayInfo info ) 
@@ -143,7 +150,7 @@ namespace Server.Items
 		{
 			if ( !IsChildOf( e.Backpack ) && this.Weight != -50.0 ) 
 			{
-				e.SendMessage( "This must be in your backpack to read." );
+				e.SendMessage( TradesBookLocalization.Resolve( e, "This must be in your backpack to read." ) );
 			}
 			else
 			{

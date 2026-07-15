@@ -39,9 +39,9 @@ namespace Server
 
             AddImage(0, 0, 9592, Server.Misc.PlayerSettings.GetGumpHue(from));
             AddButton(962, 11, 4017, 4017, 0, GumpButtonType.Reply, 0);
-            AddHtml(12, 12, 727, 20, @"<BODY><BASEFONT Color=" + color + ">CASTLE OF KNOWLEDGE</BASEFONT></BODY>", (bool)false, (bool)false);
-            AddHtml(12, 46, 976, 20, @"<BODY><BASEFONT Color=" + color + ">CHOOSE A " + cat + " (" + skill + " SKILL) SCROLL TO PURCHASE FOR " + m_Price + " GOLD</BASEFONT></BODY>", (bool)false, (bool)false);
-            AddHtml(12, 80, 976, 20, @"<BODY><BASEFONT Color=" + color + ">" + msg + "</BASEFONT></BODY>", (bool)false, (bool)false);
+            AddHtml(12, 12, 727, 20, TradesBookLocalization.Body(from, color, "CASTLE OF KNOWLEDGE"), (bool)false, (bool)false);
+            AddHtml(12, 46, 976, 20, TradesBookLocalization.BodyRaw(color, TradesBookLocalization.ResolveFormat(from, "CHOOSE A {0} ({1} SKILL) SCROLL TO PURCHASE FOR {2} GOLD", TradesBookLocalization.Resolve(from, cat), skill, m_Price.ToString())), (bool)false, (bool)false);
+            AddHtml(12, 80, 976, 20, TradesBookLocalization.BodyRaw(color, TradesBookLocalization.Resolve(from, msg)), (bool)false, (bool)false);
 
             m_sortedSkillNames = Enum.GetValues(typeof(SkillName))
                 .Cast<SkillName>()
@@ -73,7 +73,7 @@ namespace Server
 
                     var skillName = m_sortedSkillNames[index + offset];
                     AddButton(x, y + 77, 4011, 4011, index + offset + BUTTON_SKILL_OFFSET, GumpButtonType.Reply, 0);
-                    AddHtml(x + 50, y + 80, 252, 20, @"<BODY><BASEFONT Color=" + color + ">" + skillName + "</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(x + 50, y + 80, 252, 20, TradesBookLocalization.BodyRaw(color, TradesBookLocalization.Resolve(from, skillName.ToString())), (bool)false, (bool)false);
                 }
             }
         }

@@ -118,20 +118,23 @@ namespace Server.Items
 				PlayerMobile pm = (PlayerMobile)from;
 				if ( pm.NpcGuild != NpcGuild.None )
 				{
-					AddHtml( 55, 402, 285, 20, @"<BODY><BASEFONT Color=#e97f76>Resign From My Local Guild</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 55, 402, 285, 20, TradesBookLocalization.Body( from, "#e97f76", "Resign From My Local Guild" ), (bool)false, (bool)false);
 					AddButton(16, 401, 4005, 4005, 10, GumpButtonType.Reply, 0);
 				}
 
-				string warn = "Be warned, each guild you join will have an increased fee to join. This is based on the number of guilds you were previously a member of. So when you join a guild for " + MyServerSettings.JoiningFee( from ).ToString() + " gold, the next guild you join will require " + (MyServerSettings.JoiningFee( from )*2).ToString() + " gold. The guild joined after that will be " + (MyServerSettings.JoiningFee( from )*3).ToString() + " gold. ";
-				if ( !MySettings.S_GuildIncrease )
-					warn = "";
+				int fee = MyServerSettings.JoiningFee( from );
+				string warn = "";
+				if ( MySettings.S_GuildIncrease )
+					warn = TradesBookLocalization.ResolveFormat( from, "Be warned, each guild you join will have an increased fee to join. This is based on the number of guilds you were previously a member of. So when you join a guild for {0} gold, the next guild you join will require {1} gold. The guild joined after that will be {2} gold. ", fee.ToString(), ( fee * 2 ).ToString(), ( fee * 3 ).ToString() );
 
-				string benefit = "One of the benefits of joining a local guild is the receiving of more gold for goods sold to other guild members. You will also receive";
-				if ( !MySettings.S_VendorsBuyStuff )
-					benefit = "";
+				string benefit = "";
+				if ( MySettings.S_VendorsBuyStuff )
+					benefit = TradesBookLocalization.Resolve( from, "One of the benefits of joining a local guild is the receiving of more gold for goods sold to other guild members. You will also receive" );
 
-				AddHtml( 11, 12, 562, 20, @"<BODY><BASEFONT Color=#b6d593>LOCAL GUILDS</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 12, 44, 623, 349, @"<BODY><BASEFONT Color=#b6d593>There are many groups in the land that have established guild houses and are often looking for members. These guilds are separate from the various adventurer guilds that may be established on their own, as they focus on a group of people with a certain skillset and trade. Below is a listing of guild houses looking for members.<br><br>- Alchemists Guild<br>- Archers Guild<br>- Assassins Guild<br>- Bard Guild<br>- Black Magic Guild<br>- Blacksmith Guild<br>- Carpenters Guild<br>- Cartographers Guild<br>- Culinary Guild<br>- Druids Guild<br>- Elemental Guild<br>- Healer Guild<br>- Librarians Guild<br>- Mage Guild<br>- Mariners Guild<br>- Merchant Guild<br>- Miner Guild<br>- Ranger Guild<br>- Tailor Guild<br>- Thief Guild<br>- Tinker Guild<br>- Warrior Guild<br><br>The requirement for entry to any of these guilds (in addition to not being a member of another local guild) is " + MyServerSettings.JoiningFee( from ).ToString() + " gold paid to the guildmaster. To join a guild, find the appropriate guildmaster and single click them to select 'Join'. They will then ask you for an amount of gold if you meet the qualifications. Just drop the exact amount of gold on them to join. You may resign from a guild by going back to your guildmaster, single clicking them, and selecting 'Resign' (or you can use this board to resign). Then you could join another guild. " + warn + "" + benefit + " a guild membership ring that will help you with skills that pertain to the guild, which would be yours and yours alone. If you lose your ring for any reason, give a guildmaster 400 gold to replace it. The skills aided by the ring are also the skills that you will gain quicker, being a member of the guild. You will also be able to purchase items from guildmasters, as they sell extra items to members of the guild.<br><br>In order to steal from other players, you must be a member of the Thieves Guild." + guildMasters + "</BASEFONT></BODY>", (bool)false, (bool)true);
+				string body = TradesBookLocalization.ResolveFormat( from, "There are many groups in the land that have established guild houses and are often looking for members. These guilds are separate from the various adventurer guilds that may be established on their own, as they focus on a group of people with a certain skillset and trade. Below is a listing of guild houses looking for members.<br><br>- Alchemists Guild<br>- Archers Guild<br>- Assassins Guild<br>- Bard Guild<br>- Black Magic Guild<br>- Blacksmith Guild<br>- Carpenters Guild<br>- Cartographers Guild<br>- Culinary Guild<br>- Druids Guild<br>- Elemental Guild<br>- Healer Guild<br>- Librarians Guild<br>- Mage Guild<br>- Mariners Guild<br>- Merchant Guild<br>- Miner Guild<br>- Ranger Guild<br>- Tailor Guild<br>- Thief Guild<br>- Tinker Guild<br>- Warrior Guild<br><br>The requirement for entry to any of these guilds (in addition to not being a member of another local guild) is {0} gold paid to the guildmaster. To join a guild, find the appropriate guildmaster and single click them to select 'Join'. They will then ask you for an amount of gold if you meet the qualifications. Just drop the exact amount of gold on them to join. You may resign from a guild by going back to your guildmaster, single clicking them, and selecting 'Resign' (or you can use this board to resign). Then you could join another guild. {1}{2} a guild membership ring that will help you with skills that pertain to the guild, which would be yours and yours alone. If you lose your ring for any reason, give a guildmaster 400 gold to replace it. The skills aided by the ring are also the skills that you will gain quicker, being a member of the guild. You will also be able to purchase items from guildmasters, as they sell extra items to members of the guild.<br><br>In order to steal from other players, you must be a member of the Thieves Guild.", fee.ToString(), warn, benefit ) + guildMasters;
+
+				AddHtml( 11, 12, 562, 20, TradesBookLocalization.Body( from, "#b6d593", "LOCAL GUILDS" ), (bool)false, (bool)false);
+				AddHtml( 12, 44, 623, 349, TradesBookLocalization.BodyRaw( "#b6d593", body ), (bool)false, (bool)true);
 				AddButton(609, 8, 4017, 4017, 0, GumpButtonType.Reply, 0);
 			}
 

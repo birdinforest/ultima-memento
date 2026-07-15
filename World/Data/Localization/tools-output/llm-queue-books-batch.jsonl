@@ -1,0 +1,110 @@
+{"file": "scripts-books.json", "key": "s.02b502168a4ce323", "en": "Arandur the Elven Prince"}
+{"file": "scripts-books.json", "key": "s.03360b9b360463b3", "en": "Mages, necromancers, witches, alchemists, and druids all use reagents of some type. This is a listing of the kinds of reagents you may find while traveling the world. This is not a complete list, as legends and rumors tell of other types that may exist. Reagents can be purchased from merchants, picked from some gardens, found on some creatures, or discovered with other treasure. One will commonly find reagents that may be used in their current trade, but if they have no such trade, then they may find any type that they can leave behind or sell.<br><br>Mages use the common reagents in the casting of spells, where necromancers use the necromancy reagents for their magic. Witches and druids use some of these reagents listed here as well.<br><br>You may find many reagents you need to identify. If you have practiced your tasting, you will able to discover what these are. Mages and necromancers simply carry the reagents with them to use as the cast spells. Alchemists use a mortar and pestle to create potions, while witches and druids use cauldrons."}
+{"file": "scripts-books.json", "key": "s.1015fbb08c3d32f1", "en": "Be warned, each guild you join will have an increased fee to join. This is based on the number of guilds you were previously a member of. So when you join a guild for {0} gold, the next guild you join will require {1} gold. The guild joined after that will be {2} gold. "}
+{"file": "scripts-books.json", "key": "s.13b9f9a23e5057ea", "en": "INFORMATION ON VARIOUS REAGENTS"}
+{"file": "scripts-books.json", "key": "s.2762b97a05c6aca1", "en": "CASTLE OF KNOWLEDGE"}
+{"file": "scripts-books.json", "key": "s.43c19d787077c85c", "en": "The demon opened the black gate and unleashed chaos across Lodoria. Where the dwarven armies had fallen, the elven forces assembled all of their magic and sent the beast back to the void. While the world itself provided the natural forces to summon the demon, now it has diminished to the core of the world. This is where we have been searching for centuries, deep below the city of Lodoria. The drow have joined our cause and aided us in constructing our city deep below, where we can keep searching in secret. Now that my research in Doom is complete, I will return to the cemetery at night as not to be seen."}
+{"file": "scripts-books.json", "key": "s.498723f2426951eb", "en": "LOCAL GUILDS"}
+{"file": "scripts-books.json", "key": "s.5828b2a6efa684ff", "en": "One of the benefits of joining a local guild is the receiving of more gold for goods sold to other guild members. You will also receive"}
+{"file": "scripts-books.json", "key": "s.5ffffc2c790d5b21", "en": "A Listing Of Reagents"}
+{"file": "scripts-books.json", "key": "s.6e44cee49db3f83b", "en": "Select an Article Below to Read"}
+{"file": "scripts-books.json", "key": "s.8f2cf74f27bbffb8", "en": "There are many groups in the land that have established guild houses and are often looking for members. These guilds are separate from the various adventurer guilds that may be established on their own, as they focus on a group of people with a certain skillset and trade. Below is a listing of guild houses looking for members.<br><br>- Alchemists Guild<br>- Archers Guild<br>- Assassins Guild<br>- Bard Guild<br>- Black Magic Guild<br>- Blacksmith Guild<br>- Carpenters Guild<br>- Cartographers Guild<br>- Culinary Guild<br>- Druids Guild<br>- Elemental Guild<br>- Healer Guild<br>- Librarians Guild<br>- Mage Guild<br>- Mariners Guild<br>- Merchant Guild<br>- Miner Guild<br>- Ranger Guild<br>- Tailor Guild<br>- Thief Guild<br>- Tinker Guild<br>- Warrior Guild<br><br>The requirement for entry to any of these guilds (in addition to not being a member of another local guild) is {0} gold paid to the guildmaster. To join a guild, find the appropriate guildmaster and single click them to select 'Join'. They will then ask you for an amount of gold if you meet the qualifications. Just drop the exact amount of gold on them to join. You may resign from a guild by going back to your guildmaster, single clicking them, and selecting 'Resign' (or you can use this board to resign). Then you could join another guild. {1}{2} a guild membership ring that will help you with skills that pertain to the guild, which would be yours and yours alone. If you lose your ring for any reason, give a guildmaster 400 gold to replace it. The skills aided by the ring are also the skills that you will gain quicker, being a member of the guild. You will also be able to purchase items from guildmasters, as they sell extra items to members of the guild.<br><br>In order to steal from other players, you must be a member of the Thieves Guild."}
+{"file": "scripts-books.json", "key": "s.93cd31a5c21cf68f", "en": "Lord Draxinusom"}
+{"file": "scripts-books.json", "key": "s.9c7ff23f3da02126", "en": "Kalana the Oracle"}
+{"file": "scripts-books.json", "key": "s.9f41e4b6d8098101", "en": "Gorn the Barbarian"}
+{"file": "scripts-books.json", "key": "s.aa2e225c4fd9d0f1", "en": "COMMON"}
+{"file": "scripts-books.json", "key": "s.ab0c40cc2ac92f9c", "en": "Lord British"}
+{"file": "scripts-books.json", "key": "s.ab5df625bc76dbd4", "en": "..."}
+{"file": "scripts-books.json", "key": "s.b5d0aa1c274c109c", "en": "THE ART OF THIEVERY"}
+{"file": "scripts-books.json", "key": "s.b7cc9aeaa0361750", "en": "Lord Blackthorn"}
+{"file": "scripts-books.json", "key": "s.ba8f7db15d436107", "en": "HERBALIST"}
+{"file": "scripts-books.json", "key": "s.bd51569a902bbeba", "en": "CHOOSE A {0} ({1} SKILL) SCROLL TO PURCHASE FOR {2} GOLD"}
+{"file": "scripts-books.json", "key": "s.cfd0a1c0de5d4937", "en": "WITCHERY"}
+{"file": "scripts-books.json", "key": "s.d8e046fae08cd4e5", "en": "Recent Messages from Throughout the Land"}
+{"file": "scripts-books.json", "key": "s.dae4e6d9e9ed166e", "en": "Dupre the Paladin"}
+{"file": "scripts-books.json", "key": "s.e6ed76bdab84e6fe", "en": "Vorgarag the Ork Lord"}
+{"file": "scripts-books.json", "key": "s.e8f3877756b6b80f", "en": "NECROMANCY"}
+{"file": "scripts-books.json", "key": "s.f6c385b80380b91f", "en": "For those skilled in the art of snooping and stealing, the search for ancient artifacts can be a profitable venture. Searching some of the crypts, tombs, and dungeons...you may find pedestals with ornately crafted boxes and bags that might contain something of great value. It may be a rare item, a fine piece of art, or an ancient weapon. The finely crafted bags and boxes can be kept for oneself, or they may be sold to a thief in the guild where they will gladly pay some gold for each one. These are highly collectible and they have guild contacts to resell them to royalty, art dealers, or collectors. When you come across these pedestals, and there is an item upon it, double click it to attempt to steal the item. If you are not well trained in snooping, you may set off a deadly trap. Having a good trap removing skill may avoid the effects of such traps. Once the trap is avoided, then your skill in stealing will be put to the test. If you succeed at getting the item, look inside and claim your prize.<br><br>Many people in town are looking for rare artifacts, and may pay handsomely for them.<br><br>There are also footlockers, chests, bags, and boxes that contain treasure in these places. You can attempt to steal these containers. Make sure to take what you want from them before stealing them, as you will empty the container on your escape. A thief in the guild may also pay money for these containers by selling it to them, as they are also collectible to others and they may fetch a good price. If you want to take one of these dungeon containers, use your stealing skill and then target the container. Maybe you will be quick enough.<br><br>Although you can also seek gold by picking the pockets of merchants, you can also steal gold from their coffers. You can snoop the coffers to see how much gold is in it, and then you can use your stealing skill on the coffer to try and take the gold. This may practice your skill, but it is a tricky maneuver if you are caught. You can steal coins and such from other creatures by standing next to them and attacking them, where you may automatically steal such items when giving the attack."}
+{"file": "scripts-books.json", "key": "s.f7175710001140a5", "en": "What To Steal For Better Profit"}
+{"file": "scripts-books.json", "key": "s.fbc00037cd442f91", "en": "Resign From My Local Guild"}
+{"file": "scripts-engines-and-systems.json", "key": "s.11677c7d43135bc0", "en": "Goal: Cube of {0}"}
+{"file": "scripts-engines-and-systems.json", "key": "s.255b7f526786a7b6", "en": "Note: Research Bag is dormant (likely in bank). Complete resonance and carry the bag before SearchBase chests will grant progress."}
+{"file": "scripts-engines-and-systems.json", "key": "s.445d3d07198f9d3c", "en": "That player has no Memory Echo assigned."}
+{"file": "scripts-engines-and-systems.json", "key": "s.480f10d51f1374da", "en": "That Research Bag belongs to someone else."}
+{"file": "scripts-engines-and-systems.json", "key": "s.4c527106dca0a2f9", "en": "Next research search for {0}: [{1}] {2} in {3}"}
+{"file": "scripts-engines-and-systems.json", "key": "s.4fdf1dac0f0a9139", "en": "Coordinates: {0}, {1}, {2}"}
+{"file": "scripts-engines-and-systems.json", "key": "s.551eb3dc9aa4cd7f", "en": "Goal: {0} — find {1}"}
+{"file": "scripts-engines-and-systems.json", "key": "s.5a25a8964a18c041", "en": "That is not a player."}
+{"file": "scripts-engines-and-systems.json", "key": "s.8190f34bcd235179", "en": "Re-assigned to: {0}"}
+{"file": "scripts-engines-and-systems.json", "key": "s.82335724b33a63b0", "en": "Still could not resolve coordinates. Check that SearchBase chests exist in the world."}
+{"file": "scripts-engines-and-systems.json", "key": "s.84dd01b36e6b4b1e", "en": "Target the player whose Memory Echo you wish to inspect."}
+{"file": "scripts-engines-and-systems.json", "key": "s.87dc707fb0a09d98", "en": "Map: {0}"}
+{"file": "scripts-engines-and-systems.json", "key": "s.8aa0f13094103501", "en": "{0} has no pending research search locations."}
+{"file": "scripts-engines-and-systems.json", "key": "s.8b7ee6e7aef81dc0", "en": "Target the player whose next research search location you wish to inspect."}
+{"file": "scripts-engines-and-systems.json", "key": "s.96d96653ba1e2ad7", "en": "Warning: no SearchBase chest found in region \"{0}\". Research search may fail until a chest exists there."}
+{"file": "scripts-engines-and-systems.json", "key": "s.9e7a6aeefb51ed2e", "en": "Search chest at: {0}, {1}, {2} — interact within 2 tiles to begin resonance."}
+{"file": "scripts-engines-and-systems.json", "key": "s.a48aefc65745dbf6", "en": "Could not resolve a reachable SearchBase for region \"{0}\". Re-assigning echo…"}
+{"file": "scripts-engines-and-systems.json", "key": "s.b556c8b6b81a2faf", "en": "Go command: {0}"}
+{"file": "scripts-engines-and-systems.json", "key": "s.ba4e001d7badd3ca", "en": "{0} does not have Avatar status enabled."}
+{"file": "scripts-engines-and-systems.json", "key": "s.c0b7579aa8f0b198", "en": "Goal: {0}"}
+{"file": "scripts-engines-and-systems.json", "key": "s.d5ae2d043a17d508", "en": "Stand near: {0}, {1}, {2}"}
+{"file": "scripts-engines-and-systems.json", "key": "s.e06a51320898b8aa", "en": "{0} has no Research Bag."}
+{"file": "scripts-engines-and-systems.json", "key": "s.e118c36e8ac5cd1b", "en": "Memory Echo for {0}: {1} ({2})"}
+{"file": "scripts-engines-and-systems.json", "key": "s.f7d98af64bac95be", "en": "Search chest at: {0}, {1}, {2} — interact within 2 tiles."}
+{"file": "scripts-mobiles.json", "key": "s.0eeba02152476f67", "en": "mob.fmt.0_the_vendor_cannot_be_harmed"}
+{"file": "scripts-mobiles.json", "key": "s.2f950474ad1ed342", "en": "mob.fmt.0_needs_at_least_5_000_gold_to_construct_the_item_for_y"}
+{"file": "scripts-mobiles.json", "key": "s.47c90c33eab903d9", "en": "You separate the boards into your backpack"}
+{"file": "scripts-mobiles.json", "key": "s.481dd2cb9e546da8", "en": "You separate the ingots into your backpack"}
+{"file": "scripts-mobiles.json", "key": "s.4e4b6c5a03bbbca0", "en": "willing to sell"}
+{"file": "scripts-mobiles.json", "key": "s.4f93ecd1ddd51dd2", "en": "an enchanted item"}
+{"file": "scripts-mobiles.json", "key": "s.52291cd265ddd953", "en": "{0} I have {1} I {2} on the remains of some {3} that I am {4} for {5} gold."}
+{"file": "scripts-mobiles.json", "key": "s.52bc185b8d4447da", "en": "a magic item"}
+{"file": "scripts-mobiles.json", "key": "s.616d4a81244d32d7", "en": " You can look in my backpack to examine the item if you wish. If you want to trade, then hand me the gold and I will give you the item."}
+{"file": "scripts-mobiles.json", "key": "s.6379b6de64a1fb89", "en": "{0} I have {1} I {2} on some {3} in {4} that I am {5} for {6} gold."}
+{"file": "scripts-mobiles.json", "key": "s.6e70659c47401b2f", "en": "Hail, Z~Z~Z~Z~Z. Welcome to Y~Y~Y~Y~Y."}
+{"file": "scripts-mobiles.json", "key": "s.77a7ff0a46b2be55", "en": "We are just here to rest after exploring {0}."}
+{"file": "scripts-mobiles.json", "key": "s.7d1a3da1e76dc16b", "en": "mob.fmt.0_will_probably_adventure_with_you_for_another_1_minute"}
+{"file": "scripts-mobiles.json", "key": "s.7dac5810142182e2", "en": "willing to trade"}
+{"file": "scripts-mobiles.json", "key": "s.99a889b7a56db40a", "en": "This is the first time I have been to Y~Y~Y~Y~Y."}
+{"file": "scripts-mobiles.json", "key": "s.a4d228886dcf5271", "en": "You separate the leather into your backpack"}
+{"file": "scripts-mobiles.json", "key": "s.a99801e8a2c53bcc", "en": "Hello, Z~Z~Z~Z~Z."}
+{"file": "scripts-mobiles.json", "key": "s.aba442673f0cab41", "en": "{0} I have {1} I {2} from a chest in {3} that I am {4} for {5} gold."}
+{"file": "scripts-mobiles.json", "key": "s.ae47f0060abeb815", "en": "mob.fmt.0_will_need_a_symbol_of_your_1_2"}
+{"file": "scripts-mobiles.json", "key": "s.c2e94e2cdbc6f9ae", "en": "a special item"}
+{"file": "scripts-mobiles.json", "key": "s.c613a217d3ee34c5", "en": "You separate the ore into your backpack"}
+{"file": "scripts-mobiles.json", "key": "s.e0b735a04fddb0f0", "en": "willing to part with"}
+{"file": "scripts-mobiles.json", "key": "s.e39dd00513bc648d", "en": "{0} I have {1} I {2} while exploring {3} that I am {4} for {5} gold."}
+{"file": "scripts-mobiles.json", "key": "s.eacc1fbd11e01ea0", "en": "mob.fmt.0_1_cannot_be_harmed"}
+{"file": "scripts-mobiles.json", "key": "s.ee1bed2dec8687de", "en": "{0} I won {1} from a card game in {2} that I am {3} for {4} gold."}
+{"file": "scripts-mobiles.json", "key": "s.f5cb2d7afab9a605", "en": "You separate the logs into your backpack"}
+{"file": "scripts-mobiles.json", "key": "s.fc16b0f115f2e2bb", "en": "{0} I have {1} I {2} on a beast I killed in {3} that I am {4} for {5} gold."}
+{"file": "scripts-system.json", "key": "s.297a932802fd76ee", "en": "{0}: Effective Str {1}, Dex {2}, Int {3} ({4} StatMod(s))"}
+{"file": "scripts-system.json", "key": "s.2ee52aeacf919669", "en": "Usage: [ClearSkillMods [skill|all]"}
+{"file": "scripts-system.json", "key": "s.324ae7e30fafca1a", "en": "Removed {0} SkillMod(s) for {1}."}
+{"file": "scripts-system.json", "key": "s.358e330461041a2a", "en": "Removed {0} StatMod(s)."}
+{"file": "scripts-system.json", "key": "s.3ac9d10b13fa991a", "en": "Added StatMod \"{0}\" ({1}{2})."}
+{"file": "scripts-system.json", "key": "s.3b24e2b507f01e00", "en": "Added SkillMod {0} {1}{2}. Value now {3} (base {4})."}
+{"file": "scripts-system.json", "key": "s.47be2e9767571b0f", "en": "{0}: Raw Str {1}, Dex {2}, Int {3}"}
+{"file": "scripts-system.json", "key": "s.492912cd83a852d6", "en": "{0}: {1} {2}{3} ({4})"}
+{"file": "scripts-system.json", "key": "s.4db406f3591eccae", "en": "Localization JSON reloaded from Data/Localization/."}
+{"file": "scripts-system.json", "key": "s.5051f9251619c1a4", "en": "Usage: [ClearStatMods [Str|Dex|Int|all]"}
+{"file": "scripts-system.json", "key": "s.53348412f5b3a340", "en": "Invalid stat type. Use Str, Dex, or Int."}
+{"file": "scripts-system.json", "key": "s.557c209c6d92ac45", "en": "FixSkillMods: {0} mod(s) cleared, {1} mod(s) now active from equipped items."}
+{"file": "scripts-system.json", "key": "s.5e2958b3214446ea", "en": "Usage: [RemoveSkillMod <skill>"}
+{"file": "scripts-system.json", "key": "s.5ebfd29693b7b3a8", "en": "Invalidated bilingual OPL cache on {0} items."}
+{"file": "scripts-system.json", "key": "s.613eb0d646331599", "en": "Removed StatMod \"{0}\"."}
+{"file": "scripts-system.json", "key": "s.61baf2cf72bfcbd6", "en": "Item tooltips may stay cached until re-examined; use [locreload opl to flush."}
+{"file": "scripts-system.json", "key": "s.7eca5e68db7f386d", "en": "No StatMod named \"{0}\"."}
+{"file": "scripts-system.json", "key": "s.7ffbc6e9784836a2", "en": "Relative must be true or false."}
+{"file": "scripts-system.json", "key": "s.865aafac4e202a49", "en": "Removed {0} SkillMod(s)."}
+{"file": "scripts-system.json", "key": "s.89903907472ca95f", "en": "FixStatMods: {0} mod(s) cleared, {1} mod(s) now active from equipped items."}
+{"file": "scripts-system.json", "key": "s.91daf31ff0c5139f", "en": "Value must be a number."}
+{"file": "scripts-system.json", "key": "s.94954c9c865b57cf", "en": "{0}: {1} {2}{3} relative={4} (skill value {5}, base {6})"}
+{"file": "scripts-system.json", "key": "s.9fe68270352a0cf2", "en": "Offset must be an integer."}
+{"file": "scripts-system.json", "key": "s.b57fab496d453d7b", "en": "Usage: [RemoveStatMod <modName>"}
+{"file": "scripts-system.json", "key": "s.b95904a9aeae9d66", "en": "*bows*"}
+{"file": "scripts-system.json", "key": "s.b969b55ad2715147", "en": "*yawns*"}
+{"file": "scripts-system.json", "key": "s.d7c72487b8515ddd", "en": "Usage: [AddStatMod <Str|Dex|Int> <offset> [modName] [minutes]"}
+{"file": "scripts-system.json", "key": "s.ebd31c2e9b9f819c", "en": "No active StatMods."}
+{"file": "scripts-system.json", "key": "s.f5e65bb2c9f78e3f", "en": "Usage: [AddSkillMod <skill> <value> [relative true|false]"}
+{"file": "scripts-system.json", "key": "s.f6bc7c3f42aacf07", "en": "No active SkillMods."}

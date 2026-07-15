@@ -177,7 +177,7 @@ namespace Server.Items
 
             if (MyServerSettings.RequirePowerscrollsInOrder() && skill.Cap < (Value - 5))
             {
-                from.SendMessage("Your current cap has to be at {0} to use this scroll", Convert.ToString(Value - 5));
+                from.SendMessage(TradesBookLocalization.ResolveFormat(from, "Your current cap has to be at {0} to use this scroll", Convert.ToString(Value - 5)));
                 return false;
             }
 
@@ -197,7 +197,7 @@ namespace Server.Items
                 case SkillName.Fencing:
                     if (from.Region.IsPartOf("Shrine of Strength")) return true;
 
-                    from.SendMessage("This magic can only be unleashed at the Shrine of Strength.");
+                    from.SendMessage(TradesBookLocalization.Resolve(from, "This magic can only be unleashed at the Shrine of Strength."));
                     return false;
 
                 case SkillName.Forensics:
@@ -218,7 +218,7 @@ namespace Server.Items
                 case SkillName.Inscribe:
                     if (from.Region.IsPartOf("Shrine of Intelligence")) return true;
 
-                    from.SendMessage("This magic can only be unleashed at the Shrine of Intelligence.");
+                    from.SendMessage(TradesBookLocalization.Resolve(from, "This magic can only be unleashed at the Shrine of Intelligence."));
                     return false;
 
                 case SkillName.Begging:
@@ -237,7 +237,7 @@ namespace Server.Items
                 case SkillName.Lockpicking:
                     if (from.Region.IsPartOf("Shrine of Dexterity")) return true;
 
-                    from.SendMessage("This magic can only be unleashed at the Shrine of Dexterity.");
+                    from.SendMessage(TradesBookLocalization.Resolve(from, "This magic can only be unleashed at the Shrine of Dexterity."));
                     return false;
 
                 case SkillName.Mercantile:
@@ -255,7 +255,7 @@ namespace Server.Items
                 case SkillName.Healing:
                     if (from.Region.IsPartOf("Shrine of Wisdom")) return true;
 
-                    from.SendMessage("This magic can only be unleashed at the Shrine of Wisdom.");
+                    from.SendMessage(TradesBookLocalization.Resolve(from, "This magic can only be unleashed at the Shrine of Wisdom."));
                     return false;
 
                 default:
