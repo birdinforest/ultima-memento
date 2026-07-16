@@ -17,6 +17,19 @@ namespace Server.Items
 {
 	public class DragonEgg : Item
 	{
+		public override bool IsContentLocalized { get { return true; } }
+
+		public override string DisplayNameLocalizationKey
+		{
+			get
+			{
+				if ( Name != null && Name.StartsWith( "egg of " ) )
+					return null;
+
+				return "item.special.dragon.egg";
+			}
+		}
+
 		[Constructable]
 		public DragonEgg() : base( 0x278C )
 		{
@@ -39,6 +52,74 @@ namespace Server.Items
 				PieceRumor = Server.Items.CubeOnCorpse.GetRumor();
 				PieceLocation = Server.Items.CubeOnCorpse.PickDungeon();
 			}
+		}
+
+		public override void AddNameProperty( ObjectPropertyList list )
+		{
+			if ( BuildingPropertyListLocale != null && Name != null && Name.StartsWith( "egg of " ) )
+			{
+				string creature = Name.Substring( 7 );
+				string resolvedCreature = StringCatalog.TryResolve( BuildingPropertyListLocale, creature ) ?? creature;
+				string line = string.Format( ResolvePropertyText( "item.special.dragon.egg.of" ), resolvedCreature );
+
+				if ( Amount <= 1 )
+					list.Add( line );
+				else
+					list.Add( 1050039, "{0}\t{1}", Amount, line );
+				return;
+			}
+
+			if ( TryAddLocalizedDisplayNameProperty( list ) )
+				return;
+
+			base.AddNameProperty( list );
+		}
+
+		public static string LocalizeDisplayName( Mobile from, DragonEgg egg )
+		{
+			if ( egg == null )
+				return StringCatalog.ResolveByKey( from != null ? from.Account : null, "item.special.dragon.egg" );
+
+			if ( egg.Name != null && egg.Name.StartsWith( "egg of " ) )
+			{
+				string creature = egg.Name.Substring( 7 );
+				string lang = AccountLang.GetLanguageCode( from != null ? from.Account : null );
+				string resolvedCreature = StringCatalog.TryResolve( lang, creature ) ?? creature;
+				return StringCatalog.ResolveFormatByKey( from != null ? from.Account : null, "item.special.dragon.egg.of", resolvedCreature );
+			}
+
+			return StringCatalog.ResolveByKey( from != null ? from.Account : null, "item.special.dragon.egg" );
+		}
+
+		public static string LocalizeRumorVerb( Mobile from, string rumor )
+		{
+			if ( rumor == "is said to be in" )
+				return StringCatalog.ResolveByKey( from.Account, "prop.special.egg.rumor.is_said" );
+			if ( rumor == "is rumored to be in" )
+				return StringCatalog.ResolveByKey( from.Account, "prop.special.egg.rumor.is_rumored" );
+			if ( rumor == "has legends tell of it being in" )
+				return StringCatalog.ResolveByKey( from.Account, "prop.special.egg.rumor.legends" );
+			if ( rumor == "was heard to be in" )
+				return StringCatalog.ResolveByKey( from.Account, "prop.special.egg.rumor.heard" );
+
+			string lang = AccountLang.GetLanguageCode( from != null ? from.Account : null );
+			return StringCatalog.TryResolve( lang, rumor ) ?? ( rumor ?? string.Empty );
+		}
+
+		public static string LocalizeSavedPlace( Mobile from, string place )
+		{
+			if ( string.IsNullOrEmpty( place ) )
+				return string.Empty;
+
+			string lang = AccountLang.GetLanguageCode( from != null ? from.Account : null );
+			return StringCatalog.TryResolve( lang, place ) ?? place;
+		}
+
+		public static string FormatIngredientRumor( Mobile from, string rumorKey, string pieceRumor, string pieceLocation )
+		{
+			return StringCatalog.ResolveFormatByKey( from.Account, rumorKey,
+				LocalizeRumorVerb( from, pieceRumor ),
+				LocalizeSavedPlace( from, pieceLocation ) );
 		}
 
 		public override void OnDoubleClick( Mobile from )
@@ -151,7 +232,7 @@ namespace Server.Items
 
 			if ( (m.Followers + followers) > m.FollowersMax )
 			{
-				vet.Say( StringCatalog.Resolve( m.Account, "You have too many followers with you to hatch this egg." ) );
+				vet.Say( StringCatalog.ResolveByKey( m.Account, "prop.special.egg.followers.too.many" ) );
 				return false;
 			}
 
@@ -168,11 +249,20 @@ namespace Server.Items
 			dragon.MinTameSkill = 29.1;
 			dragon.ControlOrder = OrderType.Follow;
 
+			string styleKey = "prop.special.egg.dragon.style.dragon";
 			string style = "dragon";
-			if ( followers == 3 ){ style = "wyrm"; dragon.Name = (dragon.Name).Replace(" dragon", " wyrm"); }
+			if ( followers == 3 )
+			{
+				style = "wyrm";
+				styleKey = "prop.special.egg.dragon.style.wyrm";
+				dragon.Name = (dragon.Name).Replace(" dragon", " wyrm");
+			}
 
 			LoggingFunctions.LogGenericQuest( m, "has hatched a " + style + "" );
-			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.Resolve( m.Account, "Your " + style + " has hatched." ), m.NetState);
+			m.PrivateOverheadMessage( MessageType.Regular, 1153, false,
+				StringCatalog.ResolveFormatByKey( m.Account, "prop.special.egg.dragon.hatched",
+					StringCatalog.ResolveByKey( m.Account, styleKey ) ),
+				m.NetState );
 
 			m.PlaySound( 0x041 );
 
@@ -187,19 +277,31 @@ namespace Server.Items
 			{
 				from.SendSound( 0x4A ); 
 				string color = "#94d3b4";
-				string sDragon = "dragon";
-					if ( egg.DragonBody == 59 ){ sDragon = "wyrm"; }
+				string bodyKey = egg.DragonBody == 59
+					? "prop.special.egg.dragon.gump.body.wyrm"
+					: "prop.special.egg.dragon.gump.body.dragon";
 
-				string sText = "This egg contains the embryo of a " + sDragon + ". Dwarves would take these eggs and brew the potions of the four elements to pour over the shell. The elixir of the flame, the potion of the earth, the mixture of the sea, and the oil of the winds are the four alchemical potions used in this process. Once these liquids are poured onto the shell, it could be broken by the young " + sDragon + " and the power of all the elements combined would mature the " + sDragon + " to almost be fully grown. These alchemical skills died off with the dwarven race, but you did hear rumors of these potions being seen in various places. These are usually in long lost dungeons or ruins, and said to be last seen in small chests resting on a runic pedestal. If you could get them, and bring the egg to an animal expert, they may be able to help you hatch it. The animal expert will require some gold (placed onto the egg) as you will need the help of a particular animal expert and they will require payment for their services. This animal expert is at the location shown below. If you have any veterinary skill, they may refund some of the gold for the help you may provide in the birth. When hatched and almost fully grown, these " + sDragon + "s will become your bonded pet. You will have to feed it and stable it when required. You can also perform some druidism on it without having any proficiency in the skill. This will help you with information about them, like what they want to eat.";
+				string sText = StringCatalog.ResolveByKey( from.Account, bodyKey );
 
-				string sRumor = egg.PieceRumor + " " + egg.PieceLocation;
+				string sRumor;
+				if ( egg.HavePotionA == 0 )
+					sRumor = FormatIngredientRumor( from, "prop.special.egg.rumor.flame", egg.PieceRumor, egg.PieceLocation );
+				else if ( egg.HavePotionB == 0 )
+					sRumor = FormatIngredientRumor( from, "prop.special.egg.rumor.earth", egg.PieceRumor, egg.PieceLocation );
+				else if ( egg.HavePotionC == 0 )
+					sRumor = FormatIngredientRumor( from, "prop.special.egg.rumor.sea", egg.PieceRumor, egg.PieceLocation );
+				else if ( egg.HavePotionD == 0 )
+					sRumor = FormatIngredientRumor( from, "prop.special.egg.rumor.winds", egg.PieceRumor, egg.PieceLocation );
+				else if ( egg.HaveGold < egg.NeedGold )
+					sRumor = StringCatalog.ResolveByKey( from.Account, "prop.special.egg.gump.rumor.need.gold" );
+				else
+					sRumor = StringCatalog.ResolveByKey( from.Account, "prop.special.egg.gump.rumor.complete" );
 
-				if ( egg.HavePotionA == 0 ){ sRumor = "The elixir of the flame " + sRumor; }
-				else if ( egg.HavePotionB == 0 ){ sRumor = "The potion of the earth " + sRumor; }
-				else if ( egg.HavePotionC == 0 ){ sRumor = "The mixture of the sea " + sRumor; }
-				else if ( egg.HavePotionD == 0 ){ sRumor = "The oil of the winds " + sRumor; }
-				else if ( egg.HaveGold < egg.NeedGold ){ sRumor = "You have obtained everything except the gold."; }
-				else { sRumor = "You have obtained everything you need."; }
+				string title = LocalizeDisplayName( from, egg );
+				string bring = StringCatalog.ResolveFormatByKey( from.Account, "prop.special.egg.gump.bring",
+					LocalizeSavedPlace( from, egg.AnimalTrainerLocation ) );
+				string goldLine = StringCatalog.ResolveFormatByKey( from.Account, "prop.special.egg.gump.gold",
+					egg.HaveGold, egg.NeedGold );
 
 				this.Closable=true;
 				this.Disposable=true;
@@ -209,11 +311,11 @@ namespace Server.Items
 				AddPage(0);
 
 				AddImage(0, 0, 7015, Server.Misc.PlayerSettings.GetGumpHue( from ));
-				AddHtml( 12, 12, 420, 20, @"<BODY><BASEFONT Color=" + color + ">" + (egg.Name).ToUpper() + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 12, 12, 420, 20, @"<BODY><BASEFONT Color=" + color + ">" + title + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddButton(863, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
 
-				AddHtml( 12, 40, 173, 20, @"<BODY><BASEFONT Color=" + color + ">Gold: " + egg.HaveGold.ToString() + "/" + egg.NeedGold.ToString() + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 12, 70, 874, 20, @"<BODY><BASEFONT Color=" + color + ">Bring Gathered Materials to the Animal Expert in " + egg.AnimalTrainerLocation + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 12, 40, 173, 20, @"<BODY><BASEFONT Color=" + color + ">" + goldLine + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 12, 70, 874, 20, @"<BODY><BASEFONT Color=" + color + ">" + bring + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 12, 100, 874, 20, @"<BODY><BASEFONT Color=" + color + ">" + sRumor + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				AddHtml( 12, 339, 878, 251, @"<BODY><BASEFONT Color=" + color + ">" + sText + "</BASEFONT></BODY>", (bool)false, (bool)false);

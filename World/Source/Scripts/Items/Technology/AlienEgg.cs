@@ -1,5 +1,5 @@
 using System;
-using Server; 
+using Server;
 using Server.Localization;
 using System.Collections;
 using Server.ContextMenus;
@@ -12,18 +12,20 @@ using Server.Mobiles;
 using Server.Commands;
 using System.Globalization;
 using Server.Regions;
-using Server.Localization;
-
 
 namespace Server.Items
 {
 	public class AlienEgg : Item
 	{
+		public override bool IsContentLocalized { get { return true; } }
+
+		public override string DisplayNameLocalizationKey { get { return "item.special.alien.egg"; } }
+
 		[Constructable]
 		public AlienEgg() : base( 0x2D8E )
 		{
 			Weight = 4.0;
-Name = StringCatalog.Resolve(null, "Alien Egg");
+			Name = "Alien Egg";
 			Technology = true;
 
 			if ( Weight > 3.0 )
@@ -63,7 +65,7 @@ Name = StringCatalog.Resolve(null, "Alien Egg");
 		}
 
 		public override bool OnDragDrop( Mobile from, Item dropped )
-		{          		
+		{
 			int iAmount = 0;
 			string sEnd = ".";
 
@@ -82,7 +84,7 @@ Name = StringCatalog.Resolve(null, "Alien Egg");
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
 					HaveXormite = HaveXormite + iAmount;
-					from.SendMessage(StringCatalog.ResolveFormat(from.Account, "You added {0} xormite coin{1}", iAmount.ToString(), sEnd ));
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "prop.special.egg.xormite.added", iAmount.ToString(), sEnd ) );
 					dropped.Delete();
 					return true;
 				}
@@ -151,11 +153,15 @@ Name = StringCatalog.Resolve(null, "Alien Egg");
 
 			if ( (m.Followers + 3) > m.FollowersMax )
 			{
-				vet.Say(StringCatalog.Resolve(vet.Account, "You have too many followers with you to hatch this egg."));
+				vet.Say( StringCatalog.ResolveByKey( m.Account, "prop.special.egg.followers.too.many" ) );
 				return false;
 			}
 
-			if ( XormiteReturn > 0 ){ m.AddToBackpack( new DDXormite( XormiteReturn ) ); vet.Say(StringCatalog.ResolveFormat(vet.Account, "Here is {0} xormite back for all of your help.", XormiteReturn.ToString())); }
+			if ( XormiteReturn > 0 )
+			{
+				m.AddToBackpack( new DDXormite( XormiteReturn ) );
+				vet.Say( StringCatalog.ResolveFormatByKey( m.Account, "prop.special.egg.xormite.refund", XormiteReturn.ToString() ) );
+			}
 
 			BaseCreature alien = new Alien();
 			alien.Controlled = true;
@@ -169,7 +175,9 @@ Name = StringCatalog.Resolve(null, "Alien Egg");
 
 			LoggingFunctions.LogGenericQuest( m, "has hatched an alien" );
 
-			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.Resolve(m.Account, "Your alien has hatched."), m.NetState);
+			m.PrivateOverheadMessage( MessageType.Regular, 1153, false,
+				StringCatalog.ResolveByKey( m.Account, "prop.special.egg.alien.hatched" ),
+				m.NetState );
 			m.PlaySound( 0x041 );
 
 			dropped.Delete();
@@ -181,16 +189,25 @@ Name = StringCatalog.Resolve(null, "Alien Egg");
 		{
 			public AlienEggGump( Mobile from, AlienEgg egg ): base( 25, 25 )
 			{
-				string sText = "This egg contains the embryo of an alien. Scientists once used laser scalpels to cut the eggs open, because they would otherwise rely on the mother to use their saliva and soften the tissue to the hatchling can emerge. Since laser scalpel technology is no longer available, there are some other ways you think this egg can hatch. Hearing may rumors at the tavern, there is a particular magic rod that can be powered by two crystals. The heat from this assembled artifact should be able to cut through the shell. An alien hatchling, however, would not be a worthy creature to help on your journey. Instead, you can try to find a very rare Potion of Growth. These are usually in long lost dungeons or ruins, and said to be last seen in small chests resting on a runic pedestal. This should mature the hatchling into a full grown alien. Along with these things, you will also need some xormite as you will need the help of a particular animal expert and they will require payment for their services. This animal expert is at the location shown on this screen. If you have any veterinary skill, they may refund some of the xormite for the help you may provide in the birth. When hatched and fully grown, these creatures will become your bonded pet. You will have to feed it and stable it when required. You can also perform some druidism on it without having any proficiency in the skill. This will help you with information about them, like what they want to eat.";
+				string sText = StringCatalog.ResolveByKey( from.Account, "prop.special.egg.alien.gump.body" );
 
-				string sRumor = egg.PieceRumor + " " + egg.PieceLocation;
+				string sRumor;
+				if ( egg.HaveRod == 0 )
+					sRumor = DragonEgg.FormatIngredientRumor( from, "prop.special.egg.rumor.rod", egg.PieceRumor, egg.PieceLocation );
+				else if ( egg.HaveYellowCrystal == 0 )
+					sRumor = DragonEgg.FormatIngredientRumor( from, "prop.special.egg.rumor.sun", egg.PieceRumor, egg.PieceLocation );
+				else if ( egg.HaveRedCrystal == 0 )
+					sRumor = DragonEgg.FormatIngredientRumor( from, "prop.special.egg.rumor.blood", egg.PieceRumor, egg.PieceLocation );
+				else if ( egg.HavePotion == 0 )
+					sRumor = DragonEgg.FormatIngredientRumor( from, "prop.special.egg.rumor.growth", egg.PieceRumor, egg.PieceLocation );
+				else if ( egg.HaveXormite < egg.NeedXormite )
+					sRumor = StringCatalog.ResolveByKey( from.Account, "prop.special.egg.gump.rumor.need.xormite" );
+				else
+					sRumor = StringCatalog.ResolveByKey( from.Account, "prop.special.egg.gump.rumor.complete" );
 
-				if ( egg.HaveRod == 0 ){ sRumor = "The rod of amber " + sRumor; }
-				else if ( egg.HaveYellowCrystal == 0 ){ sRumor = "The sun crystal " + sRumor; }
-				else if ( egg.HaveRedCrystal == 0 ){ sRumor = "The blood crystal " + sRumor; }
-				else if ( egg.HavePotion == 0 ){ sRumor = "The potion of growth " + sRumor; }
-				else if ( egg.HaveXormite < egg.NeedXormite ){ sRumor = "You have obtained everything except the xormite."; }
-				else { sRumor = "You have obtained everything you need."; }
+				string title = StringCatalog.ResolveByKey( from.Account, "prop.special.egg.alien.gump.title" );
+				string bring = StringCatalog.ResolveFormatByKey( from.Account, "prop.special.egg.gump.bring",
+					DragonEgg.LocalizeSavedPlace( from, egg.AnimalTrainerLocation ) );
 
 				this.Closable=true;
 				this.Disposable=true;
@@ -201,7 +218,7 @@ Name = StringCatalog.Resolve(null, "Alien Egg");
 				AddImage(0, 0, 30521);
 				AddItem(574, 32, 14968);
 
-				AddHtml( 50, 38, 207, 20, @"<BODY><BASEFONT Color=#00FF06>" + StringCatalog.Resolve(from.Account, "ALIEN EGG") + @"</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 50, 38, 207, 20, @"<BODY><BASEFONT Color=#00FF06>" + title + @"</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
 
 				AddItem(376, 36, 3823, 0xB96);
 				AddHtml( 420, 38, 180, 20, @"<BODY><BASEFONT Color=#00FF06>" + egg.HaveXormite.ToString() + "/" + egg.NeedXormite.ToString() + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
@@ -209,7 +226,7 @@ Name = StringCatalog.Resolve(null, "Alien Egg");
 				AddHtml( 50, 70, 520, 60, @"<BODY><BASEFONT Color=#00FF06>" + sRumor + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
 
 				AddItem(41, 237, 3000);
-				AddHtml( 85, 242, 622, 20, @"<BODY><BASEFONT Color=#00FF06>Bring Gathered Materials to the Animal Expert in " + egg.AnimalTrainerLocation + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 85, 242, 622, 20, @"<BODY><BASEFONT Color=#00FF06>" + bring + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
 
 				AddItem(85, 145, 8893);
 				if ( egg.HaveRod > 0 ){ AddItem(84, 156, 3571, 0xB71); }
@@ -239,12 +256,12 @@ Name = StringCatalog.Resolve(null, "Alien Egg");
 			{
 				reg = Region.Find( target.Location, target.Map );
 
-				if (	target.Land == Land.Sosaria || 
-						target.Land == Land.Lodoria || 
-						target.Land == Land.Serpent || 
-						target.Land == Land.IslesDread || 
-						target.Land == Land.Savaged || 
-						target.Land == Land.UmberVeil || 
+				if (	target.Land == Land.Sosaria ||
+						target.Land == Land.Lodoria ||
+						target.Land == Land.Serpent ||
+						target.Land == Land.IslesDread ||
+						target.Land == Land.Savaged ||
+						target.Land == Land.UmberVeil ||
 						target.Land == Land.Kuldar )
 				{
 					if ( ( target is AnimalTrainer || target is Veterinarian ) && reg.IsPartOf( typeof( VillageRegion ) ))
