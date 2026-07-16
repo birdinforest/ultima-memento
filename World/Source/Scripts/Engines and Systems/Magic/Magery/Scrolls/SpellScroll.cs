@@ -1,16 +1,23 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Server.Spells;
 using Server.Spells.Elementalism;
 using Server.ContextMenus;
+using Server.Engines.Craft;
 using Server.Localization;
+using System;
 
 namespace Server.Items
 {
-	public class SpellScroll : Item
+	public class SpellScroll : Item, ICraftable
 	{
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Scroll; } }
+
+		private bool m_IsEphemeralSpellScroll;
+		public bool IsEphemeralSpellScroll
+		{
+			get { return m_IsEphemeralSpellScroll && !MySettings.S_UseLegacyInscription; }
+			set { m_IsEphemeralSpellScroll = value; InvalidateProperties(); }
+		}
 
 		private int m_SpellID;
 
@@ -59,8 +66,9 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 ); // version
 			writer.Write( (int) m_SpellID );
+			writer.Write( m_IsEphemeralSpellScroll );
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -68,6 +76,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
 			m_SpellID = reader.ReadInt();
+			m_IsEphemeralSpellScroll = 0 < version ? reader.ReadBool() : false;
+
 			InfoFill();
 		}
 
@@ -98,6 +108,25 @@ namespace Server.Items
 				scroll.InfoText1 = "Syth Lord Mysticron";
 			else if ( spellID >= 250 && spellID <= 259 )
 				scroll.InfoText1 = "Mystic Ability";
+		}
+
+		public override bool StackWith(Mobile from, Item dropped, bool playSound)
+		{
+			if (dropped is SpellScroll)
+			{
+				if (IsEphemeralSpellScroll != ((SpellScroll)dropped).IsEphemeralSpellScroll)
+					return false;
+			}
+
+			return base.StackWith(from, dropped, playSound);
+		}
+
+		public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list )
+		{
+			base.GetContextMenuEntries( from, list );
+
+			if ( !IsEphemeralSpellScroll && from.Alive && this.Movable && !( m_SpellID >= 130 && m_SpellID <= 162 ) )
+				list.Add( new ContextMenus.AddToSpellbookEntry() );
 		}
 
 		public override void AddNameProperties( ObjectPropertyList list )
@@ -146,12 +175,15 @@ namespace Server.Items
 			m_InfoText1 = saved;
 		}
 
-		public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list )
+		public override void GetProperties(ObjectPropertyList list)
 		{
-			base.GetContextMenuEntries( from, list );
+			base.GetProperties(list);
 
-			if ( from.Alive && this.Movable && !( m_SpellID >= 130 && m_SpellID <= 162 ) )
-				list.Add( new ContextMenus.AddToSpellbookEntry() );
+			if ( IsEphemeralSpellScroll )
+			{
+				list.Add( "Ephemeral Magic" );
+				list.Add( "Cannot be added to spellbooks" );
+			}
 		}
 
 		public override void OnDoubleClick( Mobile from )
@@ -171,6 +203,13 @@ namespace Server.Items
 				spell.Cast();
 			else
 				from.SendLocalizedMessage( 502345 ); // This spell has been temporarily disabled.
+		}
+		
+		public int OnCraft( int quality, Mobile from, CraftSystem craftSystem, Type typeRes, BaseTool tool, CraftItem craftItem, int resHue )
+		{
+			IsEphemeralSpellScroll = true;
+
+			return quality;
 		}
 	}
 }
