@@ -1,17 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Server.Engines.MLQuests.Gumps;
 using Server.Engines.MLQuests.Objectives;
 using Server.Engines.MLQuests.Rewards;
 using Server.Gumps;
+using Server.Localization;
 using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Network;
-using Server.Localization;
 using Server.Utilities;
-using Server.Accounting;
 
 namespace Server.Engines.MLQuests.Definitions
 {
@@ -118,7 +118,7 @@ namespace Server.Engines.MLQuests.Definitions
 
         public override void WriteToGump(Gump g, ref int y)
         {
-            g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, BaseQuestGump.ResolveQuestCatalogString(g, "Speak to townsfolk until you verify the Sage's rumor"));
+            g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, "Speak to townsfolk until you verify the Sage's rumor");
         }
 
         public override BaseObjectiveInstance CreateInstance(MLQuestInstance instance)
@@ -191,32 +191,25 @@ namespace Server.Engines.MLQuests.Definitions
                 base.WriteToGump(g, ref y);
 
                 y += 16;
-                g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, HasLand ? GetOrAddHint(RumorType.Land) : BaseQuestGump.ResolveQuestCatalogString(g, "You must narrow down the location."));
+                g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, HasLand ? GetOrAddHint(RumorType.Land) : "You must narrow down the location.");
 
                 if (HasLand)
                 {
                     y += 16;
-                    g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, HasDungeon ? GetOrAddHint(RumorType.Dungeon) : BaseQuestGump.ResolveQuestCatalogString(g, "You must narrow down the location."));
+                    g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, HasDungeon ? GetOrAddHint(RumorType.Dungeon) : "You must narrow down the location.");
                 }
 
                 y += 16;
-                g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, HasRelicNumber ? GetOrAddHint(RumorType.Item) : BaseQuestGump.ResolveQuestCatalogString(g, "You wonder which artefact everyone is talking about."));
+                g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, HasRelicNumber ? GetOrAddHint(RumorType.Item) : "You wonder which artefact everyone is talking about.");
 
                 if (IsCompleted())
                 {
                     y += 16;
                     y += 16;
-                    string rumorsLine = Instance.Player != null && Instance.Player.Account != null
-                        ? StringCatalog.ResolveFormat(Instance.Player.Account, "You heard {0} rumors, no wonder you're exhausted!", RumorAttempts)
-                        : string.Format("You heard {0} rumors, no wonder you're exhausted!", RumorAttempts);
-                    g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, rumorsLine);
+                    g.AddLabel(98, y, BaseQuestGump.COLOR_LABEL, string.Format("You heard {0} rumors, no wonder you're exhausted!", RumorAttempts));
                     
                     y += 16;
-                    string dest = QuesterNameAttribute.GetQuesterNameFor(Instance.QuesterType);
-                    string returnLine = Instance.Player != null && Instance.Player.Account != null
-                        ? StringCatalog.ResolveFormat(Instance.Player.Account, "Return to {0}.", dest)
-                        : string.Format("Return to {0}.", dest);
-                    g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, returnLine);
+                    g.AddLabel(103, y, BaseQuestGump.COLOR_LABEL, string.Format("Return to {0}.", QuesterNameAttribute.GetQuesterNameFor(Instance.QuesterType)));
                 }
             }
         }
@@ -244,20 +237,6 @@ namespace Server.Engines.MLQuests.Definitions
             MLQuestSystem.Tell(quester, Instance.Player, hint);
 
             return false;
-        }
-
-        private string FormatHint(string shotKey, string englishArg, bool annotatePlace)
-        {
-            PlayerMobile pm = Instance.Player;
-
-            if (pm == null || pm.Account == null)
-                return StringCatalog.ResolveFormatByKey(null, shotKey, englishArg);
-
-            string arg0 = annotatePlace
-                ? QuestCompositeResolver.FormatAnnotatedPlaceForContract(pm, englishArg)
-                : englishArg;
-
-            return StringCatalog.ResolveFormatByKey(pm.Account, shotKey, arg0);
         }
 
         private string GetOrAddHint(RumorType rumorType, bool forCitizen = false)
@@ -293,8 +272,8 @@ namespace Server.Engines.MLQuests.Definitions
                         var name = Lands.LandName(Land);
 
                         return forCitizen
-                            ? FormatHint("quest.sageart.hint.land.citizen", name, true)
-                            : FormatHint("quest.sageart.hint.land.progress", name, true);
+                            ? string.Format("I *think* I saw it... or maybe I didn't... wait, no, I definitely saw it! It was, like, right there... or was it? I dunno, man. I think it was in the {0}", name)
+                            : string.Format("You must search {0}.", name);
                     }
 
                 case RumorType.Dungeon:
@@ -307,8 +286,8 @@ namespace Server.Engines.MLQuests.Definitions
                         }
 
                         return forCitizen
-                            ? FormatHint("quest.sageart.hint.dungeon.citizen", Dungeon, true)
-                            : FormatHint("quest.sageart.hint.dungeon.progress", Dungeon, true);
+                            ? string.Format("I heard the artefact was in {0} and I checked it out but I didn't find anything. Maybe you'll have better luck.", Dungeon)
+                            : string.Format("The artefact was somewhere in {0}.", Dungeon);
                     }
 
                 case RumorType.Item:
@@ -321,8 +300,8 @@ namespace Server.Engines.MLQuests.Definitions
                         var itemName = ArtifactQuestList.GetArtifact(RelicNumber, 1);
 
                         return forCitizen
-                            ? FormatHint("quest.sageart.hint.item.citizen", itemName, false)
-                            : FormatHint("quest.sageart.hint.item.progress", itemName, false);
+                            ? string.Format("I wish you luck in acquiring the {0}.", itemName)
+                            : string.Format("The artefact is {0}.", itemName);
                     }
 
                 default:
@@ -425,9 +404,7 @@ namespace Server.Items
             m_Owner = from;
             Weight = 1.0;
             Hue = 0x995;
-            Name = from.Account != null
-                ? StringCatalog.ResolveFormatByKey(from.Account, "quest.sageart.legend.name", from.Name)
-                : "highly reliable legend for " + from.Name;
+            Name = "highly reliable legend for " + from.Name;
 
             // CHECK TO SEE IF THE NOTE IS FALSE OR TRUE
             if (LegendPercent >= Utility.RandomMinMax(1, 100)) { LegendReal = 1; }
@@ -443,10 +420,7 @@ namespace Server.Items
             base.AddNameProperties(list);
             list.Add(1070722, SearchItem);
             list.Add(1049644, m_SearchDungeon);
-            if (BuildingPropertyListLocale != null)
-                AddLocalizedProperty(list, "prop.quest.sageart.discard");
-            else
-                list.Add(1049644, "Discard at any time to abandon quest");
+            list.Add(1049644, "Discard at any time to abandon quest");
         }
 
         public class SearchGump : Gump
@@ -504,7 +478,7 @@ namespace Server.Items
         {
             if (!IsChildOf(e.Backpack))
             {
-                e.SendMessage(StringCatalog.ResolveByKey(e.Account, "quest.courier.mail.backpack"));
+                e.SendMessage("This must be in your backpack to read.");
             }
             else
             {
@@ -554,77 +528,40 @@ namespace Server.Items
             SetSearchLocation(scroll, thisPlace, itemLandName, baseMap, itemMap);
         }
 
-        private static string LocalizePlace(Mobile owner, string english)
-        {
-            if (owner == null || string.IsNullOrEmpty(english))
-                return english;
-
-            return QuestCompositeResolver.FormatAnnotatedPlaceForContract(owner, english);
-        }
-
-        private static string ResolveLegendWord(IAccount account, int roll, int wordSet)
-        {
-            string key;
-
-            switch (wordSet)
-            {
-                default:
-                case 1:
-                    switch (roll)
-                    {
-                        default:
-                        case 1: key = "quest.sageart.legend.word1.rumors"; break;
-                        case 2: key = "quest.sageart.legend.word1.myths"; break;
-                        case 3: key = "quest.sageart.legend.word1.tales"; break;
-                        case 4: key = "quest.sageart.legend.word1.stories"; break;
-                    }
-                    break;
-                case 2:
-                    switch (roll)
-                    {
-                        case 1: key = "quest.sageart.legend.word2.kept"; break;
-                        case 2: key = "quest.sageart.legend.word2.seen"; break;
-                        case 3: key = "quest.sageart.legend.word2.taken"; break;
-                        case 4: key = "quest.sageart.legend.word2.hidden"; break;
-                        default: key = "quest.sageart.legend.word2.lost"; break;
-                    }
-                    break;
-                case 3:
-                    switch (roll)
-                    {
-                        case 1: key = "quest.sageart.legend.word3.within"; break;
-                        case 2: key = "quest.sageart.legend.word3.somewhere_in"; break;
-                        case 3: key = "quest.sageart.legend.word3.somehow_in"; break;
-                        case 4: key = "quest.sageart.legend.word3.far_in"; break;
-                        default: key = "quest.sageart.legend.word3.deep_in"; break;
-                    }
-                    break;
-                case 4:
-                    switch (roll)
-                    {
-                        case 1: key = "quest.sageart.legend.word4.thousands_of_years_ago"; break;
-                        case 2: key = "quest.sageart.legend.word4.decades_ago"; break;
-                        case 3: key = "quest.sageart.legend.word4.millions_of_years_ago"; break;
-                        case 4: key = "quest.sageart.legend.word4.many_years_ago"; break;
-                        default: key = "quest.sageart.legend.word4.centuries_ago"; break;
-                    }
-                    break;
-            }
-
-            return StringCatalog.ResolveByKey(account, key);
-        }
-
         private static void SetSearchLocation(SearchPage scroll, string thisPlace, string thisWorld, Map thisMap, Map realMap)
         {
-            IAccount account = scroll.Owner != null ? scroll.Owner.Account : null;
-            int roll1 = Utility.RandomMinMax(1, 4);
-            int roll2 = Utility.RandomMinMax(1, 4);
-            int roll3 = Utility.RandomMinMax(1, 4);
-            int roll4 = Utility.RandomMinMax(1, 4);
-            string word1 = ResolveLegendWord(account, roll1, 1);
-            string word2 = ResolveLegendWord(account, roll2, 2);
-            string word3 = ResolveLegendWord(account, roll3, 3);
-            string word4 = ResolveLegendWord(account, roll4, 4);
+            string Word1 = "Legends";
+            switch (Utility.RandomMinMax(1, 4))
+            {
+                case 1: Word1 = "Rumors"; break;
+                case 2: Word1 = "Myths"; break;
+                case 3: Word1 = "Tales"; break;
+                case 4: Word1 = "Stories"; break;
+            }
+            string Word2 = "lost";
+            switch (Utility.RandomMinMax(1, 4))
+            {
+                case 1: Word2 = "kept"; break;
+                case 2: Word2 = "seen"; break;
+                case 3: Word2 = "taken"; break;
+                case 4: Word2 = "hidden"; break;
+            }
+            string Word3 = "deep in";
+            switch (Utility.RandomMinMax(1, 4))
+            {
+                case 1: Word3 = "within"; break;
+                case 2: Word3 = "somewhere in"; break;
+                case 3: Word3 = "somehow in"; break;
+                case 4: Word3 = "far in"; break;
+            }
+            string Word4 = "centuries ago";
+            switch (Utility.RandomMinMax(1, 4))
+            {
+                case 1: Word4 = "thousands of years ago"; break;
+                case 2: Word4 = "decades ago"; break;
+                case 3: Word4 = "millions of years ago"; break;
+                case 4: Word4 = "many years ago"; break;
+            }
 
             scroll.m_SearchDungeon = thisPlace;
             scroll.SearchWorld = thisWorld;
@@ -641,13 +578,9 @@ namespace Server.Items
 
             string OldMessage = "<br><br><br><br><br><br>" + scroll.SearchMessage;
 
-            string dungeonDisplay = LocalizePlace(scroll.Owner, scroll.m_SearchDungeon);
-            string worldDisplay = LocalizePlace(scroll.Owner, scroll.SearchWorld);
-            string giver = QuestCharacters.QuestGiver();
-
-            scroll.SearchMessage = account != null
-                ? StringCatalog.ResolveFormatByKey(account, "quest.sageart.legend.body", scroll.SearchItem, word1, scroll.SearchItem, word2, word3, dungeonDisplay, word4, giver, worldDisplay, EntranceLocation, OldMessage)
-                : scroll.SearchItem + "<br><br>" + word1 + " tell of the " + scroll.SearchItem + " being " + word2 + " " + word3 + " " + scroll.m_SearchDungeon + " " + word4 + " by " + giver + ". in " + scroll.SearchWorld + " at the below sextant coordinates.<br><br>" + EntranceLocation + OldMessage;
+            scroll.SearchMessage = scroll.SearchItem + "<br><br>" + Word1 + " tell of the " + scroll.SearchItem + " being " + Word2 + " " + Word3;
+            scroll.SearchMessage = scroll.SearchMessage + " " + scroll.m_SearchDungeon + " " + Word4 + " by " + QuestCharacters.QuestGiver() + ".";
+            scroll.SearchMessage = scroll.SearchMessage + " in " + scroll.SearchWorld + " at the below sextant coordinates.<br><br>" + EntranceLocation + OldMessage;
 
             scroll.InvalidateProperties();
         }
@@ -708,11 +641,6 @@ namespace Server.Items
     [Flipable(0x577B, 0x577C)]
     public class SearchBoard : Item
     {
-        private static string ResolveBoardText(Mobile from, string key)
-        {
-            return StringCatalog.ResolveByKey(from != null ? from.Account : null, key);
-        }
-
         [Constructable]
         public SearchBoard() : base(0x577B)
         {
@@ -724,10 +652,7 @@ namespace Server.Items
         public override void GetProperties(ObjectPropertyList list)
         {
             base.GetProperties(list);
-            if (BuildingPropertyListLocale != null)
-                AddLocalizedProperty(list, "prop.quest.sageart.board.title");
-            else
-                list.Add("The Search for Artifacts");
+            list.Add("The Search for Artifacts");
         }
 
         public override void OnDoubleClick(Mobile e)
@@ -735,7 +660,21 @@ namespace Server.Items
             if (e.InRange(this.GetWorldLocation(), 4))
             {
                 e.CloseGump(typeof(BoardGump));
-                e.SendGump(new BoardGump(e, ResolveBoardText(e, "quest.sageart.board.gump.title"), ResolveBoardText(e, "quest.sageart.board.gump.body"), "#d3d307", true));
+
+				var builder = new StringBuilder();
+				
+				builder.Append("If you have a grand quest to unearth an artifact, you can seek the advice of sages in your journey. Their advice is not cheap, they charge 10,000 gold for the guidance. To begin your quest, visit one of the many sages in the land and give them enough gold for their advice. They will share what little they have heard of a powerful artefact, though their thoughts are often cloudy and incomplete.");
+				builder.Append("<br><br>");
+				
+				builder.Append("You must then speak with the townsfolk to refine the rumor. Press them for details until you discover which land the artefact rests in, which dungeon or region holds it, and which artefact people are talking about. Not every citizen will know something useful, so you may need to ask many before the truth comes together. If you are curious what artefacts may be out there, look through a Sage's wares for sale. At the end of their inventory, you will see research replicas priced at zero gold. You can hover over these to see what they may offer you, but you cannot buy them. Artifacts such as books, quivers, and instruments will be shown with some common and random qualities, where finding the actual artifact will have somewhat different properties. Once the rumor is fully refined, return to the Sage and they will give you a legend with your first solid clues on where to search. Areas the artifact may be in could span many different lands or worlds, where some you may have never been or heard of. The legend will name the place you seek and provide sextant coordinates, so make sure you have a sextant with you.");
+				builder.Append("<br><br>");
+				
+				builder.Append("Throughout history, many people kept these artifacts stored on blocks of crafted stone. These crafted stones are often decorated with a symbol on the surface, where a metal chest rests and the item may be inside. Some treasure hunters find the chests empty, realizing the legends were false. If nothing else, you may find a large sum of gold to cover some of your expenses on this journey. Some may provide a new clue on where the artifact is, and you will update your notes when these clues are found. The most disappointing search may yield a fake artifact. These turn out to be useless items that simply look like the artifact you were searching for.");
+				builder.Append("<br><br>");
+				
+				builder.Append("These quests are quite involved and you may only participate in one such quest at a time. If you have not finished a quest, and try to seek a sage for another, you will find that the page of your prior quest will have gone missing. It would have been surely lost somewhere. If you finish a quest, either with success or failure, a sage will not have any new advice for you for quite some time so you will have to wait until then to begin a new quest. So good luck treasure hunter, and may the gods aid you in your journey.");
+
+                e.SendGump(new BoardGump(e, StringCatalog.ResolveByKey(e != null ? e.Account : null, "quest.sageart.board.gump.title"), builder.ToString(), "#d3d307", true));
             }
             else
             {
