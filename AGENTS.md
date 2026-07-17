@@ -22,6 +22,7 @@
 | Localization regression (lightweight host, CI) | [§4.4](#44-localization-regression-lightweight-host) |
 | Understand what an AI agent may/must not do | [§5 Boundaries & Verification](#5-agent-boundaries--verification) |
 | **Global Shoppe system** (player workshops, customer contracts, bulk orders, rewards) | [`World/Documentation/global-shoppe-system.md`](World/Documentation/global-shoppe-system.md) — architecture, order context types, calculators, shoppe catalog |
+| **Generic JSON rate/probability config** (hot-reloadable weights, e.g. dragon Bright-breed rarity, GemDragon scale rarity) | [`World/Documentation/rate-config-system.md`](World/Documentation/rate-config-system.md) — `RateConfigEngine`/`WeightedPick`, `Data/RateConfig/*.json`, `[ratereload]`/`[ratelist]`/`[rateget]` |
 | **Avoid server crashes / stability pitfalls** (OPL reentrancy, serializers, timers, …) | [`World/Documentation/server-stability-crash-patterns.md`](World/Documentation/server-stability-crash-patterns.md) — **read before** touching `Item`/`Mobile` OPL paths, `Serialize`/`Deserialize`, or tick/timer-heavy logic |
 | **Cross-repo design/mechanics documentation index** | [§8 Design & Analysis Documentation](#8-design--analysis-documentation-uo-dev-documentations) — read before codebase search |
 | **NPC dialogue intelligence mechanisms** | `<UO_DEV_DOCS_ROOT>/memento/game-mechanism/NPC_INTELLIGENCE_DIALOGUE_MECHANISM.md` (EN) / `NPC对话情报机制分析.md` (ZH) — refresh frequencies, file references |
@@ -72,6 +73,7 @@ ultima-memento/
 - Craft tiers, harvest definitions, `CraftResource` tables: `World/Documentation/resources-design/README.md`
 - Castle of Knowledge (Lodor landmark, Power Scroll vendors): `World/Documentation/castle-of-knowledge.md`
 - **Server stability & crash avoidance (AI checklist):** `World/Documentation/server-stability-crash-patterns.md` — OPL / `InvalidateProperties` reentrancy, serializers, null-safety, timers, collection mutation, etc.
+- **Generic JSON rate/probability config engine:** `World/Documentation/rate-config-system.md` — `RateConfigEngine`/`WeightedPick` under `World/Source/System/RateConfig/`, `Data/RateConfig/*.json`, GM hot-reload commands; read before adding any new rate/weight/probability table (dragon Bright rarity, GemDragon scale rarity are its first consumers).
 
 **Design & analysis docs (cross-repo, under UO_DEV_DOCS_ROOT):**
 
@@ -601,6 +603,7 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-07-03: §3.1 — `avatar-system.json`（`keep_extra`）：Avatar's Ascent 子系统（`AvatarLocalization` + `avatar.*` shotkeys；命令、商店 Gump、飞升/模板/奖励文案、世仇派系名、物品 OPL）。
 - 2026-07-03: §0 / §4.3 / §4.5 / §5.2 / §5.4 / §6.1 — mandatory **existing save compatibility** final review (§4.5 checklist + §5.2 step 5 + self-report template); cross-ref in `server-stability-crash-patterns.md` Agent checklist.
 - 2026-05-23: §1 — defined `UO_DEV_DOCS_ROOT` variable (_cross-repo documentation root_); §0 / §1 / §5 / §8 — added cross-repo doc index table, document-first exploration guidance, and `UO_DEV_DOCS_ROOT` resolution rule.
+- 2026-07-16: §0 / §1 — indexed `World/Documentation/rate-config-system.md`: new generic `RateConfigEngine`/`WeightedPick` infra (`World/Source/System/RateConfig/`, `Data/RateConfig/*.json`, `[ratereload]`/`[ratelist]`/`[rateget]`); first consumers are dragon Bright-breed rarity (`DragonBreedRarity`, `dragon-rarity.json`) and `GemDragon` scale rarity (`gemdragon.json`), replacing the uniform `Utility.RandomMinMax`/switch pickers in `RidingDragon`/`Dragons`/`Wyrms`/`GemDragons.cs`.
 
 > **Canonical detail:** `ultima-memento-web/AGENTS.md` (Next.js, routes, MDX).  
 > **This section** is the **practice standard** agents should follow when work touches **both** repos: game glossary / showcase assets ↔ public site.
@@ -700,6 +703,7 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | ManualOfItems / Relics chest | `memento/game-mechanism/MANUAL_OF_ITEMS_RELICS_SYSTEM.md` | Before modifying `ManualOfItems`, `RelicBoxGump`, `GiveItemBonus`, `Gift*` enchant flow, or boss relic drop tables |
 | Legendary / Relics / Standard / Sage 高级装备横向分析 | `memento/game-design-idea/ADVANCED_EQUIPMENT_ARTIFACT_SYSTEMS_COMPARATIVE_ANALYSIS.md` | Before balancing or documenting Legendary vs Relics vs Standard/Sage artefact acquisition and power ceiling |
 | Relics 掉落改革 Feature Request（Top-3 伤害制） | `memento/game-design-idea/RELICS_DROP_REFORM_TOP3_DAMAGE_SYSTEM.md` | Before implementing the Top-3 damage contributor drop reform (Gate A/B/C, Dragon King, Shadowlord, RelicChestDropHelper) |
+| Epic Tribute（`EpicCharacter`）获取难度提升设计 | `memento/game-design-idea/EPIC_TRIBUTE_ACQUISITION_DIFFICULTY_REDESIGN.md` | Before modifying `EpicCharacter.cs`, `QuestTome.cs`/`QuestTake.cs` (Epic NPC branch), or `SummonCarriers.cs` key-mob difficulty |
 | Dragon egg hatch | `memento/game-mechanism/DRAGON_EGG_SYSTEM.md` | Before modifying `DragonEgg`, Search potions, or hatch-at-vet flow |
 | Race temptation & potion shelf | `memento/game-mechanism/race-temptation-and-potion-shelf.md` | Before modifying race temptation or potion shelf |
 | Player hazards & threats | `memento/game-mechanism/PLAYER_HAZARDS_AND_THREATS.md` | Before modifying hazard/threat systems |

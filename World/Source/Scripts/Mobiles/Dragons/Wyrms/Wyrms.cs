@@ -483,6 +483,8 @@ namespace Server.Mobiles
 				else if ( terrain == "land" ){ dragon = Utility.RandomMinMax( 97, 108 ); }
 				else if ( terrain == "sky" ){ dragon = Utility.RandomList( 7, 22, 33, 66, 97, 99, 101, 104, 105, 106, 107 ); }
 
+				dragon = DragonBreedRarity.AdjustWildBreed( dragon, terrain );
+
 				switch ( dragon )
 				{
 					case 1: rHue = 0x8E4; Resource = CraftResource.RedScales; rName = "the bloodstone wyrm"; rDwell = "dungeon"; rFood = "meat"; rCategory = "fire"; rBreath = 9; rPoison = 0; rBlood = "thick blood"; break;

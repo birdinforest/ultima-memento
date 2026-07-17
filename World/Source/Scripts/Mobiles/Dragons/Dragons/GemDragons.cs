@@ -6,6 +6,7 @@ using Server.Mobiles;
 using Server.Items;
 using Server.ContextMenus;
 using Server.Misc;
+using Server.RateConfig;
 
 namespace Server.Mobiles
 {
@@ -97,25 +98,36 @@ namespace Server.Mobiles
 			}
 		}
 
+		// name -> CraftResource for "gemdragon.scaleWeight.<name>" keys in Data/RateConfig/gemdragon.json.
+		// Unlike RidingDragon/Dragons/Wyrms, GemDragon's Resource (scale) drives its visible Hue directly
+		// (see below), so its rarity is config-driven here rather than via DragonBreedRarity.
+		private static readonly Dictionary<string, CraftResource> m_ScaleByName = new Dictionary<string, CraftResource>
+		{
+			{ "red", CraftResource.RedScales },
+			{ "yellow", CraftResource.YellowScales },
+			{ "black", CraftResource.BlackScales },
+			{ "green", CraftResource.GreenScales },
+			{ "white", CraftResource.WhiteScales },
+			{ "blue", CraftResource.BlueScales },
+			{ "violet", CraftResource.VioletScales },
+			{ "metallic", CraftResource.MetallicScales },
+			{ "brazen", CraftResource.BrazenScales },
+			{ "umber", CraftResource.UmberScales },
+			{ "platinum", CraftResource.PlatinumScales }
+		};
+
 		public override void OnAfterSpawn()
 		{
-			Resource = CraftResource.MetallicScales;
-			switch ( Utility.RandomMinMax( 0, 10 ) )
-			{
-				case 0: Resource = CraftResource.RedScales; break;
-				case 1: Resource = CraftResource.YellowScales; break;
-				case 2: Resource = CraftResource.BlackScales; break;
-				case 3: Resource = CraftResource.GreenScales; break;
-				case 4: Resource = CraftResource.WhiteScales; break;
-				case 5: Resource = CraftResource.BlueScales; break;
-				case 6: Resource = CraftResource.MetallicScales; break;
-				case 7: Resource = CraftResource.BrazenScales; break;
-				case 8: Resource = CraftResource.UmberScales; break;
-				case 9: Resource = CraftResource.VioletScales; break;
-				case 10: Resource = CraftResource.PlatinumScales; break;
-			}
+			var weights = RateConfigEngine.GetTable( "gemdragon.scaleWeight" );
+			string picked = WeightedPick.Pick( weights );
 
-			Hue = CraftResources.GetClr(Resource);
+			CraftResource resource;
+
+			if ( picked == null || !m_ScaleByName.TryGetValue( picked, out resource ) )
+				resource = CraftResource.MetallicScales; // config missing/malformed — safe fallback
+
+			Resource = resource;
+			Hue = CraftResources.GetClr( Resource );
 
 			base.OnAfterSpawn();
 		}

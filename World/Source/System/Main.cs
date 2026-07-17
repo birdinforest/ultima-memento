@@ -37,6 +37,7 @@ using Server.Accounting;
 using Server.Gumps;
 using Server.Localization;
 using Server.Localization.Regression;
+using Server.RateConfig;
 using Server.Network;
 using System.Runtime;
 
@@ -498,6 +499,13 @@ namespace Server
 			World.Load();
 
 			LocalizationBootstrap.Initialize();
+
+			// RateConfigEngine lives in System.csproj (this exe's own assembly), not the runtime-compiled
+			// "Scripts" assembly, so ScriptCompiler.Invoke("Initialize") below never reflects into it —
+			// its [CallPriority] attribute is decorative only. Load it explicitly here, same pattern as
+			// LocalizationBootstrap above, so config-driven weights are populated before any spawner/timer
+			// can run (and before Scripts' own Initialize() methods, in case a future consumer needs it).
+			RateConfigEngine.Load();
 
 			if ( m_LocalizationRegression )
 			{

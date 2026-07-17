@@ -503,6 +503,7 @@ namespace Server.Mobiles
 				else if ( terrain == "sky" ){ dragon = Utility.RandomList( 7, 22, 33, 66, 97, 99, 101, 104, 105, 106, 107 ); }
 
 				if ( Hue > 0 ){ dragon = Hue; }
+				else { dragon = DragonBreedRarity.AdjustWildBreed( dragon, terrain ); }
 
 				switch ( dragon )
 				{
