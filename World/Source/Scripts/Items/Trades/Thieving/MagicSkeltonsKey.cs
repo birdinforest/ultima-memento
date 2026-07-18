@@ -82,8 +82,7 @@ namespace Server.Items
 
 			protected override void OnTarget( Mobile from, object targeted )
 			{
-				bool trash = false;
-					if ( Utility.RandomMinMax(1,10) == 1 ){ trash = false; }
+				bool trash = Utility.RandomMinMax( 1, 10 ) == 1;
 
 				if ( !m_Key.IsChildOf( from.Backpack ) )
 				{
