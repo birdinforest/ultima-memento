@@ -149,6 +149,11 @@ namespace Server.Mobiles
 					player.Quests.EpicQuestName = Server.Items.SummonPrison.GetItemNeeded( choice, 3 );
 					player.Quests.EpicQuestNumber = choice;
 			}
+
+			// Covers the case where the player is already standing in the target dungeon region
+			// when the Epic Tribute key requirement is (re)rolled -- BaseRegion.OnEnter only
+			// fires on region transitions, not on opening the Tribute dialogue.
+			EpicTributeChallenge.TryTrigger( m );
 		}
 
 		public static string GetSpecialItemRequirement( Mobile m )
@@ -164,7 +169,7 @@ namespace Server.Mobiles
 			foreach ( Item item in World.Items.Values )
 			if ( item is SummonItems && item.Name == rare )
 			{
-				if ( ((SummonItems)item).owner == m )
+				if ( ((SummonItems)item).owner == m && ((SummonItems)item).EpicChallengeSource )
 					targets.Add( item );
 			}
 			for ( int i = 0; i < targets.Count; ++i )
@@ -187,7 +192,7 @@ namespace Server.Mobiles
 				(m.Backpack).RecurseItems( list );
 				foreach ( Item i in list )
 				{
-					if ( i is SummonItems && i.Name == item && ((SummonItems)i).Owner == m )
+					if ( i is SummonItems && i.Name == item && ((SummonItems)i).Owner == m && ((SummonItems)i).EpicChallengeSource )
 						HasItem = true;
 				}
 			}

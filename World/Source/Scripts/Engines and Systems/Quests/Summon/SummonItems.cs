@@ -11,6 +11,14 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Owner { get{ return owner; } set{ owner = value; } }
 
+		// Set only on SummonItems dropped by the Epic Tribute personal challenge encounter
+		// (EpicTributeChallenge); the shared SummonCarriers.cs 59-mob pool never sets this,
+		// so Magical Prison's (unrelated, name-based) key checks are unaffected.
+		public bool EpicChallengeSource;
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool p_EpicChallengeSource { get{ return EpicChallengeSource; } set{ EpicChallengeSource = value; } }
+
 		[Constructable]
 		public SummonItems() : base( 0xF91 )
 		{
@@ -33,7 +41,7 @@ namespace Server.Items
 		{
 			if ( from is PlayerMobile && owner == null )
 			{
-				WorldUtilities.DeleteAllItems<SummonItems>(item => item.owner == from && item != this && item.Name == Name);
+				WorldUtilities.DeleteAllItems<SummonItems>( item => item.owner == from && item != this && item.Name == Name && item.EpicChallengeSource == EpicChallengeSource );
 				LoggingFunctions.LogGenericQuest( from, "has obtained the " + this.Name );
 				this.owner = from;
 			}
@@ -44,8 +52,9 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 ); // version
 			writer.Write( (Mobile)owner);
+			writer.Write( EpicChallengeSource );
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -53,6 +62,9 @@ namespace Server.Items
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
 			owner = reader.ReadMobile();
+
+			if ( version >= 1 )
+				EpicChallengeSource = reader.ReadBool();
 		}
 	}
 	public class SummonReward : Item

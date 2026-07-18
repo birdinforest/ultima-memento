@@ -182,6 +182,8 @@ namespace Server.Regions
 				{
 					if ( m.Kills < 1 ){ m.Kills = 1; }
 				}
+
+				EpicTributeChallenge.TryTrigger( m );
 			}
 		}
 
@@ -196,6 +198,7 @@ namespace Server.Regions
 				BuffInfo.CleanupIcons( m, false );
 
 				QuestTome.BossEscaped( m, this.Name );
+				EpicTributeChallenge.OnRegionExit( m );
 
 				Server.Mobiles.BaseAI.MarchingOrder( m );
 				Server.Items.RuneOfVirtue.MoralityCheck( m.FindItemOnLayer( Layer.Trinket ), m );
