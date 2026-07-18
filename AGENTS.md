@@ -603,6 +603,7 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-07-03: §3.1 — `avatar-system.json`（`keep_extra`）：Avatar's Ascent 子系统（`AvatarLocalization` + `avatar.*` shotkeys；命令、商店 Gump、飞升/模板/奖励文案、世仇派系名、物品 OPL）。
 - 2026-07-03: §0 / §4.3 / §4.5 / §5.2 / §5.4 / §6.1 — mandatory **existing save compatibility** final review (§4.5 checklist + §5.2 step 5 + self-report template); cross-ref in `server-stability-crash-patterns.md` Agent checklist.
 - 2026-05-23: §1 — defined `UO_DEV_DOCS_ROOT` variable (_cross-repo documentation root_); §0 / §1 / §5 / §8 — added cross-repo doc index table, document-first exploration guidance, and `UO_DEV_DOCS_ROOT` resolution rule.
+- 2026-07-18: §8.1 — indexed `THIEF_MARKET_SYSTEM.md`（`Market.Thief` 盗贼市场：`Thief`/`ThiefGuildmaster`、开锁、`ThiefNote`）。
 - 2026-07-18: §8.1 — indexed `EPIC_TRIBUTE_CHALLENGE_SYSTEM.md`（`EpicTributeChallenge` 运行时机制：地城随机出生、GM `[epic-tribute-loc]`、与 Magical Prison 钥匙分叉）。
 - 2026-07-16: §0 / §1 — indexed `World/Documentation/rate-config-system.md`: new generic `RateConfigEngine`/`WeightedPick` infra (`World/Source/System/RateConfig/`, `Data/RateConfig/*.json`, `[ratereload]`/`[ratelist]`/`[rateget]`); first consumers are dragon Bright-breed rarity (`DragonBreedRarity`, `dragon-rarity.json`) and `GemDragon` scale rarity (`gemdragon.json`), replacing the uniform `Utility.RandomMinMax`/switch pickers in `RidingDragon`/`Dragons`/`Wyrms`/`GemDragons.cs`.
 
@@ -706,6 +707,7 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | Relics 掉落改革 Feature Request（Top-3 伤害制） | `memento/game-design-idea/RELICS_DROP_REFORM_TOP3_DAMAGE_SYSTEM.md` | Before implementing the Top-3 damage contributor drop reform (Gate A/B/C, Dragon King, Shadowlord, RelicChestDropHelper) |
 | Epic Tribute（`EpicCharacter`）获取难度提升设计 | `memento/game-design-idea/EPIC_TRIBUTE_ACQUISITION_DIFFICULTY_REDESIGN.md` | Before modifying `EpicCharacter.cs`, `QuestTome.cs`/`QuestTake.cs` (Epic NPC branch), or Epic Tribute difficulty policy |
 | Epic Tribute 个人挑战（`EpicTributeChallenge`） | `memento/game-mechanism/EPIC_TRIBUTE_CHALLENGE_SYSTEM.md` | Before modifying `EpicTributeChallenge.cs`, `SummonItems.EpicChallengeSource`, `BaseRegion` Epic hooks, or GM `[epic-tribute-loc]` |
+| Thief 市场（`Market.Thief`） | `memento/game-mechanism/THIEF_MARKET_SYSTEM.md` | Before modifying `Thief.cs`, `ThiefGuildmaster.cs`, `Market.Thief` rows in `ItemSales.cs`, unlock service, or `ThiefNote` jobs |
 | Dragon egg hatch | `memento/game-mechanism/DRAGON_EGG_SYSTEM.md` | Before modifying `DragonEgg`, Search potions, or hatch-at-vet flow |
 | Race temptation & potion shelf | `memento/game-mechanism/race-temptation-and-potion-shelf.md` | Before modifying race temptation or potion shelf |
 | Player hazards & threats | `memento/game-mechanism/PLAYER_HAZARDS_AND_THREATS.md` | Before modifying hazard/threat systems |
