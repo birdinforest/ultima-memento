@@ -200,6 +200,87 @@ namespace Server.Mobiles
 			return HasItem;
 		}
 
+		// Item and dungeon names here are the same 59 fixed strings shared with SummonCarriers.cs /
+		// SummonPrison.cs (Magical Prison) -- both already have curated hash-key translations in
+		// scripts-quests.json (item names, e.g. "braclet of war" -> "战争手镯") and
+		// placemap-labels.json (dungeon/region names, already annotated as "中文（English）", e.g.
+		// "Dungeon Clues" -> "线索地城（Dungeon Clues）"). Resolve via the hash-based
+		// StringCatalog.TryResolve against the literal, NOT via QuestTome.LocalizedQuestItemName /
+		// LocalizedDungeon -- those are built for QuestTome's procedurally-*composed* relic/dungeon
+		// names and fall back to RandomThings.GetChineseFantasyName() for any token they don't
+		// recognize, which produced garbled nonsense (e.g. "恩德德德莫丁") for these fixed strings
+		// instead of the real, already-reviewed translation.
+		private static string FormatSymbolItemName( Mobile viewer, string rawItem )
+		{
+			if ( string.IsNullOrEmpty( rawItem ) || rawItem == "NEW" )
+				return rawItem;
+
+			string lang = AccountLang.GetLanguageCode( viewer.Account );
+
+			if ( AccountLang.IsChinese( lang ) )
+			{
+				string zh = StringCatalog.TryResolve( lang, rawItem );
+
+				if ( !string.IsNullOrEmpty( zh ) && zh != rawItem )
+					return zh + "（" + rawItem + "）";
+
+				return rawItem;
+			}
+
+			return CultureInfo.CurrentCulture.TextInfo.ToTitleCase( rawItem );
+		}
+
+		private static string FormatSymbolDungeonName( Mobile viewer, string rawItem )
+		{
+			string region = EpicTributeChallenge.GetChallengeRegionName( rawItem );
+
+			if ( string.IsNullOrEmpty( region ) )
+				return "";
+
+			string lang = AccountLang.GetLanguageCode( viewer.Account );
+			string zh = StringCatalog.TryResolve( lang, region );
+
+			// placemap-labels.json's zh values already come pre-annotated as "中文（English）" --
+			// unlike the item name lookup above, do not append the English literal a second time.
+			return !string.IsNullOrEmpty( zh ) ? zh : region;
+		}
+
+		// "Lord British" -> "不列颠王（Lord British）" for zh accounts via the existing
+		// quest.tome.noun.epic.name.* shotkey table (QuestTome.LocalizedEpicNpc), so the NPC's
+		// name reads naturally in the sentence instead of leaving a raw English name embedded in
+		// otherwise-Chinese text.
+		private static string FormatGiverName( Mobile viewer, string giverName )
+		{
+			if ( string.IsNullOrEmpty( giverName ) )
+				return giverName;
+
+			if ( AccountLang.IsChinese( AccountLang.GetLanguageCode( viewer.Account ) ) )
+				return QuestTome.LocalizedEpicNpc( "zh-Hans", giverName );
+
+			return giverName;
+		}
+
+		// merit is always one of the three fixed English words assigned in
+		// SpeechGumpEntry/GiftGumpEntry.OnClick (valor/tenacity/bravery) -- stable shotkeys, not a
+		// hash lookup, since these are code-internal tokens rather than literal player-facing text.
+		private static string FormatMerit( Mobile viewer, string merit )
+		{
+			return StringCatalog.ResolveByKey( viewer.Account, "quest.epic.merit." + merit );
+		}
+
+		private static void SendMissingSymbolMessage( Mobile to, Mobile giver, string merit )
+		{
+			string rawItem = GetSpecialItemRequirement( to );
+
+			to.SendMessage( StringCatalog.ResolveFormatByKey(
+				to.Account,
+				"mob.fmt.0_will_need_a_symbol_of_your_1_2",
+				FormatGiverName( to, giver.Name ),
+				FormatMerit( to, merit ),
+				FormatSymbolItemName( to, rawItem ),
+				FormatSymbolDungeonName( to, rawItem ) ) );
+		}
+
 		public class SpeechGumpEntry : ContextMenuEntry
 		{
 			public SpeechGumpEntry( Mobile from, Mobile giver ) : base( 6146, 3 )
@@ -260,7 +341,7 @@ namespace Server.Mobiles
 			}
 			else if ( !(HaveSpecialItemRequirement( m_Mobile )) && m_Pay )
 			{
-				m_Mobile.SendMessage( string.Format( Server.Localization.StringCatalog.ResolveByKey(m_Mobile.Account, "mob.fmt.0_will_need_a_symbol_of_your_1_2"), m_Giver.Name, merit, GetSpecialItemRequirement( m_Mobile ) ) );
+				SendMissingSymbolMessage( m_Mobile, m_Giver, merit );
 			}
 			else if ( PassTest == true || !m_Pay )
 			{
@@ -1151,7 +1232,7 @@ namespace Server.Mobiles
 			}
 			else if ( !(HaveSpecialItemRequirement( from )) && m_Pay )
 			{
-				from.SendMessage( string.Format( Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.fmt.0_will_need_a_symbol_of_your_1_2"), m_Giver.Name, merit, GetSpecialItemRequirement( from ) ) );
+				SendMissingSymbolMessage( from, m_Giver, merit );
 				}
 				else if ( ( passTest == true && pack.ConsumeTotal(typeof(Gold), 5000) ) || !m_Pay )
 				{

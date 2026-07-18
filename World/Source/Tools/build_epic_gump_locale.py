@@ -15,20 +15,20 @@ SHARED_EN = {
         "points have been used up, the item will remain as it is."
     ),
     "quest.epic.gump.shared.bare.neutral": (
-        "<br><br>{0} will offer you an item of tribute if you retrieve a rare item...<br><br>{1}<br><br>...and have achieved "
+        "<br><br>{0} will offer you an item of tribute if you retrieve a rare item...<br><br>{1}<br><br>Seek it within {2}.<br><br>...and have achieved "
         "a fame of at least 7,000 points. If you accept their tribute, your fame will decrease by 7,000 points and you will "
         "have to rebuild it again. If you have achieved this amount, single click on {0} and select Tribute to choose the type "
         "of item you want. {0} will also need at least 5,000 gold in order to construct the item for you."
     ),
     "quest.epic.gump.shared.bare.good": (
-        "<br><br>{0} will offer you an item of tribute if you retrieve a rare item...<br><br>{1}<br><br>...and have achieved "
+        "<br><br>{0} will offer you an item of tribute if you retrieve a rare item...<br><br>{1}<br><br>Seek it within {2}.<br><br>...and have achieved "
         "a fame of at least 4,000 points and a karma of at least 4,000 points. If you accept their tribute, your fame and karma "
         "will decrease by 4,000 points and you will have to rebuild them again. If you have achieved these amounts, single click "
         "on {0} and select Tribute to choose the type of item you want. {0} will also need at least 5,000 gold in order to "
         "construct the item for you."
     ),
     "quest.epic.gump.shared.bare.evil": (
-        "<br><br>{0} will offer you an item of tribute if you retrieve a rare item...<br><br>{1}<br><br>...and have achieved "
+        "<br><br>{0} will offer you an item of tribute if you retrieve a rare item...<br><br>{1}<br><br>Seek it within {2}.<br><br>...and have achieved "
         "a fame of at least 4,000 points and a karma of at least -4,000 points or lower. If you accept their tribute, your fame "
         "will decrease by 4,000 points and your karma will increase by 4,000 points. You will have to rebuild them again. If you "
         "have achieved these amounts, single click on {0} and select Tribute to choose the type of item you want. {0} will also "
@@ -42,17 +42,17 @@ SHARED_ZH = {
         "须谨慎——属性一经选定便无法更改；点数用尽后，物品将保持最终状态。"
     ),
     "quest.epic.gump.shared.bare.neutral": (
-        "<br><br>{0} 愿在你寻得一件稀世之物后予你赠礼……<br><br>{1}<br><br>……且你的声望至少达到 7,000 点。"
+        "<br><br>{0} 愿在你寻得一件稀世之物后予你赠礼……<br><br>{1}<br><br>请前往 {2} 取得。<br><br>……且你的声望至少达到 7,000 点。"
         "若接受赠礼，声望将减少 7,000 点，需重新累积。若已达标，请单击 {0} 并选择「赠礼」以挑选物品类型。"
         "{0} 亦需至少 5,000 金币方能为你打造物品。"
     ),
     "quest.epic.gump.shared.bare.good": (
-        "<br><br>{0} 愿在你寻得一件稀世之物后予你赠礼……<br><br>{1}<br><br>……且你的声望至少 4,000 点、"
+        "<br><br>{0} 愿在你寻得一件稀世之物后予你赠礼……<br><br>{1}<br><br>请前往 {2} 取得。<br><br>……且你的声望至少 4,000 点、"
         "善恶值（Karma）至少 4,000 点。若接受赠礼，声望与善恶值各减 4,000 点，需重新累积。若已达标，请单击 {0} 并选择「赠礼」"
         "以挑选物品类型。{0} 亦需至少 5,000 金币方能为你打造物品。"
     ),
     "quest.epic.gump.shared.bare.evil": (
-        "<br><br>{0} 愿在你寻得一件稀世之物后予你赠礼……<br><br>{1}<br><br>……且你的声望至少 4,000 点、"
+        "<br><br>{0} 愿在你寻得一件稀世之物后予你赠礼……<br><br>{1}<br><br>请前往 {2} 取得。<br><br>……且你的声望至少 4,000 点、"
         "善恶值（Karma）至多 -4,000 点。若接受赠礼，声望将减 4,000 点、善恶值将增 4,000 点，需重新累积。若已达标，请单击 {0} "
         "并选择「赠礼」以挑选物品类型。{0} 亦需至少 5,000 金币方能为你打造物品。"
     ),

@@ -4,6 +4,7 @@ using Server;
 using Server.Gumps;
 using Server.Items;
 using Server.Localization;
+using Server.Misc;
 using Server.Mobiles;
 using Server.Network;
 
@@ -19,18 +20,64 @@ namespace Server.Gumps
 			return name.Trim().ToLowerInvariant().Replace( ' ', '_' ).Replace( "'", "" ).Replace( ".", "" );
 		}
 
+		// Item/dungeon names are the same 59 fixed strings shared with SummonCarriers.cs /
+		// SummonPrison.cs (Magical Prison), which already carry curated hash-key translations in
+		// scripts-quests.json (item names) and placemap-labels.json (dungeon/region names, already
+		// annotated as "中文（English）"). Resolve via the hash-based StringCatalog.TryResolve
+		// against the literal -- NOT QuestTome.LocalizedQuestItemName / LocalizedDungeon, which are
+		// built for QuestTome's procedurally-*composed* relic/dungeon names and fall back to
+		// RandomThings.GetChineseFantasyName() for unrecognized tokens (garbled nonsense for these
+		// fixed strings instead of the real, already-reviewed translation). See matching helpers in
+		// EpicCharacter.cs.
 		private static string FormatItemRequirement( Mobile viewer, string rawItem )
 		{
 			if ( string.IsNullOrEmpty( rawItem ) || rawItem == "NEW" )
 				return rawItem;
 
-			if ( AccountLang.IsChinese( AccountLang.GetLanguageCode( viewer.Account ) ) )
-				return QuestTome.LocalizedQuestItemName( "zh-Hans", rawItem );
+			string lang = AccountLang.GetLanguageCode( viewer.Account );
+
+			if ( AccountLang.IsChinese( lang ) )
+			{
+				string zh = StringCatalog.TryResolve( lang, rawItem );
+
+				if ( !string.IsNullOrEmpty( zh ) && zh != rawItem )
+					return zh + "（" + rawItem + "）";
+
+				return rawItem;
+			}
 
 			return CultureInfo.CurrentCulture.TextInfo.ToTitleCase( rawItem );
 		}
 
-		private static string ResolveBare( Mobile listener, string alignment, string myName, string thisItem )
+		private static string FormatDungeonRequirement( Mobile viewer, string rawItem )
+		{
+			string region = EpicTributeChallenge.GetChallengeRegionName( rawItem );
+
+			if ( string.IsNullOrEmpty( region ) )
+				return "";
+
+			string lang = AccountLang.GetLanguageCode( viewer.Account );
+			string zh = StringCatalog.TryResolve( lang, region );
+
+			// placemap-labels.json's zh values already come pre-annotated as "中文（English）" --
+			// do not append the English literal a second time.
+			return !string.IsNullOrEmpty( zh ) ? zh : region;
+		}
+
+		// "Lord British" -> "不列颠王（Lord British）" for zh accounts, via the existing
+		// quest.tome.noun.epic.name.* shotkey table (QuestTome.LocalizedEpicNpc).
+		private static string FormatGiverName( Mobile viewer, string giverName )
+		{
+			if ( string.IsNullOrEmpty( giverName ) )
+				return giverName;
+
+			if ( AccountLang.IsChinese( AccountLang.GetLanguageCode( viewer.Account ) ) )
+				return QuestTome.LocalizedEpicNpc( "zh-Hans", giverName );
+
+			return giverName;
+		}
+
+		private static string ResolveBare( Mobile listener, string alignment, string myName, string thisItem, string dungeon )
 		{
 			string key = "quest.epic.gump.shared.bare.neutral";
 
@@ -39,17 +86,19 @@ namespace Server.Gumps
 			else if ( alignment == "evil" )
 				key = "quest.epic.gump.shared.bare.evil";
 
-			return StringCatalog.ResolveFormatByKey( listener.Account, key, myName, thisItem );
+			return StringCatalog.ResolveFormatByKey( listener.Account, key, myName, thisItem, dungeon );
 		}
 
 		public EpicGump( Mobile talker, Mobile listener, bool allowed, string alignment ) : base( 25, 25 )
 		{
 			string myName = talker.Name;
 			string yourName = listener.Name;
-			string thisItem = FormatItemRequirement( listener, EpicCharacter.GetSpecialItemRequirement( listener ) );
+			string rawItem = EpicCharacter.GetSpecialItemRequirement( listener );
+			string thisItem = FormatItemRequirement( listener, rawItem );
+			string dungeon = FormatDungeonRequirement( listener, rawItem );
 
 			string sInfo = StringCatalog.ResolveByKey( listener.Account, "quest.epic.gump.shared.info" );
-			string sBare = ResolveBare( listener, alignment, myName, thisItem );
+			string sBare = ResolveBare( listener, alignment, FormatGiverName( listener, myName ), thisItem, dungeon );
 
 			string slug = SlugifyNpc( myName );
 			string textKey = allowed ? "quest.epic.gump." + slug + ".text.allowed" : "quest.epic.gump." + slug + ".text.denied";

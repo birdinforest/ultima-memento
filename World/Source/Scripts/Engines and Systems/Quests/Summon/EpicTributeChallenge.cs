@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Server;
 using Server.Commands;
 using Server.Items;
+using Server.Localization;
 using Server.Mobiles;
 using Server.Regions;
 using Server.Targeting;
@@ -133,9 +134,43 @@ namespace Server.Misc
 			public string RegionName;
 			public DateTime LastCombatSeen;
 			public WatchdogTimer Timer;
+			public AuraTimer Aura;
 		}
 
 		private static readonly Dictionary<Mobile, ActiveChallenge> Active = new Dictionary<Mobile, ActiveChallenge>();
+
+		// "Bright" cosmetic marker (2026-07-18): visually distinguishes the personal challenge
+		// guardian from the shared SummonCarriers.cs named mob it's modeled on (identical
+		// Name/Title/Hue/Body otherwise). Purely cosmetic -- no stat/loot impact, no save-compat
+		// concern (runtime-only mobile fields set on spawn).
+		//
+		// 0xB1B is a second, more saturated gold/gilded hue than the first attempt (2026-07-18:
+		// per player feedback the earlier 0x8A5 amber read too pale/washed-out to call "gold" at a
+		// glance). 0xB1B is used elsewhere in this codebase specifically for gilded/golden
+		// creatures (GoldenSerpent.cs's random hue pool; RidingDragon.cs/Dragons.cs "a gilded
+		// dragon"), so it's a confirmed vivid gold rather than a guess. (0x8A5 -- "the golden
+		// ghost" in Ghostly.cs -- was the first fix, replacing the original 0x0B0C which rendered
+		// purple/magenta in-client; both superseded by 0xB1B.) Used for both the nameplate and the
+		// aura so the two read as the same "gold" signal. Distinct from the Magical Prison boss /
+		// Unique Titan convention (NameHue = 0x22 green, see SummonPrison.cs / Shadowlord.cs /
+		// TitanPyros.cs), so players don't mistake this for a Magical Prison Boss.
+		private const int BrightNameHue = 0xB1B;
+
+		// Near-continuous shimmer while the guardian is alive (2026-07-18: dedicated AuraTimer,
+		// ticking every few seconds -- moved off the 1-minute WatchdogTimer, which was too sparse
+		// to read as "always on"). Makes the guardian easier to spot at its random in-region spawn
+		// point even from a distance, without needing to inspect its nameplate up close.
+		//
+		// Two layered effects per tick (2026-07-18: single small waist-level sparkle was still not
+		// "obvious" per player feedback): a body-attached sparkle burst on EffectLayer.Head (more
+		// visible than Waist, since it isn't partly occluded by the monster's own body from most
+		// camera angles) plus a ground ring at the monster's feet (same 0x3728 ring graphic already
+		// used once at spawn -- see Spawn() -- but tinted gold here and repeated every tick), so the
+		// glow reads from a distance even before the nameplate is legible.
+		private const int BrightAuraItemId = 0x376A;
+		private const int BrightAuraGroundRingItemId = 0x3728;
+		private const int BrightAuraHue = 0xB1B;
+		private static readonly TimeSpan BrightAuraInterval = TimeSpan.FromSeconds( 3.0 );
 
 		public static void Initialize()
 		{
@@ -221,6 +256,22 @@ namespace Server.Misc
 
 				ReportChallengeLocation( from, player );
 			}
+		}
+
+		// Region name tied to the player's current Epic Tribute symbol (SummonItems.Name key).
+		// Used by EpicGump / EpicCharacter player messaging so the NPC can name both the item and
+		// the dungeon the personal challenge spawns in.
+		public static string GetChallengeRegionName( string questItem )
+		{
+			if ( string.IsNullOrEmpty( questItem ) )
+				return null;
+
+			ChallengeTemplate template;
+
+			if ( Templates.TryGetValue( questItem, out template ) )
+				return template.RegionName;
+
+			return null;
 		}
 
 		// Called from BaseRegion.OnEnter (and once from EpicCharacter.SetSpecialItemRequirement,
@@ -361,6 +412,24 @@ namespace Server.Misc
 			if ( template.Body > 0 )
 				monster.Body = template.Body;
 
+			monster.NameHue = BrightNameHue;
+
+			// Tag the nameplate/click-label suffix so the golden hue reads as "this is my personal
+			// Epic Tribute encounter" even at a glance, not just a color the player has to guess
+			// the meaning of. This Title text is a shared Mobile field (any nearby player's click
+			// sees the same string, not per-viewer), so it's resolved once at spawn time using the
+			// shard's default language (account = null -> AccountLang.GetLanguageCode falls back
+			// to LangConfig.DefaultLanguage) rather than per-viewer -- same constraint/approach as
+			// the rest of this template table's hardcoded Name/Title overrides above.
+			string titleSuffix = StringCatalog.ResolveByKey( null, "quest.epic.challenge.title_suffix" );
+
+			if ( !string.IsNullOrEmpty( titleSuffix ) )
+			{
+				monster.Title = string.IsNullOrEmpty( monster.Title )
+					? titleSuffix
+					: monster.Title + " " + titleSuffix;
+			}
+
 			monster.Fame = 0;
 			monster.Karma = 0;
 
@@ -382,6 +451,8 @@ namespace Server.Misc
 			active.LastCombatSeen = DateTime.UtcNow;
 			active.Timer = new WatchdogTimer( player );
 			active.Timer.Start();
+			active.Aura = new AuraTimer( monster );
+			active.Aura.Start();
 
 			Active[ player ] = active;
 		}
@@ -409,6 +480,9 @@ namespace Server.Misc
 		{
 			if ( active.Timer != null )
 				active.Timer.Stop();
+
+			if ( active.Aura != null )
+				active.Aura.Stop();
 
 			if ( active.Monster != null && !active.Monster.Deleted && active.Monster.Alive )
 				active.Monster.Delete();
@@ -471,6 +545,33 @@ namespace Server.Misc
 					// on the next qualifying region entry. Does not touch EpicQuestName.
 					Cleanup( m_Player, active );
 				}
+			}
+		}
+
+		// Drives the recurring "Bright" gold shimmer (see BrightAuraInterval) for as long as the
+		// guardian is alive. Self-stops once the monster is gone so it doesn't keep ticking after
+		// a kill/cleanup races ahead of Cleanup() removing it from Active.
+		private class AuraTimer : Timer
+		{
+			private BaseCreature m_Monster;
+
+			public AuraTimer( BaseCreature monster ) : base( BrightAuraInterval, BrightAuraInterval )
+			{
+				m_Monster = monster;
+				Priority = TimerPriority.OneSecond;
+			}
+
+			protected override void OnTick()
+			{
+				if ( m_Monster == null || m_Monster.Deleted || !m_Monster.Alive )
+				{
+					Stop();
+					return;
+				}
+
+				m_Monster.FixedParticles( BrightAuraItemId, 9, 32, 5030, BrightAuraHue, 0, EffectLayer.Head );
+
+				Effects.SendLocationParticles( EffectItem.Create( m_Monster.Location, m_Monster.Map, EffectItem.DefaultDuration ), BrightAuraGroundRingItemId, 10, 16, BrightAuraHue, 0, 2023, 0 );
 			}
 		}
 	}
