@@ -1,15 +1,12 @@
 using Server.Network;
 using Server.Items;
 using System.Text;
-<<<<<<< HEAD
 using Server.Mobiles;
 using System.Collections;
 using Server.Commands.Generic;
 using Server.Regions;
 using Server.Accounting;
 using Server.Localization;
-=======
->>>>>>> 0a2cbfd3 (- Sage Artifact quest text procedure now matches expectations)
 
 namespace Server.Gumps
 {

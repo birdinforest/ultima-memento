@@ -167,10 +167,7 @@ namespace Server.Engines.GlobalShoppe
 				var requirements = shoppe.GetRequirementsMessage(from, context);
 				if (!string.IsNullOrWhiteSpace(requirements))
 				{
-<<<<<<< HEAD
 					AddTextCard(y, ResolveText(from, requirements));
-=======
-					AddTextCard(y, requirements);
 
 					if (shoppe.NeedsFeePayment(from, context))
 					{
@@ -179,10 +176,9 @@ namespace Server.Engines.GlobalShoppe
 
 						AddButton(bx, by, 4005, 4007, (int)Actions.PayFee, GumpButtonType.Reply, 0);
 						TextDefinition.AddHtmlText(this, bx + 38, by + 2, 320, 20,
-							string.Format("Pay {0} gold from backpack/bank", ShoppeConstants.SHOPPE_FEE), HtmlColors.MUSTARD);
+							string.Format(ResolveText(from, "Pay {0} gold from backpack/bank"), ShoppeConstants.SHOPPE_FEE), HtmlColors.MUSTARD);
 					}
 
->>>>>>> 0bf74a4c (Add one-tap fee payment button when opening a new shoppe)
 					return;
 				}
 
