@@ -77,6 +77,8 @@
   "prop.range": "范围 {0}",
   "prop.strength.requirement": "力量需求 {0}",
   "prop.durability": "耐久度 {0} / {1}",
+  "prop.durability.destroyed": "你的{0}已彻底损毁。",
+  "prop.durability.destroyed.unnamed": "你的装备已彻底损毁。",
   "prop.skill.swordsmanship": "所需技能：剑术",
   "prop.skill.bludgeoning": "所需技能：锤术",
   "prop.skill.fencing": "所需技能：刺击",

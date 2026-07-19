@@ -77,6 +77,8 @@
   "prop.range": "range {0}",
   "prop.strength.requirement": "strength requirement {0}",
   "prop.durability": "durability {0} / {1}",
+  "prop.durability.destroyed": "Your {0} has been destroyed.",
+  "prop.durability.destroyed.unnamed": "Your equipment has been destroyed.",
   "prop.skill.swordsmanship": "skill required: swordsmanship",
   "prop.skill.bludgeoning": "skill required: bludgeoning",
   "prop.skill.fencing": "skill required: fencing",

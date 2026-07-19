@@ -314,7 +314,10 @@ namespace Server.Items
 					m_HitPoints = value;
 
 					if ( m_HitPoints < 0 )
-						Delete();
+					{
+						DurabilityUtility.DestroyFromWear( this );
+						return;
+					}
 					else if ( m_HitPoints > MaxHitPoints )
 						m_HitPoints = MaxHitPoints;
 
@@ -1343,10 +1346,15 @@ namespace Server.Items
 								if ( Parent is Mobile )
 									((Mobile)Parent).LocalOverheadMessage( MessageType.Regular, 0x3B2, 1061121 ); // Your equipment is severely damaged.
 							}
+							else
+							{
+								DurabilityUtility.DestroyFromWear( this );
+							}
 						}
-
-						if ( MaxHitPoints < 1 )
-							Delete();
+						else if ( MaxHitPoints < 1 )
+						{
+							DurabilityUtility.DestroyFromWear( this );
+						}
 					}
 				}
 			}

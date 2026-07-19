@@ -17,7 +17,7 @@
 <br>
 <b>功能加强</b>:
   - <b>史诗献礼（Epic Tribute）任务介绍</b> — 在不列颠王（Lord British）等 26 位史诗NPC人物哪里可以接到“史诗献礼任务”。在获得指定任务物品后可以选择附魔150点的装备。
-  - <b>史诗献礼（Epic Tribute）任务详细介绍</b> — 网站 -> 游戏机制 -> 史诗献礼（Epic Tribute）
+  - <b>史诗献礼（Epic Tribute）任务详细介绍</b> — 游戏机制介绍：https://www.uo-expedition.com/mechanics/epic-tribute
 <br>
 <b>汉化</b>:
   - 史诗献礼挑战相关提示与界面文案（含勇气 / 坚韧 / 无畏等美德词、挑战守卫姓名牌后缀等）

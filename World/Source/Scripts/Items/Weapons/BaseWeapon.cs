@@ -1702,13 +1702,14 @@ namespace Server.Items
 				if ( m_AosWeaponAttributes.SelfRepair > Utility.Random( 10 ) )
 					HitPoints += Utility.RandomMinMax( 1, (int)Density );
 
-				bool damaged = false;
 				if ( this is ILevelable )
 				{
 					LevelItemManager.RepairItems( attacker );
 				}
 				else if ( m_Hits > 0 )
 				{
+					bool damaged = false;
+
 					if ( MaxRange <= 1 && acidic )
 					{
 						damaged = true;
@@ -1718,9 +1719,14 @@ namespace Server.Items
 					{
 						damaged = true;
 					}
+
+					if ( damaged )
+						--HitPoints;
 				}
 				else if ( m_MaxHits > 1 )
 				{
+					bool damaged = false;
+
 					if ( MaxRange <= 1 && acidic )
 					{
 						damaged = true;
@@ -1731,16 +1737,23 @@ namespace Server.Items
 						damaged = true;
 					}
 
-					if ( damaged && Parent is Mobile )
-						((Mobile)Parent).LocalOverheadMessage( MessageType.Regular, 0x3B2, 1061121 ); // Your equipment is severely damaged.
+					if ( damaged )
+					{
+						--MaxHitPoints;
+
+						if ( Parent is Mobile )
+							((Mobile)Parent).LocalOverheadMessage( MessageType.Regular, 0x3B2, 1061121 ); // Your equipment is severely damaged.
+					}
 				}
-
-				if ( damaged )
-					--HitPoints;
-
-
-				if ( MaxHitPoints < 1 )
-					Delete();
+				else if ( MaxRange <= 1 && acidic )
+				{
+					attacker.LocalOverheadMessage( MessageType.Regular, 0x3B2, 500263 ); // *Acid blood scars your weapon!*
+					DurabilityUtility.DestroyFromWear( this );
+				}
+				else if ( !ArmsLore.AvoidDurabilityHit(Parent as Mobile) )
+				{
+					DurabilityUtility.DestroyFromWear( this );
+				}
 			}
 
 			if ( attacker is VampireBatFamiliar )
