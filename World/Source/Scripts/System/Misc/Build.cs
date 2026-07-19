@@ -132,6 +132,10 @@ namespace Server.Misc
 				qTeleporter.Hue = Utility.RandomColor(0);
 				qTeleporter.MoveToWorld (new Point3D(2830, 1875, 102), Map.Sosaria);
 
+			////////// KYLEARAN RIFT (SKARA BRAE EXIT)
+				KylearanRift kylearanRift = new KylearanRift();
+				kylearanRift.MoveToWorld( new Point3D( 6925, 222, 0 ), Map.Lodor );
+
 			////////// CATACOMB DOORS
 				qTeleporter = new QuestTeleporter();
 				qTeleporter.TeleporterOpen = 0;

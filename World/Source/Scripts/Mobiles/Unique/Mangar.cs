@@ -305,6 +305,10 @@ namespace Server.Items
 				else
 				{
 					PlayerSettings.SetBardsTaleQuest( from, StringCatalog.ResolveByKey(null, "mob.other.bardstalewin"), true );
+
+					if ( from is PlayerMobile pm )
+						PlayerSettings.TryAwardSkaraBraeKylearanContractTitle( pm );
+
 					from.SendSound( 0x3D );
 					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(null, "mob.other.you_have_pulled_mangar_s_vault_toward_you"), from.NetState);
 					from.SendMessage(StringCatalog.ResolveByKey(from.Account, "mob.other.a_gate_is_open_nearby_you_better_hurry_or_you_will_rema"));

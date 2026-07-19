@@ -102,7 +102,7 @@ namespace Server.Items
 					if ( MySettings.S_WarnSkaraBrae && m is PlayerMobile && !((PlayerMobile)m).WarnedSkaraBrae && this.X == 2830 && this.Y == 1875 )
 					{
 						((PlayerMobile)m).WarnedSkaraBrae = true;
-						m.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.Resolve( m.Account, "You feel that touching this again may trap you somewhere that you need to escape from." ), m.NetState);
+						m.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey( m.Account, "quest.bards_tale.rift.warning" ), m.NetState);
 					}
 					else if ( MySettings.S_WarnBottleCity && !PlayerSettings.GetDiscovered( m, "the Bottle World of Kuldar" ) && m is PlayerMobile && !((PlayerMobile)m).WarnedBottleCity && this.X == 6376 && this.Y == 302 )
 					{
@@ -116,6 +116,8 @@ namespace Server.Items
 						m.MoveToWorld ( TeleporterPointDest, TeleporterMapDest );
 						m.PlaySound( TeleporterSound );
 						m.PrivateOverheadMessage(MessageType.Regular, 1150, false, ResolveStoredLine( m, TeleporterMessage ), m.NetState);
+
+						TryGrantSkaraBraeReturnBuffOnEntry( m );
 					}
 				}
 				else if ( PlayerSettings.GetKeys( m, TeleporterQuest ) || PlayerSettings.GetBardsTaleQuest( m, TeleporterQuest ) )
@@ -126,6 +128,8 @@ namespace Server.Items
 					m.PlaySound( TeleporterSound );
 					Timer.DelayCall( TimeSpan.FromMinutes( 2.0 ), new TimerCallback( CloseQuestTeleporter ) );
 					m.PrivateOverheadMessage(MessageType.Regular, 1150, false, ResolveStoredLine( m, TeleporterMessage ), m.NetState);
+
+					TryGrantSkaraBraeReturnBuffOnEntry( m );
 				}
 				else
 				{
@@ -161,6 +165,36 @@ namespace Server.Items
 				m.SendLocalizedMessage( 502138 ); // That is too far away for you to use
 			}
         }
+
+		private void TryGrantSkaraBraeReturnBuffOnEntry( Mobile m )
+		{
+			if ( !( m is PlayerMobile pm ) )
+				return;
+
+			if ( !IsSkaraBraeCrystalBall() )
+				return;
+
+			if ( Lands.GetLand( TeleporterMapDest, TeleporterPointDest, TeleporterPointDest.X, TeleporterPointDest.Y ) != Land.SkaraBrae )
+				return;
+
+			if ( PlayerSettings.GetBardsTaleQuest( m, StringCatalog.ResolveByKey( null, "mob.other.bardstalewin" ) ) )
+				return;
+
+			pm.TryGrantSkaraBraeReturnBuff();
+		}
+
+		private bool IsSkaraBraeCrystalBall()
+		{
+			return Name == "a mysterious crystal ball" && X == 2830 && Y == 1875;
+		}
+
+		public override void AddNameProperties( ObjectPropertyList list )
+		{
+			base.AddNameProperties( list );
+
+			if ( IsSkaraBraeCrystalBall() && BuildingPropertyListLocale != null )
+				AddLocalizedProperty( list, "quest.bards_tale.crystalball.reminder" );
+		}
 
 		public QuestTeleporter( Serial serial ) : base( serial )
 		{

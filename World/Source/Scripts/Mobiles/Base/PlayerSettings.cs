@@ -1057,6 +1057,91 @@ namespace Server.Misc
 			}
 		}
 
+		public static readonly TimeSpan SkaraBraeKylearanContractDuration = TimeSpan.FromDays( 7.0 );
+
+		/// <summary>Start Kylearan's seven-day pact when the player first exits Skara Brae via the rift.</summary>
+		public static void TryStartSkaraBraeKylearanContract( PlayerMobile pm )
+		{
+			if ( pm == null )
+				return;
+
+			string winFlag = StringCatalog.ResolveByKey( null, "mob.other.bardstalewin" );
+
+			if ( GetBardsTaleQuest( pm, winFlag ) || pm.SkaraBraeKylearanTitleAwarded )
+				return;
+
+			if ( pm.SkaraBraeKylearanContractAt != DateTime.MinValue )
+				return;
+
+			pm.SkaraBraeKylearanContractAt = DateTime.Now;
+			pm.SendMessage( StringCatalog.ResolveByKey( pm.Account, "quest.bards_tale.contract.started" ) );
+		}
+
+		public static bool IsSkaraBraeKylearanContractActive( PlayerMobile pm )
+		{
+			if ( pm == null || pm.SkaraBraeKylearanContractAt == DateTime.MinValue || pm.SkaraBraeKylearanTitleAwarded )
+				return false;
+
+			string winFlag = StringCatalog.ResolveByKey( null, "mob.other.bardstalewin" );
+
+			if ( GetBardsTaleQuest( pm, winFlag ) )
+				return false;
+
+			return DateTime.Now < pm.SkaraBraeKylearanContractAt + SkaraBraeKylearanContractDuration;
+		}
+
+		public static int GetSkaraBraeKylearanContractDaysRemaining( PlayerMobile pm )
+		{
+			if ( !IsSkaraBraeKylearanContractActive( pm ) )
+				return 0;
+
+			TimeSpan remaining = pm.SkaraBraeKylearanContractAt + SkaraBraeKylearanContractDuration - DateTime.Now;
+
+			return Math.Max( 0, (int)Math.Ceiling( remaining.TotalDays ) );
+		}
+
+		/// <summary>Award the Keeper of the Promise title when Mangar's vault is claimed within the pact window.</summary>
+		public static void TryAwardSkaraBraeKylearanContractTitle( PlayerMobile pm )
+		{
+			if ( pm == null || pm.SkaraBraeKylearanTitleAwarded )
+				return;
+
+			if ( pm.SkaraBraeKylearanContractAt == DateTime.MinValue )
+				return;
+
+			DateTime deadline = pm.SkaraBraeKylearanContractAt + SkaraBraeKylearanContractDuration;
+
+			if ( DateTime.Now > deadline )
+			{
+				pm.SendMessage( StringCatalog.ResolveByKey( pm.Account, "quest.bards_tale.contract.expired" ) );
+				return;
+			}
+
+			pm.SkaraBraeKylearanTitleAwarded = true;
+			pm.Title = StringCatalog.ResolveByKey( pm.Account, "quest.bards_tale.contract.title" );
+			pm.SendMessage( StringCatalog.ResolveByKey( pm.Account, "quest.bards_tale.contract.title_awarded" ) );
+		}
+
+		/// <summary>Coarse Bard's Tale progress (0–5) for Kylearan keepsake OPL narrative lines.</summary>
+		public static int GetBardsTaleProgressStage( Mobile m )
+		{
+			if ( GetBardsTaleQuest( m, "BardsTaleMangarKey" ) )
+				return 5;
+			if ( GetBardsTaleQuest( m, "BardsTaleCrystalGolem" ) || GetBardsTaleQuest( m, "BardsTaleSilverTriangle" )
+				|| GetBardsTaleQuest( m, "BardsTaleBedroomKey" ) || GetBardsTaleQuest( m, "BardsTaleSilverSquare" )
+				|| GetBardsTaleQuest( m, "BardsTaleSilverCircle" ) || GetBardsTaleQuest( m, "BardsTaleCrystalSword" ) )
+				return 4;
+			if ( GetBardsTaleQuest( m, "BardsTaleEbonyKey" ) || GetBardsTaleQuest( m, "BardsTaleHarkynKey" )
+				|| GetBardsTaleQuest( m, "BardsTaleKylearanKey" ) || GetBardsTaleQuest( m, "BardsTaleDragonKey" )
+				|| GetBardsTaleQuest( m, "BardsTaleSpectreEye" ) )
+				return 3;
+			if ( GetBardsTaleQuest( m, "BardsTaleCatacombKey" ) )
+				return 2;
+			if ( GetBardsTaleQuest( m, "BardsTaleMadGodName" ) )
+				return 1;
+			return 0;
+		}
+
 		public static bool GetBardsTaleQuest( Mobile m, string part ) // -----------------------------------------------------------------------------
 		{
 			SetBardsTaleQuest( m, "none", false );

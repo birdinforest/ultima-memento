@@ -138,6 +138,97 @@ namespace Server.Mobiles
 		public bool WarnedSkaraBrae;
 		public bool WarnedBottleCity;
 
+		private DateTime m_SkaraBraeReturnBuffExpiresAt;
+		private DateTime m_SkaraBraeReturnBuffCooldownUntil;
+		private DateTime m_SkaraBraeKylearanContractAt;
+		private bool m_SkaraBraeKylearanTitleAwarded;
+
+		public DateTime SkaraBraeKylearanContractAt
+		{
+			get { return m_SkaraBraeKylearanContractAt; }
+			set { m_SkaraBraeKylearanContractAt = value; }
+		}
+
+		public bool SkaraBraeKylearanTitleAwarded
+		{
+			get { return m_SkaraBraeKylearanTitleAwarded; }
+			set { m_SkaraBraeKylearanTitleAwarded = value; }
+		}
+
+		public static readonly TimeSpan SkaraBraeReturnBuffDuration = TimeSpan.FromHours( 1.0 );
+		public static readonly TimeSpan SkaraBraeReturnBuffCooldown = TimeSpan.FromHours( 24.0 );
+		public const int SkaraBraeReturnBuffLuckBonus = 40;
+
+		public bool HasSkaraBraeReturnBuff
+		{
+			get
+			{
+				if ( m_SkaraBraeReturnBuffExpiresAt == DateTime.MinValue || DateTime.Now >= m_SkaraBraeReturnBuffExpiresAt )
+					return false;
+
+				return Lands.GetLand( this ) == Land.SkaraBrae;
+			}
+		}
+
+		public bool TryGrantSkaraBraeReturnBuff()
+		{
+			if ( DateTime.Now < m_SkaraBraeReturnBuffCooldownUntil )
+				return false;
+
+			m_SkaraBraeReturnBuffExpiresAt = DateTime.Now + SkaraBraeReturnBuffDuration;
+			m_SkaraBraeReturnBuffCooldownUntil = DateTime.Now + SkaraBraeReturnBuffCooldown;
+
+			ApplySkaraBraeReturnBuffIcon( SkaraBraeReturnBuffDuration );
+
+			SendMessage( StringCatalog.ResolveByKey( Account, "quest.bards_tale.buff.deja_vu.granted" ) );
+			return true;
+		}
+
+		public void RemoveSkaraBraeReturnBuffIfActive()
+		{
+			if ( m_SkaraBraeReturnBuffExpiresAt == DateTime.MinValue )
+				return;
+
+			m_SkaraBraeReturnBuffExpiresAt = DateTime.MinValue;
+			BuffInfo.RemoveBuff( this, BuffIcon.AVAILABLE_1 );
+		}
+
+		public void SyncSkaraBraeReturnBuff()
+		{
+			if ( m_SkaraBraeReturnBuffExpiresAt == DateTime.MinValue || DateTime.Now >= m_SkaraBraeReturnBuffExpiresAt )
+			{
+				RemoveSkaraBraeReturnBuffIfActive();
+				return;
+			}
+
+			if ( Lands.GetLand( this ) != Land.SkaraBrae )
+			{
+				RemoveSkaraBraeReturnBuffIfActive();
+				return;
+			}
+
+			TimeSpan remaining = m_SkaraBraeReturnBuffExpiresAt - DateTime.Now;
+
+			if ( remaining <= TimeSpan.Zero )
+			{
+				RemoveSkaraBraeReturnBuffIfActive();
+				return;
+			}
+
+			ApplySkaraBraeReturnBuffIcon( remaining );
+		}
+
+		private void ApplySkaraBraeReturnBuffIcon( TimeSpan remaining )
+		{
+			if ( !BuffInfo.Enabled || remaining <= TimeSpan.Zero )
+				return;
+
+			string title = StringCatalog.ResolveByKey( Account, "quest.bards_tale.buff.deja_vu.title" );
+			string tip = StringCatalog.ResolveByKey( Account, "quest.bards_tale.buff.deja_vu.tooltip" );
+
+			BuffInfo.AddBuff( this, new BuffInfo( BuffIcon.AVAILABLE_1, 1114057, 0, remaining, this, title + "\n" + tip, true ) );
+		}
+
 		public override bool CurePoison( Mobile from )
 		{
 			if( CheckCure( from ) )
@@ -834,6 +925,8 @@ namespace Server.Mobiles
 				// Adjust item graphics/visibility on paperdoll
 				from.ProcessClothing();
 			}
+
+			from.SyncSkaraBraeReturnBuff();
 		}
 
 		private bool m_NoDeltaRecursion;
@@ -1485,6 +1578,9 @@ namespace Server.Mobiles
 			var newLand = Lands.GetLand(this);
 			if (land != newLand)
 			{
+				if ( land == Land.SkaraBrae )
+					RemoveSkaraBraeReturnBuffIfActive();
+
 				CustomEventSink.InvokeLandChanged(new LandChangedArgs(this, land, newLand));
 				Worlds.EnteredTheLand(this);
 			}
@@ -2921,7 +3017,12 @@ namespace Server.Mobiles
 			{
 				if ( CharacterType == CharacterType.Alien && MySettings.S_AllowAlienChoice ) { return 0; } // Aliens never have Luck
 
-				return AosAttributes.GetValue( this, AosAttribute.Luck );
+				int luck = AosAttributes.GetValue( this, AosAttribute.Luck );
+
+				if ( HasSkaraBraeReturnBuff )
+					luck += SkaraBraeReturnBuffLuckBonus;
+
+				return luck;
 			}
 		}
 
@@ -3124,6 +3225,14 @@ namespace Server.Mobiles
 
 			switch ( version )
 			{
+				case 53:
+					m_SkaraBraeKylearanContractAt = reader.ReadDateTime();
+					m_SkaraBraeKylearanTitleAwarded = reader.ReadBool();
+					goto case 52;
+				case 52:
+					m_SkaraBraeReturnBuffExpiresAt = reader.ReadDateTime();
+					m_SkaraBraeReturnBuffCooldownUntil = reader.ReadDateTime();
+					goto case 51;
 				case 51:
 				case 50:
 					_quests = new PlayerQuestContext( reader );	
@@ -3548,7 +3657,13 @@ namespace Server.Mobiles
 
 			base.Serialize( writer );
 
-			writer.Write( (int) 51 ); // version
+			writer.Write( (int) 53 ); // version
+
+			writer.Write( m_SkaraBraeKylearanContractAt );
+			writer.Write( m_SkaraBraeKylearanTitleAwarded );
+
+			writer.Write( m_SkaraBraeReturnBuffExpiresAt );
+			writer.Write( m_SkaraBraeReturnBuffCooldownUntil );
 
 			Quests.Serialize( writer );
 			SpellBars.Serialize( writer );
@@ -4412,7 +4527,25 @@ namespace Server.Mobiles
 
         public override void OnRegionChange(Region Old, Region New)
         {
+			if ( Old != null && Map == Map.Lodor && IsSkaraBraeRegion( Old ) && Lands.GetLand( this ) != Land.SkaraBrae )
+				RemoveSkaraBraeReturnBuffIfActive();
+
 			EventSink.InvokeOnEnterRegion(new OnEnterRegionArgs(this, Old, New));
         }
+
+		private static bool IsSkaraBraeRegion( Region reg )
+		{
+			return reg != null && (
+				reg.IsPartOf( "the Town of Skara Brae" ) ||
+				reg.IsPartOf( "Mangar's Tower" ) ||
+				reg.IsPartOf( "Mangar's Chamber" ) ||
+				reg.IsPartOf( "Kylearan's Tower" ) ||
+				reg.IsPartOf( "Harkyn's Castle" ) ||
+				reg.IsPartOf( "the Catacombs" ) ||
+				reg.IsPartOf( "the Lower Catacombs" ) ||
+				reg.IsPartOf( "the Sewers" ) ||
+				reg.IsPartOf( "the Mines" ) ||
+				reg.IsPartOf( "the Cellar" ) );
+		}
     }
 }
