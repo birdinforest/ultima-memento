@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using Server;
 using Server.Network;
-using Server.SkillHandlers;
 
 namespace Server.Items
 {
@@ -71,7 +70,7 @@ namespace Server.Items
 			*/
 			double baseValue = Math.Pow(1.5, (int)Density);
 			double testValue = 1f / (int)baseValue;
-			if ( Utility.RandomDouble() < testValue && !ArmsLore.AvoidDurabilityHit( Parent as Mobile ) )
+			if ( Utility.RandomDouble() < testValue )
 			{
 				if( ArmorAttributes.SelfRepair > Utility.Random( 10 ) )
 					HitPoints += Utility.RandomMinMax( 1, (int)Density );

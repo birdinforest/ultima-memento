@@ -4,7 +4,6 @@ using Server;
 using Server.Engines.Craft;
 using Server.Localization;
 using Server.Network;
-using Server.SkillHandlers;
 
 namespace Server.Items
 {
@@ -421,7 +420,7 @@ namespace Server.Items
 				{
 					LevelItemManager.RepairItems( Parent as Mobile );
 				}
-				else if ( !ArmsLore.AvoidDurabilityHit( Parent as Mobile ) )
+				else
 				{
 					int wear;
 

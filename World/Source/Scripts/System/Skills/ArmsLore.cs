@@ -49,10 +49,10 @@ namespace Server.SkillHandlers
 		{
 			if ( parent == null ) return false;
 
-			double armsLore = parent != null ? parent.Skills[SkillName.ArmsLore].Value : 0;
-			if ( armsLore < 5 ) return false;
-			if ( !Utility.RandomBool() ) return false;
-			if ( armsLore < Utility.Random(100) ) return false;
+			double armsLore = parent.Skills[SkillName.ArmsLore].Value;
+			if ( armsLore < 50 ) return false;
+			if ( Utility.Random( 5 ) != 0 ) return false; // 20% gate (was 50%)
+			if ( armsLore < Utility.Random( 200 ) ) return false; // was Random(100)
 
 			parent.SendMessage(0x3B2, StringCatalog.ResolveByKey(parent.Account, "skl.armlore.durable"));
 

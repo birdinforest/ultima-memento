@@ -1691,7 +1691,7 @@ namespace Server.Items
 			if ( lifeLeech != 0 || stamLeech != 0 || manaLeech != 0 )
 				attacker.PlaySound( 0x44D );
 
-			int ruin = 20 + (int)Density; // chance to lower durability
+			int ruin = 10 + (int)Density; // chance to lower durability
 			bool acidic = false;
 
 			if ( defender is Slime || defender is Xenomorph || defender is GreenSlime || defender is BlackPudding || defender is LavaPuddle || defender is AcidPuddle || defender is ToxicElemental )
