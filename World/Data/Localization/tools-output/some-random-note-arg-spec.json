@@ -1,0 +1,501 @@
+{
+  "vocab.poison.lesser": [],
+  "vocab.poison.regular": [],
+  "vocab.poison.greater": [],
+  "vocab.poison.deadly": [],
+  "vocab.poison.lethal": [],
+  "vocab.skull.lich": [],
+  "vocab.skull.lich_lord": [],
+  "vocab.skull.ancient_lich": [],
+  "vocab.skull.demilich": [],
+  "vocab.skull.bone_magi": [],
+  "vocab.skull.skeletal_mage": [],
+  "vocab.skull.skeletal_wizard": [],
+  "vocab.thing.scroll": [],
+  "vocab.thing.book": [],
+  "vocab.thing.parchment": [],
+  "vocab.thing.tapestry": [],
+  "vocab.researcher.sage": [],
+  "vocab.researcher.scribe": [],
+  "vocab.researcher.librarian": [],
+  "lie.01": [
+    "city"
+  ],
+  "lie.02": [
+    "name",
+    "place"
+  ],
+  "lie.03": [],
+  "lie.04": [],
+  "lie.05": [
+    "name",
+    "place"
+  ],
+  "lie.06": [],
+  "lie.07": [
+    "place"
+  ],
+  "lie.08": [
+    "place",
+    "questItem"
+  ],
+  "lie.09": [
+    "writer",
+    "city"
+  ],
+  "lie.10": [
+    "place",
+    "name"
+  ],
+  "lie.11": [
+    "name"
+  ],
+  "lie.12": [
+    "name",
+    "relicItem",
+    "job",
+    "city"
+  ],
+  "lie.13": [
+    "name",
+    "city",
+    "relicItem"
+  ],
+  "lie.14": [
+    "job",
+    "city",
+    "relicItem"
+  ],
+  "lie.15": [
+    "job",
+    "city",
+    "race",
+    "poison"
+  ],
+  "lie.16": [
+    "city"
+  ],
+  "lie.17": [
+    "city"
+  ],
+  "lie.18": [
+    "place",
+    "writer",
+    "city"
+  ],
+  "lie.19": [
+    "writer",
+    "giver",
+    "writer",
+    "giver"
+  ],
+  "lie.20": [
+    "writer",
+    "orkName",
+    "giver"
+  ],
+  "lie.21": [
+    "giver"
+  ],
+  "lie.22": [],
+  "lie.23": [],
+  "lie.24": [
+    "writer",
+    "city",
+    "writer",
+    "amount",
+    "writer"
+  ],
+  "lie.25": [
+    "writer",
+    "city",
+    "name",
+    "giver"
+  ],
+  "lie.26": [],
+  "lie.27": [
+    "writer",
+    "writer",
+    "writer",
+    "city",
+    "writer"
+  ],
+  "lie.28": [
+    "writer",
+    "writer",
+    "job",
+    "city",
+    "writer",
+    "place",
+    "city",
+    "writer"
+  ],
+  "lie.29": [
+    "society",
+    "place",
+    "magicalItem",
+    "writer",
+    "writer",
+    "place",
+    "writer",
+    "city"
+  ],
+  "lie.30": [
+    "writer",
+    "city"
+  ],
+  "lie.31": [
+    "writer",
+    "city",
+    "city",
+    "writer"
+  ],
+  "lie.32": [
+    "writer",
+    "city",
+    "writer"
+  ],
+  "lie.33": [
+    "writer",
+    "city"
+  ],
+  "lie.34": [
+    "writer",
+    "city",
+    "magicalItem",
+    "job",
+    "city",
+    "writer"
+  ],
+  "lie.35": [
+    "writer",
+    "city",
+    "days",
+    "writer"
+  ],
+  "lie.36": [
+    "writer",
+    "city",
+    "days",
+    "writer"
+  ],
+  "lie.37": [
+    "writer",
+    "years",
+    "city",
+    "society",
+    "writer"
+  ],
+  "lie.38": [
+    "writer",
+    "years",
+    "city",
+    "society",
+    "writer"
+  ],
+  "lie.39": [
+    "writer",
+    "city"
+  ],
+  "lie.40": [
+    "writer",
+    "city",
+    "dungeon",
+    "giver"
+  ],
+  "lie.41": [
+    "writer",
+    "city",
+    "ship",
+    "giver",
+    "job",
+    "amount",
+    "giver"
+  ],
+  "lie.42": [
+    "writer",
+    "dungeon",
+    "city",
+    "giver"
+  ],
+  "lie.43": [
+    "writer",
+    "skull",
+    "skull",
+    "city",
+    "writer"
+  ],
+  "lie.44": [
+    "writer",
+    "thing",
+    "place",
+    "writer",
+    "society",
+    "writer",
+    "city",
+    "writer"
+  ],
+  "lie.45": [
+    "writer",
+    "writer",
+    "city",
+    "dungeon",
+    "writer"
+  ],
+  "lie.46": [
+    "writer",
+    "amount",
+    "researcher",
+    "city",
+    "dungeon",
+    "writer"
+  ],
+  "lie.47": [
+    "writer",
+    "writer"
+  ],
+  "lie.48": [
+    "writer",
+    "dungeon",
+    "dungeon",
+    "writer"
+  ],
+  "lie.49": [
+    "writer",
+    "city"
+  ],
+  "truth.01": [],
+  "truth.02": [],
+  "truth.03": [],
+  "truth.04": [],
+  "truth.05": [],
+  "truth.06": [],
+  "truth.07": [
+    "name"
+  ],
+  "truth.08": [
+    "name",
+    "place",
+    "city"
+  ],
+  "truth.09": [],
+  "truth.10": [
+    "name",
+    "city",
+    "job",
+    "job",
+    "city",
+    "name"
+  ],
+  "truth.11": [],
+  "truth.12": [
+    "name",
+    "relicItem",
+    "relicPlace"
+  ],
+  "truth.13": [
+    "name",
+    "relicPlace",
+    "relicItem",
+    "name"
+  ],
+  "truth.14": [
+    "job",
+    "city",
+    "relicItem",
+    "relicPlace",
+    "city"
+  ],
+  "truth.15": [
+    "job",
+    "city"
+  ],
+  "truth.15.1": [
+    "job",
+    "city"
+  ],
+  "truth.16": [
+    "city"
+  ],
+  "truth.17": [
+    "city"
+  ],
+  "truth.18": [
+    "writer",
+    "writer"
+  ],
+  "truth.19": [
+    "writer",
+    "giver"
+  ],
+  "truth.20": [
+    "writer",
+    "giver"
+  ],
+  "truth.21": [],
+  "truth.22": [
+    "writer"
+  ],
+  "truth.23": [],
+  "truth.24": [
+    "writer",
+    "writer",
+    "amount",
+    "writer"
+  ],
+  "truth.25": [
+    "writer",
+    "writer",
+    "writer",
+    "city",
+    "writer"
+  ],
+  "truth.26": [],
+  "truth.27": [
+    "writer",
+    "writer",
+    "writer",
+    "city",
+    "writer"
+  ],
+  "truth.28": [
+    "writer",
+    "writer",
+    "job",
+    "city",
+    "writer",
+    "place",
+    "gem",
+    "city",
+    "writer"
+  ],
+  "truth.29": [
+    "society",
+    "place",
+    "magicalItem",
+    "writer",
+    "writer",
+    "city"
+  ],
+  "truth.30": [
+    "society",
+    "place",
+    "city"
+  ],
+  "truth.31": [
+    "writer",
+    "city",
+    "city",
+    "writer"
+  ],
+  "truth.32": [
+    "writer",
+    "city",
+    "writer"
+  ],
+  "truth.33": [
+    "writer",
+    "city"
+  ],
+  "truth.34": [
+    "writer",
+    "city",
+    "magicalItem",
+    "job",
+    "city",
+    "writer"
+  ],
+  "truth.35": [
+    "writer",
+    "city",
+    "days",
+    "writer"
+  ],
+  "truth.36": [
+    "writer",
+    "city",
+    "days",
+    "writer"
+  ],
+  "truth.37": [
+    "writer",
+    "years",
+    "city",
+    "society",
+    "writer"
+  ],
+  "truth.38": [
+    "writer",
+    "years",
+    "city",
+    "society",
+    "writer"
+  ],
+  "truth.39": [
+    "writer"
+  ],
+  "truth.40": [
+    "writer",
+    "city",
+    "dungeon",
+    "giver"
+  ],
+  "truth.41": [
+    "writer",
+    "city",
+    "ship",
+    "giver",
+    "giver"
+  ],
+  "truth.42": [
+    "writer",
+    "city",
+    "giver"
+  ],
+  "truth.42.1": [
+    "writer",
+    "city",
+    "giver"
+  ],
+  "truth.43": [
+    "writer",
+    "skull",
+    "writer"
+  ],
+  "truth.44": [
+    "writer",
+    "place",
+    "writer",
+    "society",
+    "writer",
+    "city",
+    "writer"
+  ],
+  "truth.45": [
+    "writer",
+    "writer",
+    "city",
+    "dungeon",
+    "writer"
+  ],
+  "truth.46": [
+    "writer",
+    "researcher",
+    "city",
+    "dungeon",
+    "writer"
+  ],
+  "truth.47": [
+    "writer",
+    "writer"
+  ],
+  "truth.48": [
+    "writer",
+    "dungeon",
+    "writer"
+  ],
+  "truth.49": [
+    "writer",
+    "city"
+  ]
+}
