@@ -157,7 +157,24 @@ namespace Server.Mobiles
 
 		public static readonly TimeSpan SkaraBraeReturnBuffDuration = TimeSpan.FromHours( 1.0 );
 		public static readonly TimeSpan SkaraBraeReturnBuffCooldown = TimeSpan.FromHours( 24.0 );
-		public const int SkaraBraeReturnBuffLuckBonus = 40;
+		public const int SkaraBraeReturnBuffLuckBonus = 50;
+		public const int SkaraBraeReturnBuffUndeadDamagePercent = 15;
+
+		public static bool SkaraBraeReturnBuffAppliesUndeadBonus( Mobile attacker, Mobile defender )
+		{
+			if ( !( attacker is PlayerMobile pm ) || !pm.HasSkaraBraeReturnBuff )
+				return false;
+
+			if ( defender == null || defender.Player )
+				return false;
+
+			SlayerEntry undead = SlayerGroup.GetEntryByName( SlayerName.Silver );
+
+			if ( undead != null && undead.Slays( defender ) )
+				return true;
+
+			return BaseRace.GetUndead( defender.Body.BodyID + 80000 );
+		}
 
 		public bool HasSkaraBraeReturnBuff
 		{

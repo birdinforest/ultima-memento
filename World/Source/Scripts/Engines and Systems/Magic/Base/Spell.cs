@@ -371,6 +371,9 @@ namespace Server.Spells
 
 			target.Region.SpellDamageScalar( m_Caster, target, ref scalar );
 
+			if ( PlayerMobile.SkaraBraeReturnBuffAppliesUndeadBonus( m_Caster, target ) )
+				scalar *= 1.0 + ( PlayerMobile.SkaraBraeReturnBuffUndeadDamagePercent / 100.0 );
+
 			if( Evasion.CheckSpellEvasion( target ) )	//Only single target spells an be evaded
 				scalar = 0;
 

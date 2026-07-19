@@ -1542,6 +1542,9 @@ namespace Server.Items
 				percentageBonus -= 10;
 			}
 
+			if ( PlayerMobile.SkaraBraeReturnBuffAppliesUndeadBonus( attacker, defender ) )
+				percentageBonus += PlayerMobile.SkaraBraeReturnBuffUndeadDamagePercent;
+
 			TransformContext context = TransformationSpellHelper.GetContext( defender );
 
 			if( (m_Slayer == SlayerName.Silver || m_Slayer2 == SlayerName.Silver) && context != null && context.Spell is NecromancerSpell && context.Type != typeof( HorrificBeastSpell ) )
