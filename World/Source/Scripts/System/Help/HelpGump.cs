@@ -11,6 +11,7 @@ using Server.Misc;
 using Server.Items;
 using Server.Engines.MLQuests.Gumps;
 using Scripts.Mythik.Systems.Achievements;
+using Server.Localization;
 using Server.SpellBars;
 using Server.ModernSkill;
 using System.Linq;
@@ -709,7 +710,7 @@ namespace Server.Engines.Help
 				AddSetting(xs, g, from, "Weapon Ability Names", PageActionType.Setting_WeaponAbilityNames, PageActionType.Setting_WeaponAbilityNames_Info);
 				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
-				AddHtml( xs, g, 400, 20, @"<BODY><BASEFONT Color=" + color + ">" + ResolveText( from, "Language" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( xs, g, 400, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey( from.Account, "help.gump.settings.language" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				g += j;
 				xs = SETTING_START_X;
 				AddAction( xs, g, from, "English", PageActionType.Setting_Language_English, 130 );
