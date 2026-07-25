@@ -286,7 +286,7 @@ namespace Server.Gumps
 			else if ( book.Name == "Hidden Traps" ){ num = 37; }
 			else if ( book.Name == "The Ice Queen" ){ num = 38; }
 			else if ( book.Name == "The Jedi Order" ){ num = 39; }
-			else if ( book.Name == "Journal on Familiars" ){ num = 40; }
+			else if ( book is FamiliarClue ){ num = 40; }
 			else if ( book.Name == "The Knight Who Fell" ){ num = 41; }
 			else if ( book.Name == "Leather & Bone Crafts" ){ num = 42; }
 			else if ( book.Name == "Legend of the Sky Castle" ){ num = 43; }
