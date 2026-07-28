@@ -308,20 +308,20 @@ namespace Knives.Chat3
 
         public void AddHtml(int x, int y, int width, string text)
         {
-            AddHtml(x, y, width, 21, HTML.White + text, false, false, true);
+            AddHtml(x, y, width, 21, HTML.White + text, false, false, true, false);
         }
 
         public void AddHtml(int x, int y, int width, string text, bool over)
         {
-            AddHtml(x, y, width, 21, HTML.White + text, false, false, over);
+            AddHtml(x, y, width, 21, HTML.White + text, false, false, over, false);
         }
 
-        public new void AddHtml(int x, int y, int width, int height, string text, bool back, bool scroll)
+        public void AddHtml(int x, int y, int width, int height, string text, bool back, bool scroll)
         {
-            AddHtml(x, y, width, height, HTML.White + text, back, scroll, true);
+            AddHtml(x, y, width, height, HTML.White + text, back, scroll, false);
         }
 
-        public void AddHtml(int x, int y, int width, int height, string text, bool back, bool scroll, bool over)
+        public void AddHtml(int x, int y, int width, int height, string text, bool back, bool scroll, bool over, bool useBlackTextOutline = false)
         {
             HtmlPlus html = new HtmlPlus(x, y, width, height, HTML.White + text, back, scroll, over);
 

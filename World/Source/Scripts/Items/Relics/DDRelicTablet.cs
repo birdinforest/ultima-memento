@@ -204,8 +204,8 @@ namespace Server.Items
 
 				AddPage(0);
 				AddImage(13, 13, 102);
-				AddHtml( 61, 79, 133, 88, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>Somewhere in " + stone.SearchDungeon + "<BR>Lies an Artifact</CENTER></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 38, 256, 181, 18, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>" + stone.SearchItem + "</CENTER></BIG></BASEFONT></CENTER></BODY>", (bool)false, (bool)false);
+				AddHtml( 61, 79, 133, 88, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>Somewhere in " + stone.SearchDungeon + "<BR>Lies an Artifact</CENTER></BIG></BASEFONT></BODY>", (bool)false, (bool)false, false);
+				AddHtml( 38, 256, 181, 18, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>" + stone.SearchItem + "</CENTER></BIG></BASEFONT></CENTER></BODY>", (bool)false, (bool)false, false);
 			}
 		}
 
