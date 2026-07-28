@@ -1080,7 +1080,7 @@ namespace Server.Misc
 					builder.Append("- Item - Magic candles, lanterns, and torches can now be sold to vendors<br>");
 					builder.Append("- Item - Throwing gloves have been rebalanced<br>");
 					builder.Append("       - Damage has been changed to 8-11, down from 10-14<br>");
-					builder.Append("       - Attack Speed has been changed to 2s, up from 4s<br>");
+					builder.Append("       - Attack Speed has been changed to 2.5s, up from 4s<br>");
 					builder.Append("       - Range has been changed to 6, down from 8<br>");
 					builder.Append("- Item - Sages can now change Runebook graphic (Scribes and Librarian Guildmaster always have)<br>");
 					builder.Append("- Misc - Multiple items that accept gold being dropped on them no longer delete excess gold<br>");
