@@ -51,8 +51,8 @@ ultima-memento/
 │   │   │   └── zh-Hans-glossary-sync-rules.json
 │   │   └── System/CFG/      # localization.cfg, other runtime config
 │   ├── Documentation/       # Workflow guides (authoritative)
-│   └── Saves/               # Runtime world state — never edit manually
-└── WorldLinux.exe           # Runtime binary (Linux/macOS)
+│   └── Saves/               # Runtime world state — never edit manually (may be absent in a fresh checkout)
+└── WorldLinux.exe / World.exe  # Runtime binary emitted at repo root by the compile scripts in World/Source/Tools/
 ```
 
 **Cross-repo documentation root:**
@@ -400,12 +400,13 @@ Before finalizing any change that touches C# user-visible strings:
 
 ### 4.1 Building the Server
 
+The compile scripts live in **`World/Source/Tools/`** (not `World/Source/`). Output binaries are written to the repo root: `WorldLinux.exe` on Linux/macOS, `World.exe` on Windows. This repo does not currently ship a committed binary — run a compile before starting the server.
+
 ```bash
-# Linux/macOS
-cd World/Source
-./compile-world-linux.sh        # or compile-world-mac.sh if present
-# Windows
-.\compile-world-win.bat
+# Linux/macOS (uses `mcs`, emits WorldLinux.exe at repo root)
+bash World/Source/Tools/compile-world-linux.sh        # or compile-world-mac.sh
+# Windows (uses .NET Framework csc, emits World.exe at repo root)
+World/Source/Tools/compile-world-win.bat
 ```
 
 On compile error: read the error, trace the file and line, fix the issue. Do not guess or apply partial fixes.
@@ -413,12 +414,12 @@ On compile error: read the error, trace the file and line, fix the issue. Do not
 ### 4.2 Running the Server
 
 ```bash
-mono WorldLinux.exe             # from ultima-memento/ root
+mono WorldLinux.exe             # Linux/macOS, from ultima-memento/ root (or `mono World/World.exe` on a mono host)
 ```
 
 The server outputs to stdout/stderr and writes logs under `World/`. Do not commit `World/Saves/` changes — these are runtime state.
 
-**Optional `.env` (secrets):** At startup, `DotEnvLoader` reads `.env` from `Core.BaseDirectory` (the folder containing `WorldLinux.exe`, usually `World/`) and sets process environment variables without overwriting keys already set in the shell. For analytics, set `UO_MEMENTO_ANALYTICS_ACCOUNT_SALT` (see `World/.env.example`). Do not commit `.env` (gitignored).
+**Optional `.env` (secrets):** At startup, `DotEnvLoader` reads `.env` from `Core.BaseDirectory` (the folder containing the runtime binary, usually `World/`) and sets process environment variables without overwriting keys already set in the shell. For analytics, set `UO_MEMENTO_ANALYTICS_ACCOUNT_SALT` (see `World/.env.example`). Do not commit `.env` (gitignored).
 
 ### 4.3 What to Verify After Changes
 
