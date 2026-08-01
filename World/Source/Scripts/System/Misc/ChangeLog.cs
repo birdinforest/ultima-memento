@@ -1173,6 +1173,7 @@ namespace Server.Misc
 					builder.Append(Version());
 					builder.Append("<br>Changes<br>");
 					builder.Append("- Item - The *Home* Bank Vault item is now properly named as such and can only be used when secured in a home<br>");
+					builder.Append("- Item - Training Shovel now shows uses remaining<br>");
 					builder.Append("- Quest - The initial Blacksmith quest no longer rewards Gold<br>");
 
 					builder.Append("<br>Fixes<br>");
