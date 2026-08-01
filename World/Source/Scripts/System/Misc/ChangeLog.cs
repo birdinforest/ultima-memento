@@ -1172,6 +1172,7 @@ namespace Server.Misc
 				default:
 					builder.Append(Version());
 					builder.Append("<br>Changes<br>");
+					builder.Append("- Item - The *Home* Bank Vault item is now properly named as such and can only be used when secured in a home<br>");
 
 					builder.Append("<br>Fixes<br>");
 					break;

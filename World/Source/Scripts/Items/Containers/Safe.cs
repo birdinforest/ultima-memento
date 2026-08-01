@@ -1,37 +1,24 @@
-using System;
-using Server;
-using Server.Network;
-using System.Text;
-using Server.Items;
-using Server.Misc;
-using Server.Mobiles;
-using Server.Regions;
 using System.Collections.Generic;
-using System.Collections;
-using Server.Commands;
-using Server.Prompts;
 using Server.ContextMenus;
 using Server.Gumps;
-using Server.Targeting;
 using Server.Multis;
-using Server.Spells;
 
 namespace Server.Items
 {
 	[Flipable(0x436, 0x437)]
-    public class Safe : Item, ISecurable
+	public class Safe : Item, ISecurable
 	{
-        public SecureLevel m_Level;
-        [CommandProperty(AccessLevel.GameMaster)]
-        public SecureLevel Level { get { return m_Level; } set { m_Level = value; } }
+		public SecureLevel m_Level;
+		[CommandProperty(AccessLevel.GameMaster)]
+		public SecureLevel Level { get { return m_Level; } set { m_Level = value; } }
 
-        [Constructable]
-        public Safe() : base(0x436)
+		[Constructable]
+		public Safe() : base(0x436)
 		{
-            Name = "safe";
+			Name = "safe";
 			Weight = 50.0;
 			m_Level = SecureLevel.Anyone;
-        }
+		}
 
 		public override void OnDoubleClick( Mobile from )
 		{
@@ -75,7 +62,7 @@ namespace Server.Items
 			return (house != null && house.HasSecureAccess(m, m_Level));
 		}
 
-        public Safe( Serial serial ) : base( serial )
+		public Safe( Serial serial ) : base( serial )
 		{
 		}
 
@@ -91,6 +78,6 @@ namespace Server.Items
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
 			m_Level = (SecureLevel)reader.ReadInt();
-	    }
-    }
+		}
+	}
 }
