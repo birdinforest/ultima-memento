@@ -41,7 +41,7 @@ namespace Server.Engines.MLQuests.Definitions
                 Objectives.Add(new DummyObjective("Tips:"));
                 DeliveryQuestUtilities.AddBeginnerTravelTips(this);
 
-                Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
+				Rewards.Add(new DummyReward("Information about Blacksmithing"));
             }
 
             public override IEnumerable<Type> GetQuestGivers()
