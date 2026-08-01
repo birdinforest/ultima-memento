@@ -87,7 +87,7 @@ namespace Server.Items
 				}
 			}
 
-			Console.WriteLine( "[Strange Portal] Failed to find a valid output location on {1}", Land );
+			Console.WriteLine( "[Strange Portal] Failed to find a valid output location on {0}", Land );
 		}
 
 		private static Tuple<Map, Point3D> GetGateLocation( int portal )

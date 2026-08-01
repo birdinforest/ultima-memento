@@ -1175,6 +1175,7 @@ namespace Server.Misc
 					builder.Append("- Item - The *Home* Bank Vault item is now properly named as such and can only be used when secured in a home<br>");
 
 					builder.Append("<br>Fixes<br>");
+					builder.Append("- Misc - Fix crash when overlapping Strange Portals occurred<br>");
 					break;
 			}
 		}
