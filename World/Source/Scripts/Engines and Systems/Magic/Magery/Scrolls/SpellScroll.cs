@@ -64,6 +64,16 @@ namespace Server.Items
 			}
 		}
 
+		public override void OnAfterDuped(Item newItem)
+		{
+			base.OnAfterDuped(newItem);
+
+			if (newItem is SpellScroll)
+			{
+				((SpellScroll)newItem).IsEphemeralSpellScroll = IsEphemeralSpellScroll;
+			}
+		}
+
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );

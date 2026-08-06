@@ -1179,6 +1179,7 @@ namespace Server.Misc
 
 					builder.Append("<br>Fixes<br>");
 					builder.Append("- Misc - Fix crash when overlapping Strange Portals occurred<br>");
+					builder.Append("- Item - Fix issue where spell scrolls lost ephemeral flag after unstacking<br>");
 					break;
 			}
 		}
