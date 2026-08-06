@@ -8382,7 +8382,6 @@ namespace Server.Mobiles
 				{
 					Console.WriteLine( "Warning: OnBeforeDeath player bonus loot failed for {0} (serial {1}): {2}", GetType().Name, Serial, e );
 				}
-			}
 
 				///////////////////////////////////////////////////////////////////////////////////////
 				
@@ -8425,13 +8424,65 @@ namespace Server.Mobiles
 					GenerateLoot( false );
 					if ( Backpack != null )
 					{
-						LootPackChange.MakeCoins(this.Backpack, this);
 						var lootingRights = GetLootingRights( this.DamageEntries, this.HitsMax );
 						var mobiles = lootingRights.Select(store => store.m_Mobile);
 						NotIdentified.DoAutoDelete( Backpack, mobiles );
 					}
 				}
 
+				///////////////////////////////////////////////////////////////////////////////////////
+
+				// DEATH KNIGHT HOLDING SOUL LANTERNS
+				// TURNS THE MONEY TO SOUL COUNT
+				if ( SlayerGroup.Slays( SlayerName.Repond, this ) && this.TotalGold > 0 )
+				{
+					SoulLantern souls = player.FindItemOnLayer( Layer.TwoHanded ) as SoulLantern;
+					if ( souls != null )
+					{
+						souls.TrappedSouls += this.TotalGold * 2;
+						if ( souls.TrappedSouls > 100000 ){ souls.TrappedSouls = 100000; }
+						souls.InvalidateProperties();
+
+						// Don't create a backpack
+						if ( this.Backpack != null )
+						{
+							Item dtcoins = this.Backpack.FindItemByType( typeof( Gold ) );
+							dtcoins.Delete();
+							player.SendMessage( "A soul has been claimed." );
+							Effects.SendLocationParticles( EffectItem.Create( player.Location, player.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 5008 );
+							Effects.PlaySound( player.Location, player.Map, 0x1ED );
+						}
+					}
+				}
+
+				///////////////////////////////////////////////////////////////////////////////////////
+
+				// HOLY MANY HOLDING HOLY SYMBOL
+				// TURNS THE MONEY TO BANISH COUNT
+				if ( ( SlayerGroup.Slays( SlayerName.Silver, this ) || SlayerGroup.Slays( SlayerName.Exorcism, this ) ) && this.TotalGold > 0 )
+				{
+					HolySymbol banish = player.FindItemOnLayer( Layer.Trinket ) as HolySymbol;
+					if ( banish != null )
+					{
+						banish.BanishedEvil = banish.BanishedEvil + (this.TotalGold * 2);
+						if ( banish.BanishedEvil > 100000 ){ banish.BanishedEvil = 100000; }
+						banish.InvalidateProperties();
+
+						Item deathpack = this.FindItemOnLayer( Layer.Backpack );
+						if ( deathpack != null )
+						{
+							Item dtcoins = this.Backpack.FindItemByType( typeof( Gold ) );
+							dtcoins.Delete();
+							player.SendMessage( "Evil has been banished." );
+							player.FixedParticles( 0x373A, 10, 15, 5018, EffectLayer.Waist );
+							player.PlaySound( 0x1EA );
+						}
+					}
+				}
+
+				// Make last so that DK and Holyman currency is checked first
+				LootPackChange.MakeCoins(this.Backpack, this);
+			}
 
 			if ( IsAnimatedDead )
 				Effects.SendLocationEffect( Location, Map, 0x3728, 13, 1, 0x461, 4 );

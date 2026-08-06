@@ -102,11 +102,7 @@ namespace Server.Mobiles
 				AddPage(0);
 				AddImage(20, 16, 1243);
 				AddButton(202, 247, 2020, 2020, 1, GumpButtonType.Reply, 0);
-<<<<<<< HEAD
-				AddHtml( 62, 288, 178, 27, @StringCatalog.ResolveByKey(from.Account, "mob.other.body_basefont_color_111111_big_center_sherry_the_mouse"), (bool)false, (bool)false);
-=======
-				AddHtml( 62, 288, 178, 27, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>Sherry the Mouse</CENTER></BIG></BASEFONT></BODY>", (bool)false, (bool)false, false);
->>>>>>> 6e6bd3d3 (- Fix issue where black text on gumps was unreadable)
+				AddHtml( 62, 288, 178, 27, @StringCatalog.ResolveByKey(from.Account, "mob.other.body_basefont_color_111111_big_center_sherry_the_mouse"), (bool)false, (bool)false, false);
 			}
 
 			public override void OnResponse( NetState state, RelayInfo info )
