@@ -13,6 +13,7 @@ namespace Server.Items
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Scroll; } }
 
 		private bool m_IsEphemeralSpellScroll;
+		[CommandProperty(AccessLevel.GameMaster)]
 		public bool IsEphemeralSpellScroll
 		{
 			get { return m_IsEphemeralSpellScroll && !MySettings.S_UseLegacyInscription; }
