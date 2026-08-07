@@ -66,7 +66,7 @@ namespace Server.Engines.MLQuests.Gumps
 		protected virtual int FooterButtonY { get { return 425; } }
 
 		// RunUO optimized version
-		public BaseQuestGump( int label, PlayerMobile viewer = null )
+		public BaseQuestGump( bool showBackgroundImage, int label, PlayerMobile viewer = null )
 			: base( 75, 25 )
 		{
 			QuestViewer = viewer;
@@ -78,7 +78,7 @@ namespace Server.Engines.MLQuests.Gumps
 
 			AddPage( 0 );
 			
-			AddImage( 50, 20, 0x1452 );
+			AddImage( 50, 20, 0x1452, showBackgroundImage ? 0 : Misc.PlayerSettings.BLACK_GUMP_HUE );
 			AddImage( 90, 33, 0x232D ); // Medallion top left
 			AddHtmlLocalized( 130, 45, 270, 16, label, 0xFFFFFF, false, false );
 			AddImageTiled( 130, 65, 175, 1, 0x238D ); // Tiny Underline

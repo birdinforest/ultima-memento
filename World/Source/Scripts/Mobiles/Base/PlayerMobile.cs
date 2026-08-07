@@ -3467,7 +3467,7 @@ namespace Server.Mobiles
 					if (version < 49) Preferences.ClassicPoisoning = reader.ReadInt() == 1;
 					if (version < 50) Preferences.CharacterEvil = reader.ReadInt() == 1;
 					if (version < 50) Preferences.CharacterOriental = reader.ReadInt() == 1;
-					if (version < 50) Preferences.GumpHue = reader.ReadInt();
+					if (version < 50) Preferences.ShowGumpImages = reader.ReadInt() == 1;
 					if (version < 49) Preferences.WeaponBarOpen = reader.ReadInt() == 1;
 					if (version < 50) Quests.EpicQuestNumber = reader.ReadInt();
 

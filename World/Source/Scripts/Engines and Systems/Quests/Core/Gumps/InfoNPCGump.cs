@@ -5,7 +5,7 @@ namespace Server.Engines.MLQuests.Gumps
 	public class InfoNPCGump : BaseQuestGump
 	{
 		public InfoNPCGump(TextDefinition title, TextDefinition message, PlayerMobile viewer = null)
-			: base(1060668, viewer) // INFORMATION
+			: base(false, 1060668, viewer) // INFORMATION
 		{
 			RegisterButton(ButtonPosition.Left, ButtonGraphic.Close, 3);
 

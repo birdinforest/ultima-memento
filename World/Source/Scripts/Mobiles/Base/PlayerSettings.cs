@@ -9,6 +9,8 @@ namespace Server.Misc
 {
     class PlayerSettings
     {
+		public const int BLACK_GUMP_HUE = 2999;
+
 		public static int GetMySpellHue( bool mod, Mobile m, int hue ) // ----------------------------------------------------------------------------------------
 		{
 			if ( m is PlayerMobile )
@@ -274,10 +276,10 @@ namespace Server.Misc
 			{
 				PlayerSettings.MarkQuestInfo( m );
 
-				if ( ((PlayerMobile)m).Preferences.GumpHue > 0 ){ return 0; }
+				if ( ((PlayerMobile)m).Preferences.ShowGumpImages ){ return 0; }
 			}
 
-			return 2999;
+			return BLACK_GUMP_HUE;
 		}
 
 		public static bool AutoOpenWepBar( Mobile m ) // ---------------------------------------------------------------------------------------------

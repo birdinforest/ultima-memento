@@ -635,7 +635,7 @@ namespace Scripts.Mythik.Systems.Achievements
 			var achieves = GetOrCreateFeatData(player);
 			var total = GetPlayerPointsTotal(player);
 
-			from.SendGump(new AchievementGump(achieves, total));
+			from.SendGump(new AchievementGump(player.Preferences.ShowGumpImages, achieves, total));
 		}
 
 		public static void OpenOtherGump(Mobile from, PlayerMobile target)
@@ -654,7 +654,7 @@ namespace Scripts.Mythik.Systems.Achievements
 
 			var total = GetPlayerPointsTotal(target);
 
-			from.SendGump(new AchievementGump(targetAchieves, total, 1, -1, fromAchieves, target.Name));
+			from.SendGump(new AchievementGump(fromPlayer.Preferences.ShowGumpImages, targetAchieves, total, 1, -1, fromAchieves, target.Name));
 		}
 
 		[Usage("achievements"), Aliases("achievement", "feats")]

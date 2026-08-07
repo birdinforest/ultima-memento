@@ -1062,7 +1062,7 @@ namespace Server.Engines.Help
 				case PageActionType.Setting_AutoSheath: return from.Preferences.CharacterSheath;
 				case PageActionType.Setting_ClassicPoisoning: return from.Preferences.ClassicPoisoning;
 				case PageActionType.Setting_CreatureSounds: return from.RaceMakeSounds;
-				case PageActionType.Setting_GumpImages: return from.Preferences.GumpHue > 0;
+				case PageActionType.Setting_GumpImages: return from.Preferences.ShowGumpImages;
 				case PageActionType.Setting_MessageColors: return from.RainbowMsg;
 				case PageActionType.Setting_MusicTone: return from.Preferences.CharMusical == "Forest";
 				case PageActionType.Setting_PrivatePlay: return !from.PublicInfo;
@@ -1412,16 +1412,7 @@ namespace Server.Engines.Help
 				case PageActionType.Setting_GumpImages:
 				{
 					reopenPage = true;
-					int gump = ((PlayerMobile)from).Preferences.GumpHue;
-
-					if ( gump > 0 )
-					{
-						((PlayerMobile)from).Preferences.GumpHue = 0;
-					}
-					else
-					{
-						((PlayerMobile)from).Preferences.GumpHue = 1;
-					}
+					from.Preferences.ShowGumpImages = !from.Preferences.ShowGumpImages;
 					break;
 				}
 				case PageActionType.Setting_WeaponAbilityBar:

@@ -23,23 +23,26 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
         private readonly Dictionary<int, AchieveData> m_viewerAchieves;
         private readonly string m_targetName;
         private readonly bool m_isOtherView;
+		private readonly bool m_showBackgroundImage;
 
-        public AchievementGump(Dictionary<int, AchieveData> achieves, int total, int pageNumber = 1, int selectedCategoryId = -1, Dictionary<int, AchieveData> viewerAchieves = null, string targetName = null) : base(25, 25)
+        public AchievementGump(bool showBackgroundImage, Dictionary<int, AchieveData> achieves, int total, int pageNumber = 1, int selectedCategoryId = -1, Dictionary<int, AchieveData> viewerAchieves = null, string targetName = null) : base(25, 25)
         {
+            Closable = true;
+            Disposable = true;
+            Dragable = true;
+            Resizable = false;
+
             m_curAchieves = achieves;
             m_curTotal = total;
             m_Category = selectedCategoryId;
             m_viewerAchieves = viewerAchieves;
             m_targetName = targetName;
             m_isOtherView = viewerAchieves != null;
-            Closable = true;
-            Disposable = true;
-            Dragable = true;
-            Resizable = false;
+			m_showBackgroundImage = showBackgroundImage;
 
             AddPage(0);
             AddBackground(0, 0, 1053, 605, 3600); // Border
-            AddImage(15, 14, 13000); // UO background
+            AddImage(15, 14, 13000, showBackgroundImage ? 0 : Server.Misc.PlayerSettings.BLACK_GUMP_HUE); // UO background
             AddImage(419, 23, 13001); // Achievements
             
             if (m_isOtherView)
@@ -219,19 +222,19 @@ namespace Scripts.Mythik.Systems.Achievements.Gumps
                     return;
 
                 case 1: // All Categories
-                    sender.Mobile.SendGump(new AchievementGump(m_curAchieves, m_curTotal, 1, -1, m_viewerAchieves, m_targetName));
+                    sender.Mobile.SendGump(new AchievementGump(m_showBackgroundImage, m_curAchieves, m_curTotal, 1, -1, m_viewerAchieves, m_targetName));
                     break;
 
                 default:
                     if (CATEGORY_BUTTON_OFFSET <= info.ButtonID)
                     {
                         var category = info.ButtonID - CATEGORY_BUTTON_OFFSET;
-                        sender.Mobile.SendGump(new AchievementGump(m_curAchieves, m_curTotal, 1, category, m_viewerAchieves, m_targetName));
+                        sender.Mobile.SendGump(new AchievementGump(m_showBackgroundImage, m_curAchieves, m_curTotal, 1, category, m_viewerAchieves, m_targetName));
                     }
                     else if (PAGE_BUTTON_OFFSET <= info.ButtonID)
                     {
                         var pageNumber = info.ButtonID - PAGE_BUTTON_OFFSET;
-                        sender.Mobile.SendGump(new AchievementGump(m_curAchieves, m_curTotal, pageNumber, m_Category, m_viewerAchieves, m_targetName));
+                        sender.Mobile.SendGump(new AchievementGump(m_showBackgroundImage, m_curAchieves, m_curTotal, pageNumber, m_Category, m_viewerAchieves, m_targetName));
                     }
 
                     break;

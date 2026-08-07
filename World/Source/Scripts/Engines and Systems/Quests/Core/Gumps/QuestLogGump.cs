@@ -53,7 +53,7 @@ namespace Server.Engines.MLQuests.Gumps
 		}
 
 		public QuestLogGump(PlayerMobile pm, bool closeGumps, int scrollOffset)
-			: base(1046026, pm) // Quest Log
+			: base(pm.Preferences.ShowGumpImages, 1046026, pm) // Quest Log
 		{
 			m_Owner = pm;
 			m_CloseGumps = closeGumps;

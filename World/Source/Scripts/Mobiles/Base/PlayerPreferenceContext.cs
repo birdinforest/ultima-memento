@@ -45,7 +45,7 @@ namespace Server.Mobiles
 				CharacterEvil = reader.ReadBool();
 				CharacterLoot = reader.ReadString();
 				CharacterOriental = reader.ReadBool();
-				GumpHue = reader.ReadInt();
+				ShowGumpImages = version < 8 ? reader.ReadInt() == 1 : reader.ReadBool();
 				MagerySpellHue = reader.ReadInt();
 				MessageOfTheDay = reader.ReadBool();
 				MusicPlaylist = reader.ReadString();
@@ -141,7 +141,7 @@ namespace Server.Mobiles
 		public bool DoubleClickToTalk { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public int GumpHue { get; set; }
+		public bool ShowGumpImages { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool IgnoreVendorGoldSafeguard { get; set; }
@@ -228,7 +228,7 @@ namespace Server.Mobiles
 			writer.Write(CharacterEvil);
 			writer.Write(CharacterLoot);
 			writer.Write(CharacterOriental);
-			writer.Write(GumpHue);
+			writer.Write(ShowGumpImages);
 			writer.Write(MagerySpellHue);
 			writer.Write(MessageOfTheDay);
 			writer.Write(MusicPlaylist);
