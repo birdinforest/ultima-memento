@@ -16,6 +16,7 @@ namespace Server.Misc
 			builder.Append(Version() + "<br>");
 
 			builder.Append("Changes<br>");
+			builder.Append("- Trap - Remove Trap avoidance on fire column traps no longer drops salvage gold (skill checks unchanged; other trap types still drop salvage)<br>");
 			builder.Append("- Housekeeping - The following spells had a minor change that should not impact anything:<br>");
 			builder.Append("               - Elemental Blast/Storm, Mindblast, Explosion, Psionic Blast, Hail Storm<br>");
 			builder.Append("- Mobs - Can now teleport in more places (Boats, Dungeon Time, etc)<br>");

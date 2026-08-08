@@ -1411,12 +1411,19 @@ namespace Server.Items
 					m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, textSay);
 					m.PlaySound( 0x241 );
 
-					// Skilled disarm yields salvageable components — positive reinforcement for trap expertise
-					// Reward scales with Remove Trap skill (5–25 gold equivalent at skill 25–125)
-					int salvageValue = Utility.RandomMinMax( 5, Math.Max( 5, (int)( m.Skills.RemoveTrap.Value / 5 ) ) );
-					Gold salvage = new Gold( salvageValue );
-					salvage.MoveToWorld( Trap.Location, Trap.Map );
-					m.SendMessage( StringCatalog.ResolveByKey( m.Account, "trap.scavenge" ) );
+					// Fire columns are common dungeon fixtures; 
+					// User can remove trap in 3 tiles range but don't trigger trap, 
+					// which means user can farm salvage gold by script.
+					// Skill checks still apply — only the coin drop is omitted for this trap type.
+					if ( !( Trap is FireColumnTrap ) )
+					{
+						// Skilled disarm yields salvageable components — positive reinforcement for trap expertise
+						// Reward scales with Remove Trap skill (5–25 gold equivalent at skill 25–125)
+						int salvageValue = Utility.RandomMinMax( 5, Math.Max( 5, (int)( m.Skills.RemoveTrap.Value / 5 ) ) );
+						Gold salvage = new Gold( salvageValue );
+						salvage.MoveToWorld( Trap.Location, Trap.Map );
+						m.SendMessage( StringCatalog.ResolveByKey( m.Account, "trap.scavenge" ) );
+					}
 				}
 
 				return false;
