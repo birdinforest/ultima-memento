@@ -3812,6 +3812,38 @@ namespace Server.Misc
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+		private static bool SlayerSlays( SlayerEntry entry, Mobile m )
+		{
+			return entry != null && entry.Slays( m );
+		}
+
+		private static bool CreatureTypeNameContains( Mobile m, string fragment )
+		{
+			if ( m == null )
+				return false;
+
+			return m.GetType().Name.IndexOf( fragment, StringComparison.OrdinalIgnoreCase ) >= 0;
+		}
+
+		private static bool CreatureNameContains( Mobile m, params string[] fragments )
+		{
+			if ( m == null || fragments == null || fragments.Length == 0 )
+				return false;
+
+			string name = m.Name;
+
+			if ( String.IsNullOrEmpty( name ) )
+				return false;
+
+			for ( int i = 0; i < fragments.Length; i++ )
+			{
+				if ( name.IndexOf( fragments[i], StringComparison.OrdinalIgnoreCase ) >= 0 )
+					return true;
+			}
+
+			return false;
+		}
+
 		public static void DropReagent( Mobile player, BaseCreature monster )
 		{
 			if ( player == null )
@@ -3824,7 +3856,6 @@ namespace Server.Misc
 			SlayerEntry exorcism = SlayerGroup.GetEntryByName( SlayerName.Exorcism );
 			SlayerEntry plants = SlayerGroup.GetEntryByName( SlayerName.WeedRuin );
 			SlayerEntry gargoyle = SlayerGroup.GetEntryByName( SlayerName.GargoylesFoe );
-			SlayerEntry poisoner = SlayerGroup.GetEntryByName( SlayerName.ElementalHealth );
 			SlayerEntry rocks = SlayerGroup.GetEntryByName( SlayerName.EarthShatter );
 			SlayerEntry flame = SlayerGroup.GetEntryByName( SlayerName.FlameDousing );
 			SlayerEntry water = SlayerGroup.GetEntryByName( SlayerName.NeptunesBane );
@@ -3833,11 +3864,11 @@ namespace Server.Misc
 
 			int amount = Utility.RandomMinMax( DropThisMuch, ( DropThisMuch * 3 ) );
 
-			if ( undead.Slays(monster) )
+			if ( SlayerSlays( undead, monster ) )
 			{
 				monster.PackItem( new GraveDust( amount ) );
 			}
-			if ( gargoyle.Slays(monster) )
+			if ( SlayerSlays( gargoyle, monster ) )
 			{
 				monster.PackItem( new GargoyleEar( Utility.RandomMinMax( 1, 2 ) ) );
 			}
@@ -3845,11 +3876,11 @@ namespace Server.Misc
 			{
 				monster.PackItem( new NoxCrystal( amount ) );
 			}
-			if ( rocks.Slays(monster) )
+			if ( SlayerSlays( rocks, monster ) )
 			{
 				monster.PackItem( new PigIron( amount ) );
 			}
-			if ( flame.Slays(monster) )
+			if ( SlayerSlays( flame, monster ) )
 			{
 				switch ( Utility.RandomMinMax(0,1) ) 
 				{
@@ -3857,19 +3888,19 @@ namespace Server.Misc
 					case 1: monster.PackItem( new SulfurousAsh( amount ) ); break;
 				}
 			}
-			if ( water.Slays(monster) )
+			if ( SlayerSlays( water, monster ) )
 			{
 				monster.PackItem( new SeaSalt( amount ) );
 			}
-			if ( (monster.Name).Contains("beetle") )
+			if ( CreatureTypeNameContains( monster, "Beetle" ) )
 			{
 				monster.PackItem( new BeetleShell( 1 ) );
 			}
-			if ( (monster.Name).Contains("werewolf") || (monster.Name).Contains("wolf man") )
+			if ( monster is WereWolf || monster is WolfMan || CreatureNameContains( monster, "werewolf", "wolf man" ) )
 			{
 				monster.PackItem( new WerewolfClaw( Utility.RandomMinMax(1,2) ) );
 			}
-			if ( (monster.Name).Contains("frog") || (monster.Name).Contains("toad") )
+			if ( CreatureTypeNameContains( monster, "Frog" ) || CreatureTypeNameContains( monster, "Toad" ) )
 			{
 				switch ( Utility.RandomMinMax( 0, 1 ) ) 
 				{
@@ -3886,19 +3917,19 @@ namespace Server.Misc
 					case 2: monster.PackItem( new ButterflyWings( Utility.RandomMinMax( 1, 2 ) ) ); break;
 				}
 			}
-			if ( (monster.Name).Contains("spider") )
+			if ( CreatureTypeNameContains( monster, "Spider" ) )
 			{
 				monster.PackItem( new SilverWidow( 1 ) );
 			}
-			if ( rocks.Slays(monster) )
+			if ( SlayerSlays( rocks, monster ) )
 			{
 				monster.PackItem( new PigIron( amount ) );
 			}
-			if ( monster is BloodElemental || exorcism.Slays(monster) )
+			if ( monster is BloodElemental || SlayerSlays( exorcism, monster ) )
 			{
 				monster.PackItem( new DaemonBlood( amount ) );
 			}
-			if ( plants.Slays(monster) )
+			if ( SlayerSlays( plants, monster ) )
 			{
 				int pick = Utility.RandomMinMax( 0, 9 );
 				switch ( pick ) 
