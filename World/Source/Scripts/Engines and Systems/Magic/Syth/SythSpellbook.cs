@@ -290,11 +290,7 @@ namespace Server.Items
 			{
 				Mobile from = state.Mobile; 
 				Server.Spells.Syth.SythSpell.CastSpell( from, info.ButtonID );
-				from.CloseGump( typeof( PowerRow ) );
-				if ( Server.Misc.GetPlayerInfo.isSyth ( from, true ) )
-				{
-					from.SendGump( new PowerRow( from, mBook ) );
-				}
+				from.SendGump( new PowerRow( from, mBook ) );
 			}
 		}
 
@@ -392,11 +388,7 @@ namespace Server.Items
 			{
 				Mobile from = state.Mobile; 
 				Server.Spells.Syth.SythSpell.CastSpell( from, info.ButtonID );
-				from.CloseGump( typeof( PowerColumn ) );
-				if ( Server.Misc.GetPlayerInfo.isSyth ( from, true ) )
-				{
-					from.SendGump( new PowerColumn( from, mBook ) );
-				}
+				from.SendGump( new PowerColumn( from, mBook ) );
 			}
 		}
 

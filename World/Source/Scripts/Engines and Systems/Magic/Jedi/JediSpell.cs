@@ -410,8 +410,14 @@ namespace Server.Spells.Jedi
 			return ( book != null && book.HasSpell( spellID ) );
 		}
 
-		public static void CastSpell( Mobile from, int spell ) //////////////////////////////////////////////////////////////////////////////////////
+		public static void CastSpell( Mobile from, int spell, bool validate = true ) //////////////////////////////////////////////////////////////////////////////////////
 		{
+			if ( validate && !Server.Misc.GetPlayerInfo.isJedi( from, true ) )
+			{
+				from.SendMessage( "Your Jedi Powers Are Not Strong Enough!" );
+				return;
+			}
+
 			if ( HasSpell( from, spell ) )
 			{
 				if ( spell == 280 ){ InvokeCommand( "ForceGrip", from ); }

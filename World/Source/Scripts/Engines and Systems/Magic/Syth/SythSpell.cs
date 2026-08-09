@@ -417,8 +417,14 @@ namespace Server.Spells.Syth
 			return ( book != null && book.HasSpell( spellID ) );
 		}
 
-		public static void CastSpell( Mobile from, int spell ) //////////////////////////////////////////////////////////////////////////////////////
+		public static void CastSpell( Mobile from, int spell, bool validate = true ) //////////////////////////////////////////////////////////////////////////////////////
 		{
+			if ( validate && !Server.Misc.GetPlayerInfo.isSyth( from, true ) )
+			{
+				from.SendMessage( "Your Syth Powers Are Not Strong Enough!" );
+				return;
+			}
+
 			if ( HasSpell( from, spell ) )
 			{
 				if ( spell == 270 ){ InvokeCommand( "Psychokinesis", from ); }
