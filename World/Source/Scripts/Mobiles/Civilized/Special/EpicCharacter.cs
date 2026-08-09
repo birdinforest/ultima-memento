@@ -200,6 +200,24 @@ namespace Server.Mobiles
 			return HasItem;
 		}
 
+		public static bool HasDecoySymbol( Mobile m )
+		{
+			string item = ((PlayerMobile)m).Quests.EpicQuestName;
+
+			if ( m == null || m.Backpack == null || string.IsNullOrEmpty( item ) || item == "NEW" )
+				return false;
+
+			List<Item> list = new List<Item>();
+			(m.Backpack).RecurseItems( list );
+			foreach ( Item i in list )
+			{
+				if ( i is SummonItems && i.Name == item && !((SummonItems)i).EpicChallengeSource )
+					return true;
+			}
+
+			return false;
+		}
+
 		// Item and dungeon names here are the same 59 fixed strings shared with SummonCarriers.cs /
 		// SummonPrison.cs (Magical Prison) -- both already have curated hash-key translations in
 		// scripts-quests.json (item names, e.g. "braclet of war" -> "战争手镯") and
@@ -271,10 +289,13 @@ namespace Server.Mobiles
 		private static void SendMissingSymbolMessage( Mobile to, Mobile giver, string merit )
 		{
 			string rawItem = GetSpecialItemRequirement( to );
+			string key = HasDecoySymbol( to )
+				? "mob.fmt.0_symbol_wrong_source_1_2_3"
+				: "mob.fmt.0_will_need_a_symbol_of_your_1_2";
 
 			to.SendMessage( StringCatalog.ResolveFormatByKey(
 				to.Account,
-				"mob.fmt.0_will_need_a_symbol_of_your_1_2",
+				key,
 				FormatGiverName( to, giver.Name ),
 				FormatMerit( to, merit ),
 				FormatSymbolItemName( to, rawItem ),
