@@ -15,6 +15,43 @@ namespace Server.Misc
     {
 		// THERE SHOULD ONLY BE ONE SUCH CREATURE IN EACH DUNGEON AND THEY SHOULD BE UNIQUE SOMEHOW SO ADVENTURERS CAN FIND THEM
 
+		// SummonCarriers.cs branches that assign Heat = N (not regional default). Used by Epic
+		// Tribute SetDifficultyForMonster skill parity -- keep in sync when adding Heat overrides.
+		private static readonly Dictionary<string, int> CarrierHeatOverrides = new Dictionary<string, int>()
+		{
+			{ "vampire teeth", 4 },
+			{ "wand of Talosh", 4 },
+			{ "head of Urg", 6 },
+			{ "crown of Vorgol", 4 },
+			{ "claw of Saramon", 4 },
+			{ "horn of the frozen hells", 4 },
+			{ "elemental salt", 4 },
+			{ "eye of plagues", 4 },
+			{ "braclet of war", 3 },
+			{ "stump of the ancients", 4 },
+			{ "heart of a vampire queen", 3 },
+			{ "hourglass of ages", 2 },
+			{ "mouth of embers", 4 },
+			{ "immortal bones", 4 },
+			{ "mask of the ghost", 4 },
+			{ "branch of the reaper", 4 },
+			{ "sphere of the dark circle", 4 },
+			{ "urn of Ulmarek's ashes", 0 },
+		};
+
+		public static int ResolveCarrierBeefUpHeat( string summonItemName, Point3D carrierHome, Point3D spawnLoc, Map map )
+		{
+			int heat;
+
+			if ( !string.IsNullOrEmpty( summonItemName ) && CarrierHeatOverrides.TryGetValue( summonItemName, out heat ) )
+				return heat;
+
+			if ( carrierHome.X != 0 || carrierHome.Y != 0 )
+				return Difficult.GetDifficulty( carrierHome, map );
+
+			return Difficult.GetDifficulty( spawnLoc, map );
+		}
+
 		public static int SummonCarriers( Mobile m, BaseCreature b, int Heat )
 		{
 			Region reg = Region.Find( m.Location, m.Map );
