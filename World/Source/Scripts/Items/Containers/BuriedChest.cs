@@ -28,8 +28,7 @@ namespace Server.Items
 			int xTraCash = Utility.RandomMinMax( (level*300), (level*500) );
 			LootPackChange.AddGoldToContainer( xTraCash, this, digger, level );
 
-			int artychance = GetPlayerInfo.LuckyPlayerArtifacts( digger.Luck ) + (level * 10);
-			if ( Utility.Random( 100 ) < artychance )
+			if ( GetPlayerInfo.LuckyPlayerArtifacts( digger.Luck,  level * 10) )
 			{
 				Item arty = Loot.RandomArty();
 				DropItem( arty );

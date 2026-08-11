@@ -106,8 +106,7 @@ namespace Server.Items
 			}
             
 			// = ARTIFACTS
-			int artychance = GetPlayerInfo.LuckyPlayerArtifacts( owner.Luck ) + (originalLevel * 10);
-			if ( Utility.Random( 100 ) < artychance )
+			if ( GetPlayerInfo.LuckyPlayerArtifacts( owner.Luck, originalLevel * 10) )
 			{
 				Item arty = Loot.RandomArty();
 				DropItem( arty );

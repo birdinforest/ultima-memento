@@ -530,10 +530,10 @@ namespace Server.Misc
 			return sDateString;
 		}
 
-		public static bool CheckLuck( int luck, int freeChanceBonus = 0, int percentOfLuckToUse = 100 )
+		public static int GetLuckPercent( int luck, int percentOfLuckToUse = 100 )
 		{
-			if ( luck <= 0 )
-				return false;
+			if ( luck < 1 )
+				return 0;
 
 			const int MAX_LUCK = 2000;
 			const double LUCK_TO_PERCENT_CONVERSION = 100f / MAX_LUCK;
@@ -541,7 +541,15 @@ namespace Server.Misc
 			luck = Math.Min( MAX_LUCK, luck ); // Cap luck
 			if ( percentOfLuckToUse < 100 ) luck = luck * percentOfLuckToUse / 100; // Reduce luck
 
-			int playerChance = freeChanceBonus + (int)( luck * LUCK_TO_PERCENT_CONVERSION );
+			return (int)( luck * LUCK_TO_PERCENT_CONVERSION );
+		}
+
+		public static bool CheckLuck( int luck, int freeChanceBonus = 0, int percentOfLuckToUse = 100 )
+		{
+			if ( luck < 1 )
+				return false;
+
+			int playerChance = freeChanceBonus + GetLuckPercent( luck, percentOfLuckToUse );
 
 			return Utility.RandomMinMax( 1, 100 ) <= playerChance;
 		}
@@ -553,6 +561,15 @@ namespace Server.Misc
 		public static bool LuckyPlayer( int luck, int freePercentBonus = 0 )
 		{
 			return CheckLuck( luck, freePercentBonus, 80 );
+		}
+		
+		/// <summary>
+		/// Returns true up to 10% of the time
+		/// </summary>
+		/// <param name="luck">Only 10% of the provided Luck is used.</param>
+		public static bool LuckyPlayerArtifacts( int luck, int freePercentBonus = 0 )
+		{
+			return CheckLuck( luck, freePercentBonus, 10 );
 		}
 
 		/// <summary>
@@ -739,16 +756,6 @@ namespace Server.Misc
 					wanted = true;
 			}
 			return wanted;
-		}
-
-		public static int LuckyPlayerArtifacts( int luck )
-		{
-			if ( luck > 2000 )
-				luck = 2000;
-
-			int clover = (int)(luck * 0.005); // RETURNS A MAX OF 10
-
-			return clover;
 		}
 
 		public static bool OrientalPlay( Mobile m )

@@ -403,8 +403,7 @@ namespace Server.Items
 					MyChest.Name = "mystical chest from " + Server.Misc.Worlds.GetRegionName( from.Map, from.Location );
 					int xTraCash = Utility.RandomMinMax( 5000, 8000 );
 					LootPackChange.AddGoldToContainer( xTraCash, MyChest, from, 6 );
-					int artychance = GetPlayerInfo.LuckyPlayerArtifacts( from.Luck ) + 10;
-					if ( Utility.RandomMinMax( 0, 100 ) < artychance )
+					if ( GetPlayerInfo.LuckyPlayerArtifacts( from.Luck, 10 ) )
 					{
 						Item arty = Loot.RandomArty();
 						MyChest.DropItem( arty );

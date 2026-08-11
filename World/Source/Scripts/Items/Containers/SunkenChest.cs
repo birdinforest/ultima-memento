@@ -77,8 +77,7 @@ namespace Server.Items
 				ColorHue3 = "a8e0f7";
 
 				// = ARTIFACTS
-				int artychance = GetPlayerInfo.LuckyPlayerArtifacts( digger.Luck ) + 10;
-				if ( Utility.Random( 100 ) < ( ( level * 10 ) + artychance ) )
+				if ( GetPlayerInfo.LuckyPlayerArtifacts( digger.Luck, 10 + ( level * 10) ) )
 				{
 					Item arty = Loot.RandomArty();
 					DropItem( arty );
