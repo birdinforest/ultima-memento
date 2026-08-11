@@ -17,6 +17,12 @@ namespace Server.Engines.Avatar
 
 		public static List<IReward> CreateRewards(PlayerMobile m_From, Categories selectedCategory, PlayerContext context)
 		{
+			const int ITEM_ID_JESTER = 0x1E3F; // Bag of Tricks
+			const int ITEM_ID_MYSTIC = 0x6725; // Monk's Tome
+			const int ITEM_ID_SHINOB = 0x5C15; // Shinobi Scroll
+			const int ITEM_ID_DEATH_KNIGHT = 0x6721; // Death Knight book
+			const int ITEM_ID_HOLY_MAN = 0x672B; // Holy Man book
+
 			switch (selectedCategory)
 			{
 				default:
@@ -236,6 +242,63 @@ namespace Server.Engines.Avatar
 								}
 							),
 
+							// Custom Templates
+							ActionReward.Create(
+								context.UnlockTemplateJester,
+								50 * ONE_THOUSAND_GOLD,
+								ITEM_ID_JESTER,
+								"The Jester",
+								"Unlock the ability to select the Jester template.",
+								() => context.UnlockTemplateJester = true
+							).WithPrereq(
+								context.CanUnlockTemplateJester,
+								"Requires Begging and Psychology to be at least 100."
+							),
+							ActionReward.Create(
+								context.UnlockTemplateMystic,
+								50 * ONE_THOUSAND_GOLD,
+								ITEM_ID_MYSTIC,
+								"The Mystic",
+								"Unlock the ability to select the Mystic template.",
+								() => context.UnlockTemplateMystic = true
+							).WithPrereq(
+								context.CanUnlockTemplateMystic,
+								"Requires Focus and Meditation to be at least 100."
+							),
+							ActionReward.Create(
+								context.UnlockTemplateShinobi,
+								50 * ONE_THOUSAND_GOLD,
+								ITEM_ID_SHINOB,
+								"The Shinobi",
+								"Unlock the ability to select the Shinobi template.",
+								() => context.UnlockTemplateShinobi = true
+							).WithPrereq(
+								context.CanUnlockTemplateShinobi,
+								"Requires Ninjitsu to be at least 100."
+							),
+							ActionReward.Create(
+								context.UnlockTemplateDeathKnight,
+								50 * ONE_THOUSAND_GOLD,
+								ITEM_ID_DEATH_KNIGHT,
+								"The Death Knight",
+								"Unlock the ability to select the Death Knight template.",
+								() => context.UnlockTemplateDeathKnight = true
+							).WithPrereq(
+								context.CanUnlockTemplateDeathKnight,
+								"Requires Knightship to be at least 100."
+							),
+							ActionReward.Create(
+								context.UnlockTemplateHolyMan,
+								50 * ONE_THOUSAND_GOLD,
+								ITEM_ID_HOLY_MAN,
+								"The Holy Man",
+								"Unlock the ability to select the Holy Man template.",
+								() => context.UnlockTemplateHolyMan = true
+							).WithPrereq(
+								context.CanUnlockTemplateHolyMan,
+								"Requires Healing and Spiritualism to be at least 100."
+							),
+
 							// Limits
 							ActionReward.Create(
 								Constants.RECORDED_SKILL_CAP_MAX_LEVEL <= context.RecordedSkillCapLevel,
@@ -394,6 +457,111 @@ namespace Server.Engines.Avatar
 								}
 							),
 						};
+
+						if (context.UnlockTemplateJester)
+						{
+							rewards.Add(ActionReward.Create(
+								AvatarShopGump.COST_FREE,
+								ITEM_ID_JESTER,
+								"The Jester",
+								"Start with a Bag of Tricks and the skills of a Jester.",
+								() =>
+								{
+									applyTemplate(
+										player =>
+										{
+											m_From.InitStats(20, 20, 20);
+											context.SelectedTemplate = AvatarStarterTemplates.Jester;
+											return false;
+										}
+									);
+								}
+							));
+						}
+
+						if (context.UnlockTemplateMystic)
+						{
+							rewards.Add(ActionReward.Create(
+								AvatarShopGump.COST_FREE,
+								ITEM_ID_MYSTIC,
+								"The Mystic",
+								"Start with a Monk's Tome and the skills of a Mystic.",
+								() =>
+								{
+									applyTemplate(
+										player =>
+										{
+											m_From.InitStats(20, 20, 20);
+											context.SelectedTemplate = AvatarStarterTemplates.Mystic;
+											return false;
+										}
+									);
+								}
+							));
+						}
+
+						if (context.UnlockTemplateShinobi)
+						{
+							rewards.Add(ActionReward.Create(
+								AvatarShopGump.COST_FREE,
+								ITEM_ID_SHINOB,
+								"The Shinobi",
+								"Start with a Shinobi Scroll and the skills of a Shinobi.",
+								() =>
+								{
+									applyTemplate(
+										player =>
+										{
+											m_From.InitStats(20, 20, 20);
+											context.SelectedTemplate = AvatarStarterTemplates.Shinobi;
+											return false;
+										}
+									);
+								}
+							));
+						}
+
+						if (context.UnlockTemplateDeathKnight)
+						{
+							rewards.Add(ActionReward.Create(
+								AvatarShopGump.COST_FREE,
+								ITEM_ID_DEATH_KNIGHT,
+								"The Death Knight",
+								"Start with a Death Knight book and the skills of a Death Knight.",
+								() =>
+								{
+									applyTemplate(
+										player =>
+										{
+											m_From.InitStats(20, 20, 20);
+											context.SelectedTemplate = AvatarStarterTemplates.DeathKnight;
+											return false;
+										}
+									);
+								}
+							));
+						}
+
+						if (context.UnlockTemplateHolyMan)
+						{
+							rewards.Add(ActionReward.Create(
+								AvatarShopGump.COST_FREE,
+								ITEM_ID_HOLY_MAN,
+								"The Holy Man",
+								"Start with a Holy Man book and the skills of a Holy Man.",
+								() =>
+								{
+									applyTemplate(
+										player =>
+										{
+											m_From.InitStats(20, 20, 20);
+											context.SelectedTemplate = AvatarStarterTemplates.HolyMan;
+											return false;
+										}
+									);
+								}
+							));
+						}
 
 						var templates = new List<AvatarStarterTemplates>
 						{

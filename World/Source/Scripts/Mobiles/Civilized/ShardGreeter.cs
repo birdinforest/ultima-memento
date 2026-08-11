@@ -773,15 +773,7 @@ namespace Server.Gumps
 
 				player.NetState.BlockAllPackets = true;
 				CharacterCreation.InitializeBackpack(player);
-
-				var template = player.Avatar.SelectedTemplate;
-				if ( template > AvatarStarterTemplates.DEFAULT_START && template < AvatarStarterTemplates.DEFAULT_END )
-				{
-					var profession = (StarterProfessions)template;
-					var skills = CharacterCreation.GetTemplateSkills( profession );
-					CharacterCreation.AddSkillBasedItems( player, skills );
-				}
-
+				player.Avatar.ApplyTemplate(player, player.Avatar.SelectedTemplate);
 				player.NetState.BlockAllPackets = false;
 			}
 			else
