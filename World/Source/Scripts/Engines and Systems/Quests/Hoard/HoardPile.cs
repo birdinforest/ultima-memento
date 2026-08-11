@@ -94,7 +94,8 @@ namespace Server.Items
 			{
 				Item item = null;
 
-				switch ( Utility.Random( 17 ) )
+				var rand = Utility.Random( 17 );
+				switch ( rand )
 				{
 					case 0:
 						item = Loot.RandomArty();
@@ -130,11 +131,10 @@ namespace Server.Items
 
 						break;
 					case 8: case 9: case 10: case 11:
-						item = Loot.RandomMagicalItem( Server.LootPackEntry.playOrient( from ) );
-						item = LootPackEntry.Enchant( from, 500, item );
-						break;
 					case 12:
-						item = Loot.RandomInstrument();
+						item = rand == 12 && Utility.RandomBool()
+							? Loot.RandomInstrument()
+							: Loot.RandomMagicalItem( Server.LootPackEntry.playOrient( from ) );
 						item = LootPackEntry.Enchant( from, 500, item );
 						break;
 					case 13:
