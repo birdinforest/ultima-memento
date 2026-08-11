@@ -1882,12 +1882,12 @@ namespace Server.Engines.Help
 					if ( ((FrankenJournal)item).JournalOwner == from )
 					{
 						int parts = 0;
-						if ( ((FrankenJournal)item).HasArmRight > 0 ){ parts++; }
-						if ( ((FrankenJournal)item).HasArmLeft > 0 ){ parts++; }
-						if ( ((FrankenJournal)item).HasLegRight > 0 ){ parts++; }
-						if ( ((FrankenJournal)item).HasLegLeft > 0 ){ parts++; }
-						if ( ((FrankenJournal)item).HasTorso > 0 ){ parts++; }
-						if ( ((FrankenJournal)item).HasHead > 0 ){ parts++; }
+						if ( ((FrankenJournal)item).HasArmRight ){ parts++; }
+						if ( ((FrankenJournal)item).HasArmLeft ){ parts++; }
+						if ( ((FrankenJournal)item).HasLegRight ){ parts++; }
+						if ( ((FrankenJournal)item).HasLegLeft ){ parts++; }
+						if ( ((FrankenJournal)item).HasTorso ){ parts++; }
+						if ( ((FrankenJournal)item).HasHead ){ parts++; }
 
 						quests = quests + "-You currently have " + parts + " out of 6 body parts needed to create a flesh golem.<br><br>";
 					}

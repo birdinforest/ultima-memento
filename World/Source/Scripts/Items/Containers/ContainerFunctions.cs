@@ -92,7 +92,7 @@ namespace Server.Misc
 			{
 				if ( 3 < level && 30 <= from.Skills[SkillName.Forensics].Value && GetPlayerInfo.LuckyPlayerArtifacts( from.Luck ) )
 				{
-					box.DropItem( new FrankenJournalInBox() );
+					box.DropItem( new FrankenJournal() );
 				}
 			}
 		}

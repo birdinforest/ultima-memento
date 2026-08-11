@@ -1,11 +1,11 @@
 using Server;
+using Server.Localization;
 using System;
 using System.Collections;
 using Server.Network;
 using Server.Targeting;
 using Server.Prompts;
 using Server.Misc;
-using Server.Localization;
 
 namespace Server.Items
 {
@@ -69,33 +69,33 @@ namespace Server.Items
 						{
 							if ( m_Part is FrankenLegLeft )
 							{
-								if ( xJournal.HasLegLeft > 0 ){ from.SendMessage( StringCatalog.Resolve( from.Account, "You already have a left leg." ) ); }
-								else { from.SendSound( 0x48 ); from.SendMessage( StringCatalog.Resolve( from.Account, "You now have a left leg for this experiment." ) ); m_Part.Delete(); xJournal.HasLegLeft = 1; from.Backpack.FindItemByType( typeof ( SewingKit ) ).Delete(); }
+								if ( xJournal.HasLegLeft ){ from.SendMessage( StringCatalog.Resolve( from.Account, "You already have a left leg." ) ); }
+								else { from.SendSound( 0x48 ); from.SendMessage( StringCatalog.Resolve( from.Account, "You now have a left leg for this experiment." ) ); m_Part.Delete(); xJournal.HasLegLeft = true; from.Backpack.FindItemByType( typeof ( SewingKit ) ).Delete(); }
 							}
 							else if ( m_Part is FrankenLegRight )
 							{
-								if ( xJournal.HasLegRight > 0 ){ from.SendMessage( StringCatalog.Resolve( from.Account, "You already have a right leg." ) ); }
-								else { from.SendSound( 0x48 ); from.SendMessage( StringCatalog.Resolve( from.Account, "You now have a right leg for this experiment." ) ); m_Part.Delete(); xJournal.HasLegRight = 1; from.Backpack.FindItemByType( typeof ( SewingKit ) ).Delete(); }
+								if ( xJournal.HasLegRight ){ from.SendMessage( StringCatalog.Resolve( from.Account, "You already have a right leg." ) ); }
+								else { from.SendSound( 0x48 ); from.SendMessage( StringCatalog.Resolve( from.Account, "You now have a right leg for this experiment." ) ); m_Part.Delete(); xJournal.HasLegRight = true; from.Backpack.FindItemByType( typeof ( SewingKit ) ).Delete(); }
 							}
 							else if ( m_Part is FrankenArmLeft )
 							{
-								if ( xJournal.HasArmLeft > 0 ){ from.SendMessage( StringCatalog.Resolve( from.Account, "You already have a left arm." ) ); }
-								else { from.SendSound( 0x48 ); from.SendMessage( StringCatalog.Resolve( from.Account, "You now have a left arm for this experiment." ) ); m_Part.Delete(); xJournal.HasArmLeft = 1; from.Backpack.FindItemByType( typeof ( SewingKit ) ).Delete(); }
+								if ( xJournal.HasArmLeft ){ from.SendMessage( StringCatalog.Resolve( from.Account, "You already have a left arm." ) ); }
+								else { from.SendSound( 0x48 ); from.SendMessage( StringCatalog.Resolve( from.Account, "You now have a left arm for this experiment." ) ); m_Part.Delete(); xJournal.HasArmLeft = true; from.Backpack.FindItemByType( typeof ( SewingKit ) ).Delete(); }
 							}
 							else if ( m_Part is FrankenArmRight )
 							{
-								if ( xJournal.HasArmRight > 0 ){ from.SendMessage( StringCatalog.Resolve( from.Account, "You already have a right arm." ) ); }
-								else { from.SendSound( 0x48 ); from.SendMessage( StringCatalog.Resolve( from.Account, "You now have a right arm for this experiment." ) ); m_Part.Delete(); xJournal.HasArmRight = 1; from.Backpack.FindItemByType( typeof ( SewingKit ) ).Delete(); }
+								if ( xJournal.HasArmRight ){ from.SendMessage( StringCatalog.Resolve( from.Account, "You already have a right arm." ) ); }
+								else { from.SendSound( 0x48 ); from.SendMessage( StringCatalog.Resolve( from.Account, "You now have a right arm for this experiment." ) ); m_Part.Delete(); xJournal.HasArmRight = true; from.Backpack.FindItemByType( typeof ( SewingKit ) ).Delete(); }
 							}
 							else if ( m_Part is FrankenHead )
 							{
-								if ( xJournal.HasHead > 0 ){ from.SendMessage( StringCatalog.Resolve( from.Account, "You already have a head." ) ); }
-								else { from.SendSound( 0x48 ); from.SendMessage( StringCatalog.Resolve( from.Account, "You now have a head for this experiment." ) ); m_Part.Delete(); xJournal.HasHead = 1; from.Backpack.FindItemByType( typeof ( SewingKit ) ).Delete(); }
+								if ( xJournal.HasHead ){ from.SendMessage( StringCatalog.Resolve( from.Account, "You already have a head." ) ); }
+								else { from.SendSound( 0x48 ); from.SendMessage( StringCatalog.Resolve( from.Account, "You now have a head for this experiment." ) ); m_Part.Delete(); xJournal.HasHead = true; from.Backpack.FindItemByType( typeof ( SewingKit ) ).Delete(); }
 							}
 							else if ( m_Part is FrankenTorso )
 							{
-								if ( xJournal.HasTorso > 0 ){ from.SendMessage( StringCatalog.Resolve( from.Account, "You already have a torso." ) ); }
-								else { from.SendSound( 0x48 ); from.SendMessage( StringCatalog.Resolve( from.Account, "You now have a torso for this experiment." ) ); m_Part.Delete(); xJournal.HasTorso = 1; from.Backpack.FindItemByType( typeof ( SewingKit ) ).Delete(); }
+								if ( xJournal.HasTorso ){ from.SendMessage( StringCatalog.Resolve( from.Account, "You already have a torso." ) ); }
+								else { from.SendSound( 0x48 ); from.SendMessage( StringCatalog.Resolve( from.Account, "You now have a torso for this experiment." ) ); m_Part.Delete(); xJournal.HasTorso = true; from.Backpack.FindItemByType( typeof ( SewingKit ) ).Delete(); }
 							}
 							else if ( m_Part is FrankenBrain )
 							{
@@ -107,13 +107,13 @@ namespace Server.Items
 								}
 								else
 								{
-									if ( xJournal.HasBrain > 0 )
+									if ( xJournal.HasBrain )
 									{
 										from.SendMessage( StringCatalog.Resolve( from.Account, "The current brain is beginning to rot, so you throw it out." ) );
 									}
 									from.SendMessage( StringCatalog.Resolve( from.Account, "You now have a fresh brain for this experiment." ) );
 									from.SendSound( 0x48 ); 
-									xJournal.HasBrain = brain.BrainLevel;
+									xJournal.BrainLevel = brain.BrainLevel;
 									xJournal.BrainFrom = brain.BrainSource;
 									from.Backpack.FindItemByType( typeof ( SewingKit ) ).Delete(); 
 									m_Part.Delete();
