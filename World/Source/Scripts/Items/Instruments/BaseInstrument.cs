@@ -19,6 +19,17 @@ namespace Server.Items
 
 	public abstract class BaseInstrument : Item, ICraftable, ISlayer
 	{
+		public override bool CanEquip( Mobile from )
+		{
+			if ( from.Skills[SkillName.Musicianship].Base < 30 )
+			{
+				from.SendMessage ("You are not a skilled enough musician to use this!");
+				return false;
+			}
+
+			return base.CanEquip( from );
+		}
+
 		public override void ResourceChanged( CraftResource resource )
 		{
 			if ( !ResourceCanChange() )
