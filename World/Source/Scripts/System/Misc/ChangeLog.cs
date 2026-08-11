@@ -1177,6 +1177,7 @@ namespace Server.Misc
 					builder.Append("- Item - The *Home* Bank Vault item is now properly named as such and can only be used when secured in a home<br>");
 					builder.Append("- Item - Training Shovel now shows uses remaining<br>");
 					builder.Append("- Item - Instruments now require Musicianship skill to be equipped<br>");
+					builder.Append("- Item - Players skilled in forensics may now find the rantings a well known doctor<br>");
 					builder.Append("- Misc - Death knight souls and Holy man piety are now gained before gold is broken down<br>");
 					builder.Append("- Misc - Jedi and Syth spellbars now warn when you the class isn't active<br>");
 					builder.Append("- Misc - Reduced chance of hoard piles dropping instruments by 50%<br>");

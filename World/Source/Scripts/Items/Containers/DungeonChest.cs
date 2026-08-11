@@ -248,6 +248,7 @@ namespace Server.Items
 				}
 
 				ContainerFunctions.FillTheContainer( ContainerLevel, this, from );
+				ContainerFunctions.GenerateRareItems( ContainerLevel, this, from );
 
 				LoggingFunctions.LogLoot( from, this.Name, "box" );
 				StandardQuestFunctions.CheckTarget( from, null, this );

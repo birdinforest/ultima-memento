@@ -86,6 +86,17 @@ namespace Server.Misc
 			GenerateTreasure( level, box, opener );
 		}
 
+		public static void GenerateRareItems( int level, LockableContainer box, Mobile from )
+		{
+			if ( box is DungeonChest )
+			{
+				if ( 3 < level && 30 <= from.Skills[SkillName.Forensics].Value && GetPlayerInfo.LuckyPlayerArtifacts( from.Luck ) )
+				{
+					box.DropItem( new FrankenJournalInBox() );
+				}
+			}
+		}
+
 		public static void GenerateTreasure( int level, LockableContainer box, Mobile from )
 		{
 			if ( from.Land == Land.SkaraBrae && Utility.Random( 20 ) == 0 )
