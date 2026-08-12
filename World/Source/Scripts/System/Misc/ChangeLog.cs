@@ -1178,7 +1178,7 @@ namespace Server.Misc
 					builder.Append("- Item - Training Shovel now shows uses remaining<br>");
 					builder.Append("- Item - Instruments now require Musicianship skill to be equipped<br>");
 					builder.Append("- Item - Players skilled in forensics may now find the rantings a well known doctor<br>");
-					builder.Append("- Misc - Death knight souls and Holy man piety are now gained before gold is broken down<br>");
+					builder.Append("- Misc - Death Knight souls and Holy man piety are now gained before gold is broken down<br>");
 					builder.Append("- Misc - Jedi and Syth spellbars now warn when you the class isn't active<br>");
 					builder.Append("- Misc - Reduced chance of hoard piles dropping instruments by 50%<br>");
 					builder.Append("- Misc - Unreachable trap doors are now secretly deleted instead of taunting the player<br>");
@@ -1189,6 +1189,7 @@ namespace Server.Misc
 					builder.Append("- Gump - Achievement and Quest gump now respect the show background image setting<br>");
 					builder.Append("- Item - Fix issue where spell scrolls lost ephemeral flag after unstacking<br>");
 					builder.Append("- Misc - Fix crash when overlapping Strange Portals occurred<br>");
+					builder.Append("- Misc - Fix inconsistent Death Knight check (again)<br>");
 					break;
 			}
 		}
