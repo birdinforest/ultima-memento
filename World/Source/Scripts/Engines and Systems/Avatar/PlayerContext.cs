@@ -355,9 +355,6 @@ namespace Server.Engines.Avatar
 		public bool CanUnlockTemplateHolyMan
 		{ get { return 1000 <= Skills[SkillName.Healing] && 1000 <= Skills[SkillName.Spiritualism]; } }
 
-		public bool CanUnlockTemplateJedi
-		{ get { return 1000 <= Skills[SkillName.Swords] && 1000 <= Skills[SkillName.Psychology]; } }
-
 		public bool CanUnlockTemplateJester
 		{ get { return 1000 <= Skills[SkillName.Begging] && 1000 <= Skills[SkillName.Psychology]; } }
 
@@ -366,9 +363,6 @@ namespace Server.Engines.Avatar
 
 		public bool CanUnlockTemplateShinobi
 		{ get { return 1000 <= Skills[SkillName.Ninjitsu]; } }
-
-		public bool CanUnlockTemplateSyth
-		{ get { return 1000 <= Skills[SkillName.Swords] && 1000 <= Skills[SkillName.Psychology]; } }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int ImprovedTemplateCount { get; set; }
