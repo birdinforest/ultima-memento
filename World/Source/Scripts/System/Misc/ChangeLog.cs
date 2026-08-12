@@ -1184,6 +1184,7 @@ namespace Server.Misc
 					builder.Append("- Misc - Unreachable trap doors are now secretly deleted instead of taunting the player<br>");
 					builder.Append("- Quest - The initial Blacksmith quest no longer rewards Gold<br>");
 					builder.Append("- Spell - Quivering Palm now grants consecrate weapon buff when activated<br>");
+					builder.Append("- Temptations - Clarified how Puzzle master works<br>");
 
 					builder.Append("<br>Fixes<br>");
 					builder.Append("- Gump - Achievement and Quest gump now respect the show background image setting<br>");
