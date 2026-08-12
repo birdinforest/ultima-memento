@@ -1,9 +1,5 @@
-using System; 
-using System.Collections; 
-using Server.Misc; 
-using Server.Items; 
-using Server.Mobiles; 
-using Server.Network;
+using System;
+using Server.Items;
 using System.Collections.Generic;
 using Server.ContextMenus;
 
@@ -13,7 +9,7 @@ namespace Server.Mobiles
 	public class FrankenPorter : BaseCreature
 	{
 		public int PorterLevel;
-		[CommandProperty(AccessLevel.Owner)]
+		[CommandProperty(AccessLevel.GameMaster)]
 		public int Porter_Level{ get { return PorterLevel; } set { PorterLevel = value; InvalidateProperties(); } }
 
 		private DateTime m_NextTalking;
@@ -35,7 +31,7 @@ namespace Server.Mobiles
 			Name = "a reanimation";
 			Body = 752;
 			BaseSoundID = 684;
-			ControlSlots = 5;
+			ControlSlots = 4;
 			Blessed = true;
 			ActiveSpeed = 0.1;
 			PassiveSpeed = 0.2;
@@ -108,7 +104,7 @@ namespace Server.Mobiles
 
 			LeaveNowTimer thisTimer = new LeaveNowTimer( this ); 
 			thisTimer.Start(); 
-		} 
+		}
 
 		public override bool IsSnoop( Mobile from )
 		{

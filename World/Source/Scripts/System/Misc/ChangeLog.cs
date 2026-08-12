@@ -1182,6 +1182,7 @@ namespace Server.Misc
 					builder.Append("- Misc - Jedi and Syth spellbars now warn when you the class isn't active<br>");
 					builder.Append("- Misc - Reduced chance of hoard piles dropping instruments by 50%<br>");
 					builder.Append("- Misc - Unreachable trap doors are now secretly deleted instead of taunting the player<br>");
+					builder.Append("- Misc - Franken Slave is now 4 control slots, down from 5<br>");
 					builder.Append("- Quest - The initial Blacksmith quest no longer rewards Gold<br>");
 					builder.Append("- Spell - Quivering Palm now grants consecrate weapon buff when activated<br>");
 					builder.Append("- Temptations - Clarified how Puzzle master works<br>");
