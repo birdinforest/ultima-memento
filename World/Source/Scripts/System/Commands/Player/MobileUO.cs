@@ -10,9 +10,31 @@ namespace Server.Commands
 {
 	public class MobileUO
 	{
+		public const string SuppressSystemMessagesCommand = "SuppressSystemMessages";
+		public const string SuppressSystemMessagesWarning = "WARNING: System messages are suppressed for this player. Use '[SuppressSystemMessages' command to re-enable them.";
 		public static void Initialize()
 		{
 			CommandSystem.Register("SuppressTooltips", AccessLevel.Player, new CommandEventHandler(OnToggleSuppressTooltips));
+			CommandSystem.Register(SuppressSystemMessagesCommand, AccessLevel.Player, new CommandEventHandler(OnToggleSuppressSystemMessages));
+		}
+
+		[Usage(SuppressSystemMessagesCommand)]
+		[Description("When enabled, each system message is replaced with '!'.")]
+		private static void OnToggleSuppressSystemMessages(CommandEventArgs e)
+		{
+			var player = e.Mobile as PlayerMobile;
+			if (player == null) return;
+
+			if (!player.Preferences.SuppressSystemMessages)
+			{
+				player.SendMessage(32, SuppressSystemMessagesWarning);
+				player.Preferences.SuppressSystemMessages = true;
+			}
+			else
+			{
+				player.Preferences.SuppressSystemMessages = false;
+				player.SendMessage(32, "System messages have been enabled.");
+			}
 		}
 
 		[Usage("SuppressTooltips")]
@@ -59,9 +81,10 @@ namespace Server.Commands
 				{
 					return items
 						.Where(item => item is BaseWeapon || item is Spellbook)
-						.OrderBy(item => {
+						.OrderBy(item =>
+						{
 							SlayerName slayer = SlayerName.None;
-							if (item is BaseWeapon) slayer = ((BaseWeapon)item).FirstSlayer ;
+							if (item is BaseWeapon) slayer = ((BaseWeapon)item).FirstSlayer;
 							else if (item is Spellbook) slayer = ((Spellbook)item).FirstSlayer;
 							return slayer == SlayerName.None ? string.Empty : SlayerGroup.GetName(slayer);
 						});

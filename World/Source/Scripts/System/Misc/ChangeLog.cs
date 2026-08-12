@@ -1173,6 +1173,7 @@ namespace Server.Misc
 					builder.Append(Version());
 					builder.Append("<br>Changes<br>");
 					builder.Append("- Avatar - Add ascensions for Jester, Mystic, Shinobi, Death Knight, and Holy Man templates<br>");
+					builder.Append("- Commands - Add '[SuppressSystemMessages' command to replace system messages with `!`<br>");
 					builder.Append("- Housekeeping - Centralized code for Artifact luck checks<br>");
 					builder.Append("- Item - The *Home* Bank Vault item is now properly named as such and can only be used when secured in a home<br>");
 					builder.Append("- Item - Training Shovel now shows uses remaining<br>");

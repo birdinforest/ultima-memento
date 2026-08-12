@@ -504,6 +504,8 @@ namespace Server
 	/// </summary>
 	public class Mobile : IEntity, IHued, IComparable<Mobile>, ISerializable, ISpawnable
 	{
+		public virtual bool SuppressSystemMessages { get { return false; } }
+
 		#region CompareTo(...)
 		public int CompareTo( IEntity other )
 		{
@@ -11668,6 +11670,16 @@ namespace Server
 
 		#endregion
 
+		public static readonly Packet SuppressedSystemMessageInstance = Packet.SetStatic( 
+			new UnicodeMessage( Serial.MinusOne, -1, MessageType.Regular, 0x3B2, 3, "ENU", "System:", "!" )
+		);
+		private void SendSuppressedSystemMessage()
+		{
+			NetState ns = m_NetState;
+			if( ns != null )
+				ns.Send( SuppressedSystemMessageInstance );
+		}
+
 		#region SendLocalizedMessage
 
 		public void SendLocalizedMessage( int number )
@@ -11687,6 +11699,12 @@ namespace Server
 
 		public void SendLocalizedMessage( int number, string args, int hue )
 		{
+			if (SuppressSystemMessages)
+			{
+				SendSuppressedSystemMessage();
+				return;
+			}
+
 			if( hue == 0x3B2 && (args == null || args.Length == 0) )
 			{
 				NetState ns = m_NetState;
@@ -11716,6 +11734,12 @@ namespace Server
 
 		public void SendLocalizedMessage( int number, bool append, string affix, string args, int hue )
 		{
+			if (SuppressSystemMessages)
+			{
+				SendSuppressedSystemMessage();
+				return;
+			}
+
 			NetState ns = m_NetState;
 
 			if( ns != null )
@@ -11746,6 +11770,12 @@ namespace Server
 
 		public void SendMessage( int hue, string text )
 		{
+			if (SuppressSystemMessages)
+			{
+				SendSuppressedSystemMessage();
+				return;
+			}
+
 			NetState ns = m_NetState;
 
 			if( ns != null )
@@ -11775,6 +11805,12 @@ namespace Server
 
 		public void SendAsciiMessage( int hue, string text )
 		{
+			if (SuppressSystemMessages)
+			{
+				SendSuppressedSystemMessage();
+				return;
+			}
+
 			NetState ns = m_NetState;
 
 			if( ns != null )

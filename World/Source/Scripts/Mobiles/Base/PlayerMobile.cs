@@ -88,6 +88,8 @@ namespace Server.Mobiles
 
 	public class PlayerMobile : Mobile
 	{
+		public override bool SuppressSystemMessages { get { return Preferences.SuppressSystemMessages; } }
+
 		private SpellBarsContext _spellBars;
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -952,6 +954,11 @@ namespace Server.Mobiles
 
 				from.SendGump( new NoticeGump( 1060637, 30720, notice, 0xFFC000, 300, 140, null, null ) );
 				return;
+			}
+
+			if (from.SuppressSystemMessages)
+			{
+				from.Send( new UnicodeMessage( Serial.MinusOne, -1, MessageType.Regular, 32, 3, "ENU", "System:", Commands.MobileUO.SuppressSystemMessagesWarning ) );
 			}
 
 			if( from is PlayerMobile )
