@@ -8319,6 +8319,8 @@ namespace Server.Mobiles
 
 					Server.Misc.HoardPile.MakeHoard( this ); // SEE IF A HOARD DROPS NEARBY
 
+					InscriptionRecipeDropHelper.TryDropRecipe( this );
+
 					Server.Misc.SummonQuests.WellTheyDied( this, this );
 
 					if ( slayer is PlayerMobile )

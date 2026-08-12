@@ -506,6 +506,7 @@ namespace Server
 			// LocalizationBootstrap above, so config-driven weights are populated before any spawner/timer
 			// can run (and before Scripts' own Initialize() methods, in case a future consumer needs it).
 			RateConfigEngine.Load();
+			InscriptionRecipeDropConfig.Load();
 
 			if ( m_LocalizationRegression )
 			{

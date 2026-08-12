@@ -131,6 +131,23 @@ no visible effect on a living mount), `GemDragon.Resource` **directly sets its `
 `name -> CraftResource` dictionary local to `GemDragons.cs`. If the config table is empty/malformed, it
 falls back to `CraftResource.MetallicScales` (matching the old hardcoded default).
 
+### Inscription advanced recipe drops (`Data/RateConfig/inscription-recipe-drop.json` + `Data/InscriptionRecipeDrop/tier-scrolls.json`)
+
+`InscriptionRecipeDropConfig` (see `World/Source/System/RateConfig/InscriptionRecipeDropConfig.cs`) loads **numeric**
+drop tuning from `inscription-recipe-drop.json` (merged into `RateConfigEngine` like any other RateConfig file)
+and **scroll class name lists** from `tier-scrolls.json` (string CSV values — not parsed by `RateConfigEngine`).
+Consumed by `InscriptionRecipeDropHelper.TryDropRecipe` on `BaseCreature.OnDeath` when
+`MySettings.S_UseLegacyInscription` is false. Cross-ref:
+`<UO_DEV_DOCS_ROOT>/memento/game-mechanism/INSCRIPTION_ADVANCED_RECIPE_DROP_SYSTEM.md`.
+
+- Hot reload: `[ratereload` reloads both `RateConfigEngine` and `InscriptionRecipeDropConfig`.
+- Debug: `[rateget inscription.enemy.boss.rank1MaxPct`, `[ratelist inscription.enemy`.
+- **Tier scroll type lists** (`inscription.tier.T1.types` … `T4.types` in `tier-scrolls.json`) are **not**
+  exposed through `[rateget]` / `[ratelist]` — those commands only read numeric keys merged into
+  `RateConfigEngine`. To inspect which scroll class names loaded, read `Data/InscriptionRecipeDrop/tier-scrolls.json`
+  on disk or check the startup / `[ratereload]` console line (`T1=… T2=…` counts only, not names). Unknown
+  type names are logged at load time and skipped.
+
 ## Adding a new consumer
 
 1. Pick a dotted key namespace that won't collide with existing ones (e.g. `myfeature.someWeight.*`).
