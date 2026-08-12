@@ -350,19 +350,19 @@ namespace Server.Engines.Avatar
 		public HashSet<AvatarStarterTemplates> BoostedTemplateCache { get; set; }
 
 		public bool CanUnlockTemplateDeathKnight
-		{ get { return 1000 <= Skills[SkillName.Knightship]; } }
+		{ get { return 500 <= Skills[SkillName.Knightship]; } }
 
 		public bool CanUnlockTemplateHolyMan
-		{ get { return 1000 <= Skills[SkillName.Healing] && 1000 <= Skills[SkillName.Spiritualism]; } }
+		{ get { return 300 <= Skills[SkillName.Healing] && 300 <= Skills[SkillName.Spiritualism]; } }
 
 		public bool CanUnlockTemplateJester
-		{ get { return 1000 <= Skills[SkillName.Begging] && 1000 <= Skills[SkillName.Psychology]; } }
+		{ get { return 300 <= Skills[SkillName.Begging] && 300 <= Skills[SkillName.Psychology]; } }
 
 		public bool CanUnlockTemplateMystic
 		{ get { return 1000 <= Skills[SkillName.Focus] && 1000 <= Skills[SkillName.Meditation]; } }
 
 		public bool CanUnlockTemplateShinobi
-		{ get { return 1000 <= Skills[SkillName.Ninjitsu]; } }
+		{ get { return 500 <= Skills[SkillName.Ninjitsu]; } }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int ImprovedTemplateCount { get; set; }

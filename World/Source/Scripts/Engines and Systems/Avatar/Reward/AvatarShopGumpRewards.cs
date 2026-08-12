@@ -252,7 +252,7 @@ namespace Server.Engines.Avatar
 								() => context.UnlockTemplateJester = true
 							).WithPrereq(
 								context.CanUnlockTemplateJester,
-								"Requires Begging and Psychology to be at least 100."
+								"Requires Begging and Psychology to be at least 30."
 							),
 							ActionReward.Create(
 								context.UnlockTemplateMystic,
@@ -274,7 +274,7 @@ namespace Server.Engines.Avatar
 								() => context.UnlockTemplateShinobi = true
 							).WithPrereq(
 								context.CanUnlockTemplateShinobi,
-								"Requires Ninjitsu to be at least 100."
+								"Requires Ninjitsu to be at least 50."
 							),
 							ActionReward.Create(
 								context.UnlockTemplateDeathKnight,
@@ -285,7 +285,7 @@ namespace Server.Engines.Avatar
 								() => context.UnlockTemplateDeathKnight = true
 							).WithPrereq(
 								context.CanUnlockTemplateDeathKnight,
-								"Requires Knightship to be at least 100."
+								"Requires Knightship to be at least 50."
 							),
 							ActionReward.Create(
 								context.UnlockTemplateHolyMan,
@@ -296,7 +296,7 @@ namespace Server.Engines.Avatar
 								() => context.UnlockTemplateHolyMan = true
 							).WithPrereq(
 								context.CanUnlockTemplateHolyMan,
-								"Requires Healing and Spiritualism to be at least 100."
+								"Requires Healing and Spiritualism to be at least 30."
 							),
 
 							// Limits
