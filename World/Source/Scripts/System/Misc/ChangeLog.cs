@@ -1194,6 +1194,7 @@ namespace Server.Misc
 					builder.Append("<br>Fixes<br>");
 					builder.Append("- Gump - Achievement and Quest gump now respect the show background image setting<br>");
 					builder.Append("- Item - Fix issue where spell scrolls lost ephemeral flag after unstacking<br>");
+					builder.Append("- Map - Add teleporters to bridge in Savaged Empire<br>");
 					builder.Append("- Misc - Fix crash when overlapping Strange Portals occurred<br>");
 					builder.Append("- Misc - Fix inconsistent Death Knight check (again)<br>");
 					break;
