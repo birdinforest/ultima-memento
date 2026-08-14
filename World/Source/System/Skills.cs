@@ -809,7 +809,7 @@ namespace Server
 				new SkillInfo(  3, "Mercantile",		0.0,	0.0,	0.0,	"Merchant",	null,	0.0,	0.0,	1.0,	1.0 ),
 				new SkillInfo(  4, "Arms Lore",			0.0,	0.0,	0.0,	"Man-at-arms",	null,	0.75,	0.15,	0.1,	1.0 ),
 				new SkillInfo(  5, "Parrying",			7.5,	2.5,	0.0,	"Duelist",	null,	0.75,	0.25,	0.0,	1.0 ),
-				new SkillInfo(  6, "Begging",			0.0,	0.0,	0.0,	"Beggar",	null,	0.0,	0.0,	0.0,	1.0 ),
+				new SkillInfo(  6, "Begging",			0.0,	0.0,	0.0,	"Beggar",	null,	0.0,	0.0,	0.0,	0.5 ),
 				new SkillInfo(  7, "Blacksmithy",		10.0,	0.0,	0.0,	"Blacksmith",	null,	1.0,	0.0,	0.0,	1.0 ),
 				new SkillInfo(  8, "Bowcrafting",		6.0,	16.0,	0.0,	"Bowyer",	null,	0.6,	1.6,	0.0,	1.0 ),
 				new SkillInfo(  9, "Peacemaking",		0.0,	0.0,	0.0,	"Pacifier",		null,	0.0,	0.0,	0.0,	1.0 ),
