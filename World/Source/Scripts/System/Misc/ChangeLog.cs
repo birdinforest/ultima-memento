@@ -1206,6 +1206,7 @@ namespace Server.Misc
 					builder.Append("- Map - Add teleporters to bridge in Savaged Empire<br>");
 					builder.Append("- Misc - Fix crash when overlapping Strange Portals occurred<br>");
 					builder.Append("- Misc - Fix inconsistent Death Knight check (again)<br>");
+					builder.Append("- Misc - Fix issue where gold from monsters wasn't being boosted by dungeon difficulty<br>");
 					break;
 			}
 		}

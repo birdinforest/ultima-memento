@@ -3806,8 +3806,6 @@ namespace Server.Mobiles
 
 			ExtraHP();
 
-			LootPackChange.MakeCoins( this.Backpack, this );
-
 			if ( this.Body != 400 && this.Body != 401 ){ this.TithingPoints = this.Body; } // STORE THE BODY VALUE IN AN UNUSED VARIABLE FOR NECRO ANIMATE
 
 			NameColor();
