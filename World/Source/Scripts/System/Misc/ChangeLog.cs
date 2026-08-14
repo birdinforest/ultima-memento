@@ -1209,6 +1209,7 @@ namespace Server.Misc
 					builder.Append("- Misc - Fix crash when overlapping Strange Portals occurred<br>");
 					builder.Append("- Misc - Fix inconsistent Death Knight check (again)<br>");
 					builder.Append("- Misc - Fix issue where gold from monsters wasn't being boosted by dungeon difficulty<br>");
+					builder.Append("- Skill - Begging skill checks only execute after selling items<br>");
 					break;
 			}
 		}

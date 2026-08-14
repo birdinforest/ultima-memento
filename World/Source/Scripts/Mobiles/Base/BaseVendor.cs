@@ -1340,7 +1340,6 @@ namespace Server.Mobiles
 
 							if ( BeggingPose(from) > 0 && GuildMember == 0 && !(this is PlayerBarkeeper) ) // LET US SEE IF THEY ARE BEGGING
 							{
-								Titles.AwardKarma( from, -BeggingKarma( from ), true );
 								barter = (int)from.Skills[SkillName.Begging].Value;
 							}
 
