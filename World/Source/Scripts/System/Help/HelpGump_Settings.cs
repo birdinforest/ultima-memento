@@ -75,6 +75,9 @@ namespace Server.Engines.Help
 			AddSetting(xs, rowY, from, "Suppress Vendor Tooltips", PageActionType.Setting_SuppressVendorTooltips, PageActionType.Setting_SuppressVendorTooltips_Info);
 			if ( isEvenRow ){ rowY += ROW_HEIGHT; isEvenRow=false; xs=FIRST_COL_X; } else { isEvenRow=true; xs=THIRD_COL_X; }
 
+			AddSetting(xs, rowY, from, "Suppress System Messages", PageActionType.Setting_SuppressSystemMessages, PageActionType.Setting_SuppressSystemMessages_Info);
+			if ( isEvenRow ){ rowY += ROW_HEIGHT; isEvenRow=false; xs=FIRST_COL_X; } else { isEvenRow=true; xs=THIRD_COL_X; }
+
 
 			if ( isEvenRow ){ rowY += ROW_HEIGHT; isEvenRow=false; xs=FIRST_COL_X; }
 			rowY += (int)(0.5 * ROW_HEIGHT);

@@ -243,6 +243,8 @@ namespace Server.Engines.Help
 			Setting_SkillTitle,
 			Setting_SuppressVendorTooltips_Info,
 			Setting_SuppressVendorTooltips,
+			Setting_SuppressSystemMessages_Info,
+			Setting_SuppressSystemMessages,
 			Setting_UseAncientSpellbook_Info,
 			Setting_UseAncientSpellbook,
 			Show_VendorContainerSell_Info,
@@ -918,6 +920,7 @@ namespace Server.Engines.Help
 				case PageActionType.Setting_OrdinaryResources: return from.HarvestOrdinary;
 				case PageActionType.Setting_RemoveVendorGoldSafeguard: return from.Preferences.IgnoreVendorGoldSafeguard;
 				case PageActionType.Setting_SuppressVendorTooltips: return from.Preferences.SuppressVendorTooltip;
+				case PageActionType.Setting_SuppressSystemMessages: return from.Preferences.SuppressSystemMessages;
 				case PageActionType.Setting_SingleAttemptID: return from.Preferences.SingleAttemptID;
 				case PageActionType.Setting_ColorlessFabricBreakdown: return from.Preferences.ColorlessFabricBreakdown;
 				case PageActionType.Setting_LegacyCarve: return from.Preferences.LegacyCarve;
@@ -1412,6 +1415,15 @@ namespace Server.Engines.Help
 				{
 					reopenPage = true;
 					from.Preferences.SuppressVendorTooltip = !from.Preferences.SuppressVendorTooltip;
+					break;
+				}
+				case PageActionType.Setting_SuppressSystemMessages:
+				{
+					if ( !from.Preferences.SuppressSystemMessages )
+						from.SendMessage(32, Commands.MobileUO.SuppressSystemMessagesWarning );
+
+					reopenPage = true;
+					from.Preferences.SuppressSystemMessages = !from.Preferences.SuppressSystemMessages;
 					break;
 				}
 				case PageActionType.Show_VendorContainerSell:
@@ -2329,6 +2341,13 @@ namespace Server.Engines.Help
 				{
 					title = "Suppress Vendor Tooltips";
 					info = "Command: [SuppressTooltips<br><br>When enabled, vendor tooltips will not be sent to the client. This can be helpful for players who use a touch screen. Warning: Players usually have to re-log to re-query synchronize with this after changing it.";
+					break;
+				}
+
+				case PageActionType.Setting_SuppressSystemMessages_Info:
+				{
+					title = "Suppress System Messages";
+					info = "Command: [SuppressSystemMessages<br><br>When enabled, system messages sent to the client will be replaced with a `!` symbol.";
 					break;
 				}
 
