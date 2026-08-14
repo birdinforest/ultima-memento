@@ -10,10 +10,15 @@ namespace Server.Timers
 
 		public static void Run(PlayerMobile m, Action action, Func<bool> predicate)
 		{
+			Run(m, action, predicate, TimeSpan.FromSeconds(1.0), TimeSpan.FromSeconds(1.0));
+		}
+
+		public static void Run(PlayerMobile m, Action action, Func<bool> predicate, TimeSpan delay, TimeSpan interval)
+		{
 			if (UnderEffect(m))
 				StopTimer(m);
 
-			var timer = m_Timers[m] = new RepeatActionTimer(m, action, predicate);
+			var timer = m_Timers[m] = new RepeatActionTimer(m, action, predicate, delay, interval);
 			timer.Start();
 		}
 
@@ -40,7 +45,7 @@ namespace Server.Timers
 			private readonly PlayerMobile m_Mobile;
 			private readonly Func<bool> m_Predicate;
 
-			public RepeatActionTimer(PlayerMobile m, Action action, Func<bool> predicate) : base(TimeSpan.FromSeconds(1.0), TimeSpan.FromSeconds(1.0))
+			public RepeatActionTimer(PlayerMobile m, Action action, Func<bool> predicate, TimeSpan delay, TimeSpan interval) : base(delay, interval)
 			{
 				m_Action = action;
 				m_Predicate = predicate;
