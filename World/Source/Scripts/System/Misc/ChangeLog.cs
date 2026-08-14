@@ -1195,6 +1195,7 @@ namespace Server.Misc
 					builder.Append("- Misc - Training Dummy/Daemon will now automatically retry attempts<br>");
 					builder.Append("- Misc - Undertaker Players (80+ Forensics and negative karma) are no longer considered evil to NPCs<br>");
 					builder.Append("- Quest - The initial Blacksmith quest no longer rewards Gold<br>");
+					builder.Append("- Skill - Begging now sets it's cooldown immediately after targeting<br>");
 					builder.Append("- Spell - Quivering Palm now grants consecrate weapon buff when activated<br>");
 					builder.Append("- Temptations - Clarified how Puzzle master works<br>");
 

@@ -318,6 +318,7 @@ namespace Server.SkillHandlers
 						from.Animate( 32, 5, 1, true, false, 0 ); // Bow
 
 						new InternalTimer( from, targ ).Start();
+						from.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds( 10.0 );
 
 						m_SetSkillTime = false;
 					}
@@ -398,8 +399,6 @@ namespace Server.SkillHandlers
 					{
 						m_Target.SendLocalizedMessage( 500404 ); // They seem unwilling to give you any money.
 					}
-
-					m_From.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds( 10.0 );
 				}
 			}
 		}
