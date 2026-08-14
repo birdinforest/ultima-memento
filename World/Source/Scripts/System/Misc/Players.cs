@@ -656,7 +656,6 @@ namespace Server.Misc
 			{
 				if ( m.AccessLevel > AccessLevel.Player 
 					|| m.Skills[SkillName.Necromancy].Base >= 50.0 && m.Karma < 0 // NECROMANCERS
-					|| m.Skills[SkillName.Forensics].Base >= 80.0 && m.Karma < 0 // UNDERTAKERS
 					|| isDeathKnight(m)// DEATH KNIGHTS
 					|| isSyth(m, false) // SYTH
 					|| Server.Items.BaseRace.IsRavendarkCreature( m ) // EVIL UNDEAD CREATURE PLAYERS
