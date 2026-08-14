@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
-using Server;
 using Server.Network;
 using Server.Mobiles;
+using Server.Timers;
 
 namespace Server.Items
 {
@@ -79,12 +79,66 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( !(from is PlayerMobile) )
+			var player = from as PlayerMobile;
+			if ( player == null )
+			{
 				Shoot( from );
+			}
 			else if ( (m_Arrows > 0 || m_Bolts > 0) && from.InRange( GetWorldLocation(), 1 ) )
+			{
 				Gather( from );
+			}
 			else
-				Fire( from );
+			{
+				bool keepRunning = true;
+				RepeatableAction.Run(player, () =>
+				{
+					BaseRanged bow = from.Weapon as BaseRanged;
+					if ( bow == null ) return;
+					if ( DateTime.Now < (m_LastUse + UseDelay) ) return;
+
+					keepRunning = Fire( from, bow );
+				},
+				() =>
+				{
+					if ( !keepRunning ) return false;
+					if ( Deleted ) return false;
+
+					BaseRanged bow = from.Weapon as BaseRanged;
+					if ( bow == null )
+					{
+						SendLocalizedMessageTo( from, 500593 ); // You must practice with ranged weapons on this.
+						return false;
+					}
+
+					Point3D worldLoc = GetWorldLocation();
+
+					if ( FacingEast ? from.X <= worldLoc.X : from.Y <= worldLoc.Y )
+					{
+						from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 500596 ); // You would do better to stand in front of the archery butte.
+						return false;
+					}
+
+					if ( FacingEast ? from.Y != worldLoc.Y : from.X != worldLoc.X )
+					{
+						from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 500597 ); // You aren't properly lined up with the archery butte to get an accurate shot.
+						return false;
+					}
+
+					if ( !from.InRange( worldLoc, 6 ) )
+					{
+						from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 500598 ); // You are too far away from the archery butte to get an accurate shot.
+						return false;
+					}
+					else if ( from.InRange( worldLoc, 4 ) )
+					{
+						from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 500599 ); // You are too close to the target.
+						return false;
+					}
+					
+					return true;
+				}, TimeSpan.Zero, UseDelay);
+			}
 		}
 
 		public void Gather( Mobile from )
@@ -139,44 +193,8 @@ namespace Server.Items
 			return e;
 		}
 
-		public void Fire( Mobile from )
+		public bool Fire( Mobile from, BaseRanged bow )
 		{
-			BaseRanged bow = from.Weapon as BaseRanged;
-
-			if ( bow == null )
-			{
-				SendLocalizedMessageTo( from, 500593 ); // You must practice with ranged weapons on this.
-				return;
-			}
-
-			if ( DateTime.Now < (m_LastUse + UseDelay) )
-				return;
-
-			Point3D worldLoc = GetWorldLocation();
-
-			if ( FacingEast ? from.X <= worldLoc.X : from.Y <= worldLoc.Y )
-			{
-				from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 500596 ); // You would do better to stand in front of the archery butte.
-				return;
-			}
-
-			if ( FacingEast ? from.Y != worldLoc.Y : from.X != worldLoc.X )
-			{
-				from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 500597 ); // You aren't properly lined up with the archery butte to get an accurate shot.
-				return;
-			}
-
-			if ( !from.InRange( worldLoc, 6 ) )
-			{
-				from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 500598 ); // You are too far away from the archery butte to get an accurate shot.
-				return;
-			}
-			else if ( from.InRange( worldLoc, 4 ) )
-			{
-				from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 500599 ); // You are too close to the target.
-				return;
-			}
-
 			Container pack = from.Backpack;
 			Type ammoType = bow.AmmoType;
 
@@ -193,7 +211,7 @@ namespace Server.Items
 				else
 					SendLocalizedMessageTo( from, 500593 ); // You must practice with ranged weapons on this.
 
-				return;
+				return false;
 			}
 
 			m_LastUse = DateTime.Now;
@@ -225,7 +243,7 @@ namespace Server.Items
 				else
 					PublicOverheadMessage( MessageType.Regular, 0x3B2, 1042683, String.Format( "{0}\t{1}", se.Total, se.Count ) );
 
-				return;
+				return true;
 			}
 
 			Effects.PlaySound( Location, Map, 0x2B1 );
@@ -284,6 +302,8 @@ namespace Server.Items
 				else
 					PublicOverheadMessage( MessageType.Regular, 0x3B2, 1042683, String.Format( "{0}\t{1}", se.Total, se.Count ) );
 			}
+
+			return true;
 		}
 
 		public void Shoot( Mobile from )

@@ -1184,6 +1184,9 @@ namespace Server.Misc
 					builder.Append("- Misc - Reduced chance of hoard piles dropping instruments by 50%<br>");
 					builder.Append("- Misc - Unreachable trap doors are now secretly deleted instead of taunting the player<br>");
 					builder.Append("- Misc - Franken Slave is now 4 control slots, down from 5<br>");
+					builder.Append("- Misc - Archery Butte will now automatically retry attempts<br>");
+					builder.Append("- Misc - Pickpocket Dip will now automatically retry attempts<br>");
+					builder.Append("- Misc - Training Dummy/Daemon will now automatically retry attempts<br>");
 					builder.Append("- Quest - The initial Blacksmith quest no longer rewards Gold<br>");
 					builder.Append("- Spell - Quivering Palm now grants consecrate weapon buff when activated<br>");
 					builder.Append("- Temptations - Clarified how Puzzle master works<br>");

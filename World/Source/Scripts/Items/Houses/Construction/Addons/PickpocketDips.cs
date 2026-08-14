@@ -1,5 +1,6 @@
 using System;
-using Server;
+using Server.Timers;
+using Server.Mobiles;
 
 namespace Server.Items
 {
@@ -118,16 +119,36 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( !from.InRange( GetWorldLocation(), 1 ) )
-				SendLocalizedMessageTo( from, 501816 ); // You are too far away to do that.
-			else if ( Swinging )
+			var player = from as PlayerMobile;
+			if ( player == null ) return;
+		
+			if ( Swinging )
+			{
 				SendLocalizedMessageTo( from, 501815 ); // You have to wait until it stops swinging.
-			else if ( from.Skills[SkillName.Stealing].Base >= m_MaxSkill && from.Skills[SkillName.Snooping].Base >= m_MaxSkill )
-				from.SendMessage( "Your thief abilities cannot improve any further by practicing on a dummy." );
-			else if ( from.Mounted )
-				SendLocalizedMessageTo( from, 501829 ); // You can't practice on this while on a mount.
-			else
+				return;
+			}
+
+			RepeatableAction.Run(player, () =>
+			{
+				if ( Swinging ) return;
+
 				Use( from );
+			},
+			() =>
+			{
+				if ( Deleted ) return false;
+
+				if ( !from.InRange( GetWorldLocation(), 1 ) )
+					SendLocalizedMessageTo( from, 501816 ); // You are too far away to do that.
+				else if ( from.Skills[SkillName.Stealing].Base >= m_MaxSkill && from.Skills[SkillName.Snooping].Base >= m_MaxSkill )
+					from.SendMessage( "Your thief abilities cannot improve any further by practicing on a dummy." );
+				else if ( from.Mounted )
+					SendLocalizedMessageTo( from, 501829 ); // You can't practice on this while on a mount.
+				else
+					return true;
+				
+				return false;
+			}, TimeSpan.Zero, TimeSpan.FromSeconds(1.0));
 		}
 
 		public PickpocketDip( Serial serial ) : base( serial )

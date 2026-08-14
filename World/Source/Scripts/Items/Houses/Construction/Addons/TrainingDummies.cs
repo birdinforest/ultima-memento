@@ -1,6 +1,6 @@
 using System;
-using Server;
 using Server.Mobiles;
+using Server.Timers;
 
 namespace Server.Items
 {
@@ -107,22 +107,46 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			BaseWeapon weapon = from.Weapon as BaseWeapon;
-
-			if ( !(from is PlayerMobile) )
-				Use( from, weapon );
-			else if ( weapon is BaseRanged )
-				SendLocalizedMessageTo( from, 501822 ); // You can't practice ranged weapons on this.
-			else if ( weapon == null || !from.InRange( GetWorldLocation(), weapon.MaxRange ) )
-				SendLocalizedMessageTo( from, 501816 ); // You are too far away to do that.
-			else if ( Swinging )
-				SendLocalizedMessageTo( from, 501815 ); // You have to wait until it stops swinging.
-			else if ( from.Skills[weapon.Skill].Base >= m_MaxSkill )
-				SendLocalizedMessageTo( from, 501828 ); // Your skill cannot improve any further by simply practicing with a dummy.
-			else if ( from.Mounted )
-				SendLocalizedMessageTo( from, 501829 ); // You can't practice on this while on a mount.
+			var player = from as PlayerMobile;
+			if ( player == null )
+			{
+				Use( from, from.Weapon as BaseWeapon );
+			}
 			else
-				Use( from, weapon );
+			{
+				if ( Swinging )
+				{
+					SendLocalizedMessageTo( from, 501815 ); // You have to wait until it stops swinging.
+					return;
+				}
+
+				RepeatableAction.Run(player, () =>
+				{
+					if ( Swinging ) return;
+
+					BaseWeapon weapon = from.Weapon as BaseWeapon;
+					Use( from, weapon );
+				},
+				() =>
+				{
+					if ( Deleted ) return false;
+
+					BaseWeapon weapon = from.Weapon as BaseWeapon;
+						
+					if ( weapon is BaseRanged )
+						SendLocalizedMessageTo( from, 501822 ); // You can't practice ranged weapons on this.
+					else if ( weapon == null || !from.InRange( GetWorldLocation(), weapon.MaxRange ) )
+						SendLocalizedMessageTo( from, 501816 ); // You are too far away to do that.
+					else if ( from.Skills[weapon.Skill].Base >= m_MaxSkill )
+						SendLocalizedMessageTo( from, 501828 ); // Your skill cannot improve any further by simply practicing with a dummy.
+					else if ( from.Mounted )
+						SendLocalizedMessageTo( from, 501829 ); // You can't practice on this while on a mount.
+					else
+						return true;
+					
+					return false;
+				}, TimeSpan.Zero, TimeSpan.FromSeconds(1.0));
+			}
 		}
 
 		public TrainingDummy( Serial serial ) : base( serial )
