@@ -11,9 +11,9 @@ using Server.Misc;
 using Server.Items;
 using Server.Engines.MLQuests.Gumps;
 using Scripts.Mythik.Systems.Achievements;
-using Server.Localization;
 using Server.SpellBars;
 using Server.ModernSkill;
+using Server.Localization;
 using System.Linq;
 using System.Text;
 
@@ -58,7 +58,7 @@ namespace Server.Engines.Help
 		}
 	}
 
-	public class HelpGump : Gump
+	public partial class HelpGump : Gump
 	{
 		private const string TEXT_COLOR = "#ddbc4b"; // Yellowy
 		private readonly int m_PageNumber;
@@ -72,6 +72,12 @@ namespace Server.Engines.Help
 			Do_CorpseClear,
 			Do_CorpseSearch,
 			Do_MoongateSearch,
+			Do_SetCraftingContainer_Info,
+			Do_SetCraftingContainer,
+			Do_SetHarvestingContainer_Info,
+			Do_SetHarvestingContainer,
+			Do_SetLootContainer_Info,
+			Do_SetLootContainer,
 			Do_StuckInWorld,
 			Do_Toggle_AFK,
 
@@ -196,8 +202,8 @@ namespace Server.Engines.Help
 			Setting_GumpImages,
 			Setting_LegacyCarve_Info,
 			Setting_LegacyCarve,
-			Setting_LootOptions_Info,
-			Setting_LootOptions,
+			Show_LootOptions_Info,
+			Show_LootOptions,
 			Setting_MagerySpellColor_Black,
 			Setting_MagerySpellColor_Blue,
 			Setting_MagerySpellColor_Default,
@@ -209,8 +215,8 @@ namespace Server.Engines.Help
 			Setting_MagerySpellColor_Yellow,
 			Setting_MessageColors_Info,
 			Setting_MessageColors,
-			Setting_ModernSkills_Info,
-			Setting_ModernSkills,
+			Show_ModernSkills_Info,
+			Show_ModernSkills,
 			Setting_MusicPlaylist_Info,
 			Setting_MusicPlaylist,
 			Setting_MusicTone_Info,
@@ -229,12 +235,6 @@ namespace Server.Engines.Help
 			Setting_PrivatePlay,
 			Setting_RemoveVendorGoldSafeguard_Info,
 			Setting_RemoveVendorGoldSafeguard,
-			Setting_SetCraftingContainer_Info,
-			Setting_SetCraftingContainer,
-			Setting_SetHarvestingContainer_Info,
-			Setting_SetHarvestingContainer,
-			Setting_SetLootContainer_Info,
-			Setting_SetLootContainer,
 			Setting_SingleAttemptID_Info,
 			Setting_SingleAttemptID,
 			Setting_SkillList_Info,
@@ -245,14 +245,13 @@ namespace Server.Engines.Help
 			Setting_SuppressVendorTooltips,
 			Setting_UseAncientSpellbook_Info,
 			Setting_UseAncientSpellbook,
-			Setting_VendorContainerSell_Info,
-			Setting_VendorContainerSell,
+			Show_VendorContainerSell_Info,
+			Show_VendorContainerSell,
 			Setting_WeaponAbilityBar_Info,
 			Setting_WeaponAbilityBar,
 			Setting_WeaponAbilityNames_Info,
 			Setting_WeaponAbilityNames,
-
-			// Memento zh-Hans: language switch (fixed high IDs to avoid colliding with the re-sorted range)
+		// Memento zh-Hans: language switch (fixed high IDs)
 			Setting_Language_English = 60010,
 			Setting_Language_ZhHans = 60011,
 
@@ -266,6 +265,7 @@ namespace Server.Engines.Help
 			Do_QuickBarAutoOpen,
 			Show_RegBar,
 			Show_CombatBar,
+			Show_Preferences,
 			Show_Settings,
 			Show_SkillList,
 			Show_Statistics,
@@ -393,6 +393,18 @@ namespace Server.Engines.Help
 
 				rowY += rowHeight;
 				rowY -= BAR_BORDER_HEIGHT;
+				AddGeneralActionRow(SECTION_START_X, rowY, "Set Crafting Container", PageActionType.Do_SetCraftingContainer, PageActionType.Do_SetCraftingContainer_Info);
+
+				rowY += rowHeight;
+				rowY -= BAR_BORDER_HEIGHT;
+				AddGeneralActionRow(SECTION_START_X, rowY, "Set Harvesting Container", PageActionType.Do_SetHarvestingContainer, PageActionType.Do_SetHarvestingContainer_Info);
+
+				rowY += rowHeight;
+				rowY -= BAR_BORDER_HEIGHT;
+				AddGeneralActionRow(SECTION_START_X, rowY, "Set Loot Container", PageActionType.Do_SetLootContainer, PageActionType.Do_SetLootContainer_Info);
+
+				rowY += rowHeight;
+				rowY -= BAR_BORDER_HEIGHT;
 				AddGeneralActionRow(SECTION_START_X, rowY, "Toggle AFK Mode", PageActionType.Do_Toggle_AFK);
 			}
 
@@ -420,7 +432,7 @@ namespace Server.Engines.Help
 				AddMagicToolbarRow(SECTION_START_X, rowY, "Quick Bar", PageActionType.Show_QuickBarManage, PageActionType.Show_QuickBar, PageActionType.None, PageActionType.Do_QuickBarAutoOpen, isAutoOpen);
 
 				rowY += rowHeight;
-				AddToolbarRowOnlyOpen(SECTION_START_X, rowY, "Weapon Abilities Bar", PageActionType.Show_WeaponAbilities);
+				AddMagicToolbarRow(SECTION_START_X, rowY, "Weapon Abilities Bar", PageActionType.None, PageActionType.Show_WeaponAbilities, PageActionType.None, PageActionType.Setting_WeaponAbilityBar, isAutoOpen);
 				
 				rowY += rowHeight;
 				AddToolbarRowOnlyOpen(SECTION_START_X, rowY, "Wealth Bar", PageActionType.Show_WealthBar);
@@ -444,8 +456,14 @@ namespace Server.Engines.Help
 				AddGeneralActionRow(SECTION_START_X, rowY, "Achievements", PageActionType.Do_Achievements);
 
 				rowY += rowHeight;
+				AddGeneralActionRow(SECTION_START_X, rowY, "Autoloot Configuration", PageActionType.Show_LootOptions, PageActionType.Show_LootOptions_Info);
+
+				rowY += rowHeight;
 				rowY -= BAR_BORDER_HEIGHT;
 				AddGeneralActionRow(SECTION_START_X, rowY, "Chat", PageActionType.Show_Chat);
+
+				rowY += rowHeight;
+				AddGeneralActionRow(SECTION_START_X, rowY, "Container Sell", PageActionType.Show_VendorContainerSell, PageActionType.Show_VendorContainerSell_Info);
 
 				rowY += rowHeight;
 				rowY -= BAR_BORDER_HEIGHT;
@@ -466,6 +484,10 @@ namespace Server.Engines.Help
 				rowY += rowHeight;
 				rowY -= BAR_BORDER_HEIGHT;
 				AddGeneralActionRow(SECTION_START_X, rowY, "Skill List", PageActionType.Show_SkillList);
+
+				rowY += rowHeight;
+				rowY -= BAR_BORDER_HEIGHT;
+				AddGeneralActionRow(SECTION_START_X, rowY, "Modernized Skill Configuration", PageActionType.Show_ModernSkills, PageActionType.Show_ModernSkills_Info);
 				
 				rowY += rowHeight;
 				rowY -= BAR_BORDER_HEIGHT;
@@ -602,6 +624,15 @@ namespace Server.Engines.Help
 				}
 			}
 
+			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			AddAction(nav_x, r, from, "Preferences", PageActionType.Show_Preferences, NAVIGATION_ITEM_WIDTH);
+			r += e;
+
+			if ( page == (int)PageActionType.Show_Preferences )
+			{
+				AddPreferencesPanel(from, secondaryPageNumber);
+			}
 
 			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -616,203 +647,7 @@ namespace Server.Engines.Help
 
 			if ( page == (int)PageActionType.Show_Settings )
 			{
-				const int SECTION_START_X = 225;
-				const int SETTING_START_X = SECTION_START_X + 20;
-				const int SETTING_SECTION_WIDTH = 725;
-
-				int g = 40;
-				int j = 30;
-				int xm = 245;
-				int xo = 700;
-				int xr = 0;
-				int xs = SECTION_START_X;
-
-				// Section - Settings
-				AddHtml( SECTION_START_X, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Settings</BASEFONT></BODY>", (bool)false, (bool)false);
-				g += j;
-
-				xs = SETTING_START_X;
-				AddSetting(xs, g, from, "Auto Attack", PageActionType.Setting_AutoAttack, PageActionType.Setting_AutoAttack_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Auto Sheath", PageActionType.Setting_AutoSheath, PageActionType.Setting_AutoSheath_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Classic Poisoning", PageActionType.Setting_ClassicPoisoning, PageActionType.Setting_ClassicPoisoning_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				if ( from.RaceID > 0 && Server.Items.BaseRace.GetMonsterMage( from.RaceID ) )
-				{
-					string magic = "Default";
-					if ( from.RaceMagicSchool == 1 ){ magic = "Magery"; }
-					else if ( from.RaceMagicSchool == 2 ){ magic = "Necromancy"; }
-					else if ( from.RaceMagicSchool == 3 ){ magic = "Elementalism"; }
-
-					var inTavern = from.Region.Name == "the Tavern";
-					AddSetting(xs, g, from, "Creature Magic (" + magic + ")", PageActionType.Setting_CreatureMagicFocus, PageActionType.Setting_CreatureMagicFocus_Info, inTavern);
-					if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-				}
-
-				if ( from.RaceID > 0 )
-				{
-					AddSetting(xs, g, from, "Creature Sounds", PageActionType.Setting_CreatureSounds, PageActionType.Setting_CreatureSounds_Info);
-					if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-				}
-
-				if ( from.RaceID > 0 
-					&& (
-					(from.Region).Name == "the Tavern" ||
-					( from.Map == Map.Sosaria && from.X >= 6982 && from.Y >= 694 && from.X <= 6999 && from.Y <= 713 )
-				))
-				{
-					AddSetting(xs, g, from, "Creature Type", PageActionType.Setting_CreatureType, PageActionType.Setting_CreatureType_Info);
-					if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-				}
-
-				if ( MySettings.S_AllowCustomTitles )
-				{
-					AddSetting(xs, g, from, "Custom Title", PageActionType.Setting_CustomTitle, PageActionType.Setting_CustomTitle_Info);
-					if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-				}
-
-				AddSetting(xs, g, from, "Gump Images", PageActionType.Setting_GumpImages, PageActionType.Setting_GumpImages_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Loot Options", PageActionType.Setting_LootOptions, PageActionType.Setting_LootOptions_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Message Colors", PageActionType.Setting_MessageColors, PageActionType.Setting_MessageColors_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Music Playlist", PageActionType.Setting_MusicPlaylist, PageActionType.Setting_MusicPlaylist_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Music Tone", PageActionType.Setting_MusicTone, PageActionType.Setting_MusicTone_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Private Play", PageActionType.Setting_PrivatePlay, PageActionType.Setting_PrivatePlay_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Skill Title", PageActionType.Setting_SkillTitle, PageActionType.Setting_SkillTitle_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				string skillLocks = "Skill List (Show Up)"; 
-				if ( from.SkillDisplay == 1 ){ skillLocks = "Skill List (Show Up and Locked)"; }
-				AddSetting(xs, g, from, skillLocks, PageActionType.Setting_SkillList, PageActionType.Setting_SkillList_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Weapon Ability Bar", PageActionType.Setting_WeaponAbilityBar, PageActionType.Setting_WeaponAbilityBar_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Set Crafting Container", PageActionType.Setting_SetCraftingContainer, PageActionType.Setting_SetCraftingContainer_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Weapon Ability Names", PageActionType.Setting_WeaponAbilityNames, PageActionType.Setting_WeaponAbilityNames_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddHtml( xs, g, 400, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey( from.Account, "help.gump.settings.language" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				g += j;
-				xs = SETTING_START_X;
-				AddAction( xs, g, from, "English", PageActionType.Setting_Language_English, 130 );
-				xs += 220;
-				AddAction( xs, g, from, "简体中文 (zh-Hans)", PageActionType.Setting_Language_ZhHans, 240 );
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Set Harvesting Container", PageActionType.Setting_SetHarvestingContainer, PageActionType.Setting_SetHarvestingContainer_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Use Ancient Spellbook", PageActionType.Setting_UseAncientSpellbook, PageActionType.Setting_UseAncientSpellbook_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Set Loot Container", PageActionType.Setting_SetLootContainer, PageActionType.Setting_SetLootContainer_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Double Click to ID Items", PageActionType.Setting_DoubleClickToIDItems, PageActionType.Setting_DoubleClickToIDItems_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Double Click Talk", PageActionType.Setting_DoubleClickToTalk, PageActionType.Setting_DoubleClickToTalk_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Single ID Attempt", PageActionType.Setting_SingleAttemptID, PageActionType.Setting_SingleAttemptID_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Colorless Fabric Breakdown", PageActionType.Setting_ColorlessFabricBreakdown, PageActionType.Setting_ColorlessFabricBreakdown_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Ordinary Resources", PageActionType.Setting_OrdinaryResources, PageActionType.Setting_OrdinaryResources_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Remove Vendor Gold Safeguard", PageActionType.Setting_RemoveVendorGoldSafeguard, PageActionType.Setting_RemoveVendorGoldSafeguard_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Suppress Vendor Tooltips", PageActionType.Setting_SuppressVendorTooltips, PageActionType.Setting_SuppressVendorTooltips_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Container Sell", PageActionType.Setting_VendorContainerSell, PageActionType.Setting_VendorContainerSell_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Modern Skills", PageActionType.Setting_ModernSkills, PageActionType.Setting_ModernSkills_Info);
-				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
-
-				AddSetting(xs, g, from, "Legacy Carve", PageActionType.Setting_LegacyCarve, PageActionType.Setting_LegacyCarve_Info);
-				// Last setting, don't add a row
-
-				// Section - Play Styles
-				const int PLAYSTYLE_OPTIONS_PER_ROW = 4;
-				const int PLAYSTYLE_OPTION_WIDTH = 125;
-				const int PLAYSTYLE_OPTION_WIDTH_TOTAL = PLAYSTYLE_OPTION_WIDTH * PLAYSTYLE_OPTIONS_PER_ROW;
-				const int PLAYSTYLE_PADDING_LEFT = (int)( (double)( SETTING_SECTION_WIDTH - PLAYSTYLE_OPTION_WIDTH_TOTAL ) / PLAYSTYLE_OPTIONS_PER_ROW );
-
-				g += (int)(1.5 * j);
-				xs = SECTION_START_X;
-				AddHtml( xs, g, 316, 20, @"<BODY><BASEFONT Color=" + color + ">Play Styles</BASEFONT></BODY>", (bool)false, (bool)false);
-				g += j;
-
-				xs = SETTING_START_X;
-				AddSetting(xs, g, from, "Normal", PageActionType.Setting_Playstyle_Normal, PageActionType.Setting_Playstyle_Normal_Info);
-				xs += PLAYSTYLE_OPTION_WIDTH + PLAYSTYLE_PADDING_LEFT;
-
-				AddSetting(xs, g, from, "Evil", PageActionType.Setting_Playstyle_Evil, PageActionType.Setting_Playstyle_Evil_Info);
-				xs += PLAYSTYLE_OPTION_WIDTH + PLAYSTYLE_PADDING_LEFT;
-
-				AddSetting(xs, g, from, "Oriental", PageActionType.Setting_Playstyle_Oriental, PageActionType.Setting_Playstyle_Oriental_Info);
-				xs += PLAYSTYLE_OPTION_WIDTH + PLAYSTYLE_PADDING_LEFT;
-
-				string barbaricStyle = !from.Female ? "Barbaric" : "Barbaric (Amazon)";
-				AddSetting(xs, g, from, barbaricStyle, PageActionType.Setting_Playstyle_Barbaric, PageActionType.Setting_Playstyle_Barbaric_Info);
-
-				// Section - Magery Spell Color
-				const int MAGERY_SPELL_COLOR_OPTIONS_PER_ROW = 4;
-				const int MAGERY_SPELL_COLOR_OPTION_WIDTH = 90;
-				const int MAGERY_SPELL_COLOR_OPTION_WIDTH_TOTAL = MAGERY_SPELL_COLOR_OPTION_WIDTH * MAGERY_SPELL_COLOR_OPTIONS_PER_ROW;
-				const int MAGERY_SPELL_COLOR_PADDING_LEFT = (int)( (double)( SETTING_SECTION_WIDTH - MAGERY_SPELL_COLOR_OPTION_WIDTH_TOTAL ) / MAGERY_SPELL_COLOR_OPTIONS_PER_ROW );
-
-				g += (int)(1.5 * j);
-				xs = SECTION_START_X;
-				AddHtml( xs, g + 3, 110, 20, @"<BODY><BASEFONT Color=" + color + ">Magery Spell Color</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddButton(xs + 124, g, 4011, 4011, (int)PageActionType.Setting_MagerySpellColor_Info, GumpButtonType.Reply, 0);
-
-				g += j;
-				xs = SETTING_START_X;
-				AddAction(xs, g, from, "Default", PageActionType.Setting_MagerySpellColor_Default, MAGERY_SPELL_COLOR_OPTION_WIDTH);
-				xs += MAGERY_SPELL_COLOR_OPTION_WIDTH + MAGERY_SPELL_COLOR_PADDING_LEFT;
-				AddAction(xs, g, from, "Black", PageActionType.Setting_MagerySpellColor_Black, MAGERY_SPELL_COLOR_OPTION_WIDTH);
-				xs += MAGERY_SPELL_COLOR_OPTION_WIDTH + MAGERY_SPELL_COLOR_PADDING_LEFT;
-				AddAction(xs, g, from, "Blue", PageActionType.Setting_MagerySpellColor_Blue, MAGERY_SPELL_COLOR_OPTION_WIDTH);
-				xs += MAGERY_SPELL_COLOR_OPTION_WIDTH + MAGERY_SPELL_COLOR_PADDING_LEFT;
-				AddAction(xs, g, from, "Green", PageActionType.Setting_MagerySpellColor_Green, MAGERY_SPELL_COLOR_OPTION_WIDTH);
-				xs += MAGERY_SPELL_COLOR_OPTION_WIDTH + MAGERY_SPELL_COLOR_PADDING_LEFT;
-
-				g += j;
-				xs = SETTING_START_X;
-				AddAction(xs, g, from, "Purple", PageActionType.Setting_MagerySpellColor_Purple, MAGERY_SPELL_COLOR_OPTION_WIDTH);
-				xs += MAGERY_SPELL_COLOR_OPTION_WIDTH + MAGERY_SPELL_COLOR_PADDING_LEFT;
-				AddAction(xs, g, from, "Red", PageActionType.Setting_MagerySpellColor_Red, MAGERY_SPELL_COLOR_OPTION_WIDTH);
-				xs += MAGERY_SPELL_COLOR_OPTION_WIDTH + MAGERY_SPELL_COLOR_PADDING_LEFT;
-				AddAction(xs, g, from, "White", PageActionType.Setting_MagerySpellColor_White, MAGERY_SPELL_COLOR_OPTION_WIDTH);
-				xs += MAGERY_SPELL_COLOR_OPTION_WIDTH + MAGERY_SPELL_COLOR_PADDING_LEFT;
-				AddAction(xs, g, from, "Yellow", PageActionType.Setting_MagerySpellColor_Yellow, MAGERY_SPELL_COLOR_OPTION_WIDTH);
-				xs += MAGERY_SPELL_COLOR_OPTION_WIDTH + MAGERY_SPELL_COLOR_PADDING_LEFT;
+				AddSettingsPanel(from, secondaryPageNumber);
 			}
 
 			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -909,9 +744,10 @@ namespace Server.Engines.Help
 			AddHtml(x, y + 3, 200, 20, string.Format(@"<BODY><BASEFONT Color={0}>{1}</BASEFONT></BODY>", TEXT_COLOR, label), false, false);
 		}
 
-		private void AddGeneralActionRow(int x, int y, string name, PageActionType action, bool addTopSeparator = false)
+		private void AddGeneralActionRow(int x, int y, string name, PageActionType action, PageActionType infoAction = PageActionType.None, bool addTopSeparator = false)
 		{
 			const int RIGHT_ARROW = 4005;
+			const int PAGE_ICON = 4011;
 
 			if (addTopSeparator)
 			{
@@ -923,6 +759,13 @@ namespace Server.Engines.Help
 
 			x += 20;
 			AddButton(x, y, RIGHT_ARROW, RIGHT_ARROW, (int)action, GumpButtonType.Reply, 0);
+
+			if (infoAction != PageActionType.None)
+			{
+				x += 40;
+				AddButton(x, y, PAGE_ICON, PAGE_ICON, (int)infoAction, GumpButtonType.Reply, 0);
+			}
+
 			AddHtml(x + 40, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + name + "</BASEFONT></BODY>", false, false);
 		}
 
@@ -1014,6 +857,7 @@ namespace Server.Engines.Help
 				case PageActionType.Navigate_MagicToolbars:
 				case PageActionType.Navigate_Changelog:
 				case PageActionType.Show_Quests:
+				case PageActionType.Show_Preferences:
 				case PageActionType.Show_Settings:
 					return m_PageNumber == (int)actionType ? CHECKED_BOX : UNCHECKED_BOX;
 
@@ -1022,6 +866,9 @@ namespace Server.Engines.Help
 				case PageActionType.Show_Conversations:
 				case PageActionType.Do_CorpseClear:
 				case PageActionType.Do_CorpseSearch:
+				case PageActionType.Do_SetCraftingContainer:
+				case PageActionType.Do_SetHarvestingContainer:
+				case PageActionType.Do_SetLootContainer:
 				case PageActionType.Show_Emote:
 				case PageActionType.Navigate_Library:
 				case PageActionType.Do_MoongateSearch:
@@ -1038,14 +885,11 @@ namespace Server.Engines.Help
 				case PageActionType.Setting_CreatureMagicFocus:
 				case PageActionType.Setting_CreatureType:
 				case PageActionType.Setting_CustomTitle:
-				case PageActionType.Setting_LootOptions:
+				case PageActionType.Show_LootOptions:
 				case PageActionType.Setting_MusicPlaylist:
 				case PageActionType.Setting_SkillTitle:
-				case PageActionType.Setting_SetCraftingContainer:
-				case PageActionType.Setting_SetHarvestingContainer:
-				case PageActionType.Setting_SetLootContainer:
-				case PageActionType.Setting_VendorContainerSell:
-				case PageActionType.Setting_ModernSkills:
+				case PageActionType.Show_VendorContainerSell:
+				case PageActionType.Show_ModernSkills:
 					return RIGHT_ARROW;
 			}
 			
@@ -1236,6 +1080,11 @@ namespace Server.Engines.Help
 					from.SendGump( new CombatBar.CombatBarGump( from ) );
 					break;
 				}
+				case PageActionType.Show_Preferences:
+				{
+					from.SendGump( new HelpGump( from, (int)PageActionType.Show_Preferences ) );
+					break;
+				}
 				case PageActionType.Show_Settings:
 				{
 					from.SendGump( new HelpGump( from, (int)PageActionType.Show_Settings ) );
@@ -1312,17 +1161,17 @@ namespace Server.Engines.Help
 						from.HarvestOrdinary = true;
 					break;
 				}
-				case PageActionType.Setting_SetLootContainer:
-				case PageActionType.Setting_SetCraftingContainer:
-				case PageActionType.Setting_SetHarvestingContainer:
+				case PageActionType.Do_SetLootContainer:
+				case PageActionType.Do_SetCraftingContainer:
+				case PageActionType.Do_SetHarvestingContainer:
 				{
 					reopenPage = true;
 					int box;
 					switch(actionType)
 					{
-						case PageActionType.Setting_SetLootContainer: box = 1; break;
-						case PageActionType.Setting_SetCraftingContainer: box = 2; break;
-						case PageActionType.Setting_SetHarvestingContainer: box = 3; break;
+						case PageActionType.Do_SetLootContainer: box = 1; break;
+						case PageActionType.Do_SetCraftingContainer: box = 2; break;
+						case PageActionType.Do_SetHarvestingContainer: box = 3; break;
 						default: Console.WriteLine("[HelpGump] Invalid container type: {0}", pressed); return;
 					}
 
@@ -1371,10 +1220,10 @@ namespace Server.Engines.Help
 					}
 					break;
 				}
-				case PageActionType.Setting_LootOptions:
+				case PageActionType.Show_LootOptions:
 				{
 					from.CloseGump( typeof( LootChoices ) );
-					from.SendGump( new LootChoices( from, 1 ) );
+					from.SendGump( new LootChoices( from, (int)PageActionType.Navigate_Gumps ) );
 					break;
 				}
 				case PageActionType.Setting_SkillTitle:
@@ -1565,60 +1414,16 @@ namespace Server.Engines.Help
 					from.Preferences.SuppressVendorTooltip = !from.Preferences.SuppressVendorTooltip;
 					break;
 				}
-				case PageActionType.Setting_VendorContainerSell:
+				case PageActionType.Show_VendorContainerSell:
 				{
-					reopenPage = true;
 					from.CloseGump( typeof( VendorContainerSellConfigGump ) );
+					from.SendGump( new VendorContainerSellConfigGump( from, (int)PageActionType.Navigate_Gumps ) );
 					break;
 				}
-				case PageActionType.Setting_Language_English:
+				case PageActionType.Show_ModernSkills:
 				{
-					if ( from.Account == null )
-					{
-						from.SendMessage( "Your account could not be found." );
-						break;
-					}
-
-					AccountLang.SetLanguageCode( from.Account, "en" );
-					from.SendMessage( "Language set to en." );
-
-					try
-					{
-						World.Save( false, false );
-					}
-					catch
-					{
-					}
-
-					from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
-					break;
-				}
-				case PageActionType.Setting_Language_ZhHans:
-				{
-					if ( from.Account == null )
-					{
-						from.SendMessage( "Your account could not be found." );
-						break;
-					}
-
-					AccountLang.SetLanguageCode( from.Account, "zh-Hans" );
-					from.SendMessage( "Language set to zh-Hans." );
-
-					try
-					{
-						World.Save( false, false );
-					}
-					catch
-					{
-					}
-
-					from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
-					break;
-				}
-				case PageActionType.Setting_ModernSkills:
-				{
-					reopenPage = true;
 					from.CloseGump( typeof( ModernSkillSetupGump ) );
+					from.SendGump( new ModernSkillSetupGump( from, (int)PageActionType.Navigate_Gumps ) );
 					break;
 				}
 				case PageActionType.Setting_SingleAttemptID:
@@ -1634,6 +1439,38 @@ namespace Server.Engines.Help
 					break;
 				}
 
+				case PageActionType.Setting_Language_English:
+				{
+					if ( from.Account == null )
+					{
+						from.SendMessage( "Your account could not be found." );
+						break;
+					}
+
+					AccountLang.SetLanguageCode( from.Account, "en" );
+					from.SendMessage( "Language set to en." );
+
+					try { World.Save( false, false ); } catch {}
+
+					from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
+					break;
+				}
+				case PageActionType.Setting_Language_ZhHans:
+				{
+					if ( from.Account == null )
+					{
+						from.SendMessage( "Your account could not be found." );
+						break;
+					}
+
+					AccountLang.SetLanguageCode( from.Account, "zh-Hans" );
+					from.SendMessage( "Language set to zh-Hans." );
+
+					try { World.Save( false, false ); } catch {}
+
+					from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
+					break;
+				}
 				case PageActionType.MagicToolbar_Ancient_I_Close: reopenPage = true; InvokeCommand( "archclose1", from ); break;
 				case PageActionType.MagicToolbar_Ancient_I_Config: TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Ancient_1, from, 1 ) ); break;
 				case PageActionType.MagicToolbar_Ancient_I_Open: reopenPage = true; InvokeCommand( "archtool1", from ); break;
@@ -2186,8 +2023,9 @@ namespace Server.Engines.Help
 					break;
 				}
 
-				case PageActionType.Setting_LootOptions_Info:
+				case PageActionType.Show_LootOptions_Info:
 				{
+					returnPage = PageActionType.Navigate_Gumps;
 					title = "Loot Options";
 					info = "This lets you select from a list of categories, where they will automatically take those types of items from common dungeon chests or corpses and put them in your backpack. If you select coins, you will take wealth in the form of currency or gold nuggets. If you take gems and jewels, this will consist of gems, gemstones, jewelry, jewels, and crystals. The unknown items are those that will need identification, but you may decide to take them anyway. The reagent options have a few categories. Magery and necromancer reagents are those used specifically by those characters, where witches brew reagents fall into the necromancer category. Alchemic reagents are those that fall outside the category of magery and necromancer reagents, and only alchemists use them. Herbalist reagents are useful druidic herbalism.";
 					break;
@@ -2415,24 +2253,27 @@ namespace Server.Engines.Help
 					break;
 				}
 
-				case PageActionType.Setting_SetCraftingContainer_Info:
+				case PageActionType.Do_SetCraftingContainer_Info:
 				{
+					returnPage = PageActionType.Navigate_Actions;
 					scrollbar = false;
 					title = "Set Crafting Container";
 					info = "This allows you to set a container, where items will go when you are creating them through crafting. The container must be in your main pack in order to collect the items, and not within another container.";
 					break;
 				}
 
-				case PageActionType.Setting_SetHarvestingContainer_Info:
+				case PageActionType.Do_SetHarvestingContainer_Info:
 				{
+					returnPage = PageActionType.Navigate_Actions;
 					scrollbar = false;
 					title = "Set Harvesting Container";
 					info = "This allows you to set a container, where items will go when you are harvesting for items. These are items you get from activities like mining, lumberjacking, and fishing. The container must be in your main pack in order to collect the items, and not within another container.";
 					break;
 				}
 
-				case PageActionType.Setting_SetLootContainer_Info:
+				case PageActionType.Do_SetLootContainer_Info:
 				{
+					returnPage = PageActionType.Navigate_Actions;
 					scrollbar = false;
 					title = "Set Loot Container";
 					info = "This allows you to set a container, where items will go that you configured in the Loot Options setting. The container must be in your main pack in order to collect the items, and not within another container.";
@@ -2491,15 +2332,17 @@ namespace Server.Engines.Help
 					break;
 				}
 
-				case PageActionType.Setting_VendorContainerSell_Info:
+				case PageActionType.Show_VendorContainerSell_Info:
 				{
+					returnPage = PageActionType.Navigate_Gumps;
 					title = "Container Sell";
 					info = "Configure the gump shown when you drop a container on a vendor to sell its contents. If the new gump is disabled, sellable items from the container are sent through the classic vendor sell list instead.";
 					break;
 				}
 
-				case PageActionType.Setting_ModernSkills_Info:
+				case PageActionType.Show_ModernSkills_Info:
 				{
+					returnPage = PageActionType.Navigate_Gumps;
 					title = "Modern Skill Settings";
 					info = "Configure the gump shown to configure modernization of skills.";
 					break;

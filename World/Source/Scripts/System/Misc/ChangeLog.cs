@@ -1174,6 +1174,11 @@ namespace Server.Misc
 					builder.Append("<br>Changes<br>");
 					builder.Append("- Avatar - Add ascensions for Jester, Mystic, Shinobi, Death Knight, and Holy Man templates<br>");
 					builder.Append("- Commands - Add '[SuppressSystemMessages' command to replace system messages with `!`<br>");
+					builder.Append("- Gump - Refactor Help gump Settings page<br>");
+					builder.Append("       - Move Set Crafting/Harvesting/Loot container to Actions page<br>");
+					builder.Append("       - Move open Autoloot Options, Container Sell, and Modern Skills to Gumps page<br>");
+					builder.Append("       - Move ability to toggle Open on Login for Weapon Abilities bar to Bars page<br>");
+					builder.Append("       - Break out Preferences page from Settings page in Help gump<br>");
 					builder.Append("- Housekeeping - Centralized code for Artifact luck checks<br>");
 					builder.Append("- Item - The *Home* Bank Vault item is now properly named as such and can only be used when secured in a home<br>");
 					builder.Append("- Item - Training Shovel now shows uses remaining<br>");
@@ -1193,6 +1198,9 @@ namespace Server.Misc
 
 					builder.Append("<br>Fixes<br>");
 					builder.Append("- Gump - Achievement and Quest gump now respect the show background image setting<br>");
+					builder.Append("- Gump - Show Container Sell button now opens the gump<br>");
+					builder.Append("- Gump - Show Modern Skill Config button now opens the gump<br>");
+					builder.Append("- Gump - Show Loot Config now returns to the Gumps page<br>");
 					builder.Append("- Item - Fix issue where spell scrolls lost ephemeral flag after unstacking<br>");
 					builder.Append("- Map - Add teleporters to bridge in Savaged Empire<br>");
 					builder.Append("- Misc - Fix crash when overlapping Strange Portals occurred<br>");
