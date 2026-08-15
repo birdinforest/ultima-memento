@@ -1175,6 +1175,7 @@ namespace Server.Misc
 					builder.Append("- Admin - Add '[Avatar-Migrate--Game-Time' command to fix avatar's lifetime game time<br>");
 					builder.Append("- Avatar - Add ascensions for Jester, Mystic, Shinobi, Death Knight, and Holy Man templates<br>");
 					builder.Append("- Commands - Add '[SuppressSystemMessages' command to replace system messages with `!`<br>");
+					builder.Append("- Craft - Dinosaur Leather now requires 100 skill to craft, down from 105<br>");
 					builder.Append("- Gump - Refactor Help gump Settings page<br>");
 					builder.Append("       - Move Set Crafting/Harvesting/Loot container to Actions page<br>");
 					builder.Append("       - Move open Autoloot Options, Container Sell, and Modern Skills to Gumps page<br>");
