@@ -1201,6 +1201,7 @@ namespace Server.Misc
 					builder.Append("- Temptations - Clarified how Puzzle master works<br>");
 
 					builder.Append("<br>Fixes<br>");
+					builder.Append("- Avatar - Fix issue where Game Time was not properly added to the Avatar's lifetime stats<br>");
 					builder.Append("- Gump - Achievement and Quest gump now respect the show background image setting<br>");
 					builder.Append("- Gump - Show Container Sell button now opens the gump<br>");
 					builder.Append("- Gump - Show Modern Skill Config button now opens the gump<br>");

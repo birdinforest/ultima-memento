@@ -145,7 +145,7 @@ namespace Server.Misc
 
 			if (newChar.Avatar.Active)
 			{
-				newChar.Avatar.LifetimeGameTime.Add(existingCharacter.GameTime);
+				newChar.Avatar.LifetimeGameTime = newChar.Avatar.LifetimeGameTime.Add(existingCharacter.GameTime);
 				if (newChar.Avatar.UnlockRecordDiscovered)
 					newChar.CharacterDiscovered = existingCharacter.CharacterDiscovered;
 
