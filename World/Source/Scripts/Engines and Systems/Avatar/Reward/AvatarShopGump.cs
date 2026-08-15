@@ -214,15 +214,27 @@ namespace Server.Engines.Avatar
 							if (rewards.Any(reward => !reward.Static))
 							{
 								var nonStaticRewards = rewards.Where(reward => !reward.Static).ToList();
-								var rewardsToPick = nonStaticRewards.Count / 2;
-								if (0 < rewardsToPick)
+
+								var addEntireList = m_Context.UnlockFullSkillArchive && (selectedCategory == Categories.PrimaryBoosts || selectedCategory == Categories.SecondaryBoosts); 
+								if (addEntireList)
 								{
 									randomRewardIndexes.AddRange(
 										nonStaticRewards
-										.OrderBy(r => Utility.RandomMinMax(0, 100))
-										.Take(rewardsToPick)
 										.Select(reward => rewards.FindIndex(r => r == reward))
 									);
+								}
+								else
+								{
+									var rewardsToPick = nonStaticRewards.Count / 2;
+									if (0 < rewardsToPick)
+									{
+										randomRewardIndexes.AddRange(
+											nonStaticRewards
+											.OrderBy(r => Utility.RandomMinMax(0, 100))
+											.Take(rewardsToPick)
+											.Select(reward => rewards.FindIndex(r => r == reward))
+										);
+									}
 								}
 							}
 							break;

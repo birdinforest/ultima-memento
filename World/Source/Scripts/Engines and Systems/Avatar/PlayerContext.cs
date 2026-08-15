@@ -12,6 +12,7 @@ namespace Server.Engines.Avatar
 		public static readonly PlayerContext Default = new PlayerContext();
 
 		private Serial _safetyDepositBoxSerial;
+		private bool _unlockFullSkillArchive;
 
 		public PlayerContext()
 		{
@@ -105,6 +106,11 @@ namespace Server.Engines.Avatar
 				UnlockTemplateDeathKnight = reader.ReadBool();
 				UnlockTemplateHolyMan = reader.ReadBool();
 			}
+
+			if (13 < version) // v14 (local bump): upstream v11 rides past our v13 template bools
+			{
+				UnlockFullSkillArchive = reader.ReadBool();
+			}
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -194,6 +200,21 @@ namespace Server.Engines.Avatar
 		public bool UnlockRecordSkillCaps { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
+		/// <summary>
+		/// This is an admin-only setting
+		/// </summary>
+		public bool UnlockFullSkillArchive
+		{
+			get { return _unlockFullSkillArchive; }
+			set
+			{
+				_unlockFullSkillArchive = value;
+				ClearRewardCache(Categories.PrimaryBoosts);
+				ClearRewardCache(Categories.SecondaryBoosts);
+			}
+		}
+
+		[CommandProperty(AccessLevel.GameMaster)]
 		public bool UnlockSavageRace { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -219,7 +240,7 @@ namespace Server.Engines.Avatar
 
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(13); // version
+			writer.Write(14); // version
 
 			writer.Write(PointsFarmed);
 			writer.Write(PointsSaved);
@@ -260,6 +281,7 @@ namespace Server.Engines.Avatar
 			writer.Write(UnlockTemplateShinobi);
 			writer.Write(UnlockTemplateDeathKnight);
 			writer.Write(UnlockTemplateHolyMan);
+			writer.Write(UnlockFullSkillArchive);
 		}
 
 		public override string ToString()

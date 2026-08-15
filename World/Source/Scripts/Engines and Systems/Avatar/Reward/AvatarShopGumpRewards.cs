@@ -684,7 +684,7 @@ namespace Server.Engines.Avatar
 							{
 								const int NEOPHYTE_SKILL_VALUE = 300;
 								var archiveValue = context.Skills[skill.SkillName];
-								if (archiveValue < NEOPHYTE_SKILL_VALUE) continue;
+								if (!context.UnlockFullSkillArchive && archiveValue < NEOPHYTE_SKILL_VALUE) continue;
 
 								var maxValue = Math.Min(archiveValue / 10f, context.GetRecordedSkillCap());
 								var maxValueFixedPoint = (int)(maxValue * 10);
