@@ -1204,12 +1204,14 @@ namespace Server.Misc
 					builder.Append("- Temptations - Clarified how Puzzle master works<br>");
 
 					builder.Append("<br>Fixes<br>");
+					builder.Append("- Admin - Add blockers to bridge in Savaged Empire<br>");
 					builder.Append("- Avatar - Fix issue where Game Time was not properly added to the Avatar's lifetime stats<br>");
 					builder.Append("- Gump - Achievement and Quest gump now respect the show background image setting<br>");
 					builder.Append("- Gump - Show Container Sell button now opens the gump<br>");
 					builder.Append("- Gump - Show Modern Skill Config button now opens the gump<br>");
 					builder.Append("- Gump - Show Loot Config now returns to the Gumps page<br>");
 					builder.Append("- Item - Fix issue where spell scrolls lost ephemeral flag after unstacking<br>");
+					builder.Append("- Item - Fix issue where Magic quivers (no proprties) were being sold by vendors<br>");
 					builder.Append("- Map - Add teleporters to bridge in Savaged Empire<br>");
 					builder.Append("- Misc - Fix crash when overlapping Strange Portals occurred<br>");
 					builder.Append("- Misc - Fix inconsistent Death Knight check (again)<br>");

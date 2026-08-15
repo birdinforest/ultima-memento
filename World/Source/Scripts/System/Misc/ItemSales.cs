@@ -1547,7 +1547,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	AquariumSouthAddonDeed	),	1600	,	1	,	95	,	false	,	false	,	World.None	,	Category.Rare	,	Material.None	,	Market.Fisherman	),
 			new ItemSalesInfo( typeof(	ArcaneGem	),	20	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Mage	),
 			new ItemSalesInfo( typeof(	ArcherQuiver	),	32	,	5	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Bow	),
-			new ItemSalesInfo( typeof(	MagicQuiver	),	42	,	5	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Bow	),
+			new ItemSalesInfo( typeof(	MagicQuiver	),	42	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Bow	),
 			new ItemSalesInfo( typeof(	ArchmageRobe	),	40	,	5	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.Cloth	,	Market.Wizard	),
 			new ItemSalesInfo( typeof(	JewelryRing	),	20	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Jeweler	),
 			new ItemSalesInfo( typeof(	Armoire	),	176	,	1	,	90	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Carpenter	),
