@@ -46,6 +46,11 @@ namespace Server.Mobiles
 				public InternalBuyInfo()
 				{
 					ItemInformation.GetSellList( m_Merchant, this, 	ItemSalesInfo.Category.All,		ItemSalesInfo.Material.All,		ItemSalesInfo.Market.Scribe,		ItemSalesInfo.World.None,	null	 );
+
+					// All craftable spellbooks + Shinobi Scroll (No DK, Holy Man, Jedi, syth)
+					ItemInformation.GetSellList( m_Merchant, this, false,
+						typeof( BookOfBushido ), typeof( BookOfChivalry ), typeof( BookOfNinjitsu ), typeof( ElementalSpellbook ), typeof( MysticSpellbook ), typeof( NecromancerSpellbook ), typeof( SongBook ), typeof( Spellbook ), typeof( ShinobiScroll )
+					);
 				}
 			}
 
@@ -54,6 +59,11 @@ namespace Server.Mobiles
 				public InternalSellInfo()
 				{
 					ItemInformation.GetBuysList( m_Merchant, this, 	ItemSalesInfo.Category.All,		ItemSalesInfo.Material.All,		ItemSalesInfo.Market.Scribe,		ItemSalesInfo.World.None,	null	 );
+
+					// All craftable spellbooks + Shinobi Scroll (No DK, Holy Man, Jedi, syth)
+					ItemInformation.GetBuysList( m_Merchant, this,
+						typeof( BookOfBushido ), typeof( BookOfChivalry ), typeof( BookOfNinjitsu ), typeof( ElementalSpellbook ), typeof( MysticSpellbook ), typeof( NecromancerSpellbook ), typeof( SongBook ), typeof( Spellbook ), typeof( ShinobiScroll )
+					);
 				}
 			}
 		}
