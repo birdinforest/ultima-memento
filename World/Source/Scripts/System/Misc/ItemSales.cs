@@ -3655,7 +3655,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	SpecialFishingNet	),	160	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Fisherman	),
 			new ItemSalesInfo( typeof(	SpecialHairDye	),	500	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Barber	),
 			new ItemSalesInfo( typeof(	SpecialSeaweed	),	80	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Fisherman	),
-			new ItemSalesInfo( typeof(	Spellbook	),	18	,	15	,	0	,	false	,	false	,	World.None	,	Category.Book	,	Material.None	,	Market.Mage	),
+			new ItemSalesInfo( typeof(	Spellbook	),	100	,	15	,	0	,	false	,	false	,	World.None	,	Category.Book	,	Material.None	,	Market.Mage	),
 			new ItemSalesInfo( typeof(	SphinxStatue	),	500	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Stone	),
 			new ItemSalesInfo( typeof(	SpiderRobe	),	40	,	5	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.Cloth	,	Market.Tailor	),
 			new ItemSalesInfo( typeof(	SpikedClub	),	28	,	15	,	0	,	false	,	false	,	World.None	,	Category.Weapon	,	Material.Metal	,	Market.Smith	),
