@@ -781,7 +781,13 @@ namespace Server
 			return false;
 		}
 
-		public static void GetSellList( Mobile m, List<GenericBuyInfo> LIST, ItemSalesInfo.Category v_Category, ItemSalesInfo.Material v_Material, ItemSalesInfo.Market v_Market, ItemSalesInfo.World v_World, Type specificType )
+		public static void GetSellList( Mobile m, List<GenericBuyInfo> LIST, bool alwaysAvailable, params Type[] specificTypes )
+		{
+			foreach ( var specificType in specificTypes )
+				GetSellList( m, LIST, ItemSalesInfo.Category.All, ItemSalesInfo.Material.All, ItemSalesInfo.Market.All, ItemSalesInfo.World.None, specificType, alwaysAvailable );
+		}
+
+		public static void GetSellList( Mobile m, List<GenericBuyInfo> LIST, ItemSalesInfo.Category v_Category, ItemSalesInfo.Material v_Material, ItemSalesInfo.Market v_Market, ItemSalesInfo.World v_World, Type specificType, bool force = true )
 		{
 			ItemSalesInfo[] list = ItemSalesInfo.m_SellingInfo;
 
@@ -819,7 +825,11 @@ namespace Server
 
 					chemist = Chemist( val, v_Market, v_Category );
 
-					if ( ( specificType != null && itemType == specificType ) || ( iSells(val) && v_Market == iMarket(val) && v_Category == iCategory(val) ) )
+					if ( specificType != null && itemType == specificType && ( force || WillDeal( val, m, true, false, iWorld(val), false ) ) )
+					{
+						set = true;
+					}
+					else if ( iSells(val) && v_Market == iMarket(val) && v_Category == iCategory(val) )
 					{
 						set = true;
 					}
@@ -904,6 +914,12 @@ namespace Server
 				val++;
 			}
 
+		}
+
+		public static void GetBuysList( Mobile m, GenericSellInfo LIST, params Type[] specificTypes )
+		{
+			foreach (Type specificType in specificTypes)
+				GetBuysList( m, LIST, ItemSalesInfo.Category.All, ItemSalesInfo.Material.All, ItemSalesInfo.Market.All, ItemSalesInfo.World.None, specificType );
 		}
 
 		public static void GetBuysList( Mobile m, GenericSellInfo LIST, ItemSalesInfo.Category v_Category, ItemSalesInfo.Material v_Material, ItemSalesInfo.Market v_Market, ItemSalesInfo.World v_World, Type specificType, bool force = false )
