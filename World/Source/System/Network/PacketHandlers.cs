@@ -772,7 +772,7 @@ namespace Server.Network
 					if ( !int.TryParse( command.Split( ' ' )[0], out skillIndex ) )
 						break;
 
-					Skills.UseSkill( m, skillIndex );
+					m.UseSkill( skillIndex );
 
 					break;
 				}
