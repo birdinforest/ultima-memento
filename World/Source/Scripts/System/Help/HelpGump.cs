@@ -489,10 +489,6 @@ namespace Server.Engines.Help
 
 				rowY += rowHeight;
 				rowY -= BAR_BORDER_HEIGHT;
-				AddGeneralActionRow(SECTION_START_X, rowY, "Modernized Skill Configuration", PageActionType.Show_ModernSkills, PageActionType.Show_ModernSkills_Info);
-				
-				rowY += rowHeight;
-				rowY -= BAR_BORDER_HEIGHT;
 				AddGeneralActionRow(SECTION_START_X, rowY, "Statistics", PageActionType.Show_Statistics);
 			}
 
@@ -1435,7 +1431,7 @@ namespace Server.Engines.Help
 				case PageActionType.Show_ModernSkills:
 				{
 					from.CloseGump( typeof( ModernSkillSetupGump ) );
-					from.SendGump( new ModernSkillSetupGump( from, (int)PageActionType.Navigate_Gumps ) );
+					from.SendGump( new ModernSkillSetupGump( from, (int)PageActionType.Show_Preferences ) );
 					break;
 				}
 				case PageActionType.Setting_SingleAttemptID:
@@ -2361,9 +2357,9 @@ namespace Server.Engines.Help
 
 				case PageActionType.Show_ModernSkills_Info:
 				{
-					returnPage = PageActionType.Navigate_Gumps;
+					returnPage = PageActionType.Show_Preferences;
 					title = "Modern Skill Settings";
-					info = "Configure the gump shown to configure modernization of skills.";
+					info = "Configure the modernized behavior of skills.";
 					break;
 				}
 
