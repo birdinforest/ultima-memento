@@ -128,7 +128,7 @@ namespace Server.Items
 				return;
 			}
 
-			RepeatableAction.Run(player, () =>
+			RepeatableAction.Run<PickpocketDip>(player, false, () =>
 			{
 				if ( Swinging ) return;
 

@@ -91,7 +91,7 @@ namespace Server.Items
 			else
 			{
 				bool keepRunning = true;
-				RepeatableAction.Run(player, () =>
+				RepeatableAction.Run<ArcheryButte>(player, false, () =>
 				{
 					BaseRanged bow = from.Weapon as BaseRanged;
 					if ( bow == null ) return;

@@ -227,7 +227,7 @@ namespace Server.ModernSkill
 			var pick = TryGetLockpick(player, target);
 			var keepRunning = true;
 			bool isRunning = false;
-			RepeatableAction.Run(player,
+			RepeatableAction.Run<Lockpick>(player, false,
 			() =>
 				{
 					if (isRunning) return;
@@ -281,7 +281,7 @@ namespace Server.ModernSkill
 			if (!isTrappable && !force) return;
 
 			var keepRunning = true;
-			RepeatableAction.Run(player, () =>
+			RepeatableAction.Run<RemoveTrap>(player, true, () =>
 			{
 				if (DateTime.Now < player.NextSkillTime) return;
 				if (!Skills.CanUseSkill(player, (int)SkillName.RemoveTrap)) return;

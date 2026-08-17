@@ -122,7 +122,7 @@ namespace Server.Items
 					return;
 				}
 
-				RepeatableAction.Run(player, () =>
+				RepeatableAction.Run<TrainingDaemon>(player, false, () =>
 				{
 					if ( Swinging ) return;
 

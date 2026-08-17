@@ -26,6 +26,7 @@ using Server.SpellBars;
 using Server.Utilities;
 using Server.SkillHandlers;
 using Server.Localization;
+using Server.Timers;
 
 namespace Server.Mobiles
 {
@@ -1592,8 +1593,28 @@ namespace Server.Mobiles
 
 			if ( !DesignContext.Check( this ) )
 				return false;
+			
+			// Re-use may cancel a timer. Always allow through.
+			if ( skill == SkillName.Taming )
+				return true;
+			
+			return !Taming.IsTaming( this );
+		}
 
-			return skill == SkillName.Taming || !Taming.IsTaming( this );
+		public override bool UseSkill( SkillName name )
+		{
+			if ( RepeatableAction.IsUsingSkill( this ) )
+				RepeatableAction.StopTimer( this );
+			
+			return base.UseSkill( name );
+		}
+
+		public override bool UseSkill( int skillID )
+		{
+			if ( RepeatableAction.IsUsingSkill( this ) )
+				RepeatableAction.StopTimer( this );
+			
+			return base.UseSkill( skillID );
 		}
 
 		private bool m_LastProtectedMessage;
