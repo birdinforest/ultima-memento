@@ -1203,6 +1203,7 @@ namespace Server.Misc
 					builder.Append("- Quest - The initial Blacksmith quest no longer rewards Gold<br>");
 					builder.Append("- Skill - Begging now sets it's cooldown immediately after targeting<br>");
 					builder.Append("- Skill - Begging is now 50% more likely to gain<br>");
+					builder.Append("- Skill - Tracking auto-retry modernization has been added<br>");
 					builder.Append("- Spell - Quivering Palm now grants consecrate weapon buff when activated<br>");
 					builder.Append("- Temptations - Clarified how Puzzle master works<br>");
 

@@ -13,9 +13,10 @@ namespace Server.ModernSkill
 			ModernRemoveTrapEnabled,
 			ModernLockpickingAutoRetryEnabled,
 			ModernRemoveTrapsAutoRetryEnabled,
+			ModernTrackingEnabled,
 		}
 
-		private const int GUMP_HEIGHT = 200;
+		private const int GUMP_HEIGHT = 212;
 		private const int GUMP_WIDTH = 450;
 		private const int MAX_CONTENT_WIDTH = GUMP_WIDTH - (4 * PADDING);
 		private const int PADDING = 10;
@@ -55,6 +56,9 @@ namespace Server.ModernSkill
 			AddToggleRow(x, y, (int)PageActions.ModernRemoveTrapEnabled, prefs.ModernRemoveTrapEnabled, "Remove Trap: Show gump when targeting a trap or container");
 			y += 30;
 			AddToggleRow(x + SETTING_INDENT, y, (int)PageActions.ModernRemoveTrapsAutoRetryEnabled, prefs.ModernRemoveTrapsAutoRetryEnabled, "Auto-retry");
+
+			y += 30;
+			AddToggleRow(x, y, (int)PageActions.ModernTrackingEnabled, prefs.ModernTrackingEnabled, "Tracking: Auto-retry category until a target is selected");
 		}
 
 		public override void OnResponse(NetState sender, RelayInfo info)
@@ -86,6 +90,10 @@ namespace Server.ModernSkill
 
 				case PageActions.ModernRemoveTrapsAutoRetryEnabled:
 					prefs.ModernRemoveTrapsAutoRetryEnabled = !prefs.ModernRemoveTrapsAutoRetryEnabled;
+					break;
+
+				case PageActions.ModernTrackingEnabled:
+					prefs.ModernTrackingEnabled = !prefs.ModernTrackingEnabled;
 					break;
 
 				default:
