@@ -703,7 +703,10 @@ namespace Server.Spells
 		public virtual bool CheckFizzle()
 		{
 			if ( Caster.ItemCastSpell )
-				return true;
+			{
+				if ( !m_Caster.ScrollCastSpell || m_Scroll.Catalog != Catalogs.Scroll )
+					return true;
+			}
 
 			double minSkill, maxSkill;
 
@@ -712,10 +715,24 @@ namespace Server.Spells
 			if ( DamageSkill != CastSkill )
 				Caster.CheckSkillExplicit( DamageSkill, 0.0, Caster.Skills[ DamageSkill ].Cap );
 
-			var success = Caster.CheckSkillExplicit( CastSkill, minSkill, maxSkill );
-			//if (!success && SpellFailCallback != null) SpellFailCallback.Invoke();
+			if ( m_Caster.ScrollCastSpell )
+			{
+				// Pick the highest of the two skills
+				var value = Math.Max( Caster.Skills[ CastSkill ].Value, Caster.Skills[ SkillName.Inscribe ].Value );
+				if ( value < minSkill ) return false; // Too difficult
 
-			return success;
+				// Casting from scrolls can gain until that spell can fail
+				Caster.CheckSkill( SkillName.Inscribe, 0, maxSkill );
+
+				double chance = (value - minSkill) / (maxSkill - minSkill);
+				bool success = chance >= Utility.RandomDouble();
+
+				return success;
+			}
+			else
+			{
+				return Caster.CheckSkillExplicit( CastSkill, minSkill, maxSkill );
+			}
 		}
 
 		public abstract int GetMana();

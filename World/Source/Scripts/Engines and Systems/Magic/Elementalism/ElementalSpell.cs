@@ -51,10 +51,6 @@ namespace Server.Spells.Elementalism
 		public override void GetCastSkills( out double min, out double max )
 		{
 			int circle = (int)Circle;
-
-			if( Scroll != null )
-				circle -= 2;
-
 			double avg = ChanceLength * circle;
 
 			min = avg - ChanceOffset;
