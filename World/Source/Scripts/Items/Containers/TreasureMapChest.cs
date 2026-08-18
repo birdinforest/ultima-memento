@@ -70,7 +70,8 @@ namespace Server.Items
 			if ( level > 7 ){ ContainerFunctions.FillTheContainer( level, this, owner ); }
 			if ( GetPlayerInfo.LuckyPlayer( owner.Luck ) ){ ContainerFunctions.FillTheContainer( level, this, owner ); }
 
-			ContainerFunctions.LockTheContainer( level, this, 1 );
+			ContainerFunctions.LockTheContainer( originalLevel, this, 1, false );
+			ContainerFunctions.TrapTheContainer( level, this );
 
 			int xTraCash = Utility.RandomMinMax( (level*700), (level*1000) );
 			LootPackChange.AddGoldToContainer( xTraCash, this, owner, level );
