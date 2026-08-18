@@ -245,7 +245,7 @@ namespace Server.Engines.Avatar
 							// Custom Templates
 							ActionReward.Create(
 								context.UnlockTemplateJester,
-								50 * ONE_THOUSAND_GOLD,
+								10 * ONE_THOUSAND_GOLD,
 								ITEM_ID_JESTER,
 								"The Jester",
 								"Unlock the ability to select the Jester template.",
@@ -256,7 +256,7 @@ namespace Server.Engines.Avatar
 							),
 							ActionReward.Create(
 								context.UnlockTemplateMystic,
-								50 * ONE_THOUSAND_GOLD,
+								10 * ONE_THOUSAND_GOLD,
 								ITEM_ID_MYSTIC,
 								"The Mystic",
 								"Unlock the ability to select the Mystic template.",
@@ -267,7 +267,7 @@ namespace Server.Engines.Avatar
 							),
 							ActionReward.Create(
 								context.UnlockTemplateShinobi,
-								50 * ONE_THOUSAND_GOLD,
+								10 * ONE_THOUSAND_GOLD,
 								ITEM_ID_SHINOB,
 								"The Shinobi",
 								"Unlock the ability to select the Shinobi template.",
@@ -278,7 +278,7 @@ namespace Server.Engines.Avatar
 							),
 							ActionReward.Create(
 								context.UnlockTemplateDeathKnight,
-								50 * ONE_THOUSAND_GOLD,
+								10 * ONE_THOUSAND_GOLD,
 								ITEM_ID_DEATH_KNIGHT,
 								"The Death Knight",
 								"Unlock the ability to select the Death Knight template.",
@@ -289,7 +289,7 @@ namespace Server.Engines.Avatar
 							),
 							ActionReward.Create(
 								context.UnlockTemplateHolyMan,
-								50 * ONE_THOUSAND_GOLD,
+								10 * ONE_THOUSAND_GOLD,
 								ITEM_ID_HOLY_MAN,
 								"The Holy Man",
 								"Unlock the ability to select the Holy Man template.",
@@ -464,7 +464,7 @@ namespace Server.Engines.Avatar
 								AvatarShopGump.COST_FREE,
 								ITEM_ID_JESTER,
 								"The Jester",
-								"Start with a Bag of Tricks and the skills of a Jester.",
+								"Start with a Bag of Tricks and learn the skills of a Jester from your Skill Archive.",
 								() =>
 								{
 									applyTemplate(
@@ -485,7 +485,7 @@ namespace Server.Engines.Avatar
 								AvatarShopGump.COST_FREE,
 								ITEM_ID_MYSTIC,
 								"The Mystic",
-								"Start with a Monk's Tome and the skills of a Mystic.",
+								"Start with a Monk's Tome and learn the skills of a Mystic from your Skill Archive.",
 								() =>
 								{
 									applyTemplate(
@@ -506,7 +506,7 @@ namespace Server.Engines.Avatar
 								AvatarShopGump.COST_FREE,
 								ITEM_ID_SHINOB,
 								"The Shinobi",
-								"Start with a Shinobi Scroll and the skills of a Shinobi.",
+								"Start with a Shinobi Scroll and learn the skills of a Shinobi from your Skill Archive.",
 								() =>
 								{
 									applyTemplate(
@@ -527,7 +527,7 @@ namespace Server.Engines.Avatar
 								AvatarShopGump.COST_FREE,
 								ITEM_ID_DEATH_KNIGHT,
 								"The Death Knight",
-								"Start with a Death Knight book and the skills of a Death Knight.",
+								"Start with a Death Knight book and learn the skills of a Death Knight from your Skill Archive.",
 								() =>
 								{
 									applyTemplate(
@@ -548,7 +548,7 @@ namespace Server.Engines.Avatar
 								AvatarShopGump.COST_FREE,
 								ITEM_ID_HOLY_MAN,
 								"The Holy Man",
-								"Start with a Holy Man book and the skills of a Holy Man.",
+								"Start with a Holy Man book and learn the skills of a Holy Man from your Skill Archive.",
 								() =>
 								{
 									applyTemplate(

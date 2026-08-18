@@ -111,6 +111,15 @@ namespace Server.Engines.Avatar
 			{
 				UnlockFullSkillArchive = reader.ReadBool();
 			}
+
+			if (version < 15) // v15 (local bump): upstream v13 - refund old pre-reduction template costs; runs once per old save
+			{
+				if (UnlockTemplateJester) PointsSaved += 40 * RewardFactory.ONE_THOUSAND_GOLD;
+				if (UnlockTemplateMystic) PointsSaved += 40 * RewardFactory.ONE_THOUSAND_GOLD;
+				if (UnlockTemplateShinobi) PointsSaved += 40 * RewardFactory.ONE_THOUSAND_GOLD;
+				if (UnlockTemplateDeathKnight) PointsSaved += 40 * RewardFactory.ONE_THOUSAND_GOLD;
+				if (UnlockTemplateHolyMan) PointsSaved += 40 * RewardFactory.ONE_THOUSAND_GOLD;
+			}
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -240,7 +249,7 @@ namespace Server.Engines.Avatar
 
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(14); // version
+			writer.Write(15); // version
 
 			writer.Write(PointsFarmed);
 			writer.Write(PointsSaved);
