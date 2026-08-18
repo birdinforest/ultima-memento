@@ -1184,6 +1184,7 @@ namespace Server.Misc
 					builder.Append("       - Add Setting for MobileUO to suppress system messages<br>");
 					builder.Append("- Gump - Add Statistics page to Avatar gump<br>");
 					builder.Append("- Gump - Move Modern Skills configuration to Preferences page in Help<br>");
+					builder.Append("- Gump - Add buttons to control All Spell Bars to Help gump<br>");
 					builder.Append("- Housekeeping - Centralized code for Artifact luck checks<br>");
 					builder.Append("- Item - The *Home* Bank Vault item is now properly named as such and can only be used when secured in a home<br>");
 					builder.Append("- Item - Training Shovel now shows uses remaining<br>");

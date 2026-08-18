@@ -81,6 +81,8 @@ namespace Server.Engines.Help
 			Do_StuckInWorld,
 			Do_Toggle_AFK,
 
+			MagicToolbar_All_Close,
+			MagicToolbar_All_ToggleAutoOpen,
 			MagicToolbar_Ancient_I_Close,
 			MagicToolbar_Ancient_I_Config,
 			MagicToolbar_Ancient_I_Open,
@@ -520,6 +522,9 @@ namespace Server.Engines.Help
 				barS += barM;
 				var autoOpenSpellBarIds = from.SpellBars.GetAllAutoOpenSpellBarIds().ToHashSet();
 
+				AddMagicToolbarRow(SECTION_START_X, barS, "All Spell bars", PageActionType.None, PageActionType.None, PageActionType.MagicToolbar_All_Close, PageActionType.MagicToolbar_All_ToggleAutoOpen, autoOpenSpellBarIds.Any());
+				barS += barM;
+
 				if (hasResearch)
 				{
 					AddMagicToolbarRow(SECTION_START_X, barS, "Ancient Spell Bar", PageActionType.MagicToolbar_Ancient_I_Config, PageActionType.MagicToolbar_Ancient_I_Open, PageActionType.MagicToolbar_Ancient_I_Close, PageActionType.MagicToolbar_Ancient_I_ToggleAutoOpen, autoOpenSpellBarIds.Contains(SpellBarId.Ancient_1));
@@ -817,7 +822,8 @@ namespace Server.Engines.Help
 
 			// Open
 			x += 205;
-			AddButton(x, y, RIGHT_ARROW, RIGHT_ARROW, (int)open, GumpButtonType.Reply, 0);
+			if (open != PageActionType.None)
+				AddButton(x, y, RIGHT_ARROW, RIGHT_ARROW, (int)open, GumpButtonType.Reply, 0);
 
 			// Close
 			x += 50;
@@ -1479,7 +1485,23 @@ namespace Server.Engines.Help
 					from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
 					break;
 				}
-				case PageActionType.MagicToolbar_Ancient_I_Close: reopenPage = true; InvokeCommand( "archclose1", from ); break;
+				case PageActionType.MagicToolbar_All_Close: {
+					reopenPage = true;
+					SpellBarRegistry.CloseAll(from);
+					break;
+				}
+
+				case PageActionType.MagicToolbar_All_ToggleAutoOpen: {
+					reopenPage = true;
+					var autoOpenSpellBarIds = from.SpellBars.GetAllAutoOpenSpellBarIds().ToHashSet();
+					foreach (var spellBarId in autoOpenSpellBarIds)
+					{
+						from.SpellBars.GetState(spellBarId).OpenOnLogin = false;
+					}
+					break;
+				}
+
+				case PageActionType.MagicToolbar_Ancient_I_Close: reopenPage = true; SpellBarRegistry.CloseToolbar(from, SpellBarId.Ancient_1); break;
 				case PageActionType.MagicToolbar_Ancient_I_Config: TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Ancient_1, from, 1 ) ); break;
 				case PageActionType.MagicToolbar_Ancient_I_Open: reopenPage = true; InvokeCommand( "archtool1", from ); break;
 				case PageActionType.MagicToolbar_Ancient_I_ToggleAutoOpen: reopenPage = true; ToggleAutoOpenSpellBar( from, SpellBarId.Ancient_1 ); break;
