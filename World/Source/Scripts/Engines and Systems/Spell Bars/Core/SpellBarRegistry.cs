@@ -23,7 +23,7 @@ namespace Server.SpellBars
 			return new ToolBarSpellBarConfiguration(state, definition.SchoolInstance.MaxSlots, background);
 		}
 
-		public static SpellBarToolbarGump CreateToolbarGump(SpellBarId id, PlayerMobile from)
+		public static SpellBarToolbarGump CreateToolbarGump(PlayerMobile from, SpellBarId id)
 		{
 			return (SpellBarToolbarGump)Activator.CreateInstance(GetToolbarGumpType(id), from);
 		}
@@ -128,7 +128,7 @@ namespace Server.SpellBars
 				if (from == null) return;
 
 				from.CloseGump(GetToolbarGumpType(definition.Id));
-				from.SendGump(CreateToolbarGump(definition.Id, from));
+				from.SendGump(CreateToolbarGump(from, definition.Id));
 			});
 
 			CommandSystem.Register(definition.CloseCommand, AccessLevel.Player, args =>

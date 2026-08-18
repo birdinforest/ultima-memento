@@ -106,7 +106,7 @@ namespace Server.SpellBars
 			else
 				from.SendMessage("That spell was not found.");
 
-			from.SendGump(SpellBarRegistry.CreateToolbarGump(_barId, from));
+			from.SendGump(SpellBarRegistry.CreateToolbarGump(from, _barId));
 		}
 	}
 }
