@@ -1,7 +1,3 @@
-using System;
-using Server;
-using System.Collections.Generic;
-using System.Collections;
 using Server.Items;
 using Server.Multis;
 using Server.Mobiles;
@@ -17,7 +13,7 @@ namespace Server.Misc
 {
     class ContainerFunctions
     {
-		public static int LockTheContainer( int level, LockableContainer box, int nContainerLockable )
+		public static void TrapTheContainer( int level, LockableContainer box )
 		{
 			if ( level > 0 )
 			{
@@ -54,6 +50,11 @@ namespace Server.Misc
 					if ( box.TrapLevel > 90 ){ box.TrapLevel = 90; }
 					if ( box.TrapLevel < 0 ){ box.TrapLevel = 0; }
 			}
+		}
+
+		public static int LockTheContainer( int level, LockableContainer box, int nContainerLockable, bool applyTrap = true )
+		{
+			if ( applyTrap ) TrapTheContainer( level, box );
 
 			int LockWatch = 0;
 				if ( nContainerLockable < 7 || nContainerLockable == 16 || nContainerLockable == 18 ){ LockWatch = 1; }
