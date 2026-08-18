@@ -1,6 +1,7 @@
 using Server.Network;
 using Server.Gumps;
 using Server.Utilities;
+using System;
 using Server.Localization;
 
 namespace Server.Items
@@ -92,11 +93,12 @@ namespace Server.Items
 		public override void Serialize(GenericWriter writer)
 		{
 			base.Serialize(writer);
-			writer.Write((int) 1);
+
+			writer.Write((int) 2);
 			writer.Write( (Mobile)JournalOwner);
 			writer.Write( HasHead );
 			writer.Write( HasTorso );
-			writer.Write( HasBrain );
+			writer.Write( BrainLevel );
 			writer.Write( HasArmLeft );
 			writer.Write( HasArmRight );
 			writer.Write( HasLegLeft );
@@ -107,8 +109,11 @@ namespace Server.Items
 		public override void Deserialize(GenericReader reader)
 		{
 			base.Deserialize(reader);
+
 			int version = reader.ReadInt();
 			JournalOwner = reader.ReadMobile();
+			if ( version == 1 ) Console.WriteLine("JournalOwner: {0}", JournalOwner != null ? JournalOwner.Name : "Unknown");
+
 			HasHead = version < 1 ? reader.ReadInt() == 1 : reader.ReadBool();
 			HasTorso = version < 1 ? reader.ReadInt() == 1 : reader.ReadBool();
 			BrainLevel = reader.ReadInt();
