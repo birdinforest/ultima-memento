@@ -150,8 +150,8 @@ namespace Server.Utilities
 		{
 			GetUnlockLevel = from =>
 			{
-				var level = (int)(from.Skills[SkillName.Necromancy].Value) + BasePotion.EnhancePotions(from);
-				if (level > 90) level = 90;
+				var level = (int)(from.Skills[SkillName.Necromancy].Value) + 20;
+				if (level > 50) level = 50;
 				return level;
 			},
 			MaxLevel = 90,

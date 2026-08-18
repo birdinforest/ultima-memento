@@ -1204,6 +1204,7 @@ namespace Server.Misc
 					builder.Append("- Misc - Training Dummy/Daemon will now automatically retry attempts<br>");
 					builder.Append("- Misc - Undertaker Players (80+ Forensics and negative karma) are no longer considered evil to NPCs<br>");
 					builder.Append("- Misc - Dramatically reduced lockpicking skill requirement of low level Treasure Map chests<br>");
+					builder.Append("- Misc - Dramatically reduced effectiveness of witch unlock potion<br>");
 					builder.Append("- Misc - Inscription refactor<br>");
 					builder.Append("       - Magery and Elementalism scrolls no longer reduce skill requirement by 2 circles<br>");
 					builder.Append("       - Casting from scrolls can now gain Inscription<br>");
