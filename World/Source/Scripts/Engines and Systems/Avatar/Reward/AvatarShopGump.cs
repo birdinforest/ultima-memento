@@ -169,6 +169,40 @@ namespace Server.Engines.Avatar
 							break;
 						}
 
+					case Categories.Statistics:
+						{
+							AddInformationCard(BLANK_ITEM_ID, AvatarLocalization.Key(m_From, "avatar.gump.info.stats.title", "My Stats"), AvatarLocalization.Key(m_From, "avatar.gump.info.stats.body", "Review your current stats and see how you compare to the average player."), y, addBackground: false);
+
+							y += CARD_HEIGHT;
+							y += 10;
+							AddKeyValuePairsCard(NAVIGATION_WIDTH + 20, y, true,
+								new _Metric("Time Played", m_From.GameTime.ToString("dd'd 'hh'h 'mm'm'")),
+									new _Metric("Stat Cap", m_From.StatCap.ToString()),
+									new _Metric("Skill Cap", (m_From.SkillsCap / 10).ToString("n0")),
+									new _Metric("Faction Bonus", Math.Min(Constants.RIVAL_BONUS_MAX_POINTS, m_Context.RivalBonusPoints).ToString("n0"),
+										"The amount of coins you have received for killing your enemy faction.")
+							);
+
+							y += CARD_HEIGHT;
+							y += 10;
+							AddKeyValuePairsCard(NAVIGATION_WIDTH + 20, y, true,
+								new _Metric("Lifetime", ""),
+								new _Metric("Time Played", m_From.Avatar.LifetimeGameTime.ToString("dd'd 'hh'h 'mm'm'")),
+								new _Metric("Coins Gained", m_From.Avatar.GrandTotalPoints.ToString("n0")),
+								new _Metric("Combat Quests", m_From.Avatar.LifetimeCombatQuestCompletions.ToString("n0"))
+							);
+
+							y += CARD_HEIGHT;
+							y += 10;
+							AddKeyValuePairsCard(NAVIGATION_WIDTH + 20, y, true,
+								new _Metric("Lifetime", ""),
+								new _Metric("Deaths", m_From.Avatar.LifetimeDeaths.ToString("n0")),
+								new _Metric("Faction Kills", m_From.Avatar.LifetimeEnemyFactionKills.ToString("n0")),
+								new _Metric("Other Kills", (m_From.Avatar.LifetimeCreatureKills - m_From.Avatar.LifetimeEnemyFactionKills).ToString("n0"))
+							);
+							break;
+						}
+
 					case Categories.Information:
 					default:
 						break;
@@ -584,6 +618,37 @@ namespace Server.Engines.Avatar
 			TextDefinition.AddHtmlText(this, x, firstRowY, cardWidth, 40, string.Format("<CENTER>{0}</CENTER>", Math.Min(Constants.RIVAL_BONUS_MAX_POINTS, m_Context.RivalBonusPoints).ToString("n0")), HtmlColors.ORANGE);
 			TextDefinition.AddHtmlText(this, x, secondRowY, cardWidth, 40, AvatarLocalization.Key(m_From, "avatar.gump.faction_bonus", "<CENTER>Faction Bonus</CENTER>"), HtmlColors.COOL_BLUE);
 			AddTooltip(AvatarLocalization.Key(m_From, "avatar.gump.faction_bonus_tooltip", "The amount of coins you have received for killing your enemy faction."));
+		}
+
+		private void AddKeyValuePairsCard(int x, int y, bool addBackground, params _Metric[] metrics)
+		{
+			if (addBackground)
+				AddBackground(x, y, CARD_WIDTH, CARD_HEIGHT + 5, 2620);
+
+			int rowY = y + 8;
+
+			foreach (var metric in metrics)
+			{
+				TextDefinition.AddHtmlText(this, x + 10, rowY, CARD_WIDTH - 20, 16, metric.Label, HtmlColors.ORANGE);
+				TextDefinition.AddHtmlText(this, x + CARD_WIDTH - 110, rowY, 100, 16, metric.Value, HtmlColors.COOL_BLUE);
+				if (!string.IsNullOrEmpty(metric.Tooltip))
+					AddTooltip(metric.Tooltip);
+				rowY += 18;
+			}
+		}
+
+		private struct _Metric
+		{
+			public string Label;
+			public string Value;
+			public string Tooltip;
+
+			public _Metric(string label, string value, string tooltip = null)
+			{
+				Label = label;
+				Value = value;
+				Tooltip = tooltip;
+			}
 		}
 	}
 }
