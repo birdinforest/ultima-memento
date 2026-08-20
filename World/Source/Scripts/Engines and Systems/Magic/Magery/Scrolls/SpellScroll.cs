@@ -77,7 +77,7 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 1 ); // version
+			writer.Write( (int) 2 ); // version
 			writer.Write( (int) m_SpellID );
 			writer.Write( m_IsEphemeralSpellScroll );
 		}
@@ -88,6 +88,9 @@ namespace Server.Items
 			int version = reader.ReadInt();
 			m_SpellID = reader.ReadInt();
 			m_IsEphemeralSpellScroll = 0 < version ? reader.ReadBool() : false;
+
+			if (version == 1 && m_IsEphemeralSpellScroll)
+				m_IsEphemeralSpellScroll = Catalog == Catalogs.Scroll;
 
 			InfoFill();
 		}
@@ -218,7 +221,7 @@ namespace Server.Items
 		
 		public int OnCraft( int quality, Mobile from, CraftSystem craftSystem, Type typeRes, BaseTool tool, CraftItem craftItem, int resHue )
 		{
-			IsEphemeralSpellScroll = true;
+			IsEphemeralSpellScroll = Catalog == Catalogs.Scroll;
 
 			return quality;
 		}

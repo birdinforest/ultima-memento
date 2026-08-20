@@ -1225,6 +1225,7 @@ namespace Server.Misc
 					builder.Append("- Gump - Show Loot Config now returns to the Gumps page<br>");
 					builder.Append("- Item - Fix issue where spell scrolls lost ephemeral flag after unstacking<br>");
 					builder.Append("- Item - Fix issue where Magic quivers (no proprties) were being sold by vendors<br>");
+					builder.Append("- Item - Fix bug where druid/witch pots were ephemeral and couldn't stack<br>");
 					builder.Append("- Map - Add teleporters to bridge in Savaged Empire<br>");
 					builder.Append("- Misc - Fix crash when overlapping Strange Portals occurred<br>");
 					builder.Append("- Misc - Fix inconsistent Death Knight check (again)<br>");
