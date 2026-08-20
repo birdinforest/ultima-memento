@@ -258,7 +258,8 @@ namespace Server.Engines.Avatar
 
 				context.LifetimeDeaths += 1;
 				context.LifetimePointsGained += context.PointsFarmed;
-				context.PointsSaved += context.PointsFarmed + context.RivalBonusPoints;
+				// Rival bonus points are banked when gained; adding them here again would double-count.
+				context.PointsSaved += context.PointsFarmed;
 				context.PointsFarmed = 0;
 				context.RivalBonusPoints = 0;
 			}
