@@ -131,7 +131,7 @@ namespace Server.Engines.Avatar
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int GrandTotalPoints
-		{ get { return LifetimePointsGained + PointsSaved + PointsFarmed; } }
+		{ get { return LifetimePointsGained + PointsFarmed; } }
 
 		public bool HasSafetyDepositBox
 		{ get { return _safetyDepositBoxSerial != Serial.Zero && World.Items.ContainsKey(_safetyDepositBoxSerial); } }
