@@ -707,7 +707,7 @@ namespace Server
 		public static bool S_PetsCanHarmOwner = false;
 
 	// If true, then pets will be able to harm other pets from the same player.
-		public static bool S_PetsCanHarmSiblingPets = true;
+		public static bool S_PetsCanHarmSiblingPets = false;
 
 	// If true, some areas will not allow you to mount a creature for riding. This makes dungeons (for example)
 	// more challenging. Player mounts get stabled when they go in certain areas like dungeons or caves and
