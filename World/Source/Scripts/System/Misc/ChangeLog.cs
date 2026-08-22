@@ -525,7 +525,7 @@ namespace Server.Misc
 					builder.Append("        - Duration increase is now 10s for success and 4s for failure<br>");
 					builder.Append("- Skill - Mercantile can now be gained from npc transactions (Buy/Sell/Shoppes)<br>");
 					builder.Append("- Skill - Searching is now limited to 1 bonus skill check per points<br>");
-					
+
 					builder.Append("<br>Fixes<br>");
 					builder.Append("- Craft - Stitching tools now work for Miscellaneous category<br>");
 					builder.Append("- Misc - Gold drops now vary per loot pack<br>");
@@ -902,7 +902,7 @@ namespace Server.Misc
 					builder.Append("- Skill - Mercantile checks from npc transactions (Buy/Sell) are now more frequent<br>");
 					builder.Append("- Skill - Peacemaking now indicates if your skill is too low to succeed<br>");
 					builder.Append("- Skill - Provocation now indicates if your skill is too low to succeed<br>");
-					
+
 					builder.Append("<br>Fixes<br>");
 					builder.Append("- Avatar - Avatars can now delete skills from Soulstones<br>");
 					builder.Append("- Champs - Fixed issue where spawns would cancel immediately after starting<br>");
@@ -1167,9 +1167,8 @@ namespace Server.Misc
 					builder.Append("- Temptations - Fix bug where declining Temptations was creating a context anyways<br>");
 					break;
 
-				// Version 2.5.0
+				// Version 2.4.1
 				case 13:
-				default:
 					builder.Append(Version());
 					builder.Append("<br>Changes<br>");
 					builder.Append("- Admin - Add '[Avatar-Migrate--Game-Time' command to fix avatar's lifetime game time<br>");
@@ -1235,6 +1234,9 @@ namespace Server.Misc
 					builder.Append("- Misc - Fix issue where gold from monsters wasn't being boosted by dungeon difficulty<br>");
 					builder.Append("- Misc - Fix Journal on Familiars not registering in the player library<br>");
 					builder.Append("- Skill - Begging skill checks only execute after selling items<br>");
+					break;
+
+				default:
 					break;
 			}
 		}
