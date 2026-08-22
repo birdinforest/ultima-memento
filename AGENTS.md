@@ -716,7 +716,7 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | Dragon egg hatch | `memento/game-mechanism/DRAGON_EGG_SYSTEM.md` | Before modifying `DragonEgg`, Search potions, or hatch-at-vet flow |
 | Race temptation & potion shelf | `memento/game-mechanism/race-temptation-and-potion-shelf.md` | Before modifying race temptation or potion shelf |
 | Player hazards & threats | `memento/game-mechanism/PLAYER_HAZARDS_AND_THREATS.md` | Before modifying hazard/threat systems |
-| Black Knight NPC / black key / Vault of the Black Knight / Vordo boss / Bottle World of Kuldar | `memento/game-mechanism/BLACK_KNIGHT_VAULT_BOTTLE_WORLD.md` | Before modifying BlackKnight, BlackKnightBox, Vordo, VordoScroll, GateMoon in Kuldar, or the Kuldar Bottle World region logic |
+| Black Knight NPC / black key / Vault of the Black Knight / Vordo boss / Bottle World of Kuldar | `memento/game-mechanism/BLACK_KNIGHT_VAULT_BOTTLE_WORLD.md` | Before modifying BlackKnight, BlackKnightBox, vault/bottle `QuestTeleporter` (`Build.cs`), Vordo, VordoScroll, GateMoon in Kuldar, or first-entry vs return (Gate 28/29) logic |
 | Golem Porter (搬运魔像) system | `memento/game-mechanism/GOLEM_PORTER_SYSTEM.md` | Before modifying GolemPorter, GolemPorterItem, GolemManual, or any porter/pack creature |
 | Treasure Hoard (宝藏堆) | `memento/game-mechanism/TREASURE_HOARD_SYSTEM.md` | Before modifying HoardPiles, HoardTile, HoardPile.MakeHoard, or HoardMinionFamiliar |
 | Equipment breakdown (Break Down / Scissors) | `memento/game-mechanism/EQUIPMENT_BREAKDOWN_SYSTEM.md` | Before modifying `BreakDown.cs`, `Scissors.CutUp`, `BaseItemBreakDown`, craft `BreakDown` flags, or `ColorlessFabricBreakdown` |
