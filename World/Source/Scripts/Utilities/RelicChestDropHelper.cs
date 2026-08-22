@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using Server.Engines.Avatar;
 using Server.Items;
 using Server.Localization;
 using Server.Mobiles;
 using Server.Misc;
+using Server.RateConfig;
 
 namespace Server
 {
@@ -27,6 +29,31 @@ namespace Server
 		public bool HasLootRight = true;
 	}
 
+	/// <summary>
+	/// Shared roll snapshot for inscription recipe, dragon egg, and riding-scroll analytics.
+	/// Optional fields stay 0 / empty when a drop path does not use them.
+	/// </summary>
+	public class RareDropRollContext
+	{
+		public string EncounterId;
+		public string BossType;
+		public string BossKey;
+		public int DamageRank;
+		public int DamageDealt;
+		public int DamageTotal;
+		public int EligibleTop3Count;
+		public int Luck;
+		public double FortuneMult = 1.0;
+		public double RollMaxPct;
+		public double RollActualPct;
+		public bool RollSuccess;
+		public bool AvatarActive;
+		public bool AvatarLadder;
+		public string EnemyTierId;
+		public int Fame;
+		public int OneInN;
+	}
+
 	public class RelicEligiblePlayer
 	{
 		public PlayerMobile Player;
@@ -47,8 +74,11 @@ namespace Server
 
 	public static class RelicChestDropHelper
 	{
-		private static readonly double[] s_FirstMaxPct = new double[] { 0, 20, 10, 5 };
-		private static readonly double[] s_RepeatMaxPct = new double[] { 0, 5, 4, 3 };
+		private const string KeyLuckCap = "relics.drop.luckCap";
+		private static readonly string[] s_FirstRankKeys = new string[] { null, "relics.drop.first.rank1MaxPct", "relics.drop.first.rank2MaxPct", "relics.drop.first.rank3MaxPct" };
+		private static readonly string[] s_RepeatRankKeys = new string[] { null, "relics.drop.repeat.rank1MaxPct", "relics.drop.repeat.rank2MaxPct", "relics.drop.repeat.rank3MaxPct" };
+		private static readonly double[] s_FirstMaxPctDefault = new double[] { 0, 20, 10, 5 };
+		private static readonly double[] s_RepeatMaxPctDefault = new double[] { 0, 5, 4, 3 };
 
 		public static string BuildEncounterId( BaseCreature boss )
 		{
@@ -59,30 +89,59 @@ namespace Server
 				+ "-0x" + boss.Serial.Value.ToString( "X8", CultureInfo.InvariantCulture );
 		}
 
+		public static int GetLuckCap()
+		{
+			double luckCap = RateConfigEngine.GetDouble( KeyLuckCap, 2000.0 );
+
+			if ( luckCap < 1.0 )
+				luckCap = 2000.0;
+
+			return (int)luckCap;
+		}
+
 		public static double GetRollMaxPct( int rank, bool isFirstTime )
 		{
 			if ( rank < 1 || rank > 3 )
 				return 0;
 
-			return isFirstTime ? s_FirstMaxPct[rank] : s_RepeatMaxPct[rank];
+			string key = isFirstTime ? s_FirstRankKeys[rank] : s_RepeatRankKeys[rank];
+			double fallback = isFirstTime ? s_FirstMaxPctDefault[rank] : s_RepeatMaxPctDefault[rank];
+
+			return RateConfigEngine.GetDouble( key, fallback );
 		}
 
 		public static double GetRollActualPct( int luck, int rank, bool isFirstTime )
 		{
+			return GetRollActualPct( luck, rank, isFirstTime, 1.0 );
+		}
+
+		public static double GetRollActualPct( int luck, int rank, bool isFirstTime, double fortuneMult )
+		{
 			double maxPct = GetRollMaxPct( rank, isFirstTime );
+			int luckCap = GetLuckCap();
 			int cappedLuck = luck;
 
 			if ( cappedLuck < 0 )
 				cappedLuck = 0;
-			else if ( cappedLuck > 2000 )
-				cappedLuck = 2000;
+			else if ( cappedLuck > luckCap )
+				cappedLuck = luckCap;
 
-			return cappedLuck * maxPct / 2000.0;
+			double actualPct = luckCap > 0 ? cappedLuck * maxPct / (double)luckCap : 0;
+
+			if ( fortuneMult > 0 && fortuneMult != 1.0 )
+				actualPct *= fortuneMult;
+
+			return actualPct;
 		}
 
 		public static bool RollRelicsChance( int luck, int rank, bool isFirstTime )
 		{
-			double actualPct = GetRollActualPct( luck, rank, isFirstTime );
+			return RollRelicsChance( luck, rank, isFirstTime, 1.0 );
+		}
+
+		public static bool RollRelicsChance( int luck, int rank, bool isFirstTime, double fortuneMult )
+		{
+			double actualPct = GetRollActualPct( luck, rank, isFirstTime, fortuneMult );
 
 			if ( actualPct <= 0 )
 				return false;
@@ -274,14 +333,18 @@ namespace Server
 			int damageTotal,
 			int eligibleCount,
 			bool isFirst,
-			string deliveryPathNote )
+			string deliveryPathNote,
+			List<RelicEligiblePlayer> eligibleOrNull = null )
 		{
 			if ( player == null )
 				return;
 
 			string bossType = boss != null ? boss.GetType().Name : "";
+			double fortuneMult = boss != null
+				? AscentHuntBonus.GetDropChanceMultiplier( player, boss, 3, 20, eligibleOrNull )
+				: 1.0;
 			double rollMaxPct = GetRollMaxPct( rank, isFirst );
-			double rollActualPct = GetRollActualPct( player.Luck, rank, isFirst );
+			double rollActualPct = GetRollActualPct( player.Luck, rank, isFirst, fortuneMult );
 
 			RelicsDropContext ctx = BuildContext(
 				encounterId,
@@ -336,9 +399,10 @@ namespace Server
 				if ( shouldRoll != null && !shouldRoll( player, entry.Rank, isFirst ) )
 					continue;
 
+				double fortuneMult = AscentHuntBonus.GetDropChanceMultiplier( player, boss, 3, range, top );
 				double rollMaxPct = GetRollMaxPct( entry.Rank, isFirst );
-				double rollActualPct = GetRollActualPct( player.Luck, entry.Rank, isFirst );
-				bool success = RollRelicsChance( player.Luck, entry.Rank, isFirst );
+				double rollActualPct = GetRollActualPct( player.Luck, entry.Rank, isFirst, fortuneMult );
+				bool success = RollRelicsChance( player.Luck, entry.Rank, isFirst, fortuneMult );
 
 				RelicsDropContext ctx = BuildContext(
 					encounterId,
@@ -408,9 +472,15 @@ namespace Server
 			int damage = snap.EligibleDamages[idx];
 			bool isFirst = !PlayerSettings.GetSpecialsKilled( pm, bossKey );
 
+			double fortuneMult = AscentHuntBonus.GetVaultDropChanceMultiplier(
+				pm,
+				snap,
+				targetChest.Map,
+				targetChest.GetWorldLocation(),
+				20 );
 			double rollMaxPct = GetRollMaxPct( rank, isFirst );
-			double rollActualPct = GetRollActualPct( pm.Luck, rank, isFirst );
-			bool success = RollRelicsChance( pm.Luck, rank, isFirst );
+			double rollActualPct = GetRollActualPct( pm.Luck, rank, isFirst, fortuneMult );
+			bool success = RollRelicsChance( pm.Luck, rank, isFirst, fortuneMult );
 
 			RelicsDropContext ctx = BuildContext(
 				snap.EncounterId,

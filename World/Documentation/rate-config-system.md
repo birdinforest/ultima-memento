@@ -21,8 +21,12 @@ World/Source/System/RateConfig/
 └── WeightedPick.cs       # WeightedPick.Pick(weights) and WeightedPick.KeepChance(chance)
 
 World/Data/RateConfig/
-├── dragon-rarity.json    # dragon.breedWeight.<name> — RidingDragon/Dragons/Wyrms Bright breeds
-└── gemdragon.json        # gemdragon.scaleWeight.<name> — GemDragon scale colors
+├── dragon-rarity.json           # dragon.breedWeight.<name> — RidingDragon/Dragons/Wyrms Bright breeds
+├── gemdragon.json               # gemdragon.scaleWeight.<name> — GemDragon scale colors
+├── inscription-recipe-drop.json # inscription.drop.* / inscription.enemy.* / inscription.avatar.*
+├── avatar-fortune.json          # avatar.fortune.* — AscentHuntBonus multipliers
+├── dragon-riding-scroll.json    # dragon.ridingScroll.luckCap / maxChancePct
+└── relics-drop.json             # relics.drop.luckCap / first|repeat.rankNMaxPct
 ```
 
 - **`RateConfigEngine`** lives in `System.csproj` (the `World` executable assembly) alongside
@@ -130,6 +134,37 @@ no visible effect on a living mount), `GemDragon.Resource` **directly sets its `
 `WeightedPick.Pick` to choose a scale name, then maps it back to a `CraftResource` via a small static
 `name -> CraftResource` dictionary local to `GemDragons.cs`. If the config table is empty/malformed, it
 falls back to `CraftResource.MetallicScales` (matching the old hardcoded default).
+
+### Relics chest drop (`Data/RateConfig/relics-drop.json`)
+
+`RelicChestDropHelper.GetRollMaxPct` / `GetRollActualPct` read:
+
+| Key | Default | Meaning |
+|-----|---------|---------|
+| `relics.drop.luckCap` | 2000 | Luck at which rank max % is reached |
+| `relics.drop.first.rank1MaxPct` | 20 | First-kill Rank 1 max % |
+| `relics.drop.first.rank2MaxPct` | 10 | First-kill Rank 2 max % |
+| `relics.drop.first.rank3MaxPct` | 5 | First-kill Rank 3 max % |
+| `relics.drop.repeat.rank1MaxPct` | 5 | Repeat Rank 1 max % |
+| `relics.drop.repeat.rank2MaxPct` | 4 | Repeat Rank 2 max % |
+| `relics.drop.repeat.rank3MaxPct` | 3 | Repeat Rank 3 max % |
+
+Formula: `P% = min(Luck, luckCap) / luckCap × rankMaxPct × fortuneMult`.
+Hot-reload via `[ratereload]`. Debug: `[rateget relics.drop.first.rank1MaxPct]`, `[ratelist relics.drop]`.
+Cross-ref: `<UO_DEV_DOCS_ROOT>/memento/game-mechanism/RELICS_DROP_REFORM_TOP3_DAMAGE_SYSTEM.md`.
+
+### Dragon Riding Scroll drop (`Data/RateConfig/dragon-riding-scroll.json`)
+
+`GetPlayerInfo.DragonRidingScrollLuckyDrop` (Dragon King only) reads:
+
+| Key | Default | Meaning |
+|-----|---------|---------|
+| `dragon.ridingScroll.luckCap` | 2000 | Luck at which the base chance reaches `maxChancePct` |
+| `dragon.ridingScroll.maxChancePct` | 5 | Base drop % at `luckCap` (before `AscentHuntBonus`) |
+
+Formula: `P% = min(Luck, luckCap) / luckCap × maxChancePct × fortuneMult`.
+Hot-reload via `[ratereload]`. Debug: `[rateget dragon.ridingScroll.maxChancePct]`, `[ratelist dragon.ridingScroll]`.
+Cross-ref: `<UO_DEV_DOCS_ROOT>/memento/game-mechanism/DRAGON_RIDING_SCROLL_SYSTEM.md`.
 
 ### Inscription advanced recipe drops (`Data/RateConfig/inscription-recipe-drop.json` + `Data/InscriptionRecipeDrop/tier-scrolls.json`)
 

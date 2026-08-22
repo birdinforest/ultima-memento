@@ -21,6 +21,9 @@ namespace Server.RateConfig
 		public double Rank1MaxPct;
 		public double Rank2MaxPct;
 		public double Rank3MaxPct;
+		public bool UseAnchorCurve;
+		public double Rank1PctAtLuck100;
+		public double Rank1PctAtLuck2000;
 
 		public double GetRankMaxPct( int rank )
 		{
@@ -40,12 +43,14 @@ namespace Server.RateConfig
 		private static bool m_Loaded;
 
 		private static int m_MinFame = 5000;
+		private static int m_AvatarMinFame = 1000;
 		private static int m_TopN = 3;
 		private static int m_Range = 20;
 		private static int m_LuckCap = 2000;
 
 		private static Type[][] m_TierTypes = new Type[5][];
 		private static InscriptionEnemyTierEntry[] m_EnemyTiers = new InscriptionEnemyTierEntry[0];
+		private static InscriptionEnemyTierEntry[] m_AvatarEnemyTiers = new InscriptionEnemyTierEntry[0];
 
 		public static int MinFame { get { EnsureLoaded(); lock ( m_Lock ) { return m_MinFame; } } }
 		public static int TopN { get { EnsureLoaded(); lock ( m_Lock ) { return m_TopN; } } }
@@ -62,6 +67,7 @@ namespace Server.RateConfig
 				MergeJsonFile( Path.Combine( Core.BaseDirectory, "Data/InscriptionRecipeDrop/tier-scrolls.json" ), raw );
 
 				m_MinFame = ParseInt( raw, "inscription.drop.minFame", 5000 );
+				m_AvatarMinFame = ParseInt( raw, "inscription.avatar.drop.minFame", 1000 );
 				m_TopN = ParseInt( raw, "inscription.drop.topN", 3 );
 				m_Range = ParseInt( raw, "inscription.drop.range", 20 );
 				m_LuckCap = ParseInt( raw, "inscription.drop.luckCap", 2000 );
@@ -80,13 +86,15 @@ namespace Server.RateConfig
 				}
 
 				m_TierTypes = tierTypes;
-				m_EnemyTiers = ParseEnemyTiers( raw );
+				m_EnemyTiers = ParseEnemyTiers( raw, "inscription.enemy." );
+				m_AvatarEnemyTiers = ParseEnemyTiers( raw, "inscription.avatar.enemy." );
 
 				m_Loaded = true;
 
 				Console.WriteLine(
-					"InscriptionRecipeDropConfig: loaded {0} enemy tiers; T1={1} T2={2} T3={3} T4={4} scroll types.",
+					"InscriptionRecipeDropConfig: loaded {0} enemy tiers ({1} avatar); T1={2} T2={3} T3={4} T4={5} scroll types.",
 					m_EnemyTiers.Length,
+					m_AvatarEnemyTiers.Length,
 					LengthOrZero( tierTypes[1] ),
 					LengthOrZero( tierTypes[2] ),
 					LengthOrZero( tierTypes[3] ),
@@ -116,16 +124,24 @@ namespace Server.RateConfig
 
 		public static InscriptionEnemyTierEntry GetEnemyTier( int fame )
 		{
+			return GetEnemyTier( fame, false );
+		}
+
+		public static InscriptionEnemyTierEntry GetEnemyTier( int fame, bool forAvatar )
+		{
 			EnsureLoaded();
 
 			lock ( m_Lock )
 			{
-				if ( fame < m_MinFame )
+				int minFame = forAvatar ? m_AvatarMinFame : m_MinFame;
+				InscriptionEnemyTierEntry[] tiers = forAvatar ? m_AvatarEnemyTiers : m_EnemyTiers;
+
+				if ( fame < minFame )
 					return null;
 
-				for ( int i = 0; i < m_EnemyTiers.Length; i++ )
+				for ( int i = 0; i < tiers.Length; i++ )
 				{
-					InscriptionEnemyTierEntry entry = m_EnemyTiers[i];
+					InscriptionEnemyTierEntry entry = tiers[i];
 
 					if ( entry != null && fame >= entry.MinFame )
 						return entry;
@@ -166,24 +182,62 @@ namespace Server.RateConfig
 			if ( entry == null || rank < 1 || rank > 3 )
 				return 0;
 
-			double maxPct = entry.GetRankMaxPct( rank );
-			int cappedLuck = luck;
-
-			if ( cappedLuck < 0 )
-				cappedLuck = 0;
-
 			lock ( m_Lock )
 			{
-				if ( cappedLuck > m_LuckCap )
+				if ( entry.UseAnchorCurve )
+					return GetAnchorRollActualPct( luck, rank, entry, m_LuckCap );
+
+				double maxPct = entry.GetRankMaxPct( rank );
+				int cappedLuck = luck;
+
+				if ( cappedLuck < 0 )
+					cappedLuck = 0;
+				else if ( cappedLuck > m_LuckCap )
 					cappedLuck = m_LuckCap;
 
 				return cappedLuck * maxPct / (double)m_LuckCap;
 			}
 		}
 
-		public static bool RollDropChance( int luck, int rank, InscriptionEnemyTierEntry entry )
+		public static double GetEffectiveRollPct( int luck, int rank, InscriptionEnemyTierEntry entry, double fortuneMult )
 		{
 			double actualPct = GetRollActualPct( luck, rank, entry );
+
+			if ( fortuneMult > 0 && fortuneMult != 1.0 )
+				actualPct *= fortuneMult;
+
+			return actualPct;
+		}
+
+		public static double GetRollMaxPct( int rank, InscriptionEnemyTierEntry entry )
+		{
+			if ( entry == null || rank < 1 || rank > 3 )
+				return 0;
+
+			if ( entry.UseAnchorCurve )
+			{
+				double cap = entry.Rank1PctAtLuck2000;
+
+				switch ( rank )
+				{
+					case 1: return cap;
+					case 2: return cap / 2.0;
+					case 3: return cap / 4.0;
+					default: return 0;
+				}
+			}
+
+			return entry.GetRankMaxPct( rank );
+		}
+
+		public static bool RollDropChance( int luck, int rank, InscriptionEnemyTierEntry entry )
+		{
+			return RollDropChance( luck, rank, entry, 1.0 );
+		}
+
+		public static bool RollDropChance( int luck, int rank, InscriptionEnemyTierEntry entry, double fortuneMult )
+		{
+			double actualPct = GetEffectiveRollPct( luck, rank, entry, fortuneMult );
 
 			if ( actualPct <= 0 )
 				return false;
@@ -194,6 +248,38 @@ namespace Server.RateConfig
 				return false;
 
 			return Utility.RandomMinMax( 1, 10000 ) <= threshold;
+		}
+
+		private static double GetAnchorRollActualPct( int luck, int rank, InscriptionEnemyTierEntry entry, int luckCap )
+		{
+			int cappedLuck = luck;
+
+			if ( cappedLuck < 0 )
+				cappedLuck = 0;
+			else if ( cappedLuck > luckCap )
+				cappedLuck = luckCap;
+
+			double rank1Pct = GetAnchorRank1Pct( cappedLuck, entry, luckCap );
+
+			switch ( rank )
+			{
+				case 1: return rank1Pct;
+				case 2: return rank1Pct / 2.0;
+				case 3: return rank1Pct / 4.0;
+				default: return 0;
+			}
+		}
+
+		private static double GetAnchorRank1Pct( int cappedLuck, InscriptionEnemyTierEntry entry, int luckCap )
+		{
+			const int anchorLow = 100;
+			double at100 = entry.Rank1PctAtLuck100;
+			double at2000 = entry.Rank1PctAtLuck2000;
+
+			if ( cappedLuck <= anchorLow )
+				return ( cappedLuck / (double)anchorLow ) * at100;
+
+			return at100 + ( cappedLuck - anchorLow ) / (double)( luckCap - anchorLow ) * ( at2000 - at100 );
 		}
 
 		private static void EnsureLoaded()
@@ -221,10 +307,9 @@ namespace Server.RateConfig
 			}
 		}
 
-		private static InscriptionEnemyTierEntry[] ParseEnemyTiers( Dictionary<string, string> raw )
+		private static InscriptionEnemyTierEntry[] ParseEnemyTiers( Dictionary<string, string> raw, string prefix )
 		{
 			var ids = new HashSet<string>( StringComparer.Ordinal );
-			const string prefix = "inscription.enemy.";
 			const string suffix = ".minFame";
 
 			foreach ( KeyValuePair<string, string> kv in raw )
@@ -243,13 +328,20 @@ namespace Server.RateConfig
 			foreach ( string id in ids )
 			{
 				string baseKey = prefix + id + ".";
+				string luckCurve;
+
+				raw.TryGetValue( baseKey + "luckCurve", out luckCurve );
+
 				var entry = new InscriptionEnemyTierEntry
 				{
 					Id = id,
 					MinFame = ParseInt( raw, baseKey + "minFame", 0 ),
 					Rank1MaxPct = ParseDouble( raw, baseKey + "rank1MaxPct", 0 ),
 					Rank2MaxPct = ParseDouble( raw, baseKey + "rank2MaxPct", 0 ),
-					Rank3MaxPct = ParseDouble( raw, baseKey + "rank3MaxPct", 0 )
+					Rank3MaxPct = ParseDouble( raw, baseKey + "rank3MaxPct", 0 ),
+					UseAnchorCurve = string.Equals( luckCurve, "anchor", StringComparison.OrdinalIgnoreCase ),
+					Rank1PctAtLuck100 = ParseDouble( raw, baseKey + "rank1PctAtLuck100", 0 ),
+					Rank1PctAtLuck2000 = ParseDouble( raw, baseKey + "rank1PctAtLuck2000", 0 )
 				};
 
 				for ( int tier = 1; tier <= 4; tier++ )

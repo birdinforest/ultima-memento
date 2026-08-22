@@ -295,16 +295,7 @@ namespace Server.Mobiles
 			{
 				Server.Mobiles.Dragons.DropSpecial( this, "", c, 25, 0 );
 
-				if ( Utility.RandomMinMax( 1, 200 ) == 1 && !this.Controlled )
-				{
-					DragonEgg egg = new DragonEgg();
-					egg.DragonType = this.YellHue;
-					egg.DragonBody = 61;
-					egg.Hue = this.Hue;
-					egg.Name = "egg of " + this.Name;
-					egg.NeedGold = 50000;
-					c.DropItem( egg );
-				}
+				DragonEggDropHelper.TryDropOnDeath( this, c, 200, 61, 50000, false );
 			}
 		}
 

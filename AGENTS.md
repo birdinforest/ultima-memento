@@ -574,6 +574,7 @@ When adding a third language (e.g. `zh-Hant`, `ja`):
 This file uses a simple date-stamp comment at the top for tracking. When making substantive updates, add a one-line change note at the bottom of this section.
 
 **Change log:**
+- 2026-08-22: §8.1 — indexed `AVATAR_FORTUNE_DROP_BONUS.md`（Avatar Fortune 稀有掉落倍率 + Recipe Fame 阶梯）。
 - 2026-08-10: §3.1 — added `inscription-recipe-drop.json` (`keep_extra`): Inscription advanced recipe boss-drop announcements (`sys.inscription.recipe_drop.*`).
 - 2026-07-19: §3.1 — added `some-random-note.json` (`keep_extra`): bilingual `SomeRandomNote` lie/truth parchment templates, runtime argument placeholders, and localizable variable vocabularies; argument-order sidecar is in `tools-output/some-random-note-arg-spec.json`.
 - 2026-04-30: §1 / §6.1 — design pack index for **`CraftResource`** / harvest definitions: `World/Documentation/resources-design/README.md` (+ linked split docs).
@@ -701,6 +702,7 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | Magic system docs | `memento/game-mechanism/spell-and-magic/` (8 files) | Before modifying magic, spell, or rune systems |
 | Ancient spell research system | `memento/game-mechanism/ANCIENT_SPELL_RESEARCH_SYSTEM.md` | Before modifying ResearchBag, AncientSpellbook, prepared-spell counters, or any ancient magic casting flow |
 | Inscription advanced recipe (5th–8th circle) boss drops | `memento/game-mechanism/INSCRIPTION_ADVANCED_RECIPE_DROP_SYSTEM.md` | Before modifying `InscriptionRecipeDropHelper`, `DefInscription` tier recipe pools, or Fame-gated `RecipeScroll` drops on `BaseCreature.OnDeath` |
+| Avatar Fortune rare-drop multiplier | `memento/game-mechanism/AVATAR_FORTUNE_DROP_BONUS.md` | Before modifying `AscentHuntBonus`, fortune hooks on Relics/Recipe/DragonEgg/RidingScroll |
 | Research Bag (ResearchBag item / GM test) | `memento/game-mechanism/RESEARCH_BAG_SYSTEM.md` | Before modifying ResearchBag initialization, BagOwner, GM issuance, or Avatar death ResearchBag debug |
 | Avatar core item death / Memory Echo Resonance | `memento/game-mechanism/AVATAR_CORE_ITEM_RESEARCH_RESONANCE_SYSTEM.md` | Before modifying `AvatarCoreItemMigration`, Dormant/Resonance gumps, `SearchBase` dormant branch, or research snapshot merge on rebirth |
 | Death / resurrection / bank tribute | `memento/game-mechanism/death-resurrection-bank-tribute.md` | Before modifying death or tribute handling |
