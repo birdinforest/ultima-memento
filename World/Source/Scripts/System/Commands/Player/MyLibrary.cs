@@ -14,6 +14,13 @@ namespace Server.Gumps
 		private static string ResolveText( Mobile from, string text )
 		{
 			string lang = AccountLang.GetLanguageCode( from.Account );
+			string prefix = LoreBook.ShotkeyPrefixForTitle( text );
+			if ( prefix != null )
+			{
+				string byKey = StringCatalog.TryResolveByKey( lang, prefix + ".title" );
+				if ( byKey != null )
+					return byKey;
+			}
 			return StringCatalog.TryResolve( lang, text ) ?? text;
 		}
 

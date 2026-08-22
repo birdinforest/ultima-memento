@@ -831,6 +831,7 @@ def main() -> int:
             "research-spell-catalog.json",
             "some-random-note.json",
             "inscription-recipe-drop.json",
+            "lore-books.json",
         }
     )
     if args.prune_stale_locale_files:

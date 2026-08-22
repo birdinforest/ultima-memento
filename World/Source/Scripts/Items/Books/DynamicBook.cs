@@ -38,6 +38,9 @@ namespace Server.Items
 		/// <summary>Localized title when the book is opened (uses account language).</summary>
 		public static string ResolveBookTitleForViewer( Mobile viewer, DynamicBook book )
 		{
+			if ( book is LoreBook )
+				return LoreBook.ResolveLocalizedTitle( viewer, book );
+
 			if ( book == null || book.BookTitle == null )
 				return "";
 
@@ -48,6 +51,9 @@ namespace Server.Items
 		/// <summary>Localized author when the book is opened.</summary>
 		public static string ResolveBookAuthorForViewer( Mobile viewer, DynamicBook book )
 		{
+			if ( book is LoreBook )
+				return LoreBook.ResolveLocalizedAuthor( viewer, book );
+
 			if ( book == null || book.BookAuthor == null )
 				return "";
 
@@ -58,6 +64,9 @@ namespace Server.Items
 		/// <summary>Localized body HTML; falls back to stored English when no catalog entry exists.</summary>
 		public static string ResolveBookBodyForViewer( Mobile viewer, DynamicBook book )
 		{
+			if ( book is LoreBook )
+				return LoreBook.ResolveLocalizedBody( viewer, book );
+
 			if ( book == null || book.BookText == null )
 				return "";
 
@@ -191,9 +200,28 @@ namespace Server.Items
 			return sb.ToString();
 		}
 
-				public override void GetProperties( ObjectPropertyList list )
+		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
+
+			string author = BookAuthor ?? "";
+			string locale = BuildingPropertyListLocale;
+
+			if ( this is LoreBook )
+			{
+				string prefix = LoreBook.ShotkeyPrefixForTitle( BookTitle );
+				if ( prefix != null )
+				{
+					string locAuthor = StringCatalog.TryResolveByKey( locale ?? "en", prefix + ".author" );
+					if ( locAuthor != null )
+						author = locAuthor;
+
+					string by = StringCatalog.TryResolveByKey( locale ?? "en", "books.dynamic.by_author_line" ) ?? "by ";
+					list.Add( by + author );
+					return;
+				}
+			}
+
 			list.Add( StringCatalog.ResolveFormat( null, "Written by {0}", BookAuthor ) );
 		}
 
