@@ -681,6 +681,10 @@ namespace Server
 		public static bool S_HouseStorage = false;
 
 
+	// This setting is the percentage of the total storage capacity of a house that is available to the player.
+	// So a setting of 1.20 will give the player 20% more storage space than the original storage capacity of the house.
+
+		public static double S_HouseStoragePercent = 1.20;
 
 
 	///////////////////////////////////////////////////////////////////////////////////////////////

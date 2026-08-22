@@ -1173,6 +1173,7 @@ namespace Server.Misc
 					builder.Append(Version());
 					builder.Append("<br>Changes<br>");
 					builder.Append("- Admin - Add '[Avatar-Migrate--Game-Time' command to fix avatar's lifetime game time<br>");
+					builder.Append("- Admin - `S_HouseStoragePercent` setting has been added<br>");
 					builder.Append("- Avatar - Add ascensions for Jester, Mystic, Shinobi, Death Knight, and Holy Man templates<br>");
 					builder.Append("- Commands - Add '[SuppressSystemMessages' command to replace system messages with `!`<br>");
 					builder.Append("- Craft - Dinosaur Leather now requires 100 skill to craft, down from 105<br>");
