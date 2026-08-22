@@ -1205,6 +1205,7 @@ namespace Server.Misc
 					builder.Append("- Misc - Undertaker Players (80+ Forensics and negative karma) are no longer considered evil to NPCs<br>");
 					builder.Append("- Misc - Dramatically reduced lockpicking skill requirement of low level Treasure Map chests<br>");
 					builder.Append("- Misc - Dramatically reduced effectiveness of witch unlock potion<br>");
+					builder.Append("- Misc - 'Release', 'Secure', and 'Lockdown' are now shortcut commands house management<br>");
 					builder.Append("- Misc - Inscription refactor<br>");
 					builder.Append("       - Magery and Elementalism scrolls no longer reduce skill requirement by 2 circles<br>");
 					builder.Append("       - Casting from scrolls can now gain Inscription<br>");
@@ -1231,6 +1232,7 @@ namespace Server.Misc
 					builder.Append("- Misc - Fix crash when overlapping Strange Portals occurred<br>");
 					builder.Append("- Misc - Fix inconsistent Death Knight check (again)<br>");
 					builder.Append("- Misc - Fix issue where gold from monsters wasn't being boosted by dungeon difficulty<br>");
+					builder.Append("- Misc - Fix Journal on Familiars not registering in the player library<br>");
 					builder.Append("- Skill - Begging skill checks only execute after selling items<br>");
 					break;
 			}
