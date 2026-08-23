@@ -575,6 +575,7 @@ When adding a third language (e.g. `zh-Hant`, `ja`):
 This file uses a simple date-stamp comment at the top for tracking. When making substantive updates, add a one-line change note at the bottom of this section.
 
 **Change log:**
+- 2026-08-23: §8.1 — indexed `CRAFTING_TRADES_SYSTEM.md`（工匠/制作机制总览：架构、专柜、掉落 vs 自制、专题交叉索引）。
 - 2026-08-22: §3.1 — added `lore-books.json` (`keep_extra`): LoreBook title/author/body shotkeys + city templates (`{0}`/`{1}`).
 - 2026-08-22: §8.1 — indexed `AVATAR_FORTUNE_DROP_BONUS.md`（Avatar Fortune 稀有掉落倍率 + Recipe Fame 阶梯）。
 - 2026-08-10: §3.1 — added `inscription-recipe-drop.json` (`keep_extra`): Inscription advanced recipe boss-drop announcements (`sys.inscription.recipe_drop.*`).
@@ -723,6 +724,7 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | Black Knight NPC / black key / Vault of the Black Knight / Vordo boss / Bottle World of Kuldar | `memento/game-mechanism/BLACK_KNIGHT_VAULT_BOTTLE_WORLD.md` | Before modifying BlackKnight, BlackKnightBox, vault/bottle `QuestTeleporter` (`Build.cs`), Vordo, VordoScroll, GateMoon in Kuldar, or first-entry vs return (Gate 28/29) logic |
 | Golem Porter (搬运魔像) system | `memento/game-mechanism/GOLEM_PORTER_SYSTEM.md` | Before modifying GolemPorter, GolemPorterItem, GolemManual, or any porter/pack creature |
 | Treasure Hoard (宝藏堆) | `memento/game-mechanism/TREASURE_HOARD_SYSTEM.md` | Before modifying HoardPiles, HoardTile, HoardPile.MakeHoard, or HoardMinionFamiliar |
+| Crafting & trades (artisan spine: Shoppe, craft loop, drop vs made) | `memento/game-mechanism/CRAFTING_TRADES_SYSTEM.md` | Before analyzing or changing craft economy, player expectations on artisan profitability, or cross-system gear progression |
 | Equipment breakdown (Break Down / Scissors) | `memento/game-mechanism/EQUIPMENT_BREAKDOWN_SYSTEM.md` | Before modifying `BreakDown.cs`, `Scissors.CutUp`, `BaseItemBreakDown`, craft `BreakDown` flags, or `ColorlessFabricBreakdown` |
 | Equipment enhancement (Enhance / Guild / sharpening stones) | `memento/game-mechanism/EQUIPMENT_ENHANCEMENT_SYSTEM.md` | Before modifying `Enhance.cs`, `GuildCraftingProcess`, `AttributeHandler`, sharpening items, or `ResourceCanChange` |
 | PvP / harmful actions / notoriety / murder | `memento/game-mechanism/PVP_COMBAT_SYSTEM.md` | Before modifying player combat, `Mobile_AllowHarmful`, criminal/murder reporting, or region combat rules |

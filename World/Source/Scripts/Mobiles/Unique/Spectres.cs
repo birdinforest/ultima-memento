@@ -139,19 +139,34 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleSpectreEye" ) && PlayerSettings.GetBardsTaleQuest( from, "BardsTaleHarkynKey" ) )
+			if ( from == null )
+				return;
+
+			bool hasEyeFlag = PlayerSettings.GetBardsTaleQuest( from, "BardsTaleSpectreEye" );
+			bool hasKeyFlag = PlayerSettings.GetBardsTaleQuest( from, "BardsTaleHarkynKey" );
+			bool grantedEye = EyeOfTarjan.GrantIfMissing( from );
+			bool grantedKey = HarkynDragonKey.GrantIfMissing( from );
+
+			if ( hasEyeFlag && hasKeyFlag && !grantedEye && !grantedKey )
 			{
-				from.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You find nothing of interest.", from.NetState);
+				from.PrivateOverheadMessage( MessageType.Regular, 1150, false, StringCatalog.Resolve( from.Account, "You find nothing of interest." ), from.NetState );
+				return;
 			}
-			else
-			{
-				PlayerSettings.SetBardsTaleQuest( from, "BardsTaleSpectreEye", true );
-				PlayerSettings.SetBardsTaleQuest( from, "BardsTaleHarkynKey", true );
-				from.SendSound( 0x3D );
-				from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(null, "mob.other.you_found_a_mysterious_eye_and_a_key_with_a_dragon_symb"), from.NetState);
-				from.CloseGump( typeof(Server.Gumps.ClueGump) );
-				from.SendGump(new Server.Gumps.ClueGump( from, "You have obtained an eye from the slain spectre, and the box has a key with a dragon symbol on it. A scribbled parchment claims it to be the Eye of Tarjan.", "The Spectre's Eye" ) );
-			}
+
+			PlayerSettings.SetBardsTaleQuest( from, "BardsTaleSpectreEye", true );
+			PlayerSettings.SetBardsTaleQuest( from, "BardsTaleHarkynKey", true );
+			from.SendSound( 0x3D );
+
+			string overheadKey = "quest.bards_tale.spectre_box.found_both";
+
+			if ( grantedEye && !grantedKey )
+				overheadKey = "quest.bards_tale.spectre_box.found_eye";
+			else if ( !grantedEye && grantedKey )
+				overheadKey = "quest.bards_tale.spectre_box.found_key";
+
+			from.PrivateOverheadMessage( MessageType.Regular, 1150, false, StringCatalog.ResolveByKey( from.Account, overheadKey ), from.NetState );
+			from.CloseGump( typeof( Server.Gumps.ClueGump ) );
+			from.SendGump( new Server.Gumps.ClueGump( from, StringCatalog.ResolveByKey( from.Account, "quest.bards_tale.spectre_box.clue.body" ), StringCatalog.ResolveByKey( from.Account, "quest.bards_tale.spectre_box.clue.title" ) ) );
 		}
 
 		public override bool OnDragLift( Mobile from )

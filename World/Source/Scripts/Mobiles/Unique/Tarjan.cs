@@ -285,17 +285,19 @@ namespace Server.Items
 
 				if ( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleKylearanKey" ) )
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(null, "mob.other.this_statue_still_has_the_eye_you_placed_in_it"), from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(from.Account, "mob.other.this_statue_still_has_the_eye_you_placed_in_it"), from.NetState);
 				}
-				else if ( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleSpectreEye" ) && !( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleKylearanKey" ) ) )
+				else if ( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleSpectreEye" ) || EyeOfTarjan.ExistsOn( from ) )
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(null, "mob.other.you_place_the_mysterious_eye_into_the_statue"), from.NetState);
+					EyeOfTarjan.ConsumeFrom( from );
+					PlayerSettings.SetBardsTaleQuest( from, "BardsTaleSpectreEye", true );
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(from.Account, "mob.other.you_place_the_mysterious_eye_into_the_statue"), from.NetState);
 					SpawnTarjan( from );
 					this.Delete();
 				}
 				else
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(null, "mob.other.this_statue_seems_to_be_missing_an_eye"), from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(from.Account, "mob.other.this_statue_seems_to_be_missing_an_eye"), from.NetState);
 				}
 			}
 			else
