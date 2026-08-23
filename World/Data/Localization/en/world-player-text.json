@@ -1508,6 +1508,8 @@
   "quest.bards_tale.spectre_box.found_key": "You found a key with a dragon symbol on it.",
   "quest.bards_tale.spectre_box.clue.title": "The Spectre's Eye",
   "quest.bards_tale.spectre_box.clue.body": "You have obtained an eye from the slain spectre, and the box has a key with a dragon symbol on it. A scribbled parchment claims it to be the Eye of Tarjan.",
+  "quest.bards_tale.tarjan.gaze.hit": "Tarjan's gaze burns through you.",
+  "quest.bards_tale.tarjan.gaze.pulse": "The mad god's gaze finds you behind your servant.",
   "quest.bards_tale.buff.deja_vu.granted": "The void feels familiar — luck bends in your favor and the dead falter while you remain in Skara Brae.",
   "quest.bards_tale.buff.deja_vu.title": "Void Déjà Vu",
   "quest.bards_tale.buff.deja_vu.tooltip": "This loop grows familiar — even the dead seem to recognize you. +50 Luck and +15% damage vs. undead while in Skara Brae.",
