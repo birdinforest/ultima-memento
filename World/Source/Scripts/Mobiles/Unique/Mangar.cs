@@ -15,6 +15,18 @@ namespace Server.Mobiles
 	[CorpseName( "Mangar's corpse" )]
 	public class Mangar : BaseCreature
 	{
+		private DateTime m_NextSummon = DateTime.MinValue;
+		private DateTime m_NextVoidBind = DateTime.MinValue;
+		private DateTime m_NextEmergencyHeal = DateTime.MinValue;
+
+		private const double SummonCooldownSeconds = 15.0;
+		private const double SummonProcChance = 0.25;
+		private const double VoidBindCooldownSeconds = 12.0;
+		private const double VoidBindProcChance = 0.20;
+		private const double EmergencyHealCooldownSeconds = 8.0;
+		private const int EmergencyHealManaCost = 40;
+		private const int BoundUndeadSummonManaCost = 25;
+
 		private Point3D m_MoonDest;
 		private int m_MoonTime;
 		private InternalTimer m_MoonTimer;
@@ -68,11 +80,13 @@ namespace Server.Mobiles
 			SetDex( 76, 95 );
 			SetInt( 301, 325 );
 
-			SetHits( 286, 303 );
+			SetHits( 480, 560 );
 
-			SetDamage( 7, 14 );
+			SetDamage( 14, 20 );
 
-			SetDamageType( ResistanceType.Physical, 100 );
+			SetDamageType( ResistanceType.Physical, 25 );
+			SetDamageType( ResistanceType.Cold, 35 );
+			SetDamageType( ResistanceType.Energy, 40 );
 
 			SetResistance( ResistanceType.Physical, 45, 60 );
 			SetResistance( ResistanceType.Fire, 50, 60 );
@@ -80,11 +94,11 @@ namespace Server.Mobiles
 			SetResistance( ResistanceType.Poison, 20, 30 );
 			SetResistance( ResistanceType.Energy, 30, 40 );
 
-			SetSkill( SkillName.Psychology, 70.1, 80.0 );
-			SetSkill( SkillName.Magery, 70.1, 80.0 );
+			SetSkill( SkillName.Psychology, 88.1, 98.0 );
+			SetSkill( SkillName.Magery, 88.1, 98.0 );
 			SetSkill( SkillName.MagicResist, 85.1, 95.0 );
-			SetSkill( SkillName.Tactics, 70.1, 80.0 );
-			SetSkill( SkillName.FistFighting, 60.1, 80.0 );
+			SetSkill( SkillName.Tactics, 80.1, 90.0 );
+			SetSkill( SkillName.FistFighting, 80.1, 90.0 );
 
 			Fame = 15000;
 			Karma = -15000;
@@ -100,92 +114,202 @@ namespace Server.Mobiles
 		public override int Skeletal{ get{ return Utility.Random(3); } }
 		public override SkeletalType SkeletalType{ get{ return SkeletalType.Brittle; } }
 
-		public void SpawnCreature( Mobile target )
+		private const int MaxBoundUndead = 4;
+
+		private int CountBoundUndead()
 		{
-			Map map = this.Map;
-
-			if ( map == null )
-				return;
-
 			int monsters = 0;
 
 			foreach ( Mobile m in this.GetMobilesInRange( 4 ) )
 			{
-				if ( m is BoneKnight || m is BoneMagi || m is Ghoul || m is Mummy || m is Shade || m is SkeletalKnight || m is SkeletalMage || m is Skeleton || m is Spectre || m is Wraith || m is Phantom || m is Zombie )
+				BaseCreature bc = m as BaseCreature;
+
+				if ( bc != null && bc.IsTempEnemy && bc.YellHue == this.Serial )
 					++monsters;
 			}
 
-			if ( monsters < 6 )
+			return monsters;
+		}
+
+		private BaseCreature CreateBoundUndead()
+		{
+			// Melee-only adds: no BoneMagi / SkeletalMage / Spectre-style poison casting, no Ghoul 5s freeze, no Mummy breath spike.
+			switch ( Utility.Random( 6 ) )
 			{
-				PlaySound( 0x216 );
-
-				int newmonsters = Utility.RandomMinMax( 1, 3 );
-
-				for ( int i = 0; i < newmonsters; ++i )
-				{
-					BaseCreature monster;
-
-					switch ( Utility.Random( 13 ) )
-					{
-						default:
-						case 0: monster = new BoneKnight(); break;
-						case 1: monster = new BoneMagi(); break;
-						case 2: monster = new Ghoul(); break;
-						case 3: monster = new Ghostly(); break;
-						case 4: monster = new Mummy(); break;
-						case 5: monster = new Shade(); break;
-						case 6: monster = new SkeletalKnight(); break;
-						case 7: monster = new SkeletalMage(); break;
-						case 8: monster = new Skeleton(); break;
-						case 9: monster = new Spectre(); break;
-						case 10: monster = new Wraith(); break;
-						case 11: monster = new Phantom(); break;
-						case 12: monster = new Zombie(); break;
-					}
-
-					monster.Team = this.Team;
-
-					bool validLocation = false;
-					Point3D loc = this.Location;
-
-					for ( int j = 0; !validLocation && j < 10; ++j )
-					{
-						int x = X + Utility.Random( 3 ) - 1;
-						int y = Y + Utility.Random( 3 ) - 1;
-						int z = map.GetAverageZ( x, y );
-
-						if ( validLocation = map.CanFit( x, y, this.Z, 16, false, false ) )
-							loc = new Point3D( x, y, Z );
-						else if ( validLocation = map.CanFit( x, y, z, 16, false, false ) )
-							loc = new Point3D( x, y, z );
-					}
-
-					monster.IsTempEnemy = true;
-					monster.MoveToWorld( loc, map );
-					monster.Combatant = target;
-				}
+				default:
+				case 0:
+				case 1: return new BoneKnight();
+				case 2:
+				case 3: return new SkeletalKnight();
+				case 4: return new Skeleton();
+				case 5: return new Zombie();
 			}
 		}
 
-		public void DoSpecialAbility( Mobile target )
+		public bool SpawnCreature( Mobile target )
 		{
-			if ( target == null || target.Deleted ) //sanity
+			Map map = this.Map;
+
+			if ( map == null || target == null || target.Deleted )
+				return false;
+
+			if ( CountBoundUndead() >= MaxBoundUndead )
+				return false;
+
+			if ( Mana < BoundUndeadSummonManaCost )
+				return false;
+
+			int newmonsters = Utility.RandomMinMax( 1, 2 );
+			int spawned = 0;
+
+			for ( int i = 0; i < newmonsters; ++i )
+			{
+				if ( CountBoundUndead() >= MaxBoundUndead )
+					break;
+
+				if ( Mana < BoundUndeadSummonManaCost )
+					break;
+
+				Mana -= BoundUndeadSummonManaCost;
+
+				if ( spawned == 0 )
+					PlaySound( 0x216 );
+
+				BaseCreature monster = CreateBoundUndead();
+
+				monster.Team = this.Team;
+
+				bool validLocation = false;
+				Point3D loc = this.Location;
+
+				for ( int j = 0; !validLocation && j < 10; ++j )
+				{
+					int x = X + Utility.Random( 3 ) - 1;
+					int y = Y + Utility.Random( 3 ) - 1;
+					int z = map.GetAverageZ( x, y );
+
+					if ( validLocation = map.CanFit( x, y, this.Z, 16, false, false ) )
+						loc = new Point3D( x, y, Z );
+					else if ( validLocation = map.CanFit( x, y, z, 16, false, false ) )
+						loc = new Point3D( x, y, z );
+				}
+
+				monster.IsTempEnemy = true;
+				monster.YellHue = this.Serial;
+				monster.MoveToWorld( loc, map );
+				monster.Combatant = target;
+				monster.Warmode = true;
+				Effects.SendLocationParticles( EffectItem.Create( monster.Location, monster.Map, EffectItem.DefaultDuration ), 0x3728, 10, 10, 2023 );
+				monster.PlaySound( 0x1FE );
+				IntelligentAction.OnCreatureSpawned( monster );
+				++spawned;
+			}
+
+			return spawned > 0;
+		}
+
+		public void DoUndeadSummon( Mobile target )
+		{
+			if ( target == null || target.Deleted )
 				return;
 
-			if ( 0.25 >= Utility.RandomDouble() ) // 25% chance
-				SpawnCreature( target );
+			if ( DateTime.Now < m_NextSummon )
+				return;
+
+			if ( SummonProcChance < Utility.RandomDouble() )
+				return;
+
+			if ( !SpawnCreature( target ) )
+				return;
+
+			m_NextSummon = DateTime.Now + TimeSpan.FromSeconds( SummonCooldownSeconds );
+		}
+
+		public void TryEmergencyHeal()
+		{
+			if ( Hits >= HitsMax * 0.4 )
+				return;
+
+			if ( DateTime.Now < m_NextEmergencyHeal )
+				return;
+
+			if ( Mana < EmergencyHealManaCost )
+				return;
+
+			if ( MortalStrike.IsWounded( this ) )
+				return;
+
+			if ( Utility.RandomMinMax( 1, 4 ) != 1 )
+				return;
+
+			Mana -= EmergencyHealManaCost;
+			Hits = HitsMax;
+			FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
+			PlaySound( 0x202 );
+			m_NextEmergencyHeal = DateTime.Now + TimeSpan.FromSeconds( EmergencyHealCooldownSeconds );
+		}
+
+		public void DoVoidBind( Mobile partner )
+		{
+			if ( partner == null || partner.Deleted || !partner.Alive )
+				return;
+
+			if ( DateTime.Now < m_NextVoidBind )
+				return;
+
+			if ( VoidBindProcChance < Utility.RandomDouble() )
+				return;
+
+			m_NextVoidBind = DateTime.Now + TimeSpan.FromSeconds( VoidBindCooldownSeconds );
+
+			DoHarmful( partner );
+
+			partner.FixedParticles( 0x374A, 10, 15, 5038, 0x497, 0, EffectLayer.Waist );
+			partner.PlaySound( 0x1FE );
+
+			AOS.Damage( partner, this, Utility.RandomMinMax( 10, 14 ), 0, 0, 0, 0, 100 );
+
+			if ( partner is PlayerMobile )
+			{
+				partner.SendMessage( StringCatalog.ResolveByKey( partner.Account, "quest.bards_tale.mangar.void_bind.hit" ) );
+
+				double duration = 0.5;
+
+				if ( duration > MySettings.S_paralyzeDuration )
+					duration = MySettings.S_paralyzeDuration;
+
+				if ( !partner.CheckSkill( SkillName.MagicResist, 0, 100 ) )
+					partner.Paralyze( TimeSpan.FromSeconds( duration ) );
+			}
+
+			BaseCreature pet = partner as BaseCreature;
+
+			if ( pet != null && pet.Controlled )
+			{
+				Mobile master = pet.GetMaster();
+
+				if ( master != null && master is PlayerMobile && master.Alive && !master.Deleted && InRange( master, 10 ) )
+				{
+					DoHarmful( master );
+					AOS.Damage( master, this, Utility.RandomMinMax( 8, 12 ), 0, 0, 0, 0, 100 );
+					master.SendMessage( StringCatalog.ResolveByKey( master.Account, "quest.bards_tale.mangar.void_bind.pulse" ) );
+				}
+			}
 		}
 
 		public override void OnGotMeleeAttack( Mobile attacker )
 		{
 			base.OnGotMeleeAttack( attacker );
-			DoSpecialAbility( attacker );
+			TryEmergencyHeal();
+			DoVoidBind( attacker );
+			DoUndeadSummon( attacker );
 		}
 
 		public override void OnGaveMeleeAttack( Mobile defender )
 		{
 			base.OnGaveMeleeAttack( defender );
-			DoSpecialAbility( defender );
+			DoVoidBind( defender );
+			DoUndeadSummon( defender );
 		}
 
 		public Mangar( Serial serial ) : base( serial )
@@ -194,6 +318,8 @@ namespace Server.Mobiles
 
 		public override bool OnBeforeDeath()
 		{
+			IntelligentAction.BeforeMyDeath( this );
+
 			Effects.SendLocationParticles( EffectItem.Create( this.Location, this.Map, EffectItem.DefaultDuration ), 0x3728, 10, 10, 2023 );
 			this.PlaySound( 0x1FE );
 

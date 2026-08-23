@@ -1510,6 +1510,8 @@
   "quest.bards_tale.spectre_box.clue.body": "你从被斩杀的怨灵身上取得了一枚水晶，里面有一只眼睛，盒中还有一把刻着龙形徽记的钥匙。潦草的纸条称它为塔尔詹（Tarjan）之眼。",
   "quest.bards_tale.tarjan.gaze.hit": "塔尔詹（Tarjan）的凝视灼穿了你。",
   "quest.bards_tale.tarjan.gaze.pulse": "疯神的凝视穿过仆从，落到了你身上。",
+  "quest.bards_tale.mangar.void_bind.hit": "曼加（Mangar）的虚空缚链缠紧了你。",
+  "quest.bards_tale.mangar.void_bind.pulse": "黑暗巫师的锁链穿过仆从，缠向了你。",
   "quest.bards_tale.buff.deja_vu.granted": "虚空似曾相识——只要仍留在斯卡拉·布雷（Skara Brae），幸运便向你倾斜，亡灵亦为之动摇。",
   "quest.bards_tale.buff.deja_vu.title": "虚空既视感",
   "quest.bards_tale.buff.deja_vu.tooltip": "循环愈发熟悉——连亡灵似乎也认出了你。在斯卡拉·布雷（Skara Brae）内获得 +50 幸运，对亡灵伤害 +15%。",
