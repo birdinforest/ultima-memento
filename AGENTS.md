@@ -575,6 +575,7 @@ When adding a third language (e.g. `zh-Hant`, `ja`):
 This file uses a simple date-stamp comment at the top for tracking. When making substantive updates, add a one-line change note at the bottom of this section.
 
 **Change log:**
+- 2026-08-23: §8.1 — indexed `CRIMSON_GOLD_CONCORD_NATIONAL_DAY_EVENT_DESIGN.md`（赤金同心节四周活动：账号点数、捐献、水晶、盟约灯进阶、冠军 Boss 与奖励经济）。
 - 2026-08-23: §8.1 — indexed `CRAFTING_TRADES_SYSTEM.md`（工匠/制作机制总览：架构、专柜、掉落 vs 自制、专题交叉索引）。
 - 2026-08-22: §3.1 — added `lore-books.json` (`keep_extra`): LoreBook title/author/body shotkeys + city templates (`{0}`/`{1}`).
 - 2026-08-22: §8.1 — indexed `AVATAR_FORTUNE_DROP_BONUS.md`（Avatar Fortune 稀有掉落倍率 + Recipe Fame 阶梯）。
@@ -700,6 +701,7 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | NPC dialogue intelligence systems | `memento/game-mechanism/NPC_INTELLIGENCE_DIALOGUE_MECHANISM.md` (EN) / `NPC对话情报机制分析.md` (ZH) | Before analyzing or modifying any NPC dialogue/intel flow |
 | NPC economy & vendor mechanisms | `memento/game-mechanism/npc-game-mechanisms.md` | Before modifying vendor, buy/sell, black market, shoppe, or service NPC code |
 | Champion spawn system | `memento/game-mechanism/CHAMPION_SPAWN_SYSTEM.md` | Before touching champion/raid spawn logic |
+| Crimson-Gold Concord / National Day four-week event | `memento/game-design-idea/CRIMSON_GOLD_CONCORD_NATIONAL_DAY_EVENT_DESIGN.md` | Before implementing the Concord point ledger, steward NPC, donation/crystal/lamp loops, reward Gump, or Vargos Champion boss |
 | Gypsy tarot / starting fates | `memento/game-mechanism/GYPSY_TAROT_STARTING_FATES.md` | Before modifying starting-area NPCs or race selection |
 | Trap system (code analysis) | `memento/game-mechanism/trap-system/trap_system_code_analysis.md` | Before modifying trap items or trap-related NPC speech |
 | Magic system docs | `memento/game-mechanism/spell-and-magic/` (8 files) | Before modifying magic, spell, or rune systems |

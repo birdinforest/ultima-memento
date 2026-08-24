@@ -105,6 +105,7 @@
   "trap.karma.guidance.weakened": "你的道德信念被陷阱削弱了。通过美德行为重建你的阵营。",
   "trap.brokeonstep": "你踩到了陷阱，但幸运的是它自己坏掉了！",
   "trap.scavenge": "你从陷阱机关中回收了有用的零件。",
+  "trap.scavenge.cooldown": "这座机关的零件刚拆过，要等机构再积上油污才会有奖励。",
   "trap.proximity.basic": "附近感觉有些不对劲，但你无法确定具体位置。",
   "trap.proximity.warning": "你的直觉警告你{0}有一个隐藏陷阱，{1}。",
   "trap.proximity.detail": "你注意到{1}有{0}的细微痕迹，{2}。",

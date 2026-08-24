@@ -25,6 +25,11 @@ namespace Server.Items
 
 		private static readonly int[] WeightedTrapPool = BuildWeightedPool();
 
+		// Per-player salvage cooldown for persistent dungeon fixtures (stone face / giant spike).
+		// Memory-only: not serialized. Key = (trap serial << 32) | player serial.
+		private static readonly TimeSpan FixtureSalvageCooldown = TimeSpan.FromMinutes( 20 );
+		private static readonly Dictionary<ulong, DateTime> m_FixtureSalvageTimes = new Dictionary<ulong, DateTime>();
+
 		private static int[] BuildWeightedPool()
 		{
 			var pool = new List<int>();
@@ -1387,6 +1392,62 @@ namespace Server.Items
 			}
 		}
 
+		private static bool IsRateLimitedFixtureSalvage( Item trap )
+		{
+			return trap is StoneFaceTrap || trap is GiantSpikeTrap;
+		}
+
+		private static ulong FixtureSalvageKey( Item trap, Mobile m )
+		{
+			return ( (ulong)(uint)trap.Serial.Value << 32 ) | (uint)m.Serial.Value;
+		}
+
+		private static bool IsFixtureSalvageOnCooldown( Item trap, Mobile m )
+		{
+			ulong key = FixtureSalvageKey( trap, m );
+			DateTime last;
+
+			if ( !m_FixtureSalvageTimes.TryGetValue( key, out last ) )
+				return false;
+
+			if ( DateTime.Now - last < FixtureSalvageCooldown )
+				return true;
+
+			m_FixtureSalvageTimes.Remove( key );
+			return false;
+		}
+
+		private static void RecordFixtureSalvage( Item trap, Mobile m )
+		{
+			m_FixtureSalvageTimes[FixtureSalvageKey( trap, m )] = DateTime.Now;
+		}
+
+		private static void TryAwardRemoveTrapSalvage( Mobile m, Item trap )
+		{
+			// Fire columns are common dungeon fixtures; players can enter the 3-tile
+			// trigger range without taking damage, so coin drops are omitted entirely.
+			if ( trap is FireColumnTrap )
+				return;
+
+			// Stone faces / giant spikes stay in the world; without a per-player
+			// cooldown they can be walked for salvage gold on a script.
+			if ( IsRateLimitedFixtureSalvage( trap ) && IsFixtureSalvageOnCooldown( trap, m ) )
+			{
+				m.SendMessage( StringCatalog.ResolveByKey( m.Account, "trap.scavenge.cooldown" ) );
+				return;
+			}
+
+			// Skilled disarm yields salvageable components — positive reinforcement for trap expertise
+			// Reward scales with Remove Trap skill (5–25 gold equivalent at skill 25–125)
+			int salvageValue = Utility.RandomMinMax( 5, Math.Max( 5, (int)( m.Skills.RemoveTrap.Value / 5 ) ) );
+			Gold salvage = new Gold( salvageValue );
+			salvage.MoveToWorld( trap.Location, trap.Map );
+			m.SendMessage( StringCatalog.ResolveByKey( m.Account, "trap.scavenge" ) );
+
+			if ( IsRateLimitedFixtureSalvage( trap ) )
+				RecordFixtureSalvage( trap, m );
+		}
+
 		/// <returns>`True` if the trap his been triggered</returns>
 		public static bool CheckTrapAvoidance( Mobile m, Item Trap )
 		{
@@ -1411,19 +1472,7 @@ namespace Server.Items
 					m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, textSay);
 					m.PlaySound( 0x241 );
 
-					// Fire columns are common dungeon fixtures; 
-					// User can remove trap in 3 tiles range but don't trigger trap, 
-					// which means user can farm salvage gold by script.
-					// Skill checks still apply — only the coin drop is omitted for this trap type.
-					if ( !( Trap is FireColumnTrap ) )
-					{
-						// Skilled disarm yields salvageable components — positive reinforcement for trap expertise
-						// Reward scales with Remove Trap skill (5–25 gold equivalent at skill 25–125)
-						int salvageValue = Utility.RandomMinMax( 5, Math.Max( 5, (int)( m.Skills.RemoveTrap.Value / 5 ) ) );
-						Gold salvage = new Gold( salvageValue );
-						salvage.MoveToWorld( Trap.Location, Trap.Map );
-						m.SendMessage( StringCatalog.ResolveByKey( m.Account, "trap.scavenge" ) );
-					}
+					TryAwardRemoveTrapSalvage( m, Trap );
 				}
 
 				return false;
