@@ -6,7 +6,7 @@ namespace Server.Misc
 	{
 		// Chronological index: 0 = oldest release, 11 = current release.
 		// When shipping a new version, increment RELEASE_COUNT and add a new case at the end.
-		public const int RELEASE_COUNT = 14;
+		public const int RELEASE_COUNT = 15;
 
 		public static string Version()
 		{
@@ -1236,7 +1236,14 @@ namespace Server.Misc
 					builder.Append("- Skill - Begging skill checks only execute after selling items<br>");
 					break;
 
+				// Version 2.5.0
+				case 14:
 				default:
+					builder.Append(Version());
+					builder.Append("<br>Changes<br>");
+
+					builder.Append("<br>Fixes<br>");
+					builder.Append("- Misc - Fix issue where Strange Portals crossed facets<br>");
 					break;
 			}
 		}

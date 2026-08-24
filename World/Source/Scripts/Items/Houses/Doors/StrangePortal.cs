@@ -163,7 +163,7 @@ namespace Server.Items
 				case 61: return Tuple.Create(Map.Lodor, new Point3D(6826, 1123, -92)); // Morgaelin's Inferno
 				case 62: return Tuple.Create(Map.Lodor, new Point3D(5950, 1654, -5)); // the Depths of Carthax Lake
 				case 63: return Tuple.Create(Map.Lodor, new Point3D(5989, 484, 1)); // Argentrock Castle
-				case 64: return Tuple.Create(Map.Lodor, new Point3D(1125, 3684, 0)); // the Ancient Sky Ship
+				case 64: return Tuple.Create(Map.Underworld, new Point3D(1125, 3684, 0)); // the Ancient Sky Ship
 			}
 
 			return null;
