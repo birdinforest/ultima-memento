@@ -123,7 +123,7 @@ namespace Server.Spells.Mystic
 			}
 			else { return false; }
 
-			if ( from.Skills[SkillName.Focus].Base < 100 || from.Skills[SkillName.Meditation].Base < 100 )
+			if ( from.Skills[SkillName.Focus].Value < 100 || from.Skills[SkillName.Meditation].Value < 100 )
 			{
 				return false;
 			}

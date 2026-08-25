@@ -1243,6 +1243,8 @@ namespace Server.Misc
 					builder.Append("<br>Changes<br>");
 					builder.Append("- Item - Prayer book is now always given when you turn in a wooden mallet and stake<br>");
 					builder.Append("- Item - Prayer book attempts to bind to you when you open it<br>");
+					builder.Append("- Misc - Holy Man class no longer requires base skill to activate<br>");
+					builder.Append("- Misc - Mystic class no longer requires base skill to activate<br>");
 
 					builder.Append("<br>Fixes<br>");
 					builder.Append("- Gump - Scribing spells that require arcane scrolls now indicate they need mana<br>");
