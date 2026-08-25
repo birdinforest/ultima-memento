@@ -100,19 +100,14 @@ namespace Server.Mobiles
 
 		public override bool OnDragDrop( Mobile from, Item dropped )
 		{
-			int hasSymbol = 0;
-			int hasBook = 0;
-			int isPriest = 0;
-
 			if ( dropped is MalletStake )
 			{
 				MalletStake stake = (MalletStake)dropped;
-
 				int reward = stake.VampiresSlain;
-
 				if ( reward > 0 )
 				{
 					from.AddToBackpack( new Gold( reward ) );
+					from.AddToBackpack ( new HolyManSpellbook() );
 
 					string sMessage = Server.Localization.StringCatalog.ResolveFormatByKey(null, "mob.fmt.thank_you_here_is_0_gold_for_your_bravery", reward );
 
