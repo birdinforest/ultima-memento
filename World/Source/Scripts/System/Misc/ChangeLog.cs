@@ -1250,6 +1250,7 @@ namespace Server.Misc
 					builder.Append("<br>Fixes<br>");
 					builder.Append("- Gump - Scribing spells that require arcane scrolls now indicate they need mana<br>");
 					builder.Append("- Misc - Fix issue where Strange Portals crossed facets<br>");
+					builder.Append("- Spell - Fix typo in Orb of Orcus spell description<br>");
 					break;
 			}
 		}
