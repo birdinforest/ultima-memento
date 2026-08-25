@@ -1245,6 +1245,7 @@ namespace Server.Misc
 					builder.Append("- Item - Prayer book attempts to bind to you when you open it<br>");
 
 					builder.Append("<br>Fixes<br>");
+					builder.Append("- Gump - Scribing spells that require arcane scrolls now indicate they need mana<br>");
 					builder.Append("- Misc - Fix issue where Strange Portals crossed facets<br>");
 					break;
 			}
