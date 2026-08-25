@@ -110,6 +110,9 @@ namespace Server.Mobiles
 					from.AddToBackpack ( new HolyManSpellbook() );
 
 					string sMessage = Server.Localization.StringCatalog.ResolveFormatByKey(null, "mob.fmt.thank_you_here_is_0_gold_for_your_bravery", reward );
+					int hasSymbol = 0;
+					int hasBook = 0;
+					int isPriest = 0;
 
 					if ( reward >= 1000 && from.Karma >= 2500 && from.Skills[SkillName.Spiritualism].Base > 0 && from.Skills[SkillName.Healing].Base > 0 )
 					{
