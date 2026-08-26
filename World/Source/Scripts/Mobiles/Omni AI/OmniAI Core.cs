@@ -329,14 +329,17 @@ namespace Server.Mobiles
 				&& m_Mobile.Combatant != null && m_Mobile.InLOS( m_Mobile.Combatant );
 			if( canCastTeleport && DateTime.Now > m_NextTeleportTime )
 			{
-				if( m_Mobile.Target != null )
-					m_Mobile.Target.Cancel( m_Mobile, TargetCancelType.Canceled );
+				if( Utility.RandomDouble() < 0.33 )
+				{
+					m_Mobile.DebugSay( "I am stuck, I'm going to try teleporting away" );
 
-				new TeleportSpell( m_Mobile, null ).Cast();
+					if( m_Mobile.Target != null )
+						m_Mobile.Target.Cancel( m_Mobile, TargetCancelType.Canceled );
 
-				m_Mobile.DebugSay( "I am stuck, I'm going to try teleporting away" );
+					new TeleportSpell( m_Mobile, null ).Cast();
 
-				return true;
+					return true;
+				}
 			}
 
 			if( AcquireFocusMob( m_Mobile.RangePerception, m_Mobile.FightMode, false, false, true ) )

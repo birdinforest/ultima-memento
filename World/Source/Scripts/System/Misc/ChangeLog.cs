@@ -1241,6 +1241,7 @@ namespace Server.Misc
 				default:
 					builder.Append(Version());
 					builder.Append("<br>Changes<br>");
+					builder.Append("- Combat - AI is now notably less likely to teleport<br>");
 					builder.Append("- Craft - Undertaker kit is now craftable<br>");
 					builder.Append("- Item - Prayer book is now always given when you turn in a wooden mallet and stake<br>");
 					builder.Append("- Item - Prayer book attempts to bind to you when you open it<br>");
