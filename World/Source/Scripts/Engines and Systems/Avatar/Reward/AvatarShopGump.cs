@@ -318,7 +318,7 @@ namespace Server.Engines.Avatar
 				m_Rewards.Add(reward);
 
 				var tooltip = reward is ActionReward ? AvatarLocalization.ResolveEnglish(m_From, ((ActionReward)reward).PrequisiteTooltip) : null;
-				var canPurchase = m_InGypsyEncampment && reward.CanSelect && string.IsNullOrWhiteSpace(tooltip);
+				var canPurchase = (m_InGypsyEncampment || reward.CanSelectAnywhere) && reward.CanSelect && string.IsNullOrWhiteSpace(tooltip);
 				var cost = reward is ActionReward && ((ActionReward)reward).IsComplete ? COST_NO_BUY : reward.Cost;
 
 				AddCard(m_Context.PointsSaved, reward.Graphic, reward.Name, reward.Description, canPurchase, cost, itemIndex, y, tooltip);

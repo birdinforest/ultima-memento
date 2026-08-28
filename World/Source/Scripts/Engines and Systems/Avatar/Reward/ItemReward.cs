@@ -12,6 +12,7 @@ namespace Server.Engines.Avatar
 		}
 
 		public bool CanSelect { get; set; }
+		public bool CanSelectAnywhere { get; set; }
 		public int Cost { get; private set; }
 		public string Description { get; private set; }
 		public int Graphic { get; private set; }
@@ -43,6 +44,12 @@ namespace Server.Engines.Avatar
 				OnSelect = onSelect,
 				Static = false,
 			};
+		}
+
+		public ItemReward AllowSelectAnywhere()
+		{
+			CanSelectAnywhere = true;
+			return this;
 		}
 
 		public ItemReward AsStatic()
