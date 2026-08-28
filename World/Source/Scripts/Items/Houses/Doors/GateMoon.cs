@@ -117,7 +117,7 @@ namespace Server.Items
 						AddHtml( x+50, y, 180, 20, @"<BODY><BASEFONT Color=" + color + ">" + sPlace + "</BASEFONT></BODY>", (bool)false, (bool)false);
 						if ( sPlace == PLACEHOLDER_TEXT )
 							AddImage(x, y, UNCHECKED_BOX);
-						else if ( GateNumber == DYNAMIC_GATE_ID && ShowGlade( from ) && ( from.Karma < 1 || 0 < from.Kills ) )
+						else if ( GateNumber == DYNAMIC_GATE_ID && ShowGlade( from ) && ( from.Karma < 0 || 0 < from.Kills ) )
 						{
 							AddImage(x, y, CANCEL_ICON);
 							AddTooltip("Your decisions preclude you from accessing this destination.");
