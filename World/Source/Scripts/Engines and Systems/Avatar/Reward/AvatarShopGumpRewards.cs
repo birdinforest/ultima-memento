@@ -9,14 +9,14 @@ namespace Server.Engines.Avatar
 		public const int ONE_HUNDRED_GOLD = 1000;
 		public const int ONE_THOUSAND_GOLD = 10000;
 		public const int TEN_GOLD = 100;
-		
+
+		private const int ITEM_ID_DEATH_KNIGHT = 0x6721; // Death Knight book
+		private const int ITEM_ID_HOLY_MAN = 0x672B; // Holy Man book
 		private const int ITEM_ID_JESTER = 0x1E3F; // Bag of Tricks
 		private const int ITEM_ID_MYSTIC = 0x6725; // Monk's Tome
 		private const int ITEM_ID_SHINOB = 0x5C15; // Shinobi Scroll
-		private const int ITEM_ID_DEATH_KNIGHT = 0x6721; // Death Knight book
-		private const int ITEM_ID_HOLY_MAN = 0x672B; // Holy Man book
 
-		public static List<IReward> CreateRewards(PlayerMobile from, Categories selectedCategory, PlayerContext context)
+		public static List<IReward> CreateRewards(PlayerMobile from, Categories selectedCategory, PlayerContext context, bool isInGypsyEncampment)
 		{
 			switch (selectedCategory)
 			{
@@ -42,6 +42,9 @@ namespace Server.Engines.Avatar
 
 				case Categories.Items:
 					return CreateItemRewards(from, context);
+
+				case Categories.Draft:
+					return CreateDraftRewards(from, context, isInGypsyEncampment);
 			}
 		}
 

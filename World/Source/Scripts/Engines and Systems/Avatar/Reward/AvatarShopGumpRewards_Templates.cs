@@ -78,7 +78,7 @@ namespace Server.Engines.Avatar
 							}
 						);
 					}
-				),
+				).AsStatic(context.DraftModeEnabled),
 				ActionReward.Create(
 					AvatarShopGump.COST_FREE,
 					AvatarShopGump.NO_ITEM_ID,
@@ -95,7 +95,7 @@ namespace Server.Engines.Avatar
 							}
 						);
 					}
-				),
+				).AsStatic(context.DraftModeEnabled),
 				ActionReward.Create(
 					AvatarShopGump.COST_FREE,
 					AvatarShopGump.NO_ITEM_ID,
@@ -113,7 +113,25 @@ namespace Server.Engines.Avatar
 							}
 						);
 					}
-				),
+				).AsStatic(context.DraftModeEnabled),
+				ActionReward.Create(
+					AvatarShopGump.COST_FREE,
+					AvatarShopGump.NO_ITEM_ID,
+					"The Well-Rounded",
+					"Starts with 40 strength, 20 dexterity, and 20 intelligence.",
+					() =>
+					{
+						applyTemplate(
+							player =>
+							{
+								from.InitStats(40, 20, 20);
+								context.SelectedTemplate = AvatarStarterTemplates.WellRoundedStats;
+
+								return false;
+							}
+						);
+					}
+				).AsStatic(context.DraftModeEnabled),
 			};
 
 			if (context.UnlockTemplateJester)
@@ -122,7 +140,9 @@ namespace Server.Engines.Avatar
 					AvatarShopGump.COST_FREE,
 					ITEM_ID_JESTER,
 					"The Jester",
-					"Start with a Bag of Tricks and learn the skills of a Jester from your Skill Archive.",
+					context.DraftModeEnabled
+						? "Start with a Bag of Tricks."
+						: "Start with a Bag of Tricks and learn the skills of a Jester from your Skill Archive.",
 					() =>
 					{
 						applyTemplate(
@@ -143,7 +163,9 @@ namespace Server.Engines.Avatar
 					AvatarShopGump.COST_FREE,
 					ITEM_ID_MYSTIC,
 					"The Mystic",
-					"Start with a Monk's Tome and learn the skills of a Mystic from your Skill Archive.",
+					context.DraftModeEnabled
+						? "Start with a Monk's Tome."
+						: "Start with a Monk's Tome and learn the skills of a Mystic from your Skill Archive.",
 					() =>
 					{
 						applyTemplate(
@@ -164,7 +186,9 @@ namespace Server.Engines.Avatar
 					AvatarShopGump.COST_FREE,
 					ITEM_ID_SHINOB,
 					"The Shinobi",
-					"Start with a Shinobi Scroll and learn the skills of a Shinobi from your Skill Archive.",
+					context.DraftModeEnabled
+						? "Start with a Shinobi Scroll."
+						: "Start with a Shinobi Scroll and learn the skills of a Shinobi from your Skill Archive.",
 					() =>
 					{
 						applyTemplate(
@@ -185,7 +209,9 @@ namespace Server.Engines.Avatar
 					AvatarShopGump.COST_FREE,
 					ITEM_ID_DEATH_KNIGHT,
 					"The Death Knight",
-					"Start with a Death Knight book and learn the skills of a Death Knight from your Skill Archive.",
+					context.DraftModeEnabled
+						? "Start with a Death Knight book."
+						: "Start with a Death Knight book and learn the skills of a Death Knight from your Skill Archive.",
 					() =>
 					{
 						applyTemplate(
@@ -206,7 +232,9 @@ namespace Server.Engines.Avatar
 					AvatarShopGump.COST_FREE,
 					ITEM_ID_HOLY_MAN,
 					"The Holy Man",
-					"Start with a Holy Man book and learn the skills of a Holy Man from your Skill Archive.",
+					context.DraftModeEnabled
+						? "Start with a Holy Man book."
+						: "Start with a Holy Man book and learn the skills of a Holy Man from your Skill Archive.",
 					() =>
 					{
 						applyTemplate(
@@ -232,6 +260,7 @@ namespace Server.Engines.Avatar
 				AvatarStarterTemplates.Mage,
 				AvatarStarterTemplates.Archer,
 			};
+			if (context.DraftModeEnabled) templates.Clear();
 
 			HashSet<AvatarStarterTemplates> boostedTemplates = context.BoostedTemplateCache;
 			if (boostedTemplates == null)

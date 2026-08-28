@@ -7,6 +7,7 @@ namespace Server.Engines.Avatar
 		Templates,
 		PrimaryBoosts,
 		SecondaryBoosts,
+		Draft,
 		Items,
 		FullSkillArchive,
 		Statistics

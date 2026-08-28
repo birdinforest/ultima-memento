@@ -22,17 +22,6 @@ namespace Server.Engines.Avatar
 		private const int GIANT_COIN_ITEM_ID = 0x4FAD;
 		private const int NAVIGATION_WIDTH = 152 + 20 + 20;
 
-		private static readonly List<Categories> m_Categories = new List<Categories>
-		{
-			Categories.Information,
-			Categories.Ascensions,
-			Categories.Templates,
-			Categories.PrimaryBoosts,
-			Categories.SecondaryBoosts,
-			Categories.FullSkillArchive,
-			// Categories.Items,
-		};
-
 		private readonly PlayerContext m_Context;
 		private readonly PlayerMobile m_From;
 		private readonly bool m_InGypsyEncampment;
@@ -203,13 +192,29 @@ namespace Server.Engines.Avatar
 							break;
 						}
 
+					case Categories.Draft:
+						{
+							AddInformationCard(BLANK_ITEM_ID, "Draft - Pick Skills to Train", string.Format("Draft mode allows you to pick skills to train each run. While in the Gypsy Encampment, selecting a skill will automatically increase it."), y, addBackground: false);
+
+							y += CARD_HEIGHT;
+							y += 10;
+							AddKeyValuePairsCard(NAVIGATION_WIDTH + 20, y, true,
+								new _Metric("Level", string.Format("{0}/{1}", m_From.Avatar.DraftLevel, Constants.DRAFT_MAX_LEVEL)),
+								new _Metric("Experience", m_From.Avatar.DraftTotalExperienceGained.ToString("n0")),
+								new _Metric("To Next Pick", m_From.Avatar.DraftExperienceToNextPick.ToString("n0")),
+								new _Metric("Picks Earned", string.Format("{0}/{1}", m_From.Avatar.DraftPicksAvailable - Constants.DRAFT_START_PICK_AMOUNT, Constants.DRAFT_MAX_LEVEL / Constants.DRAFT_LEVELS_PER_PICK)),
+								new _Metric("Picks Spent", string.Format("{0}/{1}", m_From.Avatar.DraftPicksSpent, m_From.Avatar.DraftPicksAvailable))
+							);
+							break;
+						}
+
 					case Categories.Information:
 					default:
 						break;
 				}
 			}
 
-			var rewards = RewardFactory.CreateRewards(m_From, selectedCategory, m_Context);
+			var rewards = RewardFactory.CreateRewards(m_From, selectedCategory, m_Context, m_InGypsyEncampment);
 			if (rewards == null || rewards.Count == 0) return;
 
 			if (m_Context.RewardCache == null) m_Context.RewardCache = new Dictionary<Categories, List<int>>();
@@ -249,7 +254,7 @@ namespace Server.Engines.Avatar
 							{
 								var nonStaticRewards = rewards.Where(reward => !reward.Static).ToList();
 
-								var addEntireList = m_Context.UnlockFullSkillArchive && (selectedCategory == Categories.PrimaryBoosts || selectedCategory == Categories.SecondaryBoosts); 
+								var addEntireList = m_Context.UnlockFullSkillArchive && (selectedCategory == Categories.PrimaryBoosts || selectedCategory == Categories.SecondaryBoosts);
 								if (addEntireList)
 								{
 									randomRewardIndexes.AddRange(
@@ -270,6 +275,31 @@ namespace Server.Engines.Avatar
 										);
 									}
 								}
+							}
+							break;
+						}
+
+					case Categories.Draft:
+						{
+							if (rewards.Any(reward => reward.Static))
+							{
+								randomRewardIndexes.AddRange(
+									rewards
+									.Where(reward => reward.Static)
+									.Select(reward => rewards.FindIndex(r => r == reward))
+								);
+							}
+
+							if (rewards.Any(reward => !reward.Static))
+							{
+								var nonStaticRewards = rewards.Where(reward => !reward.Static).ToList();
+
+								randomRewardIndexes.AddRange(
+									nonStaticRewards
+									.OrderBy(r => Utility.RandomMinMax(0, 100))
+									.Take(Constants.DRAFT_PICKS_PER_ROUND)
+									.Select(reward => rewards.FindIndex(r => r == reward))
+								);
 							}
 							break;
 						}
@@ -518,6 +548,10 @@ namespace Server.Engines.Avatar
 							purchaseText = AvatarLocalization.Key(m_From, "avatar.gump.btn.unlock", "Unlock");
 							break;
 
+						case Categories.Draft:
+							purchaseText = "Unlock";
+							break;
+
 						case Categories.Items:
 						case Categories.Information:
 						default:
@@ -545,8 +579,37 @@ namespace Server.Engines.Avatar
 				y += CARD_HEIGHT + 10;
 			}
 
+			List<Categories> categoriesToShow;
+			if (m_From.Avatar.DraftModeEnabled)
+			{
+				categoriesToShow = new List<Categories>
+				{
+					Categories.Information,
+					Categories.Ascensions,
+					Categories.Templates,
+					Categories.Draft,
+					Categories.FullSkillArchive,
+					// Categories.Items,
+					Categories.Statistics,
+				};
+			}
+			else
+			{
+				categoriesToShow = new List<Categories>
+				{
+					Categories.Information,
+					Categories.Ascensions,
+					Categories.Templates,
+					Categories.PrimaryBoosts,
+					Categories.SecondaryBoosts,
+					Categories.FullSkillArchive,
+					// Categories.Items,
+					Categories.Statistics,
+				};
+			}
+
 			int i = 0;
-			foreach (var category in m_Categories)
+			foreach (var category in categoriesToShow)
 			{
 				var isSelected = selectedCategory == category;
 				const int CATEGORY_CARD_HEIGHT = 34;

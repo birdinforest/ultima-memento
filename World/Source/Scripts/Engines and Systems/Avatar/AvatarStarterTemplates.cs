@@ -24,5 +24,7 @@ namespace Server.Engines.Avatar
 		Shinobi,
 		DeathKnight,
 		HolyMan,
+
+		WellRoundedStats,
 	}
 }
