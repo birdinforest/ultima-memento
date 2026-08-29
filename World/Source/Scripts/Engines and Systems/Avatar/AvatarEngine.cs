@@ -63,6 +63,14 @@ namespace Server.Engines.Avatar
 			SoulOrb.Create(player, SoulOrbType.PermadeathPlaceholder);
 		}
 
+		public void ClearContext(Mobile mobile)
+		{
+			var context = GetContextOrDefault(mobile);
+			if (!context.Active) return;
+			
+			m_Context.Remove(mobile.Serial);
+		}
+
 		public PlayerContext GetContextOrDefault(Mobile mobile)
 		{
 			PlayerContext context;
