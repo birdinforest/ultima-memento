@@ -92,7 +92,7 @@ namespace Server.Engines.Craft
 						resc = (Item)Activator.CreateInstance( resourceType );
 					}
 
-					resc.Amount = Math.Min(60, BaseItemBreakDown( item ));
+					resc.Amount = Math.Min(60, GetItemBreakDownAmount( item, m_CraftSystem ));
 
 					if ( resc.Amount < 2 )
 					{
@@ -288,6 +288,39 @@ namespace Server.Engines.Craft
 					}
 				}
 			}
+		}
+
+		public static int GetItemBreakDownAmount( Item item, CraftSystem craftSystem )
+		{
+			var fallback = BaseItemBreakDown( item );
+			var itemType = item.GetType();
+			var isWax = item.Catalog == Catalogs.Wax && craftSystem is DefWaxingPot;
+			var resourceType = isWax
+				? typeof( Beeswax )
+				: craftSystem.CraftSubRes != null && craftSystem.CraftSubRes.Init
+					? craftSystem.CraftSubRes.ResType
+					: null;
+
+			if ( resourceType == null ) return fallback;
+
+			var amount = -1;
+
+			for ( var i = 0; i < craftSystem.CraftItems.Count; i++ )
+			{
+				var craftItem = craftSystem.CraftItems.GetAt( i );
+				if ( craftItem.ItemType != itemType ) continue;
+
+				for ( var j = 0; j < craftItem.Resources.Count; j++ )
+				{
+					var resource = craftItem.Resources.GetAt( j );
+					if ( resource.ItemType != resourceType ) continue;
+
+					if ( amount >= 0 && amount != resource.Amount ) return fallback;
+					amount = resource.Amount;
+				}
+			}
+
+			return amount >= 0 ? amount : fallback;
 		}
 
 		public static int BaseItemBreakDown( Item item )
