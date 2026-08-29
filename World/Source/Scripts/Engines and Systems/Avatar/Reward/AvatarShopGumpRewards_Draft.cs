@@ -119,6 +119,7 @@ namespace Server.Engines.Avatar
 							context.ClearRewardCache(Categories.Draft);
 							context.AddDraftedSkill(skill.SkillName);
 							skill.SetLockNoRelay(SkillLock.Up);
+							skill.CanGain = true;
 							from.Send(new SkillChange(skill));
 
 							if (!isInGypsyEncampment) return;

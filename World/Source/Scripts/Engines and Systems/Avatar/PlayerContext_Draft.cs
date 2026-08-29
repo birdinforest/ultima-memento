@@ -410,8 +410,9 @@ namespace Server.Engines.Avatar
 			for (var i = 0; i < player.Skills.Length; i++)
 			{
 				var skill = player.Skills[i];
+				skill.SetLockNoRelay(SkillLock.Locked);
+				skill.CanGain = false;
 				skill.Base = 0;
-				skill.SetLockNoRelay(SkillLock.Down);
 			}
 
 			player.Send(new SkillUpdate(player.Skills));
