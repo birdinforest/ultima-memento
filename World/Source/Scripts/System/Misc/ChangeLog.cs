@@ -1251,6 +1251,7 @@ namespace Server.Misc
 
 					builder.Append("<br>Fixes<br>");
 					builder.Append("- Gump - Scribing spells that require arcane scrolls now indicate they need mana<br>");
+					builder.Append("- Misc - Fix crash from concurrent client disconnect on the network thread<br>");
 					builder.Append("- Misc - Fix issue where Strange Portals crossed facets<br>");
 					builder.Append("- Misc - Players with '0' Karma may now access The Glade<br>");
 					builder.Append("- Spell - Fix typo in Orb of Orcus spell description<br>");
