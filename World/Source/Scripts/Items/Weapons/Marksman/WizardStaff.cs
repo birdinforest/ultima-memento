@@ -206,6 +206,8 @@ namespace Server.Items
 
 		public override SkillName AccuracySkill{ get{ return SkillName.Marksmanship; } }
 
+		public override CraftResource DefaultResource{ get{ return CraftResource.RegularWood; } }
+
 		public BaseWizardStaff( int itemID ) : base( itemID )
 		{
 			damageType = 0;
