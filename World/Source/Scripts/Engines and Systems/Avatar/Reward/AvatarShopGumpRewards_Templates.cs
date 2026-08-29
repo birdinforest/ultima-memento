@@ -148,7 +148,7 @@ namespace Server.Engines.Avatar
 						applyTemplate(
 							player =>
 							{
-								from.InitStats(20, 20, 20);
+								from.InitStats(40, 20, 20);
 								context.SelectedTemplate = AvatarStarterTemplates.Jester;
 								return false;
 							}
@@ -171,7 +171,7 @@ namespace Server.Engines.Avatar
 						applyTemplate(
 							player =>
 							{
-								from.InitStats(20, 20, 20);
+								from.InitStats(40, 20, 20);
 								context.SelectedTemplate = AvatarStarterTemplates.Mystic;
 								return false;
 							}
@@ -194,7 +194,7 @@ namespace Server.Engines.Avatar
 						applyTemplate(
 							player =>
 							{
-								from.InitStats(20, 20, 20);
+								from.InitStats(40, 20, 20);
 								context.SelectedTemplate = AvatarStarterTemplates.Shinobi;
 								return false;
 							}
@@ -217,7 +217,7 @@ namespace Server.Engines.Avatar
 						applyTemplate(
 							player =>
 							{
-								from.InitStats(20, 20, 20);
+								from.InitStats(40, 20, 20);
 								context.SelectedTemplate = AvatarStarterTemplates.DeathKnight;
 								return false;
 							}
@@ -240,7 +240,7 @@ namespace Server.Engines.Avatar
 						applyTemplate(
 							player =>
 							{
-								from.InitStats(20, 20, 20);
+								from.InitStats(40, 20, 20);
 								context.SelectedTemplate = AvatarStarterTemplates.HolyMan;
 								return false;
 							}
