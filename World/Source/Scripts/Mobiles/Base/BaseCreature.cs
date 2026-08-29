@@ -8669,6 +8669,21 @@ namespace Server.Mobiles
             EventSink.InvokeOnKilledBy( this, mob, corpse, damagerCount, totalDamage );
 		}
 
+		private void GiveKillQuestCredit( Mobile player )
+		{
+			if ( false == ( player is PlayerMobile ) ) return;
+
+			MLQuestSystem.HandleKill( (PlayerMobile) player, this );
+			AssassinFunctions.CheckTarget( player, this );
+			StandardQuestFunctions.CheckTarget( player, this, null );
+			FishingQuestFunctions.CheckTarget( player, this, null );
+
+			if ( Fame < 18000 ) return;
+
+			MuseumBook.FoundItem( player, 1 );
+			QuestTome.FoundItem( player, 1, null );
+		}
+
 		public override void OnDeath( Container c )
 		{
 			PremiumSpawner.ActivateSpawner( this );
@@ -8704,17 +8719,19 @@ namespace Server.Mobiles
 
 			if ( killer is PlayerMobile )
 			{
-				MLQuestSystem.HandleKill( (PlayerMobile) killer, this );
-				AssassinFunctions.CheckTarget( killer, this );
-				StandardQuestFunctions.CheckTarget( killer, this, null );
-				FishingQuestFunctions.CheckTarget( killer, this, null );
-				if ( killer.Backpack.FindItemByType( typeof ( MuseumBook ) ) != null && this.Fame >= 18000 )
+				GiveKillQuestCredit( killer );
+
+				var party = Engines.PartySystem.Party.Get( killer );
+				if ( party != null )
 				{
-					MuseumBook.FoundItem( killer, 1 );
-				}
-				if ( killer.Backpack.FindItemByType( typeof ( QuestTome ) ) != null && this.Fame >= 18000 )
-				{
-					QuestTome.FoundItem( killer, 1, null );
+					foreach ( var pmi in party.Members )
+					{
+						var member = pmi.Mobile;
+						if ( member == null || member == killer ) continue;
+						if ( !member.Alive || member.Map != Map || !member.InRange( Location, 20 ) ) continue;
+
+						GiveKillQuestCredit( member );
+					}
 				}
 			}
 
