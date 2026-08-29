@@ -2426,6 +2426,12 @@ namespace Server.Mobiles
 					newPlayer.Avatar.RebirthInProgress = false;
 					AvatarEngine.InitializePlayer( newPlayer );
 					AvatarEngine.Instance.ApplyContext( newPlayer, newPlayer.Avatar );
+
+					if ( newPlayer.Avatar.DraftModeEnabled )
+					{
+						newPlayer.Avatar.SetDraftModeEnabled( newPlayer, true );
+					}
+
 					AvatarCoreItemMigration.ReattachCoreItems( newPlayer );
 
 					Timer.DelayCall( TimeSpan.FromSeconds( 2 ), () => AvatarCoreItemMigration.TryShowRebirthReport( newPlayer ) );
