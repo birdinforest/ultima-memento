@@ -14,7 +14,7 @@ namespace Server.Spells.Song
 			);
 
 		public override bool BlocksMovement { get { return true; } }
-		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(5); } }
+		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(3); } }
 		public override double RequiredSkill { get { return 55.0; } }
 		public override int RequiredMana { get { return 15; } }
 

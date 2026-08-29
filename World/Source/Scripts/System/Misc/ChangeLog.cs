@@ -1251,6 +1251,8 @@ namespace Server.Misc
 					builder.Append("- Misc - Mystic class no longer requires base skill to activate<br>");
 					builder.Append("- Misc - Guildmasters now wear their guild rings on their paperdolls<br>");
 					builder.Append("- Misc - All players in a party, not just the killer, now check for quest completion<br>");
+					builder.Append("- Spell - Army's Paeon song cast time is now 3 seconds, down from 5<br>");
+					builder.Append("- Spell - Mage's Ballad song cast time is now 3 seconds, down from 5<br>");
 
 					builder.Append("<br>Fixes<br>");
 					builder.Append("- Gump - Scribing spells that require arcane scrolls now indicate they need mana<br>");
