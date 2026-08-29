@@ -6,10 +6,7 @@ namespace Server.Gumps
 {
 	public class CombatBar
 	{
-		const string COLOR_ORANGE = "#FFA200";
-		const string COLOR_YELLOW = "#FCFF00";
-		const string COLOR_RED = "#FF0000";
-		const int LABEL_AMOUNT_OFFSET_X = 60;
+		const int LABEL_AMOUNT_OFFSET_X = 70;
 
 		public static void Initialize()
 		{
@@ -82,7 +79,7 @@ namespace Server.Gumps
 					Add(x + LABEL_AMOUNT_OFFSET_X, y, player.TithingPoints, 300);
 					y += GAP_LARGE;
 				}
-				if (player.Backpack != null && ( 5 <= player.Skills[SkillName.Healing].Value || 5 <= player.Skills[SkillName.Veterinary].Value ))
+				if (player.Backpack != null && (5 <= player.Skills[SkillName.Healing].Value || 5 <= player.Skills[SkillName.Veterinary].Value))
 				{
 					AddItem(x + 20, y, 0xE21); // Bandage
 					Add(x + LABEL_AMOUNT_OFFSET_X, y, player.Backpack.GetAmount(typeof(Bandage), true), 50);
@@ -92,13 +89,29 @@ namespace Server.Gumps
 				if (player.Avatar.Active)
 				{
 					var coins = player.Avatar.PointsFarmed + player.Avatar.PointsSaved;
-					Add(x, y, "Avatar<br>Coins", coins, true);
+					AddHtmlLabel(x, y, "--- Avatar ---", width: 120);
+					y += GAP_MEDIUM;
+
+					Add(x, y, "Coins", coins);
+					y += GAP_MEDIUM;
+
+					if (player.Avatar.DraftModeEnabled)
+					{
+						if (player.Avatar.DraftLevel < Engines.Avatar.Constants.DRAFT_MAX_LEVEL)
+						{
+							Add(x, y, "Next Pick", player.Avatar.DraftExperienceToNextPick);
+							y += GAP_MEDIUM;
+
+							if (player.Avatar.DraftPicksSpent < player.Avatar.DraftPicksAvailable)
+								AddHtmlLabel(x, y, "* Picks Available *", HtmlColors.COOL_BLUE, 120);
+						}
+					}
 				}
 			}
 
 			private void Add(int x, int y, int amount, int warningAmount = -1)
 			{
-				AddHtml(x, y, 50, 40, @"<BASEFONT Color=" + (warningAmount >= 0 && amount <= warningAmount ? COLOR_RED : COLOR_YELLOW) + ">" + amount.ToString("n0") + "</BASEFONT>", false, false);
+				AddHtml(x, y, 50, 40, TextDefinition.GetColorizedText(amount.ToString("n0"), warningAmount >= 0 && amount <= warningAmount ? HtmlColors.RED : HtmlColors.YELLOW), false, false);
 			}
 
 			private void Add(int x, int y, string label, int amount, int warningAmount = -1)
@@ -108,10 +121,15 @@ namespace Server.Gumps
 
 			private void Add(int x, int y, string label, int amount, bool multiLineLabel, int warningAmount = -1)
 			{
-				AddHtml(x, y, 60, 40, @"<BASEFONT Color=#FCFF00>" + label + "</BASEFONT>", (bool)false, (bool)false);
+				AddHtmlLabel(x, y, label);
 
 				if (multiLineLabel) y += 20;
-				AddHtml(x + LABEL_AMOUNT_OFFSET_X, y, 75, 20, @"<BASEFONT Color=" + (warningAmount >= 0 && amount <= warningAmount ? COLOR_RED : COLOR_YELLOW) + ">" + amount.ToString("n0") + "</BASEFONT>", false, false);
+				AddHtml(x + LABEL_AMOUNT_OFFSET_X, y, 75, 20, TextDefinition.GetColorizedText(amount.ToString("n0"), warningAmount >= 0 && amount <= warningAmount ? HtmlColors.RED : HtmlColors.YELLOW), false, false);
+			}
+
+			private void AddHtmlLabel(int x, int y, string label, int color = HtmlColors.YELLOW, int width = 60)
+			{
+				AddHtml(x, y, width, 40, TextDefinition.GetColorizedText(label, color), false, false);
 			}
 		}
 	}
