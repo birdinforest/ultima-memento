@@ -106,6 +106,8 @@ namespace Server
 		private ushort m_Cap;
 		private SkillLock m_Lock;
 
+		public bool CanGain { get; set; }
+
 		public override string ToString()
 		{
 			return String.Format( "[{0}: {1}]", Name, Base );
@@ -307,6 +309,7 @@ namespace Server
 		{
 			m_Owner = owner;
 			m_Info = info;
+			CanGain = true;
 
 			int version = reader.ReadByte();
 
@@ -342,6 +345,9 @@ namespace Server
 
 						if ( (version & 0x4) != 0 )
 							m_Lock = (SkillLock)reader.ReadByte();
+
+						if ( (version & 0x8) != 0 )
+							CanGain = false;
 					}
 
 					break;
@@ -362,6 +368,7 @@ namespace Server
 			m_Base = (ushort)baseValue;
 			m_Cap = (ushort)cap;
 			m_Lock = skillLock;
+			CanGain = true;
 		}
 
 		public void SetLockNoRelay( SkillLock skillLock )
@@ -374,7 +381,7 @@ namespace Server
 
 		public void Serialize( GenericWriter writer )
 		{
-			if ( m_Base == 0 && m_Cap == 1000 && m_Lock == SkillLock.Up )
+			if ( m_Base == 0 && m_Cap == 1000 && m_Lock == SkillLock.Up && CanGain )
 			{
 				writer.Write( (byte) 0xFF ); // default
 			}
@@ -390,6 +397,9 @@ namespace Server
 
 				if ( m_Lock != SkillLock.Up )
 					flags |= 0x4;
+
+				if ( !CanGain )
+					flags |= 0x8;
 
 				writer.Write( (byte) flags ); // version
 
@@ -450,6 +460,8 @@ namespace Server
 		{
 			get
 			{
+				if ( !CanGain && m_Lock == SkillLock.Up ) return SkillLock.Locked;
+
 				return m_Lock;
 			}
 		}
@@ -1274,7 +1286,7 @@ namespace Server
 						{
 							Skill sk = new Skill( this, info[i], reader );
 
-							if ( sk.BaseFixedPoint != 0 || sk.CapFixedPoint != 1000 || sk.Lock != SkillLock.Up )
+							if ( sk.BaseFixedPoint != 0 || sk.CapFixedPoint != 1000 || sk.Lock != SkillLock.Up || !sk.CanGain )
 							{
 								m_Skills[i] = sk;
 								if (!sk.IsSecondarySkill()) // Secondary skills don't affect Total
