@@ -275,6 +275,8 @@ namespace Server.Engines.Avatar
 										);
 									}
 								}
+
+								m_Context.RewardCache[selectedCategory] = randomRewardIndexes;
 							}
 							break;
 						}
@@ -300,6 +302,9 @@ namespace Server.Engines.Avatar
 									.Take(Constants.DRAFT_PICKS_PER_ROUND)
 									.Select(reward => rewards.FindIndex(r => r == reward))
 								);
+
+								// Only cache if random options were returned
+								m_Context.RewardCache[Categories.Draft] = randomRewardIndexes;
 							}
 							break;
 						}
@@ -308,8 +313,6 @@ namespace Server.Engines.Avatar
 					default:
 						break;
 				}
-
-				m_Context.RewardCache[selectedCategory] = randomRewardIndexes;
 			}
 
 			if (randomRewardIndexes == null) return;
