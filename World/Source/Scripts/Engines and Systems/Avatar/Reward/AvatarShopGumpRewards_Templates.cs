@@ -23,10 +23,6 @@ namespace Server.Engines.Avatar
 					{
 						SkillCheck.DisableSkillGains = true;
 
-						// Auto-Lock Focus and Meditation to prevent them from naturally raising
-						from.Skills.Focus.SetLockNoRelay(SkillLock.Locked);
-						from.Skills.Meditation.SetLockNoRelay(SkillLock.Locked);
-
 						// Reduce all skills to 0
 						for (var i = 0; i < from.Skills.Length; i++)
 						{
