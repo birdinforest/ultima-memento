@@ -12,6 +12,7 @@
   "avatar.msg.eliminated_faction_member": "您又消灭了一名「{0}」的成员。",
   "avatar.msg.not_enough_coins": "您的金币不足，无法购买此项。",
   "avatar.msg.purchased_for_coins": "您已花费 {1:n0} 枚金币购买「{0}」。",
+  "avatar.msg.purchased": "您已购买「{0}」。",
   "avatar.msg.selected_template": "您已选择一项模板。",
   "avatar.msg.safety_deposit_placed": "您的银行箱中已放入一只保险箱。",
   "avatar.msg.safety_deposit_capacity": "您的保险箱现可存放 {0} 件物品。",
