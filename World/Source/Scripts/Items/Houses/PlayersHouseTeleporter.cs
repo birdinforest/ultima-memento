@@ -1,17 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Server;
 using Server.Misc;
-using Server.Prompts;
-using Server.Mobiles;
 using Server.ContextMenus;
 using Server.Gumps;
-using Server.Items;
-using Server.Network;
-using Server.Targeting;
 using Server.Multis;
-using Server.Regions;
 using Server.Spells;
 
 namespace Server.Items
@@ -25,7 +17,6 @@ namespace Server.Items
 		private bool m_DestEffect;
 		private int m_SoundID;
 		private TimeSpan m_Delay;
-		private Mobile m_Owner;
         private SecureLevel m_Level;
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -150,7 +141,6 @@ namespace Server.Items
             if ( Worlds.RegionAllowedTeleport( from.Map, from.Location, from.X, from.Y ) == false )
 			{
 				from.SendMessage( "This does not seem to have any magical properties in this place!" );
-				m_Owner = null;
 				m_MapDest = null;
 				m_PointDest = new Point3D( 0, 0, 0 );
 			}
@@ -163,20 +153,18 @@ namespace Server.Items
             else if (this.Movable)
 			{
 				from.SendMessage( "The destination has been cleared. This must be secured in a house to mark it or in your backpack to change the appearance! This teleporter can be dyed as well." );
-				m_Owner = null;
 				m_MapDest = null;
 				m_PointDest = new Point3D( 0, 0, 0 );
 			}
 			else
 			{
-				if ( m_Owner != null )
+				if ( HasDestination() )
 				{
 					from.SendMessage( "This teleporter has been marked already." );
 					return;
 				}	
 				else
 				{
-					m_Owner = from;
 					m_MapDest = this.Map;
 					m_PointDest = this.Location;
 					from.SendMessage ("You have marked the teleporter.  You can now unlock it and move it to the house you wish to teleport from. It must be locked down in that house to use it.");
@@ -193,6 +181,11 @@ namespace Server.Items
 				return false;
 
 			return (house != null && house.HasSecureAccess(m, m_Level));
+		}
+
+		private bool HasDestination()
+		{
+			return m_MapDest != null && m_PointDest != Point3D.Zero;
 		}
 
 		public virtual void StartTeleport( Mobile m )
@@ -255,7 +248,7 @@ namespace Server.Items
 
 				if ( !m_Creatures && !m.Player )
 					return true;
-				else if ( m_Owner == null )
+				else if ( !HasDestination() )
 				{
 					m.SendMessage( "This teleporter does not lead anywhere." );
 					return true;
@@ -280,7 +273,6 @@ namespace Server.Items
 				}
 				else if ( !SpellHelper.CheckMulti( m_PointDest, m_MapDest ) )
 				{
-					m_Owner = null;
 					m_MapDest = null;
 					m_PointDest = new Point3D( 0, 0, 0 );
 					m.SendMessage("The home at the other end must have been demolished!");
@@ -310,7 +302,7 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 3 ); // version
+			writer.Write( (int) 4 ); // version
 			writer.Write( (bool) m_CombatCheck );
 			writer.Write( (bool) m_SourceEffect );
 			writer.Write( (bool) m_DestEffect );
@@ -320,7 +312,6 @@ namespace Server.Items
 			writer.Write( m_Active );
 			writer.Write( m_PointDest );
 			writer.Write( m_MapDest );
-			writer.Write( m_Owner );
 			writer.Write((int)m_Level);
 		}
 
@@ -330,6 +321,7 @@ namespace Server.Items
 			int version = reader.ReadInt();
 			switch ( version )
 			{
+				case 4:
 				case 3:
 				{
 					m_CombatCheck = reader.ReadBool();
@@ -355,7 +347,10 @@ namespace Server.Items
 					m_Active = reader.ReadBool();
 					m_PointDest = reader.ReadPoint3D();
 					m_MapDest = reader.ReadMap();
-					m_Owner = reader.ReadMobile();
+					if ( version < 4 )
+					{
+						var m_Owner = reader.ReadMobile(); // discard
+					}
 					m_Level = (SecureLevel)reader.ReadInt();
 
 					break;
