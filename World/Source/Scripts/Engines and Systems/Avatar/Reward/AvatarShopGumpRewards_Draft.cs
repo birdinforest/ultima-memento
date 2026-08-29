@@ -23,7 +23,7 @@ namespace Server.Engines.Avatar
 						"No Template Selected",
 						"You have not selected a template. Please select a template to continue.",
 						() => { }
-					)
+					).AsStatic()
 				};
 			}
 
@@ -47,7 +47,7 @@ namespace Server.Engines.Avatar
 								// from.Kill();
 								// from.Resurrect();
 							}
-						)
+						).AsStatic()
 					);
 					return noMorePicksReward;
 				}
@@ -61,7 +61,7 @@ namespace Server.Engines.Avatar
 						"No More Picks",
 						"You have reached the maximum level for Draft.",
 						() => { }
-					)
+					).AsStatic()
 					: ActionReward.Create(
 						false,
 						AvatarShopGump.COST_NO_BUY,
@@ -71,33 +71,34 @@ namespace Server.Engines.Avatar
 							context.DraftLevel + Constants.DRAFT_LEVELS_PER_PICK - (context.DraftLevel % Constants.DRAFT_LEVELS_PER_PICK)
 						),
 						() => { }
-					)
+					).AsStatic()
 				);
 
 				return noMorePicksReward;
 			}
 
 			var rewards = new List<IReward>();
-			var allSkills = new List<Skill>();
-			for (var i = 0; i < from.Skills.Length; i++)
+			var allSkills = new List<SkillName>();
+			foreach (var skillInfo in SkillInfo.Table)
 			{
-				var skill = from.Skills[i];
-				if (skill.SkillName == SkillName.Mysticism) continue;
-				if (skill.SkillName == SkillName.Imbuing) continue;
-				if (skill.SkillName == SkillName.Throwing) continue;
+				var skillName = (SkillName)skillInfo.SkillID;
+				if (skillName == SkillName.Mysticism) continue;
+				if (skillName == SkillName.Imbuing) continue;
+				if (skillName == SkillName.Throwing) continue;
 
-				if (context.IsSkillDrafted(skill.SkillName)) continue;
-				if (!context.HasPrerequisiteSkills(skill.SkillName)) continue;
+				if (context.IsSkillDrafted(skillName)) continue;
+				if (!context.HasPrerequisiteSkills(skillName)) continue;
 
-				allSkills.Add(skill);
+				allSkills.Add(skillName);
 			}
 
 			var isInitialDraft = context.DraftPicksSpent < Constants.DRAFT_START_PICK_AMOUNT;
 			var skills = context.DraftPicksSpent <= Constants.DRAFT_START_PICK_AMOUNT
-				? allSkills.Where(skill => context.IsSmartSkill(skill.SkillName))
+				? allSkills.Where(skillName => context.IsSmartSkill(skillName))
 				: allSkills;
-			foreach (var skill in skills)
+			foreach (var skillName in skills)
 			{
+				var skill = from.Skills[skillName];
 				const int NEOPHYTE_SKILL_VALUE = 300;
 				var archiveValue = context.Skills[skill.SkillName];
 				if (isInitialDraft) archiveValue = Math.Max(archiveValue, NEOPHYTE_SKILL_VALUE);
