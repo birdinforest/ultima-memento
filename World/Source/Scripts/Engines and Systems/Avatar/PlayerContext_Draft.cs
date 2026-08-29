@@ -43,7 +43,7 @@ namespace Server.Engines.Avatar
 					requiredExperience += GetDraftLevelExperience(0, draftLevel + i);
 				}
 
-				return requiredExperience;
+				return requiredExperience - DraftTotalExperienceGained;
 			}
 		}
 
