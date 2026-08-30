@@ -83,7 +83,7 @@ namespace Server.SpellBars
 
 			if (info.ButtonID < 1 && Origin > 0)
 			{
-				from.SendGump(new Server.Engines.Help.HelpGump(from, 7));
+				from.SendGump(new Server.Engines.Help.HelpGump(from, Origin));
 				from.SendSound(0x4A);
 			}
 			else if (info.ButtonID < 1)

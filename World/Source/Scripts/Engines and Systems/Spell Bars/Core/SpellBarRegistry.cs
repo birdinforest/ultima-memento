@@ -28,6 +28,12 @@ namespace Server.SpellBars
 			return (SpellBarToolbarGump)Activator.CreateInstance(GetToolbarGumpType(id), from);
 		}
 
+		public static void OpenToolbarGump(PlayerMobile from, SpellBarId id)
+		{
+			from.CloseGump(GetToolbarGumpType(id));
+			from.SendGump(CreateToolbarGump(from, id));
+		}
+
 		public static SpellBarSetupGumpBase CreateSetupGump(SpellBarId id, PlayerMobile from, int origin, int pageNumber = 1)
 		{
 			var definition = GetDefinition(id);
