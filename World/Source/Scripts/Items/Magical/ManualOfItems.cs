@@ -101,6 +101,8 @@ namespace Server.Items
 
 		public class RelicBoxGump : Gump
 		{
+			private readonly ManualOfItems m_Book;
+
 			public RelicBoxGump( Mobile from, ManualOfItems relicBox, int page ): base( 50, 50 )
 			{
 				string color = "#cfc990";
@@ -625,8 +627,6 @@ namespace Server.Items
 				else if ( val5 > 0 ){ ((BaseTrinket)item).SkillBonuses.SetValues(4, ResourceMods.GetSkill( val5 ), sk5); }
 			}
 		}
-
-		public static ManualOfItems m_Book;
 
 		public int m_Charges;
 		[CommandProperty( AccessLevel.GameMaster )]

@@ -1263,6 +1263,7 @@ namespace Server.Misc
 					builder.Append("- Misc - Fix crash from concurrent client disconnect on the network thread<br>");
 					builder.Append("- Misc - Fix issue where Strange Portals crossed facets<br>");
 					builder.Append("- Misc - Players with '0' Karma may now access The Glade<br>");
+					builder.Append("- Misc - Fix issue where relic items could be duplicated<br>");
 					builder.Append("- Spell - Fix typo in Orb of Orcus spell description<br>");
 					break;
 			}
