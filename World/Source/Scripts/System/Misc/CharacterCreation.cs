@@ -488,6 +488,11 @@ namespace Server.Misc
 						break;
 
 					case SkillName.Elementalism:
+						PackItem(bag, new RefreshPotion() { Amount = 3 });
+						PackItem(bag, new ElementalSpellbook());
+						PackItem(bag, new Elemental_Sanctuary_Scroll());
+						break;
+
 					case SkillName.Mysticism:
 					case SkillName.Imbuing:
 					case SkillName.Throwing:
