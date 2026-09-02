@@ -19,6 +19,9 @@ namespace Server.Engines.Avatar
 		private const int CARD_HEIGHT = 68;
 		private const int CARD_WIDTH = 864 - NAVIGATION_WIDTH;
 		private const int CATEGORY_WIDTH = NAVIGATION_WIDTH - 28 - 20;
+		private const int COMPACT_CARD_GAP = 10;
+		private const int COMPACT_CARD_HEIGHT = 40;
+		private const int COMPACT_CARD_WIDTH = (CARD_WIDTH - COMPACT_CARD_GAP) / 2;
 		private const int GIANT_COIN_ITEM_ID = 0x4FAD;
 		private const int NAVIGATION_WIDTH = 152 + 20 + 20;
 
@@ -325,17 +328,24 @@ namespace Server.Engines.Avatar
 			var randomRewards = queryable.ToList();
 			if (randomRewards.Count < 1) return;
 
-			const int ITEMS_PER_PAGE = 8;
-			var toTake = ITEMS_PER_PAGE;
+			var useCompactCard = selectedCategory == Categories.FullSkillArchive;
+			var itemsPerPage = 8;
+			var infoCardSlots = 1;
+			if (useCompactCard)
+			{
+				itemsPerPage = 24; // 12 rows x 2 columns
+				infoCardSlots = 2; // one compact row
+			}
 
+			var toTake = itemsPerPage;
 			var skip = (pageNumber - 1) * toTake;
 
 			// All pages except the Information page have a description card
 			var hasInfoCard = selectedCategory != Categories.Information;
 			if (hasInfoCard)
 			{
-				if (pageNumber == 1) toTake -= 1;
-				else skip -= 1;
+				if (pageNumber == 1) toTake -= infoCardSlots;
+				else skip -= infoCardSlots;
 			}
 
 			if (pageNumber == 1)
@@ -346,18 +356,37 @@ namespace Server.Engines.Avatar
 
 			m_Rewards = new List<IReward>();
 			var itemIndex = 0;
+			const int START_X = NAVIGATION_WIDTH + 20;
+			var x = START_X;
 			foreach (var reward in randomRewards.Skip(skip).Take(toTake))
 			{
 				m_Rewards.Add(reward);
 
 				var tooltip = reward is ActionReward ? AvatarLocalization.ResolveEnglish(m_From, ((ActionReward)reward).PrequisiteTooltip) : null;
 				var canPurchase = (m_InGypsyEncampment || reward.CanSelectAnywhere) && reward.CanSelect && string.IsNullOrWhiteSpace(tooltip);
-				var cost = reward is ActionReward && ((ActionReward)reward).IsComplete ? COST_NO_BUY : reward.Cost;
 
-				AddCard(m_Context.PointsSaved, reward.Graphic, reward.Name, reward.Description, canPurchase, cost, itemIndex, y, tooltip);
+				if (useCompactCard)
+				{
+					AddCompactCard(x, y, reward.Name, reward.Description, canPurchase, itemIndex, tooltip);
 
-				y += CARD_HEIGHT;
-				y += 10;
+					if (itemIndex % 2 == 0)
+						x += COMPACT_CARD_WIDTH + COMPACT_CARD_GAP;
+					else
+					{
+						x = START_X;
+						y += COMPACT_CARD_HEIGHT + COMPACT_CARD_GAP;
+					}
+				}
+				else
+				{
+					var cost = reward is ActionReward && ((ActionReward)reward).IsComplete ? COST_NO_BUY : reward.Cost;
+
+					AddCard(m_Context.PointsSaved, reward.Graphic, reward.Name, reward.Description, canPurchase, cost, itemIndex, y, tooltip);
+
+					y += CARD_HEIGHT;
+					y += 10;
+				}
+
 				++itemIndex;
 			}
 
@@ -368,7 +397,7 @@ namespace Server.Engines.Avatar
 				AddButton(NAVIGATION_WIDTH + 20, y, 4014, 4015, (int)_Actions.PageBase + (pageNumber - 1), GumpButtonType.Reply, 0);
 
 			// Next page
-			var remain = randomRewards.Count - skip - ITEMS_PER_PAGE;
+			var remain = randomRewards.Count - skip - toTake;
 			if (0 < remain)
 				AddButton(GUMP_WIDTH - 47, y, 4005, 4007, (int)_Actions.PageBase + (pageNumber + 1), GumpButtonType.Reply, 0);
 		}
@@ -657,6 +686,40 @@ namespace Server.Engines.Avatar
 
 				TextDefinition.AddHtmlText(this, x + LEFT_PADDING, y + 7 + (i * HEIGHT_PER_ITEM), CATEGORY_WIDTH - LEFT_PADDING, 16, categoryName, color);
 				++i;
+			}
+		}
+
+		private void AddCompactCard(int x, int y, string name, string value, bool canAct, int index, string tooltip = null, bool addBackground = true)
+		{
+			const int PADDING = 10;
+			const int COMPACT_CARD_HALF_WIDTH = COMPACT_CARD_WIDTH / 2;
+			const int CHECKED_BOX = 4017;
+			const int LOCK_ICON = 2092;
+
+			var leftColumnX = x + PADDING;
+			var leftColumnWidth = COMPACT_CARD_HALF_WIDTH - PADDING;
+			var rightColumnX = leftColumnX + leftColumnWidth + PADDING;
+			var rightColumnWidth = leftColumnWidth - PADDING;
+
+			if (addBackground)
+				AddBackground(x, y, COMPACT_CARD_WIDTH, COMPACT_CARD_HEIGHT, 2620);
+
+			y += PADDING;
+
+			TextDefinition.AddHtmlText(this, leftColumnX + 35, y, leftColumnWidth, 20, name, HtmlColors.COOL_BLUE);
+
+			if (!string.IsNullOrWhiteSpace(value))
+				TextDefinition.AddHtmlText(this, rightColumnX, y, rightColumnWidth, 20, string.Format("<DIV ALIGN=RIGHT>{0}</DIV>", value), HtmlColors.COOL_BLUE);
+
+			if (canAct)
+			{
+				AddButton(leftColumnX, y - 3, CHECKED_BOX, CHECKED_BOX, (int)_Actions.PurchaseBase + index, GumpButtonType.Reply, 0);
+			}
+			else
+			{
+				AddImage(leftColumnX + 8, y + 3, LOCK_ICON);
+				if (!string.IsNullOrWhiteSpace(tooltip))
+					AddTooltip(tooltip);
 			}
 		}
 

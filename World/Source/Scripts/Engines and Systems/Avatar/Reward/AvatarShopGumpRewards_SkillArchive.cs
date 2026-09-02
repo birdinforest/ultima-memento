@@ -33,7 +33,7 @@ namespace Server.Engines.Avatar
 						AvatarShopGump.COST_FREE,
 						AvatarShopGump.NO_ITEM_ID,
 						skill.Name,
-						AvatarLocalization.KeyFormat(from, "avatar.skill_archive.entry.desc", "{0} skill. Your highest value was: {1:n1}", !skill.IsSecondarySkill() ? AvatarLocalization.Key(from, "avatar.term.primary", "Primary") : AvatarLocalization.Key(from, "avatar.term.secondary", "Secondary"), value),
+						value.ToString("n1"),
 						() =>
 						{
 							var gump = new ConfirmationGump(
