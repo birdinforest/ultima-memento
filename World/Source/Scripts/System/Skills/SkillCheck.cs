@@ -86,6 +86,8 @@ namespace Server.Misc
 			if ( skill == null )
 				return false;
 
+			TryGainStat( from, skill );
+
 			double value = skill.Value;
 
 			if ( value < minSkill )
@@ -105,6 +107,8 @@ namespace Server.Misc
 
 			if ( skill == null )
 				return false;
+
+			TryGainStat( from, skill );
 
 			if ( chance < 0.0 )
 				return false; // Too difficult
@@ -205,6 +209,8 @@ namespace Server.Misc
 			if ( skill == null )
 				return false;
 
+			TryGainStat( from, skill );
+
 			double value = skill.Value;
 
 			if ( value < minSkill )
@@ -223,6 +229,8 @@ namespace Server.Misc
 
 			if ( skill == null )
 				return false;
+
+			TryGainStat( from, skill );
 
 			if ( chance < 0.0 )
 				return false; // Too difficult
@@ -432,26 +440,31 @@ namespace Server.Misc
 						{ Server.Gumps.SkillListingGump.RefreshSkillList( from ); }
 				}
 			}
+		}
 
-			if ( skill.Lock == SkillLock.Up )
-			{
-				SkillInfo info = skill.Info;
+		private static void TryGainStat( Mobile from, Skill skill )
+		{
+			if ( !from.Alive || DisableSkillGains ) return;
+			if ( from is BaseCreature && ((BaseCreature)from).IsDeadPet ) return;
+			if ( skill.SkillName == SkillName.Focus && from is BaseCreature ) return;
+			if ( skill.Lock != SkillLock.Up ) return;
+			if ( from.Region.IsPartOf( typeof( Regions.Jail ) ) ) return;
 
-				if ( from.StrLock == StatLockType.Up
-					&& (info.StrGain / MyServerSettings.StatGain()) > Utility.RandomDouble()
-					&& GainStat( from, Stat.Str ) )
-					return;
-				
-				if ( from.DexLock == StatLockType.Up
-					&& (info.DexGain / MyServerSettings.StatGain()) > Utility.RandomDouble()
-					&& GainStat( from, Stat.Dex ) )
-					return;
+			var info = skill.Info;
 
-				if ( from.IntLock == StatLockType.Up
-					&& (info.IntGain / MyServerSettings.StatGain()) > Utility.RandomDouble()
-					&& GainStat( from, Stat.Int ) )
-					return;
-			}
+			if ( from.StrLock == StatLockType.Up
+				&& (info.StrGain / MyServerSettings.StatGain()) > Utility.RandomDouble()
+				&& GainStat( from, Stat.Str ) )
+				return;
+			
+			if ( from.DexLock == StatLockType.Up
+				&& (info.DexGain / MyServerSettings.StatGain()) > Utility.RandomDouble()
+				&& GainStat( from, Stat.Dex ) )
+				return;
+
+			if ( from.IntLock == StatLockType.Up
+				&& (info.IntGain / MyServerSettings.StatGain()) > Utility.RandomDouble() )
+				GainStat( from, Stat.Int );
 		}
 
 		public static bool CanLower( Mobile from, Stat stat )
