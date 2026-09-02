@@ -153,6 +153,7 @@ namespace Server.Engines.Avatar
 				}
 
 				PrestigeLevel = reader.ReadInt();
+				UseBetaCoinAlgorithm = reader.ReadBool();
 			}
 		}
 
@@ -266,6 +267,9 @@ namespace Server.Engines.Avatar
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool UnlockTemptations { get; set; }
 
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool UseBetaCoinAlgorithm { get; set; }
+
 		public SafetyDepositBox GetOrCreateSafetyDepositBox(Mobile owner)
 		{
 			if (!HasSafetyDepositBox)
@@ -344,6 +348,7 @@ namespace Server.Engines.Avatar
 			}
 
 			writer.Write(PrestigeLevel);
+			writer.Write(UseBetaCoinAlgorithm);
 		}
 
 		public override string ToString()
