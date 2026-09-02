@@ -48,7 +48,7 @@ namespace Server.Mobiles
 			SetResistance( ResistanceType.Energy, 20, 30 );
 
 			SetSkill( SkillName.Meditation, 45.0 );
-			SetSkill( SkillName.Psychology, 40.0 );
+			SetSkill( SkillName.Psychology, 10.0 );
 			SetSkill( SkillName.Magery, 40.0 );
 			SetSkill( SkillName.MagicResist, 35.0 );
 			SetSkill( SkillName.Tactics, 50.0 );

@@ -1256,6 +1256,7 @@ namespace Server.Misc
 					builder.Append("- Misc - Stats can now gain regardless if your skill check can gain/fail<br>");
 					builder.Append("- Spell - Army's Paeon song cast time is now 3 seconds, down from 5<br>");
 					builder.Append("- Spell - Mage's Ballad song cast time is now 3 seconds, down from 5<br>");
+					builder.Append("- Spell - Elemenal Call summon Psychology is now 10, down from 40<br>");
 
 					builder.Append("<br>Fixes<br>");
 					builder.Append("- Gump - Scribing spells that require arcane scrolls now indicate they need mana<br>");
