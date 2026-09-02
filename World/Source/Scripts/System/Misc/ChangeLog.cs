@@ -1242,6 +1242,7 @@ namespace Server.Misc
 					builder.Append(Version());
 					builder.Append("<br>Changes<br>");
 					builder.Append("- Avatar - Focus and Meditation are no longer locked by default<br>");
+					builder.Append("- Avatar - Add ability to drop skills from Skill Archive when at Gypsy Encampment<br>");
 					builder.Append("- Combat - AI is now notably less likely to teleport<br>");
 					builder.Append("- Craft - Undertaker kit is now craftable<br>");
 					builder.Append("- Craft - Breakdown should now work on more items<br>");

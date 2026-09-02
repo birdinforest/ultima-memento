@@ -1,3 +1,4 @@
+using Server.Gumps;
 using Server.Mobiles;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,11 +30,24 @@ namespace Server.Engines.Avatar
 
 				rewards.Add(
 					ActionReward.Create(
-						AvatarShopGump.COST_NO_BUY,
+						AvatarShopGump.COST_FREE,
 						AvatarShopGump.NO_ITEM_ID,
 						skill.Name,
-									AvatarLocalization.KeyFormat(from, "avatar.skill_archive.entry.desc", "{0} skill. Your highest value was: {1:n1}", !skill.IsSecondarySkill() ? AvatarLocalization.Key(from, "avatar.term.primary", "Primary") : AvatarLocalization.Key(from, "avatar.term.secondary", "Secondary"), value),
-						() => { }
+						AvatarLocalization.KeyFormat(from, "avatar.skill_archive.entry.desc", "{0} skill. Your highest value was: {1:n1}", !skill.IsSecondarySkill() ? AvatarLocalization.Key(from, "avatar.term.primary", "Primary") : AvatarLocalization.Key(from, "avatar.term.secondary", "Secondary"), value),
+						() =>
+						{
+							var gump = new ConfirmationGump(
+								from,
+								AvatarLocalization.Key(from, "avatar.skill_archive.drop.title", "Reduce Skill to Zero?"),
+								AvatarLocalization.KeyFormat(from, "avatar.skill_archive.drop.body", "Are you sure you want to lower this skill to zero? This is a {0} and cannot be undone.", TextDefinition.GetColorizedText(AvatarLocalization.Key(from, "avatar.term.destructive_action", "destructive action"), HtmlColors.RED)),
+								() =>
+								{
+									from.SendMessage(AvatarLocalization.KeyFormat(from, "avatar.skill_archive.drop.done", "You have reduced '{0}' to zero.", skill.Name));
+									from.Skills[skill.SkillName].Base = 0;
+								}
+							);
+							from.SendGump(gump);
+						}
 					)
 				);
 			}

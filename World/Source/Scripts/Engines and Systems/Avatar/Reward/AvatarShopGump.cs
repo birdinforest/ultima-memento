@@ -440,6 +440,10 @@ namespace Server.Engines.Avatar
 								AvatarLocalization.Send(player, "avatar.msg.selected_template", "You have selected a template.");
 								Timer.DelayCall(TimeSpan.FromSeconds(0.25), () => actionReward.OnSelect());
 							}
+							else if (m_SelectedCategory == Categories.FullSkillArchive)
+							{
+								Timer.DelayCall(TimeSpan.FromSeconds(0.25), () => actionReward.OnSelect());
+							}
 							else
 							{
 								if (0 < cost)
@@ -559,6 +563,10 @@ namespace Server.Engines.Avatar
 
 						case Categories.Draft:
 							purchaseText = "Unlock";
+							break;
+
+						case Categories.FullSkillArchive:
+							purchaseText = "Drop Skill";
 							break;
 
 						case Categories.Items:
