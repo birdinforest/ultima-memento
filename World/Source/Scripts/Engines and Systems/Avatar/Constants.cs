@@ -14,6 +14,16 @@ namespace Server.Engines.Avatar
 		public const int SKILL_CAP_BASE = 3000;
 		public const int TITAN_SKILL_BONUS = 2000;
 
+		#region Kill Coin Scoring
+
+		public const int KILL_COIN_BREATH_SMALL = 120;
+		public const int KILL_COIN_BREATH_TRICK = 125;
+		public const int KILL_COIN_BREATH_SPECIAL = 130;
+		public const int KILL_COIN_BREATH_LARGE = 135;
+		public const int KILL_COIN_BREATH_AREA = 150;
+
+		#endregion Kill Coin Scoring
+
 		#region Shop Constants
 
 		public const int BOAT_SPEED_MAX_LEVEL = Multis.BaseBoat.MAX_SPEED_BOOSTS;
