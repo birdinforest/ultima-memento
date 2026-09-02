@@ -67,7 +67,7 @@ namespace Server.Engines.Avatar
 		{
 			var context = GetContextOrDefault(mobile);
 			if (!context.Active) return;
-			
+
 			m_Context.Remove(mobile.Serial);
 		}
 
@@ -141,14 +141,6 @@ namespace Server.Engines.Avatar
 			return (int)(value * context.PointGainRateLevel * Constants.POINT_GAIN_RATE_PER_LEVEL * 0.01);
 		}
 
-		private int GetValue<T>(int multiplier, Container corpse) where T : Item
-		{
-			var item = corpse.FindItemByType<T>();
-			if (item == null) return 0;
-
-			return item.Amount * multiplier;
-		}
-
 		private void GrantCoins(PlayerMobile player, int value, PlayerContext context)
 		{
 			context.PointsFarmed += value;
@@ -194,14 +186,7 @@ namespace Server.Engines.Avatar
 			 ) return;
 
 			var corpse = e.Corpse;
-			int value = GetValue<DDCopper>(1, corpse);
-			value += GetValue<DDSilver>(2, corpse);
-			value += GetValue<DDXormite>(30, corpse);
-			value += GetValue<Gold>(10, corpse);
-			value += GetValue<Crystals>(50, corpse);
-			value += GetValue<DDGemstones>(20, corpse);
-			value += GetValue<DDJewels>(20, corpse);
-			value += GetValue<DDGoldNuggets>(10, corpse);
+			int value = CoinRewardCalculatorLegacy.GetCoinValue(corpse);
 			if (value < 1) return;
 
 			if (1 < e.DamagerCount) value /= 2;
