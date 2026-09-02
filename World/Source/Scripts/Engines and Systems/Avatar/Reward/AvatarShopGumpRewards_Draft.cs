@@ -88,6 +88,7 @@ namespace Server.Engines.Avatar
 
 				if (context.IsSkillDrafted(skillName)) continue;
 				if (!context.HasPrerequisiteSkills(skillName)) continue;
+				if (context.DraftBannedSkills.Contains(skillName)) continue;
 
 				allSkills.Add(skillName);
 			}

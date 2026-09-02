@@ -2,14 +2,17 @@ using Server.Mobiles;
 using Server.Network;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Server.Engines.Avatar
 {
 	public partial class PlayerContext
 	{
+		private HashSet<SkillName> _draftBannedSkills;
 		private HashSet<SkillName> _draftedSkills;
 		private bool _draftModeEnabled;
+
+		public IReadOnlyCollection<SkillName> DraftBannedSkills
+		{ get { return _draftBannedSkills ?? (IReadOnlyCollection<SkillName>)Array.Empty<SkillName>(); } }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int DraftCurrentExperienceRequired
@@ -19,7 +22,7 @@ namespace Server.Engines.Avatar
 				var requiredExperience = 0;
 				for (var i = 1; i < DraftLevel; i++)
 				{
-					requiredExperience += GetDraftLevelExperience(0, i);
+					requiredExperience += GetDraftLevelExperience(PrestigeLevel, i);
 				}
 
 				return requiredExperience;
@@ -40,7 +43,7 @@ namespace Server.Engines.Avatar
 				var draftLevel = DraftLevel;
 				for (var i = 0; i < LevelsToNextPick; i++)
 				{
-					requiredExperience += GetDraftLevelExperience(0, draftLevel + i);
+					requiredExperience += GetDraftLevelExperience(PrestigeLevel, draftLevel + i);
 				}
 
 				return requiredExperience - DraftTotalExperienceGained;
@@ -56,7 +59,7 @@ namespace Server.Engines.Avatar
 				var currentExperience = DraftTotalExperienceGained;
 				do
 				{
-					currentExperience -= GetDraftLevelExperience(0, level);
+					currentExperience -= GetDraftLevelExperience(PrestigeLevel, level);
 					if (currentExperience < 0) break;
 
 					level++;
@@ -84,6 +87,13 @@ namespace Server.Engines.Avatar
 
 		private int LevelsToNextPick
 		{ get { return Constants.DRAFT_LEVELS_PER_PICK - (DraftLevel % Constants.DRAFT_LEVELS_PER_PICK); } }
+
+		public void AddDraftBannedSkill(SkillName skill)
+		{
+			if (!DraftModeEnabled) return;
+
+			_draftBannedSkills.Add(skill);
+		}
 
 		public void AddDraftedSkill(SkillName skill)
 		{
@@ -392,17 +402,26 @@ namespace Server.Engines.Avatar
 			return true;
 		}
 
+		public void RemoveDraftBannedSkill(SkillName skill)
+		{
+			if (!DraftModeEnabled) return;
+
+			_draftBannedSkills.Remove(skill);
+		}
+
 		public void SetDraftModeEnabled(PlayerMobile player, bool enabled)
 		{
 			if (enabled)
 			{
 				_draftedSkills = new HashSet<SkillName>();
+				_draftBannedSkills = new HashSet<SkillName>();
 				ClearRewardCache(Categories.Draft);
 				player.SendMessage("Draft mode enabled. All skills have been reset to 0 and Locked.");
 			}
 			else
 			{
 				_draftedSkills = null;
+				_draftBannedSkills = null;
 				player.SendMessage("Draft mode disabled. All skills have been reset to 0 and Unlocked.");
 			}
 
@@ -418,26 +437,6 @@ namespace Server.Engines.Avatar
 			player.Send(new SkillUpdate(player.Skills));
 
 			_draftModeEnabled = enabled;
-		}
-
-		public bool TryGetSmartSkill(IEnumerable<SkillName> draftCandidates, out SkillName skill)
-		{
-			// If draft mode is not enabled, all skills are available
-			if (!DraftModeEnabled)
-			{
-				skill = SkillName.Alchemy;
-				return true;
-			}
-
-			var options = draftCandidates.Where(skillName => IsSmartSkill(skillName)).ToList();
-			if (options.Count == 0)
-			{
-				skill = SkillName.Alchemy;
-				return false;
-			}
-
-			skill = Utility.Random(options);
-			return true;
 		}
 
 		private int GetDraftLevelExperience(int prestigeLevel, int currentLevel)

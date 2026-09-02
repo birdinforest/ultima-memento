@@ -1,4 +1,5 @@
 using Server.Commands;
+using Server.Commands.Generic;
 using Server.Gumps;
 using Server.Items;
 using Server.Misc;
@@ -19,6 +20,8 @@ namespace Server.Engines.Avatar
 			CommandSystem.Register("avatar-echo-loc", AccessLevel.GameMaster, new CommandEventHandler(EchoLocCommand));
 			CommandSystem.Register("research-search-loc", AccessLevel.GameMaster, new CommandEventHandler(ResearchSearchLocCommand));
 			CommandSystem.Register("avatar-migrate--game-time", AccessLevel.Administrator, new CommandEventHandler(OnMigrateGameTime));
+			TargetCommands.Register(new DraftBanUnbanSkillCommand(true));
+			TargetCommands.Register(new DraftBanUnbanSkillCommand(false));
 		}
 
 		[Usage("avatar-enable")]
@@ -194,6 +197,77 @@ namespace Server.Engines.Avatar
 				}
 
 				MemoryEchoUtility.ReportGoLocation(from, pm, pm.Avatar);
+			}
+		}
+
+		private class DraftBanUnbanSkillCommand : BaseCommand
+		{
+			private readonly bool _isBan;
+
+			public DraftBanUnbanSkillCommand(bool isBan)
+			{
+				_isBan = isBan;
+
+				var command = isBan ? "avatar-draft-ban" : "avatar-draft-unban";
+				AccessLevel = AccessLevel.GameMaster;
+				Supports = CommandSupport.AllMobiles;
+				Commands = new string[] { command };
+				ObjectTypes = ObjectTypes.Mobiles;
+				Usage = string.Format("{0} <skill>", command);
+				Description = isBan
+					? "Prevents the specified skill from showing up as an option in the Avatar Draft mode."
+					: "Removes the ban on the specified skill to allow it to show up as an option in the Avatar Draft mode.";
+			}
+
+			public override void Execute(CommandEventArgs arg, object obj)
+			{
+				if (arg.Length != 1)
+				{
+					arg.Mobile.SendMessage(Usage);
+					return;
+				}
+
+				SkillName skill;
+				try
+				{
+					skill = (SkillName)Enum.Parse(typeof(SkillName), arg.GetString(0), true);
+				}
+				catch
+				{
+					arg.Mobile.SendMessage("Invalid skill name.");
+					return;
+				}
+
+				var from = (PlayerMobile)arg.Mobile;
+				var pm = obj as PlayerMobile;
+				if (pm == null)
+				{
+					LogFailure("That is not a player.");
+					return;
+				}
+
+				if (!pm.Avatar.Active)
+				{
+					LogFailure("That is not an Avatar.");
+					return;
+				}
+
+				if (!pm.Avatar.DraftModeEnabled)
+				{
+					LogFailure("That character is not in Draft mode.");
+					return;
+				}
+
+				if (_isBan)
+				{
+					pm.Avatar.AddDraftBannedSkill(skill);
+					from.SendMessage("'{0}' will no longer see '{1}' when drafting skills.", pm.Name, skill);
+				}
+				else
+				{
+					pm.Avatar.RemoveDraftBannedSkill(skill);
+					from.SendMessage("'{0}' may now see '{1}' when drafting skills.", pm.Name, skill);
+				}
 			}
 		}
 	}

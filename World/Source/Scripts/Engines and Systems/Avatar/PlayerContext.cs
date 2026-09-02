@@ -137,6 +137,23 @@ namespace Server.Engines.Avatar
 					}
 				}
 			}
+
+			// v17 (local bump): Jascen's prestige/banned-skills ride upstream v15 — gating on 16 keeps
+			// existing v15 saves (pre-Draft or Draft-only) reading correctly.
+			if (16 < version)
+			{
+				if (_draftModeEnabled)
+				{
+					var count = reader.ReadInt();
+					_draftBannedSkills = new HashSet<SkillName>(count);
+					for (int i = 0; i < count; i++)
+					{
+						_draftBannedSkills.Add((SkillName)reader.ReadInt());
+					}
+				}
+
+				PrestigeLevel = reader.ReadInt();
+			}
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -179,6 +196,9 @@ namespace Server.Engines.Avatar
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int PointsSaved { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public int PrestigeLevel { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int RecordedSkillCapLevel { get; set; }
@@ -263,7 +283,8 @@ namespace Server.Engines.Avatar
 
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(15); // version
+			// v17 (local bump): v16 = Draft mode persistence, v17 = prestige + draft-banned skills
+			writer.Write(17); // version
 
 			writer.Write(PointsFarmed);
 			writer.Write(PointsSaved);
@@ -314,7 +335,15 @@ namespace Server.Engines.Avatar
 				{
 					writer.Write((int)skill);
 				}
+
+				writer.Write(_draftBannedSkills.Count);
+				foreach (var skill in _draftBannedSkills)
+				{
+					writer.Write((int)skill);
+				}
 			}
+
+			writer.Write(PrestigeLevel);
 		}
 
 		public override string ToString()
