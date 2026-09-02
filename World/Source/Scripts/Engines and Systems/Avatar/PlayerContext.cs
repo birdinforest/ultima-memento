@@ -155,6 +155,13 @@ namespace Server.Engines.Avatar
 				PrestigeLevel = reader.ReadInt();
 				UseBetaCoinAlgorithm = reader.ReadBool();
 			}
+			else
+			{
+				if (_draftModeEnabled)
+				{
+					_draftBannedSkills = new HashSet<SkillName>();
+				}
+			}
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
