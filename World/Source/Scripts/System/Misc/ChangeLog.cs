@@ -1250,6 +1250,7 @@ namespace Server.Misc
 					builder.Append("- Gump - Avatar skill archive is now more compact<br>");
 					builder.Append("- Item - Prayer book is now always given when you turn in a wooden mallet and stake<br>");
 					builder.Append("- Item - Prayer book attempts to bind to you when you open it<br>");
+					builder.Append("- Item - Bag of Holding cooldown is now 15s, down from 60s<br>");
 					builder.Append("- Misc - Holy Man class no longer requires base skill to activate<br>");
 					builder.Append("- Misc - Mystic class no longer requires base skill to activate<br>");
 					builder.Append("- Misc - Guildmasters now wear their guild rings on their paperdolls<br>");
