@@ -337,7 +337,8 @@ namespace Server.Spells
 		{
 			if( !m_DisableSkillCheck )
 			{
-				if ( !caster.ItemCastSpell )
+				var spell = caster.Spell as Spell;
+				if ( spell == null || !spell.IsItemCast )
 					caster.CheckSkill( SkillName.Psychology, 0.0, 120.0 );
 
 				if ( curse )

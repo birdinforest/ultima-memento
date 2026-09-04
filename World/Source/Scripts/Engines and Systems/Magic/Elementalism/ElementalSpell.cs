@@ -62,7 +62,7 @@ namespace Server.Spells.Elementalism
 		public override int GetMana()
 		{
 			var manaCost = m_ManaTable[(int)Circle];
-			return Caster.ScrollCastSpell ? manaCost / 2 : manaCost;
+			return IsScrollCast ? manaCost / 2 : manaCost;
 		}
 
 		public static int GetPower( int circle )

@@ -49,7 +49,7 @@ namespace Server.Spells.Necromancy
 		public override int GetMana()
 		{
 			var manaCost = RequiredMana;
-			return Caster.ScrollCastSpell ? manaCost / 2 : manaCost;
+			return IsScrollCast ? manaCost / 2 : manaCost;
 		}
 	}
 }

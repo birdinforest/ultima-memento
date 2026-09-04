@@ -760,9 +760,6 @@ namespace Server
 		private bool m_DisarmReady, m_StunReady;
 		private int m_BaseSoundID;
 		private int m_VirtualArmor;
-		private bool m_ItemCastSpell;
-		private bool m_ScrollCastSpell;
-		private bool m_NoManaUseSpell;
 		private bool m_Squelched;
 		private int m_MeleeDamageAbsorb;
 		private int m_MagicDamageAbsorb;
@@ -839,27 +836,6 @@ namespace Server
 
 		protected virtual void OnRaceChange( Race oldRace )
 		{
-		}
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool ItemCastSpell
-		{
-			get{ return m_ItemCastSpell; }
-			set{ m_ItemCastSpell = value; }
-		}
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool ScrollCastSpell
-		{
-			get{ return m_ScrollCastSpell; }
-			set{ m_ScrollCastSpell = value; }
-		}
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool NoManaUseSpell
-		{
-			get{ return m_NoManaUseSpell; }
-			set{ m_NoManaUseSpell = value; }
 		}
 
 		private List<ResistanceMod> m_ResistMods;
