@@ -15,7 +15,11 @@
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+    <!-- Portable PDB (managed) instead of 'full' (Windows native). The native PDB writer has
+         a 65504-byte per-method debug-metadata ceiling that large methods can exceed (CS0041).
+         Portable PDB has no such limit, still supports breakpoints, and keeps all three build
+         paths (System, Scripts, runtime ScriptCompiler) on the same PDB strategy. -->
+    <DebugType>portable</DebugType>
     <Optimize>False</Optimize>
     <OutputPath>..\..\</OutputPath>
     <DefineConstants>TRACE;DEBUG;NEWTIMERS</DefineConstants>
@@ -27,7 +31,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>portable</DebugType>
     <Optimize>False</Optimize>
     <OutputPath>..\..\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
@@ -45,5 +49,13 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Runtime C# compiler upgrade: replace the legacy .NET Framework CSharpCodeProvider
+         (C#5 only) used by ScriptCompiler with the Roslyn-backed CodeDom provider so that
+         C#6+ syntax (string interpolation $"...", expression-bodied members) in Scripts
+         compiles at runtime on Windows/.NET. Mono uses mcs natively and is unaffected. -->
+    <PackageReference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform" Version="3.6.0" />
+  </ItemGroup>
 
 </Project>

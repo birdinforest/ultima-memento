@@ -46,6 +46,7 @@ World/Source/.vscode/settings.json
 # Compiled scripts
 World/Data/Data.bin
 World/Data/Data.hash
+World/Data/Data.*.bin
 
 # Custom
 Backups/
@@ -64,6 +65,9 @@ World/Saves/
 __pycache__/
 *.pyc
 World/*.exe
+# Roslyn-backed runtime compiler (DotNetCompilerPlatform) restored by dotnet build
+World/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+World/roslyn/
 # Local secrets (loaded by DotEnvLoader from Core.BaseDirectory)
 .env
 **/.env
