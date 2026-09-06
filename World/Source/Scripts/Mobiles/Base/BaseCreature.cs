@@ -8313,54 +8313,63 @@ namespace Server.Mobiles
 			// TODO: This code could probably be simplified
 			if ( slayer is PlayerMobile || ( slayer is BaseCreature && ((BaseCreature)slayer).ControlMaster != null && ((BaseCreature)slayer).ControlMaster is PlayerMobile ) )
 			{
-				Server.Misc.IntelligentAction.SaySomethingOnDeath( this, this.LastKiller );
-
-				Server.Misc.HoardPile.MakeHoard( this ); // SEE IF A HOARD DROPS NEARBY
-
-				Server.Misc.SummonQuests.WellTheyDied( this, this );
-			}
-
-			if ( slayer is PlayerMobile )
-			{
-				///////////////////////////////////////////////////////////////////////////////////////
-
-				if ( SeaEnemy() )
-					Server.Engines.Harvest.Fishing.SailorSkill( slayer, (int)( IntelligentAction.GetCreatureLevel( this ) / 10 ) );
-
-				if ( reg.IsPartOf( typeof( NecromancerRegion ) ) && GetPlayerInfo.EvilPlayer( slayer ) && slayer.Skills[SkillName.Necromancy].Base >= 25 )
+				try
 				{
-					if ( undead.Slays(this) || exorcism.Slays(this) )
+					Server.Misc.IntelligentAction.SaySomethingOnDeath( this, this.LastKiller );
+
+					Server.Misc.HoardPile.MakeHoard( this ); // SEE IF A HOARD DROPS NEARBY
+
+					InscriptionRecipeDropHelper.TryDropRecipe( this );
+
+					Server.Misc.SummonQuests.WellTheyDied( this, this );
+
+					if ( slayer is PlayerMobile )
 					{
-						switch ( Utility.Random( 7 ) )
+						///////////////////////////////////////////////////////////////////////////////////////
+
+						if ( SeaEnemy() )
+							Server.Engines.Harvest.Fishing.SailorSkill( slayer, (int)( IntelligentAction.GetCreatureLevel( this ) / 10 ) );
+
+						if ( reg.IsPartOf( typeof( NecromancerRegion ) ) && GetPlayerInfo.EvilPlayer( slayer ) && slayer.Skills[SkillName.Necromancy].Base >= 25 )
 						{
-							case 0: PackItem( new BatWing( Utility.RandomMinMax( 1, 10 ) ) ); break;
-							case 1: PackItem( new NoxCrystal( Utility.RandomMinMax( 1, 10 ) ) ); break;
-							case 2: PackItem( new GraveDust( Utility.RandomMinMax( 1, 10 ) ) ); break;
-							case 3: PackItem( new PigIron( Utility.RandomMinMax( 1, 10 ) ) ); break;
-							case 4: PackItem( new DaemonBlood( Utility.RandomMinMax( 1, 10 ) ) ); break;
+							if ( ( undead != null && undead.Slays( this ) ) || ( exorcism != null && exorcism.Slays( this ) ) )
+							{
+								switch ( Utility.Random( 7 ) )
+								{
+									case 0: PackItem( new BatWing( Utility.RandomMinMax( 1, 10 ) ) ); break;
+									case 1: PackItem( new NoxCrystal( Utility.RandomMinMax( 1, 10 ) ) ); break;
+									case 2: PackItem( new GraveDust( Utility.RandomMinMax( 1, 10 ) ) ); break;
+									case 3: PackItem( new PigIron( Utility.RandomMinMax( 1, 10 ) ) ); break;
+									case 4: PackItem( new DaemonBlood( Utility.RandomMinMax( 1, 10 ) ) ); break;
+								}
+							}
+							else if ( this is EvilMage )
+							{
+								PackItem( new BatWing( Utility.RandomMinMax( 1, 10 ) ) );
+								PackItem( new NoxCrystal( Utility.RandomMinMax( 1, 10 ) ) );
+								PackItem( new GraveDust( Utility.RandomMinMax( 1, 10 ) ) );
+								PackItem( new PigIron( Utility.RandomMinMax( 1, 10 ) ) );
+								PackItem( new DaemonBlood( Utility.RandomMinMax( 1, 10 ) ) );
+							}
+						}
+
+						Server.Misc.IntelligentAction.DropReagent( slayer, this );
+
+						if ( slayer.Skills[SkillName.Forensics].Value >= Utility.RandomMinMax( 30, 150 ) )
+						{
+							if ( 	this is MummyGiant || this is FleshGolem || this is ReanimatedDragon || this is AncientFleshGolem || this is SkinGolem || 
+									this is Ghoul || this is AquaticGhoul || this is DiseasedMummy || this is Mummy || this is MummyLord || this is RottingCorpse || 
+									this is WalkingCorpse || this is ZombieGiant || this is FrozenCorpse || this is ZombieGargoyle || this is SeaZombie || 
+									this is ZombieMage || this is Zombie )
+							{
+								PackItem( new EmbalmingFluid() );
+							}
 						}
 					}
-					else if ( this is EvilMage )
-					{
-						PackItem( new BatWing( Utility.RandomMinMax( 1, 10 ) ) );
-						PackItem( new NoxCrystal( Utility.RandomMinMax( 1, 10 ) ) );
-						PackItem( new GraveDust( Utility.RandomMinMax( 1, 10 ) ) );
-						PackItem( new PigIron( Utility.RandomMinMax( 1, 10 ) ) );
-						PackItem( new DaemonBlood( Utility.RandomMinMax( 1, 10 ) ) );
-					}
 				}
-
-				Server.Misc.IntelligentAction.DropReagent( slayer, this );
-
-				if ( slayer.Skills[SkillName.Forensics].Value >= Utility.RandomMinMax( 30, 150 ) )
+				catch ( Exception e )
 				{
-					if ( 	this is MummyGiant || this is FleshGolem || this is ReanimatedDragon || this is AncientFleshGolem || this is SkinGolem || 
-							this is Ghoul || this is AquaticGhoul || this is DiseasedMummy || this is Mummy || this is MummyLord || this is RottingCorpse || 
-							this is WalkingCorpse || this is ZombieGiant || this is FrozenCorpse || this is ZombieGargoyle || this is SeaZombie || 
-							this is ZombieMage || this is Zombie )
-					{
-						PackItem( new EmbalmingFluid() );
-					}
+					Console.WriteLine( "Warning: OnBeforeDeath player bonus loot failed for {0} (serial {1}): {2}", GetType().Name, Serial, e );
 				}
 			}
 

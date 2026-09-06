@@ -290,16 +290,7 @@ namespace Server.Mobiles
 				}
 			}
 
-			if ( Utility.RandomMinMax( 1, 100 ) == 1 && !this.Controlled )
-			{
-				DragonEgg egg = new DragonEgg();
-				egg.DragonType = this.YellHue;
-				egg.DragonBody = 59;
-				egg.Hue = this.Hue;
-				egg.Name = "egg of " + this.Title;
-				egg.NeedGold = 100000;
-				c.DropItem( egg );
-			}
+			DragonEggDropHelper.TryDropOnDeath( this, c, 100, 59, 100000, true );
 		}
 
 		public int rBody;

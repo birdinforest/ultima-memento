@@ -1,0 +1,9 @@
+{
+  "relics.drop.luckCap": "2000",
+  "relics.drop.first.rank1MaxPct": "20",
+  "relics.drop.first.rank2MaxPct": "10",
+  "relics.drop.first.rank3MaxPct": "5",
+  "relics.drop.repeat.rank1MaxPct": "5",
+  "relics.drop.repeat.rank2MaxPct": "4",
+  "relics.drop.repeat.rank3MaxPct": "3"
+}

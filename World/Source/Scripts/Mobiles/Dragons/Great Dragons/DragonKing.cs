@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Server;
 using Server.Items;
 using Server.Misc;
+using Server.RateConfig;
 
 namespace Server.Mobiles
 {
@@ -57,23 +58,59 @@ namespace Server.Mobiles
 		{
 			base.OnDeath( c );
 
-			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
-			if ( killer != null )
-			{
-				int killerLuck = MobileUtilities.GetLuckFromKiller( this );
-
-				if ( GetPlayerInfo.DragonRidingScrollLuckyDrop( killerLuck ) )
-				{
-					c.DropItem( new DragonRidingScroll() );
-				}
-			}
-
 			bool canDropSpecial = !Controlled;
 			bool specialDropped = false;
 			bool rank1ChestAwarded = false;
 			string encounterId = RelicChestDropHelper.BuildEncounterId( this );
 			int damageTotal = RelicChestDropHelper.SumEncounterDamage( this );
 			List<RelicEligiblePlayer> eligibleTop = RelicChestDropHelper.GetEligibleTopPlayers( this, 3, 20 );
+
+			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
+			if ( killer != null )
+			{
+				int killerLuck = MobileUtilities.GetLuckFromKiller( this );
+				double scrollMult = Server.Engines.Avatar.AscentHuntBonus.IsDragonRidingScrollEnabled()
+					? Server.Engines.Avatar.AscentHuntBonus.GetDropChanceMultiplier( killer, this, 3, 20, eligibleTop )
+					: 1.0;
+				double rollMaxPct = RateConfigEngine.GetDouble( "dragon.ridingScroll.maxChancePct", 5.0 );
+				double rollActualPct = GetPlayerInfo.GetDragonRidingScrollChancePct( killerLuck, scrollMult );
+				bool scrollSuccess = GetPlayerInfo.DragonRidingScrollLuckyDrop( killerLuck, scrollMult );
+
+				int damageDealt = 0;
+				int damageRank = 0;
+
+				for ( int i = 0; i < eligibleTop.Count; i++ )
+				{
+					if ( eligibleTop[i].Player == killer )
+					{
+						damageDealt = eligibleTop[i].Damage;
+						damageRank = eligibleTop[i].Rank;
+						break;
+					}
+				}
+
+				AnalyticsLogger.LogDragonRidingScrollRollAttempted(
+					killer,
+					new RareDropRollContext
+					{
+						EncounterId = encounterId,
+						BossType = "DragonKing",
+						BossKey = "DragonKing",
+						DamageRank = damageRank,
+						DamageDealt = damageDealt,
+						DamageTotal = damageTotal,
+						EligibleTop3Count = eligibleTop.Count,
+						Luck = killerLuck,
+						FortuneMult = scrollMult,
+						RollMaxPct = rollMaxPct,
+						RollActualPct = rollActualPct,
+						RollSuccess = scrollSuccess,
+						AvatarActive = killer.Avatar.Active
+					} );
+
+				if ( scrollSuccess )
+					c.DropItem( new DragonRidingScroll() );
+			}
 
 			RelicChestDropHelper.TryAwardRelics(
 				this,
@@ -148,7 +185,8 @@ namespace Server.Mobiles
 								damageTotal,
 								eligibleTop.Count,
 								isFirst,
-								"dragon_king_special_fork" );
+								"dragon_king_special_fork",
+								eligibleTop );
 
 							return false;
 						}

@@ -5,6 +5,7 @@ using Server.Localization;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Network;
+using Server.RateConfig;
 using System;
 using Server.Spells.Seventh;
 using System.Linq;
@@ -559,21 +560,40 @@ namespace Server.Misc
 		}
 
 		/// <summary>
-		/// Returns true with linear chance from 0% (luck 0) up to 5% (luck 2000).
-		/// Used for DragonRidingScroll drop from Dragon King only.
+		/// Linear chance from 0% (luck 0) up to <c>dragon.ridingScroll.maxChancePct</c> at
+		/// <c>dragon.ridingScroll.luckCap</c> (Data/RateConfig/dragon-riding-scroll.json), then
+		/// scaled by fortuneMult. Used for DragonRidingScroll drop from Dragon King only.
 		/// </summary>
-		public static bool DragonRidingScrollLuckyDrop( int luck )
+		public static double GetDragonRidingScrollChancePct( int luck, double fortuneMult = 1.0 )
 		{
 			if ( luck <= 0 )
+				return 0;
+
+			double luckCap = RateConfigEngine.GetDouble( "dragon.ridingScroll.luckCap", 2000.0 );
+			double maxChancePct = RateConfigEngine.GetDouble( "dragon.ridingScroll.maxChancePct", 5.0 );
+
+			if ( luckCap <= 0 || maxChancePct <= 0 )
+				return 0;
+
+			if ( luck > luckCap )
+				luck = (int)luckCap;
+
+			double playerChance = luck * maxChancePct / luckCap;
+
+			if ( fortuneMult > 0 && fortuneMult != 1.0 )
+				playerChance *= fortuneMult;
+
+			return playerChance;
+		}
+
+		public static bool DragonRidingScrollLuckyDrop( int luck, double fortuneMult = 1.0 )
+		{
+			double playerChance = GetDragonRidingScrollChancePct( luck, fortuneMult );
+
+			if ( playerChance <= 0 )
 				return false;
 
-			const int MAX_LUCK = 2000;
-			const int MAX_CHANCE = 5;
-
-			luck = Math.Min( MAX_LUCK, luck );
-			int playerChance = (int)( luck * (long)MAX_CHANCE / MAX_LUCK );
-
-			return Utility.RandomMinMax( 1, 100 ) <= playerChance;
+			return Utility.RandomDouble() * 100.0 < playerChance;
 		}
 
 		/// <summary>

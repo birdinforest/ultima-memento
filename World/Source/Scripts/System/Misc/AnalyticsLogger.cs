@@ -204,6 +204,35 @@ namespace Server.Misc
 			Emit( d );
 		}
 
+		public static void LogInscriptionRecipeRollAttempted( PlayerMobile pm, RareDropRollContext ctx )
+		{
+			LogRareDropRollAttempted( pm, ctx, "inscription_recipe_roll_attempted", "inscription_recipe" );
+		}
+
+		public static void LogDragonEggRollAttempted( PlayerMobile pm, RareDropRollContext ctx )
+		{
+			LogRareDropRollAttempted( pm, ctx, "dragon_egg_roll_attempted", "dragon_egg" );
+		}
+
+		public static void LogDragonRidingScrollRollAttempted( PlayerMobile pm, RareDropRollContext ctx )
+		{
+			LogRareDropRollAttempted( pm, ctx, "dragon_riding_scroll_roll_attempted", "dragon_riding_scroll" );
+		}
+
+		private static void LogRareDropRollAttempted( PlayerMobile pm, RareDropRollContext ctx, string eventType, string featureName )
+		{
+			if ( !MySettings.S_AnalyticsEnabled || pm == null || ctx == null )
+				return;
+
+			var acc = pm.Account as Account;
+			var d = BaseAccountFields( acc, pm );
+			d["event_type"] = eventType;
+			d["feature_name"] = featureName;
+			d["feature_variant"] = !string.IsNullOrEmpty( ctx.BossKey ) ? ctx.BossKey : ( ctx.BossType ?? "" );
+			AppendRareDropRollFields( d, ctx );
+			Emit( d );
+		}
+
 		public static void LogRelicsRollAttempted( PlayerMobile pm, RelicsDropContext ctx )
 		{
 			if ( !MySettings.S_AnalyticsEnabled || pm == null || ctx == null )
@@ -285,6 +314,30 @@ namespace Server.Misc
 			d["owner_bound"] = chest.m_Owner != null ? "true" : "false";
 			d["from_who"] = chest.m_FromWho ?? "";
 			d["chest_charges"] = chest.m_Charges.ToString( CultureInfo.InvariantCulture );
+		}
+
+		private static void AppendRareDropRollFields( Dictionary<string, string> d, RareDropRollContext ctx )
+		{
+			d["encounter_id"] = ctx.EncounterId ?? "";
+			d["boss_type"] = ctx.BossType ?? "";
+			d["boss_key"] = ctx.BossKey ?? "";
+			d["damage_rank"] = ctx.DamageRank.ToString( CultureInfo.InvariantCulture );
+			d["damage_dealt"] = ctx.DamageDealt.ToString( CultureInfo.InvariantCulture );
+			d["damage_total"] = ctx.DamageTotal.ToString( CultureInfo.InvariantCulture );
+			d["damage_share_pct"] = ctx.DamageTotal > 0
+				? ( ( ctx.DamageDealt * 100.0 ) / ctx.DamageTotal ).ToString( "0.##", CultureInfo.InvariantCulture )
+				: "0";
+			d["eligible_top3_count"] = ctx.EligibleTop3Count.ToString( CultureInfo.InvariantCulture );
+			d["luck"] = ctx.Luck.ToString( CultureInfo.InvariantCulture );
+			d["fortune_mult"] = ctx.FortuneMult.ToString( "0.##", CultureInfo.InvariantCulture );
+			d["roll_max_pct"] = ctx.RollMaxPct.ToString( "0.##", CultureInfo.InvariantCulture );
+			d["roll_actual_pct"] = ctx.RollActualPct.ToString( "0.##", CultureInfo.InvariantCulture );
+			d["roll_success"] = ctx.RollSuccess ? "true" : "false";
+			d["avatar_active"] = ctx.AvatarActive ? "true" : "false";
+			d["avatar_ladder"] = ctx.AvatarLadder ? "true" : "false";
+			d["enemy_tier"] = ctx.EnemyTierId ?? "";
+			d["fame"] = ctx.Fame.ToString( CultureInfo.InvariantCulture );
+			d["one_in_n"] = ctx.OneInN.ToString( CultureInfo.InvariantCulture );
 		}
 
 		private static void AppendRelicsContextFields( Dictionary<string, string> d, RelicsDropContext ctx )

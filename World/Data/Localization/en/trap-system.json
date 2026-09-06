@@ -105,6 +105,7 @@
   "trap.karma.guidance.weakened": "Your moral conviction was weakened by the trap. Rebuild your alignment through virtuous deeds.",
   "trap.brokeonstep": "You stepped on a trap but lucky for you it broke!",
   "trap.scavenge": "You salvage useful components from the trap mechanism.",
+  "trap.scavenge.cooldown": "The workings of this device were just stripped. You'll have to wait for the mechanism to gum up again before there's a reward.",
   "trap.proximity.basic": "Something feels wrong nearby, but you can't quite tell where.",
   "trap.proximity.warning": "Your instincts warn you of a hidden trap to the {0}, {1}.",
   "trap.proximity.detail": "You notice subtle signs of {0} to the {1}, {2}.",

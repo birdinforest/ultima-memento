@@ -54,6 +54,10 @@ listed in keep_extra in that script so they are never pruned as stale):
   (horse barding, spyglass, …), potion keg names (trade.keg.potion.*), placemap.name.format.
   placemap-labels.json — hash keys for Worlds area/town English labels consumed by PlaceMap OPL.
   decoration-sign-labels.json — hash keys for decoration cfg Static Name= shop/sign labels; resolved in Static.AddNameProperty via StringCatalog.TryResolve. keep_extra.
+  lore-books.json — LoreBook title/author/body shotkeys (lore.book.<slug>.*) and lore.book.city.*
+    for GetRandomCity() templates. Orb of the Abyss uses {0}{1}; Underworld Gate uses {0}.
+    View-time resolve in LoreBook.ResolveLocalized* / DynamicBook. Reused existing scripts-books
+    Chinese (no re-translation). Generator: World/Source/Tools/build_lore_books_shotkeys.py.
 
 Gump & books
 ------------

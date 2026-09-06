@@ -368,8 +368,6 @@ namespace Server.Misc
 				return;
 			}
 
-			SummonPrison.SetDifficultyForMonster( monster );
-
 			Map map = player.Map;
 			Point3D loc = Point3D.Zero;
 
@@ -399,6 +397,12 @@ namespace Server.Misc
 						loc = new Point3D( x, y, z );
 				}
 			}
+
+			string questItem = EpicCharacter.GetSpecialItemRequirement( player );
+			Point3D carrierHome = new Point3D( template.HomeX, template.HomeY, 0 );
+			int carrierHeat = SummonQuests.ResolveCarrierBeefUpHeat( questItem, carrierHome, loc, map );
+
+			SummonPrison.SetDifficultyForMonster( monster, carrierHeat );
 
 			if ( template.NameOverride != null )
 				monster.Name = template.NameOverride;
@@ -434,7 +438,7 @@ namespace Server.Misc
 			monster.Karma = 0;
 
 			Item key = new SummonItems();
-			key.Name = EpicCharacter.GetSpecialItemRequirement( player );
+			key.Name = questItem;
 			key.ItemID = template.ItemId;
 			key.Hue = template.ItemHue;
 			( (SummonItems)key ).EpicChallengeSource = true;

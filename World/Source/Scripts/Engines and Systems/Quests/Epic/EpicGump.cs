@@ -99,13 +99,14 @@ namespace Server.Gumps
 
 			string sInfo = StringCatalog.ResolveByKey( listener.Account, "quest.epic.gump.shared.info" );
 			string sBare = ResolveBare( listener, alignment, FormatGiverName( listener, myName ), thisItem, dungeon );
+			string sLore = StringCatalog.ResolveByKey( listener.Account, "quest.epic.gump.shared.lore" );
 
 			string slug = SlugifyNpc( myName );
 			string textKey = allowed ? "quest.epic.gump." + slug + ".text.allowed" : "quest.epic.gump." + slug + ".text.denied";
 
 			string sTitle = StringCatalog.ResolveByKey( listener.Account, "quest.epic.gump." + slug + ".title" );
 			string sBody = StringCatalog.ResolveFormatByKey( listener.Account, textKey, yourName );
-			string sText = allowed ? sBody + sInfo + sBare : sBody + sBare;
+			string sText = allowed ? sBody + sInfo + sBare + sLore : sBody + sBare + sLore;
 
 			this.Closable = true;
 			this.Disposable = true;

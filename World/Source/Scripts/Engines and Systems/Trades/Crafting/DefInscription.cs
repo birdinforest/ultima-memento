@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using Server.Items;
+using Server.RateConfig;
 using Server.Spells;
 using Server.Spells.Elementalism;
 using Server.Mobiles;
@@ -518,6 +520,35 @@ namespace Server.Engines.Craft
 			BreakDown = true;
 			Repair = false;
 			CanEnhance = true;
+		}
+
+		public static Type[] GetTierTypes( int tier )
+		{
+			return InscriptionRecipeDropConfig.GetTierTypes( tier );
+		}
+
+		public RecipeScroll GetRandomRecipeScrollInTier( PlayerMobile player, int tier )
+		{
+			Type[] pool = GetTierTypes( tier );
+
+			if ( pool == null || pool.Length == 0 || player == null )
+				return null;
+
+			var unknown = new List<Type>();
+
+			for ( int i = 0; i < pool.Length; i++ )
+			{
+				CraftItem craftItem = CraftItems.SearchFor( pool[i] );
+
+				if ( craftItem != null && craftItem.Recipe != null && !player.HasRecipe( craftItem.Recipe ) )
+					unknown.Add( pool[i] );
+			}
+
+			Type pick = unknown.Count > 0
+				? unknown[Utility.Random( unknown.Count )]
+				: pool[Utility.Random( pool.Length )];
+
+			return GetRecipeScroll( player, pick );
 		}
 	}
 }

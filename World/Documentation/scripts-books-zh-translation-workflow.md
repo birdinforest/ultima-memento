@@ -11,6 +11,7 @@ Editorial rules for the Chinese text itself live in **`World/Documentation/zh-lo
 - Book and related strings are extracted from C# (e.g. `BookText`, titles, literals) into split JSON by:
   - `World/Source/Tools/build_localization_strings.py`
 - After a scan, **`en/scripts-books.json`** holds the canonical English keys (`s.<hash>`, plus `books.dynamic.*` for dynamic book chrome).
+- **`LoreBook` titles / authors / bodies** are no longer view-resolved via those hash keys. They live in the logical bundle **`en/lore-books.json`** + **`zh-Hans/lore-books.json`** (`lore.book.<slug>.*`, `lore.book.city.*`). Rebuild / refresh with `World/Source/Tools/build_lore_books_shotkeys.py` (reuses existing Chinese; do not re-translate full texts). C# identity strings stay English; open-time resolve is `LoreBook.ResolveLocalized*`.
 - Runtime loads merged keys from all `en/*.json` and `zh-Hans/*.json` under `Data/Localization/` (see `World/Data/Localization/README.txt`).
 
 ---
@@ -123,6 +124,7 @@ Then realign `frag_*.json` files to match the new batch boundaries (or rename/re
 |------|----------|
 | English source | `World/Data/Localization/en/scripts-books.json` |
 | Shipped Chinese | `World/Data/Localization/zh-Hans/scripts-books.json` |
+| LoreBook shotkeys | `World/Data/Localization/{en,zh-Hans}/lore-books.json` (`build_lore_books_shotkeys.py`) |
 | Fragments | `World/Source/Tools/scripts_books_zh_fragments/frag_*.json` |
 | Batch index | `World/Source/Tools/scripts_books_zh_fragments/_batches.txt` |
 | Merge tool | `World/Source/Tools/build_scripts_books_zh.py` |

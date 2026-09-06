@@ -14,6 +14,11 @@ namespace Server.Mobiles
 	[CorpseName( "Tarjan's corpse" )]
 	public class Tarjan : BaseCreature
 	{
+		private DateTime m_NextGaze = DateTime.MinValue;
+
+		private const double GazeCooldownSeconds = 8.0;
+		private const double GazeProcChance = 0.20;
+
 		[Constructable]
 		public Tarjan () : base( AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
@@ -28,11 +33,13 @@ namespace Server.Mobiles
 			SetDex( 76, 95 );
 			SetInt( 301, 325 );
 
-			SetHits( 286, 303 );
+			SetHits( 620, 700 );
 
-			SetDamage( 7, 14 );
+			SetDamage( 16, 24 );
 
-			SetDamageType( ResistanceType.Physical, 100 );
+			SetDamageType( ResistanceType.Physical, 25 );
+			SetDamageType( ResistanceType.Energy, 40 );
+			SetDamageType( ResistanceType.Fire, 35 );
 
 			SetResistance( ResistanceType.Physical, 45, 60 );
 			SetResistance( ResistanceType.Fire, 50, 60 );
@@ -40,11 +47,11 @@ namespace Server.Mobiles
 			SetResistance( ResistanceType.Poison, 20, 30 );
 			SetResistance( ResistanceType.Energy, 30, 40 );
 
-			SetSkill( SkillName.Psychology, 70.1, 80.0 );
-			SetSkill( SkillName.Magery, 70.1, 80.0 );
+			SetSkill( SkillName.Psychology, 85.1, 95.0 );
+			SetSkill( SkillName.Magery, 85.1, 95.0 );
 			SetSkill( SkillName.MagicResist, 85.1, 95.0 );
-			SetSkill( SkillName.Tactics, 70.1, 80.0 );
-			SetSkill( SkillName.FistFighting, 60.1, 80.0 );
+			SetSkill( SkillName.Tactics, 90.1, 100.0 );
+			SetSkill( SkillName.FistFighting, 90.1, 100.0 );
 
 			Fame = 15000;
 			Karma = -15000;
@@ -68,6 +75,70 @@ namespace Server.Mobiles
 		public override int Hides{ get{ return 18; } }
 		public override HideType HideType{ get{ return HideType.Hellish; } }
 		public override bool BardImmune { get { return true; } }
+
+		public void DoMadGodGaze( Mobile partner )
+		{
+			if ( partner == null || partner.Deleted || !partner.Alive )
+				return;
+
+			if ( DateTime.Now < m_NextGaze )
+				return;
+
+			if ( GazeProcChance < Utility.RandomDouble() )
+				return;
+
+			m_NextGaze = DateTime.Now + TimeSpan.FromSeconds( GazeCooldownSeconds );
+
+			DoHarmful( partner );
+
+			partner.FixedParticles( 0x374A, 10, 15, 5038, Hue, 0, EffectLayer.Head );
+			partner.PlaySound( 0x1FE );
+
+			AOS.Damage( partner, this, Utility.RandomMinMax( 16, 22 ), 0, 0, 0, 0, 100 );
+
+			if ( partner is PlayerMobile )
+			{
+				partner.SendMessage( StringCatalog.ResolveByKey( partner.Account, "quest.bards_tale.tarjan.gaze.hit" ) );
+
+				double duration = 1.0;
+
+				if ( duration > MySettings.S_paralyzeDuration )
+					duration = MySettings.S_paralyzeDuration;
+
+				if ( !partner.CheckSkill( SkillName.MagicResist, 0, 100 ) )
+				{
+					partner.Paralyze( TimeSpan.FromSeconds( duration ) );
+					BuffInfo.RemoveBuff( partner, BuffIcon.Paralyze );
+					BuffInfo.AddBuff( partner, new BuffInfo( BuffIcon.Paralyze, 1063621, TimeSpan.FromSeconds( duration ), partner ) );
+				}
+			}
+
+			BaseCreature pet = partner as BaseCreature;
+
+			if ( pet != null && pet.Controlled )
+			{
+				Mobile master = pet.GetMaster();
+
+				if ( master != null && master is PlayerMobile && master.Alive && !master.Deleted && InRange( master, 10 ) )
+				{
+					DoHarmful( master );
+					AOS.Damage( master, this, Utility.RandomMinMax( 12, 16 ), 0, 0, 0, 0, 100 );
+					master.SendMessage( StringCatalog.ResolveByKey( master.Account, "quest.bards_tale.tarjan.gaze.pulse" ) );
+				}
+			}
+		}
+
+		public override void OnGotMeleeAttack( Mobile attacker )
+		{
+			base.OnGotMeleeAttack( attacker );
+			DoMadGodGaze( attacker );
+		}
+
+		public override void OnGaveMeleeAttack( Mobile defender )
+		{
+			base.OnGaveMeleeAttack( defender );
+			DoMadGodGaze( defender );
+		}
 
 		public override bool OnBeforeDeath()
 		{
@@ -285,17 +356,19 @@ namespace Server.Items
 
 				if ( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleKylearanKey" ) )
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(null, "mob.other.this_statue_still_has_the_eye_you_placed_in_it"), from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(from.Account, "mob.other.this_statue_still_has_the_eye_you_placed_in_it"), from.NetState);
 				}
-				else if ( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleSpectreEye" ) && !( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleKylearanKey" ) ) )
+				else if ( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleSpectreEye" ) || EyeOfTarjan.ExistsOn( from ) )
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(null, "mob.other.you_place_the_mysterious_eye_into_the_statue"), from.NetState);
+					EyeOfTarjan.ConsumeFrom( from );
+					PlayerSettings.SetBardsTaleQuest( from, "BardsTaleSpectreEye", true );
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(from.Account, "mob.other.you_place_the_mysterious_eye_into_the_statue"), from.NetState);
 					SpawnTarjan( from );
 					this.Delete();
 				}
 				else
 				{
-					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(null, "mob.other.this_statue_seems_to_be_missing_an_eye"), from.NetState);
+					from.PrivateOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(from.Account, "mob.other.this_statue_seems_to_be_missing_an_eye"), from.NetState);
 				}
 			}
 			else

@@ -61,8 +61,6 @@ namespace Server.Multis
 				Name = "ship deed";
 			}
 
-			Region reg = Region.Find( from.Location, from.Map );
-
 			string placeMsg = "Where do you wish to place the ship?";
 			string denyMsg = "You may not place a boat from this location.";
 
@@ -70,28 +68,17 @@ namespace Server.Multis
 			{
 				from.SendLocalizedMessage( 1042001 ); // That must be in your pack for you to use it.
 			}
-			else if ( DockSearch.NearDock(from) == false )
+			else if ( !CanBeginShipLaunch( from ) )
 			{
-				from.SendMessage( StringCatalog.Resolve( from.Account, "You must be near a dock to launch your ship!" ) );
-			}
-			else if (
-				Server.Misc.Worlds.IsSeaTown( from.Location, from.Map ) ||
-				reg.IsPartOf( typeof( OutDoorBadRegion ) ) ||
-				reg.IsPartOf( typeof( VillageRegion ) ) ||
-				reg.IsPartOf( typeof( BargeDeadRegion ) ) ||
-				reg.IsPartOf( typeof( NecromancerRegion ) ) ||
-				reg.IsPartOf( typeof( DeadRegion ) ) ||
-				reg.IsPartOf( typeof( PirateRegion ) ) ||
-				reg.IsPartOf( typeof( OutDoorRegion ) ) ||
-				reg.IsPartOf( typeof( PublicRegion ) ) ||
-				Server.Misc.Worlds.IsMainRegion( Server.Misc.Worlds.GetRegionName( from.Map, from.Location ) ) )
-			{
-				from.LocalOverheadMessage(Network.MessageType.Emote, 0x25, false, StringCatalog.Resolve( from.Account, placeMsg ) );
-				from.Target = new ShipDeedTarget( this );
+				if ( !DockSearch.NearDock( from ) )
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You must be near a dock to launch your ship!" ) );
+				else
+					from.LocalOverheadMessage( Network.MessageType.Emote, 0x25, false, StringCatalog.Resolve( from.Account, denyMsg ) );
 			}
 			else
 			{
-				from.LocalOverheadMessage(Network.MessageType.Emote, 0x25, false, StringCatalog.Resolve( from.Account, denyMsg ) );
+				from.LocalOverheadMessage(Network.MessageType.Emote, 0x25, false, StringCatalog.Resolve( from.Account, placeMsg ) );
+				from.Target = new ShipDeedTarget( this );
 			}
 		}
 
@@ -121,6 +108,34 @@ namespace Server.Multis
 		}
 
 		public abstract BaseBoat Boat{ get; }
+
+		/// <summary>
+		/// Requires a valid dock (see <see cref="DockSearch.NearDock"/>) and rejects dungeon tiles.
+		/// </summary>
+		private static bool CanBeginShipLaunch( Mobile from )
+		{
+			if ( !DockSearch.NearDock( from ) )
+				return false;
+
+			Region reg = Region.Find( from.Location, from.Map );
+			return !reg.IsPartOf( typeof( DungeonRegion ) );
+		}
+
+		private static bool IsForbiddenShipTarget( Point3D p, Map map )
+		{
+			Region targetReg = Region.Find( p, map );
+
+			return targetReg.IsPartOf( typeof( DungeonRegion ) )
+				|| targetReg.IsPartOf( typeof( HouseRegion ) );
+		}
+
+		private static bool IsValidShipTarget( Point3D p, Map map, BaseBoat boat )
+		{
+			if ( IsForbiddenShipTarget( p, map ) )
+				return false;
+
+			return BaseBoat.IsValidLocation( p, map ) && boat.CanFit( p, map, boat.ItemID );
+		}
 
 		public void OnCarpetPlacement( Mobile from, Point3D p, int hue )
 		{
@@ -217,9 +232,10 @@ namespace Server.Multis
 			{
 				string phrase_a = StringCatalog.Resolve( from.Account, "You may not place a ship while on another ship or inside a house." );
 				string phrase_b = StringCatalog.Resolve( from.Account, "A ship can not be launched here." );
+				string denyMsg = StringCatalog.Resolve( from.Account, "You may not place a boat from this location." );
+				string dockMsg = StringCatalog.Resolve( from.Account, "You must be near a dock to launch your ship!" );
 
 				Map map = from.Map;
-				Region reg = Region.Find( from.Location, from.Map );
 
 				if ( map == null )
 					return;
@@ -238,39 +254,18 @@ namespace Server.Multis
 
 				p = new Point3D( p.X - m_Offset.X, p.Y - m_Offset.Y, p.Z - m_Offset.Z );
 
-				bool CanBuild = false;
-
-				if ( reg.IsPartOf( typeof( OutDoorBadRegion ) ) ||
-					 reg.IsPartOf( typeof( VillageRegion ) ) ||
-					 reg.IsPartOf( typeof( BargeDeadRegion ) ) ||
-					 reg.IsPartOf( typeof( NecromancerRegion ) ) ||
-					 reg.IsPartOf( typeof( DeadRegion ) ) ||
-					 reg.IsPartOf( typeof( PirateRegion ) ) ||
-					 reg.IsPartOf( typeof( OutDoorRegion ) ) ||
-					 reg.IsPartOf( typeof( PublicRegion ) ) )
+				if ( !CanBeginShipLaunch( from ) )
 				{
-					CanBuild = false;
-				}
-				else
-				{
-					CanBuild = true;
-				}
-
-				if ( CanBuild )
-				{
-					if ( !Server.Misc.Worlds.IsSeaTown( p, map ) &&
-						 !Server.Misc.Worlds.IsMainRegion( Server.Misc.Worlds.GetRegionName( map, p ) ) )
-					{
-						CanBuild = BaseBoat.IsValidLocation( p, map );
-					}
+					if ( !DockSearch.NearDock( from ) )
+						from.SendMessage( dockMsg );
 					else
-					{
-						CanBuild = false;
-					}
-				}
+						from.SendMessage( denyMsg );
 
-				if ( !CanBuild )
+					boat.Delete();
+				}
+				else if ( !IsValidShipTarget( p, map, boat ) )
 				{
+					boat.Delete();
 					from.SendMessage( phrase_b );
 				}
 				else
@@ -328,29 +323,39 @@ namespace Server.Multis
 			}
 		}
 
-		private class ShipDeedTarget : Target
+		private class ShipDeedTarget : MultiTarget
 		{
 			private BaseBoatDeed m_Deed;
+			private int m_Hue;
 
-			public ShipDeedTarget( BaseBoatDeed deed ) : base( 5, true, TargetFlags.None )
+			public ShipDeedTarget( BaseBoatDeed deed ) : base( deed.MultiID, deed.Offset )
 			{
 				m_Deed = deed;
+				m_Hue = deed.Hue;
 			}
 
-			protected override void OnTarget( Mobile from, object targeted )
+			protected override void OnTarget( Mobile from, object o )
 			{
 				if ( m_Deed == null || m_Deed.Deleted )
 					return;
 
-				if ( targeted is LandTarget )
-				{
-					IPoint3D p = targeted as IPoint3D;
-					m_Deed.OnPlacement( from, new Point3D( p ), m_Deed.Hue );
-				}
+				IPoint3D ip = o as IPoint3D;
+
+				if ( ip == null )
+					return;
+
+				if ( ip is Item )
+					ip = ((Item)ip).GetWorldTop();
+
+				Point3D p = new Point3D( ip );
+				Region region = Region.Find( p, from.Map );
+
+				if ( region.IsPartOf( typeof( DungeonRegion ) ) )
+					from.SendLocalizedMessage( 502488 ); // You can not place a ship inside a dungeon.
+				else if ( region.IsPartOf( typeof( HouseRegion ) ) )
+					from.SendLocalizedMessage( 1042549 ); // A boat may not be placed in this area.
 				else
-				{
-					from.SendMessage( StringCatalog.Resolve( from.Account, "You may not place a boat from this location." ) );
-				}
+					m_Deed.OnPlacement( from, p, m_Hue );
 			}
 		}
 	}

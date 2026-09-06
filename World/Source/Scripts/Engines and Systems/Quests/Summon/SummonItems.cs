@@ -31,10 +31,27 @@ namespace Server.Items
 		{
 		}
 
+		public override bool IsContentLocalized { get { return true; } }
+
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( owner != null ){ list.Add( 1049644, "Belongs to " + owner.Name + "" ); }
+
+			if ( EpicChallengeSource )
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "prop.summonitems.epic_tribute.attuned" );
+				else
+					list.Add( "Attuned Symbol of Tribute" );
+			}
+
+			if ( owner != null )
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "quest.tome.opl.belongs_to", owner.Name );
+				else
+					list.Add( 1049644, "Belongs to " + owner.Name + "" );
+			}
         }
 
 		public override bool OnDragLift( Mobile from )

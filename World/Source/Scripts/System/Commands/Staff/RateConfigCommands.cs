@@ -30,8 +30,9 @@ namespace Server.Commands
 			Mobile from = e.Mobile;
 
 			RateConfigEngine.Reload();
+			InscriptionRecipeDropConfig.Reload();
 
-			from.SendMessage( 0x5A, "RateConfig JSON reloaded from Data/RateConfig/." );
+			from.SendMessage( 0x5A, "RateConfig JSON reloaded from Data/RateConfig/ (includes inscription-recipe-drop.json). Inscription tier scroll lists reloaded from Data/InscriptionRecipeDrop/." );
 			Console.WriteLine( "RateConfig: [ratereload by {0}.", from );
 		}
 

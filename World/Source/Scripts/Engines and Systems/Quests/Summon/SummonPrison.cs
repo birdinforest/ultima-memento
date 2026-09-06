@@ -624,6 +624,27 @@ namespace Server.Items
 
 		public static void SetDifficultyForMonster( BaseCreature bc )
 		{
+			SetDifficultyForMonster( bc, -1 );
+		}
+
+		// carrierBeefUpHeat: when >= 0, raise each pre-boost skill to at least max(125, BeefUp skill
+		// target for that Heat) so Epic Tribute guardians are not weaker than SummonCarriers named
+		// mobs on Magery / MagicResist etc. Pass -1 for Magical Prison / QuestTome (125 flat).
+		public static void SetDifficultyForMonster( BaseCreature bc, int carrierBeefUpHeat )
+		{
+			double[] preSkills = null;
+			double skillsMultiplier = 0.0;
+
+			if ( carrierBeefUpHeat >= 0 )
+			{
+				preSkills = new double[bc.Skills.Length];
+
+				for ( int i = 0; i < bc.Skills.Length; i++ )
+					preSkills[i] = bc.Skills[i].Base;
+
+				skillsMultiplier = 1.0 + ( GetBeefUpRating( bc, carrierBeefUpHeat ) / 100.0 );
+			}
+
 			int HighestStat = Math.Max(Math.Max(bc.RawStr, bc.RawInt), bc.RawDex);
 
 			int BumpUp = 1200 - HighestStat;
@@ -645,7 +666,9 @@ namespace Server.Items
 			{
 				Skill skill = (Skill)bc.Skills[i];
 
-				if ( skill.Base > 0.0 )
+				if ( carrierBeefUpHeat >= 0 && preSkills != null && preSkills[i] > 0.0 )
+					skill.Base = Math.Max( 125.0, preSkills[i] * skillsMultiplier );
+				else if ( skill.Base > 0.0 )
 					skill.Base = 125.0;
 			}
 
@@ -653,6 +676,39 @@ namespace Server.Items
 			bc.DamageMax = 35;
 			bc.Fame = 0;
 			bc.Karma = 0;
+		}
+
+		// Same rating table / Fame clamp as BaseCreature.BeefUp (skills branch only).
+		private static double GetBeefUpRating( BaseCreature bc, int heat )
+		{
+			if ( heat < (int)Difficulty.Easy )
+				heat = (int)Difficulty.Easy;
+			else if ( (int)Difficulty.Deadly < heat )
+				heat = (int)Difficulty.Deadly;
+
+			double rating;
+
+			switch ( (Difficulty)heat )
+			{
+				case Difficulty.Easy: rating = 0; break;
+				case Difficulty.Normal: rating = MySettings.S_Normal; break;
+				case Difficulty.Difficult: rating = MySettings.S_Difficult; break;
+				case Difficulty.Challenging: rating = MySettings.S_Challenging; break;
+				case Difficulty.Hard: rating = MySettings.S_Hard; break;
+				default:
+				case Difficulty.Deadly: rating = MySettings.S_Deadly; break;
+			}
+
+			if ( bc.Fame >= 20000 )
+				rating = MySettings.S_Normal;
+			else if ( bc.Fame >= 18000 && (int)Difficulty.Difficult < heat )
+				rating = MySettings.S_Difficult;
+			else if ( bc.Fame >= 15000 && (int)Difficulty.Challenging < heat )
+				rating = MySettings.S_Challenging;
+			else if ( bc.Fame >= 10000 && (int)Difficulty.Hard < heat )
+				rating = MySettings.S_Hard;
+
+			return rating;
 		}
 
 		public static void DressUpMonsters( Mobile m, string who )

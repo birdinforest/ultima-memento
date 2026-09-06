@@ -1774,6 +1774,7 @@ namespace Server
 			{ "prop.transmutable",			"C6D11C" },
 			{ "prop.decorative.artifact",		"C6D11C" },
 			{ "prop.quest.item",			"DAA520" },
+			{ "prop.summonitems.epic_tribute.attuned", "DAA520" },
 			{ "prop.locked.down",			"808080" },
 			{ "prop.locked.down.secure",		"808080" },
 			{ "prop.elves.only",			"DAA520" },

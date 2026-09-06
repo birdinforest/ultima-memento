@@ -1,0 +1,8 @@
+{
+  "avatar.fortune.enabled": "1",
+  "avatar.fortune.multMin": "1.5",
+  "avatar.fortune.multMax": "2",
+  "avatar.fortune.allyFraction": "0.5",
+  "avatar.fortune.dragonEggEnabled": "1",
+  "avatar.fortune.dragonRidingScrollEnabled": "1"
+}
