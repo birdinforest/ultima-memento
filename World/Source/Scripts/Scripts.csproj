@@ -23,11 +23,15 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <Optimize>False</Optimize>
-    <DebugType>full</DebugType>
+    <!-- Portable PDB (managed) instead of 'full' (Windows native). The native PDB writer has
+         a 65504-byte per-method debug-metadata ceiling; large methods (e.g. Farms.PlantGardens)
+         exceed it and fail with CS0041. Portable PDB has no such limit and still supports
+         breakpoints in Visual Studio. Must match the /debug:portable used by runtime ScriptCompiler. -->
+    <DebugType>portable</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DebugType>full</DebugType>
+    <DebugType>portable</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -42,5 +46,18 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Runtime compilation (ScriptCompiler) merges Info/Scripts + Source/Scripts into one
+         assembly, so StoreMerchant (Info/Scripts/Merchant.cs) and its base SBInfo
+         (Mobiles/Base/BaseVendor.cs) are mutually visible at runtime. Mirror that here for
+         the IDE: Merchant.cs is consumed by Scripts/Mobiles/.../Merchant.cs and depends on
+         Scripts types (SBInfo, GenericBuyInfo), so it belongs in this project, not
+         SettingsOnly (which would create a circular dependency). Settings.override.cs is
+         intentionally excluded — it is owned by Configurable.csproj. -->
+    <Compile Include="..\..\Info\Scripts\Merchant.cs">
+      <Link>Info\Scripts\Merchant.cs</Link>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -215,7 +215,19 @@ namespace Server
 			DeleteFiles( "Data*.bin" );
 
 			using( StreamWriter writer = new StreamWriter( "Data/Data.ref" ) )
-			using ( CSharpCodeProvider provider = new CSharpCodeProvider() )
+			// Use the Roslyn-backed CodeDom provider (DotNetCompilerPlatform) instead of the
+			// legacy Microsoft.CSharp.CSharpCodeProvider. The legacy provider invokes the
+			// .NET Framework's bundled csc (C# 5 only), which cannot compile the C# 6+
+			// string interpolation ($"...") used throughout Scripts. On Mono this is a no-op
+			// in practice (Mono's CodeDom already uses mcs); on Windows/.NET this is required.
+			// Fully-qualified to disambiguate from Microsoft.CSharp.CSharpCodeProvider.
+			//
+			// ProviderOptions.CompilerFullPath: by default the provider looks for csc.exe at
+			// <AppDomain.BaseDirectory>\bin\roslyn\csc.exe. Our build emits it to
+			// <World/>\roslyn\csc.exe (no \bin\ segment), so point at it explicitly.
+			using ( var provider = new Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider(
+				new Microsoft.CodeDom.Providers.DotNetCompilerPlatform.ProviderOptions(
+					Path.Combine( Core.BaseDirectory, "roslyn", "csc.exe" ), 10 ) ) )
 			{
 				string path = GetUnusedPath( "Data" );
 
@@ -225,6 +237,18 @@ namespace Server
 
 				if( defines != null )
 					parms.CompilerOptions = defines;
+
+				// When emitting debug info for ~5000 Scripts in a single assembly, the default
+				// /debug:full (Windows native PDB writer) hits a native-memory ceiling and
+				// throws CS0041 "Insufficient memory" (Roslyn#73447). /debug:portable overrides
+				// that with the managed Portable PDB writer, which has no such ceiling. The
+				// resulting PDBs still support source-level breakpoints in Visual Studio.
+				if( debug )
+				{
+					if( parms.CompilerOptions != null )
+						parms.CompilerOptions += " ";
+					parms.CompilerOptions += "/debug:portable";
+				}
 
 				if( Core.HaltOnWarning )
 					parms.WarningLevel = 4;
