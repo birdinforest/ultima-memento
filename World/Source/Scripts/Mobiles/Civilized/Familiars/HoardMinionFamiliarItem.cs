@@ -76,6 +76,7 @@ namespace Server.Items
 			base.GetProperties(list);
 
 			list.Add(Server.Localization.StringCatalog.ResolveFormatByKey(null, "mob.fmt.summons_a_hoard_minion_for_0_minutes", SUMMON_DURATION_MINUTES));
+			list.Add(Server.Localization.StringCatalog.Resolve(null, "[Automatically picks up stackable items off the ground]"));
 		}
 
 		public override void Serialize( GenericWriter writer )
