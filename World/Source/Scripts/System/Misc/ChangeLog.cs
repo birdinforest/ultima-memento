@@ -16,6 +16,7 @@ namespace Server.Misc
 			builder.Append(Version() + "<br>");
 
 			builder.Append("Changes<br>");
+			builder.Append("- Gump - Add tooltips for bee hives<br>");
 			builder.Append("- Trap - Remove Trap salvage on stone face and giant spike traps is once per player per trap every 30 minutes (avoidance still works; fire columns still drop no salvage)<br>");
 			builder.Append("- Trap - Remove Trap avoidance on fire column traps no longer drops salvage gold (skill checks unchanged; other trap types still drop salvage)<br>");
 			builder.Append("- Housekeeping - The following spells had a minor change that should not impact anything:<br>");
