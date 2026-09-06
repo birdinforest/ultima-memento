@@ -575,6 +575,8 @@ When adding a third language (e.g. `zh-Hant`, `ja`):
 This file uses a simple date-stamp comment at the top for tracking. When making substantive updates, add a one-line change note at the bottom of this section.
 
 **Change log:**
+- 2026-08-30: §8.1 — indexed `EQUIPMENT_DURABILITY_BOOST_SYSTEM.md`（提高装备耐久上限：药水、蜂蜡、调和粉、与修理药水分界）。
+- 2026-08-26: §8.1 — indexed `WEAPON_SPECIAL_ABILITY_SYSTEM.md`（武器五档特攻 WeaponAbility：55 招、技能/法力、全武器绑定表）。
 - 2026-08-23: §8.1 — indexed `CRIMSON_GOLD_CONCORD_NATIONAL_DAY_EVENT_DESIGN.md`（赤金同心节四周活动：账号点数、捐献、水晶、盟约灯进阶、冠军 Boss 与奖励经济）。
 - 2026-08-23: §8.1 — indexed `CRAFTING_TRADES_SYSTEM.md`（工匠/制作机制总览：架构、专柜、掉落 vs 自制、专题交叉索引）。
 - 2026-08-22: §3.1 — added `lore-books.json` (`keep_extra`): LoreBook title/author/body shotkeys + city templates (`{0}`/`{1}`).
@@ -730,6 +732,8 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | Equipment breakdown (Break Down / Scissors) | `memento/game-mechanism/EQUIPMENT_BREAKDOWN_SYSTEM.md` | Before modifying `BreakDown.cs`, `Scissors.CutUp`, `BaseItemBreakDown`, craft `BreakDown` flags, or `ColorlessFabricBreakdown` |
 | Equipment enhancement (Enhance / Guild / sharpening stones) | `memento/game-mechanism/EQUIPMENT_ENHANCEMENT_SYSTEM.md` | Before modifying `Enhance.cs`, `GuildCraftingProcess`, `AttributeHandler`, sharpening items, or `ResourceCanChange` |
 | PvP / harmful actions / notoriety / murder | `memento/game-mechanism/PVP_COMBAT_SYSTEM.md` | Before modifying player combat, `Mobile_AllowHarmful`, criminal/murder reporting, or region combat rules |
+| Weapon special abilities / 武器五档特攻 | `memento/game-mechanism/WEAPON_SPECIAL_ABILITY_SYSTEM.md` | Before modifying `WeaponAbility`, `SpecialAttackGump`, or any weapon `PrimaryAbility`–`FifthAbility` |
+| Equipment durability boost / 提高装备耐久上限 | `memento/game-mechanism/EQUIPMENT_DURABILITY_BOOST_SYSTEM.md` | Before modifying `DurabilityPotion`, wax jars, `PowderOfTemperament`, or `RepairPotion` |
 | Slayer weapon system | `memento/game-mechanism/SLAYER_WEAPON_SYSTEM.md` | Before modifying slayer mechanics |
 | Endgame boss data & BeefUp | `memento/game-mechanism/ENDGAME_BOSS_ANALYSIS.md` | Before balancing named bosses, champ/world boss stats, or difficulty scaling |
 | Endgame content survey | `memento/game-mechanism/survey_endgame_content.md` | Broad endgame inventory (champs, Avatar, quests, items) |
