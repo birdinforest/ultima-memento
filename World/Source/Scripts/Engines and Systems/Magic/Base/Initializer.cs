@@ -177,16 +177,16 @@ namespace Server.Spells
 			Register( 331, typeof( Elementalism.Elemental_Spirit_Spell ) );
 
 			// Paladin abilities
-			Register( 200, typeof( Chivalry.CleanseByFireSpell ) );
-			Register( 201, typeof( Chivalry.CloseWoundsSpell ) );
-			Register( 202, typeof( Chivalry.ConsecrateWeaponSpell ) );
-			Register( 203, typeof( Chivalry.DispelEvilSpell ) );
-			Register( 204, typeof( Chivalry.DivineFurySpell ) );
-			Register( 205, typeof( Chivalry.EnemyOfOneSpell ) );
-			Register( 206, typeof( Chivalry.HolyLightSpell ) );
-			Register( 207, typeof( Chivalry.NobleSacrificeSpell ) );
-			Register( 208, typeof( Chivalry.RemoveCurseSpell ) );
-			Register( 209, typeof( Chivalry.SacredJourneySpell ) );
+			Register( Chivalry.CleanseByFireSpell.SpellInfo.SpellDefinition.SpellID, typeof( Chivalry.CleanseByFireSpell ) );
+			Register( Chivalry.CloseWoundsSpell.SpellInfo.SpellDefinition.SpellID, typeof( Chivalry.CloseWoundsSpell ) );
+			Register( Chivalry.ConsecrateWeaponSpell.SpellInfo.SpellDefinition.SpellID, typeof( Chivalry.ConsecrateWeaponSpell ) );
+			Register( Chivalry.DispelEvilSpell.SpellInfo.SpellDefinition.SpellID, typeof( Chivalry.DispelEvilSpell ) );
+			Register( Chivalry.DivineFurySpell.SpellInfo.SpellDefinition.SpellID, typeof( Chivalry.DivineFurySpell ) );
+			Register( Chivalry.EnemyOfOneSpell.SpellInfo.SpellDefinition.SpellID, typeof( Chivalry.EnemyOfOneSpell ) );
+			Register( Chivalry.HolyLightSpell.SpellInfo.SpellDefinition.SpellID, typeof( Chivalry.HolyLightSpell ) );
+			Register( Chivalry.NobleSacrificeSpell.SpellInfo.SpellDefinition.SpellID, typeof( Chivalry.NobleSacrificeSpell ) );
+			Register( Chivalry.RemoveCurseSpell.SpellInfo.SpellDefinition.SpellID, typeof( Chivalry.RemoveCurseSpell ) );
+			Register( Chivalry.SacredJourneySpell.SpellInfo.SpellDefinition.SpellID, typeof( Chivalry.SacredJourneySpell ) );
 
 			// Mystic abilities
 			Register( 250, typeof( Mystic.AstralProjection ) );

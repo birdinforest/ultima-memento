@@ -4,6 +4,36 @@ namespace Server.Spells
 {
 	public class SpellInfo
 	{
+		public SpellInfo( SpellDefinition spellDefinition, params Type[] regs ) : this( spellDefinition.Name, spellDefinition.PowerWords, 16, 0, 0, true, regs )
+		{
+			SpellDefinition = spellDefinition;
+		}
+
+		public SpellInfo( SpellDefinition spellDefinition, bool allowTown, params Type[] regs ) : this( spellDefinition.Name, spellDefinition.PowerWords, 16, 0, 0, allowTown, regs )
+		{
+			SpellDefinition = spellDefinition;
+		}
+
+		public SpellInfo( SpellDefinition spellDefinition, int action, params Type[] regs ) : this( spellDefinition.Name, spellDefinition.PowerWords, action, 0, 0, true, regs )
+		{
+			SpellDefinition = spellDefinition;
+		}
+
+		public SpellInfo( SpellDefinition spellDefinition, int action, bool allowTown, params Type[] regs ) : this( spellDefinition.Name, spellDefinition.PowerWords, action, 0, 0, allowTown, regs )
+		{
+			SpellDefinition = spellDefinition;
+		}
+
+		public SpellInfo( SpellDefinition spellDefinition, int action, int handEffect, params Type[] regs ) : this( spellDefinition.Name, spellDefinition.PowerWords, action, handEffect, handEffect, true, regs )
+		{
+			SpellDefinition = spellDefinition;
+		}
+
+		public SpellInfo( SpellDefinition spellDefinition, int action, int handEffect, bool allowTown, params Type[] regs ) : this( spellDefinition.Name, spellDefinition.PowerWords, action, handEffect, handEffect, allowTown, regs )
+		{
+			SpellDefinition = spellDefinition;
+		}
+		
 		public SpellInfo( string name, string mantra, params Type[] regs ) : this( name, mantra, 16, 0, 0, true, regs )
 		{
 		}
@@ -50,5 +80,6 @@ namespace Server.Spells
 		public Type[] Reagents { get; set; }
 		public int LeftHandEffect { get; set; }
 		public int RightHandEffect { get; set; }
+		public SpellDefinition SpellDefinition { get; private set; }
 	}
 }
