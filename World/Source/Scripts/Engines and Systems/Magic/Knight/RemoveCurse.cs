@@ -1,33 +1,42 @@
 using System;
-using System.Collections;
 using Server.Network;
 using Server.Items;
 using Server.Targeting;
 using Server.Spells.Necromancy;
 using Server.Spells.Fourth;
 using Server.Mobiles;
-using System.Collections.Generic;
-using Server.Misc;
 using Server.Localization;
+using System.Collections.Generic;
 
 namespace Server.Spells.Chivalry
 {
 	public class RemoveCurseSpell : PaladinSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Remove Curse", "Extermo Vomica",
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+				new SpellDefinition
+				{
+					SpellID = 208,
+					IconGraphic = 0x5108,
+					Name = "Remove Curse",
+					PowerWords = 1060726, // Extermo Vomica
+					Description = 1061498, // Attempts to remove all Curse effects from Target. Curses include Mage spells such as Clumsy, Weaken, Feeblemind, and Paralyze, as well as all Necromancer curses. Chance of removing curse is affected by the Caster’s Karma.
+					ManaCost = 20,
+					TithingCost = 10,
+					MinSkill = 5,
+					TargetType = TargetFlags.Beneficial,
+				},
 				-1,
 				9002
 			);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1.5 ); } }
 
-		public override double RequiredSkill{ get{ return 5.0; } }
-		public override int RequiredMana{ get{ return 20; } }
-		public override int RequiredTithing{ get{ return 10; } }
-		public override int MantraNumber{ get{ return 1060726; } } // Extermo Vomica
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override int MantraNumber{ get{ return SpellInfo.SpellDefinition.PowerWords.Number; } }
 
-		public RemoveCurseSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public RemoveCurseSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 
