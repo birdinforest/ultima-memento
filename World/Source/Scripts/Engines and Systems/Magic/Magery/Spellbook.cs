@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Server;
 using Server.Commands;
 using Server.Engines.Craft;
 using Server.Network;
@@ -9,6 +8,7 @@ using Server.Targeting;
 using Server.Spells.Elementalism;
 using System.Globalization;
 using Server.Localization;
+using Server.Spells.HolyMan;
 
 namespace Server.Items
 {
@@ -385,7 +385,7 @@ namespace Server.Items
 
 				Spellbook book = list[i];
 
-				if ( ElementalSpell.CanUseBook( book, from, false ) && !book.Deleted && (book.Parent == from || (pack != null && book.Parent == pack)) && ValidateSpellbook( book, spellID, type ) )
+				if ( ElementalSpell.CanUseBook( book, from, false ) && !book.Deleted && (book.Parent == from || (pack != null && book.Parent == pack)) && ValidateSpellbook( from, book, spellID, type ) )
 					return book;
 
 				list.RemoveAt( i );
@@ -432,8 +432,31 @@ namespace Server.Items
 			return (from.FindItemOnLayer( Layer.Trinket ) as Spellbook);
 		}
 
-		public static bool ValidateSpellbook( Spellbook book, int spellID, SpellbookType type )
+		public static bool ValidateSpellbook( Mobile from, Spellbook book, int spellID, SpellbookType type )
 		{
+			switch ( type )
+			{
+				case SpellbookType.HolyMan:
+					if (book is HolyManSpellbook && ((HolyManSpellbook)book).owner != from)
+						return false;
+					break;
+
+				case SpellbookType.Regular:
+				case SpellbookType.Necromancer:
+				case SpellbookType.Paladin:
+				case SpellbookType.Ninja:
+				case SpellbookType.Samurai:
+				case SpellbookType.Elementalism:
+				case SpellbookType.Song:
+				case SpellbookType.DeathKnight:
+				case SpellbookType.Mystic:
+				case SpellbookType.Syth:
+				case SpellbookType.Jedi:
+				case SpellbookType.Archmage:
+				default:
+					break;
+			}
+
 			return ( book.SpellbookType == type && ( spellID == -1 || book.HasSpell( spellID ) ) );
 		}
 
