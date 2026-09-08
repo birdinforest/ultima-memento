@@ -1,31 +1,35 @@
 using System;
 using System.Collections;
-using Server;
 using Server.Items;
-using Server.Gumps;
-using Server.Spells;
 using Server.Targeting;
-using Server.Network;
-using Server.Regions;
-using Server.Misc;
-using Server.Localization;
 
 namespace Server.Spells.HolyMan
 {
 	public class EnchantSpell : HolyManSpell
     {
-        private static SpellInfo m_Info = new SpellInfo(
-				"Enchant", "Fascinare",
-				266,
-				9040
-			);
+        public static readonly SpellInfo SpellInfo = new SpellInfo(
+            new SpellDefinition
+            {
+                SpellID = 772,
+                IconGraphic = 0x967,
+                Name = "Enchant",
+                PowerWords = "Fascinare",
+				Description = "Temporarily imbues a weapon with holy powers.",
+                ManaCost = 45,
+                TithingCost = 180,
+                MinSkill = 90,
+                TargetType = TargetFlags.Beneficial
+            },
+			266,
+			9040
+        );
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 3 ); } }
-		public override int RequiredTithing{ get{ return 180; } }
-		public override double RequiredSkill{ get{ return 90.0; } }
-		public override int RequiredMana{ get{ return 45; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
-        public EnchantSpell(Mobile caster, Item scroll) : base(caster, scroll, m_Info)
+        public EnchantSpell(Mobile caster, Item scroll) : base(caster, scroll, SpellInfo)
         {
         }
 
@@ -55,7 +59,7 @@ namespace Server.Spells.HolyMan
 				}
 				else if ( !weapon.IsChildOf( Caster.Backpack ) )
 				{
-					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "The weapon must be in your pack to enchant." ) );
+					Caster.SendMessage( "The weapon must be in your pack to enchant." );
 				}
 				else if (CheckSequence())
 				{
@@ -96,7 +100,7 @@ namespace Server.Spells.HolyMan
 			}
 			else
 			{
-				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You can only enchant weapons with this spell." ) );
+				Caster.SendMessage( "You can only enchant weapons with this spell." );
 			}
             FinishSequence();
         }
@@ -118,7 +122,7 @@ namespace Server.Spells.HolyMan
                 }
                 else
                 {
-                    from.SendMessage( StringCatalog.Resolve( from.Account, "That cannot be enchanted." ) );
+                    from.SendMessage("That cannot be enchanted.");
                 }
             }
 

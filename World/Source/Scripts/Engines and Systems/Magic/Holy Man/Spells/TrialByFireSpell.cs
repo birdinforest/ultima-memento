@@ -2,27 +2,34 @@ using System;
 using Server.Localization;
 using System.Collections;
 using Server.Targeting;
-using Server.Network;
-using Server.Mobiles;
-using Server.Items;
-using Server.Spells;
 
 namespace Server.Spells.HolyMan
 {
 	public class TrialByFireSpell : HolyManSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Trial by Fire", "Igne Iudicii",
-				266,
-				9040
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 783,
+				IconGraphic = 0x972,
+				Name = "Trial by Fire",
+				PowerWords = "Igne Iudicii",
+				Description = "Engulfs the priest in holy flames, reflecting magic back at the caster.",
+				ManaCost = 15,
+				TithingCost = 500,
+				MinSkill = 30,
+				TargetType = TargetFlags.None
+			},
+			266,
+			9040
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 3 ); } }
-		public override int RequiredTithing{ get{ return 500; } }
-		public override double RequiredSkill{ get{ return 30.0; } }
-		public override int RequiredMana{ get{ return 15; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public TrialByFireSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public TrialByFireSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 

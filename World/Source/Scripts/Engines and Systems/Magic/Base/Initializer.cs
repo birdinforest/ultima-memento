@@ -355,20 +355,20 @@ namespace Server.Spells
 			Register( 763, typeof( DeathKnight.WrathSpell ) );
 
 			// Holy Man Spells
-			Register( 770, typeof( HolyMan.BanishEvilSpell ) );
-			Register( 771, typeof( HolyMan.DampenSpiritSpell ) );
-			Register( 772, typeof( HolyMan.EnchantSpell ) );
-			Register( 773, typeof( HolyMan.HammerOfFaithSpell ) );
-			Register( 774, typeof( HolyMan.HeavenlyLightSpell ) );
-			Register( 775, typeof( HolyMan.NourishSpell ) );
-			Register( 776, typeof( HolyMan.PurgeSpell ) );
-			Register( 777, typeof( HolyMan.RebirthSpell ) );
-			Register( 778, typeof( HolyMan.SacredBoonSpell ) );
-			Register( 779, typeof( HolyMan.SanctifySpell ) );
-			Register( 780, typeof( HolyMan.SeanceSpell ) );
-			Register( 781, typeof( HolyMan.SmiteSpell ) );
-			Register( 782, typeof( HolyMan.TouchOfLifeSpell ) );
-			Register( 783, typeof( HolyMan.TrialByFireSpell ) );
+			Register( HolyMan.BanishEvilSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.BanishEvilSpell ) );
+			Register( HolyMan.DampenSpiritSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.DampenSpiritSpell ) );
+			Register( HolyMan.EnchantSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.EnchantSpell ) );
+			Register( HolyMan.HammerOfFaithSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.HammerOfFaithSpell ) );
+			Register( HolyMan.HeavenlyLightSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.HeavenlyLightSpell ) );
+			Register( HolyMan.NourishSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.NourishSpell ) );
+			Register( HolyMan.PurgeSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.PurgeSpell ) );
+			Register( HolyMan.RebirthSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.RebirthSpell ) );
+			Register( HolyMan.SacredBoonSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.SacredBoonSpell ) );
+			Register( HolyMan.SanctifySpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.SanctifySpell ) );
+			Register( HolyMan.SeanceSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.SeanceSpell ) );
+			Register( HolyMan.SmiteSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.SmiteSpell ) );
+			Register( HolyMan.TouchOfLifeSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.TouchOfLifeSpell ) );
+			Register( HolyMan.TrialByFireSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.TrialByFireSpell ) );
 
 			// Bard Songs
 			Register( 351, typeof( Song.ArmysPaeonSong ) );

@@ -1,26 +1,33 @@
 using System;
-using Server;
 using Server.Targeting;
-using Server.Network;
-using Server.Spells;
-using Server.Localization;
 
 namespace Server.Spells.HolyMan
 {
 	public class HeavenlyLightSpell : HolyManSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Heavenly Light", "Caelesti Lumine",
-				266,
-				9040
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 774,
+				IconGraphic = 0x969,
+				Name = "Heavenly Light",
+				PowerWords = "Caelesti Lumine",
+				Description = "Destroys the darkness, allowing for one to see better.",
+				ManaCost = 5,
+				TithingCost = 20,
+				MinSkill = 10,
+				TargetType = TargetFlags.None
+			},
+			266,
+			9040
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 3 ); } }
-		public override int RequiredTithing{ get{ return 20; } }
-		public override double RequiredSkill{ get{ return 10.0; } }
-		public override int RequiredMana{ get{ return 5; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public HeavenlyLightSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public HeavenlyLightSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 
@@ -63,7 +70,7 @@ namespace Server.Spells.HolyMan
 					}
 					else
 					{
-						from.SendMessage( StringCatalog.ResolveFormat( from.Account, "{0} already have nightsight.", from == targ ? "You" : "They" ) );
+						from.SendMessage( "{0} already have nightsight.", from == targ ? "You" : "They" );
 					}
 				}
 

@@ -1,28 +1,33 @@
 using System;
-using Server.Localization;
-using System.Collections;
 using Server.Targeting;
-using Server.Network;
-using Server.Mobiles;
-using Server.Items;
-using Server.Spells;
 
 namespace Server.Spells.HolyMan
 {
 	public class DampenSpiritSpell : HolyManSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Dampen Spirit", "Accipe Spiritum",
-				266,
-				9040
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 771,
+				IconGraphic = 0x966,
+				Name = "Dampen Spirit",
+				PowerWords = "Accipe Spiritum",
+				Description = "Absorbs mana from others and bestows it to the priest.",
+				ManaCost = 35,
+				TithingCost = 140,
+				MinSkill = 70,
+				TargetType = TargetFlags.Harmful
+			},
+			266,
+			9040
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 3 ); } }
-		public override int RequiredTithing{ get{ return 140; } }
-		public override double RequiredSkill{ get{ return 70.0; } }
-		public override int RequiredMana{ get{ return 35; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public DampenSpiritSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public DampenSpiritSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 
@@ -58,7 +63,7 @@ namespace Server.Spells.HolyMan
 					int toDrain = 0;
 
 					if ( m.Karma > 0 )
-						Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "The gods will not smite such a kindly soul." ) );
+						Caster.SendMessage( "The gods will not smite such a kindly soul." );
 					else
 					{
 						toDrain = (int)(GetDamageSkill( Caster ) - GetResistSkill( m ));

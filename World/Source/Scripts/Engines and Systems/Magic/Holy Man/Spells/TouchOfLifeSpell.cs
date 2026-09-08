@@ -1,26 +1,33 @@
 using System;
-using System.Collections;
 using Server.Targeting;
-using Server.Network;
-using Server.Mobiles;
-using Server.Spells;
 
 namespace Server.Spells.HolyMan
 {
 	public class TouchOfLifeSpell : HolyManSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Touch of Life", "Tactus Vitae",
-				266,
-				9040
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 782,
+				IconGraphic = 0x971,
+				Name = "Touch of Life",
+				PowerWords = "Tactus Vitae",
+				Description = "Restores health and stamina to the weary.",
+				ManaCost = 10,
+				TithingCost = 40,
+				MinSkill = 20,
+				TargetType = TargetFlags.Beneficial
+			},
+			266,
+			9040
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 3 ); } }
-		public override int RequiredTithing{ get{ return 40; } }
-		public override double RequiredSkill{ get{ return 20.0; } }
-		public override int RequiredMana{ get{ return 10; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public TouchOfLifeSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public TouchOfLifeSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 

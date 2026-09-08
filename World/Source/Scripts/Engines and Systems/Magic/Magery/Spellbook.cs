@@ -256,7 +256,7 @@ namespace Server.Items
 				return SpellbookType.Song;
 			else if ( spellID >= 750 && spellID < 764 )
 				return SpellbookType.DeathKnight;
-			else if ( spellID >= 770 && spellID < 784 )
+			else if ( spellID >= HolyManSpellProvider.FirstSpellId && spellID <= HolyManSpellProvider.LastSpellId)
 				return SpellbookType.HolyMan;
 			else if ( spellID >= 250 && spellID < 260 )
 				return SpellbookType.Mystic;
