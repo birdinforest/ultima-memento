@@ -1,29 +1,36 @@
 using System;
 using System.Collections;
 using Server.Targeting;
-using Server.Network;
-using Server.Mobiles;
-using Server.Items;
-using Server.Localization;
 
 namespace Server.Spells.DeathKnight
 {
 	public class SoulReaperSpell : DeathKnightSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Soul Reaper", "Xaphan Spiritum",
-				221,
-				9032
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 759,
+				IconGraphic = 0x5006,
+				Name = "Soul Reaper",
+				PowerWords = "Xaphan Spiritum",
+				Description = "Drains the enemy of their soul, reducing their mana for a short period of time.",
+				ManaCost = 40,
+				TithingCost = 63,
+				MinSkill = 45,
+				TargetType = TargetFlags.Harmful
+			},
+			221,
+			9032
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1 ); } }
-		public override int RequiredTithing{ get{ return 63; } }
-		public override double RequiredSkill{ get{ return 45.0; } }
-		public override int RequiredMana{ get{ return 40; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
 		private static Hashtable m_Table = new Hashtable();
 
-		public SoulReaperSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public SoulReaperSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 
@@ -66,7 +73,7 @@ namespace Server.Spells.DeathKnight
 
 				m.FixedParticles( 0x374A, 10, 15, 5032, EffectLayer.Head );
 				m.PlaySound( 0x1F8 );
-				m.SendMessage( StringCatalog.Resolve( m.Account, "You feel your soul weakening." ) );
+				m.SendMessage( "You feel your soul weakening." );
 
 				DrainSoulsInLantern( Caster, RequiredTithing );
 			}
@@ -94,7 +101,7 @@ namespace Server.Spells.DeathKnight
 				{
 					Stop();
 					m_Table.Remove( m_Owner );
-					m_Owner.SendMessage( StringCatalog.Resolve( m_Owner.Account, "Your soul begins to recover." ) );
+					m_Owner.SendMessage( "Your soul begins to recover." );
 				}
 				else if ( m_Owner.Mana < 10 )
 				{

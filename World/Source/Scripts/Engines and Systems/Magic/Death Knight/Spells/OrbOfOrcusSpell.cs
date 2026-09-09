@@ -1,29 +1,34 @@
 using System;
 using System.Collections;
-using Server;
 using Server.Targeting;
-using Server.Network;
-using Server.Spells;
-using Server.Misc;
-using Server.Mobiles;
-using Server.Items;
 
 namespace Server.Spells.DeathKnight
 {
 	public class OrbOfOrcusSpell : DeathKnightSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Orb of Orcus", "Orcus Arma",
-				218,
-				9031
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 757,
+				IconGraphic = 0x1B,
+				Name = "Orb of Orcus",
+				PowerWords = "Orcus Arma",
+				Description = "The forces of Orcus surround the knight and reflects a certain amount of magical effects back at the caster.",
+				ManaCost = 56,
+				TithingCost = 200,
+				MinSkill = 80,
+				TargetType = TargetFlags.None
+			},
+			218,
+			9031
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1 ); } }
-		public override int RequiredTithing{ get{ return 200; } }
-		public override double RequiredSkill{ get{ return 80.0; } }
-		public override int RequiredMana{ get{ return 56; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public OrbOfOrcusSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public OrbOfOrcusSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 

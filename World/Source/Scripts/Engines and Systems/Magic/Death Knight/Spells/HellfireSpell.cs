@@ -1,27 +1,34 @@
 using System;
 using System.Collections;
 using Server.Targeting;
-using Server.Network;
-using Server.Mobiles;
-using Server.Items;
-using Server.Localization;
 
 namespace Server.Spells.DeathKnight
 {
 	public class HellfireSpell : DeathKnightSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Demonic Hellfire", "Flam Infernum",
-				242,
-				9012
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 755,
+				IconGraphic = 0x3E9,
+				Name = "Demonic Hellfire",
+				PowerWords = "Flam Infernum",
+				Description = "The death knight's enemy is scorched by a hellfire that continues to burn the enemy for a short duration.",
+				ManaCost = 52,
+				TithingCost = 84,
+				MinSkill = 70,
+				TargetType = TargetFlags.Harmful
+			},
+			242,
+			9012
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1 ); } }
-		public override int RequiredTithing{ get{ return 84; } }
-		public override double RequiredSkill{ get{ return 70.0; } }
-		public override int RequiredMana{ get{ return 52; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public HellfireSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public HellfireSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 
@@ -40,7 +47,7 @@ namespace Server.Spells.DeathKnight
 			{
 				m.FixedParticles( 0x3709, 10, 30, 5052, 0, 0, EffectLayer.LeftFoot );
 				m.PlaySound( 0x208 );
-				m.SendMessage( StringCatalog.Resolve( m.Account, "You feel your body being scorched by demonic hellfire!" ) );
+				m.SendMessage( "You feel your body being scorched by demonic hellfire!" );
 
 				SpellHelper.Turn( Caster, m );
 
@@ -106,7 +113,7 @@ namespace Server.Spells.DeathKnight
 			t.Stop();
 			m_Table.Remove( m );
 			m.YellowHealthbar = false;
-			m.SendMessage( StringCatalog.Resolve( m.Account, "The flames die out.." ) );
+			m.SendMessage( "The flames die out.." );
 		}
 
 		private class InternalTimer : Timer

@@ -1,19 +1,19 @@
 using Server.Gumps;
-using Server.Localization;
+using Server.Spells.DeathKnight;
 
 namespace Server.Items
 {
 	[FlipableAttribute( 0x6721, 0x6722 )]
 	public class DeathKnightSpellbook : Spellbook
 	{
-		public override string DefaultDescription{ get{ return StringCatalog.ResolveByKey(null, "eng.this_vile_book_can_contain_magic_used_by_death_knights_dot_fillings_its_pages_can_only_be_achieved_b"); } }
+		public override string DefaultDescription{ get{ return "This vile book can contain magic used by death knights. Fillings its pages can only be achieved by finding the resting places of long dead death knights."; } }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Owner { get; set; }
 
 		public override SpellbookType SpellbookType{ get{ return SpellbookType.DeathKnight; } }
-		public override int BookOffset{ get{ return 750; } }
-		public override int BookCount{ get{ return 15; } }
+		public override int BookOffset{ get{ return DeathKnightSpellProvider.FirstSpellId; } }
+		public override int BookCount{ get{ return DeathKnightSpellProvider.SpellCount; } }
 
 		[Constructable]
 		public DeathKnightSpellbook() : this( 0, null )
@@ -62,7 +62,7 @@ namespace Server.Items
 
 			if ( Owner != from )
 			{
-				from.SendMessage( StringCatalog.Resolve( from.Account, "These pages appears as scribbles to you." ) );
+				from.SendMessage( "These pages appears as scribbles to you." );
 			}
 			else if ( Parent == from || ( pack != null && Parent == pack ) )
 			{
@@ -76,7 +76,7 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			if ( Owner != null ){ list.Add( 1070722, StringCatalog.ResolveFormat( null, "For {0}", Owner.Name ) ); }
+			if ( Owner != null ){ list.Add( 1070722, "For " + Owner.Name + "" ); }
         }
 
 		public DeathKnightSpellbook( Serial serial ) : base( serial )

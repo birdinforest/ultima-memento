@@ -339,20 +339,20 @@ namespace Server.Spells
 			Register( 706, typeof( Magical.TravelSpell ) );
 
 			// Death Knight Spells
-			Register( 750, typeof( DeathKnight.BanishSpell ) );
-			Register( 751, typeof( DeathKnight.DemonicTouchSpell ) );
-			Register( 752, typeof( DeathKnight.DevilPactSpell ) );
-			Register( 753, typeof( DeathKnight.GrimReaperSpell ) );
-			Register( 754, typeof( DeathKnight.HagHandSpell ) );
-			Register( 755, typeof( DeathKnight.HellfireSpell ) );
-			Register( 756, typeof( DeathKnight.LucifersBoltSpell ) );
-			Register( 757, typeof( DeathKnight.OrbOfOrcusSpell ) );
-			Register( 758, typeof( DeathKnight.ShieldOfHateSpell ) );
-			Register( 759, typeof( DeathKnight.SoulReaperSpell ) );
-			Register( 760, typeof( DeathKnight.StrengthOfSteelSpell ) );
-			Register( 761, typeof( DeathKnight.StrikeSpell ) );
-			Register( 762, typeof( DeathKnight.SuccubusSkinSpell ) );
-			Register( 763, typeof( DeathKnight.WrathSpell ) );
+			Register( DeathKnight.BanishSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.BanishSpell ) );
+			Register( DeathKnight.DemonicTouchSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.DemonicTouchSpell ) );
+			Register( DeathKnight.DevilPactSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.DevilPactSpell ) );
+			Register( DeathKnight.GrimReaperSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.GrimReaperSpell ) );
+			Register( DeathKnight.HagHandSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.HagHandSpell ) );
+			Register( DeathKnight.HellfireSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.HellfireSpell ) );
+			Register( DeathKnight.LucifersBoltSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.LucifersBoltSpell ) );
+			Register( DeathKnight.OrbOfOrcusSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.OrbOfOrcusSpell ) );
+			Register( DeathKnight.ShieldOfHateSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.ShieldOfHateSpell ) );
+			Register( DeathKnight.SoulReaperSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.SoulReaperSpell ) );
+			Register( DeathKnight.StrengthOfSteelSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.StrengthOfSteelSpell ) );
+			Register( DeathKnight.StrikeSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.StrikeSpell ) );
+			Register( DeathKnight.SuccubusSkinSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.SuccubusSkinSpell ) );
+			Register( DeathKnight.WrathSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.WrathSpell ) );
 
 			// Holy Man Spells
 			Register( HolyMan.BanishEvilSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.BanishEvilSpell ) );
