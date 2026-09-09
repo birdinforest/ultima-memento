@@ -508,52 +508,71 @@ namespace Server.Mobiles
 			get { return m_RecoverableAmmo; }
 		}
 
-		public void RecoverAmmo()
+		public bool TryAddAmmoToQuiver( Item ammo )
 		{
-			if ( Alive )
+			if ( ammo is Arrow || ammo is Bolt )
 			{
-				foreach ( KeyValuePair<Type, int> kvp in m_RecoverableAmmo )
+				string name = ammo.Name;
+				if (name == null)
 				{
-					if ( kvp.Value > 0 )
+					if (ammo is Arrow) name = "arrow";
+					else if (ammo is Bolt) name = "bolt";
+				}
+
+				if (name != null && ammo.Amount > 1)
+					name = String.Format("{0}s", name);
+
+				if (name == null)
+					name = String.Format("#{0}", ammo.LabelNumber);
+
+				var destination = Backpack;
+				var quiver = FindItemOnLayer( Layer.Cloak ) as BaseQuiver;
+				if ( quiver != null )
+				{
+					// If equipped quiver is empty or the ammo type matches, restock it
+					if ( quiver.Items.Count < 1 || quiver.FindItemByType( ammo.GetType() ) != null )
 					{
-						Item ammo = null;
-
-						try
-						{
-							ammo = Activator.CreateInstance( kvp.Key ) as Item;
-						}
-						catch
-						{
-						}
-
-						if ( ammo != null )
-						{
-							string name = ammo.Name;
-							ammo.Amount = kvp.Value;
-
-							if ( name == null )
-							{
-								if ( ammo is Arrow )
-									name = "arrow";
-								else if ( ammo is Bolt )
-									name = "bolt";
-							}
-
-							if ( name != null && ammo.Amount > 1 )
-								name = String.Format( "{0}s", name );
-
-							if ( name == null )
-								name = String.Format( "#{0}", ammo.LabelNumber );
-
-							PlaceInBackpack( ammo );
-							Server.Gumps.QuickBar.RefreshQuickBar( this );
-							SendLocalizedMessage( 1073504, String.Format( "{0}\t{1}", ammo.Amount, name ) ); // You recover ~1_NUM~ ~2_AMMO~.
-						}
+						destination = quiver;
 					}
 				}
 
-				m_RecoverableAmmo.Clear();
+				if ( destination != null && destination.TryDropItem( this, ammo, false ))
+				{
+					Server.Gumps.QuickBar.RefreshQuickBar(this);
+					SendLocalizedMessage(1073504, String.Format("{0}\t{1}", ammo.Amount, name)); // You recover ~1_NUM~ ~2_AMMO~.
+
+					return true;
+				}
 			}
+
+			return false;
+		}
+
+		public void RecoverAmmo()
+		{
+			if ( !Alive ) return;
+			if ( m_RecoverableAmmo.Count < 1 ) return;
+
+			foreach ( var kvp in m_RecoverableAmmo )
+			{
+				if (kvp.Value < 1) continue;
+
+				try
+				{
+					var ammo = Activator.CreateInstance( kvp.Key ) as Item;
+					ammo.Amount = kvp.Value;
+
+					if ( !TryAddAmmoToQuiver( ammo ) )
+					{
+						ammo.Delete();
+					}
+				}
+				catch
+				{
+				}
+			}
+
+			m_RecoverableAmmo.Clear();
 		}
 
 		#endregion
@@ -3174,13 +3193,22 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool IsTitanOfEther { get; set; }
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public CharacterType CharacterType { get; private set; }
+		private CharacterType _characterType;
+
+		[CommandProperty(AccessLevel.GameMaster, AccessLevel.Administrator)]
+		public CharacterType CharacterType
+		{
+			get { return _characterType; }
+			set
+			{
+				_characterType = value;
+				RefreshSkillCap();
+			}
+		}
 
 		public void SetCharacterType( CharacterType type )
 		{
 			CharacterType = type;
-			RefreshSkillCap();
 		}
 
 		public void RefreshSkillCap()

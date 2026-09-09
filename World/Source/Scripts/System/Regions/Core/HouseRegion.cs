@@ -212,6 +212,9 @@ namespace Server.Regions
 			else if ( m is BaseCreature && ((BaseCreature)m).IsHouseSummonable && !(BaseCreature.Summoning || m_House.IsInside( oldLocation, 16 )) )
 			{
 			}
+			else if ( m is Mannequin )
+			{
+			}
 			else if ( (m_House.Public || !m_House.IsAosRules) && m_House.IsBanned( m ) && m_House.IsInside( m ) )
 			{
 				m.Location = m_House.BanLocation;
@@ -259,6 +262,9 @@ namespace Server.Regions
 				return false;
 
 			if ( from is BaseCreature && ((BaseCreature)from).NoHouseRestrictions )
+			{
+			}
+			else if ( from is Mannequin )
 			{
 			}
 			else if ( from is BaseCreature && !((BaseCreature)from).Controlled ) // Untamed creatures cannot enter public houses

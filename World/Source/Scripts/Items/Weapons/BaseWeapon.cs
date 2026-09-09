@@ -2344,6 +2344,11 @@ namespace Server.Items
 			return true;
 		}
 
+		protected virtual bool CheckWizardEquip( Mobile from )
+		{
+			return WizardCheck( from );
+		}
+
 		public bool Scissor( Mobile from, Scissors scissors )
 		{
 			bool extraCloth = false;

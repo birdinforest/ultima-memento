@@ -300,7 +300,7 @@ namespace Server
 			if ( CodexOwner != null ){ list.Add( 1049644, "Belongs to " + CodexOwner.Name + "" ); }
         }
 
-		public override bool OnEquip( Mobile from )
+		public override bool CanEquip( Mobile from )
 		{
 			if ( CodexOwner != from )
 			{
@@ -308,7 +308,7 @@ namespace Server
 				return false;
 			}
 
-			return base.OnEquip( from );
+			return base.CanEquip( from );
 		}
 
 		public override void OnDoubleClick( Mobile from )

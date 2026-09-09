@@ -35,14 +35,14 @@ namespace Server.Items
 				AddLocalizedProperty(list, "prop.equip.trinket.savage.for", ItemOwner.Name);
         }
 
-		public override bool OnEquip( Mobile from )
+		public override bool CanEquip( Mobile from )
 		{
-			if ( this.ItemOwner != from )
+			if ( ItemOwner != from )
 			{
 				from.LocalOverheadMessage( MessageType.Emote, 0x916, true, StringCatalog.ResolveByKey( from.Account, "prop.equip.trinket.msg.belongs.other" ) );
 				return false;
 			}
-			return true;
+			return base.CanEquip( from );
 		}
 
 		public override void OnDoubleClick( Mobile from )
