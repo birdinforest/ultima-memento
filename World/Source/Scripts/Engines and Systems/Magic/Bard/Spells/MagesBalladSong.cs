@@ -2,23 +2,33 @@ using Server.Engines.MobileEnhancement;
 using Server.Items;
 using Server.Misc;
 using System;
-using Server.Localization;
+using Server.Targeting;
 
 namespace Server.Spells.Song
 {
 	public class MagesBalladSong : Song
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-			"Mage's Ballad", "*plays a mage's ballad*",
-			-1
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 361,
+				IconGraphic = 0x40E,
+				Name = "Mage's Ballad",
+				PowerWords = "*plays a mage's ballad*",
+				Description = "An area of effect that regenerates your party's mana slowly.",
+				ManaCost = 15,
+				MinSkill = 55,
+				TargetType = TargetFlags.Beneficial
+			},
+	-1
+		);
 
 		public override bool BlocksMovement { get{ return true; } }
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(3); } }
-		public override double RequiredSkill { get { return 55; } }
-		public override int RequiredMana { get { return 15; } }
+		public override double RequiredSkill { get { return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana { get { return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public MagesBalladSong(Mobile caster, Item scroll) : base(caster, scroll, m_Info)
+		public MagesBalladSong(Mobile caster, Item scroll) : base(caster, scroll, SpellInfo)
 		{
 		}
 
@@ -73,13 +83,13 @@ namespace Server.Spells.Song
 
 				var m = TargetMobile;
 				BuffInfo.RemoveBuff(m, BuffIcon.MagesBallad);
-				m.SendMessage("The effect of {0} wears off.", m_Info.Name);
+				m.SendMessage("The effect of {0} wears off.", SpellInfo.SpellDefinition.Name);
 			}
 
 			protected override bool TryApplyInternal()
 			{
 				var m = TargetMobile;
-				m.SendMessage( StringCatalog.Resolve( m.Account, "Your mind clears." ) );
+				m.SendMessage("Your mind clears.");
 				m_Timer = Timer.DelayCall(m_TickInterval, m_TickInterval, () =>
 				{
 					if (m == null || m.Deleted || !m.Alive || DateTime.Now >= AppliedAt + Duration)

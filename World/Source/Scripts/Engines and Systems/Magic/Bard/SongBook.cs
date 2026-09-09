@@ -1,18 +1,16 @@
 using Server.Gumps;
-using Server.Localization;
+using Server.Spells.Song;
 
 namespace Server.Items
 {
 	[FlipableAttribute( 0x671B, 0x671C )]
 	public class SongBook : Spellbook
 	{
-		public override string DisplayNameLocalizationKey => "item.magical.songbook";
-		public override bool IsContentLocalized => true;
-		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "This book is used by bards to write the mystical songs they find. The songs within the book can be used to produce varying magical effects. These songs require the use of a musical instrument. Dropping such scrolls onto this book will place the song within its pages. Some books have enhanced properties, that are only effective when the book is held." ); } }
+		public override string DefaultDescription{ get{ return "This book is used by bards to write the mystical songs they find. The songs within the book can be used to produce varying magical effects. These songs require the use of a musical instrument. Dropping such scrolls onto this book will place the song within its pages. Some books have enhanced properties, that are only effective when the book is held."; } }
 
 		public override SpellbookType SpellbookType{ get{ return SpellbookType.Song; } }
-		public override int BookOffset{ get{ return 351; } }
-		public override int BookCount{ get{ return 16; } }
+		public override int BookOffset{ get{ return BardSongProvider.FirstSpellId; } }
+		public override int BookCount{ get{ return BardSongProvider.SpellCount; } }
 
 		[Constructable]
 		public SongBook() : this( (ulong)0 )
@@ -37,35 +35,13 @@ namespace Server.Items
 
 		public static string SpellDescription( int spell )
 		{
-			return SpellDescription( null, spell );
-		}
+			string txt = "This is a bardic song: ";
+			var definition = BardSongProvider.GetDefinition(spell);
+			if ( definition == null ) return txt; // Unknown spell
 
-		public static string SpellDescription( Server.Accounting.IAccount account, int spell )
-		{
-			string txt = StringCatalog.Resolve( account, "This is a bardic song: " );
-			string skl = "0";
+			txt += definition.Description;
 
-			if ( spell == 351 ){ 	skl = "55";	txt = StringCatalog.Resolve( account, "An area of effect that regenerates your party's health slowly." ); }
-			else if ( spell == 352 ){ 	skl = "60";	txt = StringCatalog.Resolve( account, "An area of effect that raises the intelligence of your party." ); }
-			else if ( spell == 353 ){ 	skl = "50";	txt = StringCatalog.Resolve( account, "An area of effect that raises the energy resistance of your party." ); }
-			else if ( spell == 354 ){ 	skl = "70";	txt = StringCatalog.Resolve( account, "Lowers the energy resistance of your target." ); }
-			else if ( spell == 355 ){ 	skl = "50";	txt = StringCatalog.Resolve( account, "An area of effect that raises the fire resistance of your party." ); }
-			else if ( spell == 356 ){ 	skl = "70";	txt = StringCatalog.Resolve( account, "Lowers the fire resistance of your target." ); }
-			else if ( spell == 357 ){ 	skl = "50";	txt = StringCatalog.Resolve( account, "Damages your target with a burst of sonic energy." ); }
-			else if ( spell == 358 ){ 	skl = "50";	txt = StringCatalog.Resolve( account, "An area of effect that raises the cold resistance of your party." ); }
-			else if ( spell == 359 ){ 	skl = "70";	txt = StringCatalog.Resolve( account, "Lowers the ice resistance of your target." ); }
-			else if ( spell == 360 ){ 	skl = "50";	txt = StringCatalog.Resolve( account, "An area of effect that raises the physical resist of your party." ); }
-			else if ( spell == 361 ){ 	skl = "55";	txt = StringCatalog.Resolve( account, "An area of effect that regenerates your party's mana slowly." ); }
-			else if ( spell == 362 ){ 	skl = "90";	txt = StringCatalog.Resolve( account, "An area of effect that dispels all summoned creatures around you." ); }
-			else if ( spell == 363 ){ 	skl = "50";	txt = StringCatalog.Resolve( account, "An area of effect that raises the poison resistance of your party." ); }
-			else if ( spell == 364 ){ 	skl = "70";	txt = StringCatalog.Resolve( account, "Lowers the poison resistance of your target." ); }
-			else if ( spell == 365 ){ 	skl = "60";	txt = StringCatalog.Resolve( account, "An area of effect that raises the dexterity of your party." ); }
-			else if ( spell == 366 ){ 	skl = "60";	txt = StringCatalog.Resolve( account, "An area of effect that raises the strength of your party." ); }
-
-			if ( skl == "0" )
-				return txt;
-
-			return txt + " " + StringCatalog.ResolveFormat( account, "It requires at least a {0} in Musicianship to perform.", skl );
+			return txt + " It requires at least a " + definition.MinSkill + " in Musicianship to perform.";
 		}
 
 		public SongBook( Serial serial ) : base( serial )

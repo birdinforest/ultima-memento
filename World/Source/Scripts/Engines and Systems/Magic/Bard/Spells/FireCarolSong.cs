@@ -3,22 +3,32 @@ using Server.Mobiles;
 using Server.Misc;
 using Server.Engines.MobileEnhancement;
 using Server.Items;
-using Server.Localization;
+using Server.Targeting;
 
 namespace Server.Spells.Song
 {
 	public class FireCarolSong : Song
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Fire Carol", "*plays a fire carol*",
-				-1
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 355,
+				IconGraphic = 0x408,
+				Name = "Fire Carol",
+				PowerWords = "*plays a fire carol*",
+				Description = "An area of effect that raises the fire resistance of your party.",
+				ManaCost = 12,
+				MinSkill = 50,
+				TargetType = TargetFlags.Beneficial
+			},
+	-1
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(0.5); } }
-		public override double RequiredSkill { get { return 50.0; } }
-		public override int RequiredMana { get { return 12; } }
+		public override double RequiredSkill { get { return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana { get { return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public FireCarolSong(Mobile caster, Item scroll) : base(caster, scroll, m_Info)
+		public FireCarolSong(Mobile caster, Item scroll) : base(caster, scroll, SpellInfo)
 		{
 		}
 
@@ -65,7 +75,7 @@ namespace Server.Spells.Song
 				m_Mod = null;
 
 				BuffInfo.RemoveBuff(m, BuffIcon.FireCarol);
-				m.SendMessage("The effect of {0} wears off.", m_Info.Name);
+				m.SendMessage("The effect of {0} wears off.", SpellInfo.SpellDefinition.Name);
 			}
 
 			protected override bool TryApplyInternal()
@@ -83,7 +93,7 @@ namespace Server.Spells.Song
 					}
 				}
 
-				m.SendMessage( StringCatalog.Resolve( m.Account, "Your resistance to fire has increased." ) );
+				m.SendMessage("Your resistance to fire has increased.");
 				m_Mod = new ResistanceMod(ResistanceType.Fire, +amount);
 				m.AddResistanceMod(m_Mod);
 				m.FixedParticles(0x373A, 10, 15, 5012, 0x21, 3, EffectLayer.Waist);

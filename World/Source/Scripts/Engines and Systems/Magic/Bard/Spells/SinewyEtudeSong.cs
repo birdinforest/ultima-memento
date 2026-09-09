@@ -2,21 +2,32 @@ using Server.Engines.MobileEnhancement;
 using Server.Misc;
 using System;
 using Server.Items;
+using Server.Targeting;
 
 namespace Server.Spells.Song
 {
 	public class SinewyEtudeSong : Song
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-			"Sinewy Etude", "*plays a sinewy etude*",
-			-1
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 366,
+				IconGraphic = 0x414,
+				Name = "Sinewy Etude",
+				PowerWords = "*plays a sinewy etude*",
+				Description = "An area of effect that raises the strength of your party.",
+				ManaCost = 20,
+				MinSkill = 60,
+				TargetType = TargetFlags.Beneficial
+			},
+	-1
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(0.5); } }
-		public override double RequiredSkill { get { return 60.0; } }
-		public override int RequiredMana { get { return 20; } }
+		public override double RequiredSkill { get { return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana { get { return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public SinewyEtudeSong(Mobile caster, Item scroll) : base(caster, scroll, m_Info)
+		public SinewyEtudeSong(Mobile caster, Item scroll) : base(caster, scroll, SpellInfo)
 		{
 		}
 
@@ -60,7 +71,7 @@ namespace Server.Spells.Song
 				m.RemoveStatMod(StatModName);
 
 				BuffInfo.RemoveBuff(m, BuffIcon.SinewyEtude);
-				m.SendMessage("The effect of {0} wears off.", m_Info.Name);
+				m.SendMessage("The effect of {0} wears off.", SpellInfo.SpellDefinition.Name);
 			}
 
 			protected override bool TryApplyInternal()

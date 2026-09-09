@@ -1,13 +1,10 @@
-using System;
-using Server;
-using Server.Items;
-using Server.Localization;
+using Server.Spells.Song;
 
 namespace Server.Items
 {
 	public class KnightsMinneScroll : SpellScroll
 	{
-		public override string DefaultDescription{ get{ return SongBook.SpellDescription( 360 ); } }
+		public override string DefaultDescription{ get{ return SongBook.SpellDescription( SpellID ); } }
 
 		[Constructable]
 		public KnightsMinneScroll() : this( 1 )
@@ -15,9 +12,9 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public KnightsMinneScroll( int amount ) : base( 360, 0x1F31, amount )
+		public KnightsMinneScroll( int amount ) : base( KnightsMinneSong.SpellInfo.SpellDefinition.SpellID, 0x1F31, amount )
 		{
-			Name = "knight's minne sheet music";
+			Name = string.Format("{0} sheet music", BardSongProvider.GetDefinition(SpellID).Name);
 			Hue = 0x96;
 			Stackable = true;
         }
@@ -28,7 +25,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( StringCatalog.Resolve( from.Account, "The sheet music must be in your music book." ) );
+			from.SendMessage( "The sheet music must be in your music book." );
 		}
 
 		public override void Serialize( GenericWriter writer )

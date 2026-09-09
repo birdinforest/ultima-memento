@@ -10,7 +10,7 @@ namespace Server.Spells
 	{
 		public static Docs.DocCommandEntry Register(int spellId, string className, string spellName, CastSpellCommandDelegate castHandler, params string[] aliases)
 		{
-			var spellNameNormalized = spellName.Replace(" ", "");
+			var spellNameNormalized = spellName.Replace(" ", "").Replace("'", "");
 			var classNameNormalized = className.Replace(" ", "");
 			var primary = string.Format("Cast_{0}_{1}", classNameNormalized, spellNameNormalized);
 			var description = string.Format("Casts the {0} spell: {1}", className, spellName);

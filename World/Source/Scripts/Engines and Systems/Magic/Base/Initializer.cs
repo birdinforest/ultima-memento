@@ -371,22 +371,22 @@ namespace Server.Spells
 			Register( HolyMan.TrialByFireSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.TrialByFireSpell ) );
 
 			// Bard Songs
-			Register( 351, typeof( Song.ArmysPaeonSong ) );
-			Register( 352, typeof( Song.EnchantingEtudeSong ) );
-			Register( 353, typeof( Song.EnergyCarolSong ) );
-			Register( 354, typeof( Song.EnergyThrenodySong ) );
-			Register( 355, typeof( Song.FireCarolSong ) );
-			Register( 356, typeof( Song.FireThrenodySong ) );
-			Register( 357, typeof( Song.FoeRequiemSong ) );
-			Register( 358, typeof( Song.IceCarolSong ) );
-			Register( 359, typeof( Song.IceThrenodySong ) );
-			Register( 360, typeof( Song.KnightsMinneSong ) );
-			Register( 361, typeof( Song.MagesBalladSong ) );
-			Register( 362, typeof( Song.MagicFinaleSong ) );
-			Register( 363, typeof( Song.PoisonCarolSong ) );
-			Register( 364, typeof( Song.PoisonThrenodySong ) );
-			Register( 365, typeof( Song.SheepfoeMamboSong ) );
-			Register( 366, typeof( Song.SinewyEtudeSong ) );
+			Register( Song.ArmysPaeonSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.ArmysPaeonSong ) );
+			Register( Song.EnchantingEtudeSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.EnchantingEtudeSong ) );
+			Register( Song.EnergyCarolSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.EnergyCarolSong ) );
+			Register( Song.EnergyThrenodySong.SpellInfo.SpellDefinition.SpellID, typeof( Song.EnergyThrenodySong ) );
+			Register( Song.FireCarolSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.FireCarolSong ) );
+			Register( Song.FireThrenodySong.SpellInfo.SpellDefinition.SpellID, typeof( Song.FireThrenodySong ) );
+			Register( Song.FoeRequiemSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.FoeRequiemSong ) );
+			Register( Song.IceCarolSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.IceCarolSong ) );
+			Register( Song.IceThrenodySong.SpellInfo.SpellDefinition.SpellID, typeof( Song.IceThrenodySong ) );
+			Register( Song.KnightsMinneSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.KnightsMinneSong ) );
+			Register( Song.MagesBalladSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.MagesBalladSong ) );
+			Register( Song.MagicFinaleSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.MagicFinaleSong ) );
+			Register( Song.PoisonCarolSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.PoisonCarolSong ) );
+			Register( Song.PoisonThrenodySong.SpellInfo.SpellDefinition.SpellID, typeof( Song.PoisonThrenodySong ) );
+			Register( Song.SheepfoeMamboSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.SheepfoeMamboSong ) );
+			Register( Song.SinewyEtudeSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.SinewyEtudeSong ) );
 		}
 
 		public static void Register( int spellID, Type type )
