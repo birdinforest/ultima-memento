@@ -252,7 +252,7 @@ namespace Server.Gumps
 					AddHtml( 196, 160, 57, 20, @"<BODY><BASEFONT Color=" + color + ">" + leftSpell.MinSkill + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddHtml( 134, 190, 57, 20, @"<BODY><BASEFONT Color=" + color + ">Mana:</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddHtml( 196, 190, 57, 20, @"<BODY><BASEFONT Color=" + color + ">" + leftSpell.ManaCost + "</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 78, !haveLeftSpell ? 220 : 280, 250, 175, @"<BODY><BASEFONT Color=" + color + ">" + leftSpellLocation ?? "" + "<br><br>Mantra: " + leftSpell.PowerWords + "<BR><BR>" + leftSpell.Description + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 78, 220, 250, 175, @"<BODY><BASEFONT Color=" + color + ">" + (leftSpellLocation ?? "") + "<br><br>Mantra: " + leftSpell.PowerWords + "<BR><BR>" + leftSpell.Description + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 
 				if ( rightSpell != null )
@@ -265,7 +265,7 @@ namespace Server.Gumps
 					AddHtml( 484, 160, 57, 20, @"<BODY><BASEFONT Color=" + color + ">" + rightSpell.MinSkill + "</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddHtml( 422, 190, 57, 20, @"<BODY><BASEFONT Color=" + color + ">Mana:</BASEFONT></BODY>", (bool)false, (bool)false);
 					AddHtml( 484, 190, 57, 20, @"<BODY><BASEFONT Color=" + color + ">" + rightSpell.ManaCost + "</BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 366, !haveRightSpell ? 220 : 280, 250, 175, @"<BODY><BASEFONT Color=" + color + ">" + rightSpellLocation ?? "" + "<br><br>Mantra: " + rightSpell.PowerWords + "<BR><BR>" + rightSpell.Description + "</BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 366, 220, 250, 175, @"<BODY><BASEFONT Color=" + color + ">" + (rightSpellLocation ?? "") + "<br><br>Mantra: " + rightSpell.PowerWords + "<BR><BR>" + rightSpell.Description + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				}
 
 				if ( Sextants.HasSextant( from ) && m_X_1 > 0 && !haveLeftSpell )
