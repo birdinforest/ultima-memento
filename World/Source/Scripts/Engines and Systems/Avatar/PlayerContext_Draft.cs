@@ -414,7 +414,10 @@ namespace Server.Engines.Avatar
 			if (enabled)
 			{
 				_draftedSkills = new HashSet<SkillName>();
-				_draftBannedSkills = new HashSet<SkillName>();
+
+				// Maintain bans
+				if (_draftBannedSkills == null) _draftBannedSkills = new HashSet<SkillName>();
+
 				ClearRewardCache(Categories.Draft);
 				player.SendMessage("Draft mode enabled. All skills have been reset to 0 and Locked.");
 			}
