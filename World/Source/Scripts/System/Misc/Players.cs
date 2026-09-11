@@ -8,6 +8,7 @@ using Server.Network;
 using Server.RateConfig;
 using System;
 using Server.Spells.Seventh;
+using Server.Spells.Fifth;
 using System.Linq;
 
 namespace Server.Misc
@@ -668,9 +669,23 @@ namespace Server.Misc
 				}
 
 				if ( DisguiseTimers.IsDisguised( m ) && warning != "" )
-					warning = warning + "You could probably sneak into settlements, however, since you will not be recognized.";
+				{
+					warning = warning + StringCatalog.ResolveByKey( m.Account, "sys.disguise_sell.wanted_disguise_sneak" );
+					warning = warning + StringCatalog.ResolveByKey( m.Account, "sys.disguise_sell.wanted_hint" );
+				}
 				else if( !m.CanBeginAction( typeof( PolymorphSpell ) ) && warning != "" )
-					warning = warning + "You could probably sneak into settlements, however, since you will not be recognized.";
+				{
+					warning = warning + StringCatalog.ResolveByKey( m.Account, "sys.disguise_sell.wanted_disguise_sneak" );
+					warning = warning + StringCatalog.ResolveByKey( m.Account, "sys.disguise_sell.wanted_hint" );
+				}
+				else if( !m.CanBeginAction( typeof( IncognitoSpell ) ) && warning != "" )
+				{
+					warning = warning + StringCatalog.ResolveByKey( m.Account, "sys.disguise_sell.wanted_hint" );
+				}
+				else if( !m.CanBeginAction( typeof( Server.Spells.Shinobi.Deception ) ) && warning != "" )
+				{
+					warning = warning + StringCatalog.ResolveByKey( m.Account, "sys.disguise_sell.wanted_hint" );
+				}
 
 				safe = "<BR><BR>SAFE PLACES:<BR>";
 				safe = safe + "<BR>Anchor Rock Port";

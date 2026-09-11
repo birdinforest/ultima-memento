@@ -215,6 +215,7 @@ namespace Server.Items
 			{
 				t.Stop();
 				m_Timers.Remove( m );
+				MurdererDisguiseSell.NotifyTrickEnded( m );
 			}
 			
 			return ( t != null );
@@ -230,6 +231,16 @@ namespace Server.Items
 			}
 			
 			return TimeSpan.Zero;
+		}
+
+		public static long ExpiryTicks( Mobile m )
+		{
+			Timer t = (Timer)m_Timers[m];
+
+			if ( t != null )
+				return t.Next.Ticks;
+
+			return 0;
 		}
 		
 		private static Hashtable m_Timers = new Hashtable();
@@ -250,9 +261,25 @@ namespace Server.Items
 				BuffInfo.RemoveBuff( from, BuffIcon.Incognito );
 				from.HueMod = -1;
 				from.NameMod = null;
-				((PlayerMobile)from).SavagePaintExpiration = TimeSpan.Zero;
 
-				((PlayerMobile)from).SetHairMods( -1, -1 );
+				if ( from is PlayerMobile )
+				{
+					((PlayerMobile)from).SavagePaintExpiration = TimeSpan.Zero;
+					((PlayerMobile)from).SetHairMods( -1, -1 );
+				}
+
+				// Restore polymorph body before EndAction, or BodyMod sticks after the action unlocks.
+				if ( !from.CanBeginAction( typeof( PolymorphSpell ) ) )
+				{
+					from.BodyMod = 0;
+					from.RaceBody();
+					BuffInfo.RemoveBuff( from, BuffIcon.Polymorph );
+				}
+				else
+				{
+					from.BodyMod = 0;
+					from.RaceBody();
+				}
 
 				PolymorphSpell.StopTimer( from );
 				IncognitoSpell.StopTimer( from );
@@ -262,6 +289,18 @@ namespace Server.Items
 				from.EndAction( typeof( PolymorphSpell ) );
 				from.EndAction( typeof( IncognitoSpell ) );
 				from.EndAction( typeof( Deception ) );
+			}
+			else if ( IsDisguised( from ) )
+			{
+				// Timer without NameMod (edge / interrupted kit state) — still drop the timer.
+				from.BodyMod = 0;
+				from.HueMod = -1;
+				from.RaceBody();
+
+				if ( from is PlayerMobile )
+					((PlayerMobile)from).SetHairMods( -1, -1 );
+
+				RemoveTimer( from );
 			}
 		}
 	}

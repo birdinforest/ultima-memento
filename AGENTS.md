@@ -576,6 +576,7 @@ When adding a third language (e.g. `zh-Hant`, `ja`):
 This file uses a simple date-stamp comment at the top for tracking. When making substantive updates, add a one-line change note at the bottom of this section.
 
 **Change log:**
+- 2026-09-06: §8.1 — indexed `MURDERER_DISGUISE_TOWN_SELL_DESIGN.md`（红名伪装城镇出售：风险回报变现、不抬全局商人金）。
 - 2026-08-30: §8.1 — indexed `EQUIPMENT_DURABILITY_BOOST_SYSTEM.md`（提高装备耐久上限：药水、蜂蜡、调和粉、与修理药水分界）。
 - 2026-08-26: §8.1 — indexed `WEAPON_SPECIAL_ABILITY_SYSTEM.md`（武器五档特攻 WeaponAbility：55 招、技能/法力、全武器绑定表）。
 - 2026-08-23: §8.1 — indexed `CRIMSON_GOLD_CONCORD_NATIONAL_DAY_EVENT_DESIGN.md`（赤金同心节四周活动：账号点数、捐献、水晶、盟约灯进阶、冠军 Boss 与奖励经济）。
@@ -705,6 +706,7 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | NPC economy & vendor mechanisms | `memento/game-mechanism/npc-game-mechanisms.md` | Before modifying vendor, buy/sell, black market, shoppe, or service NPC code |
 | Champion spawn system | `memento/game-mechanism/CHAMPION_SPAWN_SYSTEM.md` | Before touching champion/raid spawn logic |
 | Crimson-Gold Concord / National Day four-week event | `memento/game-design-idea/CRIMSON_GOLD_CONCORD_NATIONAL_DAY_EVENT_DESIGN.md` | Before implementing the Concord point ledger, steward NPC, donation/crystal/lamp loops, reward Gump, or Vargos Champion boss |
+| 红名伪装城镇出售 / 法外变现风险回报 | `memento/game-design-idea/MURDERER_DISGUISE_TOWN_SELL_DESIGN.md` | Before changing murderer/vendor sell access, disguise-gated town commerce, or murderer-only merchant purse rules |
 | Gypsy tarot / starting fates | `memento/game-mechanism/GYPSY_TAROT_STARTING_FATES.md` | Before modifying starting-area NPCs or race selection |
 | Trap system (code analysis) | `memento/game-mechanism/trap-system/trap_system_code_analysis.md` | Before modifying trap items or trap-related NPC speech |
 | Magic system docs | `memento/game-mechanism/spell-and-magic/` (8 files) | Before modifying magic, spell, or rune systems |

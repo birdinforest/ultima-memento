@@ -554,6 +554,24 @@ namespace Server
 	// WARNING: This will cause vendors to exceed the `S_MaxMerchant` setting
 
 		public static bool S_ScaleMerchantCoins = true;
+
+	// Murderer disguise town sell (see MURDERER_DISGUISE_TOWN_SELL_DESIGN.md). Red-named players in non-allowed
+	// regions may sell to town vendors only while disguised, via skill checks; rewards bind to the seller (−Karma, +Fame).
+
+		public static bool S_MurdererDisguiseSell = true;
+		public static int S_MurdererDisguiseSellPriceMultPercent = 85;
+		// Cumulative session gold at/above this raises exposure on rolls only (0 = off). Does not block sales; NPC purse limits unchanged.
+		public static int S_MurdererDisguiseSessionGoldExposureStart = 5000;
+		public static int S_MurdererDisguiseVendorRejectMinutes = 10;
+		public static bool S_MurdererDisguiseAllowCriminal = false;
+		public static int S_MurdererDisguiseKarmaGoldStep = 300;
+		public static int S_MurdererDisguiseKarmaPerStep = 1;
+		public static int S_MurdererDisguiseKarmaPerSaleCap = 5;
+		public static int S_MurdererDisguiseKarmaDailyCap = 500;
+		public static int S_MurdererDisguiseFameGoldStep = 300;
+		public static int S_MurdererDisguiseFamePerStep = 1;
+		public static int S_MurdererDisguiseFamePerSaleCap = 5;
+		public static int S_MurdererDisguiseFameDailyCap = 500;
 		
 	// This setting is the percentage to decrease the prices of items that player characters sell to vendors. Zero disables this.
 

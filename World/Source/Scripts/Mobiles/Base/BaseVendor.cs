@@ -1146,12 +1146,14 @@ namespace Server.Mobiles
 			if ( !from.CheckAlive() )
 				return;
 
-			if ( !CheckVendorAccess( from ) )
+			if ( !CheckVendorSellAccess( from ) )
 			{
-				//Say( 501522 ); // I shall not treat with scum like thee!
-				this.Say( StringCatalog.ResolveByKey(this.Account, "mob.other.i_have_no_business_with_you") );
+				MurdererDisguiseSell.TrySaySellRefused( this, from );
 				return;
 			}
+
+			if ( !MurdererDisguiseSell.TryOpenSession( from, this ) )
+				return;
 
 			int coins = GetOrCreateCoinPurse( this, from, true ); // Lazy generate
 			if ( coins < 1 )
@@ -2076,6 +2078,42 @@ namespace Server.Mobiles
 			return true;
 		}
 
+		public virtual bool CheckVendorSellAccess( Mobile from )
+		{
+			PlayerMobile pm = (PlayerMobile)from;
+
+			if ( AccessLevel.Counselor <= pm.AccessLevel )
+				return true;
+
+			if ( this is BaseGuildmaster && this.NpcGuild != pm.NpcGuild )
+				return false;
+
+			if ( !from.Alive || from.Blessed )
+				return false;
+
+			if ( !(this.CanSee( from )) || !(this.InLOS( from )) )
+				return false;
+
+			if ( MurdererDisguiseSell.NeedsDisguiseSellPath( from ) )
+			{
+				DisguiseSellRefuseReason reason;
+				return MurdererDisguiseSell.CanAttemptDisguiseSell( from, this, out reason );
+			}
+
+			bool publicRegion = MurdererDisguiseSell.IsAllowedRegion( from );
+
+			if ( !publicRegion && ( from.Criminal || from.Kills > 0 ) )
+				return false;
+
+			if ( !publicRegion && from is PlayerMobile && ((PlayerMobile)from).Fugitive == 1 )
+				return false;
+
+			if ( IntelligentAction.GetMyEnemies( from, this, false ) )
+				return false;
+
+			return true;
+		}
+
         public virtual bool OnSellItems( Mobile seller, List<SellItemResponse> list )
 		{
 			if ( !IsActiveBuyer )
@@ -2084,11 +2122,13 @@ namespace Server.Mobiles
 			if ( !seller.CheckAlive() )
 				return false;
 
-			if ( !CheckVendorAccess( seller ) )
+			if ( !CheckVendorSellAccess( seller ) )
 			{
-				this.Say( StringCatalog.ResolveByKey(this.Account, "mob.other.i_have_no_business_with_you") );
+				MurdererDisguiseSell.TrySaySellRefused( this, seller );
 				return false;
 			}
+
+			bool disguiseSellPath = MurdererDisguiseSell.NeedsDisguiseSellPath( seller );
 
 			IShopSellInfo[] info = GetSellInfo();
 			IBuyItemInfo[] buyInfo = this.GetBuyInfo();
@@ -2134,15 +2174,27 @@ namespace Server.Mobiles
 			{
 				return true;
 			}
-			
+
+			// SoldPrice is always gross (pre-disguise-tax). For disguise sells, estimate the net
+			// payable for coin-safeguard + exposure roll only — the actual payout applies the
+			// multiplier once below after GiveGold is recomputed from consumed items.
+			int estimatedPayable = disguiseSellPath ? MurdererDisguiseSell.ApplyPriceMult( SoldPrice ) : SoldPrice;
+
 			var coins = TryGetCoinPurse( seller );
 			if ( coins == null ) return false; // Guard
 
-			if ( !MySettings.S_RichMerchants && !MySettings.S_UseRemainingGold && !pm.Preferences.IgnoreVendorGoldSafeguard && SoldPrice > coins )
+			if ( !MySettings.S_RichMerchants && !MySettings.S_UseRemainingGold && !pm.Preferences.IgnoreVendorGoldSafeguard && estimatedPayable > coins )
 			{
 				SayTo( seller, true, "Sorry, but I only have {0} gold to barter with.", coins );
 				return false;
 			}
+
+			int rollGold = disguiseSellPath
+				? MurdererDisguiseSell.ComputePayableGold( estimatedPayable, coins.Value )
+				: estimatedPayable;
+
+			if ( disguiseSellPath && !MurdererDisguiseSell.TryCompleteSaleRoll( seller, this, rollGold ) )
+				return false;
 
 			seller.PlaySound( 0x32 );
 
@@ -2229,22 +2281,29 @@ namespace Server.Mobiles
 				}
 			}
 
+			// GiveGold is still gross here. Apply the disguise tax exactly once for payout.
+			if ( disguiseSellPath && GiveGold > 0 )
+				GiveGold = MurdererDisguiseSell.ApplyPriceMult( GiveGold );
+
 			if ( GiveGold > 0 )
 			{
+				int totalGoldPaid = GiveGold;
+
 				if ( !MySettings.S_RichMerchants && GiveGold > coins )
 				{
+					totalGoldPaid = coins.Value;
 					GiveGold = coins.Value;
 					SayTo( seller, true, "I give you my remaining {0} gold.", coins );
 				}
 
 				// Deduct the gold
-				AddToCoinPurse( seller, 0 - GiveGold, false );
+				AddToCoinPurse( seller, 0 - totalGoldPaid, false );
 
 				// Chance to learn mercantile
 				if ( !isBegging && !isInGuild )
 				{
 					// 200 / 500 / 1000 / 1500 / 2000 / etc
-					int skillChecks = GiveGold < 200 ? 0 : 1 + ( GiveGold / 500 );
+					int skillChecks = totalGoldPaid < 200 ? 0 : 1 + ( totalGoldPaid / 500 );
 					SkillUtilities.DoSkillChecks(seller, SkillName.Mercantile, skillChecks, Sold);
 				}
 
@@ -2257,6 +2316,9 @@ namespace Server.Mobiles
 				seller.AddToBackpack( new Gold( GiveGold ) );
 
 				seller.PlaySound( 0x0037 );//Gold dropping sound
+
+				if ( disguiseSellPath )
+					MurdererDisguiseSell.OnSaleSuccess( seller, this, totalGoldPaid, Sold );
 			}
 
 			return true;
@@ -2343,7 +2405,7 @@ namespace Server.Mobiles
 				if ( IsActiveSeller && CheckVendorAccess( from ) )
 					list.Add( new VendorBuyEntry( from, this ) );
 
-				if ( buysThings && CheckVendorAccess( from ) )
+				if ( buysThings && CheckVendorSellAccess( from ) )
 					list.Add( new VendorSellEntry( from, this ) );
 
 				if ( IsBlackMarket && this.BankBox.TotalItems > 0 && MyServerSettings.BlackMarket() && CheckVendorAccess( from ) )
@@ -2981,7 +3043,7 @@ namespace Server.ContextMenus
 		public VendorSellEntry( Mobile from, BaseVendor vendor ) : base( 6104, 12 )
 		{
 			m_Vendor = vendor;
-			Enabled = vendor.CheckVendorAccess( from );
+			Enabled = vendor.CheckVendorSellAccess( from );
 		}
 
 		public override void OnClick()
