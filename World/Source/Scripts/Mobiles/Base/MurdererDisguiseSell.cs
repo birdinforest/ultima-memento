@@ -661,7 +661,7 @@ namespace Server.Mobiles
 
 			foreach ( KeyValuePair<int, DailyStats> entry in s_DailyStats )
 			{
-				if ( entry.Value.Day != today || World.FindMobile( new Serial( entry.Key ) ) == null )
+				if ( entry.Value.Day != today || World.FindMobile( entry.Key ) == null )
 				{
 					if ( remove == null )
 						remove = new List<int>();
@@ -686,7 +686,7 @@ namespace Server.Mobiles
 
 			foreach ( KeyValuePair<int, SessionState> entry in s_Sessions )
 			{
-				if ( World.FindMobile( new Serial( entry.Key ) ) == null )
+				if ( World.FindMobile( entry.Key ) == null )
 				{
 					if ( remove == null )
 						remove = new List<int>();

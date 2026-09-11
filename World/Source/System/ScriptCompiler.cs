@@ -215,19 +215,22 @@ namespace Server
 			DeleteFiles( "Data*.bin" );
 
 			using( StreamWriter writer = new StreamWriter( "Data/Data.ref" ) )
-			// Use the Roslyn-backed CodeDom provider (DotNetCompilerPlatform) instead of the
-			// legacy Microsoft.CSharp.CSharpCodeProvider. The legacy provider invokes the
-			// .NET Framework's bundled csc (C# 5 only), which cannot compile the C# 6+
-			// string interpolation ($"...") used throughout Scripts. On Mono this is a no-op
-			// in practice (Mono's CodeDom already uses mcs); on Windows/.NET this is required.
+			// Windows/.NET: Roslyn-backed CodeDom (DotNetCompilerPlatform). The legacy
+			// Microsoft.CSharp.CSharpCodeProvider invokes Framework csc (C# 5 only), which
+			// cannot compile $"..." interpolation used in Scripts.
 			// Fully-qualified to disambiguate from Microsoft.CSharp.CSharpCodeProvider.
-			//
-			// ProviderOptions.CompilerFullPath: by default the provider looks for csc.exe at
-			// <AppDomain.BaseDirectory>\bin\roslyn\csc.exe. Our build emits it to
-			// <World/>\roslyn\csc.exe (no \bin\ segment), so point at it explicitly.
-			using ( var provider = new Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider(
+			// ProviderOptions.CompilerFullPath: default lookup is
+			// <AppDomain.BaseDirectory>\bin\roslyn\csc.exe; our build emits
+			// <World/>\roslyn\csc.exe (no \bin\ segment).
+			// Mono/mcs: the NuGet type is not referenced by compile-world-*.sh; Mono's
+			// CodeDom already drives mcs, so keep the stock CSharpCodeProvider.
+#if !MONO
+			using ( CodeDomProvider provider = new Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider(
 				new Microsoft.CodeDom.Providers.DotNetCompilerPlatform.ProviderOptions(
 					Path.Combine( Core.BaseDirectory, "roslyn", "csc.exe" ), 10 ) ) )
+#else
+			using ( CodeDomProvider provider = new CSharpCodeProvider() )
+#endif
 			{
 				string path = GetUnusedPath( "Data" );
 
@@ -243,12 +246,15 @@ namespace Server
 				// throws CS0041 "Insufficient memory" (Roslyn#73447). /debug:portable overrides
 				// that with the managed Portable PDB writer, which has no such ceiling. The
 				// resulting PDBs still support source-level breakpoints in Visual Studio.
+				// Mono/mcs does not accept /debug:portable.
+#if !MONO
 				if( debug )
 				{
 					if( parms.CompilerOptions != null )
 						parms.CompilerOptions += " ";
 					parms.CompilerOptions += "/debug:portable";
 				}
+#endif
 
 				if( Core.HaltOnWarning )
 					parms.WarningLevel = 4;
