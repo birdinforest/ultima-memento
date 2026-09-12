@@ -32,7 +32,7 @@ namespace Server.Engines.MLQuests.Definitions
 			{
 				Activated = true;
 				Title = "Delivery: The Hammer and Anvil";
-				Description = "TODO: Deliver this to the Britain Smith";
+				Description = "Deliver this to the Britain Blacksmith";
 
 				Objectives.Add(new DeliverObjective(typeof(BlacksmithDeliveryCrate), 1, typeof(BritainGuildmasterSmithGuy)));
 				Objectives.Add(new DummyObjective("- Blacksmith Crate"));
