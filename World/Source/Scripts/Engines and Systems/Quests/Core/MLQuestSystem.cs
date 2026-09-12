@@ -415,7 +415,14 @@ namespace Server.Engines.MLQuests
 			List<MLQuest> quests = quester.MLQuests;
 			Type questerType = quester.GetType();
 
-			// 1. Check quests in progress with this NPC (overriding deliveries is intended)
+			// 1. Check deliveries (overriding in-progress NPC quests is intended)
+			if ((entry = HandleDelivery(pm, quester, questerType)) != null)
+			{
+				quest = entry.Quest;
+				return true;
+			}
+
+			// 2. Check quests in progress with this NPC (overriding chain offers is intended)
 			if (context != null)
 			{
 				foreach (MLQuest questEntry in quests)
@@ -429,13 +436,6 @@ namespace Server.Engines.MLQuests
 						return true;
 					}
 				}
-			}
-
-			// 2. Check deliveries (overriding chain offers is intended)
-			if ((entry = HandleDelivery(pm, quester, questerType)) != null)
-			{
-				quest = entry.Quest;
-				return true;
 			}
 
 			// 3. Check chain quest offers
