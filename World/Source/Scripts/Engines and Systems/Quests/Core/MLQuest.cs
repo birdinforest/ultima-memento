@@ -66,6 +66,7 @@ namespace Server.Engines.MLQuests
 		}
 
 		public virtual bool IsChainTriggered { get { return false; } }
+		public virtual Type PrerequisiteQuest { get { return null; } }
 		public virtual Type NextQuest { get { return null; } }
 		public virtual Type QuestRecipient { get { return null; } }
 
@@ -219,6 +220,14 @@ namespace Server.Engines.MLQuests
 			{
 				if (!obj.CanOffer(quester, pm, message))
 					return false;
+			}
+
+			if (PrerequisiteQuest != null && (context == null || !context.HasDoneQuest(PrerequisiteQuest)))
+			{
+				if (message)
+					MLQuestSystem.Tell(quester, pm, 1080107); // I'm sorry, I have nothing for you at this time.
+
+				return false;
 			}
 
 			return true;

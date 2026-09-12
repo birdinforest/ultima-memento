@@ -77,8 +77,6 @@ namespace Server.Engines.MLQuests.Definitions
 			}
 		}
 
-		public virtual Type PreviousQuest { get { return null; } }
-
 		public override Type QuestRecipient { get { return typeof(ThiefGuildmaster); } }
 
 		public override IEnumerable<Type> GetQuestGivers()
@@ -94,14 +92,6 @@ namespace Server.Engines.MLQuests.Definitions
 			{
 				if (message)
 					MLQuestSystem.Tell(quester, pm, "This job is for guild members only.");
-
-				return false;
-			}
-
-			if (PreviousQuest != null && (context == null || !context.HasDoneQuest(PreviousQuest)))
-			{
-				if (message)
-					MLQuestSystem.Tell(quester, pm, 1080107); // I'm sorry, I have nothing for you at this time.
 
 				return false;
 			}
@@ -148,7 +138,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class SkullCandleQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(RockQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(RockQuest); } }
 			public override Type NextQuest { get { return typeof(BottleQuest); } }
 
 			public SkullCandleQuest() : base(typeof(SkullCandleArtifact))
@@ -158,7 +148,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class BottleQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(SkullCandleQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(SkullCandleQuest); } }
 			public override Type NextQuest { get { return typeof(DamagedBooksQuest); } }
 
 			public BottleQuest() : base(typeof(BottleArtifact))
@@ -168,7 +158,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class DamagedBooksQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(BottleQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(BottleQuest); } }
 			public override Type NextQuest { get { return typeof(StretchedHideQuest); } }
 
 			public DamagedBooksQuest() : base(typeof(DamagedBooksArtifact))
@@ -178,7 +168,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class StretchedHideQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(DamagedBooksQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(DamagedBooksQuest); } }
 			public override Type NextQuest { get { return typeof(BrazierQuest); } }
 
 			public StretchedHideQuest() : base(typeof(StretchedHideArtifact))
@@ -188,7 +178,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class BrazierQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(StretchedHideQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(StretchedHideQuest); } }
 			public override Type NextQuest { get { return typeof(LampPostQuest); } }
 
 			public BrazierQuest() : base(typeof(BrazierArtifact))
@@ -198,7 +188,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class LampPostQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(BrazierQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(BrazierQuest); } }
 			public override Type NextQuest { get { return typeof(BooksNorthQuest); } }
 
 			public LampPostQuest() : base(typeof(LampPostArtifact))
@@ -208,7 +198,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class BooksNorthQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(LampPostQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(LampPostQuest); } }
 			public override Type NextQuest { get { return typeof(BooksWestQuest); } }
 
 			public BooksNorthQuest() : base(typeof(BooksNorthArtifact))
@@ -218,7 +208,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class BooksWestQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(BooksNorthQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(BooksNorthQuest); } }
 			public override Type NextQuest { get { return typeof(BooksFaceDownQuest); } }
 
 			public BooksWestQuest() : base(typeof(BooksWestArtifact))
@@ -228,7 +218,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class BooksFaceDownQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(BooksWestQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(BooksWestQuest); } }
 			public override Type NextQuest { get { return typeof(StuddedLeggingsQuest); } }
 
 			public BooksFaceDownQuest() : base(typeof(BooksFaceDownArtifact))
@@ -238,7 +228,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class StuddedLeggingsQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(BooksFaceDownQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(BooksFaceDownQuest); } }
 			public override Type NextQuest { get { return typeof(EggCaseQuest); } }
 
 			public StuddedLeggingsQuest() : base(typeof(StuddedLeggingsArtifact))
@@ -248,7 +238,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class EggCaseQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(StuddedLeggingsQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(StuddedLeggingsQuest); } }
 			public override Type NextQuest { get { return typeof(SkinnedGoatQuest); } }
 
 			public EggCaseQuest() : base(typeof(EggCaseArtifact))
@@ -258,7 +248,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class SkinnedGoatQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(EggCaseQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(EggCaseQuest); } }
 			public override Type NextQuest { get { return typeof(GruesomeStandardQuest); } }
 
 			public SkinnedGoatQuest() : base(typeof(SkinnedGoatArtifact))
@@ -268,7 +258,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class GruesomeStandardQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(SkinnedGoatQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(SkinnedGoatQuest); } }
 			public override Type NextQuest { get { return typeof(BloodyWaterQuest); } }
 
 			public GruesomeStandardQuest() : base(typeof(GruesomeStandardArtifact))
@@ -278,7 +268,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class BloodyWaterQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(GruesomeStandardQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(GruesomeStandardQuest); } }
 			public override Type NextQuest { get { return typeof(TarotCardsQuest); } }
 
 			public BloodyWaterQuest() : base(typeof(BloodyWaterArtifact))
@@ -288,7 +278,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class TarotCardsQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(BloodyWaterQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(BloodyWaterQuest); } }
 			public override Type NextQuest { get { return typeof(BackpackQuest); } }
 
 			public TarotCardsQuest() : base(typeof(TarotCardsArtifact))
@@ -298,7 +288,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class BackpackQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(TarotCardsQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(TarotCardsQuest); } }
 			public override Type NextQuest { get { return typeof(StuddedTunicQuest); } }
 
 			public BackpackQuest() : base(typeof(BackpackArtifact))
@@ -308,7 +298,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class StuddedTunicQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(BackpackQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(BackpackQuest); } }
 			public override Type NextQuest { get { return typeof(CocoonQuest); } }
 
 			public StuddedTunicQuest() : base(typeof(StuddedTunicArtifact))
@@ -318,7 +308,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class CocoonQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(StuddedTunicQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(StuddedTunicQuest); } }
 			public override Type NextQuest { get { return typeof(SkinnedDeerQuest); } }
 
 			public CocoonQuest() : base(typeof(CocoonArtifact))
@@ -328,7 +318,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class SkinnedDeerQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(CocoonQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(CocoonQuest); } }
 			public override Type NextQuest { get { return typeof(SaddleQuest); } }
 
 			public SkinnedDeerQuest() : base(typeof(SkinnedDeerArtifact))
@@ -338,7 +328,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class SaddleQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(SkinnedDeerQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(SkinnedDeerQuest); } }
 			public override Type NextQuest { get { return typeof(LeatherTunicQuest); } }
 
 			public SaddleQuest() : base(typeof(SaddleArtifact))
@@ -348,7 +338,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class LeatherTunicQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(SaddleQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(SaddleQuest); } }
 			public override Type NextQuest { get { return typeof(RuinedPaintingQuest); } }
 
 			public LeatherTunicQuest() : base(typeof(LeatherTunicArtifact))
@@ -358,7 +348,7 @@ namespace Server.Engines.MLQuests.Definitions
 
 		public class RuinedPaintingQuest : StealingThePastQuest
 		{
-			public override Type PreviousQuest { get { return typeof(LeatherTunicQuest); } }
+			public override Type PrerequisiteQuest { get { return typeof(LeatherTunicQuest); } }
 
 			public RuinedPaintingQuest() : base(typeof(RuinedPaintingArtifact))
 			{
