@@ -36,7 +36,9 @@ namespace Server.Misc.Cache
 
 				return _cache[type] = new ItemSnapshot
 				{
+					NameNonNormalized = item.Name,
 					Name = item.Name.ToLower(),
+					CoinPrice = item.CoinPrice,
 					ItemID = item.ItemID,
 					DefaultDescription = item.DefaultDescription,
 				};

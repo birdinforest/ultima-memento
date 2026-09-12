@@ -1257,6 +1257,7 @@ namespace Server.Misc
 					builder.Append("- Misc - All players in a party, not just the killer, now check for quest completion<br>");
 					builder.Append("- Misc - Add starter items for Elementalism<br>");
 					builder.Append("- Misc - Stats can now gain regardless if your skill check can gain/fail<br>");
+					builder.Append("- Quest - Thief guildmembers quest to steal long lost relics for the Nobles is now official<br>");
 					builder.Append("- Spell - Army's Paeon song cast time is now 3 seconds, down from 5<br>");
 					builder.Append("- Spell - Mage's Ballad song cast time is now 3 seconds, down from 5<br>");
 					builder.Append("- Spell - Elemenal Call summon Psychology is now 10, down from 40<br>");
