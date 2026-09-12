@@ -1,4 +1,4 @@
-namespace Server.Engines.Avatar
+namespace Server.Misc.Cache
 {
 	public class ItemSnapshot
 	{

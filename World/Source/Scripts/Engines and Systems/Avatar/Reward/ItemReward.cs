@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using Server.Misc.Cache;
 
 namespace Server.Engines.Avatar
 {

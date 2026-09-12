@@ -419,7 +419,7 @@ namespace Server.Engines.GlobalShoppe
 
 			public static _Reward Create<T>(int cost, Func<T> onSelect, int uses = 0, string name = null, string description = null) where T : Item, new()
 			{
-				var itemSnapshot = ShoppeItemCache.GetOrCreate(typeof(T));
+				var itemSnapshot = Server.Misc.Cache.ItemSnapshotCache.GetOrCreate(typeof(T));
 
 				if (string.IsNullOrEmpty(name)) name = m_TextInfo.ToTitleCase(itemSnapshot.Name);
 				if (0 < uses) name = string.Format("{0} ({1} use{2})", name, uses, uses == 1 ? "" : "s");
