@@ -1366,6 +1366,24 @@ namespace Server.Items
 
 		#endregion
 
+		public void DrinkMax( Mobile from )
+		{
+			int cyc = 20 - from.Thirst + 1;
+
+			while ( cyc > 0 )
+			{
+				cyc--;
+
+				if ( Deleted || !Movable || !from.CheckAlive() || !ValidateUse( from, true ) )
+					return;
+
+				Pour_OnTarget( from, from );
+
+				if ( cyc > 1 && ( from.Thirst > 20 || IsEmpty ) )
+					cyc = 1;
+			}
+		}
+
 		public virtual void Pour_OnTarget( Mobile from, object targ )
 		{
 			if ( !(this is WaterBottle) && ( IsEmpty || !Pourable || !ValidateUse( from, false ) ) )
@@ -1488,7 +1506,7 @@ namespace Server.Items
 			else if ( IsEmpty && Fillable )
 				from.SendMessage( StringCatalog.Resolve( from.Account, "That is empty and will need to be refilled." ) );
 			else if( ValidateUse( from, true ) )
-				Pour_OnTarget( from, from );
+				DrinkMax( from );
 		}
 
 		public class PourMenu : ContextMenuEntry 

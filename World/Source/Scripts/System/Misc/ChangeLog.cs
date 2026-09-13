@@ -1253,6 +1253,7 @@ namespace Server.Misc
 					builder.Append("- Item - Bag of Holding cooldown is now 15s, down from 60s<br>");
 					builder.Append("- Item - Stealable artefacts are now tagged as decorative artefacts<br>");
 					builder.Append("- Item - Stolen artefacts are now tagged with the region they were stolen from<br>");
+					builder.Append("- Item - Double-clicking on beverages now drinks max by default<br>");
 					builder.Append("- Misc - Holy Man class no longer requires base skill to activate<br>");
 					builder.Append("- Misc - Mystic class no longer requires base skill to activate<br>");
 					builder.Append("- Misc - Guildmasters now wear their guild rings on their paperdolls<br>");
