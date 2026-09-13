@@ -380,6 +380,17 @@ namespace Server.Engines.MLQuests
 			if (Quest.IsChainTriggered)
 				context.ChainOffers.Remove(Quest);
 
+			// ChainOffers that lead to the completed quest get removed.
+			// This is to handle the fact that Hint quests could be skipped over until after the
+			// main recipe is completed.
+			Type completedType = Quest.GetType();
+			for (int i = context.ChainOffers.Count - 1; i >= 0; --i)
+			{
+				MLQuest offer = context.ChainOffers[i];
+				if (offer != null && offer.NextQuest == completedType)
+					context.ChainOffers.RemoveAt(i);
+			}
+
 			Type nextQuestType = Quest.NextQuest;
 
 			if (nextQuestType != null)

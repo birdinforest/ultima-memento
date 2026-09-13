@@ -12,18 +12,38 @@ namespace Server.Engines.MLQuests.Definitions
 {
 	#region Quests
 
-	/*
-    [go 2981 1023
-    [go 3155 2600
-    [go 1612 1451
-    [go 2478 890
-    [go 856 712
-    [go 917 2097
-    */
-
-	public class RingArmorQuest : MLQuest
+	public abstract class BlacksmithRecipeQuest : MLQuest
 	{
-		public class HintQuest : MLQuest
+		public override void OnRewardClaimed(MLQuestInstance instance)
+		{
+			if (NextQuest == null) return;
+
+			var hint = MLQuestSystem.FindQuest(NextQuest);
+			if (hint == null || hint.NextQuest == null) return;
+
+			var nextMain = MLQuestSystem.FindQuest(hint.NextQuest);
+			if (nextMain != null && !instance.PlayerContext.ChainOffers.Contains(nextMain))
+				instance.PlayerContext.ChainOffers.Add(nextMain);
+		}
+	}
+
+	public abstract class BlacksmithRecipeHintQuest : MLQuest
+	{
+		public override IEnumerable<Type> GetQuestGivers()
+		{
+			yield return typeof(Blacksmith);
+			yield return typeof(BritainGuildmasterSmithGuy);
+			yield return typeof(MontorSmithGirl);
+			yield return typeof(DevilGuardSmithGuy);
+			yield return typeof(YewSmithGuy);
+			yield return typeof(MoonSmithGuy);
+			yield return typeof(GreySmithGuy);
+		}
+	}
+
+	public class RingArmorQuest : BlacksmithRecipeQuest
+	{
+		public class HintQuest : BlacksmithRecipeHintQuest
 		{
 			public override bool IsChainTriggered { get { return true; } }
 			public override Type NextQuest { get { return typeof(RingArmorQuest); } }
@@ -31,6 +51,8 @@ namespace Server.Engines.MLQuests.Definitions
 			public HintQuest()
 			{
 				Activated = true;
+				OneTimeOnly = true;
+
 				Title = "Delivery: The Hammer and Anvil";
 				Description = "Deliver this to the Britain Blacksmith";
 
@@ -43,11 +65,6 @@ namespace Server.Engines.MLQuests.Definitions
 
 				Rewards.Add(new DummyReward("Information about Blacksmithing"));
 			}
-
-			public override IEnumerable<Type> GetQuestGivers()
-			{
-				yield break;
-			}
 		}
 
 		public override bool IsChainTriggered { get { return false; } } // Hint quest is optional
@@ -56,6 +73,8 @@ namespace Server.Engines.MLQuests.Definitions
 		public RingArmorQuest()
 		{
 			Activated = true;
+			OneTimeOnly = true;
+
 			Title = "The Hammer's Return";
 			var builder = new StringBuilder();
 			builder.Append("The Smith looks busy and irritated as you approach. \"Teach you, ha! Not with MY customers at stake. Of course, I'm a Guildmaster - but do you think we just let anyone who asks into the guild?\"");
@@ -135,16 +154,19 @@ namespace Server.Engines.MLQuests.Definitions
 		}
 	}
 
-	public class ChainArmorQuest : MLQuest
+	public class ChainArmorQuest : BlacksmithRecipeQuest
 	{
-		public class HintQuest : MLQuest
+		public class HintQuest : BlacksmithRecipeHintQuest
 		{
 			public override bool IsChainTriggered { get { return true; } }
+			public override Type PrerequisiteQuest { get { return typeof(RingArmorQuest); } }
 			public override Type NextQuest { get { return typeof(ChainArmorQuest); } }
 
 			public HintQuest()
 			{
 				Activated = true;
+				OneTimeOnly = true;
+
 				Title = "Delivery: Metals of Montor";
 				var builder = new StringBuilder();
 				builder.Append("\"You again? Still looking to hone your craft, eh? No, no, we're too busy here.\" Intentional chatter fills the air - the shop is bustling. Apprentices move about addressing customer requests, mending armor, and sharpening weapons. You briefly step to the side as someone shoulders past.");
@@ -175,19 +197,17 @@ namespace Server.Engines.MLQuests.Definitions
 
 				Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
 			}
-
-			public override IEnumerable<Type> GetQuestGivers()
-			{
-				yield break;
-			}
 		}
 
-		public override bool IsChainTriggered { get { return false; } } // Hint quest is optional
-		public override Type NextQuest { get { return typeof(PlateArmorQuest.HintQuest); } }
+		public override bool IsChainTriggered { get { return true; } }
+		public override Type PrerequisiteQuest { get { return typeof(RingArmorQuest); } }
+		public override Type NextQuest { get { return typeof(PlateArmorQuest.HintQuest); } } // Optional delivery
 
 		public ChainArmorQuest()
 		{
 			Activated = true;
+			OneTimeOnly = true;
+
 			Title = "The Heart of the Forge";
 			var builder = new StringBuilder();
 			builder.Append("\"Oi! M'good pal! M'good buddy! M'good friend!\" The Smith sees you enter the shop and a warm smile breaks her face. She immediately approaches you.");
@@ -261,16 +281,19 @@ namespace Server.Engines.MLQuests.Definitions
 		}
 	}
 
-	public class PlateArmorQuest : MLQuest
+	public class PlateArmorQuest : BlacksmithRecipeQuest
 	{
-		public class HintQuest : MLQuest
+		public class HintQuest : BlacksmithRecipeHintQuest
 		{
 			public override bool IsChainTriggered { get { return true; } }
+			public override Type PrerequisiteQuest { get { return typeof(ChainArmorQuest); } }
 			public override Type NextQuest { get { return typeof(PlateArmorQuest); } }
 
 			public HintQuest()
 			{
 				Activated = true;
+				OneTimeOnly = true;
+
 				Title = "Delivery: Forged Iron";
 
 				var builder = new StringBuilder();
@@ -300,19 +323,17 @@ namespace Server.Engines.MLQuests.Definitions
 				builder.Append("<br><br>");
 				CompletionMessage = builder.ToString();
 			}
-
-			public override IEnumerable<Type> GetQuestGivers()
-			{
-				yield break;
-			}
 		}
 
-		public override bool IsChainTriggered { get { return false; } } // Hint quest is optional
-		public override Type NextQuest { get { return typeof(AnimalArmorQuest.HintQuest); } }
+		public override bool IsChainTriggered { get { return true; } }
+		public override Type PrerequisiteQuest { get { return typeof(ChainArmorQuest); } }
+		public override Type NextQuest { get { return typeof(AnimalArmorQuest.HintQuest); } } // Optional delivery
 
 		public PlateArmorQuest()
 		{
 			Activated = true;
+			OneTimeOnly = true;
+
 			Title = "A Test of Strength";
 
 			var builder = new StringBuilder();
@@ -388,16 +409,19 @@ namespace Server.Engines.MLQuests.Definitions
 		}
 	}
 
-	public class AnimalArmorQuest : MLQuest
+	public class AnimalArmorQuest : BlacksmithRecipeQuest
 	{
-		public class HintQuest : MLQuest
+		public class HintQuest : BlacksmithRecipeHintQuest
 		{
 			public override bool IsChainTriggered { get { return true; } }
+			public override Type PrerequisiteQuest { get { return typeof(PlateArmorQuest); } }
 			public override Type NextQuest { get { return typeof(AnimalArmorQuest); } }
 
 			public HintQuest()
 			{
 				Activated = true;
+				OneTimeOnly = true;
+
 				Title = "Delivery: The Iron Golem";
 
 				var builder = new StringBuilder();
@@ -426,19 +450,17 @@ namespace Server.Engines.MLQuests.Definitions
 
 				Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
 			}
-
-			public override IEnumerable<Type> GetQuestGivers()
-			{
-				yield break;
-			}
 		}
 
-		public override bool IsChainTriggered { get { return false; } } // Hint quest is optional
-		public override Type NextQuest { get { return typeof(RoyalArmorQuest.HintQuest); } }
+		public override bool IsChainTriggered { get { return true; } }
+		public override Type PrerequisiteQuest { get { return typeof(PlateArmorQuest); } }
+		public override Type NextQuest { get { return typeof(RoyalArmorQuest.HintQuest); } } // Optional delivery
 
 		public AnimalArmorQuest()
 		{
 			Activated = true;
+			OneTimeOnly = true;
+
 			Title = "The Unbreakable Bond";
 
 			var builder = new StringBuilder();
@@ -505,16 +527,19 @@ namespace Server.Engines.MLQuests.Definitions
 		}
 	}
 
-	public class RoyalArmorQuest : MLQuest
+	public class RoyalArmorQuest : BlacksmithRecipeQuest
 	{
-		public class HintQuest : MLQuest
+		public class HintQuest : BlacksmithRecipeHintQuest
 		{
 			public override bool IsChainTriggered { get { return true; } }
+			public override Type PrerequisiteQuest { get { return typeof(AnimalArmorQuest); } }
 			public override Type NextQuest { get { return typeof(RoyalArmorQuest); } }
 
 			public HintQuest()
 			{
 				Activated = true;
+				OneTimeOnly = true;
+
 				Title = "Delivery: Smelted Moon Rocks";
 
 				var builder = new StringBuilder();
@@ -542,19 +567,17 @@ namespace Server.Engines.MLQuests.Definitions
 
 				Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
 			}
-
-			public override IEnumerable<Type> GetQuestGivers()
-			{
-				yield break;
-			}
 		}
 
-		public override bool IsChainTriggered { get { return false; } } // Hint quest is optional
-		public override Type NextQuest { get { return typeof(TridentQuest.HintQuest); } }
+		public override bool IsChainTriggered { get { return true; } }
+		public override Type PrerequisiteQuest { get { return typeof(AnimalArmorQuest); } }
+		public override Type NextQuest { get { return typeof(TridentQuest.HintQuest); } } // Optional delivery
 
 		public RoyalArmorQuest()
 		{
 			Activated = true;
+			OneTimeOnly = true;
+
 			Title = "Shattered Steel & Broken Bonds";
 
 			var builder = new StringBuilder();
@@ -627,16 +650,19 @@ namespace Server.Engines.MLQuests.Definitions
 		}
 	}
 
-	public class TridentQuest : MLQuest
+	public class TridentQuest : BlacksmithRecipeQuest
 	{
-		public class HintQuest : MLQuest
+		public class HintQuest : BlacksmithRecipeHintQuest
 		{
 			public override bool IsChainTriggered { get { return true; } }
+			public override Type PrerequisiteQuest { get { return typeof(RoyalArmorQuest); } }
 			public override Type NextQuest { get { return typeof(TridentQuest); } }
 
 			public HintQuest()
 			{
 				Activated = true;
+				OneTimeOnly = true;
+
 				Title = "Delivery: The Titan's Helm";
 
 				var builder = new StringBuilder();
@@ -668,18 +694,16 @@ namespace Server.Engines.MLQuests.Definitions
 
 				Rewards.Add(new ItemReward("Gold Coins", typeof(Gold), 300));
 			}
-
-			public override IEnumerable<Type> GetQuestGivers()
-			{
-				yield break;
-			}
 		}
 
-		public override bool IsChainTriggered { get { return false; } } // Hint quest is optional
+		public override bool IsChainTriggered { get { return true; } }
+		public override Type PrerequisiteQuest { get { return typeof(RoyalArmorQuest); } }
 
 		public TridentQuest()
 		{
 			Activated = true;
+			OneTimeOnly = true;
+
 			Title = "Forging the Legacy";
 
 			var builder = new StringBuilder();

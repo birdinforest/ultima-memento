@@ -187,10 +187,14 @@ namespace Server.Engines.MLQuests
 					{
 						if (checkQuest.OneTimeOnly)
 						{
-							if (message)
-								MLQuestSystem.Tell(quester, pm, 1075454); // I cannot offer you the quest again.
+							// Subsequent NextQuest steps may be independently OneTimeOnly (optional hints).
+							if (checkQuest == this)
+							{
+								if (message)
+									MLQuestSystem.Tell(quester, pm, 1075454); // I cannot offer you the quest again.
 
-							return false;
+								return false;
+							}
 						}
 						else if (nextAvailable > DateTime.UtcNow)
 						{

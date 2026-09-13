@@ -15,6 +15,8 @@ namespace Server.Engines.MLQuests.Definitions
         public BlacksmithBasicsQuest()
         {
             Activated = true;
+			OneTimeOnly = true;
+
             Title = "The Flame's Call";
             var builder = new StringBuilder();
             builder.Append("The sound of the hammer striking metal rings out like a heartbeat in the air, steady and rhythmic. In the nearby forge, you see glowing coals crackle and hiss as they feed the flames.");
