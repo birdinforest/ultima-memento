@@ -457,6 +457,7 @@ namespace Server.Engines.Avatar
 								AvatarLocalization.SendFormat(player, "avatar.msg.purchased", "You have purchased '{0}'.", reward.Name);
 							m_Context.PointsSaved -= cost;
 							player.AddToBackpack(item);
+							CombatBar.Refresh(player);
 						}
 					}
 					else
@@ -482,6 +483,7 @@ namespace Server.Engines.Avatar
 								m_Context.PointsSaved -= cost;
 								actionReward.OnSelect();
 								AvatarEngine.Instance.ApplyContext(player, player.Avatar);
+								CombatBar.Refresh(player);
 							}
 						}
 					}
