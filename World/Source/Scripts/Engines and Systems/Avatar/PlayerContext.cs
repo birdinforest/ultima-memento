@@ -153,7 +153,6 @@ namespace Server.Engines.Avatar
 				}
 
 				PrestigeLevel = reader.ReadInt();
-				UseBetaCoinAlgorithm = reader.ReadBool();
 			}
 			else
 			{
@@ -274,9 +273,6 @@ namespace Server.Engines.Avatar
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool UnlockTemptations { get; set; }
 
-		[CommandProperty(AccessLevel.GameMaster)]
-		public bool UseBetaCoinAlgorithm { get; set; }
-
 		public SafetyDepositBox GetOrCreateSafetyDepositBox(Mobile owner)
 		{
 			if (!HasSafetyDepositBox)
@@ -294,7 +290,8 @@ namespace Server.Engines.Avatar
 
 		public void Serialize(GenericWriter writer)
 		{
-			// v17 (local bump): v16 = Draft mode persistence, v17 = prestige + draft-banned skills
+			// v17 (local bump): v16 = Draft mode persistence, v17 = prestige + draft-banned skills;
+			// upstream v16 (beta-coin flag removal) is subsumed — our chain never carries that byte past prestige
 			writer.Write(17); // version
 
 			writer.Write(PointsFarmed);
@@ -355,7 +352,6 @@ namespace Server.Engines.Avatar
 			}
 
 			writer.Write(PrestigeLevel);
-			writer.Write(UseBetaCoinAlgorithm);
 		}
 
 		public override string ToString()

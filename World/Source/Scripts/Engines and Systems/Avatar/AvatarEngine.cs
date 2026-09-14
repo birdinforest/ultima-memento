@@ -185,7 +185,7 @@ namespace Server.Engines.Avatar
 				|| MobileUtilities.TryGetMasterPlayer(creature) != null // No pets
 			 ) return;
 
-			int value = context.UseBetaCoinAlgorithm ? CoinRewardCalculator.GetKillCoinValue(creature) : CoinRewardCalculatorLegacy.GetCoinValue(e.Corpse);
+			int value = CoinRewardCalculator.GetKillCoinValue(creature);
 			if (value < 1) return;
 
 			if (1 < e.DamagerCount) value /= 2;
