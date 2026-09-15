@@ -1283,6 +1283,7 @@ namespace Server.Misc
 					builder.Append("- Misc - Fix issue where relic items could be duplicated<br>");
 					builder.Append("- Spell - Fix typo in Orb of Orcus spell description<br>");
 					builder.Append("- Spell - Fix potential crash when casting too fast<br>");
+					builder.Append("- Spell - Fix crash with Magic Reflection + Parrying combo<br>");
 					break;
 			}
 		}
