@@ -59,7 +59,7 @@ namespace Server
 			if( m == null || m.Deleted || !m.Alive || damage <= 0 )
 				return 0;
 			
-			if (from != null && from.CanBeHarmful(m))
+			if (from != null && !from.CanBeHarmful(m))
 			{
 				Console.WriteLine("[WARNING]: Unconsented damage was prevented! ({0} against {1})", from.Name, m.Name);
 				return 0;
