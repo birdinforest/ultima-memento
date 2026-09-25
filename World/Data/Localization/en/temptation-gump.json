@@ -18,6 +18,9 @@
   "temptationgump.desc.strongest_avenger": "+ You learn how to wear pants<br>x Enemies cast spells faster",
   "temptationgump.desc.famine": "+ Your stat and skill gain rate is impacted by your Hunger<br>x Hunger and thirst decay twice as fast",
   "temptationgump.desc.puzzle_master": "+ You learn how to solve puzzle boxes<br>x Reduced skill cap bonuses for Fugitives (+200) and Titan of Ether quest (+200)<br>x Magical attributes from monster racial bonuses now act as Minimums. Resist/Stat bonuses still stack.",
+  "temptationgump.puzzle.base": "+ You learn how to solve puzzle boxes",
+  "temptationgump.puzzle.reduced": "<br>x Permanently reduced skill cap bonuses",
+  "temptationgump.puzzle.racial": "<br>x Monster racial bonuses work differently",
   "temptationgump.desc.tribute": "- Tribute quests rewards are changed",
   "temptationgump.desc.deathwish": "+ You gain stats and skills faster<br>- An old sword<br>x You may never be resurrected"
 }
