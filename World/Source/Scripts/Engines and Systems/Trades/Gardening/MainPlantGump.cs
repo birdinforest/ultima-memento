@@ -3,6 +3,7 @@ using Server;
 using Server.Items;
 using Server.Gumps;
 using Server.Network;
+using Server.Utilities;
 
 namespace Server.Engines.Plants
 {
@@ -17,58 +18,72 @@ namespace Server.Engines.Plants
 			DrawBackground();
 
 			DrawPlant();
+			const int GRAPHIC_SLOT_WIDTH = 20;
+			const int GRAPHIC_SLOT_HEIGHT = 20;
 
 			AddButton( 71, 67, 0xD4, 0xD4, 1, GumpButtonType.Reply, 0 ); // Reproduction menu
 			AddItem( 59, 68, 0xD08 );
+			//AddTooltip("Reproduction Menu"); // breaks button hit-testing on TazUO
 
 			PlantSystem system = plant.PlantSystem;
 
 			AddButton( 71, 91, 0xD4, 0xD4, 2, GumpButtonType.Reply, 0 ); // Infestation
 			AddItem( 8, 96, 0x372 );
+			AddTooltip("Infestation Level");
 			AddPlus( 95, 92, system.Infestation );
 
 			AddButton( 71, 115, 0xD4, 0xD4, 3, GumpButtonType.Reply, 0 ); // Fungus
 			AddItem( 58, 115, 0xD16 );
+			AddTooltip("Fungus Level");
 			AddPlus( 95, 116, system.Fungus );
 
 			AddButton( 71, 139, 0xD4, 0xD4, 4, GumpButtonType.Reply, 0 ); // Poison
 			AddItem( 59, 143, 0x1AE4 );
+			AddTooltip("Poison Level");
 			AddPlus( 95, 140, system.Poison );
 
 			AddButton( 71, 163, 0xD4, 0xD4, 5, GumpButtonType.Reply, 0 ); // Disease
 			AddItem( 55, 167, 0x1727 );
+			AddTooltip("Disease Level");
 			AddPlus( 95, 164, system.Disease );
 
 			AddButton( 209, 67, 0xD2, 0xD2, 6, GumpButtonType.Reply, 0 ); // Water
 			AddItem( 193, 67, 0x1F9D );
+			AddTooltip("Water Level");
 			AddPlusMinus( 196, 67, system.Water );
 
+			const int ITEM_START_X = 209;
+
 			AddButton( 209, 91, 0xD4, 0xD4, 7, GumpButtonType.Reply, 0 ); // Poison potion
-			AddItem( 197, 91, 0xF0A );
+			GumpUtilities.AddCenteredItemToGump(this, 0xF0A, ITEM_START_X, 91, GRAPHIC_SLOT_WIDTH, GRAPHIC_SLOT_HEIGHT);
 			AddLevel( 196, 91, system.PoisonPotion );
 
 			AddButton( 209, 115, 0xD4, 0xD4, 8, GumpButtonType.Reply, 0 ); // Cure potion
-			AddItem( 192, 115, 0xF07 );
+			GumpUtilities.AddCenteredItemToGump(this, 0xF07, ITEM_START_X, 115, GRAPHIC_SLOT_WIDTH, GRAPHIC_SLOT_HEIGHT);
 			AddLevel( 196, 115, system.CurePotion );
 
 			AddButton( 209, 139, 0xD4, 0xD4, 9, GumpButtonType.Reply, 0 ); // Heal potion
-			AddItem( 190, 139, 0xF0C );
+			GumpUtilities.AddCenteredItemToGump(this, 0xF0C, ITEM_START_X, 139, GRAPHIC_SLOT_WIDTH, GRAPHIC_SLOT_HEIGHT);
 			AddLevel( 196, 139, system.HealPotion );
 
 			AddButton( 209, 163, 0xD4, 0xD4, 10, GumpButtonType.Reply, 0 ); // Strength potion
-			AddItem( 193, 163, 0xF09 );
+			GumpUtilities.AddCenteredItemToGump(this, 0xF09, ITEM_START_X, 163, GRAPHIC_SLOT_WIDTH, GRAPHIC_SLOT_HEIGHT);
 			AddLevel( 196, 163, system.StrengthPotion );
 
 			AddImage( 48, 47, 0xD2 );
+			AddTooltip("Plant Stage: " + ((int)m_Plant.PlantStatus).ToString());
 			AddLevel( 54, 47, (int)m_Plant.PlantStatus );
 
 			AddImage( 232, 47, 0xD2 );
+			// Tooltip internal
 			AddGrowthIndicator( 239, 47 );
 
 			AddButton( 48, 183, 0xD2, 0xD2, 11, GumpButtonType.Reply, 0 ); // Help
+			//AddTooltip("Help"); // breaks button hit-testing on TazUO
 			AddLabel( 54, 183, 0x835, "?" );
 
 			AddButton( 232, 183, 0xD4, 0xD4, 12, GumpButtonType.Reply, 0 ); // Empty the bowl
+			//AddTooltip("Empty the bowl"); // breaks button hit-testing on TazUO
 			AddItem( 219, 180, 0x15FD );
 		}
 
@@ -214,11 +229,11 @@ namespace Server.Engines.Plants
 
 			switch ( m_Plant.PlantSystem.GrowthIndicator )
 			{
-				case PlantGrowthIndicator.InvalidLocation : AddLabel( x, y, 0x21, "!" ); break;
-				case PlantGrowthIndicator.NotHealthy : AddLabel( x, y, 0x21, "-" ); break;
-				case PlantGrowthIndicator.Delay : AddLabel( x, y, 0x35, "-" ); break;
-				case PlantGrowthIndicator.Grown : AddLabel( x, y, 0x3, "+" ); break;
-				case PlantGrowthIndicator.DoubleGrown : AddLabel( x, y, 0x3F, "+" ); break;
+				case PlantGrowthIndicator.InvalidLocation : AddTooltip("Growth: Invalid Location"); AddLabel( x, y, 0x21, "!" ); break;
+				case PlantGrowthIndicator.NotHealthy : AddTooltip("Growth: Not Healthy"); AddLabel( x, y, 0x21, "-" ); break;
+				case PlantGrowthIndicator.Delay : AddTooltip("Growth: Waiting"); AddLabel( x, y, 0x35, "-" ); break;
+				case PlantGrowthIndicator.Grown : AddTooltip("Growth: Grown"); AddLabel( x, y, 0x3, "+" ); break;
+				case PlantGrowthIndicator.DoubleGrown : AddTooltip("Growth: Double Grown"); AddLabel( x, y, 0x3F, "+" ); break;
 			}
 		}
 
@@ -260,33 +275,53 @@ namespace Server.Engines.Plants
 				}
 				case 2: // Infestation
 				{
-					from.Send( new DisplayHelpTopic( 54, true ) ); // INFESTATION LEVEL
-
-					from.SendGump( new MainPlantGump( m_Plant ) );
+					from.SendGump(
+						new InfoHelpGump(
+							from,
+							"Infestation Level",
+							"The Infestation Level meter (grey bug image) shows the relative amount of insects that are currently attacking your plant.<BR><BR>A yellow + sign means the plant has a small infestation.  A red + sign indicates a severe infestation.",
+							onClose: () => from.SendGump( new MainPlantGump( m_Plant ) )
+						)
+					);
 
 					break;
 				}
 				case 3: // Fungus
 				{
-					from.Send( new DisplayHelpTopic( 56, true ) ); // FUNGUS LEVEL
-
-					from.SendGump( new MainPlantGump( m_Plant ) );
+					from.SendGump(
+						new InfoHelpGump(
+							from,
+							"Fungus Level",
+							"The Fungus Level meter (mushroom image) shows the amount of fungi that are currently sapping health from your plant.<BR><BR>A yellow + sign means the plant has a small fungus infection.  A red + sign indicates a severe fungus infection.",
+							onClose: () => from.SendGump( new MainPlantGump( m_Plant ) )
+						)
+					);
 
 					break;
 				}
 				case 4: // Poison
 				{
-					from.Send( new DisplayHelpTopic( 58, true ) ); // POISON LEVEL
-
-					from.SendGump( new MainPlantGump( m_Plant ) );
+					from.SendGump(
+						new InfoHelpGump(
+							from,
+							"Poison Level",
+							"The Poison Level meter (skull image) shows the amount of poison that your plant has soaked up.<BR><BR>A yellow + sign means the plant is slightly poisoned.  A red + sign indicates that the plant is severely poisoned.",
+							onClose: () => from.SendGump( new MainPlantGump( m_Plant ) )
+						)
+					);
 
 					break;
 				}
 				case 5: // Disease
 				{
-					from.Send( new DisplayHelpTopic( 60, true ) ); // DISEASE LEVEL
-
-					from.SendGump( new MainPlantGump( m_Plant ) );
+					from.SendGump(
+						new InfoHelpGump(
+							from,
+							"Disease Level",
+							"The Disease Level meter (purple goo image) shows the strength of the disease affecting your plant.<BR><BR>A yellow + sign means the plant is slightly infected.  A red + sign indicates that the plant is severely infected.",
+							onClose: () => from.SendGump( new MainPlantGump( m_Plant ) )
+						)
+					);
 
 					break;
 				}
@@ -345,10 +380,14 @@ namespace Server.Engines.Plants
 				}
 				case 11: // Help
 				{
-					from.Send( new DisplayHelpTopic( 48, true ) ); // PLANT GROWING
-
-					from.SendGump( new MainPlantGump( m_Plant ) );
-
+					from.SendGump(
+						new InfoHelpGump(
+							from,
+							"Plant Growing",
+							"Using special seeds harvested from slain monsters, you may grow uniquely colored plants to use as house decorations or to produce hybrid seeds and resources. <BR><BR> As your plant grows from a seed to a full-grown plant, it will need watering and alchemical care in order to protect if from insect infestations and harmful fungi.<BR><BR>Through the process of cross-pollination, you may even be the first person to grow a unique new hybrid plant type!",
+							onClose: () => from.SendGump( new MainPlantGump( m_Plant ) )
+						)
+					);
 					break;
 				}
 				case 12: // Empty the bowl

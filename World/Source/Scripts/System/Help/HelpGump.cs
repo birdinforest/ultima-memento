@@ -242,6 +242,10 @@ namespace Server.Engines.Help
 
 			Setting_Language_English = 60010,
 			Setting_Language_ZhHans = 60011,
+			Setting_DoubleClickToTalk,
+			Setting_DoubleClickToTalk_Info,
+			Setting_VendorContainerSell,
+			Setting_VendorContainerSell_Info,
 		}
 
 		public static void Initialize()
@@ -645,6 +649,9 @@ namespace Server.Engines.Help
 				AddSetting(xs, g, from, "Double Click to ID Items", PageActionType.Setting_DoubleClickToIDItems, PageActionType.Setting_DoubleClickToIDItems_Info);
 				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
+				AddSetting(xs, g, from, "Double Click Talk", PageActionType.Setting_DoubleClickToTalk, PageActionType.Setting_DoubleClickToTalk_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+
 				AddSetting(xs, g, from, "Single ID Attempt", PageActionType.Setting_SingleAttemptID, PageActionType.Setting_SingleAttemptID_Info);
 				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
@@ -658,6 +665,9 @@ namespace Server.Engines.Help
 				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
 
 				AddSetting(xs, g, from, "Suppress Vendor Tooltips", PageActionType.Setting_SuppressVendorTooltips, PageActionType.Setting_SuppressVendorTooltips_Info);
+				if ( xr == 1 ){ g += j; xr=0; xs=xm; } else { xr=1; xs=xo; }
+
+				AddSetting(xs, g, from, "Container Sell", PageActionType.Setting_VendorContainerSell, PageActionType.Setting_VendorContainerSell_Info);
 				// Last setting, don't add a row
 
 				g += j;
@@ -774,7 +784,7 @@ namespace Server.Engines.Help
             CommandSystem.Handle(from, String.Format("{0}{1}", CommandSystem.Prefix, c));
         }
 
-		private void TryConfigureSpellBar(SetupSpellBarGump gump)
+		private void TryConfigureSpellBar(SpellBarSetupGumpBase gump)
 		{
 			if (gump.ConfigureGump())
 			{
@@ -896,7 +906,8 @@ namespace Server.Engines.Help
 				case PageActionType.Setting_SkillTitle: 
 				case PageActionType.Setting_SetCraftingContainer: 
 				case PageActionType.Setting_SetHarvestingContainer: 
-				case PageActionType.Setting_SetLootContainer: return true;
+				case PageActionType.Setting_SetLootContainer:
+				case PageActionType.Setting_VendorContainerSell: return true;
 			}
 
 			return false;
@@ -920,6 +931,7 @@ namespace Server.Engines.Help
 				case PageActionType.Setting_WeaponAbilityNames: return from.Preferences.CharacterWepAbNames;
 				case PageActionType.Setting_UseAncientSpellbook: return ResearchSettings.BookCaster( from );
 				case PageActionType.Setting_DoubleClickToIDItems: return from.Preferences.DoubleClickID;
+				case PageActionType.Setting_DoubleClickToTalk: return from.Preferences.DoubleClickToTalk;
 				case PageActionType.Setting_OrdinaryResources: return from.HarvestOrdinary;
 				case PageActionType.Setting_RemoveVendorGoldSafeguard: return from.Preferences.IgnoreVendorGoldSafeguard;
 				case PageActionType.Setting_SuppressVendorTooltips: return from.Preferences.SuppressVendorTooltip;
@@ -1435,6 +1447,12 @@ namespace Server.Engines.Help
 						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
 						break;
 					}
+					case PageActionType.Setting_DoubleClickToTalk:
+					{
+						from.Preferences.DoubleClickToTalk = !from.Preferences.DoubleClickToTalk;
+						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
+						break;
+					}
 					case PageActionType.Setting_RemoveVendorGoldSafeguard:
 					{
 						from.Preferences.IgnoreVendorGoldSafeguard = !from.Preferences.IgnoreVendorGoldSafeguard;
@@ -1445,6 +1463,12 @@ namespace Server.Engines.Help
 					{
 						from.Preferences.SuppressVendorTooltip = !from.Preferences.SuppressVendorTooltip;
 						from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) );
+						break;
+					}
+					case PageActionType.Setting_VendorContainerSell:
+					{
+						from.CloseGump( typeof( VendorContainerSellConfigGump ) );
+						from.SendGump( new VendorContainerSellConfigGump( from, 12 ) );
 						break;
 					}
 					case PageActionType.Setting_SingleAttemptID:
@@ -1506,72 +1530,72 @@ namespace Server.Engines.Help
 
 					case PageActionType.MagicToolbar_BardSongsBarI_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsBard1( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Bard_1, from, 1 ) );
 						break;
 					}
 					case PageActionType.MagicToolbar_BardSongsBarII_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsBard2( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Bard_2, from, 1 ) );
 						break;
 					}
 					case PageActionType.MagicToolbar_KnightSpellBarI_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsKnight1( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Knight_1, from, 1 ) );
 						break;
 					}
 					case PageActionType.MagicToolbar_KnightSpellBarII_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsKnight2( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Knight_2, from, 1 ) );
 						break;
 					}
 					case PageActionType.MagicToolbar_DeathKnightSpellBarI_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsDeath1( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Death_1, from, 1 ) );
 						break;
 					}
 					case PageActionType.MagicToolbar_DeathKnightSpellBarII_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsDeath2( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Death_2, from, 1 ) );
 						break;
 					}
 					case PageActionType.MagicToolbar_MagerySpellBarI_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsMage1( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Mage_1, from, 1 ) );
 						break;
 					}
 					case PageActionType.MagicToolbar_MagerySpellBarII_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsMage2( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Mage_2, from, 1 ) );
 						break;
 					}
 					case PageActionType.MagicToolbar_MagerySpellBarIII_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsMage3( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Mage_3, from, 1 ) );
 						break;
 					}
 					case PageActionType.MagicToolbar_MagerySpellBarIV_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsMage4( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Mage_4, from, 1 ) );
 						break;
 					}
 					case PageActionType.MagicToolbar_NecromancerSpellBarI_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsNecro1( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Necro_1, from, 1 ) );
 						break;
 					}
 					case PageActionType.MagicToolbar_NecromancerSpellBarII_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsNecro2( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Necro_2, from, 1 ) );
 						break;
 					}
 					case PageActionType.MagicToolbar_PriestSpellBarI_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsPriest1( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Priest_1, from, 1 ) );
 						break;
 					}
 					case PageActionType.MagicToolbar_PriestSpellBarII_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsPriest2( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Priest_2, from, 1 ) );
 						break;
 					}
 					case PageActionType.Setting_CustomTitle:
@@ -1581,42 +1605,42 @@ namespace Server.Engines.Help
 					}
 					case PageActionType.MagicToolbar_AncientSpellBarI_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsArch1( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Ancient_1, from, 1 ) );
 						break;
 					}
 					case PageActionType.MagicToolbar_AncientSpellBarII_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsArch2( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Ancient_2, from, 1 ) );
 						break;
 					}
 					case PageActionType.MagicToolbar_AncientSpellBarIII_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsArch3( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Ancient_3, from, 1 ) );
 						break;
 					}
 					case PageActionType.MagicToolbar_AncientSpellBarIV_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsArch4( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Ancient_4, from, 1 ) );
 						break;
 					}
 					case PageActionType.MagicToolbar_MonkSpellBarI_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsMonk1( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Monk_1, from, 1 ) );
 						break;
 					}
 					case PageActionType.MagicToolbar_MonkSpellBarII_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsMonk2( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Monk_2, from, 1 ) );
 						break;
 					}
 					case PageActionType.MagicToolbar_ElementalSpellBarI_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsElement1( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Elemental_1, from, 1 ) );
 						break;
 					}
 					case PageActionType.MagicToolbar_ElementalSpellBarII_Config:
 					{
-						TryConfigureSpellBar( new SetupBarsElement2( (PlayerMobile)from, 1 ) );
+						TryConfigureSpellBar( SpellBarRegistry.CreateSetupGump( SpellBarId.Elemental_2, from, 1 ) );
 						break;
 					}
 
@@ -2183,6 +2207,14 @@ namespace Server.Engines.Help
 					break;
 				}
 
+				case PageActionType.Setting_DoubleClickToTalk_Info:
+				{
+					scrollbar = false;
+					title = "Double Click Talk";
+					info = "When enabled, double clicking a citizen or other talkative NPC (the ones with a 'Talk' option in their context menu - found at meeting spots, town guards, innkeepers, couriers, and epic characters) will open their conversation directly instead of opening their paperdoll. NPCs without anything to say still show their paperdoll as normal.";
+					break;
+				}
+
 				case PageActionType.Setting_Playstyle_Barbaric_Info:
 				{
 					title = "Play Style - Barbaric";
@@ -2208,6 +2240,13 @@ namespace Server.Engines.Help
 				{
 					title = "Suppress Vendor Tooltips";
 					info = "Command: [SuppressTooltips<br><br>When enabled, vendor tooltips will not be sent to the client. This can be helpful for players who use a touch screen. Warning: Players usually have to re-log to re-query synchronize with this after changing it.";
+					break;
+				}
+
+				case PageActionType.Setting_VendorContainerSell_Info:
+				{
+					title = "Container Sell";
+					info = "Configure the gump shown when you drop a container on a vendor to sell its contents. If the new gump is disabled, sellable items from the container are sent through the classic vendor sell list instead.";
 					break;
 				}
 

@@ -813,6 +813,7 @@
   "mob.other.disguise_sell_help_guards": "救命！守卫！",
   "mob.other.disguise_sell_session_not_open": "我还不想收你的货。",
   "mob.other.disguise_sell_session_gold_cap": "这一套伪装你已经卖够了。换张脸再来吧。",
+  "mob.vendor.sold_count_gold": "你卖掉了 {0} 件物品，获得 {1} 金币。",
   "sys.disguise_sell.karma_fame_success": "你戴着假面把赃物卖进了正经铺子——因果更堕，恶名却更响。",
   "sys.disguise_sell.wanted_disguise_sneak": " 你或许能混进定居点，因为别人认不出你。",
   "sys.disguise_sell.wanted_hint": " 伪装或许能混进定居点，但若向城镇商人卖货，仍有可能被识破。",

@@ -813,6 +813,7 @@
   "mob.other.disguise_sell_help_guards": "Help! Guards!",
   "mob.other.disguise_sell_session_not_open": "I am not ready to buy from you yet.",
   "mob.other.disguise_sell_session_gold_cap": "You have sold enough for one disguise. Find a new face before you try again.",
+  "mob.vendor.sold_count_gold": "You have sold {0} items for {1} gold.",
   "sys.disguise_sell.karma_fame_success": "You sold stolen goods under a false face—your karma sinks, but your notoriety grows.",
   "sys.disguise_sell.wanted_disguise_sneak": " You could probably sneak into settlements, however, since you will not be recognized.",
   "sys.disguise_sell.wanted_hint": " You might sneak into settlements while disguised, but town merchants may see through you if you try to sell to them.",
