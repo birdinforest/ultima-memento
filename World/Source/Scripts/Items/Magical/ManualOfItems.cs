@@ -77,12 +77,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			bool CanOpen = false;
-
-			if ( m_Owner == null ){ CanOpen = true; }
-			else if ( m_Owner == from ){ CanOpen = true; }
-
-			if ( CanOpen == true )
+			if ( m_AnyoneCanUse || m_Owner == from )
 			{
 				PlayerMobile opener = from as PlayerMobile;
 
@@ -628,6 +623,8 @@ namespace Server.Items
 			}
 		}
 
+		private bool m_AnyoneCanUse;
+
 		public int m_Charges;
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Charges { get{ return m_Charges; } set{ m_Charges = value; InvalidateProperties(); } }
@@ -711,7 +708,7 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int)1 ); // version
+			writer.Write( (int)2 ); // version
             writer.Write(m_Charges);
             writer.Write(m_Skill_1);
             writer.Write(m_Skill_2);
@@ -731,6 +728,7 @@ namespace Server.Items
             writer.Write(m_HowGiven);
             writer.Write(m_Points);
             writer.Write(m_Hue);
+			writer.Write(m_AnyoneCanUse);
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -756,6 +754,7 @@ namespace Server.Items
             m_HowGiven = reader.ReadString();
 			m_Points = reader.ReadInt();
 			m_Hue = reader.ReadInt();
+			m_AnyoneCanUse = 1 < version ? reader.ReadBool() : m_Owner == null;
 			if ( ItemID != 0x1C0E && ItemID != 0x1C0F ){ ItemID = Utility.RandomList( 0x1C0E, 0x1C0F ); }
 			if ( Name.Contains("Tome ") ){ Name = Name.Replace("Tome ", "Chest "); }
 		}
