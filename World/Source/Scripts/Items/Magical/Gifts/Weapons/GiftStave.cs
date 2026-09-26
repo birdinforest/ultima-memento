@@ -239,12 +239,17 @@ namespace Server.Items
 			}
 		}
 
-		public override bool OnEquip( Mobile from )
+		public override bool CanEquip( Mobile from )
 		{
-			if (!BaseWeapon.WizardCheck( from ))
+			if ( !CheckWizardEquip( from ) )
 				return false;
 
-			from.SendMessage(StringCatalog.ResolveByKey(from.Account, "god.msg.stave.need.crystals"));
+			return base.CanEquip( from );
+		}
+
+		public override bool OnEquip( Mobile from )
+		{
+			from.SendMessage( StringCatalog.ResolveByKey(from.Account, "god.msg.stave.need.crystals") );
 			return base.OnEquip( from );
 		}
 

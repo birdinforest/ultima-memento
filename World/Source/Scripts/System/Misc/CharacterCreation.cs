@@ -150,7 +150,6 @@ namespace Server.Misc
 					newChar.CharacterDiscovered = existingCharacter.CharacterDiscovered;
 
 				AvatarCoreItemMigration.MigrateItems( existingCharacter, newChar, newChar.Avatar );
-
 				if (newChar.Avatar.HasSafetyDepositBox)
 				{
 					var box = newChar.Avatar.GetOrCreateSafetyDepositBox(newChar);
@@ -174,7 +173,7 @@ namespace Server.Misc
 				if (skill.Value == 0) continue;
 
 				Bag bag = new Bag { Name = m.Skills[skill.Name].Name };
-				m.Backpack.AddItem(bag);
+				PackItem(m.Backpack, bag);
 
 				switch (skill.Name)
 				{
@@ -197,7 +196,23 @@ namespace Server.Misc
 						break;
 
 					case SkillName.ArmsLore:
-						PackItem(bag, GenerateRandomItem(LootPack.MagicItemsMeager1, true), true);
+						var hasMarksmanship = skills.Any(s => s.Name == SkillName.Marksmanship);
+						var hasParrying = skills.Any(s => s.Name == SkillName.Parry);
+						var hasCombatSkill = skills.Any(s => s.Name == SkillName.Swords || s.Name == SkillName.Bludgeoning || s.Name == SkillName.Fencing || s.Name == SkillName.FistFighting);
+						var candidates = LootPack.MagicItemsMeager1.Where(pack =>
+						{
+							if (pack.Type == typeof(BaseArmor)) return true;
+							if (pack.Type == typeof(BaseRanged)) return hasMarksmanship;
+							if (pack.Type == typeof(BaseShield)) return hasParrying;
+							if (pack.Type == typeof(BaseTrinket)) return false;
+							if (pack.Type == typeof(BaseWeapon)) return hasCombatSkill;
+
+							return false;
+						}).ToArray();
+						if (candidates.Length == 0)
+							candidates = LootPack.MagicItemsMeager1.Where(pack => pack.Type == typeof(BaseArmor)).ToArray();
+						if (candidates.Length > 0)
+							PackItem(bag, GenerateRandomItem(candidates, true), true);
 						break;
 
 					case SkillName.Parry:
@@ -654,11 +669,12 @@ namespace Server.Misc
 
 		private static Item GenerateRandomItem(LootPackItem[] lootPack, bool isMagic)
 		{
-			var itemOptions = lootPack.ToList();
+			if (lootPack == null || lootPack.Length == 0)
+				return null;
 
 			while (true)
 			{
-				var item = Utility.Random(itemOptions).Construct(false, null);
+				var item = Utility.Random(lootPack).Construct(false, null);
 				if (item != null)
 				{
 					if (isMagic)
@@ -867,6 +883,9 @@ namespace Server.Misc
 
 		private static void PackItem(Container pack, Item item, bool asUnidentified = false)
 		{
+			if (item == null)
+				return;
+
 			if (pack != null)
 			{
 				if (asUnidentified)

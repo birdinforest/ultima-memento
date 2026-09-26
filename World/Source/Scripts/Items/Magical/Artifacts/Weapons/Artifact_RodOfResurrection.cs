@@ -45,6 +45,20 @@ namespace Server.Items
             {
                 from.SendLocalizedMessage( 501040 ); // The resurrecter must be alive.
             }
+            else if ( m == from )
+            {
+	            if ( SoulOrb.FindActive( from ) != null )
+	            {
+	                from.SendMessage( StringCatalog.ResolveByKey( from.Account, "eng.soul_orb.spirits_watch_already" ) );
+	                return;
+	            }
+	
+	            var orb = SoulOrb.Create( from, SoulOrbType.Default );
+	            if ( orb != null )
+	            {
+	                from.SendMessage( StringCatalog.ResolveByKey( from.Account, "eng.soul_orb.spirits_watching" ) );
+	            }
+            }
             else if (m.Alive && !m.IsDeadBondedPet)
             {
                 from.SendLocalizedMessage( 501041 ); // Target is not dead.

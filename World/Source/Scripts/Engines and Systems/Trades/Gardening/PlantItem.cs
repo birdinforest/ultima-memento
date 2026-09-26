@@ -357,7 +357,7 @@ namespace Server.Engines.Plants
 				return;
 			}
 
-			from.SendGump( new MainPlantGump( this ) );
+			from.SendGump( new MainPlantGump( this, from ) );
 		}
 
 		public void PlantSeed( Mobile from, Seed seed )

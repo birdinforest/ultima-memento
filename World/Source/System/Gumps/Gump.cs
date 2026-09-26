@@ -308,6 +308,11 @@ namespace Server.Gumps
 			Add( new GumpRadio( x, y, inactiveID, activeID, initialState, switchID ) );
 		}
 
+        public void AddSpriteImage(int x, int y, int gumpID, int width, int height, int sx, int sy)
+        {
+            Add(new GumpSpriteImage(x, y, gumpID, width, height, sx, sy));
+        }
+
 		public void AddTextEntry( int x, int y, int width, int height, int hue, int entryID, string initialText )
 		{
 			Add( new GumpTextEntry( x, y, width, height, hue, entryID, initialText ) );
@@ -315,6 +320,11 @@ namespace Server.Gumps
 
 		public void AddTextEntry( int x, int y, int width, int height, int hue, int entryID, string initialText, int size ) {
 			Add( new GumpTextEntryLimited( x, y, width, height, hue, entryID, initialText, size ) );
+		}
+
+		public void AddItemProperty( int serial )
+		{
+			Add( new GumpItemProperty( serial ) );
 		}
 
 		public void Add( GumpEntry g )
@@ -332,6 +342,9 @@ namespace Server.Gumps
 
 		public void Remove( GumpEntry g )
 		{
+			if (g == null || !m_Entries.Contains(g))
+				return;
+
 			Invalidate();
 			m_Entries.Remove( g );
 			g.Parent = null;

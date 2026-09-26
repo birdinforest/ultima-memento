@@ -39,6 +39,35 @@ namespace Server.Items
 		{
 		}
 
+		public override bool OnDragLift(Mobile from)
+		{
+            // Entity is Visible so Ctrl+Shift can show it
+            // Disallow moving it
+            return false;
+		}
+
+		public override void OnDoubleClick(Mobile from)
+		{
+			if ( owner != null && owner == from )
+			{
+				Delete();
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "trap.settrap.disarm" ) );
+			}
+		}
+
+		public override void AppendChildProperties(ObjectPropertyList list)
+		{
+			base.AppendChildProperties(list);
+
+			if ( owner != null && owner.Player )
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "trap.settrap.hint_delete" );
+				else
+					list.Add( StringCatalog.ResolveByKey( null, "trap.settrap.hint_delete" ) );
+			}
+		}
+
 		public override void OnMovement( Mobile m, Point3D oldLocation )
 		{
 			if ( m is PlayerMobile ) return; // Players must walk over it directly
