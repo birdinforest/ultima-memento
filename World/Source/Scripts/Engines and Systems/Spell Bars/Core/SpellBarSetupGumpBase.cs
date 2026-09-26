@@ -1,6 +1,7 @@
 using Server.Commands;
 using Server.Gumps;
 using Server.Mobiles;
+using Server.Localization;
 
 namespace Server.SpellBars
 {
@@ -54,19 +55,19 @@ namespace Server.SpellBars
 			int showSpellNamesWhenVerticalGraphic = showSpellNamesWhenVertical ? 4018 : 3609;
 
 			AddButton(75, 52, useHorizontalBarGraphic, useHorizontalBarGraphic, 91, GumpButtonType.Reply, 0);
-			AddLabel(115, 55, LabelColors.OFFWHITE, "Horizontal Bar");
+			AddLabel(115, 55, LabelColors.OFFWHITE, StringCatalog.ResolveByKey( Player.Account, "sys.spellbar.horizontal_bar" ));
 
 			AddButton(75, 82, useVerticalBarGraphic, useVerticalBarGraphic, 91, GumpButtonType.Reply, 0);
-			AddLabel(115, 85, LabelColors.OFFWHITE, "Vertical Bar");
+			AddLabel(115, 85, LabelColors.OFFWHITE, StringCatalog.ResolveByKey( Player.Account, "sys.spellbar.vertical_bar" ));
 
 			AddButton(225, 82, showSpellNamesWhenVerticalGraphic, showSpellNamesWhenVerticalGraphic, 90, GumpButtonType.Reply, 0);
-			AddLabel(265, 85, LabelColors.OFFWHITE, "Show Spell Names When Vertical");
+			AddLabel(265, 85, LabelColors.OFFWHITE, StringCatalog.ResolveByKey( Player.Account, "sys.spellbar.show_spell_names_vertical" ));
 
 			AddButton(500, 52, 4005, 4007, 92, GumpButtonType.Reply, 0);
-			AddLabel(540, 55, LabelColors.OFFWHITE, "Open Toolbar");
+			AddLabel(540, 55, LabelColors.OFFWHITE, StringCatalog.ResolveByKey( Player.Account, "sys.spellbar.open_toolbar" ));
 
 			AddButton(500, 82, 4020, 4020, 93, GumpButtonType.Reply, 0);
-			AddLabel(540, 85, LabelColors.OFFWHITE, "Close Toolbar");
+			AddLabel(540, 85, LabelColors.OFFWHITE, StringCatalog.ResolveByKey( Player.Account, "sys.spellbar.close_toolbar" ));
 		}
 
 		protected void AddNextPageButton(int buttonId)

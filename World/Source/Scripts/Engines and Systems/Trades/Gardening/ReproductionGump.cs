@@ -135,7 +135,7 @@ namespace Server.Engines.Plants
 			{
 				case 1: // Main menu
 				{
-					from.SendGump( new MainPlantGump( m_Plant ) );
+					from.SendGump( new MainPlantGump( m_Plant, from ) );
 
 					break;
 				}

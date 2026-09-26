@@ -1,5 +1,6 @@
 using Server.Items;
 using Server.Prompts;
+using Server.Localization;
 
 namespace Server.Engines.Craft
 {
@@ -14,7 +15,7 @@ namespace Server.Engines.Craft
 			if ( from == null || craftSystem == null || tool == null )
 				return;
 
-			from.SendMessage( "Enter item name to search (ESC to cancel):" );
+			from.SendMessage( StringCatalog.ResolveByKey( from.Account, "eng.craft.search_prompt" ) );
 			from.Prompt = new CraftSearchPrompt( from, craftSystem, tool );
 		}
 

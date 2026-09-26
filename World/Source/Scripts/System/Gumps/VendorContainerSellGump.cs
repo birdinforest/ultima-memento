@@ -171,8 +171,13 @@ namespace Server.Gumps
 			if (from == null) return;
 			if (info.ButtonID != ConfirmButton) return;
 			if (m_Vendor == null || m_Vendor.Deleted || !from.CheckAlive()) return;
-			if (!m_Vendor.IsActiveBuyer || !m_Vendor.CheckVendorAccess(from)) return;
+			if (!m_Vendor.IsActiveBuyer) return;
 			if (!Utility.RangeCheck(m_Vendor.Location, from.Location, 10)) return;
+			if (!m_Vendor.CheckVendorSellAccess(from))
+			{
+				MurdererDisguiseSell.TrySaySellRefused(m_Vendor, from);
+				return;
+			}
 
 			Container container = World.FindItem(m_ContainerSerial) as Container;
 			if (container == null || container.Deleted || container.RootParent != from) return;

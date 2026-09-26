@@ -206,11 +206,13 @@ namespace Server.Misc
 							if (pack.Type == typeof(BaseShield)) return hasParrying;
 							if (pack.Type == typeof(BaseTrinket)) return false;
 							if (pack.Type == typeof(BaseWeapon)) return hasCombatSkill;
-							if (pack.Type == typeof(BaseWeapon)) return hasCombatSkill;
 
 							return false;
 						}).ToArray();
-						PackItem(bag, GenerateRandomItem(candidates, true), true); //
+						if (candidates.Length == 0)
+							candidates = LootPack.MagicItemsMeager1.Where(pack => pack.Type == typeof(BaseArmor)).ToArray();
+						if (candidates.Length > 0)
+							PackItem(bag, GenerateRandomItem(candidates, true), true);
 						break;
 
 					case SkillName.Parry:
@@ -667,7 +669,8 @@ namespace Server.Misc
 
 		private static Item GenerateRandomItem(LootPackItem[] lootPack, bool isMagic)
 		{
-			if (lootPack.Length == 0) throw new ArgumentException("No items to generate");
+			if (lootPack == null || lootPack.Length == 0)
+				return null;
 
 			while (true)
 			{
@@ -880,6 +883,9 @@ namespace Server.Misc
 
 		private static void PackItem(Container pack, Item item, bool asUnidentified = false)
 		{
+			if (item == null)
+				return;
+
 			if (pack != null)
 			{
 				if (asUnidentified)

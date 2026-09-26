@@ -4,6 +4,8 @@ using Server.Items;
 using Server.Gumps;
 using Server.Network;
 using Server.Utilities;
+using Server.Localization;
+using Server.Accounting;
 
 namespace Server.Engines.Plants
 {
@@ -11,9 +13,10 @@ namespace Server.Engines.Plants
 	{
 		private PlantItem m_Plant;
 
-		public MainPlantGump( PlantItem plant ) : base( 20, 20 )
+		public MainPlantGump( PlantItem plant, Mobile from ) : base( 20, 20 )
 		{
 			m_Plant = plant;
+			IAccount account = from != null ? from.Account : null;
 
 			DrawBackground();
 
@@ -29,27 +32,27 @@ namespace Server.Engines.Plants
 
 			AddButton( 71, 91, 0xD4, 0xD4, 2, GumpButtonType.Reply, 0 ); // Infestation
 			AddItem( 8, 96, 0x372 );
-			AddTooltip("Infestation Level");
+			AddTooltip(StringCatalog.ResolveByKey( account, "eng.plant.tooltip.infestation"));
 			AddPlus( 95, 92, system.Infestation );
 
 			AddButton( 71, 115, 0xD4, 0xD4, 3, GumpButtonType.Reply, 0 ); // Fungus
 			AddItem( 58, 115, 0xD16 );
-			AddTooltip("Fungus Level");
+			AddTooltip(StringCatalog.ResolveByKey( account, "eng.plant.tooltip.fungus"));
 			AddPlus( 95, 116, system.Fungus );
 
 			AddButton( 71, 139, 0xD4, 0xD4, 4, GumpButtonType.Reply, 0 ); // Poison
 			AddItem( 59, 143, 0x1AE4 );
-			AddTooltip("Poison Level");
+			AddTooltip(StringCatalog.ResolveByKey( account, "eng.plant.tooltip.poison"));
 			AddPlus( 95, 140, system.Poison );
 
 			AddButton( 71, 163, 0xD4, 0xD4, 5, GumpButtonType.Reply, 0 ); // Disease
 			AddItem( 55, 167, 0x1727 );
-			AddTooltip("Disease Level");
+			AddTooltip(StringCatalog.ResolveByKey( account, "eng.plant.tooltip.disease"));
 			AddPlus( 95, 164, system.Disease );
 
 			AddButton( 209, 67, 0xD2, 0xD2, 6, GumpButtonType.Reply, 0 ); // Water
 			AddItem( 193, 67, 0x1F9D );
-			AddTooltip("Water Level");
+			AddTooltip(StringCatalog.ResolveByKey( account, "eng.plant.tooltip.water"));
 			AddPlusMinus( 196, 67, system.Water );
 
 			const int ITEM_START_X = 209;
@@ -71,12 +74,12 @@ namespace Server.Engines.Plants
 			AddLevel( 196, 163, system.StrengthPotion );
 
 			AddImage( 48, 47, 0xD2 );
-			AddTooltip("Plant Stage: " + ((int)m_Plant.PlantStatus).ToString());
+			AddTooltip(StringCatalog.ResolveFormatByKey( account, "eng.plant.tooltip.plant_stage", (int)m_Plant.PlantStatus));
 			AddLevel( 54, 47, (int)m_Plant.PlantStatus );
 
 			AddImage( 232, 47, 0xD2 );
 			// Tooltip internal
-			AddGrowthIndicator( 239, 47 );
+			AddGrowthIndicator( 239, 47, account );
 
 			AddButton( 48, 183, 0xD2, 0xD2, 11, GumpButtonType.Reply, 0 ); // Help
 			//AddTooltip("Help"); // breaks button hit-testing on TazUO
@@ -222,18 +225,18 @@ namespace Server.Engines.Plants
 			AddLabel( x, y, 0x835, value.ToString() );
 		}
 
-		private void AddGrowthIndicator( int x, int y )
+		private void AddGrowthIndicator( int x, int y, IAccount account )
 		{
 			if ( !m_Plant.IsGrowable )
 				return;
 
 			switch ( m_Plant.PlantSystem.GrowthIndicator )
 			{
-				case PlantGrowthIndicator.InvalidLocation : AddTooltip("Growth: Invalid Location"); AddLabel( x, y, 0x21, "!" ); break;
-				case PlantGrowthIndicator.NotHealthy : AddTooltip("Growth: Not Healthy"); AddLabel( x, y, 0x21, "-" ); break;
-				case PlantGrowthIndicator.Delay : AddTooltip("Growth: Waiting"); AddLabel( x, y, 0x35, "-" ); break;
-				case PlantGrowthIndicator.Grown : AddTooltip("Growth: Grown"); AddLabel( x, y, 0x3, "+" ); break;
-				case PlantGrowthIndicator.DoubleGrown : AddTooltip("Growth: Double Grown"); AddLabel( x, y, 0x3F, "+" ); break;
+				case PlantGrowthIndicator.InvalidLocation : AddTooltip(StringCatalog.ResolveByKey( account, "eng.plant.tooltip.growth_invalid")); AddLabel( x, y, 0x21, "!" ); break;
+				case PlantGrowthIndicator.NotHealthy : AddTooltip(StringCatalog.ResolveByKey( account, "eng.plant.tooltip.growth_not_healthy")); AddLabel( x, y, 0x21, "-" ); break;
+				case PlantGrowthIndicator.Delay : AddTooltip(StringCatalog.ResolveByKey( account, "eng.plant.tooltip.growth_waiting")); AddLabel( x, y, 0x35, "-" ); break;
+				case PlantGrowthIndicator.Grown : AddTooltip(StringCatalog.ResolveByKey( account, "eng.plant.tooltip.growth_grown")); AddLabel( x, y, 0x3, "+" ); break;
+				case PlantGrowthIndicator.DoubleGrown : AddTooltip(StringCatalog.ResolveByKey( account, "eng.plant.tooltip.growth_double_grown")); AddLabel( x, y, 0x3F, "+" ); break;
 			}
 		}
 
@@ -268,7 +271,7 @@ namespace Server.Engines.Plants
 					{
 						from.SendLocalizedMessage( 1061885 ); // You need to plant a seed in the bowl first.
 
-						from.SendGump( new MainPlantGump( m_Plant ) );
+						from.SendGump( new MainPlantGump( m_Plant, from ) );
 					}
 
 					break;
@@ -280,7 +283,7 @@ namespace Server.Engines.Plants
 							from,
 							"Infestation Level",
 							"The Infestation Level meter (grey bug image) shows the relative amount of insects that are currently attacking your plant.<BR><BR>A yellow + sign means the plant has a small infestation.  A red + sign indicates a severe infestation.",
-							onClose: () => from.SendGump( new MainPlantGump( m_Plant ) )
+							onClose: () => from.SendGump( new MainPlantGump( m_Plant, from ) )
 						)
 					);
 
@@ -293,7 +296,7 @@ namespace Server.Engines.Plants
 							from,
 							"Fungus Level",
 							"The Fungus Level meter (mushroom image) shows the amount of fungi that are currently sapping health from your plant.<BR><BR>A yellow + sign means the plant has a small fungus infection.  A red + sign indicates a severe fungus infection.",
-							onClose: () => from.SendGump( new MainPlantGump( m_Plant ) )
+							onClose: () => from.SendGump( new MainPlantGump( m_Plant, from ) )
 						)
 					);
 
@@ -306,7 +309,7 @@ namespace Server.Engines.Plants
 							from,
 							"Poison Level",
 							"The Poison Level meter (skull image) shows the amount of poison that your plant has soaked up.<BR><BR>A yellow + sign means the plant is slightly poisoned.  A red + sign indicates that the plant is severely poisoned.",
-							onClose: () => from.SendGump( new MainPlantGump( m_Plant ) )
+							onClose: () => from.SendGump( new MainPlantGump( m_Plant, from ) )
 						)
 					);
 
@@ -319,7 +322,7 @@ namespace Server.Engines.Plants
 							from,
 							"Disease Level",
 							"The Disease Level meter (purple goo image) shows the strength of the disease affecting your plant.<BR><BR>A yellow + sign means the plant is slightly infected.  A red + sign indicates that the plant is severely infected.",
-							onClose: () => from.SendGump( new MainPlantGump( m_Plant ) )
+							onClose: () => from.SendGump( new MainPlantGump( m_Plant, from ) )
 						)
 					);
 
@@ -385,7 +388,7 @@ namespace Server.Engines.Plants
 							from,
 							"Plant Growing",
 							"Using special seeds harvested from slain monsters, you may grow uniquely colored plants to use as house decorations or to produce hybrid seeds and resources. <BR><BR> As your plant grows from a seed to a full-grown plant, it will need watering and alchemical care in order to protect if from insect infestations and harmful fungi.<BR><BR>Through the process of cross-pollination, you may even be the first person to grow a unique new hybrid plant type!",
-							onClose: () => from.SendGump( new MainPlantGump( m_Plant ) )
+							onClose: () => from.SendGump( new MainPlantGump( m_Plant, from ) )
 						)
 					);
 					break;
@@ -425,7 +428,7 @@ namespace Server.Engines.Plants
 				}
 			}
 
-			from.SendGump( new MainPlantGump( m_Plant ) );
+			from.SendGump( new MainPlantGump( m_Plant, from ) );
 		}
 
 		public static Item GetPotion( Mobile from, PotionEffect[] effects )

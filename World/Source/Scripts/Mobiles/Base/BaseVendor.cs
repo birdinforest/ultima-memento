@@ -1220,11 +1220,17 @@ namespace Server.Mobiles
 			if ( !IsActiveBuyer || !from.CheckAlive() )
 				return false;
 
-			if ( !CheckVendorAccess( from ) )
+			if ( !( from is PlayerMobile ) )
+				return false;
+
+			if ( !CheckVendorSellAccess( from ) )
 			{
-				this.Say( "I have no business with you." );
+				MurdererDisguiseSell.TrySaySellRefused( this, from );
 				return false;
 			}
+
+			if ( !MurdererDisguiseSell.TryOpenSession( from, this ) )
+				return false;
 
 			int coins = GetOrCreateCoinPurse( this, from, true );
 			if ( coins < 1 )

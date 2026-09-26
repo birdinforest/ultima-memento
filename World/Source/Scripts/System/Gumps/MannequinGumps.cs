@@ -5,6 +5,7 @@ using Server.Mobiles;
 using Server.Misc;
 using Server.Network;
 using Server.Prompts;
+using Server.Localization;
 
 namespace Server.Gumps
 {
@@ -33,34 +34,34 @@ namespace Server.Gumps
 
 			AddAlphaRegion( 10, 10, 260, 245 );
 
-			AddHtml( 10, 12, 260, 18, "<CENTER><BASEFONT COLOR=#FFFFFF>MANNEQUIN MANAGEMENT</BASEFONT></CENTER>", false, false );
+			AddHtml( 10, 12, 260, 18, "<CENTER><BASEFONT COLOR=#FFFFFF>" + StringCatalog.ResolveByKey( from != null ? from.Account : null, "mob.mannequin.gump.title" ) + "</BASEFONT></CENTER>", false, false );
 
 			int x = 20;
 			int y = 50;
 			int step = 25;
 
 			AddButton( x, y, 0xFA5, 0xFA7, 1, GumpButtonType.Reply, 0 );
-			AddHtml( x + 35, y + 2, 200, 18, "<BASEFONT COLOR=#FFFFFF>Open Paperdoll</BASEFONT>", false, false );
+			AddHtml( x + 35, y + 2, 200, 18, "<BASEFONT COLOR=#FFFFFF>" + StringCatalog.ResolveByKey( from != null ? from.Account : null, "mob.mannequin.gump.open_paperdoll" ) + "</BASEFONT>", false, false );
 			y += step;
 
 			AddButton( x, y, 0xFA5, 0xFA7, 2, GumpButtonType.Reply, 0 );
-			AddHtml( x + 35, y + 2, 200, 18, "<BASEFONT COLOR=#FFFFFF>Swap Gear</BASEFONT>", false, false );
+			AddHtml( x + 35, y + 2, 200, 18, "<BASEFONT COLOR=#FFFFFF>" + StringCatalog.ResolveByKey( from != null ? from.Account : null, "mob.mannequin.gump.swap_gear" ) + "</BASEFONT>", false, false );
 			y += step;
 
 			AddButton( x, y, 0xFA5, 0xFA7, 3, GumpButtonType.Reply, 0 );
-			AddHtml( x + 35, y + 2, 200, 18, "<BASEFONT COLOR=#FFFFFF>Customize Appearance</BASEFONT>", false, false );
+			AddHtml( x + 35, y + 2, 200, 18, "<BASEFONT COLOR=#FFFFFF>" + StringCatalog.ResolveByKey( from != null ? from.Account : null, "mob.mannequin.gump.customize" ) + "</BASEFONT>", false, false );
 			y += step;
 
 			AddButton( x, y, 0xFA5, 0xFA7, 5, GumpButtonType.Reply, 0 );
-			AddHtml( x + 35, y + 2, 200, 18, "<BASEFONT COLOR=#FFFFFF>Rename</BASEFONT>", false, false );
+			AddHtml( x + 35, y + 2, 200, 18, "<BASEFONT COLOR=#FFFFFF>" + StringCatalog.ResolveByKey( from != null ? from.Account : null, "mob.mannequin.gump.rename" ) + "</BASEFONT>", false, false );
 			y += step;
 
 			AddButton( x, y, 0xFA5, 0xFA7, 4, GumpButtonType.Reply, 0 );
-			AddHtml( x + 35, y + 2, 200, 18, "<BASEFONT COLOR=#FFFFFF>Pack Up</BASEFONT>", false, false );
+			AddHtml( x + 35, y + 2, 200, 18, "<BASEFONT COLOR=#FFFFFF>" + StringCatalog.ResolveByKey( from != null ? from.Account : null, "mob.mannequin.gump.pack_up" ) + "</BASEFONT>", false, false );
 			y += step;
 
 			AddCheck( x, y, 0xD2, 0xD3, mannequin.Roaming, 99 );
-			AddHtml( x + 35, y + 2, 200, 18, "<BASEFONT COLOR=#FFFFFF>Roam House</BASEFONT>", false, false );
+			AddHtml( x + 35, y + 2, 200, 18, "<BASEFONT COLOR=#FFFFFF>" + StringCatalog.ResolveByKey( from != null ? from.Account : null, "mob.mannequin.gump.roam_house" ) + "</BASEFONT>", false, false );
 
 			AddButton( 20, 235, 0xFA5, 0xFA7, 0, GumpButtonType.Reply, 0 );
 			AddHtmlLocalized( 55, 237, 200, 18, 1060675, 0x7FFF, false, false ); // CLOSE
@@ -107,7 +108,7 @@ namespace Server.Gumps
 				}
 				case 5: // Rename
 				{
-					from.SendMessage( "Enter a new name for the mannequin:" );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "mob.mannequin.rename_prompt" ) );
 					from.Prompt = new RenameMannequinPrompt( m_Mannequin );
 					break;
 				}
@@ -135,12 +136,12 @@ namespace Server.Gumps
 
 				if ( !NameVerification.Validate( name, 1, 20, true, true, true, 0, NameVerification.Empty ) )
 				{
-					from.SendMessage( "That name is unacceptable." );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "mob.mannequin.rename_unacceptable" ) );
 					return;
 				}
 
 				m_Mannequin.Name = Utility.FixHtml( name );
-				from.SendMessage( "The mannequin has been renamed." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "mob.mannequin.rename_done" ) );
 
 				from.CloseGump( typeof( MannequinOwnerGump ) );
 				from.SendGump( new MannequinOwnerGump( m_Mannequin, from ) );
@@ -148,7 +149,7 @@ namespace Server.Gumps
 
 			public override void OnCancel( Mobile from )
 			{
-				from.SendMessage( "Rename cancelled." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "mob.mannequin.rename_cancelled" ) );
 			}
 		}
 	}

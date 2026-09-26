@@ -8,6 +8,7 @@ using Server.Multis;
 using Server.Network;
 using Server.Targeting;
 using Server.ContextMenus;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -335,13 +336,13 @@ namespace Server.Mobiles
 		{
 			if ( !CanManage( from ) )
 			{
-				from.SendMessage( "Only the owner can give items to this mannequin." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "mob.mannequin.only_owner_give" ) );
 				return false;
 			}
 
 			if ( dropped is Gold )
 			{
-				from.SendMessage( "The mannequin has no use for gold." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "mob.mannequin.no_gold" ) );
 				return false;
 			}
 
@@ -363,7 +364,7 @@ namespace Server.Mobiles
 			if ( Backpack != null && Backpack.TryDropItem( from, dropped, false ) )
 				return true;
 
-			from.SendMessage( "The mannequin could not accept that." );
+			from.SendMessage( StringCatalog.ResolveByKey( from.Account, "mob.mannequin.could_not_accept" ) );
 			return false;
 		}
 
@@ -405,7 +406,7 @@ namespace Server.Mobiles
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-			list.Add( "(mannequin)" );
+			list.Add( StringCatalog.ResolveByKey( null, "mob.mannequin.opl_suffix" ) );
 		}
 
 		public override void OnAfterDelete()
@@ -450,7 +451,7 @@ namespace Server.Mobiles
 
 			if ( !IsEmptyForPackup() )
 			{
-				from.SendMessage( "The mannequin must be empty before you can pack it up." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "mob.mannequin.must_empty_packup" ) );
 				return;
 			}
 
@@ -459,7 +460,7 @@ namespace Server.Mobiles
 			if ( !from.AddToBackpack( deed ) )
 			{
 				deed.Delete();
-				from.SendMessage( "Your backpack is full." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "mob.mannequin.backpack_full" ) );
 				return;
 			}
 
@@ -476,7 +477,7 @@ namespace Server.Mobiles
 
 			if ( !from.InRange( this.Location, 2 ) )
 			{
-				from.SendMessage( "You are too far away." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "mob.mannequin.too_far" ) );
 				return;
 			}
 
@@ -485,7 +486,7 @@ namespace Server.Mobiles
 
 			if ( playerPack == null || manPack == null )
 			{
-				from.SendMessage( "Both you and the mannequin need a backpack to swap gear." );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "mob.mannequin.need_backpack_swap" ) );
 				return;
 			}
 
@@ -534,8 +535,7 @@ namespace Server.Mobiles
 			}
 
 			from.SendMessage(
-				"Gear swapped. {0} item(s) on you and {1} on the mannequin could not be equipped and remain in the relevant backpack.",
-				playerFails, manFails );
+				StringCatalog.ResolveFormatByKey( from.Account, "mob.mannequin.gear_swap_result", playerFails, manFails ) );
 		}
 
 		public void ApplyRace( int raceID )
@@ -806,7 +806,7 @@ namespace Server.Mobiles
 					pack.DropItem( existing );
 
 				if ( !m_Mannequin.EquipItem( m_Item ) )
-					from.SendMessage( "The mannequin could not equip that." );
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "mob.mannequin.could_not_equip" ) );
 				else
 					m_Mannequin.PauseFor( from );
 			}

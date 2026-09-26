@@ -51,7 +51,7 @@ namespace Server.Items
 			if ( owner != null && owner == from )
 			{
 				Delete();
-				from.SendMessage("You disarm the trap.");
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "trap.settrap.disarm" ) );
 			}
 		}
 
@@ -60,7 +60,12 @@ namespace Server.Items
 			base.AppendChildProperties(list);
 
 			if ( owner != null && owner.Player )
-				list.Add("[Double-click to delete]");
+			{
+				if ( BuildingPropertyListLocale != null )
+					AddLocalizedProperty( list, "trap.settrap.hint_delete" );
+				else
+					list.Add( StringCatalog.ResolveByKey( null, "trap.settrap.hint_delete" ) );
+			}
 		}
 
 		public override void OnMovement( Mobile m, Point3D oldLocation )

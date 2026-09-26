@@ -101,7 +101,7 @@ namespace Server
 				int resPois = m.PoisonResistance;
 				int resNrgy = m.EnergyResistance;
 
-				if ( 0 < resPois )
+				if ( from != null && 0 < resPois )
 				{
 					var poisonSkill = Math.Min( 125, from.Skills[SkillName.Poisoning].Value );
 					if ( 0 < poisonSkill )

@@ -6,6 +6,8 @@ using Server.Network;
 using Server.Multis;
 using Server.Targeting;
 using Server.Utilities;
+using Server.Localization;
+using Server.Accounting;
 
 namespace Server.Engines.Apiculture
 {	
@@ -16,6 +18,7 @@ namespace Server.Engines.Apiculture
 		public apiBeeHiveMainGump( Mobile from, apiBeeHive hive ) : base( 20, 20 )
 		{
 			m_hive = hive;
+			IAccount account = from != null ? from.Account : null;
 
 			Closable=true;
 			Disposable=true;
@@ -63,55 +66,55 @@ namespace Server.Engines.Apiculture
 			AddItem(44, 49, 5154);
 			switch( hive.ParasiteLevel )  //parasites
 			{
-				case 1: AddTooltip("Infestation: Minor"); AddLabel(81, 71, 52, @"-"); break;
-				case 2: AddTooltip("Infestation: Major"); AddLabel(81, 71, 37, @"-"); break;
+				case 1: AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.infestation_minor")); AddLabel(81, 71, 52, @"-"); break;
+				case 2: AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.infestation_major")); AddLabel(81, 71, 37, @"-"); break;
 			}
 
 			AddImage(58, 96, 212);  //disease
 			AddItem(-5, 76, 882); //little bug thing
 			switch( hive.DiseaseLevel )  //disease
 			{
-				case 1: AddTooltip("Disease: Minor"); AddLabel(81, 96, 52, @"-"); break;
-				case 2: AddTooltip("Disease: Major"); AddLabel(81, 96, 37, @"-"); break;
+				case 1: AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.disease_minor")); AddLabel(81, 96, 52, @"-"); break;
+				case 2: AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.disease_major")); AddLabel(81, 96, 37, @"-"); break;
 			}
 
 			AddImage(58, 121, 212); //water
 			AddItem(41, 121, 0x0FF8);
 			switch( hive.ScaleWater() ) //water
 			{
-				case ResourceStatus.None    : AddTooltip("No Nearby Water"); AddLabel(81, 121, 37, @"X"); break;
-				case ResourceStatus.VeryLow : AddTooltip("Water: Very Low"); AddLabel(81, 121, 37, @"-"); break;
-				case ResourceStatus.Low     : AddTooltip("Water: Low"); AddLabel(81, 121, 52, @"-"); break;
-				case ResourceStatus.High    : AddTooltip("Water: High"); AddLabel(81, 121, 67, @"+"); break;
-				case ResourceStatus.VeryHigh: AddTooltip("Water: Very High"); AddLabel(81, 121, 52, @"+"); break;
-			    case ResourceStatus.TooHigh : AddTooltip("Water: Too High"); AddLabel(81, 121, 37, @"+"); break;
+				case ResourceStatus.None    : AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.water_none")); AddLabel(81, 121, 37, @"X"); break;
+				case ResourceStatus.VeryLow : AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.water_very_low")); AddLabel(81, 121, 37, @"-"); break;
+				case ResourceStatus.Low     : AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.water_low")); AddLabel(81, 121, 52, @"-"); break;
+				case ResourceStatus.High    : AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.water_high")); AddLabel(81, 121, 67, @"+"); break;
+				case ResourceStatus.VeryHigh: AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.water_very_high")); AddLabel(81, 121, 52, @"+"); break;
+			    case ResourceStatus.TooHigh : AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.water_too_high")); AddLabel(81, 121, 37, @"+"); break;
 			}
 
 			AddImage(58, 146, 212); //flower
 			AddItem(45, 148, 3336);
 			switch( hive.ScaleFlower() ) //flowers
 			{
-				case ResourceStatus.None    : AddTooltip("No Nearby Flowers"); AddLabel(81, 145, 37, @"X"); break;
-				case ResourceStatus.VeryLow : AddTooltip("Flowers: Very Low"); AddLabel(81, 145, 37, @"-"); break;
-				case ResourceStatus.Low     : AddTooltip("Flowers: Low"); AddLabel(81, 145, 52, @"-"); break;
-				case ResourceStatus.High    : AddTooltip("Flowers: High"); AddLabel(81, 145, 67, @"+"); break;
-				case ResourceStatus.VeryHigh: AddTooltip("Flowers: Very High"); AddLabel(81, 145, 52, @"+"); break;
-				case ResourceStatus.TooHigh : AddTooltip("Flowers: Too High"); AddLabel(81, 145, 37, @"+"); break;
+				case ResourceStatus.None    : AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.flowers_none")); AddLabel(81, 145, 37, @"X"); break;
+				case ResourceStatus.VeryLow : AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.flowers_very_low")); AddLabel(81, 145, 37, @"-"); break;
+				case ResourceStatus.Low     : AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.flowers_low")); AddLabel(81, 145, 52, @"-"); break;
+				case ResourceStatus.High    : AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.flowers_high")); AddLabel(81, 145, 67, @"+"); break;
+				case ResourceStatus.VeryHigh: AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.flowers_very_high")); AddLabel(81, 145, 52, @"+"); break;
+				case ResourceStatus.TooHigh : AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.flowers_too_high")); AddLabel(81, 145, 37, @"+"); break;
 			}
 			
 			//corner labels
 			AddLabel(40, 20, 0x481, ((int)hive.HiveStage).ToString() ); //top left (stage)
-			AddTooltip("Hive Stage");
+			AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.hive_stage"));
 			
 			//last growth
 			AddItem(46, 100, 6884);
 			switch( m_hive.LastGrowth )
 			{
-				case HiveGrowthIndicator.PopulationDown: AddTooltip("Last Growth: Population Down"); AddLabel(234, 20, 37, "-"); break; //red -
-				case HiveGrowthIndicator.PopulationUp  : AddTooltip("Last Growth: Population Up"); AddLabel(234, 20, 67, "+"); break; //green +
-				case HiveGrowthIndicator.NotHealthy    : AddTooltip("Last Growth: Not Healthy"); AddLabel(234, 20, 37, "!"); break; //red !
-				case HiveGrowthIndicator.LowResources  : AddTooltip("Last Growth: Low Resources"); AddLabel(234, 20, 52, "!"); break; //yellow !
-				case HiveGrowthIndicator.Grown         : AddTooltip("Last Growth: Grown"); AddLabel(234, 20, 92, "+"); break; //blue +
+				case HiveGrowthIndicator.PopulationDown: AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.growth_population_down")); AddLabel(234, 20, 37, "-"); break; //red -
+				case HiveGrowthIndicator.PopulationUp  : AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.growth_population_up")); AddLabel(234, 20, 67, "+"); break; //green +
+				case HiveGrowthIndicator.NotHealthy    : AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.growth_not_healthy")); AddLabel(234, 20, 37, "!"); break; //red !
+				case HiveGrowthIndicator.LowResources  : AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.growth_low_resources")); AddLabel(234, 20, 52, "!"); break; //yellow !
+				case HiveGrowthIndicator.Grown         : AddTooltip(StringCatalog.ResolveByKey( account, "apiculture.gump.tooltip.growth_grown")); AddLabel(234, 20, 92, "+"); break; //blue +
 			}
 			
 			AddLabel(40, 172, 0x481, "?"); //help
@@ -123,17 +126,17 @@ namespace Server.Engines.Apiculture
 
 			//misc labels
 			string statusLabel;
-			if( hive.HiveStage >= HiveStatus.Producing ) statusLabel = "Colony : " + hive.Population.ToString()+ "0k";
-			else if( hive.HiveStage >= HiveStatus.Brooding ) statusLabel = "Brooding";
-			else statusLabel = "Colonizing";
+			if( hive.HiveStage >= HiveStatus.Producing ) statusLabel = StringCatalog.ResolveFormatByKey( account, "apiculture.gump.colony", hive.Population );
+			else if( hive.HiveStage >= HiveStatus.Brooding ) statusLabel = StringCatalog.ResolveByKey( account, "apiculture.gump.brooding" );
+			else statusLabel = StringCatalog.ResolveByKey( account, "apiculture.gump.colonizing" );
 			TextDefinition.AddHtmlText(this, 37, 42, 203, 20, string.Format("<CENTER>{0}</CENTER>", statusLabel), HtmlColors.COOL_BLUE);
 
 			switch( hive.OverallHealth ) //overall health
 			{
-				case HiveHealth.Dying: AddLabel(116, 146, 37, "Dying"); break;
-				case HiveHealth.Sickly: AddLabel(116, 146, 52, "Sickly"); break;
-				case HiveHealth.Healthy: AddLabel(116, 146, 67, "Healthy"); break;
-				case HiveHealth.Thriving: AddLabel(116, 146, 92, "Thriving"); break;
+				case HiveHealth.Dying: AddLabel(116, 146, 37, StringCatalog.ResolveByKey( account, "apiculture.gump.health.dying")); break;
+				case HiveHealth.Sickly: AddLabel(116, 146, 52, StringCatalog.ResolveByKey( account, "apiculture.gump.health.sickly")); break;
+				case HiveHealth.Healthy: AddLabel(116, 146, 67, StringCatalog.ResolveByKey( account, "apiculture.gump.health.healthy")); break;
+				case HiveHealth.Thriving: AddLabel(116, 146, 92, StringCatalog.ResolveByKey( account, "apiculture.gump.health.thriving")); break;
 			}
 
 			const int ITEM_START_X = 202;
@@ -340,7 +343,7 @@ namespace Server.Engines.Apiculture
 				AddLabel(113, 97, 0x481, m_hive.Wax.ToString() );
 			}			
 
-			AddLabel(110, 43, 92, "Production");  //title
+			AddLabel(110, 43, 92, StringCatalog.ResolveByKey( from != null ? from.Account : null, "apiculture.gump.production.title" ));  //title
 
 			AddItem(44, 47, 6256);
 			AddItem(191, 151, 2540);
@@ -418,7 +421,7 @@ namespace Server.Engines.Apiculture
 							((HiveTool)hivetool).UsesRemaining--;
 							if( ((HiveTool)hivetool).UsesRemaining < 1 )
 							{
-								from.SendMessage("You wear out the hive tool.");
+								from.SendMessage( StringCatalog.ResolveByKey( from.Account, "apiculture.msg.hive_tool_worn_out" ) );
 								hivetool.Delete();
 							}
 						}
@@ -475,7 +478,7 @@ namespace Server.Engines.Apiculture
 						((HiveTool)hivetool).UsesRemaining--;
 						if( ((HiveTool)hivetool).UsesRemaining < 1 )
 						{
-							from.SendMessage("You wear out the hive tool.");
+							from.SendMessage( StringCatalog.ResolveByKey( from.Account, "apiculture.msg.hive_tool_worn_out" ) );
 							hivetool.Delete();
 						}
 					}
@@ -524,7 +527,7 @@ namespace Server.Engines.Apiculture
 			AddItem(12, 65, 3307);
 			AddItem(206, 69, 3307);
 
-			AddLabel(84, 43, 92, "Destory the hive?");
+			AddLabel(84, 43, 92, StringCatalog.ResolveByKey( from != null ? from.Account : null, "apiculture.gump.destroy.confirm" ));
 					
 			AddItem(73, 68, 2330);
 			AddItem(160, 68, 5359);	
