@@ -576,6 +576,7 @@ When adding a third language (e.g. `zh-Hant`, `ja`):
 This file uses a simple date-stamp comment at the top for tracking. When making substantive updates, add a one-line change note at the bottom of this section.
 
 **Change log:**
+- 2026-10-02: §8.1 — indexed `DRAKKHEN_CRYSTAL_SYSTEM.md`（龙晶：DropRelic 3%、50,000 金交德鲁伊、绑定可骑 Drakkhen）。
 - 2026-09-06: §8.1 — indexed `MURDERER_DISGUISE_TOWN_SELL_DESIGN.md`（红名伪装城镇出售：风险回报变现、不抬全局商人金）。
 - 2026-08-30: §8.1 — indexed `EQUIPMENT_DURABILITY_BOOST_SYSTEM.md`（提高装备耐久上限：药水、蜂蜡、调和粉、与修理药水分界）。
 - 2026-08-26: §8.1 — indexed `WEAPON_SPECIAL_ABILITY_SYSTEM.md`（武器五档特攻 WeaponAbility：55 招、技能/法力、全武器绑定表）。
@@ -726,6 +727,7 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | Epic Tribute 个人挑战（`EpicTributeChallenge`） | `memento/game-mechanism/EPIC_TRIBUTE_CHALLENGE_SYSTEM.md` | Before modifying `EpicTributeChallenge.cs`, `SummonItems.EpicChallengeSource`, `BaseRegion` Epic hooks, or GM `[epic-tribute-loc]` |
 | Thief 市场（`Market.Thief`） | `memento/game-mechanism/THIEF_MARKET_SYSTEM.md` | Before modifying `Thief.cs`, `ThiefGuildmaster.cs`, `Market.Thief` rows in `ItemSales.cs`, unlock service, or `ThiefNote` jobs |
 | Dragon egg hatch | `memento/game-mechanism/DRAGON_EGG_SYSTEM.md` | Before modifying `DragonEgg`, Search potions, or hatch-at-vet flow |
+| Drakkhen Crystal / 龙晶 | `memento/game-mechanism/DRAKKHEN_CRYSTAL_SYSTEM.md` | Before modifying `DrakkhenEggRed`/`DrakkhenEggBlack`, `DrakkhenRed`/`DrakkhenBlack`, or the `DropRelic` crystal color branches |
 | Race temptation & potion shelf | `memento/game-mechanism/race-temptation-and-potion-shelf.md` | Before modifying race temptation or potion shelf |
 | Player hazards & threats | `memento/game-mechanism/PLAYER_HAZARDS_AND_THREATS.md` | Before modifying hazard/threat systems |
 | Black Knight NPC / black key / Vault of the Black Knight / Vordo boss / Bottle World of Kuldar | `memento/game-mechanism/BLACK_KNIGHT_VAULT_BOTTLE_WORLD.md` | Before modifying BlackKnight, BlackKnightBox, vault/bottle `QuestTeleporter` (`Build.cs`), Vordo, VordoScroll, GateMoon in Kuldar, or first-entry vs return (Gate 28/29) logic |
