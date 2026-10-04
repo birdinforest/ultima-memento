@@ -1318,6 +1318,7 @@ namespace Server.Misc
 
 					builder.Append("<br>Fixes<br>");
 					builder.Append("- Misc - Fix issue where rare mobs could be teleported to Lodoria instead of a dungeon<br>");
+					builder.Append("- Misc - Fix crash from Lawn Tools placement<br>");
 					break;
 			}
 		}
