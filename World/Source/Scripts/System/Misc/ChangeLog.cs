@@ -1314,7 +1314,7 @@ namespace Server.Misc
 				default:
 					builder.Append(Version());
 					builder.Append("<br>Changes<br>");
-					builder.Append("<br>");
+					builder.Append("- Misc - Added discord announcement for stolen items<br>");
 
 					builder.Append("<br>Fixes<br>");
 					builder.Append("- Misc - Fix issue where rare mobs could be teleported to Lodoria instead of a dungeon<br>");
