@@ -752,6 +752,11 @@ namespace Server.Items
 
 		public static void BossEscaped( Mobile from, string region )
 		{
+			// Null-safe: fires from BaseRegion.OnExit during logout (LogoutTimer -> UpdateRegion),
+			// where a player's Backpack can already be null. NRE here crashed the server on logout.
+			if ( from == null || from.Backpack == null )
+				return;
+
 			if ( from.Backpack.FindItemByType( typeof ( QuestTome ) ) != null )
 			{
 				Item item = from.Backpack.FindItemByType( typeof ( QuestTome ) );
