@@ -74,6 +74,7 @@ ultima-memento/
 - Castle of Knowledge (Lodor landmark, Power Scroll vendors): `World/Documentation/castle-of-knowledge.md`
 - **Server stability & crash avoidance (AI checklist):** `World/Documentation/server-stability-crash-patterns.md` — OPL / `InvalidateProperties` reentrancy, serializers, null-safety, timers, collection mutation, etc.
 - **Generic JSON rate/probability config engine:** `World/Documentation/rate-config-system.md` — `RateConfigEngine`/`WeightedPick` under `World/Source/System/RateConfig/`, `Data/RateConfig/*.json`, GM hot-reload commands; read before adding any new rate/weight/probability table (dragon Bright rarity, GemDragon scale rarity are its first consumers).
+- **Pending fixes backlog (confirmed bugs awaiting fix):** `World/Documentation/pending-fixes.md` — read before touching Spell Bars / `SpellRegistry` or Avatar rebirth resonance flows; move entries to the fixed section when done.
 
 **Design & analysis docs (cross-repo, under UO_DEV_DOCS_ROOT):**
 
@@ -576,6 +577,7 @@ When adding a third language (e.g. `zh-Hant`, `ja`):
 This file uses a simple date-stamp comment at the top for tracking. When making substantive updates, add a one-line change note at the bottom of this section.
 
 **Change log:**
+- 2026-10-10: §1 — indexed `World/Documentation/pending-fixes.md`（待修复缺陷记录：Spell Bars ≥700 ID 的 `SpellRegistry` 注册失效致 HolyMan/DeathKnight 法术不可用；Avatar 重生共鸣完成后重生报告仍于每次登录弹出）。
 - 2026-08-23: §8.1 — indexed `CRIMSON_GOLD_CONCORD_NATIONAL_DAY_EVENT_DESIGN.md`（赤金同心节四周活动：账号点数、捐献、水晶、盟约灯进阶、冠军 Boss 与奖励经济）。
 - 2026-08-23: §8.1 — indexed `CRAFTING_TRADES_SYSTEM.md`（工匠/制作机制总览：架构、专柜、掉落 vs 自制、专题交叉索引）。
 - 2026-08-22: §3.1 — added `lore-books.json` (`keep_extra`): LoreBook title/author/body shotkeys + city templates (`{0}`/`{1}`).
