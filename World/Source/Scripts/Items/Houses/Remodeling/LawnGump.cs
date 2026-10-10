@@ -306,6 +306,6 @@ namespace Server.Gumps
 			}
 
 			return amount;
-		}
+        }
     }
 }
