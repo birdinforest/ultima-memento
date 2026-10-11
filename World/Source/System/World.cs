@@ -614,14 +614,30 @@ namespace Server {
 				Console.WriteLine( " - Type: {0}", failedType );
 				Console.WriteLine( " - Serial: {0}", failedSerial );
 
+				if ( failed != null )
+					Console.WriteLine( " - Detail: {0}", failed );
+
 				if ( !Core.Service ) {
 					Console.WriteLine( "Delete the object? (y/n)" );
 
-					if ( Console.ReadKey( true ).Key == ConsoleKey.Y ) {
+					// Headless/redirected runs cannot ReadKey; default to deleting the single
+					// failed object (never all-of-type) so the world can still load.
+					ConsoleKey deleteAnswer;
+					try { deleteAnswer = Console.ReadKey( true ).Key; }
+					catch ( InvalidOperationException ) {
+						Console.WriteLine( "(input unavailable - deleting the failed object)" );
+						deleteAnswer = ConsoleKey.Y;
+					}
+
+					if ( deleteAnswer == ConsoleKey.Y ) {
 						if ( failedType != typeof( BaseGuild ) ) {
 							Console.WriteLine( "Delete all objects of that type? (y/n)" );
 
-							if ( Console.ReadKey( true ).Key == ConsoleKey.Y ) {
+							ConsoleKey deleteAllAnswer = ConsoleKey.N;
+							try { deleteAllAnswer = Console.ReadKey( true ).Key; }
+							catch ( InvalidOperationException ) { }
+
+							if ( deleteAllAnswer == ConsoleKey.Y ) {
 								if ( failedMobiles ) {
 									for ( int i = 0; i < mobiles.Count; ) {
 										if ( mobiles[i].TypeID == failedTypeID )
