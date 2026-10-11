@@ -79,7 +79,11 @@ namespace Server.Mobiles
 				VendorContainerSellSelectionBehavior = VendorContainerSellSelectionBehavior.AsManyAsPossible;
 			}
 
-			LegacyCarve = 5 < version ? reader.ReadBool() : false;
+			// v7 (local bump): Jascen's LegacyCarve rides version 5 upstream, but our v6 saves
+			// already carry the VendorContainerSell block — gating on 6 avoids over-reading
+			// a bool from existing v6 saves (which shifted the whole PlayerMobile stream and
+			// crashed world load with EndOfStreamException).
+			LegacyCarve = 6 < version ? reader.ReadBool() : false;
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -177,7 +181,7 @@ namespace Server.Mobiles
 
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(6);
+			writer.Write(7);
 
 			writer.Write(DoubleClickID);
 			writer.Write(SuppressVendorTooltip);
