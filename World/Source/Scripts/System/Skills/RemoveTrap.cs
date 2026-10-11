@@ -101,11 +101,7 @@ namespace Server.SkillHandlers
 
 				if ( (int)from.Skills[SkillName.RemoveTrap].Value < targ.TrapDifficulty )
 				{
-<<<<<<< HEAD
-					from.SendMessage( StringCatalog.ResolveByKey(from.Account, "trap.removetrap.toocomplex") );
-=======
-					from.LocalOverheadMessage(MessageType.Regular, 1150, false, "This trap looks too complicated for you." );
->>>>>>> 49c482f6 (- Missed overhead message)
+					from.LocalOverheadMessage(MessageType.Regular, 1150, false, StringCatalog.ResolveByKey(from.Account, "trap.removetrap.toocomplex"));
 					return false;
 				}
 
