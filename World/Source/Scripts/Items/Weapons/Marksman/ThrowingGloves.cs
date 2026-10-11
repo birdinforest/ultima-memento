@@ -1,4 +1,5 @@
 using System;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -184,13 +185,13 @@ namespace Server.Items
 		{
 			if ( !gloves.IsChildOf( from.Backpack ) ) 
 			{
-				from.SendMessage( "This must be in your backpack to change the weapon type." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "This must be in your backpack to change the weapon type." ) );
 				return;
 			}
 
 			gloves.GloveType = NextWeaponType( from, gloves.GloveType );
 
-			from.SendMessage(68, "You have changed the gloves to throw " + gloves.GloveType + ".");
+			ThrowingEquipmentMessages.SendGloveTypeChanged( from, gloves.GloveType );
 		}
 
 		public static ThrowingWeaponType NextWeaponType( Mobile from, ThrowingWeaponType m_ammo )
