@@ -24,6 +24,9 @@ namespace Server.Mobiles
 		public override double BreathEffectDelay{ get{ return 0.1; } }
 		public override void BreathDealDamage( Mobile target, int form ){ base.BreathDealDamage( target, 42 ); }
 
+		private DateTime m_NextInfernalAura;
+		private DateTime m_NextRegen;
+
 		[Constructable]
 		public TitanPyros () : base( AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
@@ -35,36 +38,78 @@ namespace Server.Mobiles
 
 			SetStr( 986, 1185 );
 			SetDex( 177, 255 );
-			SetInt( 151, 250 );
+			SetInt( 551, 650 );
 
-			SetHits( 592, 711 );
+			SetHits( 2000, 2400 );
 
-			SetDamage( 22, 29 );
+			SetDamage( 32, 44 );
 
 			SetDamageType( ResistanceType.Physical, 50 );
-			SetDamageType( ResistanceType.Fire, 25 );
-			SetDamageType( ResistanceType.Energy, 25 );
+			SetDamageType( ResistanceType.Fire,     25 );
+			SetDamageType( ResistanceType.Energy,   25 );
 
-			SetResistance( ResistanceType.Physical, 65, 80 );
-			SetResistance( ResistanceType.Fire, 60, 80 );
-			SetResistance( ResistanceType.Cold, 50, 60 );
-			SetResistance( ResistanceType.Poison, 100 );
-			SetResistance( ResistanceType.Energy, 40, 50 );
+			// Near-immune to fire; cold is the elemental weakness — rewards cold-spec mages.
+			SetResistance( ResistanceType.Physical,  75, 85 );
+			SetResistance( ResistanceType.Fire,      88, 95 );
+			SetResistance( ResistanceType.Cold,      25, 35 );
+			SetResistance( ResistanceType.Poison,    100,100 );
+			SetResistance( ResistanceType.Energy,    45, 55 );
 
-			SetSkill( SkillName.Anatomy, 25.1, 50.0 );
-			SetSkill( SkillName.Psychology, 90.1, 100.0 );
-			SetSkill( SkillName.Magery, 95.5, 100.0 );
-			SetSkill( SkillName.Meditation, 25.1, 50.0 );
-			SetSkill( SkillName.MagicResist, 100.5, 150.0 );
-			SetSkill( SkillName.Tactics, 90.1, 100.0 );
-			SetSkill( SkillName.FistFighting, 90.1, 100.0 );
+			SetSkill( SkillName.Anatomy,      25.1,  50.0 );
+			SetSkill( SkillName.Psychology,  100.0, 115.0 );
+			SetSkill( SkillName.Magery,      100.0, 115.0 );
+			SetSkill( SkillName.Meditation,   50.0,  75.0 );
+			SetSkill( SkillName.MagicResist, 120.0, 160.0 );
+			SetSkill( SkillName.Tactics,     100.0, 115.0 );
+			SetSkill( SkillName.FistFighting,100.0, 115.0 );
 
 			Fame = 24000;
 			Karma = -24000;
 
-			VirtualArmor = 90;
+			VirtualArmor = 100;
 
 			AddItem( new LighterSource() );
+
+			m_NextInfernalAura = DateTime.Now + TimeSpan.FromSeconds( 10.0 );
+			m_NextRegen        = DateTime.Now + TimeSpan.FromSeconds(  5.0 );
+		}
+
+		public override void OnThink()
+		{
+			base.OnThink();
+
+			if ( !Alive || Combatant == null )
+				return;
+
+			if ( DateTime.Now >= m_NextRegen && Hits < HitsMax )
+			{
+				Hits = Math.Min( HitsMax, Hits + 25 );
+				m_NextRegen = DateTime.Now + TimeSpan.FromSeconds( 5.0 );
+			}
+
+			// Infernal Aura: fires every 8 seconds — forces the support mage to maintain
+			// fire protection and healing on the whole party at all times.
+			if ( DateTime.Now >= m_NextInfernalAura )
+			{
+				DoInfernalAura();
+				m_NextInfernalAura = DateTime.Now + TimeSpan.FromSeconds( 8.0 );
+			}
+		}
+
+		private void DoInfernalAura()
+		{
+			Say( "Burn! BURN!" );
+			PlaySound( 0x208 );
+			FixedParticles( 0x3709, 10, 30, 5052, EffectLayer.CenterFeet );
+
+			foreach ( Mobile m in GetMobilesInRange( 6 ) )
+			{
+				if ( m is PlayerMobile && m.Map == Map && m.Alive && !m.Blessed )
+				{
+					AOS.Damage( m, this, Utility.RandomMinMax( 40, 65 ), 0, 100, 0, 0, 0 );
+					m.FixedParticles( 0x3709, 10, 30, 5052, EffectLayer.Head );
+				}
+			}
 		}
 
 		public override void GenerateLoot()
