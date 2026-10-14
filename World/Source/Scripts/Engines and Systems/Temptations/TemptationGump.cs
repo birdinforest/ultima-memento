@@ -1,4 +1,5 @@
 using Server.Gumps;
+using Server.Localization;
 using Server.Mobiles;
 using Server.Network;
 using System;
@@ -36,6 +37,30 @@ namespace Server.Temptation
 		private readonly PlayerContext m_Context;
 		private readonly Action m_OnAccept;
 		private readonly Action m_OnDecline;
+
+		private static string Key( Mobile viewer, string logicalKey, string englishIfMissing )
+		{
+			string lang = AccountLang.GetLanguageCode( viewer != null ? viewer.Account : null );
+			string s = StringCatalog.TryResolveByKey( lang, logicalKey );
+			return !string.IsNullOrEmpty( s ) ? s : englishIfMissing;
+		}
+
+		private static string KeyFormat( Mobile viewer, string logicalKey, string englishIfMissing, params object[] args )
+		{
+			string fmt = Key( viewer, logicalKey, englishIfMissing );
+
+			if ( args == null || args.Length == 0 )
+				return fmt;
+
+			try
+			{
+				return string.Format( fmt, args );
+			}
+			catch
+			{
+				return englishIfMissing;
+			}
+		}
 
 		public TemptationGump(PlayerMobile from, PlayerContext context, PlayerMobile requester) : this(from, context, requester, null, null)
 		{
