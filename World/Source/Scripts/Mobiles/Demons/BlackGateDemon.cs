@@ -134,7 +134,7 @@ namespace Server.Mobiles
 					book.m_Value_5 = 0.0;
 					book.m_Slayer_1 = 14;
 					book.m_Slayer_2 = 0;
-					book.m_Owner = killer;
+					book.m_Owner = player;
 					book.m_Extra = "of the Black Gate";
 					book.m_FromWho = "Found within the Black Gate";
 					book.m_HowGiven = "Acquired by";
