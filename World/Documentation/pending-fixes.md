@@ -7,37 +7,6 @@
 
 ## 记录于 2026-10-10（下次一起修复）
 
-### 1. 新法术条：HolyMan（牧师）技能全部无法施放，提示「未找到该法术」
-
-**现象**：新版法术条（Spell Bars 工具条 Gump）上，HolyMan（Priest 学派）的全部 14 个技能点击后只收到「未找到该法术」提示，无法施放。旧版 HolyMan 法术书内施放正常。
-
-**根因**：`SpellRegistry` 的类型数组硬编码为 `new Type[700]`，而 HolyMan 法术注册 ID 为 770–783（≥700），注册与查找全部静默失效：
-
-- `World/Source/Scripts/Engines and Systems/Magic/Base/SpellRegistry.cs:15` — `m_Types = new Type[700]`（上限 700）。
-- `SpellRegistry.Register`（同文件 :70-71）— `spellID >= m_Types.Length` 时直接 return，**静默丢弃注册**。
-- `SpellRegistry.NewSpell(int, Mobile, Item)`（同文件 :113-135）— 同样越界返回 null。
-- 法术条施放入口 `World/Source/Scripts/Engines and Systems/Spell Bars/Core/SpellBarToolbarGump.cs:73-79` — `SpellRegistry.NewSpell(spellId, from, null)` 返回 null 即 `from.SendMessage("That spell was not found.")`（客户端本地化显示为「未找到该法术」）。
-- HolyMan 注册：`World/Source/Scripts/Engines and Systems/Magic/Base/Initializer.cs:358-371`（770–783）。
-- 旧法术书之所以正常：`World/Source/Scripts/Engines and Systems/Magic/Holy Man/HolyManSpellBookGump.cs:368+` 直接 `new BanishEvilSpell(from, null).Cast()` 构造实例，完全绕过 `SpellRegistry`。
-
-**受影响范围（不止 HolyMan）**：所有 ID ≥ 700 的注册都被吞掉：
-
-| 学派 | ID 段 | 注册处 | 是否已上法术条 |
-|---|---|---|---|
-| Magical | 700–706 | Initializer.cs:333-339 | 未上条，但注册同样失效 |
-| DeathKnight | 750–763 | Initializer.cs:342-355 | **是**（`Schools/DeathKnight.cs:43-44`，基地址 750）——症状应与 HolyMan 相同 |
-| HolyMan | 770–783 | Initializer.cs:358-371 | **是**（`Schools/Priest.cs:41-42`，基地址 770）——本次报告的问题 |
-
-Research/远古法术为 600–663（Initializer.cs:267-330），低于 700，不受影响——这解释了为什么远古法术条正常。
-
-**修复方向**：把 `m_Types` 扩容（如 `new Type[800]` 或 1024，并留注释说明最大注册 ID）。`SpellRegistry` 为纯运行时结构、无序列化，扩容不影响存档。顺手项：`SpellBarToolbarGump.cs:79` 的 `"That spell was not found."` 是硬编码英文，应按 §3.2 目录化（shotkey 或 `StringCatalog.Resolve` 字面量）。
-
-**验证点**：编译通过；HolyMan、DeathKnight 法术条各实际施放一个法术；确认 Research 条不受影响；确认 `SpellRegistry.NewSpell` 对 770–783 返回非 null。
-
-**存档兼容**：N/A（无序列化改动，纯运行时）。
-
----
-
 ### 2. 化生飞升重生：研究包已找回/共鸣完成，重新登录仍弹「待共鸣」重生报告
 
 **现象**：化生飞升（Avatar）角色死亡重生后，远古魔法研究包通过记忆回响共鸣任务已找回（共振完成、背包已激活），但每次重新登录仍弹出「Avatar 重生报告」Gump，列出「研究包：沉睡于银行（待共鸣）」等过期信息；关闭时还会再次收到「你的研究包已在银行中等待共鸣」提示。
@@ -69,5 +38,19 @@ Research/远古法术为 600–663（Initializer.cs:267-330），低于 700，�
 ---
 
 ## 已修复
+
+### 1. 新法术条：HolyMan（牧师）技能全部无法施放，提示「未找到该法术」✅（2026-10-14 玩家实测通过）
+
+**修复**：随 Jascen 上游同步解决，无需本地补丁——
+
+- `SpellRegistry.MAX_SPELL_ID` 提升为 **1000**（原 `new Type[700]`，770–783 注册与查找全部静默失效）。
+- 上游 `f6e78322` 增加 spell ID 越界硬抛异常保护。
+- 上游 916d1ec6 / 61bf8df2 / dd6dceeb 将 HolyMan / Bard / DeathKnight 切换到中心化法术模型（SpellDefinition），法术书/卷轴类型检测一并重做。
+
+**验证**：2026-10-14 玩家以 GM 号受洗绑定 HolyManSpellbook、`[AllSpells` 灌满 14 法术（770–783）后，从**法术条**逐个施放全部成功，无「未找到该法术」；`[set karma 5000` + `[SetSkill healing/spiritualism 100` 满足受洗门槛（Karma≥2500 且两技能 >0）。受影响同段的 DeathKnight（750–763）与 Magical（700–706）注册随同恢复。
+
+**遗留**：法术条施放失败提示 "That spell was not found." 仍为硬编码英文（本地化欠账，见 `sync-localization-debt-2026-10.md`）。
+
+**存档兼容**：N/A（纯运行时结构，无序列化改动）。
 
 （空）
