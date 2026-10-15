@@ -599,8 +599,10 @@ namespace Server.Misc
 				ApplyCharacterDefaults(newChar, args.Account.AccessLevel, args.Female, args.Hue, true);
 				ApplyHairStyling(newChar, args.HairID, args.HairHue, args.BeardID, args.BeardHue);
 
-				if (newChar.AccessLevel < AccessLevel.Counselor)
-					SetName(newChar, args.Name);
+				// Memento local deviation: upstream leaves staff-account characters (Counselor+) unnamed,
+				// which persists as a null Name — the client char list then shows blank, unusable entries.
+				// Our owner/GM accounts play test characters, so always apply the requested name.
+				SetName(newChar, args.Name);
 
 				SetStats(newChar, state, args.Str, args.Dex, args.Int);
 
