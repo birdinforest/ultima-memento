@@ -74,6 +74,14 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.Owner)]
 		public int QuestTome_Goals { get { return QuestTomeGoals; } set { QuestTomeGoals = value; InvalidateProperties(); } }
 
+		/// <summary>
+		/// FullName (Name + " " + Title) of the EpicCharacter that accepted turn-in.
+		/// Set when Goals advances 4→5; binds free reward claim to that NPC.
+		/// </summary>
+		public string QuestTomeClaimNpc;
+		[CommandProperty(AccessLevel.Owner)]
+		public string QuestTome_ClaimNpc { get { return QuestTomeClaimNpc; } set { QuestTomeClaimNpc = value; InvalidateProperties(); } }
+
 		public string QuestTomeDungeon;
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string QuestTome_Dungeon { get{ return QuestTomeDungeon; } set{ QuestTomeDungeon = value; } }
@@ -247,7 +255,7 @@ namespace Server.Items
 		public override void Serialize(GenericWriter writer)
 		{
 			base.Serialize(writer);
-			writer.Write((int)2);
+			writer.Write((int)3);
 
 			writer.Write( DeliverMap );
 			writer.Write( DeliverX );
@@ -277,6 +285,7 @@ namespace Server.Items
 			writer.Write( VillainTitle );
 			writer.Write( VillainBody );
 			writer.Write( VillainHue );
+			writer.Write( QuestTomeClaimNpc );
 		}
 
 		public override void Deserialize(GenericReader reader)
@@ -286,6 +295,7 @@ namespace Server.Items
 
 			switch ( version )
 			{
+				case 3:
 				case 2:
 				{
 					DeliverMap = reader.ReadMap();
@@ -334,6 +344,11 @@ namespace Server.Items
 			VillainTitle = reader.ReadString();
 			VillainBody = reader.ReadInt();
 			VillainHue = reader.ReadInt();
+
+			if ( version >= 3 )
+				QuestTomeClaimNpc = reader.ReadString();
+			else
+				QuestTomeClaimNpc = "";
 		}
 
 		private class QuestTomeGump : Gump
@@ -728,7 +743,7 @@ namespace Server.Items
 					return false;
 				}
 			}
-			else if ( chest != null && book.VillainName == chest.VillainName && book.VillainTitle == chest.VillainTitle && book.QuestTomeOwner == player && book.QuestTomeGoals >= 3 )
+			else if ( chest != null && book.VillainName == chest.VillainName && book.VillainTitle == chest.VillainTitle && book.QuestTomeOwner == player && book.QuestTomeGoals == 3 )
 			{
 				player.AddToBackpack(new HoardMinionFamiliarItem());
 				ApproachObsidian.TitanRiches( player );

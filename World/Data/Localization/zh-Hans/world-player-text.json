@@ -3566,5 +3566,13 @@
   "eng.plant.tooltip.growth_not_healthy": "成长：不健康",
   "eng.plant.tooltip.growth_waiting": "成长：等待中",
   "eng.plant.tooltip.growth_grown": "成长：已成长",
-  "eng.plant.tooltip.growth_double_grown": "成长：双倍成长"
+  "eng.plant.tooltip.growth_double_grown": "成长：双倍成长",
+  "epic.quest.claim_belongs_to_other": "这本日记的奖励属于{0}。请交还给对方以领取赠礼。",
+  "epic.quest.gm.not_a_player": "那不是玩家。",
+  "epic.quest.gm.not_epic_npc": "那不是史诗人物。",
+  "epic.quest.gm.opened": "已为{0}在{1}处打开免费献礼奖励界面。",
+  "epic.quest.gm.player_gone": "该玩家已不可用。",
+  "epic.quest.gm.target_npc": "请再点选将授予赠礼的史诗人物。",
+  "epic.quest.gm.target_player": "请点选应获得免费史诗献礼奖励界面的玩家。",
+  "epic.quest.journal_invalid_for_reward": "这本日记已无法用于领取此奖励。"
 }

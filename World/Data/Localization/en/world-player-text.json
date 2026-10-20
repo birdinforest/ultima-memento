@@ -3566,5 +3566,13 @@
   "eng.plant.tooltip.growth_not_healthy": "Growth: Not Healthy",
   "eng.plant.tooltip.growth_waiting": "Growth: Waiting",
   "eng.plant.tooltip.growth_grown": "Growth: Grown",
-  "eng.plant.tooltip.growth_double_grown": "Growth: Double Grown"
+  "eng.plant.tooltip.growth_double_grown": "Growth: Double Grown",
+  "epic.quest.claim_belongs_to_other": "This journal's reward belongs to {0}. Return it to them to claim your gift.",
+  "epic.quest.gm.not_a_player": "That is not a player.",
+  "epic.quest.gm.not_epic_npc": "That is not an Epic Character.",
+  "epic.quest.gm.opened": "Opened a free tribute reward gump for {0} at {1}.",
+  "epic.quest.gm.player_gone": "That player is no longer available.",
+  "epic.quest.gm.target_npc": "Now target the Epic Character who will grant the gift.",
+  "epic.quest.gm.target_player": "Target the player who should receive a free Epic Tribute reward gump.",
+  "epic.quest.journal_invalid_for_reward": "That journal is no longer valid for this reward."
 }
