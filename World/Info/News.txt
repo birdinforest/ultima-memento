@@ -1,3 +1,16 @@
+[*]2026年10月21日
+版本升级至3.0.20
+<b>Bug修复</b>:
+  - <b>修复</b>：传奇NPC的日记任务 - 不会出现需要付费5000金币的情况
+  - <b>修复</b>：传奇NPC的日记任务 - 玩家关闭收取奖励的UI之后，仍然可以再次打开UI收取奖励
+  - <b>修复</b>：传奇NPC的日记任务 - 灰镇的传奇 NPC Iilo给与的奖励物品技能加成：战术、专注、制弓、射箭（选择远程武器，防具，或者衣饰）或者随机技能（选择非远程武器）
+<br>
+<b>修改</b>:
+  - 调整一些传奇NPC任务奖励的第一个技能加成：
+    NPC：the Great Earth Serpent，Arcadion, Samhayne, Seggallion, Lord British, Lord Blackthorne, Geoffrey, Shimazu, Gorn, Dupre, Shamino, the Guardian, Mors Gotha 
+    第一个技能加成：如果选择武器，技能加成为武器所需技能；如果选择防具，技能加成为格挡（Parry）；如果选择衣饰，技能加成随机。
+<br>
+
 [*]2026年9月26日
 版本升级至3.0.19
 <br>
