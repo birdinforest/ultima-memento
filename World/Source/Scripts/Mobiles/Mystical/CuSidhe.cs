@@ -2,6 +2,7 @@ using Server;
 using System;
 using Server.Items;
 using Server.Gumps;
+using Server.Localization;
 
 namespace Server.Mobiles
 {
@@ -13,17 +14,15 @@ namespace Server.Mobiles
 		{
 		}
 
+		private const int HueRollTotal = 21000;
+		private const int BlazeHueWeight = 105;
+		private const int RareHueWeight = 2100;
+		private const int UncommonHueWeight = 6300;
+
 		[Constructable]
 		public CuSidhe( string name ) : base( name, 277, 0x3E91, AIType.AI_Animal, FightMode.Aggressor, 10, 1, 0.2, 0.4 )
-		{			
-			double chance = Utility.RandomDouble() * 23301;
-
-			if ( chance <= 1 )
-				Hue = 0x489;
-			else if ( chance < 50 )
-				Hue = Utility.RandomList( 0x657, 0x515, 0x4B1, 0x481, 0x482, 0x455 );
-			else if ( chance < 500 )
-				Hue = Utility.RandomList( 0x97A, 0x978, 0x901, 0x8AC, 0x5A7, 0x527 ); 
+		{
+			AssignSpawnHue(); 
 
 			SetStr( 1200, 1225 );
 			SetDex( 150, 170 );
@@ -67,22 +66,63 @@ namespace Server.Mobiles
 			AddLoot( LootPack.MonsterFilthyRich, 5 );
 		}
 
+		/// <summary>
+		/// Non-elves must wear <see cref="Artifact_PadsOfTheCuSidhe"/> on the shoes layer. Elves and staff above Player skip.
+		/// Called from <see cref="OnDoubleClick"/> and <see cref="BaseMount.Ride"/>.
+		/// </summary>
+		public static bool CheckPadsForRider( Mobile from, bool message )
+		{
+			if ( from == null || from.Deleted )
+				return false;
+
+			if ( from.Race == Race.Elf || from.AccessLevel > AccessLevel.Player )
+				return true;
+
+			Item pads = from.FindItemOnLayer( Layer.Shoes );
+
+			if ( pads is Artifact_PadsOfTheCuSidhe )
+			{
+				if ( message )
+					from.SendLocalizedMessage( 1071981 ); // Your boots allow you to mount the Cu Sidhe.
+
+				return true;
+			}
+
+			if ( message )
+				from.SendLocalizedMessage( 1072203 ); // Only Elves may use this.
+
+			return false;
+		}
+
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( from.Race != Race.Elf && from == ControlMaster && from.AccessLevel == AccessLevel.Player )
-			{
-				Item pads = from.FindItemOnLayer( Layer.Shoes );
-				
-				if ( pads is Artifact_PadsOfTheCuSidhe )
-					from.SendLocalizedMessage( 1071981 ); // Your boots allow you to mount the Cu Sidhe.
-				else
-				{
-					from.SendLocalizedMessage( 1072203 ); // Only Elves may use this.
-					return;
-				}
-			}
-			
+			if ( from == ControlMaster && !CheckPadsForRider( from, true ) )
+				return;
+
 			base.OnDoubleClick( from );
+		}
+
+		public override void OnThink()
+		{
+			base.OnThink();
+
+			Mobile rider = Rider;
+
+			if ( rider == null || rider.Deleted )
+				return;
+
+			if ( rider.Race == Race.Elf || rider.AccessLevel > AccessLevel.Player )
+				return;
+
+			Item pads = rider.FindItemOnLayer( Layer.Shoes );
+
+			if ( pads is Artifact_PadsOfTheCuSidhe )
+				return;
+
+			BaseMount.Dismount( rider );
+
+			if ( rider is PlayerMobile pm )
+				pm.SendMessage( StringCatalog.ResolveByKey( pm.Account, "mob.other.cu_sidhe.pads_left" ) );
 		}
 		
 		public override bool CanHeal{ get{ return true; } }
@@ -95,6 +135,20 @@ namespace Server.Mobiles
 		public override WeaponAbility GetWeaponAbility()
 		{
 			return WeaponAbility.BleedAttack;
+		}
+
+		private void AssignSpawnHue()
+		{
+			int roll = Utility.Random( HueRollTotal );
+			int rareCeiling = BlazeHueWeight + RareHueWeight;
+			int uncommonCeiling = rareCeiling + UncommonHueWeight;
+
+			if ( roll < BlazeHueWeight )
+				Hue = 1161;
+			else if ( roll < rareCeiling )
+				Hue = Utility.RandomList( 1301, 1154, 1201, 1652, 1109, 1153 );
+			else if ( roll < uncommonCeiling )
+				Hue = Utility.RandomList( 2426, 2218, 1447, 2424, 2305, 1319, 2220 );
 		}
 
 		public CuSidhe( Serial serial ) : base( serial )

@@ -16529,6 +16529,8 @@ namespace Server.Scripts.Commands
 
 			if ( MySettings.ConsoleLog ){ Console.WriteLine( "Spawn Dungeons..." ); }
 			Server.SpawnGenerator.Parse( e.Mobile, "dangers.map" );
+			if ( MySettings.ConsoleLog ){ Console.WriteLine( "Spawn Cu Sidhe..." ); }
+			Server.SpawnGenerator.Parse( e.Mobile, "cu-sidhe.map" );
 			if ( MySettings.ConsoleLog ){ Console.WriteLine( "Spawn Land..." ); }
 			Server.SpawnGenerator.Parse( e.Mobile, "land.map" );
 			if ( MySettings.ConsoleLog ){ Console.WriteLine( "Spawn Animals..." ); }

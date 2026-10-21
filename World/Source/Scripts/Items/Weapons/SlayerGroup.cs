@@ -393,6 +393,7 @@ namespace Server.Items
 				typeof( SailorElfGuards ), 
 				typeof( SailorElf ), 
 				typeof( Unicorn ), 
+				typeof( CuSidhe ), 
 				typeof( Dreadhorn ), 
 				typeof( Pegasus ), 
 				typeof( DarkUnicornRiding ), 

@@ -576,6 +576,7 @@ When adding a third language (e.g. `zh-Hant`, `ja`):
 This file uses a simple date-stamp comment at the top for tracking. When making substantive updates, add a one-line change note at the bottom of this section.
 
 **Change log:**
+- 2026-10-21: §8.1 — indexed `CU_SIDHE_PADS_MOUNT_DESIGN.md`（启用库希仙灵：四槽治疗坐骑，非精灵穿护垫才能骑）。
 - 2026-10-02: §8.1 — indexed `DRAKKHEN_CRYSTAL_SYSTEM.md`（龙晶：DropRelic 3%、50,000 金交德鲁伊、绑定可骑 Drakkhen）。
 - 2026-09-06: §8.1 — indexed `MURDERER_DISGUISE_TOWN_SELL_DESIGN.md`（红名伪装城镇出售：风险回报变现、不抬全局商人金）。
 - 2026-08-30: §8.1 — indexed `EQUIPMENT_DURABILITY_BOOST_SYSTEM.md`（提高装备耐久上限：药水、蜂蜡、调和粉、与修理药水分界）。
@@ -718,6 +719,7 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | Avatar core item death / Memory Echo Resonance | `memento/game-mechanism/AVATAR_CORE_ITEM_RESEARCH_RESONANCE_SYSTEM.md` | Before modifying `AvatarCoreItemMigration`, Dormant/Resonance gumps, `SearchBase` dormant branch, or research snapshot merge on rebirth |
 | Death / resurrection / bank tribute | `memento/game-mechanism/death-resurrection-bank-tribute.md` | Before modifying death or tribute handling |
 | Pet taming & Jako system | `memento/game-mechanism/PET_TAMING_AND_JAKO_SYSTEM.md` | Before modifying pet/taming mechanics |
+| 库希仙灵与护垫骑乘 | `memento/game-design-idea/CU_SIDHE_PADS_MOUNT_DESIGN.md` | Before enabling `CuSidhe` spawns, changing its mount gate, or changing `Artifact_PadsOfTheCuSidhe` |
 | Dragon riding scroll / Dragon King / draconic mounts | `memento/game-mechanism/DRAGON_RIDING_SCROLL_SYSTEM.md` | Before modifying `DragonRidingScroll`, `DragonRiding` keys, or `RidingDragon`/`Dragoon`/`GemDragon` mount gate |
 | Dragon King boss | `memento/game-mechanism/DRAGON_KING_SYSTEM.md` | Before modifying `DragonKing`, lucky kills, ManualOfItems relics book, or dragon `DropSpecial` on Great Dragons |
 | ManualOfItems / Relics chest | `memento/game-mechanism/MANUAL_OF_ITEMS_RELICS_SYSTEM.md` | Before modifying `ManualOfItems`, `RelicBoxGump`, `GiveItemBonus`, `Gift*` enchant flow, or boss relic drop tables |
