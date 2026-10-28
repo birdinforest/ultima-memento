@@ -55,6 +55,7 @@ namespace Server.Mobiles
 				{
 					ItemInformation.GetSellList( m_Merchant, this, 	ItemSalesInfo.Category.None,		ItemSalesInfo.Material.None,		ItemSalesInfo.Market.Leather,	ItemSalesInfo.World.None,	null	 );
 					ItemInformation.GetSellList( m_Merchant, this, 	ItemSalesInfo.Category.None,		ItemSalesInfo.Material.Cloth,		ItemSalesInfo.Market.Leather,	ItemSalesInfo.World.None,	null	 );
+					ItemInformation.GetSellList( m_Merchant, this, 	ItemSalesInfo.Category.Armor,		ItemSalesInfo.Material.Leather,		ItemSalesInfo.Market.Leather,	ItemSalesInfo.World.None,	null	 );
 					ItemInformation.GetSellList( m_Merchant, this, 	ItemSalesInfo.Category.Resource,	ItemSalesInfo.Material.None,		ItemSalesInfo.Market.Tanner,	ItemSalesInfo.World.None,	null	 );
 				}
 			}
@@ -65,6 +66,7 @@ namespace Server.Mobiles
 				{
 					ItemInformation.GetBuysList( m_Merchant, this, 	ItemSalesInfo.Category.None,		ItemSalesInfo.Material.None,		ItemSalesInfo.Market.Leather,	ItemSalesInfo.World.None,	null	 );
 					ItemInformation.GetBuysList( m_Merchant, this, 	ItemSalesInfo.Category.None,		ItemSalesInfo.Material.Cloth,		ItemSalesInfo.Market.Leather,	ItemSalesInfo.World.None,	null	 );
+					ItemInformation.GetBuysList( m_Merchant, this, 	ItemSalesInfo.Category.Armor,		ItemSalesInfo.Material.Leather,		ItemSalesInfo.Market.Leather,	ItemSalesInfo.World.None,	null	 );
 					ItemInformation.GetBuysList( m_Merchant, this, 	ItemSalesInfo.Category.Resource,	ItemSalesInfo.Material.None,		ItemSalesInfo.Market.Tanner,	ItemSalesInfo.World.None,	null	 );
 				}
 			}
