@@ -958,6 +958,9 @@ namespace Server.Mobiles
 
 			if (from.Alive)
 			{
+				// Recover from pre-fix stacked InnerLegs/Pants clothing (temptation layer race).
+				PantsTemptationLayer.DeduplicateWornPants( from );
+
 				// Adjust item graphics/visibility on paperdoll
 				from.ProcessClothing();
 			}

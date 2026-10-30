@@ -1,5 +1,3 @@
-using Server.Mobiles;
-
 namespace Server.Items
 {
 	public abstract class BaseLevelPants : BaseLevelClothing
@@ -16,13 +14,18 @@ namespace Server.Items
 		{
 		}
 
-		public override bool OnEquip(Mobile from)
+		public override bool CanEquip( Mobile from )
 		{
-			if (!base.OnEquip(from)) return false;
-			if (false == from is PlayerMobile) return true;
+			PantsTemptationLayer.Resolve( this, from );
+			return base.CanEquip( from );
+		}
 
-			Layer = ((PlayerMobile)from).Temptations.CanWearTightPants ? Layer.InnerLegs : Layer.Pants;
-			
+		public override bool OnEquip( Mobile from )
+		{
+			if ( !base.OnEquip( from ) )
+				return false;
+
+			PantsTemptationLayer.Resolve( this, from );
 			return true;
 		}
 
