@@ -230,7 +230,7 @@ namespace Server
 				new LootPackEntry( false, MagicItemsPoor,		  	 1.00, 1, 1, 0, 25 ),
 				new LootPackEntry( false, Instruments,			  	 0.04, 1, 1, 0, 25 ),
 				new LootPackEntry( false, Spellbooks,				 0.04, 1, 1, 0, 25 ),
-				new LootPackEntry( false, Quivers,				  	 0.02, 1, 1, 0, 25 ),
+				new LootPackEntry( false, Quivers,				  	 0.04, 1, 1, 0, 25 ),
 				new LootPackEntry( false, MagicItemsMeager1,	 	20.40, 1, 2, 0, 25 ),
 				new LootPackEntry( false, LowPotionItems,			20.00, 1 )
 			} );
@@ -242,7 +242,7 @@ namespace Server
 				new LootPackEntry( false, MagicItemsMeager2,	 	 10.20, 1, 2, 0, 30 ),
 				new LootPackEntry( false, Instruments,				  0.20, 1, 2, 0, 30 ),
 				new LootPackEntry( false, Spellbooks,				  0.20, 1, 2, 0, 30 ),
-				new LootPackEntry( false, Quivers,				  	  0.10, 1, 2, 0, 30 ),
+				new LootPackEntry( false, Quivers,				  	  0.20, 1, 2, 0, 30 ),
 				new LootPackEntry( false, LowPotionItems,			 50.00, 1 )
 			} );
 
@@ -254,7 +254,7 @@ namespace Server
 				new LootPackEntry( false, MagicItemsAverage2, 		19.50, 1, 3, 0, 40 ),
 				new LootPackEntry( false, Instruments,				 0.80, 1, 3, 0, 40 ),
 				new LootPackEntry( false, Spellbooks,				 0.80, 1, 3, 0, 40 ),
-				new LootPackEntry( false, Quivers,				  	 0.40, 1, 3, 0, 40 ),
+				new LootPackEntry( false, Quivers,				  	 0.80, 1, 3, 0, 40 ),
 				new LootPackEntry( false, MedPotionItems,			20.00, 1 )
 			} );
 
@@ -266,7 +266,7 @@ namespace Server
 				new LootPackEntry( false, MagicItemsRich2,	 		61.70, 2, 4, 20, 40 ),
 				new LootPackEntry( false, Instruments,				 4.00, 2, 3, 20, 40 ),
 				new LootPackEntry( false, Spellbooks,				 4.00, 2, 3, 20, 40 ),
-				new LootPackEntry( false, Quivers,				  	 2.00, 2, 3, 20, 40 ),
+				new LootPackEntry( false, Quivers,				  	 4.00, 2, 3, 20, 40 ),
 				new LootPackEntry( false, SArtyItems,				 1.00, 2, 3, 20, 40 ),
 				new LootPackEntry( false, MedPotionItems,			50.00, 1 )
 			} );
@@ -279,7 +279,7 @@ namespace Server
 				new LootPackEntry( false, MagicItemsFilthyRich2,		77.60, 3, 4, 25,  50 ),
 				new LootPackEntry( false, Instruments,					 4.00, 2, 4, 25,  50 ),
 				new LootPackEntry( false, Spellbooks,					 4.00, 2, 4, 25,  50 ),
-				new LootPackEntry( false, Quivers,				  	  	 2.00, 2, 4, 25,  50 ),
+				new LootPackEntry( false, Quivers,				  	  	 4.00, 2, 4, 25,  50 ),
 				new LootPackEntry( false, SArtyItems,				  	 1.00, 1 ),
 				new LootPackEntry( false, ArtyItems,				 	 0.50, 1 ),
 				new LootPackEntry( false, HighPotionItems,				25.00, 1 )
@@ -296,7 +296,7 @@ namespace Server
 				new LootPackEntry( false, MagicItemsUltraRich,		100.00, 2, 5, 40, 70 ),
 				new LootPackEntry( false, Instruments,				  8.00, 2, 5, 40, 70 ),
 				new LootPackEntry( false, Spellbooks,				  8.00, 2, 5, 40, 70 ),
-				new LootPackEntry( false, Quivers,				  	  4.00, 2, 5, 40, 70 ),
+				new LootPackEntry( false, Quivers,				  	  8.00, 2, 5, 40, 70 ),
 				new LootPackEntry( false, SArtyItems,				  2.00, 1 ),
 				new LootPackEntry( false, ArtyItems,				  1.00, 1 ),
 				new LootPackEntry( false, HighPotionItems,			 50.00, 1 )
@@ -317,7 +317,7 @@ namespace Server
 				new LootPackEntry( false, MagicItemsUltraRich,		100.00, 3, 5, 40, 70 ),
 				new LootPackEntry( false, Instruments,				  8.00, 3, 5, 40, 70 ),
 				new LootPackEntry( false, Spellbooks,				  8.00, 3, 5, 40, 70 ),
-				new LootPackEntry( false, Quivers,				  	  6.00, 3, 5, 40, 70 ),
+				new LootPackEntry( false, Quivers,				  	  8.00, 3, 5, 40, 70 ),
 				new LootPackEntry( false, SArtyItems,				  4.00, 1 ),
 				new LootPackEntry( false, ArtyItems,				  2.00, 1 ),
 				new LootPackEntry( false, HighPotionItems,			 75.00, 1 )
@@ -332,7 +332,7 @@ namespace Server
 				new LootPackEntry( false, MagicItemsPoor,		  	10.00, 1, 1, 10, 25 ),
 				new LootPackEntry( false, Instruments,			  	 0.04, 1, 1, 10, 25 ),
 				new LootPackEntry( false, Spellbooks,				 0.04, 1, 1, 10, 25 ),
-				new LootPackEntry( false, Quivers,				  	 0.02, 1, 1, 10, 25 ),
+				new LootPackEntry( false, Quivers,				  	 0.04, 1, 1, 10, 25 ),
 				new LootPackEntry( false, MagicItemsMeager1,	 	20.40, 1, 1, 10, 25 ),
 				new LootPackEntry( false, LowScrollItems,			 5.00, 1 ),
 				new LootPackEntry( false, GemItems,					20.00, 1 ),
@@ -345,7 +345,7 @@ namespace Server
 				new LootPackEntry( false, MagicItemsMeager1,	 	 20.40, 1, 2, 10, 30 ),
 				new LootPackEntry( false, Instruments,				  0.20, 1, 2, 10, 30 ),
 				new LootPackEntry( false, Spellbooks,				  0.20, 1, 2, 10, 30 ),
-				new LootPackEntry( false, Quivers,				  	  0.10, 1, 2, 10, 30 ),
+				new LootPackEntry( false, Quivers,				  	  0.20, 1, 2, 10, 30 ),
 				new LootPackEntry( false, LowScrollItems,			 10.00, 1 ),
 				new LootPackEntry( false, GemItems,					 40.00, 1 ),
 				new LootPackEntry( false, ReagentItems,				 10.00, 1 ),
@@ -357,7 +357,7 @@ namespace Server
 				new LootPackEntry( false, MagicItemsAverage1, 		32.80, 1, 3, 10, 40 ),
 				new LootPackEntry( false, Instruments,				 0.80, 1, 3, 10, 40 ),
 				new LootPackEntry( false, Spellbooks,				 0.80, 1, 3, 10, 40 ),
-				new LootPackEntry( false, Quivers,				  	 0.40, 1, 3, 10, 40 ),
+				new LootPackEntry( false, Quivers,				  	 0.80, 1, 3, 10, 40 ),
 				new LootPackEntry( false, MedScrollItems,			20.00, 1 ),
 				new LootPackEntry( false, GemItems,					60.00, 1 ),
 				new LootPackEntry( false, ReagentItems,				20.00, 1 ),
@@ -369,7 +369,7 @@ namespace Server
 				new LootPackEntry( false, MagicItemsRich1,	 		76.30, 2, 3, 20, 40 ),
 				new LootPackEntry( false, Instruments,				 4.00, 2, 3, 20, 40 ),
 				new LootPackEntry( false, Spellbooks,				 4.00, 2, 3, 20, 40 ),
-				new LootPackEntry( false, Quivers,				  	 2.00, 2, 3, 20, 40 ),
+				new LootPackEntry( false, Quivers,				  	 4.00, 2, 3, 20, 40 ),
 				new LootPackEntry( false, SArtyItems,				 0.50, 2, 3, 20, 40 ),
 				new LootPackEntry( false, HighScrollItems,			30.00, 1 ),
 				new LootPackEntry( false, GemItems,					70.00, 1 ),
@@ -382,7 +382,7 @@ namespace Server
 				new LootPackEntry( false, MagicItemsFilthyRich1,		79.50, 2, 4, 35, 50 ),
 				new LootPackEntry( false, Instruments,					 4.00, 2, 4, 35, 50 ),
 				new LootPackEntry( false, Spellbooks,					 4.00, 2, 4, 35, 50 ),
-				new LootPackEntry( false, Quivers,				  	  	 2.00, 2, 4, 35, 50 ),
+				new LootPackEntry( false, Quivers,				  	  	 4.00, 2, 4, 35, 50 ),
 				new LootPackEntry( false, SArtyItems,				  	 0.50, 1 ),
 				new LootPackEntry( false, ArtyItems,				 	 0.25, 1 ),
 				new LootPackEntry( false, HighScrollItems,			 	40.00, 1 ),
@@ -396,7 +396,7 @@ namespace Server
 				new LootPackEntry( false, MagicItemsUltraRich,		100.00, 2, 5, 50, 70 ),
 				new LootPackEntry( false, Instruments,				  8.00, 2, 5, 50, 70 ),
 				new LootPackEntry( false, Spellbooks,				  8.00, 2, 5, 50, 70 ),
-				new LootPackEntry( false, Quivers,				  	  4.00, 2, 5, 50, 70 ),
+				new LootPackEntry( false, Quivers,				  	  8.00, 2, 5, 50, 70 ),
 				new LootPackEntry( false, SArtyItems,				  1.00, 1 ),
 				new LootPackEntry( false, ArtyItems,				  0.50, 1 ),
 				new LootPackEntry( false, HighScrollItems,			 50.00, 1 ),
@@ -411,7 +411,7 @@ namespace Server
 				new LootPackEntry( false, MagicItemsUltraRich,		100.00, 3, 5, 50, 70 ),
 				new LootPackEntry( false, Instruments,				  8.00, 3, 5, 50, 70 ),
 				new LootPackEntry( false, Spellbooks,				  8.00, 3, 5, 50, 70 ),
-				new LootPackEntry( false, Quivers,				  	  6.00, 3, 5, 50, 70 ),
+				new LootPackEntry( false, Quivers,				  	  8.00, 3, 5, 50, 70 ),
 				new LootPackEntry( false, SArtyItems,				  2.00, 1 ),
 				new LootPackEntry( false, ArtyItems,				  0.75, 1 ),
 				new LootPackEntry( false, HighScrollItems,			 60.00, 1 ),

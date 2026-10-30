@@ -134,7 +134,11 @@ namespace Server.Items
 						item = LootPackEntry.Enchant( from, 500, item );
 						break;
 					case 12:
-						item = Loot.RandomInstrument();
+						// Equal chance: bard instrument vs archer kit (was instrument-only)
+						if ( Utility.RandomBool() )
+							item = Loot.RandomInstrument();
+						else
+							item = Loot.RandomArcherEquipment( Server.LootPackEntry.playOrient( from ) );
 						item = LootPackEntry.Enchant( from, 500, item );
 						break;
 					case 13:
