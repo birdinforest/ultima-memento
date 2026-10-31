@@ -63,7 +63,6 @@ namespace Server.Commands
 					item =>
 					{
 						return item is BaseReagent
-							|| item is Spellbook
 							|| item is RuneStone
 							|| item is MagicRuneBag
 							|| item.Catalog == Catalogs.Reagent;
@@ -176,7 +175,7 @@ namespace Server.Commands
 		{
 			AccessLevel = AccessLevel.Player;
 			Supports = CommandSupport.AllItems;
-			Commands = new string[] { "Organize" };
+			Commands = new string[] { "Organize", "OrganizeMe" };
 			ObjectTypes = ObjectTypes.Both;
 			Usage = "Organize [<Horizontal_Space> | NULL] [<Vertical_Space> | NULL]";
 			Description = "Organizes a targeted container and all it's contents into separate bags.";
@@ -184,12 +183,18 @@ namespace Server.Commands
 
 		public static void Initialize()
 		{
-			TargetCommands.Register(new OrganizeCommand());
+			var command = new OrganizeCommand();
+			TargetCommands.Register(command);
+			CommandSystem.Register("OrganizeMe", AccessLevel.Player, args => command.Execute(args, args.Mobile));
 		}
 
 		public override void Execute(CommandEventArgs e, object obj)
 		{
 			if (e.Mobile == null) return;
+
+			// If someone targets themselves, use their backpack instead
+			if (obj == e.Mobile)
+				obj = e.Mobile.Backpack;
 
 			if (obj is Container)
 			{
@@ -203,6 +208,35 @@ namespace Server.Commands
 			}
 			else
 				e.Mobile.SendMessage("That is not a container.");
+		}
+
+		private static bool HasIgnoredParent(Item item)
+		{
+			if (item == null) return false;
+
+			var parent = item.Parent as Item;
+			while (parent != null)
+			{
+				if (IsIgnoredContainerType(parent)) return true;
+
+				parent = parent.Parent as Item;
+			}
+
+			return false;
+		}
+
+		private static bool IsIgnoredContainerType(Item i)
+		{
+			return i is DruidPouch
+				|| i is MysticPack
+				|| i is WitchPouch
+				|| i is AlchemistPouch
+				|| i is AlchemyPouch
+				|| i is BagOfHolding
+				|| i is MovingBox
+				|| i is SackOfHolding
+				|| i is WeightReductionContainer
+				|| i is BaseQuiver;
 		}
 
 		private void Organize(PlayerMobile from, Container target, int horizontalSpace, int verticalSpace)
@@ -248,6 +282,7 @@ namespace Server.Commands
 					if (!organizer.Test(item)) continue;
 					if (item.Parent is NotIdentified) continue;
 					if (item.Parent is LockableContainer && ((LockableContainer)item.Parent).Locked) continue;
+					if (HasIgnoredParent(item)) continue;
 
 					OrganizerContainer container;
 					if (!destinations.TryGetValue(organizer.ContainerName, out container))

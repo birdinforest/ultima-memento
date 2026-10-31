@@ -39,38 +39,46 @@ namespace Server.Spells.Elementalism
 
 				SpellHelper.Turn( source, m );
 
-				SpellHelper.CheckReflect( (int)this.Circle, ref source, ref m );
-
-				int nBenefit = (int)(Caster.Skills[CastSkill].Value / 5);
-
-				double damage = GetNewAosDamage( 19, 1, 5, m ) + nBenefit;
+				bool hitThrough = SpellHelper.ResolveMagicDefense( (int)this.OneBasedCircle, ref source, ref m );
 
 				string elm = ElementalSpell.GetElement( Caster );
-
 				if ( elm == "air" )
 				{
 					source.MovingParticles( m, 0x3818, 7, 0, false, false, 0, 0, 0, 0, 0, 0 );
 					source.PlaySound( 0x20A );
-					SpellHelper.Damage( this, m, damage, 25, 0, 0, 0, 75 );
 				}
 				else if ( elm == "earth" )
 				{
 					source.MovingParticles( m, 0x1363, 7, 0, false, false, 0, 0, 0, 0, 0, 0 );
 					source.PlaySound( 0x65A );
-					SpellHelper.Damage( this, m, damage, 100, 0, 0, 0, 0 );
 				}
 				else if ( elm == "fire" )
 				{
 					source.MovingParticles( m, 0x36D4, 7, 0, false, false, 0, 0, 0, 0, 0, 0 );
 					source.PlaySound( Core.AOS ? 0x15E : 0x44B );
-					SpellHelper.Damage( this, m, damage, 25, 75, 0, 0, 0 );
 				}
 				else if ( elm == "water" )
 				{
 					source.MovingParticles( m, 0x5691, 7, 0, false, false, 0, 0, 0, 0, 0, 0 );
 					source.PlaySound( 0x026 );
-					AddWater( m );
-					SpellHelper.Damage( this, m, damage, 25, 0, 75, 0, 0 );
+				}
+
+				if ( hitThrough )
+				{
+					int nBenefit = (int)(Caster.Skills[CastSkill].Value / 5);
+					double damage = GetNewAosDamage( 19, 1, 5, m ) + nBenefit;
+
+					if ( elm == "air" )
+						SpellHelper.Damage( this, m, damage, 25, 0, 0, 0, 75 );
+					else if ( elm == "earth" )
+						SpellHelper.Damage( this, m, damage, 100, 0, 0, 0, 0 );
+					else if ( elm == "fire" )
+						SpellHelper.Damage( this, m, damage, 25, 75, 0, 0, 0 );
+					else if ( elm == "water" )
+					{
+						AddWater( m );
+						SpellHelper.Damage( this, m, damage, 25, 0, 75, 0, 0 );
+					}
 				}
 			}
 

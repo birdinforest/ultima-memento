@@ -5,14 +5,14 @@ using Server.Misc;
 using Server.Items; 
 using Server.Mobiles; 
 using Server.Network;
-using System.Collections.Generic;
-using Server.ContextMenus;
 
 namespace Server.Mobiles 
 {
 	[CorpseName( "a broken machine" )] 
 	public class GolemFighter : BaseCreature
 	{
+		public const int MaxControlSlots = 3;
+
 		private bool m_Stunning;
 
 		public int PorterExodus;
@@ -37,7 +37,7 @@ namespace Server.Mobiles
 
 			Name = "a golem";
 			Body = 752;
-			ControlSlots = 3;
+			ControlSlots = MaxControlSlots;
 			ActiveSpeed = 0.1;
 			PassiveSpeed = 0.2;
 		}

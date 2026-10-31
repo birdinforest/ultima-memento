@@ -49,14 +49,24 @@ namespace Server.Engines.MLQuests.Definitions
             Rewards.Add(new ConstructibleItemReward("3 New Weapon Recipes",
                 player =>
                 {
-                    return DefBlacksmithy.CraftSystem.GetRandomRecipeScrolls(player, 3, recipe => !player.HasRecipe(recipe) && DefBlacksmithy.CraftSystem.IsWeaponRecipe(recipe));
+                    return DefBlacksmithy.CraftSystem.GetRandomRecipeScrolls(
+						player, 
+						new FancyStoneChest
+						{
+							Name = "Weapon Recipes",
+							Hue = Server.Utilities.HueUtilities.RandomBrightMetalHue()
+						}, 3, 
+						recipe => !player.HasRecipe(recipe) && DefBlacksmithy.CraftSystem.IsWeaponRecipe(recipe)
+					);
                 })
             );
         }
 
+		public override Type QuestRecipient { get { return typeof(WarEffortRecruiter); } }
+
         public override IEnumerable<Type> GetQuestGivers()
         {
-            yield return typeof(WarEffortRecruiter);  // Quest Giver & Recipient
+            yield return QuestRecipient;  // Quest Giver & Recipient
         }
 
         public override void Generate()
@@ -64,9 +74,9 @@ namespace Server.Engines.MLQuests.Definitions
             base.Generate();
 
             // TODO: Place one in all Towns
-            PutSpawner(new Spawner(1, 5, 10, 0, 0, "WarEffortRecruiter"), new Point3D(2999, 1062, 0), Map.Sosaria); // Britain Well
-            PutSpawner(new Spawner(1, 5, 10, 0, 0, "WarEffortRecruiter"), new Point3D(7054, 725, 65), Map.Sosaria); // The Port
-            PutSpawner(new Spawner(1, 5, 10, 0, 0, "WarEffortRecruiter"), new Point3D(4461, 1823, 0), Map.Sosaria); // Xardok's Castle
+            PutSpawner(new Spawner(1, 5, 10, 0, 0, QuestRecipient.Name), new Point3D(2999, 1062, 0), Map.Sosaria); // Britain Well
+            PutSpawner(new Spawner(1, 5, 10, 0, 0, QuestRecipient.Name), new Point3D(7054, 725, 65), Map.Sosaria); // The Port
+            PutSpawner(new Spawner(1, 5, 10, 0, 0, QuestRecipient.Name), new Point3D(4461, 1823, 0), Map.Sosaria); // Xardok's Castle
         }
 
         public override bool CanOffer(IQuestGiver quester, PlayerMobile pm, MLQuestContext context, bool message)
@@ -86,6 +96,7 @@ namespace Server.Engines.MLQuests.Definitions
 
     #region Mobiles
 
+    [QuesterName("any Local Recruiter")]
     public class WarEffortRecruiter : BasePerson
     {
         public override bool CanShout { get { return true; } }

@@ -1,16 +1,11 @@
-using System;
 using System.Collections.Generic;
-using Server;
-using Server.Targeting;
 using Server.Items;
-using Server.Network;
 using Server.ContextMenus;
-using Server.Gumps;
-using Server.Misc;
-using Server.Mobiles;
+using Server.Engines.MLQuests;
 
 namespace Server.Mobiles
 {
+    [QuesterName("the Thief Guildmaster")]
 	public class ThiefGuildmaster : BaseGuildmaster
 	{
 		public override NpcGuild NpcGuild{ get{ return NpcGuild.ThievesGuild; } }

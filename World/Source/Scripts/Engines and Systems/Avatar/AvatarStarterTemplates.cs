@@ -18,5 +18,13 @@ namespace Server.Engines.Avatar
 		Brute,
 		Acrobat,
 		Scholar,
+
+		Jester,
+		Mystic,
+		Shinobi,
+		DeathKnight,
+		HolyMan,
+
+		WellRoundedStats,
 	}
 }

@@ -36,49 +36,53 @@ namespace Server.Spells.Third
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.CheckReflect( (int)this.Circle, Caster, ref m );
-
-				if ( m.Spell != null )
-					m.Spell.OnCasterHurt();
-
-				m.Paralyzed = false;
-				BuffInfo.CleanupIcons( m, true );
-
-				if ( CheckResisted( m ) )
-				{
-					m.SendLocalizedMessage( 501783 ); // You feel yourself resisting magical energy.
-				}
-				else
-				{
-					int level;
-
-					if ( Caster.InRange( m, 2 ) )
-					{
-						int total = (int)( Spell.ItemSkillValue( Caster, SkillName.Magery, false ) + Caster.Skills[SkillName.Poisoning].Value );
-
-						if ( total >= 250 )
-							level = 4;
-						else if ( total >= 200 )
-							level = 3;
-						else if ( total > 150 )
-							level = 2;
-						else if ( total > 100 )
-							level = 1;
-						else
-							level = 0;
-					}
-					else
-					{
-						level = 0;
-					}
-
-					m.ApplyPoison( Caster, Poison.GetPoison( level ) );
-				}
+				Mobile source = Caster;
+				bool hitThrough = SpellHelper.ResolveMagicDefense( (int)this.OneBasedCircle, ref source, ref m );
 
 				m.FixedParticles( 0x374A, 10, 15, 5021, PlayerSettings.GetMySpellHue( true, Caster, 0 ), 0, EffectLayer.Waist );
 				m.PlaySound( 0x205 );
 
-				HarmfulSpell( m );
+				if ( hitThrough )
+				{
+					if ( m.Spell != null )
+						m.Spell.OnCasterHurt();
+
+					m.Paralyzed = false;
+					BuffInfo.CleanupIcons( m, true );
+
+					if ( CheckResisted( m ) )
+					{
+						m.SendLocalizedMessage( 501783 ); // You feel yourself resisting magical energy.
+					}
+					else
+					{
+						int level;
+
+						if ( Caster.InRange( m, 2 ) )
+						{
+							int total = (int)( Spell.ItemSkillValue( Caster, SkillName.Magery, false ) + Caster.Skills[SkillName.Poisoning].Value );
+
+							if ( total >= 250 )
+								level = 4;
+							else if ( total >= 200 )
+								level = 3;
+							else if ( total > 150 )
+								level = 2;
+							else if ( total > 100 )
+								level = 1;
+							else
+								level = 0;
+						}
+						else
+						{
+							level = 0;
+						}
+
+						m.ApplyPoison( Caster, Poison.GetPoison( level ) );
+					}
+
+					HarmfulSpell( m );
+				}
 			}
 
 			FinishSequence();

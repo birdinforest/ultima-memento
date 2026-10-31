@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Server.Engines.Avatar
+namespace Server.Misc.Cache
 {
 	public class ItemSnapshotCache
 	{
@@ -36,14 +36,16 @@ namespace Server.Engines.Avatar
 
 				return _cache[type] = new ItemSnapshot
 				{
+					NameNonNormalized = item.Name,
 					Name = item.Name.ToLower(),
+					CoinPrice = item.CoinPrice,
 					ItemID = item.ItemID,
 					DefaultDescription = item.DefaultDescription,
 				};
 			}
 			catch (Exception e)
 			{
-				Console.WriteLine("Failed to create Item for Avatar Item Cache. {0}", e.Message);
+				Console.WriteLine("Failed to create Item for Item Snapshot Cache. {0}", e.Message);
 				return null;
 			}
 			finally

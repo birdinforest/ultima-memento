@@ -1,9 +1,9 @@
 using Server.Gumps;
 using Server.Localization;
-using Server.Misc;
 using Server.Mobiles;
 using Server.Network;
 using System;
+using System.Text;
 
 namespace Server.Temptation
 {
@@ -21,6 +21,8 @@ namespace Server.Temptation
 			Puzzle_master,
 			This_is_just_a_tribute,
 			Deathwish,
+
+			INFO_BASE = 100,
 		}
 
 		private const int BORDER_WIDTH = 0;
@@ -90,16 +92,14 @@ namespace Server.Temptation
 
 			var canEdit = m_Requester.AccessLevel >= AccessLevel.GameMaster
 				|| (m_Target == m_Requester && m_Target.Region != null && m_Target.Region.Name == "the Forest");
-			var title = m_Target == m_Requester && canEdit
-				? Key( m_Requester, "temptationgump.title.self", "Choose your Temptations" )
-				: KeyFormat( m_Requester, "temptationgump.title.target", "{0}'s Temptations", m_Target.Name );
+			var title = m_Target == m_Requester && canEdit ? "Choose your Temptations" : string.Format("{0}'s Temptations", m_Target.Name);
 
 			int x = SECTION_INDENT;
 			if (!canEdit)
 			{
 				const int LOCK_ICON = 2092;
 				AddImage(HALF_SECTION_INDENT, y + 4, LOCK_ICON);
-				AddTooltip( Key( m_Requester, "temptationgump.tooltip.locked", "Setting can only be changed in the Gypsy Forest" ) );
+				AddTooltip("Setting can only be changed in the Gypsy Forest");
 
 				x += 5;
 				TextDefinition.AddHtmlText(this, x, y, SECTION_LABEL_WIDTH, 20, title, HtmlColors.RED);
@@ -112,13 +112,13 @@ namespace Server.Temptation
 				y += 30;
 				x += HALF_SECTION_INDENT;
 
-				TextDefinition.AddHtmlText(this, x, y, GUMP_WIDTH - x - 10, 60, Key( m_Requester, "temptationgump.once_tempted", "Once you've been tempted, you may never go back. Choose wisely." ), HtmlColors.RED);
+				TextDefinition.AddHtmlText(this, x, y, GUMP_WIDTH - x - 10, 60, "Once you've been tempted, you may never go back. Choose wisely.", HtmlColors.RED);
 				y += 30;
 			}
 
 
 			if (!canEdit && context.Flags == TemptationFlags.None)
-				TextDefinition.AddHtmlText(this, x, y, SECTION_LABEL_WIDTH, 20, KeyFormat( m_Requester, "temptationgump.not_tempted", "{0} was not tempted.", m_Target.Name ), HtmlColors.RED);
+				TextDefinition.AddHtmlText(this, x, y, SECTION_LABEL_WIDTH, 20, string.Format("{0} was not tempted.", m_Target.Name), HtmlColors.RED);
 			else
 			{
 				AddOptions(x, ref y, canEdit, context);
@@ -133,13 +133,13 @@ namespace Server.Temptation
 
 				x = GUMP_WIDTH - 330;
 				AddButton(x, y, CANCEL_BUTTON, CANCEL_BUTTON, (int)ActionButtonType.Decline, GumpButtonType.Reply, 0);
-				TextDefinition.AddHtmlText(this, x + 35, y + 3, SECTION_LABEL_WIDTH, 20, Key( m_Requester, "temptationgump.decline", "No thank you" ), HtmlColors.RED);
+				TextDefinition.AddHtmlText(this, x + 35, y + 3, SECTION_LABEL_WIDTH, 20, "No thank you", HtmlColors.RED);
 
 				if (m_Context.Flags != TemptationFlags.None)
 				{
 					x = GUMP_WIDTH - 163;
 					AddButton(x, y, OK_BUTTON, OK_BUTTON, (int)ActionButtonType.Accept, GumpButtonType.Reply, 0);
-					TextDefinition.AddHtmlText(this, x + 35, y + 3, SECTION_LABEL_WIDTH, 20, Key( m_Requester, "temptationgump.accept", "I've been Tempted!" ), HtmlColors.RED);
+					TextDefinition.AddHtmlText(this, x + 35, y + 3, SECTION_LABEL_WIDTH, 20, "I've been Tempted!", HtmlColors.RED);
 				}
 			}
 		}
@@ -153,9 +153,8 @@ namespace Server.Temptation
 			{
 				case ActionButtonType.Decline:
 					{
-						var context = TemptationEngine.Instance.GetOrCreateContext(m_Target);
-						context.Flags = TemptationFlags.None;
-						TemptationEngine.Instance.ApplyContext(m_Target, context);
+						TemptationEngine.Instance.ReplaceContext(m_Target, PlayerContext.Default);
+						TemptationEngine.Instance.ApplyContext(m_Target, PlayerContext.Default);
 						if (m_OnDecline != null)
 							m_OnDecline();
 						return;
@@ -166,7 +165,6 @@ namespace Server.Temptation
 						var context = TemptationEngine.Instance.GetOrCreateContext(m_Target);
 						context.Flags = m_Context.Flags;
 						TemptationEngine.Instance.ApplyContext(m_Target, context);
-						AnalyticsLogger.LogTemptationAccepted( m_Target, context.Flags );
 						if (m_OnAccept != null)
 							m_OnAccept();
 						return;
@@ -176,10 +174,8 @@ namespace Server.Temptation
 					{
 						var from = sender.Mobile;
 						from.SendGump(new InfoHelpGump(
-							from,
-							Key( from, "temptationgump.help.title", "Temptations" ),
-							Key( from, "temptationgump.help.body", "Command: [Temptations<br><br>Temptations will add or change basic gameplay mechanics for your character. You may be tempted by the powerful benefits, but you should take note of the significant drawbacks. Once you've been tempted, you may never go back. Choose wisely." ),
-							true,
+							from, "Temptations",
+							"Command: [Temptations<br><br>Temptations will add or change basic gameplay mechanics for your character. You may be tempted by the powerful benefits, but you should take note of the significant drawbacks. Once you've been tempted, you may never go back. Choose wisely.", true,
 							() => m_Requester.SendGump(new TemptationGump(m_Target, m_Context, m_Requester, m_OnAccept, m_OnDecline))
 							)
 						);
@@ -209,18 +205,71 @@ namespace Server.Temptation
 
 				case ActionButtonType.Close:
 				default:
+					if ((int)ActionButtonType.INFO_BASE < info.ButtonID)
+					{
+						var actionButtonType = (ActionButtonType)(info.ButtonID - (int)ActionButtonType.INFO_BASE);
+						switch (actionButtonType)
+						{
+							case ActionButtonType.Puzzle_master:
+								var builder = new StringBuilder();
+								builder.Append("This temptation removes the need for integrating Stealing and Snooping into your template.<br><br>");
+								if (!m_Target.Avatar.Active)
+								{
+									builder.Append("Permanently reduced skill cap bonuses<br>");
+									builder.Append("- Fugitives begin with a +200 skill cap bonus, down from +300<br>");
+									builder.Append("- Titan of Ether quest completion grants +200 skill cap bonus, down from +500<br>");	
+								}
+
+								builder.Append("<br>");
+
+								builder.Append("Monster racial bonuses<br>");
+								builder.Append("- Magical attribute type bonuses now act as Minimums instead of stacking with equipment<br>");
+								builder.Append("- Resist/Stat bonuses stack normally<br>");
+								builder.Append("<br>");
+								builder.Append("Example:<br>");
+								builder.Append("- Your combined equipment bonuses<br>");
+								builder.Append("  +1 Fire Resistance<br>");
+								builder.Append("  +2% Damage Increase<br>");
+								builder.Append("  +30 Luck<br>");
+								builder.Append("  +4 Arms Lore<br>");
+								builder.Append("- Your monster racial bonuses provide<br>");
+								builder.Append("  +5 Fire Resistance<br>");
+								builder.Append("  +6% Damage Increase<br>");
+								builder.Append("  +7 Luck<br>");
+								builder.Append("  +8 Arms Lore<br>");
+								builder.Append("- Your total bonus values are<br>");
+								builder.Append("  1 + 5 ... 6 Fire Resistance<br>");
+								builder.Append("  Max(2%, 6%) ... 6% Damage Increase<br>");
+								builder.Append("  Max(30, 7) ... 30 Luck<br>");
+								builder.Append("  4 + 8 ... 12 Arms Lore<br>");
+
+								m_Requester.SendGump(new InfoHelpGump(
+									m_Requester, "Puzzle master",
+									builder.ToString(), true,
+									() => m_Requester.SendGump(new TemptationGump(m_Target, m_Context, m_Requester, m_OnAccept, m_OnDecline))
+								));
+								break;
+						}
+					}
 					return;
 			}
 
 			m_Requester.SendGump(new TemptationGump(m_Target, m_Context, m_Requester, m_OnAccept, m_OnDecline));
 		}
 
-		private void AddOption(int x, ref int y, ActionButtonType actionButtonType, bool canEdit, PlayerContext context)
+		private void AddOption(int x, ref int y, ActionButtonType actionButtonType, bool canEdit, bool canInfo, PlayerContext context)
 		{
 			const int X_BUTTON = 0xFB1;
 			const int BLANK_BUTTON = 0xE19;
+			const int PAGE_ICON = 4011;
 			var isSelected = GetIsSelected(actionButtonType, context);
 			if (!canEdit && !isSelected) return;
+
+			if (canInfo)
+			{
+				AddButton(x, y, PAGE_ICON, PAGE_ICON, (int)ActionButtonType.INFO_BASE + (int)actionButtonType, GumpButtonType.Reply, 0);
+			}
+			x += 35; // Always add a gap
 
 			var button = isSelected ? X_BUTTON : BLANK_BUTTON;
 			if (canEdit)
@@ -241,14 +290,14 @@ namespace Server.Temptation
 
 		private void AddOptions(int x, ref int y, bool canEdit, PlayerContext context)
 		{
-			AddOption(x, ref y, ActionButtonType.Puzzle_master, canEdit, context);
+			AddOption(x, ref y, ActionButtonType.Puzzle_master, canEdit, true, context);
 			// AddOption(x, ref y, ActionButtonType.Famine, canEdit, context); // Incomplete
-			AddOption(x, ref y, ActionButtonType.I_can_take_it, canEdit, context);
-			AddOption(x, ref y, ActionButtonType.Strongest_Avenger, canEdit, context);
+			AddOption(x, ref y, ActionButtonType.I_can_take_it, canEdit, false, context);
+			AddOption(x, ref y, ActionButtonType.Strongest_Avenger, canEdit, false, context);
 			// AddOption(x, ref y, ActionButtonType.This_is_just_a_tribute, canEdit, context); // Incomplete
 
 			if (!m_Target.Avatar.Active || !canEdit)
-				AddOption(x, ref y, ActionButtonType.Deathwish, canEdit, context);
+				AddOption(x, ref y, ActionButtonType.Deathwish, canEdit, false, context);
 		}
 
 		private string GetDescription(ActionButtonType actionButtonType)
@@ -256,20 +305,33 @@ namespace Server.Temptation
 			switch (actionButtonType)
 			{
 				case ActionButtonType.I_can_take_it:
-					return Key( m_Requester, "temptationgump.desc.i_can_take_it", "+ You do 10% more damage<br>x You take 20% more damage" );
+					return "+ You do 10% more damage"
+					+ "<br>x You take 20% more damage";
 
 				case ActionButtonType.Strongest_Avenger:
-					return Key( m_Requester, "temptationgump.desc.strongest_avenger", "+ You learn how to wear pants<br>x Enemies cast spells faster" );
+					return "+ You learn how to wear pants"
+					+ "<br>x Enemies cast spells faster";
 
 				case ActionButtonType.Famine:
-					return Key( m_Requester, "temptationgump.desc.famine", "+ Your stat and skill gain rate is impacted by your Hunger<br>x Hunger and thirst decay twice as fast" );
+					return "+ Your stat and skill gain rate is impacted by your Hunger"
+					+ "<br>x Hunger and thirst decay twice as fast";
 
-				case ActionButtonType.Puzzle_master:
-					return Key( m_Requester, "temptationgump.desc.puzzle_master", "+ You learn how to solve puzzle boxes<br>x Reduced skill cap bonuses for Fugitives (+200) and Titan of Ether quest (+200)<br>x Magical attributes from monster racial bonuses now act as Minimums. Resist/Stat bonuses still stack." );
+				case ActionButtonType.Puzzle_master: {
+					var text = Key( m_Requester, "temptationgump.puzzle.base", "+ You learn how to solve puzzle boxes" );
+					if (!m_Target.Avatar.Active)
+					{
+						text += Key( m_Requester, "temptationgump.puzzle.reduced", "<br>x Permanently reduced skill cap bonuses" );
+						text += Key( m_Requester, "temptationgump.puzzle.racial", "<br>x Monster racial bonuses work differently" );
+					}
 
-				case ActionButtonType.This_is_just_a_tribute: return Key( m_Requester, "temptationgump.desc.tribute", "- Tribute quests rewards are changed" );
+					return text;
+				}
+
+				case ActionButtonType.This_is_just_a_tribute: return "- Tribute quests rewards are changed";
 				case ActionButtonType.Deathwish:
-					return Key( m_Requester, "temptationgump.desc.deathwish", "+ You gain stats and skills faster<br>- An old sword<br>x You may never be resurrected" );
+					return "+ You gain stats and skills faster"
+					+ "<br>- An old sword"
+					+ "<br>x You may never be resurrected";
 
 				default: return string.Empty;
 			}
@@ -293,12 +355,12 @@ namespace Server.Temptation
 		{
 			switch (actionButtonType)
 			{
-				case ActionButtonType.I_can_take_it: return Key( m_Requester, "temptationgump.name.i_can_take_it", "I can take it" );
-				case ActionButtonType.Strongest_Avenger: return Key( m_Requester, "temptationgump.name.strongest_avenger", "Strongest Avenger" );
-				case ActionButtonType.Famine: return Key( m_Requester, "temptationgump.name.famine", "Red warrior needs food, badly!" );
-				case ActionButtonType.Puzzle_master: return Key( m_Requester, "temptationgump.name.puzzle_master", "Puzzle master" );
-				case ActionButtonType.This_is_just_a_tribute: return Key( m_Requester, "temptationgump.name.tribute", "This is just a tribute" );
-				case ActionButtonType.Deathwish: return Key( m_Requester, "temptationgump.name.deathwish", "It's dangerous to go alone! Take this." );
+				case ActionButtonType.I_can_take_it: return "I can take it";
+				case ActionButtonType.Strongest_Avenger: return "Strongest Avenger";
+				case ActionButtonType.Famine: return "Red warrior needs food, badly!";
+				case ActionButtonType.Puzzle_master: return "Puzzle master";
+				case ActionButtonType.This_is_just_a_tribute: return "This is just a tribute";
+				case ActionButtonType.Deathwish: return "It's dangerous to go alone! Take this.";
 				default: return string.Empty;
 			}
 		}

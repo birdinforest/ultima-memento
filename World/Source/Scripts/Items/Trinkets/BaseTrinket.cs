@@ -1,5 +1,7 @@
 using System;
+using Server.Engines.Avatar;
 using Server.Engines.Craft;
+using Server.Mobiles;
 
 namespace Server.Items
 {
@@ -181,6 +183,31 @@ namespace Server.Items
 		public virtual int InitMinHits{ get{ return 0; } }
 		public virtual int InitMaxHits{ get{ return 0; } }
 
+		public override bool CanEquip( Mobile from )
+		{
+			if( from.AccessLevel < AccessLevel.GameMaster )
+			{
+				if ( this is IAvatarOnlyItem )
+				{
+					var avatarOnlyItem = this as IAvatarOnlyItem;
+					var player = from as PlayerMobile;
+					if ( player == null || !player.Avatar.Active )
+					{
+						from.SendMessage("Only an Avatar may use this item.");
+						return false;
+					}
+
+					if ( avatarOnlyItem.PlayerOwner != player )
+					{
+						from.SendMessage("This item belongs to another.");
+						return false;
+					}
+				}
+			}
+
+			return base.CanEquip( from );
+		}
+
 		public CraftAttributeInfo GetResourceAttrs()
 		{
 			CraftResourceInfo info = CraftResources.GetInfo( m_Resource );
@@ -201,14 +228,13 @@ namespace Server.Items
 		{
 			int id = 26413;
 
-			if ( this is JewelryCirclet )
-				id += 1;
-			else if ( this is JewelryEarrings )
-				id += 2;
-			else if ( this is JewelryNecklace )
-				id += 3;
-			else if ( this is JewelryRing )
-				id += 4;
+			switch ( Layer )
+			{
+				case Layer.Helm: id += 1; break;
+				case Layer.Earrings: id += 2; break;
+				case Layer.Neck: id += 3; break;
+				case Layer.Ring: id += 4; break;
+			}
 
 			return ( id += (int)GemType*5 );
 		}

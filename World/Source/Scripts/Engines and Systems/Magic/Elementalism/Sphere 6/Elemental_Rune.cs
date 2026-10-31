@@ -43,7 +43,7 @@ namespace Server.Spells.Elementalism
 			{
 				Caster.SendLocalizedMessage( 500237 ); // Target can not be seen.
 			}
-			else if ( reg.IsPartOf( typeof( PirateRegion ) ) )
+			else if ( Worlds.IsRoughWaters( reg ) )
 			{
 				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "These waters are too rough to cast this spell." ) );
 			}

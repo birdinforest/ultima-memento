@@ -132,6 +132,7 @@ namespace Server.Mobiles
 			base.GetContextMenuEntries( from, list ); 
 			list.Add( new ClaimingGumpEntry( from, this ) ); 
 			list.Add( new RidingGumpEntry( from, this ) ); 
+			list.Add( new SearchForPetsEntry( this, from ) );
 		}
 
 		public class RidingGumpEntry : ContextMenuEntry
@@ -207,7 +208,9 @@ namespace Server.Mobiles
 
 				AddPage(0);
 				AddImage(0, 0, 9590, Server.Misc.PlayerSettings.GetGumpHue( from ));
-				AddHtml( 12, 12, 376, 20, @"<BODY><BASEFONT Color=" + color + ">PETS IN THE STABLE</BASEFONT></BODY>", (bool)false, (bool)false);
+				
+				var maxStabled = Server.Mobiles.AnimalTrainer.GetMaxStabled( m_From );
+				AddHtml( 12, 12, 376, 20, string.Format("<BODY><BASEFONT Color=" + color + ">PETS IN THE STABLE ({0}/{1})</BASEFONT></BODY>", m_From.Stabled.Count, maxStabled), (bool)false, (bool)false);
 				AddButton(410, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
 
 				int y = 15;
@@ -232,7 +235,11 @@ namespace Server.Mobiles
 				int index = info.ButtonID - 1;
 
 				if ( index >= 0 && index < m_List.Count )
+				{
 					m_Trainer.EndClaimList( m_From, m_List[index] );
+					if ( 0 < m_From.Stabled.Count )
+						m_Trainer.BeginClaimList( m_From );
+				}
 			}
 		}
 

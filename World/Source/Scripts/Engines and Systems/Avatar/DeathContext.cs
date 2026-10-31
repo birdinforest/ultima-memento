@@ -7,13 +7,15 @@ namespace Server.Engines.Avatar
 {
 	public partial class DeathContext
 	{
+		public readonly int Version;
+
 		public DeathContext()
 		{
 		}
 
 		public DeathContext(GenericReader reader)
 		{
-			int version = reader.ReadInt();
+			Version = reader.ReadInt();
 
 			CombatQuestCompletions = reader.ReadInt();
 			DeathNumber = reader.ReadInt();
@@ -38,7 +40,7 @@ namespace Server.Engines.Avatar
 
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(0); // version
+			writer.Write(1); // version
 
 			writer.Write(CombatQuestCompletions);
 			writer.Write(DeathNumber);
@@ -54,6 +56,25 @@ namespace Server.Engines.Avatar
 
 	public partial class DeathContext
 	{
+		public static IEnumerable<DeathContext> GetAllDeathContexts(PlayerMobile player)
+		{
+			foreach (var file in Directory.EnumerateFiles("Saves//Player//AvatarDeaths//", string.Format("{0}_*.bin", player.Name)))
+			{
+				DeathContext deathContext = null;
+
+				try
+				{
+					Persistence.Deserialize(file, reader => deathContext = new DeathContext(reader));
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine("Error loading death context from {0}: {1}", file, ex);
+				}
+
+				if (deathContext != null) yield return deathContext;
+			}
+		}
+
 		public static List<DeathContext> Load()
 		{
 			var records = new List<DeathContext>();

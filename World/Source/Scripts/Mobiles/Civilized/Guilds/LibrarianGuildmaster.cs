@@ -1,14 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Server;
 using Server.Targeting;
 using Server.Items;
 using Server.Network;
 using Server.ContextMenus;
-using Server.Misc;
-using Server.Mobiles;
-using System.Collections;
-using Server.Gumps;
 
 namespace Server.Mobiles
 {
@@ -51,6 +46,11 @@ namespace Server.Mobiles
 				public InternalBuyInfo()
 				{
 					ItemInformation.GetSellList( m_Merchant, this, 	ItemSalesInfo.Category.All,		ItemSalesInfo.Material.All,		ItemSalesInfo.Market.Scribe,		ItemSalesInfo.World.None,	null	 );
+
+					// All craftable spellbooks + Shinobi Scroll (No DK, Holy Man, Jedi, syth)
+					ItemInformation.GetSellList( m_Merchant, this, false,
+						typeof( BookOfBushido ), typeof( BookOfChivalry ), typeof( BookOfNinjitsu ), typeof( ElementalSpellbook ), typeof( MysticSpellbook ), typeof( NecromancerSpellbook ), typeof( SongBook ), typeof( Spellbook ), typeof( ShinobiScroll )
+					);
 				}
 			}
 
@@ -59,6 +59,11 @@ namespace Server.Mobiles
 				public InternalSellInfo()
 				{
 					ItemInformation.GetBuysList( m_Merchant, this, 	ItemSalesInfo.Category.All,		ItemSalesInfo.Material.All,		ItemSalesInfo.Market.Scribe,		ItemSalesInfo.World.None,	null	 );
+
+					// All craftable spellbooks + Shinobi Scroll (No DK, Holy Man, Jedi, syth)
+					ItemInformation.GetBuysList( m_Merchant, this,
+						typeof( BookOfBushido ), typeof( BookOfChivalry ), typeof( BookOfNinjitsu ), typeof( ElementalSpellbook ), typeof( MysticSpellbook ), typeof( NecromancerSpellbook ), typeof( SongBook ), typeof( Spellbook ), typeof( ShinobiScroll )
+					);
 				}
 			}
 		}
@@ -77,7 +82,7 @@ namespace Server.Mobiles
 					{
 						if ( Server.Misc.Research.AlreadyHasBag( from ) )
 						{
-							this.PublicOverheadMessage( MessageType.Regular, 0, false, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.good_luck_with_your_research") ); 
+							this.PublicOverheadMessage( MessageType.Regular, 0, false, string.Format ( "Good luck with your research." ) ); 
 						}
 						else
 						{
@@ -85,19 +90,19 @@ namespace Server.Mobiles
 							from.PlaySound( 0x2E6 );
 							Server.Misc.Research.SetupBag( from, bag );
 							from.AddToBackpack( bag );
-							this.PublicOverheadMessage( MessageType.Regular, 0, false, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.good_luck_with_your_research") ); 
+							this.PublicOverheadMessage( MessageType.Regular, 0, false, string.Format ( "Good luck with your research." ) ); 
 						}
 						dropped.Delete();
 					}
 					else
 					{
-						sMessage = Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_need_to_be_a_neophyte_scribe_before_i_sell_that_to");
+						sMessage = "You need to be a neophyte scribe before I sell that to you.";
 						from.AddToBackpack ( dropped );
 					}
 				}
 				else
 				{
-					sMessage = Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_look_like_you_need_this_more_than_i_do");
+					sMessage = "You look like you need this more than I do.";
 					from.AddToBackpack ( dropped );
 				}
 
@@ -108,28 +113,18 @@ namespace Server.Mobiles
 				dropped.ItemID = 0x56F9;
 				from.PlaySound( 0x249 );
 				from.AddToBackpack ( dropped );
-				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.i_have_rebound_your_book"), from.NetState);
+				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, "I have rebound your book.", from.NetState);
 			}
 			else if ( dropped is LargeHollowBook )
 			{
 				dropped.ItemID = 0x5703;
 				from.PlaySound( 0x249 );
 				from.AddToBackpack ( dropped );
-				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.i_have_rebound_your_book"), from.NetState);
+				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, "I have rebound your book.", from.NetState);
 			}
 			else if ( dropped is Runebook )
 			{
-				if ( dropped.ItemID == 0x22C5 ){ dropped.ItemID = 0x0F3D; }
-				else if ( dropped.ItemID == 0x0F3D ){ dropped.ItemID = 0x5687; }
-				else if ( dropped.ItemID == 0x5687 ){ dropped.ItemID = 0x4F50; }
-				else if ( dropped.ItemID == 0x4F50 ){ dropped.ItemID = 0x4F51; }
-				else if ( dropped.ItemID == 0x4F51 ){ dropped.ItemID = 0x5463; }
-				else if ( dropped.ItemID == 0x5463 ){ dropped.ItemID = 0x5464; }
-				else { dropped.ItemID = 0x22C5; }
-
-				from.PlaySound( 0x249 );
-				from.AddToBackpack ( dropped );
-				this.PrivateOverheadMessage(MessageType.Regular, 1153, false, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.i_have_changed_the_cover_of_your_book"), from.NetState);
+				((Runebook)dropped).ChangeGraphic( this, from, (Runebook)dropped );
 			}
 
 			return base.OnDragDrop( from, dropped );
@@ -171,9 +166,9 @@ namespace Server.Mobiles
 			if ( BeggingPose(from) > 0 ) // LET US SEE IF THEY ARE BEGGING
 			{
 				nCost = nCost - (int)( ( from.Skills[SkillName.Begging].Value * 0.005 ) * nCost );
-				SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.since_you_are_begging_do_you_want_me_to_decipher_a_note", nCost));
+				SayTo(from, "Since you are begging, do you want me to decipher a note for " + nCost.ToString() + " gold?");
 			}
-			else { SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.do_you_want_me_to_decipher_a_note_for_0_gold", nCost)); }
+			else { SayTo(from, "Do you want me to decipher a note for " + nCost.ToString() + " gold?"); }
 
             from.Target = new RepairTarget(this);
         }
@@ -203,7 +198,7 @@ namespace Server.Mobiles
 
                     if ( WhatIsIt.ScrollIntelligence == 0 )
                     {
-                        m_Sage.SayTo( from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.that_was_already_deciphered_by_someone") );
+                        m_Sage.SayTo( from, "That was already deciphered by someone." );
 					}
                     else if (packs.ConsumeTotal(typeof(Gold), toConsume))
                     {
@@ -217,20 +212,20 @@ namespace Server.Mobiles
 
 						WhatIsIt.ScrollIntelligence = 0;
 						WhatIsIt.InvalidateProperties();
-                        from.SendMessage(Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.you_pay_0_gold", toConsume));
-						m_Sage.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.let_me_show_you_what_this_reads"));
+                        from.SendMessage(String.Format("You pay {0} gold.", toConsume));
+						m_Sage.SayTo(from, "Let me show you what this reads...");
 						WhatIsIt.ScrollSolved = "Deciphered by " + m_Sage.Name + " the Librarian";
 						from.PlaySound( 0x249 );
 						WhatIsIt.InvalidateProperties();
                     }
                     else
                     {
-                        m_Sage.SayTo(from, Server.Localization.StringCatalog.ResolveFormatByKey(from.Account, "mob.fmt.it_would_cost_you_0_gold_to_have_that_deciphered", toConsume));
-                        from.SendMessage(Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.you_do_not_have_enough_gold"));
+                        m_Sage.SayTo(from, "It would cost you {0} gold to have that deciphered.", toConsume);
+                        from.SendMessage("You do not have enough gold.");
                     }
 				}
 				else
-					m_Sage.SayTo(from, Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.that_does_not_need_my_services"));
+					m_Sage.SayTo(from, "That does not need my services.");
             }
         }
 

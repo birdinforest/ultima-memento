@@ -24,6 +24,7 @@ namespace Server.Items
 		public string SearchType;
 		public string SearchItem;
 		public int SearchReal;
+		private bool m_SmartDetector;
 
 		[CommandProperty(AccessLevel.Owner)]
 		public int Relic_FlipID1 { get { return RelicFlipID1; } set { RelicFlipID1 = value; InvalidateProperties(); } }
@@ -189,6 +190,9 @@ namespace Server.Items
 		{
             base.AddNameProperties(list);
 			list.Add( 1049644, RelicDescription);
+			
+			if (m_SmartDetector)
+				list.Add(string.Format("Location: {0}", SearchDungeon));
         }
 
 		public class TabletGump : Gump
@@ -204,8 +208,8 @@ namespace Server.Items
 
 				AddPage(0);
 				AddImage(13, 13, 102);
-				AddHtml( 61, 79, 133, 88, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>Somewhere in " + stone.SearchDungeon + "<BR>Lies an Artifact</CENTER></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 38, 256, 181, 18, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>" + stone.SearchItem + "</CENTER></BIG></BASEFONT></CENTER></BODY>", (bool)false, (bool)false);
+				AddHtml( 61, 79, 133, 88, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>Somewhere in " + stone.SearchDungeon + "<BR>Lies an Artifact</CENTER></BIG></BASEFONT></BODY>", (bool)false, (bool)false, false);
+				AddHtml( 38, 256, 181, 18, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>" + stone.SearchItem + "</CENTER></BIG></BASEFONT></CENTER></BODY>", (bool)false, (bool)false, false);
 			}
 		}
 
@@ -246,6 +250,12 @@ namespace Server.Items
 
 			if ( e.Int >= SearchReal )
 			{
+				if (!m_SmartDetector)
+				{
+					m_SmartDetector = true;
+					InvalidateProperties();
+				}
+
 				e.CloseGump( typeof( TabletGump ) );
 				e.SendGump( new TabletGump( e, this ) );
 			}
@@ -300,7 +310,7 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-            writer.Write( (int) 1 ); // version
+            writer.Write( (int) 2 ); // version
             writer.Write( RelicFlipID1 );
             writer.Write( RelicFlipID2 );
             writer.Write( RelicDescription );
@@ -308,6 +318,7 @@ namespace Server.Items
             writer.Write( SearchType );
             writer.Write( SearchItem );
             writer.Write( SearchReal );
+            writer.Write( m_SmartDetector );
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -325,6 +336,7 @@ namespace Server.Items
 			SearchType = reader.ReadString();
 			SearchItem = reader.ReadString();
 			SearchReal = reader.ReadInt();
+			m_SmartDetector = version < 2 ? false : reader.ReadBool();
 		}
 	}
 }

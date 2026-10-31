@@ -504,6 +504,8 @@ namespace Server
 	/// </summary>
 	public class Mobile : IEntity, IHued, IComparable<Mobile>, ISerializable, ISpawnable
 	{
+		public virtual bool SuppressSystemMessages { get { return false; } }
+
 		#region CompareTo(...)
 		public int CompareTo( IEntity other )
 		{
@@ -758,9 +760,6 @@ namespace Server
 		private bool m_DisarmReady, m_StunReady;
 		private int m_BaseSoundID;
 		private int m_VirtualArmor;
-		private bool m_ItemCastSpell;
-		private bool m_ScrollCastSpell;
-		private bool m_NoManaUseSpell;
 		private bool m_Squelched;
 		private int m_MeleeDamageAbsorb;
 		private int m_MagicDamageAbsorb;
@@ -837,27 +836,6 @@ namespace Server
 
 		protected virtual void OnRaceChange( Race oldRace )
 		{
-		}
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool ItemCastSpell
-		{
-			get{ return m_ItemCastSpell; }
-			set{ m_ItemCastSpell = value; }
-		}
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool ScrollCastSpell
-		{
-			get{ return m_ScrollCastSpell; }
-			set{ m_ScrollCastSpell = value; }
-		}
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool NoManaUseSpell
-		{
-			get{ return m_NoManaUseSpell; }
-			set{ m_NoManaUseSpell = value; }
 		}
 
 		private List<ResistanceMod> m_ResistMods;
@@ -11668,6 +11646,16 @@ namespace Server
 
 		#endregion
 
+		public static readonly Packet SuppressedSystemMessageInstance = Packet.SetStatic( 
+			new UnicodeMessage( Serial.MinusOne, -1, MessageType.Regular, 0x3B2, 3, "ENU", "System", "!" )
+		);
+		private void SendSuppressedSystemMessage()
+		{
+			NetState ns = m_NetState;
+			if( ns != null )
+				ns.Send( SuppressedSystemMessageInstance );
+		}
+
 		#region SendLocalizedMessage
 
 		public void SendLocalizedMessage( int number )
@@ -11687,6 +11675,12 @@ namespace Server
 
 		public void SendLocalizedMessage( int number, string args, int hue )
 		{
+			if (SuppressSystemMessages)
+			{
+				SendSuppressedSystemMessage();
+				return;
+			}
+
 			if( hue == 0x3B2 && (args == null || args.Length == 0) )
 			{
 				NetState ns = m_NetState;
@@ -11716,6 +11710,12 @@ namespace Server
 
 		public void SendLocalizedMessage( int number, bool append, string affix, string args, int hue )
 		{
+			if (SuppressSystemMessages)
+			{
+				SendSuppressedSystemMessage();
+				return;
+			}
+
 			NetState ns = m_NetState;
 
 			if( ns != null )
@@ -11746,6 +11746,12 @@ namespace Server
 
 		public void SendMessage( int hue, string text )
 		{
+			if (SuppressSystemMessages)
+			{
+				SendSuppressedSystemMessage();
+				return;
+			}
+
 			NetState ns = m_NetState;
 
 			if( ns != null )
@@ -11775,6 +11781,12 @@ namespace Server
 
 		public void SendAsciiMessage( int hue, string text )
 		{
+			if (SuppressSystemMessages)
+			{
+				SendSuppressedSystemMessage();
+				return;
+			}
+
 			NetState ns = m_NetState;
 
 			if( ns != null )

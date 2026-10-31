@@ -2,21 +2,32 @@ using Server.Engines.MobileEnhancement;
 using Server.Misc;
 using System;
 using Server.Items;
+using Server.Targeting;
 
 namespace Server.Spells.Song
 {
 	public class SheepfoeMamboSong : Song
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-			"Shepherd's Dance", "*plays a shepherd's dance*",
-			-1
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 365,
+				IconGraphic = 0x413,
+				Name = "Shepherd's Dance",
+				PowerWords = "*plays a shepherd's dance*",
+				Description = "An area of effect that raises the dexterity of your party.",
+				ManaCost = 20,
+				MinSkill = 60,
+				TargetType = TargetFlags.Beneficial
+			},
+	-1
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(0.5); } }
-		public override double RequiredSkill { get { return 60.0; } }
-		public override int RequiredMana { get { return 20; } }
+		public override double RequiredSkill { get { return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana { get { return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public SheepfoeMamboSong(Mobile caster, Item scroll) : base(caster, scroll, m_Info)
+		public SheepfoeMamboSong(Mobile caster, Item scroll) : base(caster, scroll, SpellInfo)
 		{
 		}
 
@@ -60,7 +71,7 @@ namespace Server.Spells.Song
 				m.RemoveStatMod(StatModName);
 
 				BuffInfo.RemoveBuff(m, BuffIcon.ShephardsDance);
-				m.SendMessage("The effect of {0} wears off.", m_Info.Name);
+				m.SendMessage("The effect of {0} wears off.", SpellInfo.SpellDefinition.Name);
 			}
 
 			protected override bool TryApplyInternal()

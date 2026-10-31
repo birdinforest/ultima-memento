@@ -1,11 +1,6 @@
 using System;
-using Server;
-using Server.Spells;
 using Server.Network;
-using Server.Mobiles;
 using Server.Items;
-using System.Collections.Generic;
-using System.Collections;
 using Server.Commands;
 using Server.Commands.Generic;
 using Server.Localization;
@@ -337,21 +332,14 @@ namespace Server.Spells.Jedi
 			if ( AosAttributes.GetValue( from, AosAttribute.LowerRegCost ) > Utility.Random( 100 ) )
 				tithing = 0;
 
-			if ( tithing > 0 )
+			if ( tithing > 0 && from.Backpack != null )
 			{
-				ArrayList targets = new ArrayList();
-				foreach ( Item item in World.Items.Values )
+				var book = from.Backpack.FindItemByType<JediSpellbook>();
+				if ( book != null && book.owner == from )
 				{
-					if ( item is JediSpellbook )
-					{
-						JediSpellbook book = (JediSpellbook)item;
-						if ( book.owner == from )
-						{
-							book.crystals = book.crystals - tithing;
-							if ( book.crystals < 1 ){ book.crystals = 0; }
-							book.InvalidateProperties();
-						}
-					}
+					book.crystals -= tithing;
+					if ( book.crystals < 1 ){ book.crystals = 0; }
+					book.InvalidateProperties();
 				}
 			}
 		}
@@ -359,17 +347,12 @@ namespace Server.Spells.Jedi
 		public static int GetCrystals( Mobile from )
 		{
 			int crystal = 0;
-
-			ArrayList targets = new ArrayList();
-			foreach ( Item item in World.Items.Values )
+			if ( from.Backpack != null )
 			{
-				if ( item is JediSpellbook )
+				var book = from.Backpack.FindItemByType<JediSpellbook>();
+				if ( book != null && book.owner == from )
 				{
-					JediSpellbook book = (JediSpellbook)item;
-					if ( book.owner == from )
-					{
-						crystal = book.crystals;
-					}
+					crystal = book.crystals;
 				}
 			}
 
@@ -410,8 +393,14 @@ namespace Server.Spells.Jedi
 			return ( book != null && book.HasSpell( spellID ) );
 		}
 
-		public static void CastSpell( Mobile from, int spell ) //////////////////////////////////////////////////////////////////////////////////////
+		public static void CastSpell( Mobile from, int spell, bool validate = true ) //////////////////////////////////////////////////////////////////////////////////////
 		{
+			if ( validate && !Server.Misc.GetPlayerInfo.isJedi( from, true ) )
+			{
+				from.SendMessage( "Your Jedi Powers Are Not Strong Enough!" );
+				return;
+			}
+
 			if ( HasSpell( from, spell ) )
 			{
 				if ( spell == 280 ){ InvokeCommand( "ForceGrip", from ); }

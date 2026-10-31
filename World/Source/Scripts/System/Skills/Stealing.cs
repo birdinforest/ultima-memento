@@ -376,6 +376,12 @@ namespace Server.SkillHandlers
 							if ( si != null )
 							{
 								toSteal.Movable = true;
+								if ( toSteal is BaseDecorationArtifact || toSteal is BaseDecorationContainerArtifact )
+								{
+									var region = Region.Find(toSteal.Location, toSteal.Map);
+									var regionName = region != null && !string.IsNullOrEmpty(region.Name) ? region.Name : "Unknown";
+									toSteal.InfoText5 = string.Format("From: {0}", regionName);
+								}
 								si.Item = null;
 							}
 						}

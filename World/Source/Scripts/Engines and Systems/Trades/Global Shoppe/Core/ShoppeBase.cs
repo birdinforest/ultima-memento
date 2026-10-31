@@ -3,6 +3,8 @@ using Server.Engines.Craft;
 using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Utilities;
+using System;
 using System.Collections.Generic;
 
 namespace Server.Engines.GlobalShoppe
@@ -61,6 +63,48 @@ namespace Server.Engines.GlobalShoppe
 			return context.Gold + customer.GoldReward <= ShoppeConstants.MAX_GOLD;
 		}
 
+		public bool NeedsFeePayment(Mobile from, TradeSkillContext context)
+		{
+			return !context.FeePaid && ShoppeConstants.MIN_SKILL <= from.Skills[PrimarySkill].Value;
+		}
+
+		public bool TryPayFee(Mobile from, TradeSkillContext context)
+		{
+			if (context.FeePaid)
+				return true;
+
+			int fee = ShoppeConstants.SHOPPE_FEE;
+
+			Container pack = from.Backpack;
+			int packGold = pack == null ? 0 : pack.GetAmount(typeof(Gold));
+			int bankGold = Banker.GetBalance(from);
+
+			if (packGold + bankGold < fee)
+			{
+				from.SendMessage(0x22, "You need {0} gold in your backpack or bank to open this shoppe.", fee);
+				return false;
+			}
+
+			int fromPack = Math.Min(packGold, fee);
+			int fromBank = fee - fromPack;
+
+			if (fromPack > 0)
+				pack.ConsumeUpTo(typeof(Gold), fromPack);
+
+			if (fromBank > 0)
+				Banker.Withdraw(from, fromBank);
+
+			context.FeePaid = true;
+
+			string source =
+				fromBank == 0 ? "your backpack" :
+				fromPack == 0 ? "your bank" :
+				"your backpack and bank";
+			from.SendMessage("You paid {0} gold from {1} to open this shoppe.", fee, source);
+
+			return true;
+		}
+
 		public override void OnDoubleClick(Mobile from)
 		{
 			OpenGump(from, true);
@@ -71,13 +115,9 @@ namespace Server.Engines.GlobalShoppe
 			if (dropped is Gold)
 			{
 				var context = GetOrCreateContext(from);
-				if (!context.FeePaid && ShoppeConstants.SHOPPE_FEE <= dropped.Amount)
+				if (!context.FeePaid && ItemUtilities.ConsumeRequired(dropped, ShoppeConstants.SHOPPE_FEE))
 				{
 					context.FeePaid = true;
-					dropped.Amount -= ShoppeConstants.SHOPPE_FEE;
-					if (dropped.Amount < 1)
-						dropped.Delete();
-
 					OnDoubleClick(from);
 
 					return dropped.Deleted;
@@ -140,20 +180,8 @@ namespace Server.Engines.GlobalShoppe
 				{
 					var craftItem = group.CraftItems.GetAt(j);
 
-					bool hasSkills = true;
-					for (int k = 0; k < craftItem.Skills.Count; k++)
-					{
-						CraftSkill skill = craftItem.Skills.GetAt(k);
-						if (
-							from.Skills[skill.SkillToMake].Value < skill.MinSkill // Filter items you can't succeed on
-						)
-						{
-							hasSkills = false;
-							break;
-						}
-					}
-
-					if (hasSkills) yield return craftItem;
+					if ( craftItem.MeetsSkillRequirements( from, false ) )
+						yield return craftItem;
 				}
 			}
 		}

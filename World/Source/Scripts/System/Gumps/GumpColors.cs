@@ -20,11 +20,14 @@ namespace Server.Gumps
 		public const int PALER_RED = 0xdc7676;
         public const int PINK = 0xf7a6fa;
         public const int RED = 0xff0000;
+        public const int RUST = 0xff8c00;
         public const int WHITE = 0xffffff;
+        public const int YELLOW = 0xfffb00;
     }
 
     public class LabelColors // Hue from files / in-game
     {
+        public const int RED = 32;
 		public const int DARK_RED = 237;
 		public const int PALE_RED = 239;
 		public const int GRAY = 1000;

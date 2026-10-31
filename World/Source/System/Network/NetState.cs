@@ -1067,23 +1067,26 @@ namespace Server.Network {
 		}
 
 		public virtual void Dispose( bool flush ) {
-			if ( m_Socket == null || m_Disposing ) {
-				return;
-			}
+			Socket socket;
 
-			m_Disposing = true;
+			lock ( m_AsyncLock ) {
+				if ( m_Socket == null || m_Disposing ) return;
+
+				m_Disposing = true;
+				socket = m_Socket;
+			}
 
 			if ( flush )
 				flush = Flush();
 
 			try {
-				m_Socket.Shutdown( SocketShutdown.Both );
+				socket.Shutdown( SocketShutdown.Both );
 			} catch ( SocketException ex ) {
 				TraceException( ex );
 			}
 
 			try {
-				m_Socket.Close();
+				socket.Close();
 			} catch ( SocketException ex ) {
 				TraceException( ex );
 			}

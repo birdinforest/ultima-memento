@@ -37,7 +37,7 @@ namespace Server.Items
             if ( owner != null ){ list.Add( 1070722, StringCatalog.ResolveFormat( null, "Piety for {0}: {1}", owner.Name, sPower ) ); }
         } 
 
-		public override bool OnEquip( Mobile from )
+		public override bool CanEquip( Mobile from )
 		{
 			if ( owner != from )
 			{
@@ -45,7 +45,7 @@ namespace Server.Items
 				return false;
 			}
 
-			return base.OnEquip( from );
+			return base.CanEquip( from );
 		}
 
 		public HolySymbol( Serial serial ) : base( serial )

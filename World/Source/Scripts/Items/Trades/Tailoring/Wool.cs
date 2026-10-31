@@ -1,7 +1,6 @@
-using System;
-using Server.Items;
 using Server.Targeting;
 using Server.Localization;
+using Server.Utilities;
 
 namespace Server.Items
 {
@@ -57,7 +56,8 @@ namespace Server.Items
 			if ( from.InRange( this.GetWorldLocation(), 2 ) )
 			{
 				from.SendLocalizedMessage( 502655 ); // What spinning wheel do you wish to spin this on?
-				from.Target = new PickWheelTarget( this );
+				if ( Utility.RandomDouble() < 0.1 ) from.SendMessage("Target yourself to automatically choose a nearby target");
+				from.Target = new PickWheelTarget( this, from );
 			}
 			else
 			{
@@ -80,11 +80,13 @@ namespace Server.Items
 
 		private class PickWheelTarget : Target
 		{
-			private Wool m_Wool;
+			private readonly Wool m_Wool;
+			private readonly Mobile m_From;
 
-			public PickWheelTarget( Wool wool ) : base( 3, false, TargetFlags.None )
+			public PickWheelTarget( Wool wool, Mobile from ) : base( 3, false, TargetFlags.None )
 			{
 				m_Wool = wool;
+				m_From = from;
 			}
 
 			protected override void OnTarget( Mobile from, object targeted )
@@ -96,6 +98,9 @@ namespace Server.Items
 
 				if ( wheel == null && targeted is AddonComponent )
 					wheel = ((AddonComponent)targeted).Addon as ISpinningWheel;
+
+				if ( wheel == null && targeted == m_From )
+					wheel = WorldUtilities.GetNearbyItem<Item>( from, Range, item => item is ISpinningWheel) as ISpinningWheel;
 
 				if ( wheel is Item )
 				{

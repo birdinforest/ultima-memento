@@ -88,7 +88,7 @@ namespace Server.Engines.Craft
 				if ( craftSystem.GumpTitleNumber > 0 )
 					AddHtmlLocalized( 10, 12, 510, 20, craftSystem.GumpTitleNumber, LabelColor, false, false );
 				else
-					AddHtml( 10, 12, 510, 20, CraftDisplayLocale.Resolve( from, craftSystem.GumpTitleString ), false, false );
+					AddHtml( 10, 12, 510, 20, craftSystem.GumpTitleString, false, false );
 
 				AddHtmlLocalized( 10, 37+moveDown, 200, 22, 1044010, LabelColor, false, false ); // <CENTER>CATEGORIES</CENTER>
 				if ( context != null && context.LastGroupIndex == SearchGroupIndex )
@@ -124,7 +124,7 @@ namespace Server.Engines.Craft
 					else if ( CraftSystem.AllowManyCraft( m_Tool ) && context.LastMade != null && !context.LastMade.UseAllRes)
 					{
 						AddHtml( x, y, 100, 40, String.Format( "<BASEFONT COLOR=#{0:X6}>Craft Amount:</BASEFONT>", FontColor ), false, false );
-						AddCraftAmountButtons( this, x + 90, y - 3, GetButtonID( 6, 2 ) );
+						AddCraftAmountButtons( this, x + 95, y - 3, GetButtonID( 6, 2 ) );
 					}
 					else if ( context.LastMade != null )
 					{
@@ -213,7 +213,7 @@ namespace Server.Engines.Craft
 					if ( nameNumber > 0 )
 						AddHtmlLocalized( 184, 405+moveUp, 250, 18, nameNumber, resourceCount.ToString(), LabelColor, false, false );
 					else
-						AddLabel( 184, 405+moveUp, LabelHue, String.Format( "{0} ({1} Available)", CraftDisplayLocale.Resolve( from, nameString ), resourceCount ) );
+						AddLabel( 184, 405+moveUp, LabelHue, String.Format( "{0} ({1} Available)", nameString, resourceCount ) );
 				}
 
 				CreateGroupList();
@@ -234,17 +234,11 @@ namespace Server.Engines.Craft
 		public static void AddCraftAmountButtons( Gump g, int x, int y, int baseButtonId )
 		{
 			g.AddButton( x, y, CRAFT_AMOUNT_ICON1, CRAFT_AMOUNT_ICON1, baseButtonId, GumpButtonType.Reply, 0 );
-			x += 17;
-			x += 22;
-			g.AddButton( x, y, CRAFT_AMOUNT_ICON10, CRAFT_AMOUNT_ICON10, 1000 + baseButtonId, GumpButtonType.Reply, 0 );
-			x += 23;
-			x += 22;
-			g.AddButton( x, y, CRAFT_AMOUNT_ICON100, CRAFT_AMOUNT_ICON100, 2000 + baseButtonId, GumpButtonType.Reply, 0 );
-			x += 31;
-			x += 22;
+			g.AddButton( x + 30, y, CRAFT_AMOUNT_ICON10, CRAFT_AMOUNT_ICON10, 1000 + baseButtonId, GumpButtonType.Reply, 0 );
+			g.AddButton( x + 60, y, CRAFT_AMOUNT_ICON100, CRAFT_AMOUNT_ICON100, 2000 + baseButtonId, GumpButtonType.Reply, 0 );
 			
 			// Custom amount button
-			int startX = x;
+			int startX = x + 99;
 			g.AddButton( startX, y, CRAFT_AMOUNT_ICON10, CRAFT_AMOUNT_ICON10, 3000 + baseButtonId, GumpButtonType.Reply, 0 );
 			g.AddTooltip( "Custom amount" );
 			y += 3;
@@ -337,14 +331,17 @@ namespace Server.Engines.Craft
 				}
 
 				if ( m_From.Skills[m_CraftSystem.MainSkill].Value < subResource.RequiredSkill )
+				{
 					AddImage( 220 + 9, 80+5+moveDown + (index * 20), 2092 ); // Lock
+					AddTooltip("Your skill is too low to use this resource.");
+				}
 				else
 					AddButton( 220, 80+moveDown + (index * 20), 4005, 4007, GetButtonID( 5, i ), GumpButtonType.Reply, 0 );
 
 				if ( subResource.NameNumber > 0 )
 					AddHtmlLocalized( 255, 82+moveDown + (index * 20), 250, 18, subResource.NameNumber, resourceCount.ToString(), LabelColor, false, false );
 				else
-					AddLabel( 255, 82+moveDown + ( index * 20 ), LabelHue, String.Format( "{0} ({1})", CraftDisplayLocale.Resolve( m_From, subResource.NameString ), resourceCount ) );
+					AddLabel( 255, 82+moveDown + ( index * 20 ), LabelHue, String.Format( "{0} ({1})", subResource.NameString, resourceCount ) );
 
 				TextDefinition.AddHtmlText(this, 255 + 172 + 56, 82+moveDown + ( index * 20 ), 35, 20, string.Format("<RIGHT>{0:F1}</RIGHT>", subResource.RequiredSkill), HtmlColors.WHITE);
 			}
@@ -400,7 +397,7 @@ namespace Server.Engines.Craft
 					if ( craftItem.NameNumber > 0 )
 						AddHtmlLocalized( 255, 62+moveDown + (index * 20), 220, 18, craftItem.NameNumber, LabelColor, false, false );
 					else
-						AddLabel( 255, 62+moveDown + (index * 20), LabelHue, CraftDisplayLocale.Resolve( m_From, craftItem.NameString ) );
+						AddLabel( 255, 62+moveDown + (index * 20), LabelHue, craftItem.NameString );
 				}
 			}
 			else
@@ -423,7 +420,7 @@ namespace Server.Engines.Craft
 			{
 				CraftContext context = m_CraftSystem.GetContext( m_From );
 				if ( context != null )
-					CreateCraftItemSelectionList( context.SearchResults, from );
+					CreateCraftItemSelectionList( selectedGroup, context.SearchResults, from );
 
 				return;
 			}
@@ -440,14 +437,23 @@ namespace Server.Engines.Craft
 			for ( int i = 0; i < craftItemCol.Count; ++i )
 				items.Add( craftItemCol.GetAt( i ) );
 
-			CreateCraftItemSelectionList( items, from );
+			CreateCraftItemSelectionList( selectedGroup, items, from );
 		}
 
-		public void CreateCraftItemSelectionList( IList<CraftItem> items, Mobile from )
+		public void CreateCraftItemSelectionList( int selectedGroup, IList<CraftItem> items, Mobile from )
 		{
+			var skipFirstLine = false;
+			var warning = m_CraftSystem.GetCategoryWarning( selectedGroup );
+			if ( !string.IsNullOrEmpty( warning ) )
+			{
+				skipFirstLine = true;
+				AddLabel( 230, 60+moveDown, LabelColors.RED, warning );
+			}
+
 			for ( int i = 0; i < items.Count; ++i )
 			{
-				int index = i % 10;
+				var itemsPerPage = skipFirstLine ? 9 : 10;
+				int index = i % itemsPerPage;
 
 				CraftItem craftItem = items[i];
 
@@ -455,72 +461,79 @@ namespace Server.Engines.Craft
 				{
 					if ( i > 0 )
 					{
-						AddButton( 370, 260+moveDown, 4005, 4007, 0, GumpButtonType.Page, (i / 10) + 1 );
+						AddButton( 370, 260+moveDown, 4005, 4007, 0, GumpButtonType.Page, (i / itemsPerPage) + 1 );
 						AddHtmlLocalized( 405, 263+moveDown, 100, 18, 1044045, LabelColor, false, false ); // NEXT PAGE
 					}
 
-					AddPage( (i / 10) + 1 );
+					AddPage( (i / itemsPerPage) + 1 );
 
 					if ( i > 0 )
 					{
-						AddButton( 220, 260+moveDown, 4014, 4015, 0, GumpButtonType.Page, i / 10 );
+						AddButton( 220, 260+moveDown, 4014, 4015, 0, GumpButtonType.Page, i / itemsPerPage );
 						AddHtmlLocalized( 255, 263+moveDown, 100, 18, 1044044, LabelColor, false, false ); // PREV PAGE
 					}
 				}
+
+				var currentY = 60+moveDown + (index * 20);
+				if ( skipFirstLine ) currentY += 20;
 
 				bool needsRecipe = craftItem.Recipe != null && from is PlayerMobile && !((PlayerMobile)from).HasRecipe( craftItem.Recipe );
 
 				if ( m_Tool is IRunicTool && !TypeUtilities.IsEquipmentType( craftItem.ItemType ) )
 				{
-					AddImage( 239, 66+moveDown + (index * 20), 2449 );
+					AddImage( 239, currentY + 6, 2449 );
 					AddTooltip("No runic benefit");
 				}
 				else if ( CraftSystem.AllowManyCraft( m_Tool ) && MySettings.S_CraftButtons )
 				{
-					AddButton( 220, 60+moveDown + (index * 20), 4011, 4012, GetButtonID( 2, i ), GumpButtonType.Reply, 0 ); // ITEM LIST INFO BUTTON
+					AddButton( 220, currentY, 4011, 4012, GetButtonID( 2, i ), GumpButtonType.Reply, 0 ); // ITEM LIST INFO BUTTON
 					if (0 < craftItem.NameNumber)
 						AddTooltip(craftItem.NameNumber);
 					else
-						AddTooltip( CraftDisplayLocale.Resolve( from, craftItem.NameString ) );
+						AddTooltip(craftItem.NameString);
 
 					if ( !needsRecipe )
 					{
-						AddButton( 411, 60+moveDown + (index * 20), 13002, 13002, GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
-						AddButton( 441, 60+moveDown + (index * 20), 11317, 11317, 1000+GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
-						AddButton( 476, 60+moveDown + (index * 20), 11318, 11318, 2000+GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
+						AddButton( 411, currentY, 13002, 13002, GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
+						AddButton( 441, currentY, 11317, 11317, 1000+GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
+						AddButton( 476, currentY, 11318, 11318, 2000+GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
 					}
 				}
 				else
 				{
 					if ( !needsRecipe )
 					{
-						AddButton( 230, 60+moveDown + (index * 20), 13002, 13002, GetButtonID( 1, i ), GumpButtonType.Reply, 0 ); // ITEM LIST MAKE BUTTON
-						AddButton( 485, 60+moveDown + (index * 20), 4011, 4012, GetButtonID( 2, i ), GumpButtonType.Reply, 0 ); // ITEM LIST INFO BUTTON
+						AddButton( 230, currentY, 13002, 13002, GetButtonID( 1, i ), GumpButtonType.Reply, 0 ); // ITEM LIST MAKE BUTTON
+						AddButton( 485, currentY, 4011, 4012, GetButtonID( 2, i ), GumpButtonType.Reply, 0 ); // ITEM LIST INFO BUTTON
 					}
 					else
 					{
 						if ( m_CraftSystem is DefInscription )
 						{
-							AddImage( 239, 66+moveDown + (index * 20), 2449 );
-							AddTooltip("This cannot be crafted.");
+							AddImage( 239, currentY + 6, 2449 );
+							AddTooltip(((PlayerMobile)from).GetRecipeReason( craftItem.Recipe ));
 						}
 						else
 						{
-							AddImage( 239, 65+moveDown + (index * 20), 2092 );
-							AddButton( 485, 60+moveDown + (index * 20), 4011, 4012, GetButtonID( 2, i ), GumpButtonType.Reply, 0 ); // ITEM LIST INFO BUTTON
+							AddImage( 239, currentY + 5, 2092 );
+							AddTooltip(((PlayerMobile)from).GetRecipeReason( craftItem.Recipe ));
+							AddButton( 485, currentY, 4011, 4012, GetButtonID( 2, i ), GumpButtonType.Reply, 0 ); // ITEM LIST INFO BUTTON
 						}
 					}
 
-					if (0 < craftItem.NameNumber)
-						AddTooltip(craftItem.NameNumber);
-					else
-						AddTooltip( CraftDisplayLocale.Resolve( from, craftItem.NameString ) );
+					if ( !needsRecipe && false == m_CraftSystem is DefInscription )
+					{
+						if (0 < craftItem.NameNumber)
+							AddTooltip(craftItem.NameNumber);
+						else
+							AddTooltip(craftItem.NameString);
+					}
 				}
 
 				if ( craftItem.NameNumber > 0 )
-					AddHtmlLocalized( 265, 62+moveDown + (index * 20), 220, 18, craftItem.NameNumber, LabelColor, false, false );
+					AddHtmlLocalized( 265, currentY + 2, 220, 18, craftItem.NameNumber, LabelColor, false, false );
 				else
-					AddLabel( 265, 62+moveDown + (index * 20), LabelHue, CraftDisplayLocale.Resolve( from, craftItem.NameString ) );
+					AddLabel( 265, currentY + 2, LabelHue, craftItem.NameString );
 			}
 		}
 
@@ -600,7 +613,7 @@ namespace Server.Engines.Craft
 				if ( craftGroup.NameNumber > 0 )
 					AddHtmlLocalized( 50, 82+moveDown + (i * 20), 150, 18, craftGroup.NameNumber, LabelColor, false, false );
 				else
-					AddLabel( 50, 82+moveDown + (i * 20), LabelHue, CraftDisplayLocale.Resolve( m_From, craftGroup.NameString ) );
+					AddLabel( 50, 82+moveDown + (i * 20), LabelHue, craftGroup.NameString );
 			}
 
 			return craftGroupCol.Count;

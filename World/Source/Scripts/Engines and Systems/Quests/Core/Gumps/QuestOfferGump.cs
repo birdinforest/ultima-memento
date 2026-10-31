@@ -10,7 +10,7 @@ namespace Server.Engines.MLQuests.Gumps
 		private IQuestGiver m_Quester;
 
 		public QuestOfferGump(MLQuest quest, IQuestGiver quester, PlayerMobile pm)
-			: base(1049010, pm) // Quest Offer
+			: base(pm.Preferences.ShowGumpImages, 1049010, pm) // Quest Offer
 		{
 			m_Quest = quest;
 			m_Quester = quester;
@@ -36,7 +36,7 @@ namespace Server.Engines.MLQuests.Gumps
 			if (hasRewards)
 			{
 				BuildPage();
-				AddRewardsPage(quest);
+				AddRewardsPage(quest, false);
 			}
 		}
 

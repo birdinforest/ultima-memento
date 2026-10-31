@@ -1,13 +1,10 @@
-using System;
-using Server;
-using Server.Items;
-using Server.Localization;
+using Server.Spells.Song;
 
 namespace Server.Items
 {
 	public class PoisonThrenodyScroll : SpellScroll
 	{
-		public override string DefaultDescription{ get{ return SongBook.SpellDescription( 364 ); } }
+		public override string DefaultDescription{ get{ return SongBook.SpellDescription( SpellID ); } }
 
 		[Constructable]
 		public PoisonThrenodyScroll() : this( 1 )
@@ -15,9 +12,9 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public PoisonThrenodyScroll( int amount ) : base( 364, 0x1F32, amount )
+		public PoisonThrenodyScroll( int amount ) : base( PoisonThrenodySong.SpellInfo.SpellDefinition.SpellID, 0x1F32, amount )
 		{
-			Name = "poison threnody sheet music";
+			Name = string.Format("{0} sheet music", BardSongProvider.GetDefinition(SpellID).Name);
 			Hue = 0x96;
 			Stackable = true;
         }
@@ -28,7 +25,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( StringCatalog.Resolve( from.Account, "The sheet music must be in your music book." ) );
+			from.SendMessage( "The sheet music must be in your music book." );
 		}
 
 		public override void Serialize( GenericWriter writer )

@@ -1,7 +1,3 @@
-using System;
-using Server;
-using Server.Items;
-using Server.Localization;
 using Server.Spells.DeathKnight;
 
 namespace Server.Items
@@ -9,7 +5,7 @@ namespace Server.Items
 	public class DeathKnightSkull750 : SpellScroll
 	{
 		[Constructable]
-		public DeathKnightSkull750() : base( 750, 0x1AE0 )
+		public DeathKnightSkull750() : base( BanishSpell.SpellInfo.SpellDefinition.SpellID, 0x1AE0 )
 		{
 			ItemID = Utility.RandomList( 0x1AE0, 0x1AE1, 0x1AE2, 0x1AE3 );
 			Hue = 0xB9A;
@@ -17,15 +13,15 @@ namespace Server.Items
 
 			ColorText4 = "Saint Kargoth";
 			ColorHue4 = "CC1313";
-			ColorText5 = "Banish";
+			ColorText5 = DeathKnightSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "D03DD9";
 		}
 
-		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( 750 ); } }
+		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( SpellID ); } }
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
+			from.SendMessage( "This skull is from a long dead death knight." );
 		}
 
 		public DeathKnightSkull750( Serial serial ) : base( serial )
@@ -48,7 +44,7 @@ namespace Server.Items
 	public class DeathKnightSkull751 : SpellScroll
 	{
 		[Constructable]
-		public DeathKnightSkull751() : base( 751, 0x1AE0 )
+		public DeathKnightSkull751() : base( DemonicTouchSpell.SpellInfo.SpellDefinition.SpellID, 0x1AE0 )
 		{
 			ItemID = Utility.RandomList( 0x1AE0, 0x1AE1, 0x1AE2, 0x1AE3 );
 			Hue = 0xB9A;
@@ -56,15 +52,15 @@ namespace Server.Items
 
 			ColorText4 = "Lord Monduiz Dephaar";
 			ColorHue4 = "CC1313";
-			ColorText5 = "Demonic Touch";
+			ColorText5 = DeathKnightSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "D03DD9";
 		}
 
-		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( 751 ); } }
+		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( SpellID ); } }
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
+			from.SendMessage( "This skull is from a long dead death knight." );
 		}
 
 		public DeathKnightSkull751( Serial serial ) : base( serial )
@@ -87,7 +83,7 @@ namespace Server.Items
 	public class DeathKnightSkull752 : SpellScroll
 	{
 		[Constructable]
-		public DeathKnightSkull752() : base( 752, 0x1AE0 )
+		public DeathKnightSkull752() : base( DevilPactSpell.SpellInfo.SpellDefinition.SpellID, 0x1AE0 )
 		{
 			ItemID = Utility.RandomList( 0x1AE0, 0x1AE1, 0x1AE2, 0x1AE3 );
 			Hue = 0xB9A;
@@ -95,15 +91,15 @@ namespace Server.Items
 
 			ColorText4 = "Lady Kath of Naelex";
 			ColorHue4 = "CC1313";
-			ColorText5 = "Devil Pact";
+			ColorText5 = DeathKnightSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "D03DD9";
 		}
 
-		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( 752 ); } }
+		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( SpellID ); } }
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
+			from.SendMessage( "This skull is from a long dead death knight." );
 		}
 
 		public DeathKnightSkull752( Serial serial ) : base( serial )
@@ -126,7 +122,7 @@ namespace Server.Items
 	public class DeathKnightSkull753 : SpellScroll
 	{
 		[Constructable]
-		public DeathKnightSkull753() : base( 753, 0x1AE0 )
+		public DeathKnightSkull753() : base( GrimReaperSpell.SpellInfo.SpellDefinition.SpellID, 0x1AE0 )
 		{
 			ItemID = Utility.RandomList( 0x1AE0, 0x1AE1, 0x1AE2, 0x1AE3 );
 			Hue = 0xB9A;
@@ -134,15 +130,15 @@ namespace Server.Items
 
 			ColorText4 = "Prince Myrhal of Rax";
 			ColorHue4 = "CC1313";
-			ColorText5 = "Grim Reaper";
+			ColorText5 = DeathKnightSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "D03DD9";
 		}
 
-		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( 753 ); } }
+		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( SpellID ); } }
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
+			from.SendMessage( "This skull is from a long dead death knight." );
 		}
 
 		public DeathKnightSkull753( Serial serial ) : base( serial )
@@ -165,7 +161,7 @@ namespace Server.Items
 	public class DeathKnightSkull754 : SpellScroll
 	{
 		[Constructable]
-		public DeathKnightSkull754() : base( 754, 0x1AE0 )
+		public DeathKnightSkull754() : base( HagHandSpell.SpellInfo.SpellDefinition.SpellID, 0x1AE0 )
 		{
 			ItemID = Utility.RandomList( 0x1AE0, 0x1AE1, 0x1AE2, 0x1AE3 );
 			Hue = 0xB9A;
@@ -173,15 +169,15 @@ namespace Server.Items
 
 			ColorText4 = "Sir Maeril of Naelax";
 			ColorHue4 = "CC1313";
-			ColorText5 = "Hag Hand";
+			ColorText5 = DeathKnightSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "D03DD9";
 		}
 
-		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( 754 ); } }
+		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( SpellID ); } }
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
+			from.SendMessage( "This skull is from a long dead death knight." );
 		}
 
 		public DeathKnightSkull754( Serial serial ) : base( serial )
@@ -204,7 +200,7 @@ namespace Server.Items
 	public class DeathKnightSkull755 : SpellScroll
 	{
 		[Constructable]
-		public DeathKnightSkull755() : base( 755, 0x1AE0 )
+		public DeathKnightSkull755() : base( HellfireSpell.SpellInfo.SpellDefinition.SpellID, 0x1AE0 )
 		{
 			ItemID = Utility.RandomList( 0x1AE0, 0x1AE1, 0x1AE2, 0x1AE3 );
 			Hue = 0xB9A;
@@ -212,15 +208,15 @@ namespace Server.Items
 
 			ColorText4 = "Sir Farian of Lirtham";
 			ColorHue4 = "CC1313";
-			ColorText5 = "Hellfire";
+			ColorText5 = DeathKnightSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "D03DD9";
 		}
 
-		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( 755 ); } }
+		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( SpellID ); } }
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
+			from.SendMessage( "This skull is from a long dead death knight." );
 		}
 
 		public DeathKnightSkull755( Serial serial ) : base( serial )
@@ -243,7 +239,7 @@ namespace Server.Items
 	public class DeathKnightSkull756 : SpellScroll
 	{
 		[Constructable]
-		public DeathKnightSkull756() : base( 756, 0x1AE0 )
+		public DeathKnightSkull756() : base( LucifersBoltSpell.SpellInfo.SpellDefinition.SpellID, 0x1AE0 )
 		{
 			ItemID = Utility.RandomList( 0x1AE0, 0x1AE1, 0x1AE2, 0x1AE3 );
 			Hue = 0xB9A;
@@ -251,15 +247,15 @@ namespace Server.Items
 
 			ColorText4 = "Lord Androma of Gara";
 			ColorHue4 = "CC1313";
-			ColorText5 = "Lucifer's Bolt";
+			ColorText5 = DeathKnightSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "D03DD9";
 		}
 
-		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( 756 ); } }
+		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( SpellID ); } }
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
+			from.SendMessage( "This skull is from a long dead death knight." );
 		}
 
 		public DeathKnightSkull756( Serial serial ) : base( serial )
@@ -282,7 +278,7 @@ namespace Server.Items
 	public class DeathKnightSkull757 : SpellScroll
 	{
 		[Constructable]
-		public DeathKnightSkull757() : base( 757, 0x1AE0 )
+		public DeathKnightSkull757() : base( OrbOfOrcusSpell.SpellInfo.SpellDefinition.SpellID, 0x1AE0 )
 		{
 			ItemID = Utility.RandomList( 0x1AE0, 0x1AE1, 0x1AE2, 0x1AE3 );
 			Hue = 0xB9A;
@@ -290,15 +286,15 @@ namespace Server.Items
 
 			ColorText4 = "Sir Oslan Knarren";
 			ColorHue4 = "CC1313";
-			ColorText5 = "Orb of Orcus";
+			ColorText5 = DeathKnightSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "D03DD9";
 		}
 
-		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( 757 ); } }
+		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( SpellID ); } }
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
+			from.SendMessage( "This skull is from a long dead death knight." );
 		}
 
 		public DeathKnightSkull757( Serial serial ) : base( serial )
@@ -321,7 +317,7 @@ namespace Server.Items
 	public class DeathKnightSkull758 : SpellScroll
 	{
 		[Constructable]
-		public DeathKnightSkull758() : base( 758, 0x1AE0 )
+		public DeathKnightSkull758() : base( ShieldOfHateSpell.SpellInfo.SpellDefinition.SpellID, 0x1AE0 )
 		{
 			ItemID = Utility.RandomList( 0x1AE0, 0x1AE1, 0x1AE2, 0x1AE3 );
 			Hue = 0xB9A;
@@ -329,15 +325,15 @@ namespace Server.Items
 
 			ColorText4 = "Sir Rezinar of Haxx";
 			ColorHue4 = "CC1313";
-			ColorText5 = "Shield of Hate";
+			ColorText5 = DeathKnightSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "D03DD9";
 		}
 
-		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( 758 ); } }
+		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( SpellID ); } }
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
+			from.SendMessage( "This skull is from a long dead death knight." );
 		}
 
 		public DeathKnightSkull758( Serial serial ) : base( serial )
@@ -360,7 +356,7 @@ namespace Server.Items
 	public class DeathKnightSkull759 : SpellScroll
 	{
 		[Constructable]
-		public DeathKnightSkull759() : base( 759, 0x1AE0 )
+		public DeathKnightSkull759() : base( SoulReaperSpell.SpellInfo.SpellDefinition.SpellID, 0x1AE0 )
 		{
 			ItemID = Utility.RandomList( 0x1AE0, 0x1AE1, 0x1AE2, 0x1AE3 );
 			Hue = 0xB9A;
@@ -368,15 +364,15 @@ namespace Server.Items
 
 			ColorText4 = "Lord Thyrian of Naelax";
 			ColorHue4 = "CC1313";
-			ColorText5 = "Soul Reaper";
+			ColorText5 = DeathKnightSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "D03DD9";
 		}
 
-		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( 759 ); } }
+		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( SpellID ); } }
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
+			from.SendMessage( "This skull is from a long dead death knight." );
 		}
 
 		public DeathKnightSkull759( Serial serial ) : base( serial )
@@ -399,7 +395,7 @@ namespace Server.Items
 	public class DeathKnightSkull760 : SpellScroll
 	{
 		[Constructable]
-		public DeathKnightSkull760() : base( 760, 0x1AE0 )
+		public DeathKnightSkull760() : base( StrengthOfSteelSpell.SpellInfo.SpellDefinition.SpellID, 0x1AE0 )
 		{
 			ItemID = Utility.RandomList( 0x1AE0, 0x1AE1, 0x1AE2, 0x1AE3 );
 			Hue = 0xB9A;
@@ -407,15 +403,15 @@ namespace Server.Items
 
 			ColorText4 = "Sir Minar of Darmen";
 			ColorHue4 = "CC1313";
-			ColorText5 = "Strength of Steel";
+			ColorText5 = DeathKnightSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "D03DD9";
 		}
 
-		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( 760 ); } }
+		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( SpellID ); } }
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
+			from.SendMessage( "This skull is from a long dead death knight." );
 		}
 
 		public DeathKnightSkull760( Serial serial ) : base( serial )
@@ -438,7 +434,7 @@ namespace Server.Items
 	public class DeathKnightSkull761 : SpellScroll
 	{
 		[Constructable]
-		public DeathKnightSkull761() : base( 761, 0x1AE0 )
+		public DeathKnightSkull761() : base( StrikeSpell.SpellInfo.SpellDefinition.SpellID, 0x1AE0 )
 		{
 			ItemID = Utility.RandomList( 0x1AE0, 0x1AE1, 0x1AE2, 0x1AE3 );
 			Hue = 0xB9A;
@@ -446,15 +442,15 @@ namespace Server.Items
 
 			ColorText4 = "Duke Urkar of Torquann";
 			ColorHue4 = "CC1313";
-			ColorText5 = "Strike";
+			ColorText5 = DeathKnightSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "D03DD9";
 		}
 
-		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( 761 ); } }
+		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( SpellID ); } }
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
+			from.SendMessage( "This skull is from a long dead death knight." );
 		}
 
 		public DeathKnightSkull761( Serial serial ) : base( serial )
@@ -477,7 +473,7 @@ namespace Server.Items
 	public class DeathKnightSkull762 : SpellScroll
 	{
 		[Constructable]
-		public DeathKnightSkull762() : base( 762, 0x1AE0 )
+		public DeathKnightSkull762() : base( SuccubusSkinSpell.SpellInfo.SpellDefinition.SpellID, 0x1AE0 )
 		{
 			ItemID = Utility.RandomList( 0x1AE0, 0x1AE1, 0x1AE2, 0x1AE3 );
 			Hue = 0xB9A;
@@ -485,15 +481,15 @@ namespace Server.Items
 
 			ColorText4 = "Sir Luren the Boar";
 			ColorHue4 = "CC1313";
-			ColorText5 = "Succubus Skin";
+			ColorText5 = DeathKnightSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "D03DD9";
 		}
 
-		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( 762 ); } }
+		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( SpellID ); } }
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
+			from.SendMessage( "This skull is from a long dead death knight." );
 		}
 
 		public DeathKnightSkull762( Serial serial ) : base( serial )
@@ -516,7 +512,7 @@ namespace Server.Items
 	public class DeathKnightSkull763 : SpellScroll
 	{
 		[Constructable]
-		public DeathKnightSkull763() : base( 763, 0x1AE0 )
+		public DeathKnightSkull763() : base( WrathSpell.SpellInfo.SpellDefinition.SpellID, 0x1AE0 )
 		{
 			ItemID = Utility.RandomList( 0x1AE0, 0x1AE1, 0x1AE2, 0x1AE3 );
 			Hue = 0xB9A;
@@ -524,15 +520,15 @@ namespace Server.Items
 
 			ColorText4 = "Lord Khayven of Rax";
 			ColorHue4 = "CC1313";
-			ColorText5 = "Wrath";
+			ColorText5 = DeathKnightSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "D03DD9";
 		}
 
-		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( 763 ); } }
+		public override string DefaultDescription{ get{ return DeathKnightSpell.SpellDescription( SpellID ); } }
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( StringCatalog.Resolve( from.Account, "This skull is from a long dead death knight." ) );
+			from.SendMessage( "This skull is from a long dead death knight." );
 		}
 
 		public DeathKnightSkull763( Serial serial ) : base( serial )

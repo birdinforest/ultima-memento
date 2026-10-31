@@ -1,11 +1,6 @@
 using System;
-using System.Collections.Generic;
-using Server;
-using Server.Targeting;
 using Server.Items;
 using Server.Network;
-using Server.ContextMenus;
-using Server.Gumps;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Localization;
@@ -143,10 +138,10 @@ namespace Server.Mobiles
 						hat.Name = "Magical Jester Hat";
 						hat.Hue = 0;
 						hat.ItemID = Utility.RandomList( 0x171C, 0x4C15 );
-						hat.m_Owner = from;
-						hat.m_Gifter = "Chuckles the Jester";
-						hat.m_How = "Given to";
-						hat.m_Points = Utility.RandomMinMax( 80, 100 );
+						hat.Owner = from;
+						hat.Gifter = "Chuckles the Jester";
+						hat.How = "Given to";
+						hat.Points = Utility.RandomMinMax( 80, 100 );
 
 						from.AddToBackpack ( hat );
 						from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.chuckles_gave_you_one_of_his_hats") );
@@ -157,10 +152,10 @@ namespace Server.Mobiles
 						coat.Name = "Magical Jester Suit";
 						coat.Hue = 0;
 						coat.ItemID = Utility.RandomList( 0x1f9f, 0x1fa0, 0x4C16, 0x4C17, 0x2B6B );
-						coat.m_Owner = from;
-						coat.m_Gifter = "Chuckles the Jester";
-						coat.m_How = "Given to";
-						coat.m_Points = Utility.RandomMinMax( 80, 100 );
+						coat.Owner = from;
+						coat.Gifter = "Chuckles the Jester";
+						coat.How = "Given to";
+						coat.Points = Utility.RandomMinMax( 80, 100 );
 
 						from.AddToBackpack ( coat );
 						from.SendMessage( StringCatalog.ResolveByKey(from.Account, "mob.other.chuckles_gave_you_one_of_his_suits") );

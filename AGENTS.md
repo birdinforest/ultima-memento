@@ -74,6 +74,7 @@ ultima-memento/
 - Castle of Knowledge (Lodor landmark, Power Scroll vendors): `World/Documentation/castle-of-knowledge.md`
 - **Server stability & crash avoidance (AI checklist):** `World/Documentation/server-stability-crash-patterns.md` — OPL / `InvalidateProperties` reentrancy, serializers, null-safety, timers, collection mutation, etc.
 - **Generic JSON rate/probability config engine:** `World/Documentation/rate-config-system.md` — `RateConfigEngine`/`WeightedPick` under `World/Source/System/RateConfig/`, `Data/RateConfig/*.json`, GM hot-reload commands; read before adding any new rate/weight/probability table (dragon Bright rarity, GemDragon scale rarity are its first consumers).
+- **Pending fixes backlog (confirmed bugs awaiting fix):** `World/Documentation/pending-fixes.md` — read before touching Spell Bars / `SpellRegistry` or Avatar rebirth resonance flows; move entries to the fixed section when done.
 
 **Design & analysis docs (cross-repo, under UO_DEV_DOCS_ROOT):**
 
@@ -581,6 +582,7 @@ This file uses a simple date-stamp comment at the top for tracking. When making 
 - 2026-09-06: §8.1 — indexed `MURDERER_DISGUISE_TOWN_SELL_DESIGN.md`（红名伪装城镇出售：风险回报变现、不抬全局商人金）。
 - 2026-08-30: §8.1 — indexed `EQUIPMENT_DURABILITY_BOOST_SYSTEM.md`（提高装备耐久上限：药水、蜂蜡、调和粉、与修理药水分界）。
 - 2026-08-26: §8.1 — indexed `WEAPON_SPECIAL_ABILITY_SYSTEM.md`（武器五档特攻 WeaponAbility：55 招、技能/法力、全武器绑定表）。
+- 2026-10-10: §1 — indexed `World/Documentation/pending-fixes.md`（待修复缺陷记录：Spell Bars ≥700 ID 的 `SpellRegistry` 注册失效致 HolyMan/DeathKnight 法术不可用；Avatar 重生共鸣完成后重生报告仍于每次登录弹出）。
 - 2026-08-23: §8.1 — indexed `CRIMSON_GOLD_CONCORD_NATIONAL_DAY_EVENT_DESIGN.md`（赤金同心节四周活动：账号点数、捐献、水晶、盟约灯进阶、冠军 Boss 与奖励经济）。
 - 2026-08-23: §8.1 — indexed `CRAFTING_TRADES_SYSTEM.md`（工匠/制作机制总览：架构、专柜、掉落 vs 自制、专题交叉索引）。
 - 2026-08-22: §3.1 — added `lore-books.json` (`keep_extra`): LoreBook title/author/body shotkeys + city templates (`{0}`/`{1}`).

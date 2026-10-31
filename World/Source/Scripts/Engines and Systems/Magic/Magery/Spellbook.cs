@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Server;
 using Server.Commands;
 using Server.Engines.Craft;
 using Server.Network;
@@ -9,6 +8,9 @@ using Server.Targeting;
 using Server.Spells.Elementalism;
 using System.Globalization;
 using Server.Localization;
+using Server.Spells.HolyMan;
+using Server.Spells.Song;
+using Server.Spells.DeathKnight;
 
 namespace Server.Items
 {
@@ -252,11 +254,11 @@ namespace Server.Items
 				return SpellbookType.Ninja;
 			else if ( spellID >= 300 && spellID < 332 )
 				return SpellbookType.Elementalism;
-			else if ( spellID >= 351 && spellID < 367 )
+			else if ( spellID >= BardSongProvider.FirstSpellId && spellID <= BardSongProvider.LastSpellId )
 				return SpellbookType.Song;
-			else if ( spellID >= 750 && spellID < 764 )
+			else if ( spellID >= DeathKnightSpellProvider.FirstSpellId && spellID <= DeathKnightSpellProvider.LastSpellId )
 				return SpellbookType.DeathKnight;
-			else if ( spellID >= 770 && spellID < 784 )
+			else if ( spellID >= HolyManSpellProvider.FirstSpellId && spellID <= HolyManSpellProvider.LastSpellId)
 				return SpellbookType.HolyMan;
 			else if ( spellID >= 250 && spellID < 260 )
 				return SpellbookType.Mystic;
@@ -385,7 +387,7 @@ namespace Server.Items
 
 				Spellbook book = list[i];
 
-				if ( ElementalSpell.CanUseBook( book, from, false ) && !book.Deleted && (book.Parent == from || (pack != null && book.Parent == pack)) && ValidateSpellbook( book, spellID, type ) )
+				if ( ElementalSpell.CanUseBook( book, from, false ) && !book.Deleted && (book.Parent == from || (pack != null && book.Parent == pack)) && ValidateSpellbook( from, book, spellID, type ) )
 					return book;
 
 				list.RemoveAt( i );
@@ -432,8 +434,35 @@ namespace Server.Items
 			return (from.FindItemOnLayer( Layer.Trinket ) as Spellbook);
 		}
 
-		public static bool ValidateSpellbook( Spellbook book, int spellID, SpellbookType type )
+		public static bool ValidateSpellbook( Mobile from, Spellbook book, int spellID, SpellbookType type )
 		{
+			switch ( type )
+			{
+				case SpellbookType.DeathKnight:
+					if (book is DeathKnightSpellbook && ((DeathKnightSpellbook)book).Owner != from)
+						return false;
+					break;
+
+				case SpellbookType.HolyMan:
+					if (book is HolyManSpellbook && ((HolyManSpellbook)book).owner != from)
+						return false;
+					break;
+
+				case SpellbookType.Regular:
+				case SpellbookType.Necromancer:
+				case SpellbookType.Paladin:
+				case SpellbookType.Ninja:
+				case SpellbookType.Samurai:
+				case SpellbookType.Elementalism:
+				case SpellbookType.Song:
+				case SpellbookType.Mystic:
+				case SpellbookType.Syth:
+				case SpellbookType.Jedi:
+				case SpellbookType.Archmage:
+				default:
+					break;
+			}
+
 			return ( book.SpellbookType == type && ( spellID == -1 || book.HasSpell( spellID ) ) );
 		}
 
@@ -621,9 +650,15 @@ namespace Server.Items
 				}
 			}
 
-			if ( dropped is SpellScroll && dropped.Amount == 1 )
+			if ( dropped is SpellScroll )
 			{
 				SpellScroll scroll = (SpellScroll)dropped;
+
+				if ( scroll.IsEphemeralSpellScroll )
+				{
+					from.SendMessage( "Ephemeral magic cannot be added to spellbooks." );
+					return false;
+				}
 
 				SpellbookType type = GetTypeForSpell( scroll.SpellID );
 
@@ -649,12 +684,13 @@ namespace Server.Items
 
 						InvalidateProperties();
 
-						scroll.Delete();
+						scroll.Consume();
 
 						if ( this is SythSpellbook ){ from.SendSound( 0x558 ); }
 						else if ( this is JediSpellbook ){ from.SendSound( 0x558 ); }
 						else { from.Send( new PlaySound( 0x249, GetWorldLocation() ) ); }
-						return true;
+
+						return scroll.Deleted;
 					}
 
 					return false;

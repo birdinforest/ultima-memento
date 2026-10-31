@@ -201,6 +201,16 @@ namespace Server.Engines.Craft
 			AddCraft( typeof( ShepherdsCrook ), 1044295, 1023713, 78.9, 103.9, typeof( Board ), 1015101, 7, 1044351 );
 			AddCraft( typeof( QuarterStaff ), 1044295, 1023721, 73.6, 98.6, typeof( Board ), 1015101, 6, 1044351 );
 			AddCraft( typeof( GnarledStaff ), 1044295, 1025112, 78.9, 103.9, typeof( Board ), 1015101, 7, 1044351 );
+
+			index = AddCraft( typeof( WizardStaff ), 1044295, "stave", 55.3, 95.3, typeof( Board ), 1015101, 10, 1044351 );
+			AddOrSkill( index, 70.0, 80.0, SkillName.Elementalism, SkillName.Magery, SkillName.Necromancy );
+
+			index = AddCraft( typeof( WizardStick ), 1044295, "sceptre", 45.3, 95.3, typeof( Board ), 1015101, 5, 1044351 );
+			AddOrSkill( index, 50.0, 60.0, SkillName.Elementalism, SkillName.Magery, SkillName.Necromancy );
+
+			index = AddCraft( typeof( BlackStaff ), 1044295, "wizard staff", 45.3, 95.3, typeof( Board ), 1015101, 10, 1044351 );
+			AddOrSkill( index, 60.0, 70.0, SkillName.Elementalism, SkillName.Magery, SkillName.Necromancy );
+
 			AddCraft( typeof( WoodenShield ), 1044295, 1027034, 52.6, 77.6, typeof( Board ), 1015101, 9, 1044351 );
 
 			index = AddCraft( typeof( Bokuto ), 1044295, 1030227, 70.0, 95.0, typeof( Board ), 1015101, 6, 1044351 );
@@ -296,7 +306,7 @@ namespace Server.Engines.Craft
 			index = AddCraft( typeof( Dressform ), 1002155, 1044339, 63.1, 88.1, typeof( Board ), 1015101, 25, 1044351 );
 			AddSkill( index, SkillName.Tailoring, 65.0, 70.0 );
 			AddRes( index, typeof( Fabric ), 1044286, 10, 1044287 );
-			index = AddCraft( typeof( MannequinDeed ), 1002155, "mannequin", 75.0, 100.0, typeof( Board ), 1015101, 50, 1044351 );
+			index = AddCraft( typeof( MannequinDeed ), 1044294, "mannequin deed", 75.0, 100.0, typeof( Board ), 1015101, 50, 1044351 );
 			AddSkill( index, SkillName.Tailoring, 50.0, 55.0 );
 			AddRes( index, typeof( Fabric ), 1044286, 30, 1044287 );
 			index = AddCraft( typeof( SpinningwheelEastDeed ), 1002155, 1044341, 73.6, 98.6, typeof( Board ), 1015101, 75, 1044351 );

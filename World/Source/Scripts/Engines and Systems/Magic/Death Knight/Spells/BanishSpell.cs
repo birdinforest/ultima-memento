@@ -1,26 +1,35 @@
 using System;
-using Server.Misc;
 using Server.Items;
 using Server.Targeting;
-using Server.Network;
 using Server.Mobiles;
 
 namespace Server.Spells.DeathKnight
 {
 	public class BanishSpell : DeathKnightSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Banish", "Izanami Exsilium",
-				215,
-				9031
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 750,
+				IconGraphic = 0x5010,
+				Name = "Banish",
+				PowerWords = "Izanami Exsilium",
+				Description = "Banish summoned creatures back to their realm, demons back to hell, or elementals back to their plane of existence.",
+				ManaCost = 36,
+				TithingCost = 56,
+				MinSkill = 40,
+				TargetType = TargetFlags.Harmful
+			},
+			215,
+			9031
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1 ); } }
-		public override int RequiredTithing{ get{ return 56; } }
-		public override double RequiredSkill{ get{ return 40.0; } }
-		public override int RequiredMana{ get{ return 36; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public BanishSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public BanishSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 

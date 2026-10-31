@@ -321,7 +321,7 @@ namespace Server.Items
 		{
 			Container pack = m.Backpack;
 
-			if ( potion is BaseMixture )
+			if ( potion is BaseMixture || potion is BaseLiquid )
 			{
 				Jar jar = new Jar( amount );
 
@@ -347,7 +347,12 @@ namespace Server.Items
 
 		public BasePotion FillBottle()
 		{
-			switch ( m_Type )
+			return CreatePotion( m_Type );
+		}
+
+		public static BasePotion CreatePotion( PotionEffect type )
+		{
+			switch ( type )
 			{
 				default:
 				case PotionEffect.Nightsight:				return new NightSightPotion();

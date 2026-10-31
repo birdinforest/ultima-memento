@@ -673,16 +673,16 @@ namespace Server.Gumps
 			AddPage( 0 );
 
 			AddImage(30, 22, 1140);
-			AddHtml( 91, 71, 270, 26, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>Character Statue Carving</CENTER></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 91, 71, 270, 26, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>Character Statue Carving</CENTER></BIG></BASEFONT></BODY>", (bool)false, (bool)false, false);
 
-			AddHtml( 92, 110, 104, 19, @"<BODY><BASEFONT Color=#111111><BIG>Direction</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-			AddHtml( 92, 135, 104, 19, @"<BODY><BASEFONT Color=#111111><BIG>" + GetDirectionNumber( m_Statue.Direction ) + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 92, 110, 104, 19, @"<BODY><BASEFONT Color=#111111><BIG>Direction</BIG></BASEFONT></BODY>", (bool)false, (bool)false, false);
+			AddHtml( 92, 135, 104, 19, @"<BODY><BASEFONT Color=#111111><BIG>" + GetDirectionNumber( m_Statue.Direction ) + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false, false);
 
 			AddButton(93, 165, 4014, 4014, (int)Buttons.DirNext, GumpButtonType.Reply, 0);
 			AddButton(130, 165, 4005, 4005, (int)Buttons.DirPrev, GumpButtonType.Reply, 0);
 
-			AddHtml( 255, 110, 104, 19, @"<BODY><BASEFONT Color=#111111><BIG>Material</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-			AddHtml( 255, 135, 104, 19, @"<BODY><BASEFONT Color=#111111><BIG>" + GetMaterialNumber( m_Statue.StatueType, m_Statue.Material ) + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 255, 110, 104, 19, @"<BODY><BASEFONT Color=#111111><BIG>Material</BIG></BASEFONT></BODY>", (bool)false, (bool)false, false);
+			AddHtml( 255, 135, 104, 19, @"<BODY><BASEFONT Color=#111111><BIG>" + GetMaterialNumber( m_Statue.StatueType, m_Statue.Material ) + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false, false);
 
 			AddButton(294, 165, 4014, 4014, (int)Buttons.MatNext, GumpButtonType.Reply, 0);
 			AddButton(331, 165, 4005, 4005, (int)Buttons.MatPrev, GumpButtonType.Reply, 0);

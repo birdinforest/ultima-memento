@@ -522,6 +522,17 @@ namespace Server.Misc
 			return false;
 		}
 
+		public static bool IsRoughWaters( Region reg )
+		{
+			if ( !reg.IsPartOf( typeof( PirateRegion ) ) )
+				return false;
+
+			if ( MySettings.S_AllowTravelToSpecialPlaces && reg.IsPartOf( "the Island of Poseidon" ) )
+				return false;
+
+			return true;
+		}
+
 		public static bool RegionAllowedTeleport( Map map, Point3D location, int x, int y )
 		{
 			Land land = Server.Lands.GetLand( map, location, x, y );
@@ -530,17 +541,7 @@ namespace Server.Misc
 			if ( reg.IsPartOf( typeof( DungeonRegion ) ) )
 				return false;
 
-			if ( land == Land.Kuldar )
-				return false;
-
 			if ( reg.IsPartOf( "the Time Lord Chamber" ) )
-				return false;
-
-			if ( land == Land.Underworld )
-				return false;
-
-			// The one true Ambrosia. All others (ex: dungeon home) are fake
-			if ( land == Land.Ambrosia && map == Map.Sosaria )
 				return false;
 
 			if ( land == Land.SkaraBrae )
@@ -558,16 +559,7 @@ namespace Server.Misc
 			if ( reg.IsPartOf( "the Lyceum" ) )
 				return false;
 
-			if ( reg.IsPartOf( "the Island of Stonegate" ) )
-				return false;
-
 			if ( reg.IsPartOf( "the Painting of the Glade" ) )
-				return false;
-
-			if ( reg.IsPartOf( "the Island of the Black Knight" ) )
-				return false;
-
-			if ( reg.IsPartOf( "the Castle of the Black Knight" ) )
 				return false;
 
 			if ( reg.IsPartOf( "the Castle of the Black Knight" ) )
@@ -582,14 +574,33 @@ namespace Server.Misc
 			if ( reg.IsPartOf( typeof( PublicRegion ) ) )
 				return false;
 
-			if ( reg.IsPartOf( "the Island of Poseidon" ) )
-				return false;
-
-			if ( reg.IsPartOf( "the Village of Ravendark" ) )
-				return false;
-
 			if ( reg.IsPartOf( typeof( BargeDeadRegion ) ) )
 				return false;
+
+			if ( !MySettings.S_AllowTravelToSpecialPlaces )
+			{
+				if ( land == Land.Kuldar )
+					return false;
+
+				if ( land == Land.Underworld )
+					return false;
+
+				// The one true Ambrosia. All others (ex: dungeon home) are fake
+				if ( land == Land.Ambrosia && map == Map.Sosaria )
+					return false;
+
+				if ( reg.IsPartOf( "the Island of Stonegate" ) )
+					return false;
+
+				if ( reg.IsPartOf( "the Island of the Black Knight" ) )
+					return false;
+
+				if ( reg.IsPartOf( "the Island of Poseidon" ) )
+					return false;
+
+				if ( reg.IsPartOf( "the Village of Ravendark" ) )
+					return false;
+			}
 
 			return true;
 		}
@@ -628,7 +639,7 @@ namespace Server.Misc
 			Land land = Server.Lands.GetLand( map, location, x, y );
 			Region reg = Region.Find( location, map );
 
-			if ( land == Land.Kuldar && PlayerSettings.GetDiscovered( m, "the Bottle World of Kuldar" ) && !PlayerSettings.GetKeys( m, "VordoKey" ) )
+			if ( land == Land.Kuldar && !PlayerSettings.GetKeys( m, "VordoKey" ) )
 				canLeave = false;
 
 			if ( land == Land.SkaraBrae )
@@ -814,7 +825,7 @@ namespace Server.Misc
 				case 66: loc = new Point3D(5950, 1654, -5); map = Map.Lodor; break; // the Depths of Carthax Lake
 				case 67: loc = new Point3D(5989, 484, 1); map = Map.Lodor; break; // Argentrock Castle
 				case 68: loc = new Point3D(6021, 1968, 0); map = Map.Lodor; break; // the Sanctum of Saltmarsh
-				case 69: loc = new Point3D(1125, 3684, 0); map = Map.Lodor; break; // the Ancient Sky Ship
+				case 69: loc = new Point3D(1125, 3684, 0); map = Map.SavagedEmpire; break; // the Ancient Sky Ship
 			}
 
 			if ( m is PlayerMobile )
@@ -930,8 +941,6 @@ namespace Server.Misc
 			else if ( ( exact == 22 || zone == "the Caverns of Poseidon" ) && map == Map.Sosaria ){ loc = new Point3D(198, 2295, 12); zone = "the Caverns of Poseidon"; }
 			else if ( ( exact == 23 || zone == "the Tower of Brass" ) && map == Map.Sosaria ){ loc = new Point3D(1593, 3376, 15); zone = "the Tower of Brass"; }
 			else if ( ( exact == 24 || zone == "the Forgotten Halls" ) && map == Map.Sosaria ){ loc = new Point3D(3015, 944, 0); zone = "the Forgotten Halls"; }
-			else if ( zone == "the Ruins of the Black Blade" && map == Map.Sosaria ){ loc = new Point3D(4505, 1894, 2); zone = "the Ruins of the Black Blade"; }
-			else if ( zone == "the Montor Sewers" && map == Map.Sosaria ){ loc = new Point3D(3058, 2562, 0); zone = "the Montor Sewers"; }
 
 			else if ( ( exact == 25 || zone == "the Vault of the Black Knight" ) && map == Map.Lodor ){ loc = new Point3D(1581, 202, 0); map = Map.SerpentIsland; zone = "the Vault of the Black Knight"; }
 			else if ( ( exact == 26 || zone == "the Undersea Pass" ) && map == Map.Lodor ){ loc = new Point3D(1179, 1931, 0); zone = "the Undersea Pass"; }
@@ -953,7 +962,6 @@ namespace Server.Misc
 			else if ( ( exact == 42 || zone == "Dungeon Wrong" ) && map == Map.Lodor ){ loc = new Point3D(2252, 854, 1); zone = "Dungeon Wrong"; }
 			else if ( ( exact == 43 || zone == "Stonegate Castle" ) && map == Map.Lodor ){ loc = new Point3D(1355, 404, 0); zone = "Stonegate Castle"; }
 			else if ( ( exact == 44 || zone == "the Ancient Elven Mine" ) && map == Map.Lodor ){ loc = new Point3D(1179, 1931, 0); zone = "the Ancient Elven Mine"; }
-			else if ( zone == "the Lizardman Cave" && map == Map.Lodor ){ loc = new Point3D(5407, 631, 30); zone = "the Lizardman Cave"; }
 
 			else if ( ( exact == 45 || zone == "the Dungeon of the Mad Archmage" ) && map == Map.SavagedEmpire ){ loc = new Point3D(464, 851, -60); zone = "the Dungeon of the Mad Archmage"; }
 			else if ( ( exact == 46 || zone == "the Dungeon of the Lich King" ) && map == Map.SavagedEmpire ){ loc = new Point3D(922, 1772, 26); zone = "the Dungeon of the Lich King"; }
@@ -967,9 +975,6 @@ namespace Server.Misc
 			else if ( ( exact == 54 || zone == "the Azure Castle" ) && map == Map.SavagedEmpire ){ loc = new Point3D(774, 612, 15); zone = "the Azure Castle"; }
 			else if ( ( exact == 55 || zone == "the Tomb of Kazibal" ) && map == Map.SavagedEmpire ){ loc = new Point3D(368, 298, 57); zone = "the Tomb of Kazibal"; }
 			else if ( ( exact == 56 || zone == "the Catacombs of Azerok" ) && map == Map.SavagedEmpire ){ loc = new Point3D(1056, 424, 38); zone = "the Catacombs of Azerok"; }
-			else if ( zone == "the Cave of the Ancient Wyrm" && map == Map.SavagedEmpire ){ loc = new Point3D(779, 612, 15); zone = "the Cave of the Ancient Wyrm"; }
-			else if ( zone == "the Great Pyramid" && map == Map.SavagedEmpire ){ loc = new Point3D(895, 2577, 0); zone = "the Great Pyramid"; }
-			else if ( zone == "the Spider Cave" && map == Map.SavagedEmpire ){ loc = new Point3D(472, 2646, -28); zone = "the Spider Cave"; }
 
 			else if ( ( exact == 57 || zone == "the Ancient Prison" ) && map == Map.SerpentIsland ){ loc = new Point3D(748, 846, 1); zone = "the Ancient Prison"; }
 			else if ( ( exact == 58 || zone == "the Cave of Fire" ) && map == Map.SerpentIsland ){ loc = new Point3D(561, 1143, 0); zone = "the Cave of Fire"; }
@@ -1205,11 +1210,11 @@ namespace Server.Misc
 				case "the Forgotten Halls": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
 				case "the Mines of Morinia": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
 				case "the Perinian Depths": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
-			case "the Ratmen Lair": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
-			case "the Ruins of the Black Blade": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
-			case "the Montor Sewers": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
+				case "the Ratmen Lair": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
+				case "the Montor Sewers": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
+				case "the Ruins of the Black Blade": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Sosaria"; break;
 
-			// Ambrosia
+				// Ambrosia
 				case "the Cave of the Zuluu": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Ambrosia"; break;
 				case "the City of the Dead": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Ambrosia"; break;
 				case "the Dragon's Maw": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Ambrosia"; break;
@@ -1237,10 +1242,10 @@ namespace Server.Misc
 				case "the Ice Fiend Lair": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
 				case "the Lodoria Catacombs": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
 				case "the Undersea Pass": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
-			case "the Volcanic Cave": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
-			case "the Lizardman Cave": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "the Volcanic Cave": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
+				case "the Lizardman Cave": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Lodoria"; break;
 
-			// Serpent Island
+				// Serpent Island
 				case "Dungeon Ankh": location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; break;
 				case "Dungeon Bane": location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; break;
 				case "Dungeon Hate": location = GetAreaEntrance( 0, dungeon, Map.SerpentIsland, out placer, out xc, out yc ); world = "Serpent Island"; break;
@@ -1266,14 +1271,11 @@ namespace Server.Misc
 				case "the Scurvy Reef": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Isles of Dread"; break;
 				case "the Temple of Osirus": location = GetAreaEntrance( 0, dungeon, Map.Lodor, out placer, out xc, out yc ); world = "Isles of Dread"; break;
 
-			// Savaged Empire
-			case "Dungeon of the Lich King": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
-			case "the Dungeon of the Lich King": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
-			case "Dungeon of the Mad Archmage": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
-			case "the Dungeon of the Mad Archmage": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
-			case "the Cave of the Ancient Wyrm": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
-			case "the Great Pyramid": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
-			case "the Spider Cave": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
+				// Savaged Empire
+				case "the Dungeon of the Lich King": 
+				case "Dungeon of the Lich King": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
+				case "the Dungeon of the Mad Archmage": 
+				case "Dungeon of the Mad Archmage": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
 				case "Dungeon Rock": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
 				case "the Azure Castle": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
 				case "the Catacombs of Azerok": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
@@ -1284,6 +1286,9 @@ namespace Server.Misc
 				case "the Tomb of Kazibal": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
 				case "the Tombs": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
 				case "the Undersea Castle": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
+				case "the Cave of the Ancient Wyrm": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
+				case "the Great Pyramid": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
+				case "the Spider Cave": location = GetAreaEntrance( 0, dungeon, Map.SavagedEmpire, out placer, out xc, out yc ); world = "Savaged Empire"; break;
 
 				// Kuldar
 				case "the Crypts of Kuldar": location = GetAreaEntrance( 0, dungeon, Map.Sosaria, out placer, out xc, out yc ); world = "Kuldar"; break;

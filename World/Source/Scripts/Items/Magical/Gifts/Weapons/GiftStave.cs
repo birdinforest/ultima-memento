@@ -1,6 +1,4 @@
-using Server;
 using System;
-using System.Collections;
 using Server.Targeting;
 using Server.Prompts;
 using Server.Items;
@@ -311,53 +309,6 @@ namespace Server.Items
 		{
 		}
 
-		public override TimeSpan OnSwing( Mobile attacker, Mobile defender )
-		{
-			WeaponAbility a = WeaponAbility.GetCurrentAbility( attacker );
-
-			// Make sure we've been standing still for .25/.5/1 second depending on Era
-			if ( DateTime.Now > (attacker.LastMoveTime + TimeSpan.FromSeconds( Core.SE ? 0.25 : (Core.AOS ? 0.5 : 1.0) )) || (Core.AOS && WeaponAbility.GetCurrentAbility( attacker ) is MovingShot) )
-			{
-				bool canSwing = true;
-
-				if ( Core.AOS )
-				{
-					canSwing = ( !attacker.Paralyzed && !attacker.Frozen );
-
-					if ( canSwing )
-					{
-						Spell sp = attacker.Spell as Spell;
-
-						canSwing = ( sp == null || !sp.IsCasting || !sp.BlocksMovement );
-					}
-				}
-
-				if ( canSwing && attacker.HarmfulCheck( defender ) )
-				{
-					attacker.DisruptiveAction();
-					attacker.Send( new Swing( 0, attacker, defender ) );
-
-					if ( OnFired( attacker, defender ) )
-					{
-						if ( CheckHit( attacker, defender ) )
-							OnHit( attacker, defender );
-						else
-							OnMiss( attacker, defender );
-					}
-				}
-
-				attacker.RevealingAction();
-
-				return GetDelay( attacker );
-			}
-			else
-			{
-				attacker.RevealingAction();
-
-				return TimeSpan.FromSeconds( 0.25 );
-			}
-		}
-
 		public static bool HasStaff( Mobile from )
 		{
 			if ( from.FindItemOnLayer( Layer.OneHanded ) != null )
@@ -380,39 +331,6 @@ namespace Server.Items
 			}
 
 			return false;
-		}
-
-		public override void OnHit( Mobile attacker, Mobile defender, double damageBonus )
-		{
-			base.OnHit( attacker, defender, damageBonus );
-		}
-
-		public override void OnMiss( Mobile attacker, Mobile defender )
-		{
-			base.OnMiss( attacker, defender );
-		}
-
-		public override bool OnFired( Mobile attacker, Mobile defender )
-		{
-			BaseQuiver quiver = attacker.FindItemOnLayer( Layer.Cloak ) as BaseQuiver;
-			Container pack = attacker.Backpack;
-
-			if ( attacker.Player )
-			{
-				if ( quiver == null || quiver.LowerAmmoCost == 0 || quiver.LowerAmmoCost > Utility.Random( 100 ) )
-				{
-					if ( quiver != null && quiver.ConsumeTotal( AmmoType, 1 ) )
-						quiver.InvalidateWeight();
-					else if ( pack == null || !pack.ConsumeTotal( AmmoType, 1 ) )
-						return false;
-				}
-			}
-
-			attacker.MovingEffect( defender, EffectID, 18, 1, false, false );
-
-			Server.Gumps.QuickBar.RefreshQuickBar( attacker );
-
-			return true;
 		}
 
 		public override void Serialize( GenericWriter writer ) { base.Serialize( writer ); writer.Write( (int) 0 ); }

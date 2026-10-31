@@ -1,28 +1,33 @@
 using System;
-using System.Collections;
 using Server.Targeting;
-using Server.Network;
-using Server.Mobiles;
-using Server.Items;
-using Server.Spells;
-using Server.Localization;
 
 namespace Server.Spells.HolyMan
 {
 	public class DampenSpiritSpell : HolyManSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Dampen Spirit", "Accipe Spiritum",
-				266,
-				9040
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 771,
+				IconGraphic = 0x966,
+				Name = "Dampen Spirit",
+				PowerWords = "Accipe Spiritum",
+				Description = "Absorbs mana from others and bestows it to the priest.",
+				ManaCost = 35,
+				TithingCost = 140,
+				MinSkill = 70,
+				TargetType = TargetFlags.Harmful
+			},
+			266,
+			9040
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 3 ); } }
-		public override int RequiredTithing{ get{ return 140; } }
-		public override double RequiredSkill{ get{ return 70.0; } }
-		public override int RequiredMana{ get{ return 35; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public DampenSpiritSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public DampenSpiritSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 
@@ -41,41 +46,45 @@ namespace Server.Spells.HolyMan
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.CheckReflect( (int)SpellCircle.Seventh, Caster, ref m );
-
-				if ( m.Spell != null )
-					m.Spell.OnCasterHurt();
-
-				m.Paralyzed = false;
-				BuffInfo.CleanupIcons( m, true );
-
-				int toDrain = 0;
-
-				if ( m.Karma > 0 )
-					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "The gods will not smite such a kindly soul." ) );
-				else
-				{
-					toDrain = (int)(GetDamageSkill( Caster ) - GetResistSkill( m ));
-
-					if ( !m.Player )
-						toDrain /= 2;
-
-					if ( toDrain < 0 )
-						toDrain = 0;
-					else if ( toDrain > m.Mana )
-						toDrain = m.Mana;
-				}
-
-				if ( toDrain > (Caster.ManaMax - Caster.Mana) )
-					toDrain = Caster.ManaMax - Caster.Mana;
-
-				m.Mana -= toDrain;
-				Caster.Mana += toDrain;
+				Mobile source = Caster;
+				bool hitThrough = SpellHelper.ResolveMagicDefense( (int)SpellCircle.Seventh, ref source, ref m );
 
 				m.FixedParticles( 0x374A, 10, 15, 5028, EffectLayer.Waist );
 				m.PlaySound( 0x1FB );
 
-				HarmfulSpell( m );
+				if ( hitThrough )
+				{
+					if ( m.Spell != null )
+						m.Spell.OnCasterHurt();
+
+					m.Paralyzed = false;
+					BuffInfo.CleanupIcons( m, true );
+
+					int toDrain = 0;
+
+					if ( m.Karma > 0 )
+						Caster.SendMessage( "The gods will not smite such a kindly soul." );
+					else
+					{
+						toDrain = (int)(GetDamageSkill( Caster ) - GetResistSkill( m ));
+
+						if ( !m.Player )
+							toDrain /= 2;
+
+						if ( toDrain < 0 )
+							toDrain = 0;
+						else if ( toDrain > m.Mana )
+							toDrain = m.Mana;
+					}
+
+					if ( toDrain > (Caster.ManaMax - Caster.Mana) )
+						toDrain = Caster.ManaMax - Caster.Mana;
+
+					m.Mana -= toDrain;
+					Caster.Mana += toDrain;
+
+					HarmfulSpell( m );
+				}
 			}
 
 			FinishSequence();

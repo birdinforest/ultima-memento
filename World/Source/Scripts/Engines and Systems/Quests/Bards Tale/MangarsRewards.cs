@@ -1,6 +1,3 @@
-using System;
-using Server;
-
 namespace Server.Items
 {
 	public class MangarRobe : Robe
@@ -11,14 +8,14 @@ namespace Server.Items
 			Hue = 0x497;
 			ItemID = 0x26AE;
 			Name = "Mangar's Robe";
-			Attributes.LowerManaCost = 25;
+			Attributes.SpellDamage = 25;
 			Attributes.LowerRegCost = 25;
 			SkillBonuses.SetValues( 0, SkillName.Psychology, 10 );
 			SkillBonuses.SetValues( 1, SkillName.Magery, 10 );
 			SkillBonuses.SetValues( 2, SkillName.MagicResist, 10 );
 			SkillBonuses.SetValues( 3, SkillName.Meditation, 10 );
-			Attributes.RegenMana = 10;
-			Attributes.BonusInt = 10;
+			Attributes.RegenMana = 3;
+			Attributes.BonusInt = 20;
 			ArtifactLevel = ArtifactLevel.StandardArtefact;
 		}
 
@@ -29,7 +26,7 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 ); // version
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -47,14 +44,14 @@ namespace Server.Items
 			Hue = 0x497;
 			ItemID = 0x26AE;
 			Name = "Mangar's Robe";
-			Attributes.LowerManaCost = 25;
+			Attributes.SpellDamage = 25;
 			Attributes.LowerRegCost = 25;
 			SkillBonuses.SetValues( 0, SkillName.Spiritualism, 10 );
 			SkillBonuses.SetValues( 1, SkillName.Necromancy, 10 );
 			SkillBonuses.SetValues( 2, SkillName.MagicResist, 10 );
 			SkillBonuses.SetValues( 3, SkillName.Meditation, 10 );
-			Attributes.RegenMana = 10;
-			Attributes.BonusInt = 10;
+			Attributes.RegenMana = 3;
+			Attributes.BonusInt = 20;
 			ArtifactLevel = ArtifactLevel.StandardArtefact;
 		}
 
@@ -65,7 +62,7 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 ); // version
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -83,14 +80,14 @@ namespace Server.Items
 			Hue = 0x497;
 			ItemID = 0x26AE;
 			Name = "Mangar's Robe";
-			Attributes.LowerManaCost = 25;
+			Attributes.SpellDamage = 25;
 			Attributes.LowerRegCost = 25;
 			SkillBonuses.SetValues( 0, SkillName.Elementalism, 10 );
 			SkillBonuses.SetValues( 1, SkillName.Focus, 10 );
 			SkillBonuses.SetValues( 2, SkillName.MagicResist, 10 );
 			SkillBonuses.SetValues( 3, SkillName.Meditation, 10 );
-			Attributes.RegenMana = 10;
-			Attributes.BonusInt = 10;
+			Attributes.RegenMana = 3;
+			Attributes.BonusInt = 20;
 			ArtifactLevel = ArtifactLevel.StandardArtefact;
 		}
 
@@ -101,7 +98,7 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 ); // version
 		}
 
 		public override void Deserialize( GenericReader reader )

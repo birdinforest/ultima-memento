@@ -54,11 +54,13 @@ namespace Server.Mobiles
 
 		public Spell GetMagerySpell()
 		{
-			Spell spell = null;
+			// Prioritize direct damage until the combatant has taken damage
+			var isCombatantWeakened = m_Mobile.Combatant != null && m_Mobile.Combatant.Hits < 0.75 * m_Mobile.Combatant.HitsMax;
+			if ( !isCombatantWeakened ) return GetRandomMageryDamageSpell();
 
-			// always check for bless, per OSI
-			// spell = CheckBless();
-
+			// Only higher health mobs will Bless
+			// Only attempt to bless if we have taken notable damage
+			var spell = 300 < m_Mobile.HitsMax && m_Mobile.Hits < 0.75 * m_Mobile.HitsMax ? CheckBless() : null;
 			if ( spell != null )
 			{
 				if ( m_Mobile.Debug )
@@ -67,7 +69,7 @@ namespace Server.Mobiles
 				return spell;
 			}
 
-			var checkSelf = m_Mobile.Combatant != null && 0 < m_Mobile.Combatant.MagicDamageAbsorb;
+			var checkSelf = m_Mobile.Combatant != null && MagicReflectSpell.HasReflect(m_Mobile.Combatant);
 
 			// 25% chance to cast Curse
 			if ( Utility.RandomDouble() > 0.75 )

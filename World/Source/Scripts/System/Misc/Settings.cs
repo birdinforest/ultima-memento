@@ -449,11 +449,11 @@ namespace Server
 			return Math.Max( 0, Math.Min( MAX_BONUS_SKILL_COUNT, MySettings.S_SkillBoost ) );
 		}
 
-		public static int StartTypeBonusSkillCount( CharacterType type )
+		public static int StartTypeBonusSkillCount( CharacterType type, PlayerMobile player )
 		{
 			switch (type)
 			{
-				case CharacterType.Fugitive: return 3;
+				case CharacterType.Fugitive: return player.Avatar.Active || player.Temptations.ReduceFugitiveSkillCap ? 2 : 3;
 				case CharacterType.Savage: return 1;
 				case CharacterType.Alien: return MySettings.S_AllowAlienChoice ? 30 : 0;
 				case CharacterType.Default: return 0;
@@ -468,7 +468,7 @@ namespace Server
 
 		public static double SkillGain()
 		{
-			int skill = 0;
+			int skill = MySettings.S_SkillGain;
 
 			if ( MySettings.S_SkillGain > 10 )
 				skill = 10;
@@ -486,7 +486,7 @@ namespace Server
 
 		public static int FoodCheck()
 		{
-			int time = 5;
+			int time = MySettings.S_FoodCheck;
 
 			if ( MySettings.S_FoodCheck > 60 )
 				time = 60;

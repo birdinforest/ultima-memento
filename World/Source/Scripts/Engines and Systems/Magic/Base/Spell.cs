@@ -45,6 +45,10 @@ namespace Server.Spells
 		public Item Scroll{ get{ return m_Scroll; } }
 		public DateTime StartCastTime { get { return m_StartCastTime; } }
 
+		public bool IsItemCast{ get{ return m_Caster is PlayerMobile && m_Scroll != null; } }
+		public bool IsScrollCast{ get{ return IsItemCast && ( m_Scroll is SpellScroll || m_Scroll is MagicRuneBag ); } }
+		public bool IsNoManaCast{ get{ return IsItemCast && m_Scroll.EnchantUsesMax == 0 && m_Scroll.Enchanted != MagicSpell.None; } }
+
 		private static TimeSpan NextSpellDelay = TimeSpan.FromSeconds( 0.75 );
 		private static TimeSpan AnimateDelay = TimeSpan.FromSeconds( 1.5 );
 
@@ -124,7 +128,8 @@ namespace Server.Spells
 				cir = 1000.0;
 			}
 
-			if ( caster.ItemCastSpell && var < cir )
+			var spell = caster.Spell as Spell;
+			if ( spell != null && spell.IsItemCast && var < cir )
 				var = cir;
 
 			return var;
@@ -141,19 +146,6 @@ namespace Server.Spells
 			m_Caster = caster;
 			m_Scroll = scroll;
 			m_Info = info;
-
-			caster.ItemCastSpell = false;
-			caster.ScrollCastSpell = false;
-			caster.NoManaUseSpell = false;
-			if ( caster is PlayerMobile && m_Scroll != null )
-			{
-				if ( m_Scroll != null )
-					caster.ItemCastSpell = true;
-				if ( m_Scroll is SpellScroll || m_Scroll is MagicRuneBag )
-					caster.ScrollCastSpell = true;
-				if ( m_Scroll.EnchantUsesMax == 0 && m_Scroll.Enchanted != MagicSpell.None )
-					caster.NoManaUseSpell = true;
-			}
 		}
 
 		public virtual int GetNewAosDamage( int bonus, int dice, int sides, Mobile singleTarget )
@@ -213,7 +205,7 @@ namespace Server.Spells
 			if ( inscribeSkill >= 1000 )
 				damageBonus += 10;
 
-			int intBonus = Caster.Int / 3;
+			int intBonus = Caster is BaseCreature ? Caster.Int / 5 : Caster.Int / 3;
 			damageBonus += intBonus;
 
 			int sdiBonus = AosAttributes.GetValue( m_Caster, AosAttribute.SpellDamage );
@@ -315,7 +307,7 @@ namespace Server.Spells
 			if ( !m_Caster.Player )
 				return true;
 
-			if ( m_Caster.ItemCastSpell )
+			if ( IsItemCast )
 				return true;
 
 			if ( AosAttributes.GetValue( m_Caster, AosAttribute.LowerRegCost ) > Utility.Random( 100 ) )
@@ -352,7 +344,7 @@ namespace Server.Spells
 			return Spell.ItemSkillValue( m, DamageSkill, false );
 		}
 
-		public virtual double GetResistSkill( Mobile m )
+		public double GetResistSkill( Mobile m )
 		{
 			return m.Skills[SkillName.MagicResist].Value;
 		}
@@ -392,8 +384,8 @@ namespace Server.Spells
 
 				if( atkSlayer != null && atkSlayer.Slays( defender ) || atkSlayer2 != null && atkSlayer2.Slays( defender ) )
 				{
-					defender.FixedEffect( 0x37B9, 10, 5 );	//TODO: Confirm this displays on OSIs
-					scalar = 2.0;
+					defender.FixedEffect( 0x37B9, 10, 5 ); //TODO: Confirm this displays on OSIs
+					scalar = 1.5;
 				}
 
 				TransformContext context = TransformationSpellHelper.GetContext( defender );
@@ -416,7 +408,7 @@ namespace Server.Spells
 				SlayerEntry defSlayer2 = SlayerGroup.GetEntryByName( defISlayer.Slayer2 );
 
 				if( defSlayer != null && defSlayer.Group.OppositionSuperSlays( m_Caster ) || defSlayer2 != null && defSlayer2.Group.OppositionSuperSlays( m_Caster ) )
-					scalar = 2.0;
+					scalar = 1.5;
 			}
 
 			return scalar;
@@ -608,7 +600,7 @@ namespace Server.Spells
 							Caster.FixedParticles( 0, 10, 5, m_Info.RightHandEffect, EffectLayer.RightHand );
 					}
 
-					if ( m_Caster.ItemCastSpell && !m_Caster.ScrollCastSpell ){}
+					if ( IsItemCast && !IsScrollCast ){}
 						else if ( ClearHandsOnCast )
 							m_Caster.ClearHands();
 
@@ -676,7 +668,8 @@ namespace Server.Spells
 		{
 			bool canCast = true;
 
-			if ( m.ItemCastSpell && !m.ScrollCastSpell )
+			var spell = s as Spell;
+			if ( spell != null && spell.IsItemCast && !spell.IsScrollCast )
 				return true;
 
 			if ( m is PlayerMobile )
@@ -702,8 +695,11 @@ namespace Server.Spells
 
 		public virtual bool CheckFizzle()
 		{
-			if ( Caster.ItemCastSpell )
-				return true;
+			if ( IsItemCast )
+			{
+				if ( !IsScrollCast || m_Scroll.Catalog != Catalogs.Scroll )
+					return true;
+			}
 
 			double minSkill, maxSkill;
 
@@ -712,17 +708,31 @@ namespace Server.Spells
 			if ( DamageSkill != CastSkill )
 				Caster.CheckSkillExplicit( DamageSkill, 0.0, Caster.Skills[ DamageSkill ].Cap );
 
-			var success = Caster.CheckSkillExplicit( CastSkill, minSkill, maxSkill );
-			//if (!success && SpellFailCallback != null) SpellFailCallback.Invoke();
+			if ( IsScrollCast )
+			{
+				// Pick the highest of the two skills
+				var value = Math.Max( Caster.Skills[ CastSkill ].Value, Caster.Skills[ SkillName.Inscribe ].Value );
+				if ( value < minSkill ) return false; // Too difficult
 
-			return success;
+				// Casting from scrolls can gain until that spell can fail
+				Caster.CheckSkill( SkillName.Inscribe, 0, maxSkill );
+
+				double chance = (value - minSkill) / (maxSkill - minSkill);
+				bool success = chance >= Utility.RandomDouble();
+
+				return success;
+			}
+			else
+			{
+				return Caster.CheckSkillExplicit( CastSkill, minSkill, maxSkill );
+			}
 		}
 
 		public abstract int GetMana();
 
 		public virtual int ScaleMana( int mana )
 		{
-			if ( Caster.NoManaUseSpell )
+			if ( IsNoManaCast )
 				return 0;
 
 			double scalar = 1.0;
@@ -863,7 +873,7 @@ namespace Server.Spells
 				else if ( m_Scroll != null && m_Scroll.Enchanted != MagicSpell.None )
 					m_Scroll.ConsumeEnchants( 1 );
 
-				if ( m_Caster.ItemCastSpell && !m_Caster.ScrollCastSpell ){}
+				if ( IsItemCast && !IsScrollCast ){}
 					else if ( ClearHandsOnCast )
 						m_Caster.ClearHands();
 

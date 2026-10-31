@@ -40,66 +40,76 @@ namespace Server.Spells.Elementalism
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.CheckReflect( (int)this.Circle, Caster, ref m );
-
-				int nBenefit = (int)(Caster.Skills[CastSkill].Value / 2);
-				
-				int secs = (int)((GetDamageSkill( Caster ) / 10) - (GetResistSkill( m ) / 10)) + nBenefit;
-				
-				if( !Core.SE )
-					secs += 2;
-
-				if ( !m.Player )
-					secs *= 3;
-
-				if ( secs < 0 )
-					secs = 0;
-
-				double duration = secs;
-
-				m.Paralyze( TimeSpan.FromSeconds( duration ) );
-
-				BuffInfo.RemoveBuff( m, BuffIcon.ElementalHold );
-				BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.ElementalHold, 1063628, TimeSpan.FromSeconds( duration ), m ) );
+				Mobile source = Caster;
+				bool hitThrough = SpellHelper.ResolveMagicDefense( (int)this.OneBasedCircle, ref source, ref m );
 
 				string elm = ElementalSpell.GetElement( Caster );
-				Point3D loc = new Point3D( 0, 0, 0 );
 
 				if ( elm == "air" )
-				{
 					m.PlaySound( 0x5C4 );
-					loc = new Point3D( m.X+1, m.Y+1, m.Z+5 );
-					Item effect = new ElementalEffect( 0x54E1, duration, m );
-					effect.Hue = 0xBB4;
-					effect.Light = LightType.Circle300;
-					effect.MoveToWorld( loc, m.Map );
-				}
 				else if ( elm == "earth" )
-				{
 					m.PlaySound( 0x161 );
-					loc = new Point3D( m.X+1, m.Y+1, m.Z+10 );
-					Item effect = new ElementalEffect( 0x5487, duration, m );
-					effect.MoveToWorld( loc, m.Map );
-				}
 				else if ( elm == "fire" )
-				{
 					m.PlaySound( 0x346 );
-					loc = new Point3D( m.X+1, m.Y+1, m.Z+10 );
-					Item effect = new ElementalEffect( 0x5475, duration, m );
-					effect.Hue = 0xB71;
-					effect.Light = LightType.Circle300;
-					effect.MoveToWorld( loc, m.Map );
-				}
 				else if ( elm == "water" )
-				{
 					m.PlaySound( 0x1BF );
-					loc = new Point3D( m.X+1, m.Y+1, m.Z+10 );
-					Item effect = new ElementalEffect( 0x5487, duration, m );
-					effect.Hue = 0xB3E;
-					effect.MoveToWorld( loc, m.Map );
-				}
 
-				HarmfulSpell( m );
+				if ( hitThrough )
+				{
+					int nBenefit = (int)(Caster.Skills[CastSkill].Value / 2);
+					
+					int secs = (int)((GetDamageSkill( Caster ) / 10) - (GetResistSkill( m ) / 10)) + nBenefit;
+					
+					if( !Core.SE )
+						secs += 2;
+
+					if ( !m.Player )
+						secs *= 3;
+
+					if ( secs < 0 )
+						secs = 0;
+
+					double duration = secs;
+
+					m.Paralyze( TimeSpan.FromSeconds( duration ) );
+
+					BuffInfo.RemoveBuff( m, BuffIcon.ElementalHold );
+					BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.ElementalHold, 1063628, TimeSpan.FromSeconds( duration ), m ) );
+
+					Point3D loc;
+
+					if ( elm == "air" )
+					{
+						loc = new Point3D( m.X+1, m.Y+1, m.Z+5 );
+						Item effect = new ElementalEffect( 0x54E1, duration, m );
+						effect.Hue = 0xBB4;
+						effect.Light = LightType.Circle300;
+						effect.MoveToWorld( loc, m.Map );
+					}
+					else if ( elm == "earth" )
+					{
+						loc = new Point3D( m.X+1, m.Y+1, m.Z+10 );
+						Item effect = new ElementalEffect( 0x5487, duration, m );
+						effect.MoveToWorld( loc, m.Map );
+					}
+					else if ( elm == "fire" )
+					{
+						loc = new Point3D( m.X+1, m.Y+1, m.Z+10 );
+						Item effect = new ElementalEffect( 0x5475, duration, m );
+						effect.Hue = 0xB71;
+						effect.Light = LightType.Circle300;
+						effect.MoveToWorld( loc, m.Map );
+					}
+					else if ( elm == "water" )
+					{
+						loc = new Point3D( m.X+1, m.Y+1, m.Z+10 );
+						Item effect = new ElementalEffect( 0x5487, duration, m );
+						effect.Hue = 0xB3E;
+						effect.MoveToWorld( loc, m.Map );
+					}
+
+					HarmfulSpell( m );
+				}
 			}
 
 			FinishSequence();

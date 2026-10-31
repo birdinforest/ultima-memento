@@ -1,6 +1,9 @@
 using Server.Items;
+using Server.Misc;
+using Server.Mobiles;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Server.Engines.Avatar
 {
@@ -10,6 +13,7 @@ namespace Server.Engines.Avatar
 		public static readonly PlayerContext Default = new PlayerContext();
 
 		private Serial _safetyDepositBoxSerial;
+		private bool _unlockFullSkillArchive;
 
 		public PlayerContext()
 		{
@@ -92,6 +96,71 @@ namespace Server.Engines.Avatar
 			BoatSpeedLevel = 9 < version ? reader.ReadInt() : 0;
 
 			DeserializeResearchFields( reader, version );
+
+			// v13 (local bump): Jascen's template-unlock bools ride version 10 upstream, but our
+			// v11/v12 carry the local research fields — gating on 12 keeps existing saves aligned.
+			if ( 12 < version )
+			{
+				UnlockTemplateJester = reader.ReadBool();
+				UnlockTemplateMystic = reader.ReadBool();
+				UnlockTemplateShinobi = reader.ReadBool();
+				UnlockTemplateDeathKnight = reader.ReadBool();
+				UnlockTemplateHolyMan = reader.ReadBool();
+			}
+
+			if (13 < version) // v14 (local bump): upstream v11 rides past our v13 template bools
+			{
+				UnlockFullSkillArchive = reader.ReadBool();
+			}
+
+			if (version < 15) // v15 (local bump): upstream v13 - refund old pre-reduction template costs; runs once per old save
+			{
+				if (UnlockTemplateJester) PointsSaved += 40 * RewardFactory.ONE_THOUSAND_GOLD;
+				if (UnlockTemplateMystic) PointsSaved += 40 * RewardFactory.ONE_THOUSAND_GOLD;
+				if (UnlockTemplateShinobi) PointsSaved += 40 * RewardFactory.ONE_THOUSAND_GOLD;
+				if (UnlockTemplateDeathKnight) PointsSaved += 40 * RewardFactory.ONE_THOUSAND_GOLD;
+				if (UnlockTemplateHolyMan) PointsSaved += 40 * RewardFactory.ONE_THOUSAND_GOLD;
+			}
+
+			// v16 (local bump): Jascen's Draft mode rides version 13 upstream — gating on 15 keeps
+			// existing v15 saves (template bools + skill archive + cost refund) reading correctly.
+			if ( 15 < version )
+			{
+				_draftModeEnabled = reader.ReadBool();
+				if (_draftModeEnabled)
+				{
+					var count = reader.ReadInt();
+					_draftedSkills = new HashSet<SkillName>(count);
+					for (int i = 0; i < count; i++)
+					{
+						_draftedSkills.Add((SkillName)reader.ReadInt());
+					}
+				}
+			}
+
+			// v17 (local bump): Jascen's prestige/banned-skills ride upstream v15 — gating on 16 keeps
+			// existing v15 saves (pre-Draft or Draft-only) reading correctly.
+			if (16 < version)
+			{
+				if (_draftModeEnabled)
+				{
+					var count = reader.ReadInt();
+					_draftBannedSkills = new HashSet<SkillName>(count);
+					for (int i = 0; i < count; i++)
+					{
+						_draftBannedSkills.Add((SkillName)reader.ReadInt());
+					}
+				}
+
+				PrestigeLevel = reader.ReadInt();
+			}
+			else
+			{
+				if (_draftModeEnabled)
+				{
+					_draftBannedSkills = new HashSet<SkillName>();
+				}
+			}
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -101,11 +170,12 @@ namespace Server.Engines.Avatar
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int BoatSpeedLevel { get; set; }
 
+		[CommandProperty(AccessLevel.GameMaster)]
+		public int GrandTotalPoints
+		{ get { return LifetimePointsGained + PointsFarmed; } }
+
 		public bool HasSafetyDepositBox
 		{ get { return _safetyDepositBoxSerial != Serial.Zero && World.Items.ContainsKey(_safetyDepositBoxSerial); } }
-
-		[CommandProperty(AccessLevel.GameMaster)]
-		public int ImprovedTemplateCount { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int LifetimeCombatQuestCompletions { get; set; }
@@ -133,6 +203,9 @@ namespace Server.Engines.Avatar
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int PointsSaved { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public int PrestigeLevel { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int RecordedSkillCapLevel { get; set; }
@@ -163,6 +236,18 @@ namespace Server.Engines.Avatar
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool UnlockFugitiveMode { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool UnlockFullSkillArchive
+		{
+			get { return _unlockFullSkillArchive; }
+			set
+			{
+				_unlockFullSkillArchive = value;
+				ClearRewardCache(Categories.PrimaryBoosts);
+				ClearRewardCache(Categories.SecondaryBoosts);
+			}
+		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool UnlockMonsterRaces { get; set; }
@@ -205,7 +290,9 @@ namespace Server.Engines.Avatar
 
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(12); // version
+			// v17 (local bump): v16 = Draft mode persistence, v17 = prestige + draft-banned skills;
+			// upstream v16 (beta-coin flag removal) is subsumed — our chain never carries that byte past prestige
+			writer.Write(17); // version
 
 			writer.Write(PointsFarmed);
 			writer.Write(PointsSaved);
@@ -240,6 +327,31 @@ namespace Server.Engines.Avatar
 			writer.Write(BoatSpeedLevel);
 
 			SerializeResearchFields( writer );
+
+			writer.Write(UnlockTemplateJester);
+			writer.Write(UnlockTemplateMystic);
+			writer.Write(UnlockTemplateShinobi);
+			writer.Write(UnlockTemplateDeathKnight);
+			writer.Write(UnlockTemplateHolyMan);
+			writer.Write(UnlockFullSkillArchive);
+
+			writer.Write(_draftModeEnabled);
+			if (_draftModeEnabled)
+			{
+				writer.Write(_draftedSkills.Count);
+				foreach (var skill in _draftedSkills)
+				{
+					writer.Write((int)skill);
+				}
+
+				writer.Write(_draftBannedSkills.Count);
+				foreach (var skill in _draftBannedSkills)
+				{
+					writer.Write((int)skill);
+				}
+			}
+
+			writer.Write(PrestigeLevel);
 		}
 
 		public override string ToString()
@@ -250,11 +362,7 @@ namespace Server.Engines.Avatar
 
 	public partial class PlayerContext
 	{
-		public HashSet<AvatarStarterTemplates> BoostedTemplateCache { get; set; }
-
 		public Dictionary<Categories, List<int>> RewardCache { get; set; }
-
-		public AvatarStarterTemplates SelectedTemplate { get; set; }
 
 		public void ClearRewardCache(Categories category)
 		{
@@ -326,6 +434,137 @@ namespace Server.Engines.Avatar
 				SlayerName.Fey,
 			});
 			RivalBonusEnabled = true;
+		}
+	}
+
+	public partial class PlayerContext
+	{
+		public HashSet<AvatarStarterTemplates> BoostedTemplateCache { get; set; }
+
+		public bool CanUnlockTemplateDeathKnight
+		{ get { return 500 <= Skills[SkillName.Knightship]; } }
+
+		public bool CanUnlockTemplateHolyMan
+		{ get { return 300 <= Skills[SkillName.Healing] && 300 <= Skills[SkillName.Spiritualism]; } }
+
+		public bool CanUnlockTemplateJester
+		{ get { return 300 <= Skills[SkillName.Begging] && 300 <= Skills[SkillName.Psychology]; } }
+
+		public bool CanUnlockTemplateMystic
+		{ get { return 1000 <= Skills[SkillName.Focus] && 1000 <= Skills[SkillName.Meditation]; } }
+
+		public bool CanUnlockTemplateShinobi
+		{ get { return 500 <= Skills[SkillName.Ninjitsu]; } }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public int ImprovedTemplateCount { get; set; }
+
+		public AvatarStarterTemplates SelectedTemplate { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool UnlockTemplateDeathKnight { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool UnlockTemplateHolyMan { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool UnlockTemplateJester { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool UnlockTemplateMystic { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool UnlockTemplateShinobi { get; set; }
+
+		public void ApplyTemplate(PlayerMobile player, AvatarStarterTemplates template)
+		{
+			if (!player.Avatar.Active) return;
+
+			switch (template)
+			{
+				case AvatarStarterTemplates.Jester:
+					{
+						if (!DraftModeEnabled)
+						{
+							player.Skills[SkillName.Begging].Base = player.Avatar.Skills[SkillName.Begging];
+							player.Skills[SkillName.Psychology].Base = player.Avatar.Skills[SkillName.Psychology];
+						}
+
+						player.AddItem(new BagOfTricks());
+						break;
+					}
+
+				case AvatarStarterTemplates.Mystic:
+					{
+						if (!DraftModeEnabled)
+						{
+							player.Skills[SkillName.Focus].Base = player.Avatar.Skills[SkillName.Focus];
+							player.Skills[SkillName.Meditation].Base = player.Avatar.Skills[SkillName.Meditation];
+						}
+
+						player.AddItem(new MysticSpellbook { Owner = player });
+						break;
+					}
+
+				case AvatarStarterTemplates.Shinobi:
+					{
+						if (!DraftModeEnabled)
+						{
+							player.Skills[SkillName.Ninjitsu].Base = player.Avatar.Skills[SkillName.Ninjitsu];
+						}
+
+						player.AddItem(new ShinobiScroll { Owner = player });
+						break;
+					}
+
+				case AvatarStarterTemplates.DeathKnight:
+					{
+						if (!DraftModeEnabled)
+						{
+							player.Skills[SkillName.Knightship].Base = player.Avatar.Skills[SkillName.Knightship];
+						}
+
+						player.Karma = -5000;
+						player.AddItem(new DeathKnightSpellbook { Owner = player });
+						break;
+					}
+
+				case AvatarStarterTemplates.HolyMan:
+					{
+						if (!DraftModeEnabled)
+						{
+							player.Skills[SkillName.Healing].Base = player.Avatar.Skills[SkillName.Healing];
+							player.Skills[SkillName.Spiritualism].Base = player.Avatar.Skills[SkillName.Spiritualism];
+						}
+
+						player.AddItem(new HolyManSpellbook { Owner = player });
+						break;
+					}
+
+				case AvatarStarterTemplates.Brute:
+				case AvatarStarterTemplates.Acrobat:
+				case AvatarStarterTemplates.Scholar:
+					{
+						// You get NOTHING!
+						break;
+					}
+
+				default:
+					if (template > AvatarStarterTemplates.DEFAULT_START && template < AvatarStarterTemplates.DEFAULT_END)
+					{
+						var profession = (StarterProfessions)template;
+						var skills = CharacterCreation.GetTemplateSkills(profession);
+						CharacterCreation.AddSkillBasedItems(player, skills);
+					}
+					break;
+			}
+
+			if (DraftModeEnabled)
+			{
+				// Draft players get items for every skill they drafted regardless of their current skill level
+				var skills = DraftedSkills.Select(skillName => new SkillNameValue(skillName, 1)).ToArray();
+				CharacterCreation.AddSkillBasedItems(player, skills);
+			}
 		}
 	}
 }

@@ -39,7 +39,7 @@ namespace Server.Items
         {
             if (!base.Validate(from, weapon)) return false;
 
-            if (false == (weapon is BaseBashing || weapon is BaseStaff || weapon is IPugilistGlove))
+            if (weapon.Skill != SkillName.Bludgeoning && weapon.Skill != SkillName.FistFighting)
             {
                 from.SendMessage(32, StringCatalog.Resolve(from.Account, "You may only use this on blunt weapons"));
                 return false;

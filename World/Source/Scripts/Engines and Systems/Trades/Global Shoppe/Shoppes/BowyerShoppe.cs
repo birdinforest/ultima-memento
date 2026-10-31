@@ -54,7 +54,7 @@ namespace Server.Engines.GlobalShoppe
 				var rewards = BowcraftRewardCalculator.Instance;
 				rewards.SetRewards(context, order);
 
-				var item = ShoppeItemCache.GetOrCreate(order.Type);
+				var item = Misc.Cache.ItemSnapshotCache.GetOrCreate(order.Type);
 				order.GraphicId = item.ItemID;
 				order.ItemName = item.Name;
 				order.Person = CreatePersonName();

@@ -20,7 +20,7 @@ namespace Server.Items
 
 		public override bool CanEquip( Mobile from )
 		{
-			if ( m_Owner != from )
+			if ( Owner != from )
 			{
 				from.SendMessage( StringCatalog.Resolve( from.Account, "You cannot seem to wear the robe!" ) );
 				return false;

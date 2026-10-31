@@ -1,5 +1,5 @@
-using Server.Items;
 using Server.Mobiles;
+using Server.Spells.Song;
 
 namespace Server.SpellBars
 {
@@ -7,15 +7,8 @@ namespace Server.SpellBars
 	{
 		public static readonly BardSpellSchool Instance = new BardSpellSchool();
 
-		private static readonly string[] SpellNames =
-		{
-			"Army's Paeon", "Enchanting Etude", "Energy Carol", "Energy Threnody", "Fire Carol", "Fire Threnody",
-			"Foe Requiem", "Ice Carol", "Ice Threnody", "Knight's Minne", "Mage's Ballad", "Magic Finale",
-			"Poison Carol", "Poison Threnody", "Shepherd's Dance", "Sinewy Etude"
-		};
-
 		public int MaxSlots
-		{ get { return 16; } }
+		{ get { return BardSongProvider.SpellCount; } }
 
 		public SpellBarSchool School
 		{ get { return SpellBarSchool.Bard; } }
@@ -25,27 +18,23 @@ namespace Server.SpellBars
 
 		public int GetIcon(PlayerMobile from, int slotIndex)
 		{
-			if (11 < slotIndex)
-				slotIndex += 1;
-
-			return 1028 - 1 + slotIndex;
+			return BardSongProvider.SpellDefinitions[slotIndex - 1].IconGraphic;
 		}
 
 		public string GetName(int slotIndex)
 		{
-			if (slotIndex < 1 || slotIndex > SpellNames.Length)
+			if (slotIndex < 1 || slotIndex > BardSongProvider.SpellCount)
 				return string.Empty;
 
-			return SpellNames[slotIndex - 1];
+			return BardSongProvider.SpellDefinitions[slotIndex - 1].Name.String;
 		}
 
 		public int GetRegistrySpellId(int slotIndex)
-		{ return 351 - 1 + slotIndex; }
+		{ return BardSongProvider.SpellDefinitions[slotIndex - 1].SpellID; }
 
 		public bool HasSpell(PlayerMobile from, int registrySpellId)
 		{
-			Spellbook book = Spellbook.Find(from, registrySpellId);
-			return book != null && book.HasSpell(registrySpellId);
+			return BardSongProvider.HasSpell(from, registrySpellId);
 		}
 	}
 

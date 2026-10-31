@@ -1,13 +1,10 @@
-using System;
-using Server;
-using Server.Items;
-using Server.Localization;
+using Server.Spells.Song;
 
 namespace Server.Items
 {
 	public class FireCarolScroll : SpellScroll
 	{
-		public override string DefaultDescription{ get{ return SongBook.SpellDescription( 355 ); } }
+		public override string DefaultDescription{ get{ return SongBook.SpellDescription( SpellID ); } }
 
 		[Constructable]
 		public FireCarolScroll() : this( 1 )
@@ -15,9 +12,9 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public FireCarolScroll( int amount ) : base( 355, 0x1F49, amount )
+		public FireCarolScroll( int amount ) : base( FireCarolSong.SpellInfo.SpellDefinition.SpellID, 0x1F49, amount )
 		{
-			Name = "fire carol sheet music";
+			Name = string.Format("{0} sheet music", BardSongProvider.GetDefinition(SpellID).Name);
 			Hue = 0x96;
 			Stackable = true;
         }
@@ -28,7 +25,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( StringCatalog.Resolve( from.Account, "The sheet music must be in your music book." ) );
+			from.SendMessage( "The sheet music must be in your music book." );
 		}
 
 		public override void Serialize( GenericWriter writer )

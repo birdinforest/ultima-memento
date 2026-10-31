@@ -772,7 +772,7 @@ namespace Server.Network
 					if ( !int.TryParse( command.Split( ' ' )[0], out skillIndex ) )
 						break;
 
-					Skills.UseSkill( m, skillIndex );
+					m.UseSkill( skillIndex );
 
 					break;
 				}
@@ -1045,7 +1045,14 @@ namespace Server.Network
 			Skill s = state.Mobile.Skills[pvSrc.ReadInt16()];
 
 			if ( s != null )
-				s.SetLockNoRelay( (SkillLock)pvSrc.ReadByte() );
+			{
+				var skillLock = (SkillLock)pvSrc.ReadByte();
+				s.SetLockNoRelay( skillLock );
+				if (s.Lock == skillLock) return;
+
+				// Update didn't hold. Notify Client
+				state.Mobile.Send(new SkillChange(s));
+			}
 		}
 
 		public static void HelpRequest( NetState state, PacketReader pvSrc )

@@ -66,7 +66,7 @@ namespace Server.Engines.MLQuests.Gumps
 		protected virtual int FooterButtonY { get { return 425; } }
 
 		// RunUO optimized version
-		public BaseQuestGump( int label, PlayerMobile viewer = null )
+		public BaseQuestGump( bool showBackgroundImage, int label, PlayerMobile viewer = null )
 			: base( 75, 25 )
 		{
 			QuestViewer = viewer;
@@ -78,7 +78,7 @@ namespace Server.Engines.MLQuests.Gumps
 
 			AddPage( 0 );
 			
-			AddImage( 50, 20, 0x1452 );
+			AddImage( 50, 20, 0x1452, showBackgroundImage ? 0 : Misc.PlayerSettings.BLACK_GUMP_HUE );
 			AddImage( 90, 33, 0x232D ); // Medallion top left
 			AddHtmlLocalized( 130, 45, 270, 16, label, 0xFFFFFF, false, false );
 			AddImageTiled( 130, 65, 175, 1, 0x238D ); // Tiny Underline
@@ -270,20 +270,31 @@ namespace Server.Engines.MLQuests.Gumps
 				objInstance.WriteToGump( this, ref y );
 		}
 
-		public void AddRewardsPage( MLQuest quest ) // For the quest log/offer gumps
+		public void AddRewardsPage( MLQuest quest, bool hasQuest ) // For the quest log/offer gumps
 		{
-			AddHtmlLocalized( 98, 140, 312, 16, 1072201, COLOR_TITLE_LOCALIZED, false, false ); // Reward
+			int y = 140;
 
-			int y = 162;
+			AddHtmlLocalized( 98, y, 312, 16, 1072201, COLOR_TITLE_LOCALIZED, false, false ); // Reward
+			y += 16;
 
 			if ( quest.Rewards.Count > 1 )
 			{
 				// TODO: Is this what this is for? Does "Only one of the following" occur?
-				AddHtmlLocalized( 98, 156, 312, 16, 1072208, COLOR_LOCALIZED, false, false ); // All of the following
+				AddHtmlLocalized( 98, y, 312, 16, 1072208, COLOR_LOCALIZED, false, false ); // All of the following
 				y += 16;
 			}
 
 			AddRewards( quest, 105, y, 16 );
+			
+			if ( hasQuest && quest.QuestRecipient != null )
+			{
+				y += 32;
+				var destination = QuesterNameAttribute.GetQuesterNameFor(quest.QuestRecipient);
+				if ( destination != null )
+				{
+					AddLabel(98, y, BaseQuestGump.COLOR_LABEL, string.Format("Return to {0}.", destination));
+				}
+			}
 		}
 
 		public void AddRewards( MLQuest quest ) // For the claim rewards gump

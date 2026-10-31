@@ -3,22 +3,32 @@ using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
 using System;
-using Server.Localization;
+using Server.Targeting;
 
 namespace Server.Spells.Song
 {
 	public class IceCarolSong : Song
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Ice Carol", "*plays an ice carol*",
-				-1
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 358,
+				IconGraphic = 0x40B,
+				Name = "Ice Carol",
+				PowerWords = "*plays an ice carol*",
+				Description = "An area of effect that raises the cold resistance of your party.",
+				ManaCost = 12,
+				MinSkill = 50,
+				TargetType = TargetFlags.Beneficial
+			},
+	-1
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(0.5); } }
-		public override double RequiredSkill { get { return 50.0; } }
-		public override int RequiredMana { get { return 12; } }
+		public override double RequiredSkill { get { return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana { get { return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public IceCarolSong(Mobile caster, Item scroll) : base(caster, scroll, m_Info)
+		public IceCarolSong(Mobile caster, Item scroll) : base(caster, scroll, SpellInfo)
 		{
 		}
 
@@ -65,7 +75,7 @@ namespace Server.Spells.Song
 				m_Mod = null;
 
 				BuffInfo.RemoveBuff(m, BuffIcon.IceCarol);
-				m.SendMessage("The effect of {0} wears off.", m_Info.Name);
+				m.SendMessage("The effect of {0} wears off.", SpellInfo.SpellDefinition.Name);
 			}
 
 			protected override bool TryApplyInternal()
@@ -83,7 +93,7 @@ namespace Server.Spells.Song
 					}
 				}
 
-				m.SendMessage( StringCatalog.Resolve( m.Account, "Your resistance to cold has increased." ) );
+				m.SendMessage("Your resistance to cold has increased.");
 				m_Mod = new ResistanceMod(ResistanceType.Cold, +amount);
 				m.AddResistanceMod(m_Mod);
 				m.FixedParticles(0x373A, 10, 15, 5012, 0x480, 3, EffectLayer.Waist);

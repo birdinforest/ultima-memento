@@ -1279,7 +1279,12 @@ namespace Server.Mobiles
 			if ( this is Humanoid || (this is HouseVisitor && (this.Body == 9 || this.Body == 320)) )
 				return false;
 
-			new SpeechGumpEntry( from, this ).OnClick();
+			SpeechGumpEntry entry = new SpeechGumpEntry( from, this );
+
+			if ( !from.CanSee( this ) || !from.InRange( this, entry.Range ) )
+				return false;
+
+			entry.OnClick();
 			return true;
 		}
 
@@ -2039,12 +2044,10 @@ namespace Server.Mobiles
 					say = "I unlocked it for you.";
 					sound = 0x241;
 					box.Locked = false;
-					box.TrapPower = 0;
-					box.TrapLevel = 0;
+					box.DisableTrap();
 					box.LockLevel = 0;
 					box.MaxLockLevel = 0;
 					box.RequiredSkill = 0;
-					box.TrapType = TrapType.None;
 				}
 			}
 			else if ( CitizenService == 2 )

@@ -15,6 +15,8 @@ namespace Server.Engines.MLQuests.Definitions
         public BlacksmithBasicsQuest()
         {
             Activated = true;
+			OneTimeOnly = true;
+
             Title = "The Flame's Call";
             var builder = new StringBuilder();
             builder.Append("The sound of the hammer striking metal rings out like a heartbeat in the air, steady and rhythmic. In the nearby forge, you see glowing coals crackle and hiss as they feed the flames.");
@@ -61,9 +63,11 @@ namespace Server.Engines.MLQuests.Definitions
             CompletionMessage = builder.ToString();
         }
 
+        public override Type QuestRecipient { get { return typeof(Blacksmith); } }
+
         public override IEnumerable<Type> GetQuestGivers()
         {
-            yield return typeof(Blacksmith); // Quest Giver - Any Blacksmith
+            yield return QuestRecipient; // Quest Giver - Any Blacksmith
         }
 
         public override bool CanOffer(IQuestGiver quester, PlayerMobile pm, MLQuestContext context, bool message)
@@ -99,6 +103,7 @@ namespace Server.Items
         {
             Name = "training shovel";
             Weight = 1;
+			ShowUsesRemaining = true;
         }
 
         public TrainingShovel(Serial serial) : base(serial)
@@ -123,7 +128,9 @@ namespace Server.Items
 
         public override void AppendChildProperties(ObjectPropertyList list)
         {
-            // Suppress behavior
+            // Suppress default behavior
+
+			list.Add( 1060584, "{0}\t{1}", UsesRemaining.ToString(), "Uses" );
         }
 
         public override void Serialize(GenericWriter writer)

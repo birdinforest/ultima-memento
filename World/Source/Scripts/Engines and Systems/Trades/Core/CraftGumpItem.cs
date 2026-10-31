@@ -59,17 +59,27 @@ namespace Server.Engines.Craft
 				if ( craftSystem.GumpTitleNumber > 0 )
 					AddHtmlLocalized( 10, 12, 510, 20, craftSystem.GumpTitleNumber, LabelColor, false, false );
 				else
-					AddHtml( 10, 12, 510, 20, CraftDisplayLocale.Resolve( from, craftSystem.GumpTitleString ), false, false );
+					AddHtml( 10, 12, 510, 20, craftSystem.GumpTitleString, false, false );
 
 				AddButton( 15, 405, 4014, 4016, 0, GumpButtonType.Reply, 0 );
 				AddHtmlLocalized( 50, 408, 150, 18, 1044150, LabelColor, false, false ); // BACK
 					
 				bool needsRecipe = craftItem.Recipe != null && from is PlayerMobile && !((PlayerMobile)from).HasRecipe( craftItem.Recipe );
+				if ( !needsRecipe && CraftSystem.AllowManyCraft( m_Tool ) && !m_CraftItem.UseAllRes )
+				{
+					CraftGump.AddCraftAmountButtons( this, 270, 405, 1 );
+					AddHtmlLocalized( 403, 408, 150, 18, 1044151, LabelColor, false, false ); // MAKE NOW
+				}
+				// else
+				// {
+				// 	AddButton( 270, 387, 4005, 4007, 1, GumpButtonType.Reply, 0 );
+				// 	AddHtmlLocalized( 305, 390, 150, 18, 1044151, LabelColor, false, false ); // MAKE NOW
+				// }
 
 				if ( craftItem.NameNumber > 0 )
 					AddHtmlLocalized( 330, 40, 180, 18, craftItem.NameNumber, LabelColor, false, false );
 				else
-					AddLabel( 330, 40, LabelHue, CraftDisplayLocale.Resolve( from, craftItem.NameString ) );
+					AddLabel( 330, 40, LabelHue, craftItem.NameString );
 
 				if ( craftItem.UseAllRes )
 					AddHtmlLocalized( 170, 302 + (m_OtherCount++ * 20), 310, 18, 1048176, LabelColor, false, false ); // Makes as many as possible at once
@@ -111,7 +121,7 @@ namespace Server.Engines.Craft
 					else if ( CraftSystem.AllowManyCraft( m_Tool ) && !m_CraftItem.UseAllRes)
 					{
 						AddHtml( x, y, 100, 40, String.Format( "<BASEFONT COLOR={0}>Craft Amount:</BASEFONT>", TextColor ), false, false );
-						CraftGump.AddCraftAmountButtons( this, x + 90, y - 3, 1 );
+						CraftGump.AddCraftAmountButtons( this, x + 95, y - 3, 1 );
 					}
 					else
 					{
@@ -206,6 +216,7 @@ namespace Server.Engines.Craft
 			}
 		}
 
+		private static Type typeofArcaneScroll = typeof( ArcaneScroll );
 		private static Type typeofBlankScroll = typeof( BlankScroll );
 		private static Type typeofSpellScroll = typeof( SpellScroll );
 
@@ -221,9 +232,13 @@ namespace Server.Engines.Craft
 			if ( context != null )
 				resIndex = context.LastResourceIndex;
 
-			bool cropScroll = ( m_CraftItem.Resources.Count > 1 )
+			bool needsBlankScroll = ( m_CraftItem.Resources.Count > 1 )
 				&& m_CraftItem.Resources.GetAt( m_CraftItem.Resources.Count - 1 ).ItemType == typeofBlankScroll
 				&& typeofSpellScroll.IsAssignableFrom( m_CraftItem.ItemType );
+			bool needsArcaneScroll = !needsBlankScroll && ( m_CraftItem.Resources.Count > 1 )
+				&& m_CraftItem.Resources.GetAt( m_CraftItem.Resources.Count - 1 ).ItemType == typeofArcaneScroll
+				&& typeofSpellScroll.IsAssignableFrom( m_CraftItem.ItemType );
+			bool cropScroll = needsBlankScroll;
 
 			for ( int i = 0; i < m_CraftItem.Resources.Count - (cropScroll ? 1 : 0) && i < 4; i++ )
 			{
@@ -262,13 +277,15 @@ namespace Server.Engines.Craft
 				if ( nameNumber > 0 )
 					AddHtmlLocalized( 170, 219 + (i * 20), 310, 18, nameNumber, LabelColor, false, false );
 				else
-					AddLabel( 170, 219 + (i * 20), LabelHue, CraftDisplayLocale.Resolve( m_From, nameString ) );
+					AddLabel( 170, 219 + (i * 20), LabelHue, nameString );
 
 				AddLabel( 430, 219 + (i * 20), LabelHue, craftResource.Amount.ToString() );
 			}
 
-			if ( cropScroll )
+			if ( needsBlankScroll )
 				AddHtmlLocalized( 170, 302 + (m_OtherCount++ * 20), 360, 18, 1044379, LabelColor, false, false ); // Inscribing scrolls also requires a blank scroll and mana.
+			else if ( needsArcaneScroll )
+				AddHtml( 170, 302 + (m_OtherCount++ * 20), 360, 18, TextDefinition.GetColorizedText("Inscribing scrolls also requires mana.", HtmlColors.WHITE), false, false );
 		}
 
 		public override void OnResponse( NetState sender, RelayInfo info )

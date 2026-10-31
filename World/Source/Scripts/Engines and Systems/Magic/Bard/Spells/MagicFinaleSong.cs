@@ -3,21 +3,32 @@ using System.Collections;
 using Server.Mobiles;
 using Server.Items;
 using Server.Misc;
+using Server.Targeting;
 
 namespace Server.Spells.Song
 {
 	public class MagicFinaleSong : Song
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Magic Finale", "*plays a magic finale*",
-				-1
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 362,
+				IconGraphic = 0x410,
+				Name = "Magic Finale",
+				PowerWords = "*plays a magic finale*",
+				Description = "An area of effect that dispels all summoned creatures around you.",
+				ManaCost = 35,
+				MinSkill = 90,
+				TargetType = TargetFlags.Harmful
+			},
+	-1
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(0.5); } }
-		public override double RequiredSkill { get { return 90.0; } }
-		public override int RequiredMana { get { return 35; } }
+		public override double RequiredSkill { get { return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana { get { return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public MagicFinaleSong(Mobile caster, Item scroll) : base(caster, scroll, m_Info)
+		public MagicFinaleSong(Mobile caster, Item scroll) : base(caster, scroll, SpellInfo)
 		{
 		}
 

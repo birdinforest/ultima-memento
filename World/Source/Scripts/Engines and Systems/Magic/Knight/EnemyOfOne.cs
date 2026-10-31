@@ -1,30 +1,38 @@
 using System;
 using System.Collections;
-using Server;
 using Server.Mobiles;
-using Server.Network;
-using Server.Items;
 using Server.Targeting;
 
 namespace Server.Spells.Chivalry
 {
 	public class EnemyOfOneSpell : PaladinSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Enemy of One", "Forul Solum",
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+				new SpellDefinition
+				{
+					SpellID = 205,
+					IconGraphic = 0x5105,
+					Name = "Enemy of One",
+					PowerWords = 1060723, // Forul Solum
+					Description = 1061495, // The next target hit becomes the Knight’s Mortal Enemy.  All damage dealt to that exact creature type is increased, but the Knight takes extra damage from all other creature types. Mortal Enemy creature types will highlight Orange to the Knight.  Duration of the spell is affected by the Caster’s Karma.
+					ManaCost = 20,
+					TithingCost = 10,
+					MinSkill = 45,
+					TargetType = TargetFlags.None,
+				},
 				-1,
 				9002
 			);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 0.5 ); } }
 
-		public override double RequiredSkill{ get{ return 45.0; } }
-		public override int RequiredMana{ get{ return 20; } }
-		public override int RequiredTithing{ get{ return 10; } }
-		public override int MantraNumber{ get{ return 1060723; } } // Forul Solum
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override int MantraNumber{ get{ return SpellInfo.SpellDefinition.PowerWords.Number; } }
 		public override bool BlocksMovement{ get{ return false; } }
 
-		public EnemyOfOneSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public EnemyOfOneSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 

@@ -12,12 +12,22 @@ namespace Server.Spells.Song
 	{
 		private static readonly Hashtable m_Table = new Hashtable();
 
-		private static SpellInfo m_Info = new SpellInfo(
-				"Foe Requiem", "*plays a foe requiem*",
-				-1
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 357,
+				IconGraphic = 0x40A,
+				Name = "Foe Requiem",
+				PowerWords = "*plays a foe requiem*",
+				Description = "Damages your target with a burst of sonic energy.",
+				ManaCost = 30,
+				MinSkill = 80,
+				TargetType = TargetFlags.Harmful
+			},
+	-1
+		);
 
-		public FoeRequiemSong(Mobile caster, Item scroll) : base(caster, scroll, m_Info)
+		public FoeRequiemSong(Mobile caster, Item scroll) : base(caster, scroll, SpellInfo)
 		{
 		}
 
@@ -42,7 +52,7 @@ namespace Server.Spells.Song
 
 				if (messageRecipient != null)
 				{
-					messageRecipient.SendMessage("The effect of {0} wears off.", m_Info.Name);
+					messageRecipient.SendMessage("The effect of {0} wears off.", SpellInfo.SpellDefinition.Name);
 				}
 			}
 		}

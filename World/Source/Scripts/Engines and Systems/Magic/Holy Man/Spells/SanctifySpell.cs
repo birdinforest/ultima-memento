@@ -1,28 +1,36 @@
 using System;
 using System.Collections;
-using Server.Items;
-using Server.Mobiles;
-using Server.Spells;
-using Server.Spells.Seventh;
+using Server.Targeting;
 
 namespace Server.Spells.HolyMan
 {
 	public class SanctifySpell : HolyManSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Sanctify", "Benedicite",
-				266,
-				9040
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 779,
+				IconGraphic = 0x96D,
+				Name = "Sanctify",
+				PowerWords = "Benedicite",
+				Description = "The gods grant the priest greater strength, speed, and intelligence.",
+				ManaCost = 15,
+				TithingCost = 60,
+				MinSkill = 30,
+				TargetType = TargetFlags.Beneficial
+			},
+			266,
+			9040
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 3 ); } }
-		public override int RequiredTithing{ get{ return 60; } }
-		public override double RequiredSkill{ get{ return 30.0; } }
-		public override int RequiredMana{ get{ return 15; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
 		private static Hashtable m_Table = new Hashtable();
 
-		public SanctifySpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public SanctifySpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 

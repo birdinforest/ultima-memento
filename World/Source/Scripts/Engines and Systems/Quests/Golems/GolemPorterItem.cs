@@ -7,9 +7,8 @@ using Server.Items;
 using Server.Gumps;
 using Server.Regions;
 using Server.Mobiles;
-using System.Collections;
-using System.Collections.Generic;
-using Server.Accounting;
+using Server.Utilities;
+using System.Linq;
 
 namespace Server.Items
 {
@@ -36,7 +35,7 @@ namespace Server.Items
 		public int Porter_Exodus{ get { return PorterExodus; } set { PorterExodus = value; InvalidateProperties(); } }
 
 		[CommandProperty(AccessLevel.Owner)]
-		public int Porter_Type{ get { return PorterType; } set { PorterType = value; InvalidateProperties(); } }
+		public bool IsPorter{ get { return PorterType == 0; } set { PorterType = value ? 0 : 1; InvalidateProperties(); } }
 
 		[CommandProperty(AccessLevel.Owner)]
 		public string Porter_Name { get { return PorterName; } set { PorterName = value; InvalidateProperties(); } }
@@ -67,35 +66,20 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			ArrayList pets = new ArrayList();
-
-			foreach ( Mobile m in World.Mobiles.Values )
-			{
-				if ( m is GolemPorter && PorterType == 0 )
-				{
-					BaseCreature bc = (BaseCreature)m;
-					if ( bc.Controlled && bc.ControlMaster == from )
-						pets.Add( bc );
-				}
-				else if ( m is GolemFighter && PorterType == 1 )
-				{
-					BaseCreature bc = (BaseCreature)m;
-					if ( bc.Controlled && bc.ControlMaster == from )
-						pets.Add( bc );
-				}
-			}
-
-			int nFollowers = from.Followers;
-
 			if (!IsChildOf(from.Backpack))
 			{
 				from.SendLocalizedMessage(1042001);
+				return;
 			}
-			else if ( pets.Count > 0 )
+			
+			var hasGolem = WorldUtilities
+				.ForEachMobile<BaseCreature>(mobile => mobile is GolemPorter || mobile is GolemFighter)
+				.Any(bc => bc.Controlled && bc.ControlMaster == from);
+			if ( hasGolem )
 			{
 				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "eng.golem.already_have" ) );
 			}
-			else if ( nFollowers > 0 )
+			else if ( from.FollowersMax - from.Followers < (IsPorter ? GolemPorter.MaxControlSlots : GolemFighter.MaxControlSlots) )
 			{
 				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "eng.golem.too_many" ) );
 			}
@@ -113,10 +97,9 @@ namespace Server.Items
 				ConsumeCharge( from );
 				this.InvalidateProperties();
 
-				BaseCreature friend = new GolemPorter();
-				((GolemPorter)friend).PorterExodus = this.PorterExodus;
-
-				if ( this.PorterType > 0 ){ friend.Delete(); friend = new GolemFighter(); ((GolemFighter)friend).PorterExodus = this.PorterExodus; }
+				BaseCreature friend;
+				if ( IsPorter ) friend = new GolemPorter { PorterExodus = PorterExodus };
+				else friend = new GolemFighter { PorterExodus = PorterExodus };
 
 				bool validLocation = false;
 				Point3D loc = from.Location;
@@ -136,7 +119,6 @@ namespace Server.Items
 				friend.ControlMaster = from;
 				friend.Controlled = true;
 				friend.ControlOrder = OrderType.Come;
-				friend.ControlSlots = 5;
 				friend.Loyalty = 100;
 				friend.Summoned = true;
 				friend.Hue = this.PorterHue;
@@ -157,19 +139,6 @@ namespace Server.Items
 		public void ConsumeCharge( Mobile from )
 		{
 			--Charges;
-		}
-
-		private static string GetOwner( int serial )
-		{
-			string sOwner = null;
-
-			foreach ( Mobile owner in World.Mobiles.Values )
-			if ( owner.Serial == serial )
-			{
-				sOwner = owner.Name;
-			}
-
-			return sOwner;
 		}
 
 		public override void GetProperties( ObjectPropertyList list )

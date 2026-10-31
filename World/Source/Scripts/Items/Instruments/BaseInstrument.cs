@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Mobiles;
 using Server.Targeting;
 using Server.Engines.Craft;
+using Server.Engines.Avatar;
 
 namespace Server.Items
 {
@@ -19,6 +20,37 @@ namespace Server.Items
 
 	public abstract class BaseInstrument : Item, ICraftable, ISlayer
 	{
+		public override bool CanEquip( Mobile from )
+		{
+			if( from.AccessLevel < AccessLevel.GameMaster )
+			{
+				if ( this is IAvatarOnlyItem )
+				{
+					var avatarOnlyItem = this as IAvatarOnlyItem;
+					var player = from as PlayerMobile;
+					if ( player == null || !player.Avatar.Active )
+					{
+						from.SendMessage("Only an Avatar may use this item.");
+						return false;
+					}
+
+					if ( avatarOnlyItem.PlayerOwner != player )
+					{
+						from.SendMessage("This item belongs to another.");
+						return false;
+					}
+				}
+
+				if ( from.Skills[SkillName.Musicianship].Base < 30 )
+				{
+					from.SendMessage ("You are not a skilled enough musician to use this!");
+					return false;
+				}
+			}
+
+			return base.CanEquip( from );
+		}
+
 		public override void ResourceChanged( CraftResource resource )
 		{
 			if ( !ResourceCanChange() )

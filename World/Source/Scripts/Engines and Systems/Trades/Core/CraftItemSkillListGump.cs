@@ -64,7 +64,7 @@ namespace Server.Engines.Craft
 						if (!hasRecipe)
 						{
 							AddImage(LOCK_COLUMN_X + 8, y + 3, 2092); // Lock icon
-							AddTooltip("You don't know this recipe");
+							AddTooltip(((PlayerMobile)from).GetRecipeReason( craftItem.Recipe ));
 						}
 						else
 						{
@@ -123,22 +123,8 @@ namespace Server.Engines.Craft
 				{
 					var craftItem = group.CraftItems.GetAt(j);
 
-					bool hasSkills = true;
-					for (int k = 0; k < craftItem.Skills.Count; k++)
-					{
-						CraftSkill skill = craftItem.Skills.GetAt(k);
-						if (
-							from.Skills[skill.SkillToMake].Value < skill.MinSkill // Filter items you can't succeed on
-							|| skill.MaxSkill <= from.Skills[skill.SkillToMake].Value // Filter items you can longer gain from
-						)
-						{
-							hasSkills = false;
-							break;
-						}
-					}
-
-					if (hasSkills)
-						craftItems.Add(craftItem);
+					if ( craftItem.MeetsSkillRequirements( from, true ) )
+						craftItems.Add( craftItem );
 				}
 			}
 

@@ -10,6 +10,7 @@ namespace Server.Items
 		public BaseDecorationArtifact( int itemID ) : base( itemID )
 		{
 			Weight = 10.0;
+			ArtifactLevel = ArtifactLevel.DecorativeArtefact;
 			SetVals( this );
 		}
 
@@ -20,13 +21,15 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.WriteEncodedInt( 0 ); // version
+			writer.WriteEncodedInt( 1 ); // version
 		}
 
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadEncodedInt();
+			if ( version < 1 ) ArtifactLevel = ArtifactLevel.DecorativeArtefact;
+
 			SetVals( this );
 		}
 
@@ -53,6 +56,7 @@ namespace Server.Items
 		public BaseDecorationContainerArtifact( int itemID ) : base( itemID )
 		{
 			Weight = 10.0;
+			ArtifactLevel = ArtifactLevel.DecorativeArtefact;
 			BaseDecorationArtifact.SetVals( this );
 		}
 
@@ -63,13 +67,15 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.WriteEncodedInt( 0 ); // version
+			writer.WriteEncodedInt( 1 ); // version
 		}
 
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadEncodedInt();
+			if ( version < 1 ) ArtifactLevel = ArtifactLevel.DecorativeArtefact;
+
 			BaseDecorationArtifact.SetVals( this );
 		}
 	}

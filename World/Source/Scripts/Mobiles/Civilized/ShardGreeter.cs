@@ -10,6 +10,7 @@ using System;
 using Server.Temptation;
 using Server.Engines.Avatar;
 using Server.Localization;
+using Server.Commands;
 
 namespace Server.Mobiles
 {
@@ -173,35 +174,35 @@ namespace Server.Gumps
 
 		private enum CreaturePage
 		{
-			FIRST_OPTION = The_Day,
-
 			The_Day = 1,
-			The_Night = 2, // Fugitive
-			The_Light = 3,
-			The_Dark = 4, // Fugitive
+			The_Night, // Fugitive
+			The_Light,
+			The_Dark, // Fugitive
+			The_Avatar_Ascent, // Avatar. Warning: Must be the last valid one
 
-			LAST_OPTION = The_Dark,
+			FIRST_PAGE_OPTION = The_Day,
+			LAST_PAGE_OPTION = The_Avatar_Ascent,
 		}
 
 		private enum HumanPage
 		{
-			FIRST_OPTION = The_Emperor,
-
 			The_Emperor = 1,
-			The_Devil = 2,
-			The_Hermit = 3,
-			The_Tower = 4,
-			The_Magician = 5,
-			The_Fool = 6,
-			Death = 7,
-			The_Sun = 8,
-			The_Hanged_Man = 9, // Fugitive
-			The_Hierophant = 10,
-			The_High_Priestess = 11,
-			Strength = 12, // Savage
-			The_Star = 13, // Warning: Alien must ALWAYS be the last option
+			The_Devil,
+			The_Hermit,
+			The_Tower,
+			The_Magician,
+			The_Fool,
+			Death,
+			The_Sun,
+			The_Hanged_Man, // Fugitive
+			The_Hierophant,
+			The_High_Priestess,
+			Strength, // Savage
+			The_Avatar_Ascent, // Avatar. Warning: Must be the last valid one
+			The_Star = The_Avatar_Ascent + 1, // Warning: Alien must ALWAYS be the last option
 
-			LAST_OPTION = The_Star,
+			FIRST_PAGE_OPTION = The_Emperor,
+			LAST_PAGE_OPTION = The_Star,
 		}
 
 		private static readonly string s_EnGypsyMainFallback =
@@ -249,7 +250,7 @@ namespace Server.Gumps
 		/// <summary>
 		/// Skips illegal pages and cycles back to the Gypsy page
 		/// </summary>
-		public int pageShow( PlayerMobile from, int page, bool forward )
+		public int pageShow( PlayerMobile from, int page, bool forward, PlayerMobile player )
 		{
 			bool hasVisitedLodor = ShowLodorOptions( from );
 			bool canBeFugitive = from.RaceID == 0 || !BaseRace.IsGood( from );
@@ -264,18 +265,20 @@ namespace Server.Gumps
 					if (page == (int)CreaturePage.The_Night) if ( !canBeFugitive ) { page++; }
 					if (page == (int)CreaturePage.The_Light) if ( !hasVisitedLodor ) { page++; }
 					if (page == (int)CreaturePage.The_Dark) if ( !canBeFugitive || !hasVisitedLodor ) { page++; }
+					if (page == (int)CreaturePage.The_Avatar_Ascent) if ( from.Avatar.Active ) { page++; }
 
-					if ( page > (int)CreaturePage.LAST_OPTION ){ page = pageShow(from, (int)CreaturePage.FIRST_OPTION - 1, forward); }
+					if ( page > (int)CreaturePage.LAST_PAGE_OPTION ){ page = pageShow(from, (int)CreaturePage.FIRST_PAGE_OPTION - 1, forward, player); }
 				}
 				else
 				{
 					page--;
 
+					if (page == (int)CreaturePage.The_Avatar_Ascent) if ( from.Avatar.Active ) { page--; }
 					if (page == (int)CreaturePage.The_Dark) if ( !canBeFugitive || !hasVisitedLodor ) { page--; }
 					if (page == (int)CreaturePage.The_Light) if ( !hasVisitedLodor ) { page--; }
 					if (page == (int)CreaturePage.The_Night) if ( !canBeFugitive ) { page--; }
 
-					if ( page < (int)CreaturePage.FIRST_OPTION ){ page = pageShow(from, (int)CreaturePage.LAST_OPTION + 1, forward); }
+					if ( page < (int)CreaturePage.FIRST_PAGE_OPTION ){ page = pageShow(from, (int)CreaturePage.LAST_PAGE_OPTION + 1, forward, player); }
 				}
 			}
 			else
@@ -291,21 +294,23 @@ namespace Server.Gumps
 					if (page == (int)HumanPage.The_Hierophant) if ( !hasVisitedLodor ) { page++; }
 					if (page == (int)HumanPage.The_High_Priestess) if ( !hasVisitedLodor ) { page++; }
 					if (page == (int)HumanPage.Strength) if ( !canBeSavage ) { page++; }
+					if (page == (int)HumanPage.The_Avatar_Ascent) if ( from.Avatar.Active ) { page++; }
 					if (page == (int)HumanPage.The_Star) if ( disallowAlien ) { page++; }
 
-					if ( page > (int)HumanPage.LAST_OPTION ){ page = pageShow(from, (int)HumanPage.FIRST_OPTION - 1, forward); }
+					if ( page > (int)HumanPage.LAST_PAGE_OPTION ){ page = pageShow(from, (int)HumanPage.FIRST_PAGE_OPTION - 1, forward, player); }
 				}
 				else
 				{
 					page--;
 
 					if (page == (int)HumanPage.The_Star) if ( disallowAlien ) { page--; }
+					if (page == (int)HumanPage.The_Avatar_Ascent) if ( from.Avatar.Active ) { page--; }
 					if (page == (int)HumanPage.Strength) if ( !canBeSavage ) { page--; }
 					if (page == (int)HumanPage.The_High_Priestess) if ( !hasVisitedLodor ) { page--; }
 					if (page == (int)HumanPage.The_Hierophant) if ( !hasVisitedLodor ) { page--; }
 					if (page == (int)HumanPage.The_Hanged_Man) if ( !canBeFugitive ) { page--; }
 
-					if ( page < (int)HumanPage.FIRST_OPTION ){ page = pageShow(from, (int)HumanPage.LAST_OPTION + 1, forward); }
+					if ( page < (int)HumanPage.FIRST_PAGE_OPTION ){ page = pageShow(from, (int)HumanPage.LAST_PAGE_OPTION + 1, forward, player); }
 				}
 			}
 
@@ -343,8 +348,8 @@ namespace Server.Gumps
 
 			if ( page > 0 && page < 50 )
 			{
-				int prev = pageShow( from, page, false );
-				int next = pageShow( from, page, true );
+				int prev = pageShow( from, page, false, from );
+				int next = pageShow( from, page, true, from );
 
 				AddImage(640, 8, cardGraphic( page, from.RaceID ));
 
@@ -353,8 +358,8 @@ namespace Server.Gumps
 				AddButton(317, 375, 4014, 4014, prev, GumpButtonType.Reply, 0);
 				AddButton(552, 375, 4005, 4005, next, GumpButtonType.Reply, 0);
 
-				AddHtml( 269, 12, 240, 20, @"<BODY><BASEFONT Color=#DEC6DE>" + CardText( page, 1, from.RaceID ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 271, 47, 356, 297, @"<BODY><BASEFONT Color=#DEC6DE>" + CardText( page, 2, from.RaceID ) + "<BR><BR>" + CardText( page, 3, from.RaceID ) + "</BASEFONT></BODY>", (bool)false, scrollBar( page, from.RaceID ));
+				AddHtml( 269, 12, 240, 20, @"<BODY><BASEFONT Color=#DEC6DE>" + CardText( page, 1, from.RaceID, from ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 271, 47, 356, 297, @"<BODY><BASEFONT Color=#DEC6DE>" + CardText( page, 2, from.RaceID, from ) + "<BR><BR>" + CardText( page, 3, from.RaceID, from ) + "</BASEFONT></BODY>", (bool)false, scrollBar( page, from.RaceID ));
 
 				AddItem(566, 12, 4777);
 				AddItem(580, 26, 4779);
@@ -383,6 +388,7 @@ namespace Server.Gumps
 					case CreaturePage.The_Night: return 1341;
 					case CreaturePage.The_Light: return 1342;
 					case CreaturePage.The_Dark: return 1343;
+					case CreaturePage.The_Avatar_Ascent: return 1344;
 				}
 			}
 			else 
@@ -401,6 +407,7 @@ namespace Server.Gumps
 					case HumanPage.The_Hierophant: return 1111;
 					case HumanPage.The_High_Priestess: return 1112;
 					case HumanPage.Strength: return 1119;
+					case HumanPage.The_Avatar_Ascent: return 1344;
 					case HumanPage.The_Star: return 1118;
 				}
 			}
@@ -420,6 +427,7 @@ namespace Server.Gumps
 					case CreaturePage.The_Night: return true;
 					case CreaturePage.The_Light: return false;
 					case CreaturePage.The_Dark: return true;
+					case CreaturePage.The_Avatar_Ascent: return true;
 				}
 			}
 			else 
@@ -438,6 +446,7 @@ namespace Server.Gumps
 					case HumanPage.The_Hierophant: return true;
 					case HumanPage.The_High_Priestess: return true;
 					case HumanPage.Strength: return true;
+					case HumanPage.The_Avatar_Ascent: return true;
 					case HumanPage.The_Star: return true;
 				}
 			}
@@ -445,14 +454,14 @@ namespace Server.Gumps
 			return false;
 		}
 
-		private static string GetStartSkillCount( CharacterType type )
+		private static string GetStartSkillCount( CharacterType type, PlayerMobile player )
 		{
-			int skills = MyServerSettings.DEFAULT_SKILL_COUNT + MyServerSettings.SkillBoostCount() + MyServerSettings.StartTypeBonusSkillCount( type );
+			int skills = MyServerSettings.DEFAULT_SKILL_COUNT + MyServerSettings.SkillBoostCount() + MyServerSettings.StartTypeBonusSkillCount( type, player );
 
 			return skills.ToString();
 		}
 
-		private string CardText( int page, int section, int creature )
+		private string CardText( int page, int section, int creature, PlayerMobile player )
 		{
 			Mobile v = m_TarotViewer;
 			string lodor = ShardGreeterLocalization.GreeterKey( v, "shardgreeter.tarot.lodor", "Most adventurers are born within the Land of Sosaria, only hearing tales and legends of other lands far away. One of these lands is the elven world of Lodoria. This world is a bit larger than Sosaria and the dungeons are somewhat more difficult. What Lodoria does have is familiar locations that veteran adventurers fondly remember. Dungeons such as Shame, Destard, and Wrong can be found throughout. There are many villages and cities and they are all inhabited by the good elven people. The much more vile elven folk, the drow, seek to destroy those that embrace the light and attempt to supress their rule beneath the surface of the world. If you wish to begin your journey in Lodoria, then you will then be a human that grew up in this strange land with no ties of those from Sosaria." );
@@ -485,7 +494,7 @@ namespace Server.Gumps
 
 					case CreaturePage.The_Night:
 						card = ShardGreeterLocalization.GreeterKey( v, "shardgreeter.tarot.card.creature.night", "THE NIGHT" );
-						text = fateBegin + " " + Server.Items.BaseRace.StartSentence( startName ) + " of Sosaria." + undead + ShardGreeterLocalization.GreeterKeyFormat( v, "shardgreeter.tarot.creature.night.rest", " This fate in Sosaria has a more challenging life, where you perhaps left others of your kind, but have decided to embrace your monstrous ways and seek power for yourself. You will be able to become grandmaster in {0} different skills instead of the {1} normally accomplished. Tributes for resurrection will cost double the amount, perhaps forcing you to resurrect with penalties. You will not be allowed to enter any civilized areas, unless you perhaps find a way to disguise yourself. The exceptions are some public areas like inns, taverns, and banks. Guards will attack you on sight, merchants will attempt to chase you away, and you will not be able to join any local guilds except for the Assassin, Thief, and Black Magic guilds. The reason for this is that you are viewed as a murderous beast. Everything you need can be found throughout the world, however, so you can set forth on your journey.", GetStartSkillCount( CharacterType.Fugitive ), GetStartSkillCount( CharacterType.Default ) );
+						text = fateBegin + " " + Server.Items.BaseRace.StartSentence( startName ) + " of Sosaria." + undead + ShardGreeterLocalization.GreeterKeyFormat( v, "shardgreeter.tarot.creature.night.rest", " This fate in Sosaria has a more challenging life, where you perhaps left others of your kind, but have decided to embrace your monstrous ways and seek power for yourself. You will be able to become grandmaster in {0} different skills instead of the {1} normally accomplished. Tributes for resurrection will cost double the amount, perhaps forcing you to resurrect with penalties. You will not be allowed to enter any civilized areas, unless you perhaps find a way to disguise yourself. The exceptions are some public areas like inns, taverns, and banks. Guards will attack you on sight, merchants will attempt to chase you away, and you will not be able to join any local guilds except for the Assassin, Thief, and Black Magic guilds. The reason for this is that you are viewed as a murderous beast. Everything you need can be found throughout the world, however, so you can set forth on your journey.", GetStartSkillCount( CharacterType.Fugitive, player ), GetStartSkillCount( CharacterType.Default, player ) );
 						break;
 
 					case CreaturePage.The_Light:
@@ -495,8 +504,10 @@ namespace Server.Gumps
 
 					case CreaturePage.The_Dark:
 						card = ShardGreeterLocalization.GreeterKey( v, "shardgreeter.tarot.card.creature.dark", "THE DARK" );
-						text = fateBegin + " " + Server.Items.BaseRace.StartSentence( startName ) + " of Lodoria." + undead + ShardGreeterLocalization.GreeterKeyFormat( v, "shardgreeter.tarot.creature.dark.rest", " This fate in Lodoria has a more challenging life, where you perhaps left others of your kind, but have decided to embrace your monstrous ways and seek power for yourself. You will be able to become grandmaster in {0} different skills instead of the {1} normally accomplished. Tributes for resurrection will cost double the amount, perhaps forcing you to resurrect with penalties. You will not be allowed to enter any civilized areas, unless you perhaps find a way to disguise yourself. The exceptions are some public areas like inns, taverns, and banks. Guards will attack you on sight, merchants will attempt to chase you away, and you will not be able to join any local guilds except for the Assassin, Thief, and Black Magic guilds. The reason for this is that you are viewed as a murderous beast. Everything you need can be found throughout the world, however, so you can set forth on your journey.", GetStartSkillCount( CharacterType.Fugitive ), GetStartSkillCount( CharacterType.Default ) );
+						text = fateBegin + " " + Server.Items.BaseRace.StartSentence( startName ) + " of Lodoria." + undead + ShardGreeterLocalization.GreeterKeyFormat( v, "shardgreeter.tarot.creature.dark.rest", " This fate in Lodoria has a more challenging life, where you perhaps left others of your kind, but have decided to embrace your monstrous ways and seek power for yourself. You will be able to become grandmaster in {0} different skills instead of the {1} normally accomplished. Tributes for resurrection will cost double the amount, perhaps forcing you to resurrect with penalties. You will not be allowed to enter any civilized areas, unless you perhaps find a way to disguise yourself. The exceptions are some public areas like inns, taverns, and banks. Guards will attack you on sight, merchants will attempt to chase you away, and you will not be able to join any local guilds except for the Assassin, Thief, and Black Magic guilds. The reason for this is that you are viewed as a murderous beast. Everything you need can be found throughout the world, however, so you can set forth on your journey.", GetStartSkillCount( CharacterType.Fugitive, player ), GetStartSkillCount( CharacterType.Default, player ) );
 						break;
+				case CreaturePage.The_Avatar_Ascent: card = "THE AVATAR"; town = "A random town"; text = Constants.AVATAR_GYPSY_TEXT; break;
+
 				}
 			}
 			else
@@ -554,7 +565,7 @@ namespace Server.Gumps
 					case HumanPage.The_Hanged_Man:
 						card = ShardGreeterLocalization.GreeterKey( v, "shardgreeter.tarot.card.hanged_man", "THE HANGED MAN" );
 						town = ShardGreeterLocalization.GreeterKey( v, "shardgreeter.tarot.town.hanged_man", "The Britain Dungeons" );
-						text = ShardGreeterLocalization.GreeterKeyFormat( v, "shardgreeter.tarot.hanged.rest", "You may choose a fate in this world that has a more challenging life, where you are a fugitive from justice. If you choose this path, you will be able to become grandmaster in {0} different skills instead of the {1} normally accomplished. This is due to you relying on yourself to survive. Tributes for resurrection will cost double the amount, perhaps forcing you to resurrect with penalties. You will not be allowed to enter any civilized areas, unless you perhaps find a way to disguise yourself. The exceptions are some public areas like inns, taverns, and banks. Guards will attack you on sight, merchants will attempt to chase you away, and you will not be able to join any local guilds except for the Assassin, Thief, and Black Magic guilds. The reason for this is that you are wanted for murder. You may have actually committed the act, or you could have simply been framed. The murder was against a very powerful figure, so the many lands will never forgive the deed. Whether truth or falsehood, that is up to you to tell. Do with your life what you will. You can live a life of criminal pursuits, or you can destroy the evil that lurks in the darkest places of the land. If you wish to choose such a life, you will be on your own, and you must first escape from your prison cell. From there you are best to head for Stonewall to the northwest, but you may go where you like. Everything you need can be found throughout the world.", GetStartSkillCount( CharacterType.Fugitive ), GetStartSkillCount( CharacterType.Default ) );
+						text = ShardGreeterLocalization.GreeterKeyFormat( v, "shardgreeter.tarot.hanged.rest", "You may choose a fate in this world that has a more challenging life, where you are a fugitive from justice. If you choose this path, you will be able to become grandmaster in {0} different skills instead of the {1} normally accomplished. This is due to you relying on yourself to survive. Tributes for resurrection will cost double the amount, perhaps forcing you to resurrect with penalties. You will not be allowed to enter any civilized areas, unless you perhaps find a way to disguise yourself. The exceptions are some public areas like inns, taverns, and banks. Guards will attack you on sight, merchants will attempt to chase you away, and you will not be able to join any local guilds except for the Assassin, Thief, and Black Magic guilds. The reason for this is that you are wanted for murder. You may have actually committed the act, or you could have simply been framed. The murder was against a very powerful figure, so the many lands will never forgive the deed. Whether truth or falsehood, that is up to you to tell. Do with your life what you will. You can live a life of criminal pursuits, or you can destroy the evil that lurks in the darkest places of the land. If you wish to choose such a life, you will be on your own, and you must first escape from your prison cell. From there you are best to head for Stonewall to the northwest, but you may go where you like. Everything you need can be found throughout the world.", GetStartSkillCount( CharacterType.Fugitive, player ), GetStartSkillCount( CharacterType.Default, player ) );
 						break;
 
 					case HumanPage.The_Hierophant:
@@ -572,14 +583,16 @@ namespace Server.Gumps
 					case HumanPage.Strength:
 						card = ShardGreeterLocalization.GreeterKey( v, "shardgreeter.tarot.card.strength", "STRENGTH" );
 						town = ShardGreeterLocalization.GreeterKey( v, "shardgreeter.tarot.town.strength", "The Savaged Empire" );
-						text = ShardGreeterLocalization.GreeterKeyFormat( v, "shardgreeter.tarot.strength.body", "You may choose a barbaric way of life to begin your journey, and it is not for the weak but those bestowed with strength. If you choose this path, you will be able to become grandmaster in {0} different skills instead of the {1} normally accomplished. This is due to you relying on yourself to survive in an untamed land. Your adventure will begin as a barbarian in the Savaged Empire, which is one of the most difficult lands in the realms. It is filled with many dangerous animals and colossal dinosaurs. There are no safe places to hunt for food, which also means practicing your combat skills is equally dangerous. You will, however, begin with some leather armor that will help you surive the dangers away from the settlements. You will also begin with a talisman that will aid you in camping and cooking, so you can live off of the land better. Additional gold, food, and bandages will be provided as well as a steel dagger and a durable camping tent. Any dungeons you dare enter will be more deadly than those in Sosaria, so take some great consideration before deciding this path. Your journey will then begin in the Village of Kurak, where the outskirts have many things to hunt but also many dangers you may need to flee from. There is a cave to the north where you can mine for precious ores as well.", GetStartSkillCount( CharacterType.Savage ), GetStartSkillCount( CharacterType.Default ) );
+						text = ShardGreeterLocalization.GreeterKeyFormat( v, "shardgreeter.tarot.strength.body", "You may choose a barbaric way of life to begin your journey, and it is not for the weak but those bestowed with strength. If you choose this path, you will be able to become grandmaster in {0} different skills instead of the {1} normally accomplished. This is due to you relying on yourself to survive in an untamed land. Your adventure will begin as a barbarian in the Savaged Empire, which is one of the most difficult lands in the realms. It is filled with many dangerous animals and colossal dinosaurs. There are no safe places to hunt for food, which also means practicing your combat skills is equally dangerous. You will, however, begin with some leather armor that will help you surive the dangers away from the settlements. You will also begin with a talisman that will aid you in camping and cooking, so you can live off of the land better. Additional gold, food, and bandages will be provided as well as a steel dagger and a durable camping tent. Any dungeons you dare enter will be more deadly than those in Sosaria, so take some great consideration before deciding this path. Your journey will then begin in the Village of Kurak, where the outskirts have many things to hunt but also many dangers you may need to flee from. There is a cave to the north where you can mine for precious ores as well.", GetStartSkillCount( CharacterType.Savage, player ), GetStartSkillCount( CharacterType.Default, player ) );
 						break;
 
 					case HumanPage.The_Star:
 						card = ShardGreeterLocalization.GreeterKey( v, "shardgreeter.tarot.card.star", "THE STAR" );
 						town = ShardGreeterLocalization.GreeterKey( v, "shardgreeter.tarot.town.star", "The Shuttle Crash Site" );
-						text = ShardGreeterLocalization.GreeterKeyFormat( v, "shardgreeter.tarot.star.body", "All the doctor knew of you as a patient is entered into your medical record. You were near death, but placing you in the stasis chamber seemed to have performed the healing process. Your scans showed an incredible head trauma, so you will awake from your coma with no memories of what or who you were (you begin with no skills). With the space station plummeting to Sosaria, due to the Stranger draining the fuel reserves, the doctor decided to place your stasis chamber onto their last medical shuttle craft. They set it on auto-pilot and hoped for the best. It landed safely on Sosaria where you could continue your life on this primitive world. You may have an advantage as you are from a more advanced race of beings, so you have the ability to remember and learn more things (can grandmaster {0} different skills).<br><br>Because of your advanced knowledge of logic and science, however, some things learned about Sosaria is that they have elements you cannot fully understand. Magical resurrection, and the concept of deities, are things you cannot comprehend (costs 3 times as much gold to resurrect at a shrine or healer). The system shock from any such resurrection would surely take its toll (paying full tribute still causes a 10% loss in fame and karma, and a 5% loss in skills and attributes) which could prove to be devastating (paying no tribute at all would cause a 20% loss in fame and karma, and a 10% loss in skills and attributes).<br><br>Although you will be able to learn some of the skills that are classified as magic or divine, you will surely justify it with science. Because of your lack of superstition, unlike the inhabitants of this world, you don't believe in the concept of luck (you will never benefit from luck). You do not have any of Sosaria's currency to barter with (you begin with no gold), and because you feel you are more advanced, you will probably not get along with the guildmasters of the crude trades they practice (guild membership costs 4 times as much as normal).<br><br>If you choose this fate, then you will appear at your crashed shuttle craft where your adventure begins. You can use the nearby computer terminal to change your skin and hair tones if you want an appearance that is slightly different than human, due to your alien heritage.<br><br>When you awake, you will have no memory of who you were. You will find yourself near the shuttle that crashed on top of the mountain. The computer system instructed you on how to setup a power source from the remaining fuel, and it appeared that an alien creature latched onto the shuttle and died in the crash. You have been using this as a source of food and have survived a few days from it. Now your supplies are running out, your canteen is empty, and all you have is a knife. You will have to venture out if you plan to survive.", GetStartSkillCount( CharacterType.Alien ) );
+						text = ShardGreeterLocalization.GreeterKeyFormat( v, "shardgreeter.tarot.star.body", "All the doctor knew of you as a patient is entered into your medical record. You were near death, but placing you in the stasis chamber seemed to have performed the healing process. Your scans showed an incredible head trauma, so you will awake from your coma with no memories of what or who you were (you begin with no skills). With the space station plummeting to Sosaria, due to the Stranger draining the fuel reserves, the doctor decided to place your stasis chamber onto their last medical shuttle craft. They set it on auto-pilot and hoped for the best. It landed safely on Sosaria where you could continue your life on this primitive world. You may have an advantage as you are from a more advanced race of beings, so you have the ability to remember and learn more things (can grandmaster {0} different skills).<br><br>Because of your advanced knowledge of logic and science, however, some things learned about Sosaria is that they have elements you cannot fully understand. Magical resurrection, and the concept of deities, are things you cannot comprehend (costs 3 times as much gold to resurrect at a shrine or healer). The system shock from any such resurrection would surely take its toll (paying full tribute still causes a 10% loss in fame and karma, and a 5% loss in skills and attributes) which could prove to be devastating (paying no tribute at all would cause a 20% loss in fame and karma, and a 10% loss in skills and attributes).<br><br>Although you will be able to learn some of the skills that are classified as magic or divine, you will surely justify it with science. Because of your lack of superstition, unlike the inhabitants of this world, you don't believe in the concept of luck (you will never benefit from luck). You do not have any of Sosaria's currency to barter with (you begin with no gold), and because you feel you are more advanced, you will probably not get along with the guildmasters of the crude trades they practice (guild membership costs 4 times as much as normal).<br><br>If you choose this fate, then you will appear at your crashed shuttle craft where your adventure begins. You can use the nearby computer terminal to change your skin and hair tones if you want an appearance that is slightly different than human, due to your alien heritage.<br><br>When you awake, you will have no memory of who you were. You will find yourself near the shuttle that crashed on top of the mountain. The computer system instructed you on how to setup a power source from the remaining fuel, and it appeared that an alien creature latched onto the shuttle and died in the crash. You have been using this as a source of food and have survived a few days from it. Now your supplies are running out, your canteen is empty, and all you have is a knife. You will have to venture out if you plan to survive.", GetStartSkillCount( CharacterType.Alien, player ) );
 						break;
+				case HumanPage.The_Avatar_Ascent: card = "THE AVATAR"; town = "A random town"; text = Constants.AVATAR_GYPSY_TEXT; break;
+
 				}
 			}
 
@@ -760,15 +773,7 @@ namespace Server.Gumps
 
 				player.NetState.BlockAllPackets = true;
 				CharacterCreation.InitializeBackpack(player);
-
-				var template = player.Avatar.SelectedTemplate;
-				if ( template > AvatarStarterTemplates.DEFAULT_START && template < AvatarStarterTemplates.DEFAULT_END )
-				{
-					var profession = (StarterProfessions)template;
-					var skills = CharacterCreation.GetTemplateSkills( profession );
-					CharacterCreation.AddSkillBasedItems( player, skills );
-				}
-
+				player.Avatar.ApplyTemplate(player, player.Avatar.SelectedTemplate);
 				player.NetState.BlockAllPackets = false;
 			}
 			else
@@ -799,15 +804,28 @@ namespace Server.Gumps
 				from.SendGump( new GypsyTarotGump( from, 1 ) );
 				from.SendSound( 0x5BB );
 			}
-			else if ( info.ButtonID >= 100 )
+			else if ( info.ButtonID >= (int)ActionButtonType.EnterLandBase )
 			{
-				int page = info.ButtonID - 100;
+				int page = info.ButtonID - (int)ActionButtonType.EnterLandBase;
 
-				bool isValid = pageShow(from, page - 1, true) == page; // Double-check that we can see the page when navigating forward
+				bool isValid = pageShow(from, page - 1, true, from) == page; // Double-check that we can see the page when navigating forward
 				if (!isValid)
 				{
 					from.SendMessage( ShardGreeterLocalization.GreeterKey( from, "shardgreeter.invalid_selection", "Invalid character selection detected." ) );
 					return;
+				}
+
+				// If they are not an Avatar, see if they selected the Avatar page
+				if ( !from.Avatar.Active )
+				{
+					var choseAvatar = from.RaceID > 0
+						? page == (int)CreaturePage.The_Avatar_Ascent
+						: page == (int)HumanPage.The_Avatar_Ascent;	
+					if ( choseAvatar )
+					{
+            			CommandSystem.Handle(from, String.Format("{0}{1}", CommandSystem.Prefix, "avatar-enable"));
+						return;
+					}
 				}
 
 				if ( !from.Avatar.Active || from.Avatar.UnlockTemptations )

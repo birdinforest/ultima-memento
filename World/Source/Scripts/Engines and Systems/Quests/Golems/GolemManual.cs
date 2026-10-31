@@ -1,17 +1,13 @@
-using System;
-using Server; 
 using System.Collections;
 using Server.ContextMenus;
 using System.Collections.Generic;
 using Server.Localization;
 using Server.Misc;
 using Server.Network;
-using Server.Items;
 using Server.Gumps;
 using Server.Mobiles;
-using Server.Commands;
-using System.Globalization;
 using Server.Regions;
+using Server.Utilities;
 
 namespace Server.Items
 {
@@ -369,18 +365,14 @@ namespace Server.Items
 				else if ( dropped is Gold && NeedGold > HaveGold )
 				{
 					WhatIsNeeded = NeedGold - HaveGold;
-					WhatIsExtra = WhatIsDropped - WhatIsNeeded; if ( WhatIsExtra < 1 ){ WhatIsExtra = 0; }
-					WhatIsTaken = WhatIsDropped - WhatIsExtra;
-
-					if ( WhatIsExtra > 0 ){ from.AddToBackpack( new Gold( WhatIsExtra ) ); }
-					iAmount = WhatIsTaken;
+					iAmount = ItemUtilities.ConsumeClamped(dropped, WhatIsNeeded);
 
 					if ( iAmount > 1 ){ sEnd = "s."; }
 
-					HaveGold = HaveGold + iAmount;
+					HaveGold += iAmount;
 					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "eng.golem.added.gold", iAmount, sEnd ) );
-					dropped.Delete();
-					return true;
+
+					return dropped.Deleted;
 				}
 			}
 
@@ -524,7 +516,12 @@ namespace Server.Items
 			if ( book.HaveOil >= book.NeedOil ){ HaveIngredients++; }
 			if ( book.HaveMetalQty >= book.NeedMetalQty ){ HaveIngredients++; }
 
-			if ( HaveIngredients < 7 ){ return false; }
+			if ( HaveIngredients < 7 )
+			{
+				tinker.SayTo(m, "I can't build this. You're still missing materials!");
+
+				return false;
+			}
 
 			int FighterGolem = 0;
 

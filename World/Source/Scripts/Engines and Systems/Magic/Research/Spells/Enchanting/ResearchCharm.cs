@@ -90,21 +90,24 @@ namespace Server.Spells.Research
 				{
 					SpellHelper.Turn( Caster, m );
 
-					SpellHelper.CheckReflect( CirclePower, Caster, ref m );
-
-					TimeSpan duration = TimeSpan.FromSeconds( (DamagingSkill( Caster ) / 4) );
-
-					if ( bc.FightMode == FightMode.Closest ){ bc.FightMode = FightMode.CharmMonster; }
-					else if ( bc.FightMode == FightMode.Aggressor ){ bc.FightMode = FightMode.CharmAnimal; }
+					Mobile source = Caster;
+					bool hitThrough = SpellHelper.ResolveMagicDefense( CirclePower, ref source, ref m );
 
 					m.PlaySound( 0x20B );
-
 					m.FixedParticles( 0x3039, 9, 32, 5008, 0x48F, 0, EffectLayer.Waist );
 
-					new CharmTimer( m, duration ).Start();
-					Server.Misc.Research.ConsumeScroll( Caster, true, spellIndex, alwaysConsume, Scroll );
+					if ( hitThrough )
+					{
+						TimeSpan duration = TimeSpan.FromSeconds( (DamagingSkill( Caster ) / 4) );
 
-					HarmfulSpell( m );
+						if ( bc.FightMode == FightMode.Closest ){ bc.FightMode = FightMode.CharmMonster; }
+						else if ( bc.FightMode == FightMode.Aggressor ){ bc.FightMode = FightMode.CharmAnimal; }
+
+						new CharmTimer( m, duration ).Start();
+						Server.Misc.Research.ConsumeScroll( Caster, true, spellIndex, alwaysConsume, Scroll );
+
+						HarmfulSpell( m );
+					}
 				}
 
 				FinishSequence();

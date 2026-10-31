@@ -239,9 +239,9 @@ namespace Server.Gumps
 			Add( new GumpTooltip( args ) );
 		}
 
-		public void AddHtml( int x, int y, int width, int height, string text, bool background, bool scrollbar )
+		public void AddHtml( int x, int y, int width, int height, string text, bool background, bool scrollbar, bool useBlackTextOutline = true )
 		{
-			Add( new GumpHtml( x, y, width, height, text, background, scrollbar ) );
+			Add( new GumpHtml( x, y, width, height, text, background, scrollbar, useBlackTextOutline ) );
 		}
 
 		public void AddHtmlLocalized( int x, int y, int width, int height, int number, bool background, bool scrollbar )

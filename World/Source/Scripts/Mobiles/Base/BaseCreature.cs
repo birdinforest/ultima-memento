@@ -21,6 +21,7 @@ using System.IO;
 using Server.Engines.MLQuests;
 using Custom.Jerbal.Jako;
 using System.Linq;
+using Server.Utilities;
 
 namespace Server.Mobiles
 {
@@ -834,6 +835,9 @@ namespace Server.Mobiles
 
 		#region Breath ability, like dragon fire breath
 		private DateTime m_NextBreathTime;
+		private int m_BreathAttackForm;
+
+		public int BreathAttackForm{ get{ return m_BreathAttackForm; } }
 
 		// Must be overriden in subclass to enable
 		public virtual bool HasBreath{ get{ return false; } }
@@ -957,6 +961,8 @@ namespace Server.Mobiles
 
 		public void DoFinalBreathAttack( Mobile target, int form, bool cycle )
 		{
+			m_BreathAttackForm = form;
+
 			int physDamage = BreathPhysicalDamage;
 			int fireDamage = BreathFireDamage;
 			int coldDamage = BreathColdDamage;
@@ -2263,7 +2269,7 @@ namespace Server.Mobiles
 
 			if ( bc.Backpack != null )
 			{
-				if ( up >= Utility.Random( 7 ) )
+				if ( up >= Utility.Random( (int)Difficulty.Epic ) )
 				{
 					if ( bc.Fame < 1250 )
 						bc.AddLoot( LootPack.Meager );
@@ -3804,8 +3810,6 @@ namespace Server.Mobiles
 			}
 
 			ExtraHP();
-
-			LootPackChange.MakeCoins( this.Backpack, this );
 
 			if ( this.Body != 400 && this.Body != 401 ){ this.TithingPoints = this.Body; } // STORE THE BODY VALUE IN AN UNUSED VARIABLE FOR NECRO ANIMATE
 
@@ -5497,9 +5501,7 @@ namespace Server.Mobiles
 					
 					this.InvalidateProperties();
 
-					dropped.Amount -= cost;
-					if (dropped.Amount < 1)
-						dropped.Delete();
+					var iAmount = ItemUtilities.ConsumeClamped(dropped, cost);
 
 					// If it wasn't deleted, bounce it back
 					return dropped.Deleted;
@@ -5867,7 +5869,10 @@ namespace Server.Mobiles
 		{
 			base.OnCombatantChange();
 
-			TryEmpower(Combatant);
+			if ( Combatant == null )
+				IsEmpowered = false;
+			else
+				TryEmpower(Combatant);
 		}
 
 		public void ResetEmpower()
@@ -6861,8 +6866,8 @@ namespace Server.Mobiles
 				Owner.From.TargetLocked = true;
 				SkillHandlers.Taming.DisableMessage = true;
 
-				if ( Owner.From.UseSkill( SkillName.Taming ) )
-					Owner.From.Target.Invoke( Owner.From, m_Mobile );
+			if ( Owner.From.UseSkill( SkillName.Taming ) && Owner.From.Target != null )
+				Owner.From.Target.Invoke( Owner.From, m_Mobile );
 
 				SkillHandlers.Taming.DisableMessage = false;
 				Owner.From.TargetLocked = false;
@@ -7056,6 +7061,24 @@ namespace Server.Mobiles
 					}
 					else
 					{
+						var hasElementalism = 0 < m.Skills[SkillName.Elementalism].Base;
+						var hasMagery = 0 < m.Skills[SkillName.Magery].Base;
+						var hasNecromancy = 0 < m.Skills[SkillName.Necromancy].Base;
+
+						if ( skill == SkillName.Elementalism && (hasMagery || hasNecromancy) )
+						{
+							if (hasMagery)
+								Say( "I cannot teach thee. Thy mind is already enthralled by the mundane, simple magicks of Magery." );
+							else
+								Say( "I cannot teach thee. Thy mind is already corrupted by the parasitic forces of Necromancy." );
+							return false;
+						}
+						else if ( hasElementalism && (skill == SkillName.Magery || skill == SkillName.Necromancy) )
+						{
+							Say( "I cannot teach thee. Thy wits have grown far too dull and brutish from the raw channels of Elementalism." );
+							return false;
+						}
+
 						// I will teach thee all I know, if paid the amount in full.  The price is:
 						Say( 1019077, AffixType.Append, String.Format( " {0}", pointsToLearn ), "" );
 						Say( 1043108 ); // For less I shall teach thee less.
@@ -7929,6 +7952,9 @@ namespace Server.Mobiles
 			if ( !CheckChattingAccess( from ) )
 				return false;
 
+			if ( !from.InRange( this, 12 ) )
+				return false;
+
 			Server.Misc.IntelligentAction.SayHey( this );
 			from.CloseGump( typeof( SpeechGump ) );
 			from.SendGump( new SpeechGump( from, TalkGumpTitle, SpeechFunctions.SpeechText( this, from, TalkGumpSubject ) ) );
@@ -8177,7 +8203,12 @@ namespace Server.Mobiles
 				list.Add( 1072269 ); // Quest Giver
 
 			if ( DisplayWeight && Controlled )
-				list.Add( TotalWeight == 1 ? 1072788 : 1072789, TotalWeight.ToString() ); // Weight: ~1_WEIGHT~ stones
+			{
+				if ( Backpack != null )
+					list.Add( 1072241, "{0}\t{1}\t{2}\t{3}", Backpack.TotalItems, Backpack.MaxItems, Backpack.TotalWeight, Backpack.MaxWeight ); // Contents: ~1_COUNT~/~2_MAXCOUNT items, ~3_WEIGHT~/~4_MAXWEIGHT~ stones
+				else
+					list.Add( TotalWeight == 1 ? 1072788 : 1072789, TotalWeight.ToString() ); // Weight: ~1_WEIGHT~ stones
+			}
 
 			if ( m_ControlOrder == OrderType.Guard )
 				list.Add( 1080078 ); // guarding
@@ -8187,7 +8218,7 @@ namespace Server.Mobiles
 				list.Add( "(familiar)" );
 			else if ( this is PackBeast )
 				list.Add( "(Pack Animal)" );
-			else if ( this is GolemPorter || this is GolemFighter )
+			else if ( this is GolemPorter || this is GolemFighter || this is Golem )
 				list.Add( "(automaton)" );
 			else if ( this is Robot )
 				list.Add( "(robot)" );
@@ -8262,10 +8293,7 @@ namespace Server.Mobiles
 
 		public override bool OnBeforeDeath()
 		{
-			Region reg = Region.Find( this.Location, this.Map );
-
-			SlayerEntry undead = SlayerGroup.GetEntryByName( SlayerName.Silver );
-			SlayerEntry exorcism = SlayerGroup.GetEntryByName( SlayerName.Exorcism );
+			PlayerMobile player = MobileUtilities.TryGetKillingPlayer( this );
 
 			if ( Body == 224 )
 				Body = 13;
@@ -8274,33 +8302,11 @@ namespace Server.Mobiles
 
 			if ( AI == AIType.AI_Citizen )
 			{
-				Mobile murderer = this.LastKiller;
-
-				if (murderer is BaseCreature)
+				if ( player != null )
 				{
-					BaseCreature bc_killer = (BaseCreature)murderer;
-					if(bc_killer.Summoned)
-					{
-						if(bc_killer.SummonMaster != null)
-							murderer = bc_killer.SummonMaster;
-					}
-					else if(bc_killer.Controlled)
-					{
-						if(bc_killer.ControlMaster != null)
-							murderer=bc_killer.ControlMaster;
-					}
-					else if(bc_killer.BardProvoked)
-					{
-						if(bc_killer.BardMaster != null)
-							murderer=bc_killer.BardMaster;
-					}
-				}
-
-				if ( murderer is PlayerMobile )
-				{
-					murderer.Criminal = true;
-					murderer.Kills = murderer.Kills + 1;
-					Server.Items.DisguiseTimers.RemoveDisguise( murderer );
+					player.Criminal = true;
+					player.Kills += 1;
+					Server.Items.DisguiseTimers.RemoveDisguise( player );
 				}
 
 				string bSay = "Help! Guards!";
@@ -8330,19 +8336,24 @@ namespace Server.Mobiles
 			{
 				BeefUpLoot( this, Heat );
 			}
-			
 			// TODO: This code could probably be simplified
-			if ( slayer is PlayerMobile || ( slayer is BaseCreature && ((BaseCreature)slayer).ControlMaster != null && ((BaseCreature)slayer).ControlMaster is PlayerMobile ) )
+			if ( player != null && !IsEphemeral && !NoKillAwards && MobileUtilities.TryGetMasterPlayer( this ) == null )
 			{
 				try
 				{
-					Server.Misc.IntelligentAction.SaySomethingOnDeath( this, this.LastKiller );
+						Region reg = Region.Find( this.Location, this.Map );
+						SlayerEntry undead = SlayerGroup.GetEntryByName( SlayerName.Silver );
+						SlayerEntry exorcism = SlayerGroup.GetEntryByName( SlayerName.Exorcism );
+
+					Server.Misc.IntelligentAction.SaySomethingOnDeath( this, player );
 
 					Server.Misc.HoardPile.MakeHoard( this ); // SEE IF A HOARD DROPS NEARBY
 
 					InscriptionRecipeDropHelper.TryDropRecipe( this );
 
+
 					Server.Misc.SummonQuests.WellTheyDied( this, this );
+					GoldenFeathers.Award(this, player);
 
 					if ( slayer is PlayerMobile )
 					{
@@ -8392,126 +8403,88 @@ namespace Server.Mobiles
 				{
 					Console.WriteLine( "Warning: OnBeforeDeath player bonus loot failed for {0} (serial {1}): {2}", GetType().Name, Serial, e );
 				}
-			}
 
-			///////////////////////////////////////////////////////////////////////////////////////
-
-			SlayerEntry vampAnimal = SlayerGroup.GetEntryByName( SlayerName.AnimalHunter );
-			SlayerEntry vampAvian = SlayerGroup.GetEntryByName( SlayerName.AvianHunter );
-			SlayerEntry vampRepond = SlayerGroup.GetEntryByName( SlayerName.Repond );
-			SlayerEntry vampGiant = SlayerGroup.GetEntryByName( SlayerName.GiantKiller );
-
-			if ( vampAnimal.Slays(this) || vampAvian.Slays(this) || vampRepond.Slays(this) || vampGiant.Slays(this) || this is BaseVendor )
-			{
-				Mobile vampire = this.LastKiller;
-
-				if ( vampire is BaseCreature )
-					vampire = ((BaseCreature)vampire).GetMaster();
-
-				if ( vampire is PlayerMobile && Server.Items.BaseRace.BloodDrinker( vampire.RaceID ) && Utility.RandomBool() )
+				///////////////////////////////////////////////////////////////////////////////////////
+				
+				// Blood bag drops
+				if (
+					this is BaseVendor
+					|| SlayerGroup.Slays( SlayerName.AnimalHunter, this )
+					|| SlayerGroup.Slays( SlayerName.AvianHunter, this )
+					|| SlayerGroup.Slays( SlayerName.Repond, this )
+					|| SlayerGroup.Slays( SlayerName.GiantKiller, this )
+				)
 				{
-					PackItem( new BloodyDrink() );
-				}
-				else if ( vampire is PlayerMobile && Server.Items.BaseRace.BrainEater( vampire.RaceID ) && Utility.RandomBool() )
-				{
-					PackItem( new FreshBrain() );
-				}
-			}
-
-			///////////////////////////////////////////////////////////////////////////////////////
-
-			// GOLDEN FEATHERS FOR THE RANGERS OUTPOST ALTAR
-			GoldenFeathers.Award(this, LastKiller);
-
-			int treasureLevel = TreasureMapLevel;
-
-			if ( treasureLevel == 1 && this.Map == Map.Sosaria )
-			{
-				Mobile killer = this.LastKiller;
-
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile && ((PlayerMobile)killer).Young )
-					treasureLevel = 0;
-			}
-
-			if ( !Summoned && !IsEphemeral && !NoKillAwards && !IsBonded && treasureLevel >= 0 )
-			{
-				if ( m_Paragon && Paragon.ChestChance > Utility.RandomDouble() )
-					PackItem( new ParagonChest( this.Name, this.Title, treasureLevel, this ) );
-				else if ( TreasureMap.LootChance >= Utility.RandomDouble() )
-				{
-					PackItem( new TreasureMap( treasureLevel, this.Map, this.Location, this.X, this.Y ) );
-				}
-			}
-
-			// Actually generate loot
-			if ( !Summoned && !IsEphemeral && !NoKillAwards && !m_HasGeneratedLoot )
-			{
-				m_HasGeneratedLoot = true;
-				GenerateLoot( false );
-				if ( Backpack != null )
-				{
-					LootPackChange.MakeCoins(this.Backpack, this);
-					var lootingRights = GetLootingRights( this.DamageEntries, this.HitsMax );
-					var mobiles = lootingRights.Select(store => store.m_Mobile);
-					NotIdentified.DoAutoDelete( Backpack, mobiles );
-				}
-			}
-
-			///////////////////////////////////////////////////////////////////////////////////////
-
-			SlayerEntry spreaddeath = SlayerGroup.GetEntryByName( SlayerName.Repond );
-
-			Mobile deathknight = this.LastKiller;										// DEATH KNIGHT HOLDING SOUL LANTERNS
-			if ( spreaddeath.Slays(this) && deathknight != null && this.TotalGold > 0 )	// TURNS THE MONEY TO SOUL COUNT
-			{
-				if ( deathknight is BaseCreature )
-					deathknight = ((BaseCreature)deathknight).GetMaster();
-
-				if ( deathknight is PlayerMobile )
-				{
-					Item lantern = deathknight.FindItemOnLayer( Layer.TwoHanded );
-
-					if ( lantern is SoulLantern )
+					if ( Server.Items.BaseRace.BloodDrinker( player.RaceID ) && Utility.RandomBool() )
 					{
-						SoulLantern souls = (SoulLantern)lantern;
-						souls.TrappedSouls = souls.TrappedSouls + (this.TotalGold * 2);
+						PackItem( new BloodyDrink() );
+					}
+					else if ( Server.Items.BaseRace.BrainEater( player.RaceID ) && Utility.RandomBool() )
+					{
+						PackItem( new FreshBrain() );
+					}
+				}
+
+				///////////////////////////////////////////////////////////////////////////////////////
+
+				// Actually generate loot
+				int treasureLevel = TreasureMapLevel;
+				if ( treasureLevel >= 0 )
+				{
+					if ( m_Paragon && Paragon.ChestChance > Utility.RandomDouble() )
+						PackItem( new ParagonChest( this.Name, this.Title, treasureLevel, this ) );
+					else if ( TreasureMap.LootChance >= Utility.RandomDouble() )
+					{
+						PackItem( new TreasureMap( treasureLevel, this.Map, this.Location, this.X, this.Y ) );
+					}
+				}
+
+				if ( !m_HasGeneratedLoot )
+				{
+					m_HasGeneratedLoot = true;
+					GenerateLoot( false );
+					if ( Backpack != null )
+					{
+						var lootingRights = GetLootingRights( this.DamageEntries, this.HitsMax );
+						var mobiles = lootingRights.Select(store => store.m_Mobile);
+						NotIdentified.DoAutoDelete( Backpack, mobiles );
+					}
+				}
+
+				///////////////////////////////////////////////////////////////////////////////////////
+
+				// DEATH KNIGHT HOLDING SOUL LANTERNS
+				// TURNS THE MONEY TO SOUL COUNT
+				if ( SlayerGroup.Slays( SlayerName.Repond, this ) && this.TotalGold > 0 )
+				{
+					SoulLantern souls = player.FindItemOnLayer( Layer.TwoHanded ) as SoulLantern;
+					if ( souls != null )
+					{
+						souls.TrappedSouls += this.TotalGold * 2;
 						if ( souls.TrappedSouls > 100000 ){ souls.TrappedSouls = 100000; }
 						souls.InvalidateProperties();
 
-						Item deathpack = this.FindItemOnLayer( Layer.Backpack );
-						if ( deathpack != null )
+						// Don't create a backpack
+						if ( this.Backpack != null )
 						{
 							Item dtcoins = this.Backpack.FindItemByType( typeof( Gold ) );
 							dtcoins.Delete();
-							deathknight.SendMessage( StringCatalog.ResolveByKey(deathknight.Account, "mob.other.a_soul_has_been_claimed") );
-							Effects.SendLocationParticles( EffectItem.Create( deathknight.Location, deathknight.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 5008 );
-							Effects.PlaySound( deathknight.Location, deathknight.Map, 0x1ED );
+							player.SendMessage( "A soul has been claimed." );
+							Effects.SendLocationParticles( EffectItem.Create( player.Location, player.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 5008 );
+							Effects.PlaySound( player.Location, player.Map, 0x1ED );
 						}
 					}
 				}
-			}
 
-			///////////////////////////////////////////////////////////////////////////////////////
+				///////////////////////////////////////////////////////////////////////////////////////
 
-			SlayerEntry holyundead = SlayerGroup.GetEntryByName( SlayerName.Silver );
-			SlayerEntry holydemons = SlayerGroup.GetEntryByName( SlayerName.Exorcism );
-
-			Mobile holyman = this.LastKiller;																		// HOLY MANY HOLDING HOLY SYMBOL
-			if ( ( holyundead.Slays(this) || holydemons.Slays(this) ) && holyman != null && this.TotalGold > 0 )	// TURNS THE MONEY TO BANISH COUNT
-			{
-				if ( holyman is BaseCreature )
-					holyman = ((BaseCreature)holyman).GetMaster();
-
-				if ( holyman is PlayerMobile )
+				// HOLY MANY HOLDING HOLY SYMBOL
+				// TURNS THE MONEY TO BANISH COUNT
+				if ( ( SlayerGroup.Slays( SlayerName.Silver, this ) || SlayerGroup.Slays( SlayerName.Exorcism, this ) ) && this.TotalGold > 0 )
 				{
-					Item symbol = holyman.FindItemOnLayer( Layer.Trinket );
-
-					if ( symbol is HolySymbol )
+					HolySymbol banish = player.FindItemOnLayer( Layer.Trinket ) as HolySymbol;
+					if ( banish != null )
 					{
-						HolySymbol banish = (HolySymbol)symbol;
 						banish.BanishedEvil = banish.BanishedEvil + (this.TotalGold * 2);
 						if ( banish.BanishedEvil > 100000 ){ banish.BanishedEvil = 100000; }
 						banish.InvalidateProperties();
@@ -8521,12 +8494,15 @@ namespace Server.Mobiles
 						{
 							Item dtcoins = this.Backpack.FindItemByType( typeof( Gold ) );
 							dtcoins.Delete();
-							holyman.SendMessage( StringCatalog.ResolveByKey(holyman.Account, "mob.other.evil_has_been_banished") );
-							holyman.FixedParticles( 0x373A, 10, 15, 5018, EffectLayer.Waist );
-							holyman.PlaySound( 0x1EA );
+							player.SendMessage( "Evil has been banished." );
+							player.FixedParticles( 0x373A, 10, 15, 5018, EffectLayer.Waist );
+							player.PlaySound( 0x1EA );
 						}
 					}
 				}
+
+				// Make last so that DK and Holyman currency is checked first
+				LootPackChange.MakeCoins(this.Backpack, this);
 			}
 
 			if ( IsAnimatedDead )
@@ -8716,6 +8692,21 @@ namespace Server.Mobiles
             EventSink.InvokeOnKilledBy( this, mob, corpse, damagerCount, totalDamage );
 		}
 
+		private void GiveKillQuestCredit( Mobile player )
+		{
+			if ( false == ( player is PlayerMobile ) ) return;
+
+			MLQuestSystem.HandleKill( (PlayerMobile) player, this );
+			AssassinFunctions.CheckTarget( player, this );
+			StandardQuestFunctions.CheckTarget( player, this, null );
+			FishingQuestFunctions.CheckTarget( player, this, null );
+
+			if ( Fame < 18000 ) return;
+
+			MuseumBook.FoundItem( player, 1 );
+			QuestTome.FoundItem( player, 1, null );
+		}
+
 		public override void OnDeath( Container c )
 		{
 			PremiumSpawner.ActivateSpawner( this );
@@ -8751,17 +8742,19 @@ namespace Server.Mobiles
 
 			if ( killer is PlayerMobile )
 			{
-				MLQuestSystem.HandleKill( (PlayerMobile) killer, this );
-				AssassinFunctions.CheckTarget( killer, this );
-				StandardQuestFunctions.CheckTarget( killer, this, null );
-				FishingQuestFunctions.CheckTarget( killer, this, null );
-				if ( killer.Backpack.FindItemByType( typeof ( MuseumBook ) ) != null && this.Fame >= 18000 )
+				GiveKillQuestCredit( killer );
+
+				var party = Engines.PartySystem.Party.Get( killer );
+				if ( party != null )
 				{
-					MuseumBook.FoundItem( killer, 1 );
-				}
-				if ( killer.Backpack.FindItemByType( typeof ( QuestTome ) ) != null && this.Fame >= 18000 )
-				{
-					QuestTome.FoundItem( killer, 1, null );
+					foreach ( var pmi in party.Members )
+					{
+						var member = pmi.Mobile;
+						if ( member == null || member == killer ) continue;
+						if ( !member.Alive || member.Map != Map || !member.InRange( Location, 20 ) ) continue;
+
+						GiveKillQuestCredit( member );
+					}
 				}
 			}
 
@@ -8838,9 +8831,6 @@ namespace Server.Mobiles
 					List<int> fame = new List<int>();
 					List<int> karma = new List<int>();
 
-					var mobilesWhoKilledMob = new HashSet<Serial>();
-					var damageValueTrack = 0;
-
 					foreach ( var ds in list )
 					{
 						Party party = Engines.PartySystem.Party.Get( ds.m_Mobile );
@@ -8878,23 +8868,21 @@ namespace Server.Mobiles
 							fame.Add( totalFame );
 							karma.Add( totalKarma );
 						}
-
-						damageValueTrack = Math.Max( damageValueTrack, ds.m_Damage );
-
-						OnKilledBy( ds.m_Mobile, c, party != null ? 2 : list.Count, ds.m_Damage );
-						mobilesWhoKilledMob.Add( ds.m_Mobile.Serial );
 					}
 
+					Func<Mobile, bool> isInRange = m => m.InRange( c, 20 );
+					var splitCoins = 1 < titles.Count( m => isInRange( m ) );
 					for ( int i = 0; i < titles.Count; ++i )
 					{
 						var mobile = titles[ i ];
 						Titles.AwardFame( mobile, fame[ i ], true );
 						Titles.AwardKarma( mobile, karma[ i ], true );
 
-						// Grant credit to people who haven't gotten credit yet
-						if ( !mobilesWhoKilledMob.Contains( mobile.Serial ) )
+						if ( isInRange( mobile ) )
 						{
-							OnKilledBy( mobile, c, 2, damageValueTrack );
+							var entry = list.FirstOrDefault( ds => ds.m_Mobile == mobile );
+							var damage = entry != null ? entry.m_Damage : 0;
+							OnKilledBy( mobile, c, splitCoins ? 2 : 1, damage );
 						}
 					}
 				}

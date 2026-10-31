@@ -1,7 +1,6 @@
-using System;
-using Server.Items;
 using Server.Targeting;
 using Server.Localization;
+using Server.Utilities;
 
 namespace Server.Items
 {
@@ -59,7 +58,8 @@ namespace Server.Items
 			if ( from.InRange( this.GetWorldLocation(), 2 ) )
 			{
 				from.SendLocalizedMessage( 500366 ); // Select a loom to use that on.
-				from.Target = new PickLoomTarget( this );
+				if ( Utility.RandomDouble() < 0.1 ) from.SendMessage("Target yourself to automatically choose a nearby target");
+				from.Target = new PickLoomTarget( this, from );
 			}
 			else
 			{
@@ -69,11 +69,13 @@ namespace Server.Items
 
 		private class PickLoomTarget : Target
 		{
-			private BaseClothMaterial m_Material;
+			private readonly BaseClothMaterial m_Material;
+			private readonly Mobile m_From;
 
-			public PickLoomTarget( BaseClothMaterial material ) : base( 3, false, TargetFlags.None )
+			public PickLoomTarget( BaseClothMaterial material, Mobile from ) : base( 3, false, TargetFlags.None )
 			{
 				m_Material = material;
+				m_From = from;
 			}
 
 			protected override void OnTarget( Mobile from, object targeted )
@@ -85,6 +87,9 @@ namespace Server.Items
 
 				if ( loom == null && targeted is AddonComponent )
 					loom = ((AddonComponent)targeted).Addon as ILoom;
+
+				if ( loom == null && targeted == m_From )
+					loom = WorldUtilities.GetNearbyItem<Item>( from, Range, item => item is ILoom) as ILoom;
 
 				if ( loom != null )
 				{

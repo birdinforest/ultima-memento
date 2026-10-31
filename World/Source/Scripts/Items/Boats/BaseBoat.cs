@@ -346,7 +346,7 @@ namespace Server.Multis
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 4 );
+			writer.Write( (int) 5 );
 
 			writer.Write( (Item) m_MapItem );
 			writer.Write( (int) m_NextNavPoint );
@@ -375,6 +375,7 @@ namespace Server.Multis
 
 			switch ( version )
 			{
+				case 5:
 				case 4:
 				case 3:
 				{
@@ -428,7 +429,7 @@ namespace Server.Multis
 				}
 			}
 
-			if ( version < 4 ) Refresh();
+			if ( version < 5 ) Refresh();
 
 			m_Instances.Add( this );
 		}
@@ -2122,7 +2123,12 @@ namespace Server.Multis
 						item.NoMoveHS = true;
 
 						if ( item is Corpse ) // This makes it look like it changes it's location because the boat moves
-							item.Location = new Point3D( item.X, item.Y, item.Z );
+						{
+							if ( MobileUtilities.TryGetMasterPlayer(( (Corpse) item ).Owner ) is PlayerMobile )
+								item.Location = new Point3D( item.X + xOffset, item.Y + yOffset, item.Z );
+							else
+								item.Location = new Point3D( item.X, item.Y, item.Z );
+						}
 						else if ( !( item is TillerMan || item is Hold || item is Plank ) )
 							item.Location = new Point3D( item.X + xOffset, item.Y + yOffset, item.Z );
 					}

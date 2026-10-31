@@ -35,25 +35,29 @@ namespace Server.Spells.First
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.CheckReflect( (int)this.Circle, Caster, ref m );
-
-				SpellHelper.AddStatCurse( Caster, m, StatType.Str );
-
-				if ( m.Spell != null )
-					m.Spell.OnCasterHurt();
-
-				m.Paralyzed = false;
-				BuffInfo.CleanupIcons( m, true );
+				Mobile source = Caster;
+				bool hitThrough = SpellHelper.ResolveMagicDefense( (int)this.OneBasedCircle, ref source, ref m );
 
 				m.FixedParticles( 0x3779, 10, 15, 5009, Server.Misc.PlayerSettings.GetMySpellHue( true, Caster, 0 ), 0, EffectLayer.Waist );
 				m.PlaySound( 0x1E6 );
 
-				int percentage = (int)(SpellHelper.GetOffsetScalar( Caster, m, true )*100);
-				TimeSpan length = SpellHelper.GetDuration( Caster, m );
+				if ( hitThrough )
+				{
+					SpellHelper.AddStatCurse( Caster, m, StatType.Str );
 
-				BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.Weaken, 1075837, length, m, percentage.ToString() ) );
+					if ( m.Spell != null )
+						m.Spell.OnCasterHurt();
 
-				HarmfulSpell( m );
+					m.Paralyzed = false;
+					BuffInfo.CleanupIcons( m, true );
+
+					int percentage = (int)(SpellHelper.GetOffsetScalar( Caster, m, true )*100);
+					TimeSpan length = SpellHelper.GetDuration( Caster, m );
+
+					BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.Weaken, 1075837, length, m, percentage.ToString() ) );
+
+					HarmfulSpell( m );
+				}
 			}
 
 			FinishSequence();

@@ -1,28 +1,37 @@
 using System;
 using System.Collections;
-using Server.Network;
-using Server.Items;
 using Server.Targeting;
 
 namespace Server.Spells.Chivalry
 {
 	public class DivineFurySpell : PaladinSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Divine Fury", "Divinum Furis",
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+				new SpellDefinition
+				{
+					SpellID = 204,
+					IconGraphic = 0x5104,
+					Name = "Divine Fury",
+					PowerWords = 1060722, // Divinum Furis
+					Description = 1061494, // Temporarily increases the caster's swing speed, chance to hit, and damage dealt while lowering the Knight's defense chance. Upon casting, the Knight's Stamina is also refreshed by an amount based on caster's Knightship skill and Karma. Bonus effects and the duration of the spell is also affected by Caster's Karma and Knightship skill.
+					ManaCost = 15,
+					TithingCost = 10,
+					MinSkill = 25,
+					TargetType = TargetFlags.None,
+				},
 				-1,
 				9002
 			);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1.0 ); } }
 
-		public override double RequiredSkill{ get{ return 25.0; } }
-		public override int RequiredMana{ get{ return 15; } }
-		public override int RequiredTithing{ get{ return 10; } }
-		public override int MantraNumber{ get{ return 1060722; } } // Divinum Furis
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override int MantraNumber{ get{ return SpellInfo.SpellDefinition.PowerWords.Number; } }
 		public override bool BlocksMovement{ get{ return false; } }
 
-		public DivineFurySpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public DivineFurySpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 

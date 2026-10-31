@@ -9,7 +9,7 @@ namespace Server.Engines.MLQuests.Gumps
 		private MLQuestInstance m_Instance;
 
 		public QuestRewardGump(MLQuestInstance instance)
-			: base(1072201, instance.Player) // Reward
+			: base(instance.Player.Preferences.ShowGumpImages, 1072201, instance.Player) // Reward
 		{
 			m_Instance = instance;
 
