@@ -152,7 +152,7 @@ namespace Server.Items
 						break;
 					case 16:
 						m_Uses = 6; // STOP GIVING LOOT WHEN THEY GET A CONTAINER
-						int chestLuck = Server.Misc.GetPlayerInfo.LuckyPlayerArtifacts( from.Luck );
+						int chestLuck = Server.Misc.GetPlayerInfo.GetLuckPercent( from.Luck, 10 );
 						if ( chestLuck < 3 ){ chestLuck = 3; }
 						if ( chestLuck > 8 ){ chestLuck = 8; }
 						int chestLevel = Utility.RandomMinMax( 3, chestLuck );
@@ -187,8 +187,7 @@ namespace Server.Items
 						int xTraCash = Utility.RandomMinMax( 5000, 8000 );
 
 						LootPackChange.AddGoldToContainer( xTraCash, (LootChest)item, from, chestLevel );
-						int artychance = GetPlayerInfo.LuckyPlayerArtifacts( from.Luck ) + 10;
-						if ( Utility.RandomMinMax( 0, 100 ) < artychance ){ Item artys = Loot.RandomArty(); ((LootChest)item).DropItem( artys ); }
+						if ( GetPlayerInfo.LuckyPlayerArtifacts( from.Luck, 10 ) ){ Item artys = Loot.RandomArty(); ((LootChest)item).DropItem( artys ); }
 						break;
 				}
 
