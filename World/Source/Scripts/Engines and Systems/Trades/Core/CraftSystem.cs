@@ -92,6 +92,11 @@ namespace Server.Engines.Craft
 
 		public abstract double GetChanceAtMin( CraftItem item );
 
+		public virtual string GetCategoryWarning( int selectedGroup )
+		{
+			return null;
+		}
+
 		public static bool AllowManyCraft( BaseTool tool )
 		{
 			if ( tool != null && ( tool is BaseRunicTool || tool is TomeOfWands ) )
@@ -347,26 +352,20 @@ namespace Server.Engines.Craft
 			return new RecipeScroll(craftItem.Recipe, player);
 		}
 
-		public Bag GetRecipeScrolls(PlayerMobile player, params Type[] types)
+		public BaseContainer AddRecipeScrolls(PlayerMobile player, BaseContainer container, params Type[] types)
 		{
-			var bag = new Bag();
-
-			// This is dirty, but I'm in a rush
-			if (this is DefBlacksmithy)
-				bag.Hue = Utility.RandomMetalHue();
-
 			foreach(var type in types)
 			{
 				var scroll = GetRecipeScroll(player, type);
 				if (scroll ==  null) continue;
 
-				bag.AddItem(scroll);
+				container.DropItem(scroll);
 			}
 
-			return bag;
+			return container;
 		}
 
-		public Bag GetRandomRecipeScrolls(PlayerMobile player, int count, Func<Recipe, bool> predicate)
+		public BaseContainer GetRandomRecipeScrolls(PlayerMobile player, BaseContainer container, int count, Func<Recipe, bool> predicate)
 		{
 			var candidates = m_Recipes.Where(id =>
 			{
@@ -374,24 +373,22 @@ namespace Server.Engines.Craft
 				return predicate(recipe);
 			}).ToList();
 
-			return GetRandomRecipeScrolls(player, candidates, count);
+			return GetRandomRecipeScrolls(player, container, candidates, count);
 		}
 
-		public static Bag GetRandomRecipeScrolls(PlayerMobile player, List<int> candidates, int count)
+		public static BaseContainer GetRandomRecipeScrolls(PlayerMobile player, BaseContainer container, List<int> candidates, int count)
 		{
-			var bag = new Bag();
-
 			for (int i = 0; i < count; i++)
 			{
 				var id = PickRandomRecipe(candidates);
-				if (id < 0) return bag;
+				if (id < 0) return container;
 
 				var recipe = new RecipeScroll(id, player);
-				bag.AddItem(recipe);
+				container.AddItem(recipe);
 				candidates.Remove(id);
 			}
 
-			return bag;
+			return container;
 		}
 
 		public int RandomRecipe()
@@ -527,6 +524,12 @@ namespace Server.Engines.Craft
 		{
 			CraftItem craftItem = m_CraftItems.GetAt(index);
 			craftItem.AddSkill(skillToMake, minSkill, maxSkill);
+		}
+
+		public void AddOrSkill( int index, double minSkill, double maxSkill, params SkillName[] skills )
+		{
+			CraftItem craftItem = m_CraftItems.GetAt( index );
+			craftItem.AddOrSkillGroup( minSkill, maxSkill, skills );
 		}
 
 		private void AddRecipeBase( int index, int id )

@@ -1,6 +1,3 @@
-using System;
-using Server;
-using Server.Items;
 using Server.Spells.HolyMan;
 using Server.Localization;
 
@@ -8,17 +5,17 @@ namespace Server.Items
 {
 	public class HolyManSymbol770 : SpellScroll
 	{
-		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( 770 ); } }
+		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( SpellID ); } }
 
 		[Constructable]
-		public HolyManSymbol770() : base( 770, 0xE5B )
+		public HolyManSymbol770() : base( BanishEvilSpell.SpellInfo.SpellDefinition.SpellID, 0xE5B )
 		{
 			Hue = 0xB89;
 			Name = "holy symbol";
 
 			ColorText4 = "Patriarch Morden";
 			ColorHue4 = "4FE9E4";
-			ColorText5 = "Banish";
+			ColorText5 = HolyManSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "E5EC79";
 		}
 
@@ -46,17 +43,17 @@ namespace Server.Items
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	public class HolyManSymbol771 : SpellScroll
 	{
-		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( 771 ); } }
+		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( SpellID ); } }
 
 		[Constructable]
-		public HolyManSymbol771() : base( 771, 0xE5B )
+		public HolyManSymbol771() : base( DampenSpiritSpell.SpellInfo.SpellDefinition.SpellID, 0xE5B )
 		{
 			Hue = 0xB89;
 			Name = "holy symbol";
 
 			ColorText4 = "Archbishop Halyrn";
 			ColorHue4 = "4FE9E4";
-			ColorText5 = "Dampen Spirit";
+			ColorText5 = HolyManSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "E5EC79";
 		}
 
@@ -84,17 +81,17 @@ namespace Server.Items
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	public class HolyManSymbol772 : SpellScroll
 	{
-		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( 772 ); } }
+		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( SpellID ); } }
 
 		[Constructable]
-		public HolyManSymbol772() : base( 772, 0xE5B )
+		public HolyManSymbol772() : base( EnchantSpell.SpellInfo.SpellDefinition.SpellID, 0xE5B )
 		{
 			Hue = 0xB89;
 			Name = "holy symbol";
 
 			ColorText4 = "Bishop Leantre";
 			ColorHue4 = "4FE9E4";
-			ColorText5 = "Enchant";
+			ColorText5 = HolyManSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "E5EC79";
 		}
 
@@ -122,17 +119,17 @@ namespace Server.Items
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	public class HolyManSymbol773 : SpellScroll
 	{
-		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( 773 ); } }
+		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( SpellID ); } }
 
 		[Constructable]
-		public HolyManSymbol773() : base( 773, 0xE5B )
+		public HolyManSymbol773() : base( HammerOfFaithSpell.SpellInfo.SpellDefinition.SpellID, 0xE5B )
 		{
 			Hue = 0xB89;
 			Name = "holy symbol";
 
 			ColorText4 = "Deacon Wilems";
 			ColorHue4 = "4FE9E4";
-			ColorText5 = "Hammer of Faith";
+			ColorText5 = HolyManSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "E5EC79";
 		}
 
@@ -160,17 +157,17 @@ namespace Server.Items
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	public class HolyManSymbol774 : SpellScroll
 	{
-		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( 774 ); } }
+		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( SpellID ); } }
 
 		[Constructable]
-		public HolyManSymbol774() : base( 774, 0xE5B )
+		public HolyManSymbol774() : base( HeavenlyLightSpell.SpellInfo.SpellDefinition.SpellID, 0xE5B )
 		{
 			Hue = 0xB89;
 			Name = "holy symbol";
 
 			ColorText4 = "Drumat the Apostle";
 			ColorHue4 = "4FE9E4";
-			ColorText5 = "Heavenly Light";
+			ColorText5 = HolyManSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "E5EC79";
 		}
 
@@ -198,17 +195,17 @@ namespace Server.Items
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	public class HolyManSymbol775 : SpellScroll
 	{
-		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( 775 ); } }
+		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( SpellID ); } }
 
 		[Constructable]
-		public HolyManSymbol775() : base( 775, 0xE5B )
+		public HolyManSymbol775() : base( NourishSpell.SpellInfo.SpellDefinition.SpellID, 0xE5B )
 		{
 			Hue = 0xB89;
 			Name = "holy symbol";
 
 			ColorText4 = "Vincent the Priest";
 			ColorHue4 = "4FE9E4";
-			ColorText5 = "Nourish";
+			ColorText5 = HolyManSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "E5EC79";
 		}
 
@@ -236,17 +233,17 @@ namespace Server.Items
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	public class HolyManSymbol776 : SpellScroll
 	{
-		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( 776 ); } }
+		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( SpellID ); } }
 
 		[Constructable]
-		public HolyManSymbol776() : base( 776, 0xE5B )
+		public HolyManSymbol776() : base( PurgeSpell.SpellInfo.SpellDefinition.SpellID, 0xE5B )
 		{
 			Hue = 0xB89;
 			Name = "holy symbol";
 
 			ColorText4 = "Abigayl the Preacher";
 			ColorHue4 = "4FE9E4";
-			ColorText5 = "Purge";
+			ColorText5 = HolyManSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "E5EC79";
 		}
 
@@ -274,17 +271,17 @@ namespace Server.Items
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	public class HolyManSymbol777 : SpellScroll
 	{
-		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( 777 ); } }
+		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( SpellID ); } }
 
 		[Constructable]
-		public HolyManSymbol777() : base( 777, 0xE5B )
+		public HolyManSymbol777() : base( RebirthSpell.SpellInfo.SpellDefinition.SpellID, 0xE5B )
 		{
 			Hue = 0xB89;
 			Name = "holy symbol";
 
 			ColorText4 = "Cardinal Greggs";
 			ColorHue4 = "4FE9E4";
-			ColorText5 = "Rebirth";
+			ColorText5 = HolyManSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "E5EC79";
 		}
 
@@ -312,17 +309,17 @@ namespace Server.Items
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	public class HolyManSymbol778 : SpellScroll
 	{
-		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( 778 ); } }
+		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( SpellID ); } }
 
 		[Constructable]
-		public HolyManSymbol778() : base( 778, 0xE5B )
+		public HolyManSymbol778() : base( SacredBoonSpell.SpellInfo.SpellDefinition.SpellID, 0xE5B )
 		{
 			Hue = 0xB89;
 			Name = "holy symbol";
 
 			ColorText4 = "Father Michal";
 			ColorHue4 = "4FE9E4";
-			ColorText5 = "Sacred Boon";
+			ColorText5 = HolyManSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "E5EC79";
 		}
 
@@ -350,17 +347,17 @@ namespace Server.Items
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	public class HolyManSymbol779 : SpellScroll
 	{
-		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( 779 ); } }
+		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( SpellID ); } }
 
 		[Constructable]
-		public HolyManSymbol779() : base( 779, 0xE5B )
+		public HolyManSymbol779() : base( SanctifySpell.SpellInfo.SpellDefinition.SpellID, 0xE5B )
 		{
 			Hue = 0xB89;
 			Name = "holy symbol";
 
 			ColorText4 = "Sister Tiana";
 			ColorHue4 = "4FE9E4";
-			ColorText5 = "Sanctify";
+			ColorText5 = HolyManSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "E5EC79";
 		}
 
@@ -388,17 +385,17 @@ namespace Server.Items
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	public class HolyManSymbol780 : SpellScroll
 	{
-		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( 780 ); } }
+		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( SpellID ); } }
 
 		[Constructable]
-		public HolyManSymbol780() : base( 780, 0xE5B )
+		public HolyManSymbol780() : base( SeanceSpell.SpellInfo.SpellDefinition.SpellID, 0xE5B )
 		{
 			Hue = 0xB89;
 			Name = "holy symbol";
 
 			ColorText4 = "Brother Kurklan";
 			ColorHue4 = "4FE9E4";
-			ColorText5 = "Seance";
+			ColorText5 = HolyManSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "E5EC79";
 		}
 
@@ -426,17 +423,17 @@ namespace Server.Items
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	public class HolyManSymbol781 : SpellScroll
 	{
-		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( 781 ); } }
+		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( SpellID ); } }
 
 		[Constructable]
-		public HolyManSymbol781() : base( 781, 0xE5B )
+		public HolyManSymbol781() : base( SmiteSpell.SpellInfo.SpellDefinition.SpellID, 0xE5B )
 		{
 			Hue = 0xB89;
 			Name = "holy symbol";
 
 			ColorText4 = "Edwin the Pope";
 			ColorHue4 = "4FE9E4";
-			ColorText5 = "Smite";
+			ColorText5 = HolyManSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "E5EC79";
 		}
 
@@ -464,17 +461,17 @@ namespace Server.Items
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	public class HolyManSymbol782 : SpellScroll
 	{
-		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( 782 ); } }
+		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( SpellID ); } }
 
 		[Constructable]
-		public HolyManSymbol782() : base( 782, 0xE5B )
+		public HolyManSymbol782() : base( TouchOfLifeSpell.SpellInfo.SpellDefinition.SpellID, 0xE5B )
 		{
 			Hue = 0xB89;
 			Name = "holy symbol";
 
 			ColorText4 = "Xephyn the Monk";
 			ColorHue4 = "4FE9E4";
-			ColorText5 = "Touch of Life";
+			ColorText5 = HolyManSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "E5EC79";
 		}
 
@@ -502,17 +499,17 @@ namespace Server.Items
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	public class HolyManSymbol783 : SpellScroll
 	{
-		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( 783 ); } }
+		public override string DefaultDescription{ get{ return HolyManSpell.SpellDescription( SpellID ); } }
 
 		[Constructable]
-		public HolyManSymbol783() : base( 783, 0xE5B )
+		public HolyManSymbol783() : base( TrialByFireSpell.SpellInfo.SpellDefinition.SpellID, 0xE5B )
 		{
 			Hue = 0xB89;
 			Name = "holy symbol";
 
 			ColorText4 = "Chancellor Davis";
 			ColorHue4 = "4FE9E4";
-			ColorText5 = "Trial by Fire";
+			ColorText5 = HolyManSpellProvider.GetDefinition(SpellID).Name;
 			ColorHue5 = "E5EC79";
 		}
 

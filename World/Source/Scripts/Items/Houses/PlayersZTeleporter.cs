@@ -24,7 +24,6 @@ namespace Server.Items
 		private bool m_DestEffect;
 		private int m_SoundID;
 		private TimeSpan m_Delay;
-		private Mobile m_Owner;
         private SecureLevel m_Level;
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -161,21 +160,19 @@ namespace Server.Items
 			}
             else if (this.Movable)
 			{
-				from.SendMessage( "The ownership has been cleared. This must be secured in a house to set it or in your backpack to change the appearance! This teleporter can be dyed as well." );
-				m_Owner = null;
+				from.SendMessage( "The destination has been cleared. This must be secured in a house to set it or in your backpack to change the appearance! This teleporter can be dyed as well." );
 				m_MapDest = null;
 				m_PointDest = new Point3D( 0, 0, 0 );
 			}
 			else
 			{
-				if ( m_Owner != null )
+				if ( HasDestination() )
 				{
 					from.SendMessage( "This teleporter has been set already." );
 					return;
 				}	
 				else
 				{
-					m_Owner = from;
 					m_MapDest = this.Map;
 					m_PointDest = this.Location;
 					from.SendMessage ("You have set the teleporter.  It must be locked down in that house to use it.");
@@ -194,6 +191,11 @@ namespace Server.Items
 			return (house != null && house.HasSecureAccess(m, m_Level));
 		}
 
+		private bool HasDestination()
+		{
+			return m_MapDest != null && m_PointDest != Point3D.Zero;
+		}
+
 		public virtual void StartTeleport( Mobile m )
 		{
 			if ( m_Delay == TimeSpan.Zero )
@@ -209,7 +211,6 @@ namespace Server.Items
 
 		public virtual void DoTeleport( Mobile m )
 		{
-			m_Owner = m;
 			m_MapDest = this.Map;
 			m_PointDest = new Point3D(this.X, this.Y, this.Z+20);
 
@@ -247,7 +248,7 @@ namespace Server.Items
 			{
 				if ( !m_Creatures && !m.Player )
 					return true;
-				else if ( m_Owner == null )
+				else if ( !HasDestination() )
 				{
 					m.SendMessage( "This teleporter does not lead anywhere." );
 					return true;
@@ -281,7 +282,7 @@ namespace Server.Items
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
-			writer.Write( (int) 3 ); // version
+			writer.Write( (int) 4 ); // version
 			writer.Write( (bool) m_CombatCheck );
 			writer.Write( (bool) m_SourceEffect );
 			writer.Write( (bool) m_DestEffect );
@@ -291,7 +292,6 @@ namespace Server.Items
 			writer.Write( m_Active );
 			writer.Write( m_PointDest );
 			writer.Write( m_MapDest );
-			writer.Write( m_Owner );
 			writer.Write((int)m_Level);
 		}
 
@@ -301,6 +301,7 @@ namespace Server.Items
 			int version = reader.ReadInt();
 			switch ( version )
 			{
+				case 4:
 				case 3:
 				{
 					m_CombatCheck = reader.ReadBool();
@@ -326,7 +327,10 @@ namespace Server.Items
 					m_Active = reader.ReadBool();
 					m_PointDest = reader.ReadPoint3D();
 					m_MapDest = reader.ReadMap();
-					m_Owner = reader.ReadMobile();
+					if ( version < 4 )
+					{
+						var m_Owner = reader.ReadMobile(); // discard
+					}
 					m_Level = (SecureLevel)reader.ReadInt();
 
 					break;

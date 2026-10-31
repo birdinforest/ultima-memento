@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Server;
 using Server.Gumps;
 using Server.Network;
 using Server.Spells.Necromancy;
@@ -10,11 +9,14 @@ using Server.Mobiles;
 using Server.Misc;
 using System.Linq;
 using Server.Localization;
+using Server.Timers;
 
 namespace Server.SkillHandlers
 {
 	public class Tracking
 	{
+		public static readonly TimeSpan COOLDOWN = TimeSpan.FromSeconds( 5.0 );
+
 		public static void Initialize()
 		{
 			SkillInfo.Table[(int)SkillName.Tracking].Callback = new SkillUseCallback( OnUse );
@@ -22,16 +24,26 @@ namespace Server.SkillHandlers
 
 		public static TimeSpan OnUse( Mobile m )
 		{
-			m.SendLocalizedMessage( 1011350 ); // What do you wish to track?
+			var player = m as PlayerMobile;
+			if ( player != null )
+			{
+				if ( player.Preferences.ModernTrackingEnabled )
+				{
+					if ( RepeatableAction.StopTimer( player ) )
+						return Tracking.COOLDOWN;
+				}
 
-			m.CloseGump( typeof( TrackWhatGump ) );
-			m.CloseGump( typeof( TrackWhoGump ) );
-			m.SendGump( new TrackWhatGump( m ) );
+				m.SendLocalizedMessage( 1011350 ); // What do you wish to track?
 
-			return TimeSpan.FromSeconds( 5.0 ); // 10 second delay before beign able to re-use a skill
+				m.CloseGump( typeof( TrackWhatGump ) );
+				m.CloseGump( typeof( TrackWhoGump ) );
+				m.SendGump( new TrackWhatGump( player ) );
+			}
+
+			return !player.Preferences.ModernTrackingEnabled ? Tracking.COOLDOWN : TimeSpan.Zero;
 		}
 
-		public class TrackingInfo
+ 		public class TrackingInfo
 		{
 			public Mobile m_Tracker;
 			public Mobile m_Target;
@@ -99,17 +111,15 @@ namespace Server.SkillHandlers
 
 	public class TrackWhatGump : Gump
 	{
-		private Mobile m_From;
-		private bool m_Success;
+		private PlayerMobile m_From;
 
-		public TrackWhatGump( Mobile from ) : base( 50, 50 )
+		public TrackWhatGump( PlayerMobile from ) : base( 50, 50 )
 		{
 			string color = "#99b9eb";
 			string subct = "#cec195";
 			from.SendSound( 0x4A ); 
 
 			m_From = from;
-			m_Success = from.CheckSkill( SkillName.Tracking, 0.0, 21.1 );
 
             this.Closable=true;
 			this.Disposable=true;
@@ -229,7 +239,40 @@ namespace Server.SkillHandlers
 		{
 			m_From.SendSound( 0x4A ); 
 			if ( info.ButtonID >= 1 && info.ButtonID <= 32 )
-				TrackWhoGump.DisplayTo( m_Success, m_From, info.ButtonID - 1 );
+			{
+				var player = m_From;
+				if ( player.Preferences.ModernTrackingEnabled )
+				{
+					RepeatableAction.Run<Tracking>(player, true, () =>
+					{
+						if (DateTime.Now < player.NextSkillTime) return;
+						if (!Skills.CanUseSkill(player, (int)SkillName.Tracking)) return;
+
+						if (Skills.TryExecuteSkillCallback(player))
+						{
+							player.PrivateOverheadMessage(MessageType.Regular, 1150, false, "You take a moment to look around.", player.NetState);
+
+							var success = m_From.CheckSkillExplicit( SkillName.Tracking, 0.0, 21.1 );
+							TrackWhoGump.DisplayTo( success, m_From, info.ButtonID - 1 );
+						}
+						else
+						{
+							player.SendSkillMessage();
+						}
+					},
+					() =>
+					{
+						if (!player.Preferences.ModernTrackingEnabled) return false;
+
+						return true;
+					}, TimeSpan.Zero, Tracking.COOLDOWN);
+				}
+				else
+				{
+					var success = m_From.CheckSkillExplicit( SkillName.Tracking, 0.0, 21.1 );
+					TrackWhoGump.DisplayTo( success, m_From, info.ButtonID - 1 );
+				}
+			}
 		}
 	}
 
@@ -346,6 +389,7 @@ namespace Server.SkillHandlers
 			{
 				list.Sort( new InternalSorter( from ) );
 
+				from.CloseGump(typeof(TrackWhoGump));
 				from.SendGump( new TrackWhoGump( from, list, range ) );
 				from.SendLocalizedMessage( 1018093 ); // Select the one you would like to track.
 			}

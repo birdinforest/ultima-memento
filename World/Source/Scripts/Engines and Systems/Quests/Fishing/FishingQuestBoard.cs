@@ -1,15 +1,12 @@
-using System;
-using System.Collections;
 using Server.ContextMenus;
 using System.Collections.Generic;
 using Server.Misc;
 using Server.Network;
-using Server;
-using Server.Items;
 using Server.Gumps;
 using Server.Mobiles;
 using Server.Commands;
 using Server.Localization;
+using Server.Utilities;
 using Server.Accounting;
 
 namespace Server.Items
@@ -151,23 +148,15 @@ namespace Server.Items
 			{
 				int nPenalty = FishingQuestFunctions.QuestFailure( from );
 
-				if ( dropped.Amount >= nPenalty )
+				if ( ItemUtilities.ConsumeRequired( dropped, nPenalty ) )
 				{
 					PlayerSettings.ClearQuestInfo( from, "FishingQuest" );
 					FishingQuestFunctions.QuestTimeAllowed( from );
 					from.PrivateOverheadMessage(MessageType.Regular, 1153, false, "Someone else will eventually take care of this.", from.NetState);
-					dropped.Delete();
-				}
-				else
-				{
-					from.AddToBackpack ( dropped );
 				}
 			}
-			else
-			{
-				from.AddToBackpack ( dropped );
-			}
-			return true;
+
+			return dropped.Deleted;
 		}
 
 		public FishingQuestBoard(Serial serial) : base(serial)

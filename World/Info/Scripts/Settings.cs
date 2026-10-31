@@ -144,6 +144,11 @@ namespace Server
 
 		public static int S_BoneDecay = 1430;
 
+	// If true, then magical travel (recall, mark, gate travel, etc.) will be allowed in some special outdoor locations that
+	// normally block it (like Poseidon, Ambrosia, and the Underworld). Dungeons and other restricted areas will still block magical travel.
+
+		public static bool S_AllowTravelToSpecialPlaces = false;
+
 
 
 
@@ -658,7 +663,7 @@ namespace Server
 	// The number of days, no less than 5.0 (decimal format), that a boat or magic carpet will decay if on
 	// the sea not used.
 
-		public static double S_BoatDecay = 365.0;
+		public static double S_BoatDecay = 30.0;
 
 	// The number of days, no less than 30.0 (decimal format), that a home will decay if an owner never shows up.
 
@@ -699,6 +704,10 @@ namespace Server
 		public static bool S_HouseStorage = false;
 
 
+	// This setting is the percentage of the total storage capacity of a house that is available to the player.
+	// So a setting of 1.20 will give the player 20% more storage space than the original storage capacity of the house.
+
+		public static double S_HouseStoragePercent = 1.20;
 
 
 	///////////////////////////////////////////////////////////////////////////////////////////////

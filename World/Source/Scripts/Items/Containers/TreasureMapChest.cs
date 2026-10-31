@@ -12,6 +12,8 @@ namespace Server.Items
 {
 	public class TreasureMapChest : LockableContainer
 	{
+		public const int LEVEL_BONUS = 4;
+
 		public override CraftResource DefaultResource{ get{ return CraftResource.RegularWood; } }
 
 		public override int LabelNumber{ get{ return 3000541; } }
@@ -47,7 +49,7 @@ namespace Server.Items
 		{
 			Catalog = Catalogs.TreasureChest;
 
-			int level = originalLevel + 4;
+			int level = originalLevel + LEVEL_BONUS;
 				if ( level > 10 ){ level = 10; }
 
 			m_Owner = owner;
@@ -68,7 +70,8 @@ namespace Server.Items
 			if ( level > 7 ){ ContainerFunctions.FillTheContainer( level, this, owner ); }
 			if ( GetPlayerInfo.LuckyPlayer( owner.Luck ) ){ ContainerFunctions.FillTheContainer( level, this, owner ); }
 
-			ContainerFunctions.LockTheContainer( level, this, 1 );
+			ContainerFunctions.LockTheContainer( originalLevel, this, 1, false );
+			ContainerFunctions.TrapTheContainer( level, this );
 
 			int xTraCash = Utility.RandomMinMax( (level*700), (level*1000) );
 			LootPackChange.AddGoldToContainer( xTraCash, this, owner, level );
@@ -104,8 +107,7 @@ namespace Server.Items
 			}
             
 			// = ARTIFACTS
-			int artychance = GetPlayerInfo.LuckyPlayerArtifacts( owner.Luck ) + (originalLevel * 10);
-			if ( Utility.Random( 100 ) < artychance )
+			if ( GetPlayerInfo.LuckyPlayerArtifacts( owner.Luck, originalLevel * 10) )
 			{
 				Item arty = Loot.RandomArty();
 				DropItem( arty );

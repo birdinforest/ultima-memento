@@ -182,7 +182,7 @@ namespace Server.Gumps
 			else if ( info.ButtonID == 16 ){ LootChoiceUpdates.UpdateLootChoice( from, 17 ); }
 			else if ( info.ButtonID == 100 ){ BaseContainer.ContainerSetTarget( from, 1 ); }
 
-			if ( info.ButtonID < 1 && m_Origin > 0 ){ from.SendSound( 0x4A ); from.SendGump( new Server.Engines.Help.HelpGump( from, 12 ) ); }
+			if ( info.ButtonID < 1 && m_Origin > 0 ){ from.SendSound( 0x4A ); from.SendGump( new Server.Engines.Help.HelpGump( from, m_Origin ) ); }
 			else if ( info.ButtonID < 1 ){ }
 			else { from.SendGump( new LootChoices( from, m_Origin ) ); from.SendSound( 0x4A ); }
 		}

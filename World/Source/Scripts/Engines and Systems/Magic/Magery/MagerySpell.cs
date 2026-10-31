@@ -1,5 +1,4 @@
 using System;
-using Server;
 using Server.Items;
 
 namespace Server.Spells
@@ -11,6 +10,8 @@ namespace Server.Spells
 		}
 
 		public abstract SpellCircle Circle { get; }
+
+		public int OneBasedCircle { get { return (int)Circle + 1; } }
 
 		public override bool ConsumeReagents()
 		{
@@ -28,10 +29,6 @@ namespace Server.Spells
 		public override void GetCastSkills( out double min, out double max )
 		{
 			int circle = (int)Circle;
-
-			if( Scroll != null )
-				circle -= 2;
-
 			double avg = ChanceLength * circle;
 
 			min = avg - ChanceOffset;
@@ -42,18 +39,17 @@ namespace Server.Spells
 
 		public override int GetMana()
 		{
-			return m_ManaTable[(int)Circle];
+			var manaCost = m_ManaTable[(int)Circle];
+			return IsScrollCast ? manaCost / 2 : manaCost;
 		}
 
-		public override double GetResistSkill( Mobile m )
+		public void DoResistSkillCheck( Mobile m )
 		{
 			int maxSkill = (1 + (int)Circle) * 10;
 			maxSkill += (1 + ((int)Circle / 6)) * 25;
 
 			if( m.Skills[SkillName.MagicResist].Value < maxSkill )
 				m.CheckSkill( SkillName.MagicResist, 0.0, m.Skills[SkillName.MagicResist].Cap );
-
-			return m.Skills[SkillName.MagicResist].Value;
 		}
 
 		public virtual bool CheckResisted( Mobile target )

@@ -3,7 +3,7 @@ using Server.Items;
 using Server.Mobiles;
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
 
 namespace Server.Engines.Avatar
 {
@@ -25,10 +25,6 @@ namespace Server.Engines.Avatar
 
 		public bool IsEnabled { get; set; }
 
-		public static void Configure()
-		{
-		}
-
 		public static void Initialize()
 		{
 			LoadData();
@@ -40,6 +36,7 @@ namespace Server.Engines.Avatar
 				EventSink.PlayerDeath += Instance.OnPlayerDeath;
 				EventSink.SkillGain += Instance.OnSkillGain;
 				CustomEventSink.CombatQuestCompleted += Instance.OnCombatQuestCompleted;
+				CustomEventSink.PlayerDeleted += Instance.OnPlayerDeleted;
 			}
 		}
 
@@ -64,6 +61,14 @@ namespace Server.Engines.Avatar
 			player.RefreshSkillCap();
 
 			SoulOrb.Create(player, SoulOrbType.PermadeathPlaceholder);
+		}
+
+		public void ClearContext(Mobile mobile)
+		{
+			var context = GetContextOrDefault(mobile);
+			if (!context.Active) return;
+
+			m_Context.Remove(mobile.Serial);
 		}
 
 		public PlayerContext GetContextOrDefault(Mobile mobile)
@@ -114,7 +119,7 @@ namespace Server.Engines.Avatar
 						Instance.m_Context.Add(serial, context);
 					}
 
-					Console.WriteLine("Loaded Avatar data for '{0}' characters", Instance.m_Context.Count);
+					Console.WriteLine("[Avatar] Loaded data for '{0}' characters", Instance.m_Context.Count);
 				}
 			);
 
@@ -134,14 +139,6 @@ namespace Server.Engines.Avatar
 		private int GetBonusCoinsAmount(int value, PlayerContext context)
 		{
 			return (int)(value * context.PointGainRateLevel * Constants.POINT_GAIN_RATE_PER_LEVEL * 0.01);
-		}
-
-		private int GetValue<T>(int multiplier, Container corpse) where T : Item
-		{
-			var item = corpse.FindItemByType<T>();
-			if (item == null) return 0;
-
-			return item.Amount * multiplier;
 		}
 
 		private void GrantCoins(PlayerMobile player, int value, PlayerContext context)
@@ -188,18 +185,7 @@ namespace Server.Engines.Avatar
 				|| MobileUtilities.TryGetMasterPlayer(creature) != null // No pets
 			 ) return;
 
-			// If the total damage is less than 10% of the creature's max hits, no coins!
-			if (e.TotalDamage < (e.Killed.HitsMax / 10)) return;
-
-			var corpse = e.Corpse;
-			int value = GetValue<DDCopper>(1, corpse);
-			value += GetValue<DDSilver>(2, corpse);
-			value += GetValue<DDXormite>(30, corpse);
-			value += GetValue<Gold>(10, corpse);
-			value += GetValue<Crystals>(50, corpse);
-			value += GetValue<DDGemstones>(20, corpse);
-			value += GetValue<DDJewels>(20, corpse);
-			value += GetValue<DDGoldNuggets>(10, corpse);
+			int value = CoinRewardCalculator.GetKillCoinValue(creature);
 			if (value < 1) return;
 
 			if (1 < e.DamagerCount) value /= 2;
@@ -264,7 +250,8 @@ namespace Server.Engines.Avatar
 
 				context.LifetimeDeaths += 1;
 				context.LifetimePointsGained += context.PointsFarmed;
-				context.PointsSaved += context.PointsFarmed + context.RivalBonusPoints;
+				// Rival bonus points are banked when gained; adding them here again would double-count.
+				context.PointsSaved += context.PointsFarmed;
 				context.PointsFarmed = 0;
 				context.RivalBonusPoints = 0;
 			}
@@ -281,6 +268,21 @@ namespace Server.Engines.Avatar
 			} );
 		}
 
+		private void OnPlayerDeleted(PlayerDeletedArgs e)
+		{
+			var player = e.Mobile;
+			if (player == null) return;
+
+			var context = GetContextOrDefault(player);
+			if (context.Active)
+			{
+				m_Context.Remove(player.Serial);
+				Console.WriteLine("[Avatar] Removed context for player '{0}' ({1})", player.Name, player.Serial);
+			}
+
+			Prune();
+		}
+
 		private void OnSkillGain(SkillGainArgs e)
 		{
 			if (e == null) return;
@@ -295,6 +297,7 @@ namespace Server.Engines.Avatar
 
 		private void OnWorldSave(WorldSaveEventArgs e)
 		{
+			Prune();
 			Persistence.Serialize(
 				"Saves//Player//Avatar.bin",
 				writer =>
@@ -309,6 +312,30 @@ namespace Server.Engines.Avatar
 					}
 				}
 			);
+		}
+
+		private void Prune()
+		{
+			var toRemove = Instance.m_Context.Keys.Where(key =>
+			{
+				Mobile mobile;
+				if (!World.Mobiles.TryGetValue(key, out mobile)) return true; // Doesn't exist
+
+				var player = mobile as PlayerMobile;
+				return player == null // Not a player
+					|| player.Deleted // Deleted
+					|| !player.Avatar.Active; // Avatar no longer active
+			});
+
+			if (toRemove.Any())
+			{
+				var removeList = toRemove.ToList();
+				foreach (var key in removeList)
+				{
+					Instance.m_Context.Remove(key);
+				}
+				Console.WriteLine("[Avatar] Removed data for '{0}' characters. A total of '{1}' characters remain.", removeList.Count, Instance.m_Context.Count);
+			}
 		}
 	}
 }

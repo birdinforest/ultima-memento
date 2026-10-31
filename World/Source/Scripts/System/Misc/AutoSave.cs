@@ -178,6 +178,7 @@ namespace Server.Misc
 				CopyFile( rootOrigin, rootBackup, "Craft/Shoppes.bin" );
 
 				CopyFile( rootOrigin, rootBackup, "Player/Temptations.bin" );
+				CopyFile( rootOrigin, rootBackup, "Player/Avatar.bin" );
 
 				Console.WriteLine( "Backup: file copy finished in {0:F2} seconds.", watch.Elapsed.TotalSeconds );
 			}

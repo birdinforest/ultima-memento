@@ -6,9 +6,32 @@ using Server.Commands;
 using Server.Misc;
 using Server.Engines.MLQuests;
 using Server.Utilities;
+using System.Linq;
+using Server.Targeting;
 
 namespace Server.Engines.Craft
 {
+	public class GraphicRange
+	{
+		public readonly int StartId;
+		public readonly int EndId;
+
+		public GraphicRange( int startId ) : this( startId, startId )
+		{
+		}
+
+		public GraphicRange( int startId, int endId )
+		{
+			StartId = startId;
+			EndId = endId;
+		}
+
+		public bool IsGraphicMatch( int itemID )
+		{
+			return itemID >= StartId && itemID <= EndId;
+		}
+	}
+
 	public enum ConsumeType
 	{
 		All, Half, None
@@ -23,6 +46,7 @@ namespace Server.Engines.Craft
 	{
 		private CraftResCol m_arCraftRes;
 		private CraftSkillCol m_arCraftSkill;
+		private CraftOrSkillGroupCol m_arCraftOrSkillGroups;
 		private Type m_Type;
 
 		private string m_GroupNameString;
@@ -107,6 +131,7 @@ namespace Server.Engines.Craft
 		{
 			m_arCraftRes = new CraftResCol();
 			m_arCraftSkill = new CraftSkillCol();
+			m_arCraftOrSkillGroups = new CraftOrSkillGroupCol();
 
 			m_Type = type;
 
@@ -132,6 +157,36 @@ namespace Server.Engines.Craft
 		{
 			CraftSkill craftSkill = new CraftSkill( skillToMake, minSkill, maxSkill );
 			m_arCraftSkill.Add( craftSkill );
+		}
+
+		public void AddOrSkillGroup( double minSkill, double maxSkill, params SkillName[] skills )
+		{
+			var group = new CraftOrSkillGroup( minSkill, maxSkill, skills );
+			m_arCraftOrSkillGroups.Add( group );
+		}
+
+		public bool MeetsSkillRequirements( Mobile from, bool checkGainRange )
+		{
+			for ( int i = 0; i < m_arCraftSkill.Count; i++ )
+			{
+				var craftSkill = m_arCraftSkill.GetAt( i );
+				var val = from.Skills[craftSkill.SkillToMake].Value;
+
+				if ( val < craftSkill.MinSkill )
+					return false;
+
+				if ( checkGainRange && craftSkill.MaxSkill <= val )
+					return false;
+			}
+
+			for ( int i = 0; i < m_arCraftOrSkillGroups.Count; i++ )
+			{
+				var craftSkill = m_arCraftOrSkillGroups.GetAt( i );
+				if ( !craftSkill.MeetsRequirement( from, checkGainRange ) )
+					return false;
+			}
+
+			return true;
 		}
 
 		public int Mana
@@ -211,6 +266,11 @@ namespace Server.Engines.Craft
 			get { return m_arCraftSkill; }
 		}
 
+		public CraftOrSkillGroupCol OrSkillGroups
+		{
+			get { return m_arCraftOrSkillGroups; }
+		}
+
 		public bool ConsumeAttributes( Mobile from, ref object message, bool consume )
 		{
 			bool consumMana = false;
@@ -260,39 +320,39 @@ namespace Server.Engines.Craft
 		}
 
 		#region Tables
-		private static int[] m_HeatSources = new int[]
+		private static readonly GraphicRange[] m_HeatSources = new[]
 			{
-				0x461, 0x48E, // Sandstone oven/fireplace
-				0x92B, 0x96C, // Stone oven/fireplace
-				0xDE3, 0xDE9, // Campfire
-				0xFAC, // Firepit
-				0x0FB1, 0x10DE, // Small Forge
-				0x184A, 0x184C, // Heating stand (left)
-				0x184E, 0x1850, // Heating stand (right)
-				0x19AA, 0x19BB,	// Brazier
-				0x197A, 0x19A9, // Large Forge 
-				0x2DD8, // Elven Forge
-				0x2DDB, 0x2DDC,	// Elven stove
-				0x398C, 0x399F, // Fire field
-				0x5321, 0x53A0, // Bonfire
-				0x576A, 0x5771 // Firepit
+				new GraphicRange ( 0x461, 0x48E ), // Sandstone oven/fireplace
+				new GraphicRange ( 0x92B, 0x96C ), // Stone oven/fireplace
+				new GraphicRange ( 0xDE3, 0xDE9 ), // Campfire
+				new GraphicRange ( 0xFAC ), // Firepit
+				new GraphicRange ( 0x0FB1, 0x10DE ), // Small Forge
+				new GraphicRange ( 0x184A, 0x184C ), // Heating stand (left)
+				new GraphicRange ( 0x184E, 0x1850 ), // Heating stand (right)
+				new GraphicRange ( 0x19AA, 0x19BB ), // Brazier
+				new GraphicRange ( 0x197A, 0x19A9 ), // Large Forge 
+				new GraphicRange ( 0x2DD8 ), // Elven Forge
+				new GraphicRange ( 0x2DDB, 0x2DDC ), // Elven stove
+				new GraphicRange ( 0x398C, 0x399F ), // Fire field
+				new GraphicRange ( 0x5321, 0x53A0 ), // Bonfire
+				new GraphicRange ( 0x576A, 0x5771 ) // Firepit
 			};
 
-		private static int[] m_Ovens = new int[]
+		private static readonly GraphicRange[] m_Ovens = new[]
 			{
-				0x461, 0x46F, // Sandstone oven
-				0x92B, 0x93F,  // Stone oven
-				0x2DDB, 0x2DDC,	//Elven stove
-				0x5363, 0x5367 // stove
+				new GraphicRange ( 0x461, 0x46F ), // Sandstone oven
+				new GraphicRange ( 0x92B, 0x93F ), // Stone oven
+				new GraphicRange ( 0x2DDB, 0x2DDC ), //Elven stove
+				new GraphicRange ( 0x5363, 0x5367 ) // stove
 			};
 
-		private static int[] m_Mills = new int[]
+		private static readonly GraphicRange[] m_Mills = new[]
 			{
-				0x1920, 0x1921, 0x1922, 0x1923, 0x1924, 0x1295, 0x1926, 0x1928,
-				0x192C, 0x192D, 0x192E, 0x129F, 0x1930, 0x1931, 0x1932, 0x1934
+				new GraphicRange ( 0x1920, 0x1928 ),
+				new GraphicRange ( 0x192C, 0x1934 )
 			};
 
-		private static Type[][] m_TypesTable = new Type[][]
+		private static readonly Type[][] m_TypesTable = new[]
 			{
 				new Type[]{ typeof( BaseLog ), typeof( BaseWoodBoard ) },
 				new Type[]{ typeof( BaseScales ), typeof( BaseIngot ) },
@@ -306,7 +366,7 @@ namespace Server.Engines.Craft
 				new Type[]{ typeof( WoodenBowlOfPeas ), typeof( PewterBowlOfPeas ) }
 			};
 
-		private static Type[] m_ColoredItemTable = new Type[]
+		private static readonly Type[] m_ColoredItemTable = new[]
 			{
 				typeof( BaseWeapon ), typeof( BaseArmor ), typeof( BaseClothing ),
 				typeof( BaseTrinket ), typeof( DragonBardingDeed ),
@@ -325,7 +385,7 @@ namespace Server.Engines.Craft
 				typeof( BaseContainer ), typeof( DragonPedStatue )
 			};
 
-		private static Type[] m_ColoredResourceTable = new Type[]
+		private static readonly Type[] m_ColoredResourceTable = new[]
 			{
 				typeof( BaseIngot ), typeof( BaseOre ),
 				typeof( BaseLeather ), typeof( BaseHides ),
@@ -336,7 +396,7 @@ namespace Server.Engines.Craft
 				typeof( BaseSpecial ), typeof( BaseSkeletal )
 			};
 
-		private static Type[] m_MarkableTable = new Type[]
+		private static readonly Type[] m_MarkableTable = new[]
 				{
 					typeof( BaseArmor ),
 					typeof( BaseWeapon ),
@@ -391,7 +451,7 @@ namespace Server.Engines.Craft
 			return ( inItemTable && inResourceTable );
 		}
 
-		public bool Find( Mobile from, int[] itemIDs )
+		public bool Find( Mobile from, GraphicRange[] itemIDRanges )
 		{
 			Map map = from.Map;
 
@@ -402,10 +462,13 @@ namespace Server.Engines.Craft
 
 			foreach ( Item item in eable )
 			{
-				if ( (item.Z + 16) > from.Z && (from.Z + 16) > item.Z && Find( item.ItemID, itemIDs ) )
+				if ( (item.Z + 16) > from.Z && (from.Z + 16) > item.Z )
 				{
-					eable.Free();
-					return true;
+					if ( itemIDRanges.Any( range => range.IsGraphicMatch( item.ItemID ) ) )
+					{
+						eable.Free();
+						return true;
+					}
 				}
 			}
 
@@ -425,23 +488,18 @@ namespace Server.Engines.Craft
 						int z = tiles[i].Z;
 						int id = tiles[i].ID;
 
-						if ( (z + 16) > from.Z && (from.Z + 16) > z && Find( id, itemIDs ) )
-							return true;
+						if ( (z + 16) > from.Z && (from.Z + 16) > z )
+						{
+							if ( itemIDRanges.Any( range => range.IsGraphicMatch( id ) ) )
+							{
+								return true;
+							}
+						}
 					}
 				}
 			}
 
 			return false;
-		}
-
-		public bool Find( int itemID, int[] itemIDs )
-		{
-			bool contains = false;
-
-			for ( int i = 0; !contains && i < itemIDs.Length; i += 2 )
-				contains = ( itemID >= itemIDs[i] && itemID <= itemIDs[i + 1] );
-
-			return contains;
 		}
 
 		public bool IsQuantityType( Type[][] types )
@@ -932,6 +990,12 @@ namespace Server.Engines.Craft
 				}
 			}
 
+			for ( int g = 0; g < m_arCraftOrSkillGroups.Count; g++ )
+			{
+				if ( !m_arCraftOrSkillGroups.GetAt( g ).MeetsRequirement( from, false ) )
+					allRequiredSkills = false;
+			}
+
 			double chance;
 
 			if ( allRequiredSkills )
@@ -1133,7 +1197,7 @@ namespace Server.Engines.Craft
 						var runic = (IRunicTool)tool;
 						BaseRunicTool.ApplyAttributes(from, item, runic.RunicMinAttributes, runic.RunicMaxAttributes, runic.RunicMinIntensity, runic.RunicMaxIntensity);
 					}
-					else if (tool is IRunicWhenExceptional && ItemUtilities.IsExceptional(item)) // Exceptional applies a runic
+					else if (false == (item is BaseTool) && tool is IRunicWhenExceptional && ItemUtilities.IsExceptional(item)) // Exceptional applies a runic
 					{
 						int min = 5;
 						int max = 20;
@@ -1171,25 +1235,11 @@ namespace Server.Engines.Craft
 					else if ( item is BlankScroll )
 						item.Amount *= 10;
 
-					if ( ( item.Resource == CraftResource.None || item.Resource == CraftResource.None ) && ( item is WoodenPlateLegs || item is WoodenPlateGloves || item is WoodenPlateGorget || item is WoodenPlateArms || item is WoodenPlateChest || item is WoodenPlateHelm ) )
-					{
-						item.Resource = CraftResource.RegularWood;
-						item.Hue = 0x840;
-					}
-					else if ( item is MagicalWand )
+					if ( item is MagicalWand )
 					{
 						string nameString = context.NameString;
 						item.Delete();
 						item = new MagicalWand( SpellItems.GetWand( nameString ) );
-					}
-					else if ( item is BaseContainer || item is BaseBook || item is BaseLight || item is Spyglass || item is Runebook || item is Spellbook || item is TenFootPole || item is DragonPedStatue || item is HorseArmor || item is PotionKeg || item is TrapKit )
-					{
-						Type resourceType = typeRes;
-						if ( resourceType == null )
-							resourceType = Resources.GetAt( 0 ).ItemType;
-
-						CraftResource thisResource = CraftResources.GetFromType( resourceType );
-						item.Resource = thisResource;
 					}
 					else if ( item.Catalog == Catalogs.Stone )
 					{
@@ -1215,45 +1265,51 @@ namespace Server.Engines.Craft
 						if ( item is BaseStatueDeed )
 							Server.Items.Statues.SetStatue( (BaseStatueDeed)item, (int)item.Weight, item.Hue, material, maker, item.Name, true, from, thisResource );
 					}
-					else if ( item is ShortMusicStand || 
-						item is Scales || 
-						item is Key || 
-						item is Globe || 
-						item is WindChimes || 
-						item is FancyWindChimes || 
-						item is TallMusicStand || 
-						item is Easle || 
-						item is ShojiScreen || 
-						item is BambooScreen || 
-						item is FootStool || 
-						item is Stool || 
-						item is BambooChair || 
-						item is WoodenChair || 
-						item is FancyWoodenChairCushion || 
-						item is WoodenChairCushion || 
-						item is WoodenBench || 
-						item is WoodenThrone || 
-						item is Throne || 
-						item is Nightstand || 
-						item is WritingTable || 
-						item is YewWoodTable || 
-						item is CounterWood || 
-						item is CounterWooden || 
-						item is CounterRustic || 
-						item is LargeTable || 
-						item is ElegantLowTable || 
-						item is PlainLowTable || 
-						item is CandleLarge || 
-						item is Candelabra || 
-						item is CandelabraStand )
+					else if (!item.Stackable)
 					{
 						Type resourceType = typeRes;
 						if ( resourceType == null )
 							resourceType = Resources.GetAt( 0 ).ItemType;
 
 						CraftResource thisResource = CraftResources.GetFromType( resourceType );
+						if ( item.Resource == CraftResource.None )
+							item.Resource = thisResource;
 
-						item.Hue = CraftResources.GetClr( thisResource );
+						// For some reason, we force Hue
+						if ( item is ShortMusicStand || 
+							item is Scales || 
+							item is Key || 
+							item is Globe || 
+							item is WindChimes || 
+							item is FancyWindChimes || 
+							item is TallMusicStand || 
+							item is Easle || 
+							item is ShojiScreen || 
+							item is BambooScreen || 
+							item is FootStool || 
+							item is Stool || 
+							item is BambooChair || 
+							item is WoodenChair || 
+							item is FancyWoodenChairCushion || 
+							item is WoodenChairCushion || 
+							item is WoodenBench || 
+							item is WoodenThrone || 
+							item is Throne || 
+							item is Nightstand || 
+							item is WritingTable || 
+							item is YewWoodTable || 
+							item is CounterWood || 
+							item is CounterWooden || 
+							item is CounterRustic || 
+							item is LargeTable || 
+							item is ElegantLowTable || 
+							item is PlainLowTable || 
+							item is CandleLarge || 
+							item is Candelabra || 
+							item is CandelabraStand )
+						{
+							item.Hue = CraftResources.GetClr( thisResource );
+						}
 					}
 
 					if ( item is Spear ){ item.ItemID = 0xF62; }

@@ -1,5 +1,4 @@
 using System;
-using Server;
 using Server.Network;
 using Server.Mobiles;
 using Server.Regions;
@@ -8,6 +7,8 @@ namespace Server.Misc
 {
 	public class FoodDecayTimer : Timer
 	{
+		public static bool Enabled = true;
+
 		public static void Initialize()
 		{
 			new FoodDecayTimer().Start();
@@ -20,11 +21,12 @@ namespace Server.Misc
 
 		protected override void OnTick()
 		{
-			FoodDecay();			
-		}
+			if ( !Enabled )
+			{
+				Stop();
+				return;
+			}
 
-		public static void FoodDecay()
-		{
 			foreach ( NetState state in NetState.Instances )
 			{
 				HungerDecay( state.Mobile );
@@ -32,7 +34,7 @@ namespace Server.Misc
 			}
 		}
 
-		public static void HungerDecay( Mobile m )
+		private static void HungerDecay( Mobile m )
 		{
 			if ( m != null  )
 			{
@@ -60,7 +62,8 @@ namespace Server.Misc
 							InsideInn = true;
 					}
 
-					if ( m.Skills[SkillName.Camping].Value >= Utility.RandomMinMax( 1, 200 ) ){}
+					if ( !m.Alive ) {}
+					else if ( m.Skills[SkillName.Camping].Value >= Utility.RandomMinMax( 1, 200 ) ){}
 					else if ( InsideInn ){}
 					else if ( Server.Items.BaseRace.NoFood( m.RaceID ) ){ m.Hunger = 20; }
 					else if ( Server.Items.BaseRace.NoFoodOrDrink( m.RaceID ) ){ m.Thirst = 20; m.Hunger = 20; }
@@ -97,7 +100,7 @@ namespace Server.Misc
 			}
 		}
 
-		public static void ThirstDecay( Mobile m )
+		private static void ThirstDecay( Mobile m )
 		{
 			if ( m != null )
 			{
@@ -123,7 +126,8 @@ namespace Server.Misc
 							InsideInn = true;
 					}
 
-					if ( m.Skills[SkillName.Camping].Value >= Utility.RandomMinMax( 1, 200 ) ){}
+					if ( !m.Alive ) {}
+					else if ( m.Skills[SkillName.Camping].Value >= Utility.RandomMinMax( 1, 200 ) ){}
 					else if ( InsideInn ){}
 					else if ( Server.Items.BaseRace.NoFoodOrDrink( m.RaceID ) ){ m.Thirst = 20; m.Hunger = 20; }
 					else if ( Server.Items.BaseRace.BrainEater( m.RaceID ) ){ m.Thirst = 20; }

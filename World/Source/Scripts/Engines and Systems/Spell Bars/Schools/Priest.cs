@@ -1,5 +1,5 @@
-using Server.Items;
 using Server.Mobiles;
+using Server.Spells.HolyMan;
 
 namespace Server.SpellBars
 {
@@ -7,19 +7,8 @@ namespace Server.SpellBars
 	{
 		public static readonly PriestSpellSchool Instance = new PriestSpellSchool();
 
-		private static readonly int[] SpellIcons =
-		{
-			0x965, 0x966, 0x967, 0x968, 0x969, 0x96A, 0x96B, 0x96C, 0x96E, 0x96D, 0x96F, 0x970, 0x971, 0x972
-		};
-
-		private static readonly string[] SpellNames =
-		{
-			"Banish", "Dampen Spirit", "Enchant", "Hammer of Faith", "Heavenly Light", "Nourish",
-			"Purge", "Rebirth", "Sacred Boon", "Sactify", "Seance", "Smite", "Touch of Life", "Trial by Fire"
-		};
-
 		public int MaxSlots
-		{ get { return 14; } }
+		{ get { return HolyManSpellProvider.SpellCount; } }
 
 		public SpellBarSchool School
 		{ get { return SpellBarSchool.Priest; } }
@@ -28,27 +17,22 @@ namespace Server.SpellBars
 		{ return 11171; }
 
 		public int GetIcon(PlayerMobile from, int slotIndex)
-		{ return SpellIcons[slotIndex - 1]; }
+		{ return HolyManSpellProvider.SpellDefinitions[slotIndex - 1].IconGraphic; }
 
 		public string GetName(int slotIndex)
 		{
-			if (slotIndex < 1 || slotIndex > SpellNames.Length)
+			if (slotIndex < 1 || slotIndex > HolyManSpellProvider.SpellDefinitions.Count)
 				return string.Empty;
 
-			return SpellNames[slotIndex - 1];
+			return HolyManSpellProvider.SpellDefinitions[slotIndex - 1].Name.String;
 		}
 
 		public int GetRegistrySpellId(int slotIndex)
-		{ return 770 - 1 + slotIndex; }
+		{ return HolyManSpellProvider.SpellDefinitions[slotIndex - 1].SpellID; }
 
 		public bool HasSpell(PlayerMobile from, int registrySpellId)
 		{
-			Spellbook book = Spellbook.Find(from, registrySpellId);
-
-			if (book is HolyManSpellbook && ((HolyManSpellbook)book).owner != from)
-				book = null;
-
-			return book != null && book.HasSpell(registrySpellId);
+			return HolyManSpellProvider.HasSpell(from, registrySpellId);
 		}
 	}
 

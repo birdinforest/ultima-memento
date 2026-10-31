@@ -123,7 +123,7 @@ namespace Server.Spells.Mystic
 			}
 			else { return false; }
 
-			if ( from.Skills[SkillName.Focus].Base < 100 || from.Skills[SkillName.Meditation].Base < 100 )
+			if ( from.Skills[SkillName.Focus].Value < 100 || from.Skills[SkillName.Meditation].Value < 100 )
 			{
 				return false;
 			}
@@ -180,17 +180,6 @@ namespace Server.Spells.Mystic
 		public override void DoHurtFizzle()
 		{
 			Caster.PlaySound( 0x1D6 );
-		}
-
-		public override double GetResistSkill( Mobile m )
-		{
-			int maxSkill = (1 + (int)MysticSpellCircle) * 10;
-			maxSkill += (1 + ((int)MysticSpellCircle / 6)) * 25;
-
-			if( m.Skills[SkillName.MagicResist].Value < maxSkill )
-				m.CheckSkill( SkillName.MagicResist, 0.0, 120.0 );
-
-			return m.Skills[SkillName.MagicResist].Value;
 		}
 
 		public virtual bool CheckResisted( Mobile target )

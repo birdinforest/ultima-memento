@@ -18,13 +18,20 @@ namespace Server.SpellBars
 		public static ToolBarSpellBarConfiguration CreateConfiguration(PlayerMobile from, SpellBarId id)
 		{
 			var definition = GetDefinition(id);
-			int background = definition.SchoolInstance.GetBackgroundImage(from);
-			return new ToolBarSpellBarConfiguration(from, definition.StorageKey, definition.SchoolInstance.MaxSlots, background);
+			var background = definition.SchoolInstance.GetBackgroundImage(from);
+			var state = from.SpellBars.GetState(id);
+			return new ToolBarSpellBarConfiguration(state, definition.SchoolInstance.MaxSlots, background);
 		}
 
-		public static SpellBarToolbarGump CreateToolbarGump(SpellBarId id, PlayerMobile from)
+		public static SpellBarToolbarGump CreateToolbarGump(PlayerMobile from, SpellBarId id)
 		{
 			return (SpellBarToolbarGump)Activator.CreateInstance(GetToolbarGumpType(id), from);
+		}
+
+		public static void OpenToolbarGump(PlayerMobile from, SpellBarId id)
+		{
+			from.CloseGump(GetToolbarGumpType(id));
+			from.SendGump(CreateToolbarGump(from, id));
 		}
 
 		public static SpellBarSetupGumpBase CreateSetupGump(SpellBarId id, PlayerMobile from, int origin, int pageNumber = 1)
@@ -127,20 +134,11 @@ namespace Server.SpellBars
 				if (from == null) return;
 
 				from.CloseGump(GetToolbarGumpType(definition.Id));
-				from.SendGump(CreateToolbarGump(definition.Id, from));
+				from.SendGump(CreateToolbarGump(from, definition.Id));
 			});
 
 			CommandSystem.Register(definition.CloseCommand, AccessLevel.Player, args =>
 				args.Mobile.CloseGump(GetToolbarGumpType(definition.Id)));
-
-			CommandSystem.Register(definition.SetupCommand, AccessLevel.Player, args =>
-			{
-				var from = args.Mobile as PlayerMobile;
-				if (from == null)
-					return;
-
-				OpenSetup(from, definition.Id, 0);
-			});
 		}
 
 		private static Dictionary<SpellBarId, SpellBarDefinition> BuildDefinitionMap()
@@ -158,14 +156,12 @@ namespace Server.SpellBars
 			SpellBarSchool school,
 			ISpellSchool schoolInstance,
 			int barNumber,
-			string storageKey,
 			string toolCommand,
 			string closeCommand,
-			string setupCommand,
 			string titlePrefix,
 			bool usePaging)
 		{
-			return new SpellBarDefinition(id, school, schoolInstance, barNumber, storageKey, toolCommand, closeCommand, setupCommand, titlePrefix, usePaging);
+			return new SpellBarDefinition(id, school, schoolInstance, barNumber, toolCommand, closeCommand, titlePrefix, usePaging);
 		}
 	}
 }

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Server.Network;
 using Server.Items;
 using Server.Targeting;
 
@@ -8,21 +7,32 @@ namespace Server.Spells.Chivalry
 {
 	public class HolyLightSpell : PaladinSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Holy Light", "Augus Luminos",
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+				new SpellDefinition
+				{
+					SpellID = 206,
+					IconGraphic = 0x5106,
+					Name = "Holy Light",
+					PowerWords = 1060724, // Augus Luminos
+					Description = 1061496, // Deals energy damage to all valid targets in a radius around the caster. Amount of damage dealt is affected by Caster’s Karma.
+					ManaCost = 10,
+					TithingCost = 10,
+					MinSkill = 55,
+					TargetType = TargetFlags.Harmful,
+				},
 				-1,
 				9002
 			);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1.75 ); } }
 
-		public override double RequiredSkill{ get{ return 55.0; } }
-		public override int RequiredMana{ get{ return 10; } }
-		public override int RequiredTithing{ get{ return 10; } }
-		public override int MantraNumber{ get{ return 1060724; } } // Augus Luminos
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override int MantraNumber{ get{ return SpellInfo.SpellDefinition.PowerWords.Number; } }
 		public override bool BlocksMovement{ get{ return false; } }
 
-		public HolyLightSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public HolyLightSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 

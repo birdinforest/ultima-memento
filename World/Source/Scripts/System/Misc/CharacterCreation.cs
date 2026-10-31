@@ -145,7 +145,7 @@ namespace Server.Misc
 
 			if (newChar.Avatar.Active)
 			{
-				newChar.Avatar.LifetimeGameTime.Add(existingCharacter.GameTime);
+				newChar.Avatar.LifetimeGameTime = newChar.Avatar.LifetimeGameTime.Add(existingCharacter.GameTime);
 				if (newChar.Avatar.UnlockRecordDiscovered)
 					newChar.CharacterDiscovered = existingCharacter.CharacterDiscovered;
 
@@ -490,6 +490,11 @@ namespace Server.Misc
 						break;
 
 					case SkillName.Elementalism:
+						PackItem(bag, new RefreshPotion() { Amount = 3 });
+						PackItem(bag, new ElementalSpellbook());
+						PackItem(bag, new Elemental_Sanctuary_Scroll());
+						break;
+
 					case SkillName.Mysticism:
 					case SkillName.Imbuing:
 					case SkillName.Throwing:
@@ -506,6 +511,7 @@ namespace Server.Misc
 
 		private static void ApplyCharacterDefaults(PlayerMobile newChar, AccessLevel accessLevel, bool female, int hue, bool createBackpack)
 		{
+			newChar.StatCap = 250;
 			newChar.Player = true;
 			newChar.Young = false;
 			newChar.AccessLevel = accessLevel;
@@ -592,12 +598,13 @@ namespace Server.Misc
 			m_Mobile = newChar;
 
 			{
-				newChar.StatCap = 250;
 				ApplyCharacterDefaults(newChar, args.Account.AccessLevel, args.Female, args.Hue, true);
 				ApplyHairStyling(newChar, args.HairID, args.HairHue, args.BeardID, args.BeardHue);
 
-				if (newChar.AccessLevel < AccessLevel.Counselor)
-					SetName(newChar, args.Name);
+				// Memento local deviation: upstream leaves staff-account characters (Counselor+) unnamed,
+				// which persists as a null Name — the client char list then shows blank, unusable entries.
+				// Our owner/GM accounts play test characters, so always apply the requested name.
+				SetName(newChar, args.Name);
 
 				SetStats(newChar, state, args.Str, args.Dex, args.Int);
 
@@ -613,7 +620,7 @@ namespace Server.Misc
 				// Apply player option Defaults
 				newChar.PublicInfo = true;
 				newChar.Preferences.WeaponBarOpen = true;
-				newChar.Preferences.GumpHue = 1;
+				newChar.Preferences.ShowGumpImages = true;
 			}
 
 			new WelcomeTimer(newChar).Start();

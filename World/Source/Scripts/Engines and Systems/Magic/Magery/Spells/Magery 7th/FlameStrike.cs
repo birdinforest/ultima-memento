@@ -39,20 +39,22 @@ namespace Server.Spells.Seventh
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.CheckReflect( (int)this.Circle, Caster, ref m );
-
-				double damage;
-
-				int nBenefit = 0;
-				if ( Caster is PlayerMobile )
-					nBenefit = (int)(Caster.Skills[SkillName.Magery].Value / 5);
-
-				damage = GetNewAosDamage( 48, 1, 5, m ) + nBenefit;
+				Mobile source = Caster;
+				bool hitThrough = SpellHelper.ResolveMagicDefense( (int)this.OneBasedCircle, ref source, ref m );
 
 				m.FixedParticles( 0x3709, 10, 30, 5052, PlayerSettings.GetMySpellHue( true, Caster, 0 ), 0, EffectLayer.LeftFoot );
 				m.PlaySound( 0x208 );
 
-				SpellHelper.Damage( this, m, damage, 0, 100, 0, 0, 0 );
+				if ( hitThrough )
+				{
+					int nBenefit = 0;
+					if ( Caster is PlayerMobile )
+						nBenefit = (int)(Caster.Skills[SkillName.Magery].Value / 5);
+
+					double damage = GetNewAosDamage( 48, 1, 5, m ) + nBenefit;
+
+					SpellHelper.Damage( this, m, damage, 0, 100, 0, 0, 0 );
+				}
 			}
 
 			FinishSequence();

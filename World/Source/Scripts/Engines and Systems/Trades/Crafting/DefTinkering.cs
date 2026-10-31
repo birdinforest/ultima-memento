@@ -108,6 +108,21 @@ namespace Server.Engines.Craft
 
 			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+			#region Automatons
+
+			index = AddCraft( typeof( BottleOil ), "Automatons", "technomancer oil", 30.0, 55.0, typeof( Bottle ), 1044250, 1, 1044253 );
+			AddRes( index, typeof( ArcaneGem ), "arcane gem", 1, 1053098 );
+			AddRes( index, typeof( Gears ), 1044254, 1, 1044253 );
+
+			index = AddCraft( typeof( ClockworkAssembly ), "Automatons", "clockwork assembly", 90.0, 120.0, typeof( IronIngot ), 1044036, 100, 1044037 );
+			AddRes( index, typeof( Gears ), 1044254, 12, 1044253 );
+			AddRes( index, typeof( ClockParts ), 1024175, 3, 1044253 );
+			AddRes( index, typeof( Springs ), 1044171, 7, 1044253 );
+
+			#endregion
+
+			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 			#region Multi-Component Items
 
 			index = AddCraft( typeof( AxleGears ), 1044051, 1024177, 0.0, 0.0, typeof( Axle ), 1044169, 1, 1044253 );
@@ -244,6 +259,10 @@ namespace Server.Engines.Craft
 			AddCraft( typeof( SextantParts ), 1044047, 1024185, 30.0, 80.0, typeof( IronIngot ), 1044036, 4, 1044037 );
 			AddCraft( typeof( Springs ), 1044047, 1024189, 5.0, 55.0, typeof( IronIngot ), 1044036, 2, 1044037 );
 
+			index = AddCraft( typeof( PowerCrystal ), 1044047, "power crystal", 45.0, 60.0, typeof( GoldIngot ), 1027146, 2, 1044037 );
+			AddOrSkill( index, 40.0, 50.0, SkillName.Elementalism, SkillName.Magery, SkillName.Necromancy );
+			AddRes( index, typeof( ArcaneGem ), "arcane gem", 3, 1053098 );
+
 			#endregion
 
 			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -273,6 +292,8 @@ namespace Server.Engines.Craft
 			AddCraft( typeof( WaxingPot ), 1044046, "wax crafting pot", 20.0, 60.0, typeof( IronIngot ), 1044036, 10, 1044037 );
 			AddCraft( typeof( WitchCauldron ), 1044046, "witch's cauldron", 20.0, 70.0, typeof( IronIngot ), 1044036, 5, 1044037 );
 			AddCraft( typeof( WoodworkingTools ), 1044046, "woodworking tools", 30.0, 80.0, typeof( IronIngot ), 1044036, 2, 1044037 );
+			AddCraft( typeof( UndertakerKit ), 1044046, "undertaker kit", 35.0, 85.0, typeof( IronIngot ), 1044036, 4, 1044037 );
+			AddCraft( typeof( HiveTool ), 1044046, "hive tool", 50.0, 90.0, typeof( IronIngot ), 1044036, 2, 1044037 );
 
 			#endregion
 
@@ -292,33 +313,6 @@ namespace Server.Engines.Craft
 			AddCraft( typeof( Goblet ), 1044048, 1022458, 10.0, 60.0, typeof( IronIngot ), 1044036, 2, 1044037 );
 			AddCraft( typeof( PewterMug ), 1044048, 1024097, 10.0, 60.0, typeof( IronIngot ), 1044036, 2, 1044037 );
 			AddCraft( typeof( SkullMug ), 1044048, 1024091, 10.0, 60.0, typeof( IronIngot ), 1044036, 2, 1044037 );
-
-			#endregion
-
-			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-			#region Wizards
-
-			index = AddCraft( typeof( WizardStaff ), 1011383, "(E) stave", 55.3, 95.3, typeof( IronIngot ), 1044036, 10, 1044037 );
-			AddSkill( index, SkillName.Elementalism, 70.0, 80.0 );
-			index = AddCraft( typeof( WizardStick ), 1011383, "(E) sceptre", 45.3, 95.3, typeof( IronIngot ), 1044036, 5, 1044037 );
-			AddSkill( index, SkillName.Elementalism, 50.0, 60.0 );
-			index = AddCraft( typeof( BlackStaff ), 1011383, "(E) wizard staff", 45.3, 95.3, typeof( IronIngot ), 1044036, 10, 1044037 );
-			AddSkill( index, SkillName.Elementalism, 60.0, 70.0 );
-
-			index = AddCraft( typeof( WizardStaff ), 1011383, "(M) stave", 55.3, 95.3, typeof( IronIngot ), 1044036, 10, 1044037 );
-			AddSkill( index, SkillName.Magery, 70.0, 80.0 );
-			index = AddCraft( typeof( WizardStick ), 1011383, "(M) sceptre", 45.3, 95.3, typeof( IronIngot ), 1044036, 5, 1044037 );
-			AddSkill( index, SkillName.Magery, 50.0, 60.0 );
-			index = AddCraft( typeof( BlackStaff ), 1011383, "(M) wizard staff", 45.3, 95.3, typeof( IronIngot ), 1044036, 10, 1044037 );
-			AddSkill( index, SkillName.Magery, 60.0, 70.0 );
-
-			index = AddCraft( typeof( WizardStaff ), 1011383, "(N) stave", 55.3, 95.3, typeof( IronIngot ), 1044036, 10, 1044037 );
-			AddSkill( index, SkillName.Necromancy, 70.0, 80.0 );
-			index = AddCraft( typeof( WizardStick ), 1011383, "(N) sceptre", 45.3, 95.3, typeof( IronIngot ), 1044036, 5, 1044037 );
-			AddSkill( index, SkillName.Necromancy, 50.0, 60.0 );
-			index = AddCraft( typeof( BlackStaff ), 1011383, "(N) wizard staff", 45.3, 95.3, typeof( IronIngot ), 1044036, 10, 1044037 );
-			AddSkill( index, SkillName.Necromancy, 60.0, 70.0 );
 
 			#endregion
 

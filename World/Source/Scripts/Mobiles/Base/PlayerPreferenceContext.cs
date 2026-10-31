@@ -7,7 +7,11 @@ namespace Server.Mobiles
 	{
 		public PlayerPreferenceContext()
 		{
+			CharacterWepAbNames = true;
 			ColorlessFabricBreakdown = true;
+			ModernLockpickingEnabled = true;
+			ModernRemoveTrapEnabled = true;
+			ModernTrackingEnabled = true;
 			VendorContainerSellCompactItemsPerPage = VendorContainerSellConfigGump.DefaultVendorContainerSellCompactItemsPerPage;
 			VendorContainerSellLargeItemsPerPage = VendorContainerSellConfigGump.DefaultVendorContainerSellLargeItemsPerPage;
 			VendorContainerSellSelectionBehavior = VendorContainerSellSelectionBehavior.AsManyAsPossible;
@@ -42,7 +46,7 @@ namespace Server.Mobiles
 				CharacterEvil = reader.ReadBool();
 				CharacterLoot = reader.ReadString();
 				CharacterOriental = reader.ReadBool();
-				GumpHue = reader.ReadInt();
+				ShowGumpImages = version < 8 ? reader.ReadInt() == 1 : reader.ReadBool();
 				MagerySpellHue = reader.ReadInt();
 				MessageOfTheDay = reader.ReadBool();
 				MusicPlaylist = reader.ReadString();
@@ -78,6 +82,30 @@ namespace Server.Mobiles
 				VendorContainerSellLargeItemsPerPage = VendorContainerSellConfigGump.DefaultVendorContainerSellLargeItemsPerPage;
 				VendorContainerSellSelectionBehavior = VendorContainerSellSelectionBehavior.AsManyAsPossible;
 			}
+
+			// v7 (local bump): Jascen's LegacyCarve rides version 5 upstream, but our v6 saves
+			// already carry the VendorContainerSell block — gating on 6 avoids over-reading
+			// a bool from existing v6 saves (which shifted the whole PlayerMobile stream and
+			// crashed world load with EndOfStreamException).
+			LegacyCarve = 6 < version ? reader.ReadBool() : false;
+
+			// v8 (local bump): Jascen's Modern lockpicking/removetrap gump preferences ride
+			// version 6 upstream — gating on 7 keeps existing v7 saves reading correctly.
+			if ( 7 < version )
+			{
+				ModernLockpickingEnabled = reader.ReadBool();
+				ModernRemoveTrapEnabled = reader.ReadBool();
+				ModernLockpickingAutoRetryEnabled = reader.ReadBool();
+				ModernRemoveTrapsAutoRetryEnabled = reader.ReadBool();
+			}
+			else
+			{
+				ModernLockpickingEnabled = true;
+				ModernRemoveTrapEnabled = true;
+			}
+
+			SuppressSystemMessages = 8 < version ? reader.ReadBool() : false;
+			ModernTrackingEnabled = 9 < version ? reader.ReadBool() : true;
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -117,16 +145,31 @@ namespace Server.Mobiles
 		public bool DoubleClickToTalk { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public int GumpHue { get; set; }
+		public bool IgnoreVendorGoldSafeguard { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public bool IgnoreVendorGoldSafeguard { get; set; }
+		public bool LegacyCarve { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int MagerySpellHue { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool MessageOfTheDay { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool ModernLockpickingAutoRetryEnabled { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool ModernLockpickingEnabled { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool ModernRemoveTrapEnabled { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool ModernRemoveTrapsAutoRetryEnabled { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool ModernTrackingEnabled { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string MusicPlaylist { get; set; }
@@ -144,7 +187,13 @@ namespace Server.Mobiles
 		public string RegBar { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
+		public bool ShowGumpImages { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
 		public bool SingleAttemptID { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool SuppressSystemMessages { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool SuppressVendorTooltip { get; set; }
@@ -153,16 +202,10 @@ namespace Server.Mobiles
 		public bool UsingAncientBook { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public bool WeaponBarOpen { get; set; }
+		public int VendorContainerSellCompactItemsPerPage { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool VendorContainerSellEnabled { get; set; }
-
-		[CommandProperty(AccessLevel.GameMaster)]
-		public bool VendorContainerSellShowItemImages { get; set; }
-
-		[CommandProperty(AccessLevel.GameMaster)]
-		public int VendorContainerSellCompactItemsPerPage { get; set; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int VendorContainerSellLargeItemsPerPage { get; set; }
@@ -170,9 +213,15 @@ namespace Server.Mobiles
 		[CommandProperty(AccessLevel.GameMaster)]
 		public VendorContainerSellSelectionBehavior VendorContainerSellSelectionBehavior { get; set; }
 
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool VendorContainerSellShowItemImages { get; set; }
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public bool WeaponBarOpen { get; set; }
+
 		public void Serialize(GenericWriter writer)
 		{
-			writer.Write(6);
+			writer.Write(10);
 
 			writer.Write(DoubleClickID);
 			writer.Write(SuppressVendorTooltip);
@@ -189,7 +238,7 @@ namespace Server.Mobiles
 			writer.Write(CharacterEvil);
 			writer.Write(CharacterLoot);
 			writer.Write(CharacterOriental);
-			writer.Write(GumpHue);
+			writer.Write(ShowGumpImages);
 			writer.Write(MagerySpellHue);
 			writer.Write(MessageOfTheDay);
 			writer.Write(MusicPlaylist);
@@ -208,6 +257,16 @@ namespace Server.Mobiles
 			writer.Write(VendorContainerSellCompactItemsPerPage);
 			writer.Write(VendorContainerSellLargeItemsPerPage);
 			writer.Write((int)VendorContainerSellSelectionBehavior);
+
+			writer.Write(LegacyCarve);
+
+			writer.Write(ModernLockpickingEnabled);
+			writer.Write(ModernRemoveTrapEnabled);
+			writer.Write(ModernLockpickingAutoRetryEnabled);
+			writer.Write(ModernRemoveTrapsAutoRetryEnabled);
+
+			writer.Write(SuppressSystemMessages);
+			writer.Write(ModernTrackingEnabled);
 		}
 	}
 }

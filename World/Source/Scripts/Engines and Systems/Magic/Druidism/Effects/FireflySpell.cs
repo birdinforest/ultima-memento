@@ -1,8 +1,8 @@
 using System;
+using Server.Localization;
 using Server.Mobiles;
 using Server.Network;
 using Server.Targeting;
-using Server.Localization;
 
 namespace Server.Spells.Herbalist
 {
@@ -38,57 +38,63 @@ namespace Server.Spells.Herbalist
 			{
 				SpellHelper.Turn( Caster, m );
 				
-				SpellHelper.CheckReflect( 3, Caster, ref m );
-				
-				if ( m.Spell != null )
-					m.Spell.OnCasterHurt();
-				
-				m.Paralyzed = false;
-				BuffInfo.CleanupIcons( m, true );
+				Mobile source = Caster;
+				bool hitThrough = SpellHelper.ResolveMagicDefense( 3, ref source, ref m );
 
-				if ( !Caster.CanBeHarmful( m, false ) )
+				if ( hitThrough )
 				{
-					Caster.SendLocalizedMessage( 1049528 );
-				}
-				else if ( m is BaseCreature && ((BaseCreature)m).Uncalmable )
-				{
-					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Fireflies will never distract that" ) );
-				}
-				else if ( CheckResisted( m ) )
-				{
-					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "They ignore the fireflies" ) );
-					m.SendLocalizedMessage( 501783 ); // You feel yourself resisting magical energy.
-				}
-				else
-				{
-					double seconds = (double)(Caster.Skills[DamageSkill].Value/5)+(double)(Server.Items.BasePotion.EnhancePotions( m )/10);
+					if ( m.Spell != null )
+						m.Spell.OnCasterHurt();
+					
+					m.Paralyzed = false;
+					BuffInfo.CleanupIcons( m, true );
 
-					if ( m is BaseCreature )
+					if ( !Caster.CanBeHarmful( m, false ) )
 					{
-						BaseCreature bc = (BaseCreature)m;
-
-						Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "The fireflies dazzle them out of battle" ) );
-
-						m.Combatant = null;
-						m.Warmode = false;
-
-						bc.Pacify( Caster, DateTime.Now + TimeSpan.FromSeconds( seconds ) );
+						Caster.SendLocalizedMessage( 1049528 );
+					}
+					else if ( m is BaseCreature && ((BaseCreature)m).Uncalmable )
+					{
+						Caster.SendMessage( "Fireflies will never distract that" );
+					}
+					else if ( CheckResisted( m ) )
+					{
+						Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "They ignore the fireflies" ) );
+						m.SendLocalizedMessage( 501783 ); // You feel yourself resisting magical energy.
 					}
 					else
 					{
-						Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "The fireflies dazzle them out of battle" ) );
-						m.SendMessage( StringCatalog.Resolve( m.Account, "You forget you were fighting while surrounded by fireflies" ) );
-						m.Combatant = null;
-						m.Warmode = false;
+						double seconds = (double)(Caster.Skills[DamageSkill].Value/5)+(double)(Server.Items.BasePotion.EnhancePotions( m )/10);
 
-						m.Paralyze( TimeSpan.FromSeconds( seconds ) );
-						BuffInfo.RemoveBuff( m, BuffIcon.Firefly );
-						BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.Firefly, 1063668, TimeSpan.FromSeconds( seconds ), m ) );
+						if ( m is BaseCreature )
+						{
+							BaseCreature bc = (BaseCreature)m;
+
+							Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "The fireflies dazzle them out of battle" ) );
+
+							m.Combatant = null;
+							m.Warmode = false;
+
+							bc.Pacify( Caster, DateTime.Now + TimeSpan.FromSeconds( seconds ) );
+						}
+						else
+						{
+							Caster.SendMessage( "The fireflies dazzle them out of battle" );
+							m.SendMessage( StringCatalog.Resolve( m.Account, "You forget you were fighting while surrounded by fireflies" ) );
+							m.Combatant = null;
+							m.Warmode = false;
+
+							m.Paralyze( TimeSpan.FromSeconds( seconds ) );
+							BuffInfo.RemoveBuff( m, BuffIcon.Firefly );
+							BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.Firefly, 1063668, TimeSpan.FromSeconds( seconds ), m ) );
+						}
 					}
-					m.FixedParticles( 0x373A, 10, 15, 5012, EffectLayer.Waist );
-					m.PlaySound( 0x1E0 );
 				}
+
+				m.FixedParticles( 0x373A, 10, 15, 5012, EffectLayer.Waist );
+				m.PlaySound( 0x1E0 );
 			}
+
 			FinishSequence();
 		}
 

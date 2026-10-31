@@ -1,5 +1,4 @@
 using System;
-using Server;
 using Server.Items;
 using Server.Multis;
 using Server.Mobiles;
@@ -12,18 +11,29 @@ namespace Server.Spells.Chivalry
 {
 	public class SacredJourneySpell : PaladinSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Sacred Journey", "Sanctum Viatas",
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+				new SpellDefinition
+				{
+					SpellID = 209,
+					IconGraphic = 0x5109,
+					Name = "Sacred Journey",
+					PowerWords = 1060727, // Sanctum Viatas
+					Description = 1061499, // Targeting a rune or ship key allows the caster to teleport to the marked location.  Caster may not flee from combat in this manner.
+					ManaCost = 10,
+					TithingCost = 15,
+					MinSkill = 15,
+					TargetType = TargetFlags.None,
+				},
 				-1,
 				9002
 			);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1.5 ); } }
 
-		public override double RequiredSkill{ get{ return 15.0; } }
-		public override int RequiredMana{ get{ return 10; } }
-		public override int RequiredTithing{ get{ return 15; } }
-		public override int MantraNumber{ get{ return 1060727; } } // Sanctum Viatas
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override int MantraNumber{ get{ return SpellInfo.SpellDefinition.PowerWords.Number; } }
 		public override bool BlocksMovement{ get{ return false; } }
 
 		private RunebookEntry m_Entry;
@@ -33,7 +43,7 @@ namespace Server.Spells.Chivalry
 		{
 		}
 
-		public SacredJourneySpell( Mobile caster, Item scroll, RunebookEntry entry, Runebook book ) : base( caster, scroll, m_Info )
+		public SacredJourneySpell( Mobile caster, Item scroll, RunebookEntry entry, Runebook book ) : base( caster, scroll, SpellInfo )
 		{
 			m_Entry = entry;
 			m_Book = book;

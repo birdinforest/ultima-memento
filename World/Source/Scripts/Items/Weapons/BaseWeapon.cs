@@ -13,6 +13,7 @@ using Server.Spells.Chivalry;
 using Server.Engines.Craft;
 using System.Collections.Generic;
 using Server.SkillHandlers;
+using Server.Engines.Avatar;
 
 namespace Server.Items
 {
@@ -725,15 +726,34 @@ namespace Server.Items
 
 		public override bool CanEquip( Mobile from )
 		{
-			if( RequiredRace != null && from.Race != RequiredRace )
+			if( from.AccessLevel < AccessLevel.GameMaster )
 			{
-				if( RequiredRace == Race.Elf )
-					from.SendLocalizedMessage( 1072203 ); // Only Elves may use this.
-				else
-					from.SendMessage( StringCatalog.ResolveFormat( from.Account, "Only {0} may use this.", RequiredRace.PluralName ) );
+				if ( this is IAvatarOnlyItem )
+				{
+					var avatarOnlyItem = this as IAvatarOnlyItem;
+					var player = from as PlayerMobile;
+					if ( player == null || !player.Avatar.Active )
+					{
+						from.SendMessage( StringCatalog.Resolve( from.Account, "Only an Avatar may use this item." ) );
+						return false;
+					}
 
-				return false;
-			}
+					if ( avatarOnlyItem.PlayerOwner != player )
+					{
+						from.SendMessage( StringCatalog.Resolve( from.Account, "This item belongs to another." ) );
+						return false;
+					}
+				}
+
+				if( RequiredRace != null && from.Race != RequiredRace )
+				{
+					if( RequiredRace == Race.Elf )
+						from.SendLocalizedMessage( 1072203 ); // Only Elves may use this.
+					else
+						from.SendMessage( StringCatalog.ResolveFormat( from.Account, "Only {0} may use this.", RequiredRace.PluralName ) );
+
+					return false;
+				}
 			else if ( from.Dex < DexRequirement )
 			{
 				from.SendMessage( StringCatalog.Resolve( from.Account, "You are not nimble enough to equip that." ) );
@@ -753,10 +773,9 @@ namespace Server.Items
 			{
 				return false;
 			}
-			else
-			{
-				return base.CanEquip( from );
 			}
+
+			return base.CanEquip( from );
 		}
 
 		public virtual bool UseSkillMod{ get{ return !Core.AOS; } }
@@ -1486,7 +1505,7 @@ namespace Server.Items
 					defender.FixedEffect( 0x37B9, 10, 5 );
 
 				//factor *= 2.0;
-				percentageBonus += 100;
+				percentageBonus += this is BaseRanged ? 50 : 100;
 
 				if ( Utility.Random( 5 ) == 1 && attacker is PlayerMobile )
 				{
@@ -1754,6 +1773,9 @@ namespace Server.Items
 				{
 					DurabilityUtility.DestroyFromWear( this );
 				}
+
+				if ( MaxHitPoints < 1 )
+					Delete();
 			}
 
 			if ( attacker is VampireBatFamiliar )
@@ -2433,6 +2455,7 @@ namespace Server.Items
 			double	necroBonus = GetBonus( attacker.Skills[SkillName.Necromancy].Value,			0.625, 100.0,  6.25 );
 			double	wizardBonus = GetBonus( attacker.Skills[SkillName.Magery].Value,			0.625, 100.0,  6.25 );
 			double	bowyerBonus = GetBonus( attacker.Skills[SkillName.Bowcraft].Value,			0.625, 100.0,  6.25 );
+			double	tailorBonus = GetBonus( attacker.Skills[SkillName.Tailoring].Value,			0.625, 100.0,  6.25 );
 			double	ellyBonus = GetBonus( attacker.Skills[SkillName.Elementalism].Value,		0.625, 100.0,  6.25 );
 
 			if ( Type != WeaponType.Axe && Type != WeaponType.Slashing && Type != WeaponType.Polearm )
@@ -2444,7 +2467,7 @@ namespace Server.Items
 			if ( Type != WeaponType.Bashing )
 				miningBonus = 0.0;
 
-			if (!( this is Harpoon || this is GiftHarpoon || this is LevelHarpoon ))
+			if ( false == this is IHarpoon )
 				fishingBonus = 0.0;
 
 			if (!( this is BaseStaff || this is WizardWand || this is BaseWizardStaff || this is BaseLevelStave || this is BaseGiftStave || this is GiftScepter || this is LevelScepter || this is Scepter ))
@@ -2454,8 +2477,19 @@ namespace Server.Items
 				ellyBonus = 0.0;
 			}
 
-			if ( !( this is BaseRanged && CraftResources.GetType( this.Resource ) == CraftResourceType.Wood ) )
+			if ( this is BaseRanged )
+			{
+				var ranged = (BaseRanged)this;
+				if ( false == ( ranged.AmmoType == typeof( Arrow ) || ranged.AmmoType == typeof( Bolt ) ) )
+					bowyerBonus = 0.0;
+			}
+			else
+			{
 				bowyerBonus = 0.0;
+			}
+
+			if ( false == ( this is IPugilistGlove && this is ThrowingGloves ) )
+				tailorBonus = 0.0;
 
 			#endregion
 
@@ -2490,7 +2524,7 @@ namespace Server.Items
 				damageBonus = 100;
 			#endregion
 
-			double totalBonus = strengthBonus + anatomyBonus + tacticsBonus + necroBonus + wizardBonus + bowyerBonus + bushidoBonus + ninjaBonus + lumberBonus + miningBonus + fishingBonus + ellyBonus + ((double)(GetDamageBonus() + damageBonus) / 100.0);
+			double totalBonus = strengthBonus + anatomyBonus + tacticsBonus + necroBonus + wizardBonus + bowyerBonus + bushidoBonus + ninjaBonus + lumberBonus + miningBonus + fishingBonus + ellyBonus + tailorBonus + ((double)(GetDamageBonus() + damageBonus) / 100.0);
 
 			return damage + (int)(damage * totalBonus);
 		}
@@ -3159,6 +3193,10 @@ namespace Server.Items
 			{
 				m_AosSkillBonuses.SetValues(3, SkillName.Alchemy, 0);
 				m_AosSkillBonuses.SetValues(4, SkillName.Tracking, 5);
+			}
+			if (version == 12 && 0 < m_MaxHits)
+			{
+				m_Hits = m_MaxHits;
 			}
 		}
 		#endregion

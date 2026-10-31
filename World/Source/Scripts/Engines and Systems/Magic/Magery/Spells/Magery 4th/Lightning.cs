@@ -39,15 +39,8 @@ namespace Server.Spells.Fourth
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.CheckReflect( (int)this.Circle, Caster, ref m );
-
-				double damage;
-
-				int nBenefit = 0;
-				if ( Caster is PlayerMobile )
-					nBenefit = (int)(Caster.Skills[SkillName.Magery].Value / 5);
-
-				damage = GetNewAosDamage( 23, 1, 4, m ) + nBenefit;
+				Mobile source = Caster;
+				bool hitThrough = SpellHelper.ResolveMagicDefense( (int)this.OneBasedCircle, ref source, ref m );
 
 				if ( Server.Misc.PlayerSettings.GetMySpellHue( true, Caster, 0 ) > 0 )
 				{
@@ -60,7 +53,16 @@ namespace Server.Spells.Fourth
 					m.BoltEffect( 0 );
 				}
 
-				SpellHelper.Damage( this, m, damage, 0, 0, 0, 0, 100 );
+				if ( hitThrough )
+				{
+					int nBenefit = 0;
+					if ( Caster is PlayerMobile )
+						nBenefit = (int)(Caster.Skills[SkillName.Magery].Value / 5);
+
+					double damage = GetNewAosDamage( 23, 1, 4, m ) + nBenefit;
+
+					SpellHelper.Damage( this, m, damage, 0, 0, 0, 0, 100 );
+				}
 			}
 
 			FinishSequence();

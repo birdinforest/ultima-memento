@@ -5,6 +5,7 @@ using Server.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Server.Temptation
 {
@@ -26,11 +27,6 @@ namespace Server.Temptation
 
 		public bool IsEnabled { get; set; }
 
-		public static void Configure()
-		{
-			EventSink.WorldSave += OnWorldSave;
-		}
-
 		public static void Initialize()
 		{
 			LoadData();
@@ -38,10 +34,13 @@ namespace Server.Temptation
 			if (Instance.IsEnabled)
 			{
 				TargetCommands.Register(new TemptationsCommand());
+
+				EventSink.WorldSave += Instance.OnWorldSave;
+				CustomEventSink.PlayerDeleted += Instance.OnPlayerDeleted;
 			}
 		}
 
-		public void ApplyContext(PlayerMobile player, PlayerContext context)
+		public void ApplyContext(PlayerMobile player, PlayerContext context, bool initialLoad = false)
 		{
 			if (!context.CanWearTightPants)
 			{
@@ -64,11 +63,15 @@ namespace Server.Temptation
 				BaseRace.SyncRace(player, true);
 			}
 
-			WorldUtilities.DeleteAllItems<OldSwordTalisman>(item => item.Owner == player);
-			if (context.Flags.HasFlag(TemptationFlags.Deathwish))
+			// Don't constantly recreate the item every restart
+			if (!initialLoad)
 			{
-				var knife = new OldSwordTalisman { Owner = player };
-				player.AddToBackpack(knife);
+				WorldUtilities.DeleteAllItems<OldSwordTalisman>(item => item.Owner == player);
+				if (context.Flags.HasFlag(TemptationFlags.Deathwish))
+				{
+					var knife = new OldSwordTalisman { Owner = player };
+					player.AddToBackpack(knife);
+				}
 			}
 
 			// Skill cap could have changed (Titan or some other bonus could be reduced)
@@ -77,7 +80,7 @@ namespace Server.Temptation
 			if (context.HasPermanentDeath)
 				SoulOrb.Create(player, SoulOrbType.PermadeathPlaceholder);
 			else if (!player.Avatar.Active)
-				WorldUtilities.DeleteAllItems<SoulOrb>(item => item.Owner == player);
+				WorldUtilities.DeleteAllItems<SoulOrb>(item => item.Owner == player && item.OrbType == SoulOrbType.PermadeathPlaceholder);
 		}
 
 		public PlayerContext GetContextOrDefault(Mobile mobile)
@@ -131,28 +134,69 @@ namespace Server.Temptation
 						Instance.m_Context.Add(serial, context);
 					}
 
-					Console.WriteLine("Loaded Temptation data for '{0}' characters", Instance.m_Context.Count);
+					Console.WriteLine("[Temptations] Loaded data for '{0}' characters", Instance.m_Context.Count);
 					Instance.IsEnabled = true;
 				}
 			);
 		}
 
-		private static void OnWorldSave(WorldSaveEventArgs e)
+		private void OnPlayerDeleted(PlayerDeletedArgs e)
 		{
+			var player = e.Mobile;
+			if (player == null) return;
+
+			var context = GetContextOrDefault(player);
+			if (context.Active)
+			{
+				m_Context.Remove(player.Serial);
+				Console.WriteLine("[Temptations] Removed context for player '{0}' ({1})", player.Name, player.Serial);
+			}
+
+			Prune();
+		}
+
+		private void OnWorldSave(WorldSaveEventArgs e)
+		{
+			Prune();
 			Persistence.Serialize(
 				"Saves//Player//Temptations.bin",
 				writer =>
 				{
 					writer.Write(0); // version
 
-					writer.Write(Instance.m_Context.Count);
-					foreach (var kv in Instance.m_Context)
+					writer.Write(m_Context.Count);
+					foreach (var kv in m_Context)
 					{
 						writer.Write(kv.Key);
 						kv.Value.Serialize(writer);
 					}
 				}
 			);
+		}
+
+		private void Prune()
+		{
+			var toRemove = m_Context.Keys.Where(key =>
+			{
+				Mobile mobile;
+				if (!World.Mobiles.TryGetValue(key, out mobile)) return true; // Doesn't exist
+
+				var player = mobile as PlayerMobile;
+				return player == null // Not a player
+					|| player.Deleted // Deleted
+					|| !player.Temptations.Active // Temptations no longer active
+					|| player.Temptations.Flags == TemptationFlags.None; // Temptations no longer have any flags
+			});
+
+			if (toRemove.Any())
+			{
+				var removeList = toRemove.ToList();
+				foreach (var key in removeList)
+				{
+					m_Context.Remove(key);
+				}
+				Console.WriteLine("[Temptations] Removed data for '{0}' characters. A total of '{1}' characters remain.", removeList.Count, m_Context.Count);
+			}
 		}
 	}
 }

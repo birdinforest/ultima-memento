@@ -38,36 +38,39 @@ namespace Server.Spells.Seventh
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.CheckReflect( (int)this.Circle, Caster, ref m );
-
-				if ( m.Spell != null )
-					m.Spell.OnCasterHurt();
-
-				m.Paralyzed = false;
-				BuffInfo.CleanupIcons( m, true );
-
-				int toDrain = (int)( Spell.ItemSkillValue( Caster, DamageSkill, false ) - GetResistSkill( m ) );
-
-				if ( !m.Player )
-					toDrain /= 2;
-
-				if ( toDrain < 0 )
-					toDrain = 0;
-				else if ( toDrain > m.Mana )
-					toDrain = m.Mana;
-
-				if ( toDrain > (Caster.ManaMax - Caster.Mana) )
-					toDrain = Caster.ManaMax - Caster.Mana;
-
-				m.Mana -= toDrain;
-				Caster.Mana += MyServerSettings.PlayerLevelMod( toDrain, Caster );
+				Mobile source = Caster;
+				bool hitThrough = SpellHelper.ResolveMagicDefense( (int)this.OneBasedCircle, ref source, ref m );
 
 				m.FixedParticles( 0x374A, 1, 15, 5054, PlayerSettings.GetMySpellHue( true, Caster, 23 ), 7, EffectLayer.Head );
 				m.PlaySound( 0x1F9 );
-
 				Caster.FixedParticles( 0x0000, 10, 5, 2054, PlayerSettings.GetMySpellHue( true, Caster, 23 ), 7, EffectLayer.Head );
 
-				HarmfulSpell( m );
+				if ( hitThrough )
+				{
+					if ( m.Spell != null )
+						m.Spell.OnCasterHurt();
+
+					m.Paralyzed = false;
+					BuffInfo.CleanupIcons( m, true );
+
+					int toDrain = (int)( Spell.ItemSkillValue( Caster, DamageSkill, false ) - GetResistSkill( m ) );
+
+					if ( !m.Player )
+						toDrain /= 2;
+
+					if ( toDrain < 0 )
+						toDrain = 0;
+					else if ( toDrain > m.Mana )
+						toDrain = m.Mana;
+
+					if ( toDrain > (Caster.ManaMax - Caster.Mana) )
+						toDrain = Caster.ManaMax - Caster.Mana;
+
+					m.Mana -= toDrain;
+					Caster.Mana += MyServerSettings.PlayerLevelMod( toDrain, Caster );
+
+					HarmfulSpell( m );
+				}
 			}
 
 			FinishSequence();

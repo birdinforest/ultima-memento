@@ -1,29 +1,37 @@
 using System;
 using System.Collections;
-using Server;
 using Server.Mobiles;
-using Server.Network;
-using Server.Items;
 using Server.Targeting;
-using Server.Spells.Chivalry;
 
 namespace Server.Spells.DeathKnight
 {
 	public class GrimReaperSpell : DeathKnightSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Grim Reaper", "Astaroth Mortem",
-				-1,
-				9002
-			);
+
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 753,
+				IconGraphic = 0x402,
+				Name = "Grim Reaper",
+				PowerWords = "Astaroth Mortem",
+				Description = "The death knight's target is marked by the grim reaper. All damage dealt to it is increased, but the death knight takes extra damage from other kinds of creatures.",
+				ManaCost = 28,
+				TithingCost = 42,
+				MinSkill = 30,
+				TargetType = TargetFlags.Harmful
+			},
+			-1,
+			9002
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 0.5 ); } }
-		public override int RequiredTithing{ get{ return 42; } }
-		public override double RequiredSkill{ get{ return 30.0; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
 		public override bool BlocksMovement{ get{ return false; } }
-		public override int RequiredMana{ get{ return 28; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public GrimReaperSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public GrimReaperSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 

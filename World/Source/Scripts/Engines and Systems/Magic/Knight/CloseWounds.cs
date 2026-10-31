@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using Server.Network;
-using Server.Items;
 using Server.Mobiles;
 using Server.Targeting;
 
@@ -9,20 +7,31 @@ namespace Server.Spells.Chivalry
 {
 	public class CloseWoundsSpell : PaladinSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Close Wounds", "Obsu Vulni",
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+				new SpellDefinition
+				{
+					SpellID = 201,
+					IconGraphic = 0x5101,
+					Name = "Close Wounds",
+					PowerWords = 1060719, // Obsu Vulni
+					Description = 1061491, // Heals the target of damage.  The caster’s Karma affects the amount of damage healed.
+					ManaCost = 10,
+					TithingCost = 10,
+					MinSkill = 0,
+					TargetType = TargetFlags.Beneficial,
+				},
 				-1,
 				9002
 			);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1.5 ); } }
 
-		public override double RequiredSkill{ get{ return 0.0; } }
-		public override int RequiredMana{ get{ return 10; } }
-		public override int RequiredTithing{ get{ return 10; } }
-		public override int MantraNumber{ get{ return 1060719; } } // Obsu Vulni
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override int MantraNumber{ get{ return SpellInfo.SpellDefinition.PowerWords.Number; } }
 
-		public CloseWoundsSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public CloseWoundsSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 

@@ -24,7 +24,9 @@ using Server.Engines.PartySystem;
 using Server.Engines.MLQuests;
 using Server.SpellBars;
 using Server.Utilities;
+using Server.SkillHandlers;
 using Server.Localization;
+using Server.Timers;
 
 namespace Server.Mobiles
 {
@@ -87,6 +89,8 @@ namespace Server.Mobiles
 
 	public class PlayerMobile : Mobile
 	{
+		public override bool SuppressSystemMessages { get { return Preferences.SuppressSystemMessages; } }
+
 		private SpellBarsContext _spellBars;
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -953,6 +957,11 @@ namespace Server.Mobiles
 				return;
 			}
 
+			if (from.SuppressSystemMessages)
+			{
+				from.Send( new UnicodeMessage( Serial.MinusOne, -1, MessageType.Regular, 32, 3, "ENU", "System:", Commands.MobileUO.SuppressSystemMessagesWarning ) );
+			}
+
 			if( from is PlayerMobile )
 				((PlayerMobile)from).ClaimAutoStabledPets();
 
@@ -1585,7 +1594,30 @@ namespace Server.Mobiles
 				}
 			}
 
-			return DesignContext.Check( this );
+			if ( !DesignContext.Check( this ) )
+				return false;
+			
+			// Re-use may cancel a timer. Always allow through.
+			if ( skill == SkillName.Taming )
+				return true;
+			
+			return !Taming.IsTaming( this );
+		}
+
+		public override bool UseSkill( SkillName name )
+		{
+			if ( RepeatableAction.IsUsingSkill( this ) )
+				RepeatableAction.StopTimer( this );
+			
+			return base.UseSkill( name );
+		}
+
+		public override bool UseSkill( int skillID )
+		{
+			if ( RepeatableAction.IsUsingSkill( this ) )
+				RepeatableAction.StopTimer( this );
+			
+			return base.UseSkill( skillID );
 		}
 
 		private bool m_LastProtectedMessage;
@@ -2320,7 +2352,6 @@ namespace Server.Mobiles
 			var newPlayer = new PlayerMobile
 			{
 				Name = Name,
-				StatCap = StatCap,
 
 				_spellBars = SpellBars,
 				_preferences = Preferences,
@@ -2398,6 +2429,12 @@ namespace Server.Mobiles
 					newPlayer.Avatar.RebirthInProgress = false;
 					AvatarEngine.InitializePlayer( newPlayer );
 					AvatarEngine.Instance.ApplyContext( newPlayer, newPlayer.Avatar );
+
+					if ( newPlayer.Avatar.DraftModeEnabled )
+					{
+						newPlayer.Avatar.SetDraftModeEnabled( newPlayer, true );
+					}
+
 					AvatarCoreItemMigration.ReattachCoreItems( newPlayer );
 
 					Timer.DelayCall( TimeSpan.FromSeconds( 2 ), () => AvatarCoreItemMigration.TryShowRebirthReport( newPlayer ) );
@@ -2734,6 +2771,8 @@ namespace Server.Mobiles
 					party.Remove(this);
 				}
 
+				CustomEventSink.InvokePlayerDeleted(this);
+
 				_recursiveDeleteBlock = false;
 			}
 		}
@@ -2875,7 +2914,7 @@ namespace Server.Mobiles
 
 			m_GameTime = TimeSpan.Zero;
 			m_ShortTermElapse = TimeSpan.FromHours( 8.0 );
-			m_LongTermElapse = TimeSpan.FromHours( 40.0 );
+			m_LongTermElapse = TimeSpan.FromHours( 12.0 );
 
 			m_GuildRank = Guilds.RankDefinition.Lowest;
 		}
@@ -3218,8 +3257,7 @@ namespace Server.Mobiles
 		{
 			var baseAmount = 1000 * MyServerSettings.DEFAULT_SKILL_COUNT;
 			var boostAmount = 1000 * MyServerSettings.SkillBoostCount();
-			var typeAmount = 1000 * MyServerSettings.StartTypeBonusSkillCount( CharacterType );
-			if (CharacterType == CharacterType.Fugitive && Temptations.ReduceFugitiveSkillCap) typeAmount -= 1000;
+			var typeAmount = 1000 * MyServerSettings.StartTypeBonusSkillCount( CharacterType, this );
 
 			var avatarAmount = 0;
 			var titanAmount = IsTitanOfEther
@@ -3361,7 +3399,7 @@ namespace Server.Mobiles
 				case 34:
 				{
 					if (version < 50) Preferences.UsingAncientBook = reader.ReadBool();
-					if ( version < 49 ) SpellBars.Arch4 = reader.ReadString();
+					if (version < 49) SpellBars.ReadLegacyState(SpellBarId.Ancient_4, reader.ReadString());
 
 					goto case 33;
 				}
@@ -3429,27 +3467,27 @@ namespace Server.Mobiles
 
 					if ( version < 49 )
 					{
-						SpellBars.Mage1 = reader.ReadString();
-						SpellBars.Mage2 = reader.ReadString();
-						SpellBars.Mage3 = reader.ReadString();
-						SpellBars.Mage4 = reader.ReadString();
-						SpellBars.Necro1 = reader.ReadString();
-						SpellBars.Necro2 = reader.ReadString();
-						SpellBars.Knight1 = reader.ReadString();
-						SpellBars.Knight2 = reader.ReadString();
-						SpellBars.Death1 = reader.ReadString();
-						SpellBars.Death2 = reader.ReadString();
-						SpellBars.Bard1 = reader.ReadString();
-						SpellBars.Bard2 = reader.ReadString();
-						SpellBars.Priest1 = reader.ReadString();
-						SpellBars.Priest2 = reader.ReadString();
-						SpellBars.Arch1 = reader.ReadString();
-						SpellBars.Arch2 = reader.ReadString();
-						SpellBars.Arch3 = reader.ReadString();
-						SpellBars.Monk1 = reader.ReadString();
-						SpellBars.Monk2 = reader.ReadString();
-						SpellBars.Elly1 = reader.ReadString();
-						SpellBars.Elly2 = reader.ReadString();
+						SpellBars.ReadLegacyState(SpellBarId.Mage_1, reader.ReadString());
+						SpellBars.ReadLegacyState(SpellBarId.Mage_2, reader.ReadString());
+						SpellBars.ReadLegacyState(SpellBarId.Mage_3, reader.ReadString());
+						SpellBars.ReadLegacyState(SpellBarId.Mage_4, reader.ReadString());
+						SpellBars.ReadLegacyState(SpellBarId.Necro_1, reader.ReadString());
+						SpellBars.ReadLegacyState(SpellBarId.Necro_2, reader.ReadString());
+						SpellBars.ReadLegacyState(SpellBarId.Knight_1, reader.ReadString());
+						SpellBars.ReadLegacyState(SpellBarId.Knight_2, reader.ReadString());
+						SpellBars.ReadLegacyState(SpellBarId.Death_1, reader.ReadString());
+						SpellBars.ReadLegacyState(SpellBarId.Death_2, reader.ReadString());
+						SpellBars.ReadLegacyState(SpellBarId.Bard_1, reader.ReadString());
+						SpellBars.ReadLegacyState(SpellBarId.Bard_2, reader.ReadString());
+						SpellBars.ReadLegacyState(SpellBarId.Priest_1, reader.ReadString());
+						SpellBars.ReadLegacyState(SpellBarId.Priest_2, reader.ReadString());
+						SpellBars.ReadLegacyState(SpellBarId.Ancient_1, reader.ReadString());
+						SpellBars.ReadLegacyState(SpellBarId.Ancient_2, reader.ReadString());
+						SpellBars.ReadLegacyState(SpellBarId.Ancient_3, reader.ReadString());
+						SpellBars.ReadLegacyState(SpellBarId.Monk_1, reader.ReadString());
+						SpellBars.ReadLegacyState(SpellBarId.Monk_2, reader.ReadString());
+						SpellBars.ReadLegacyState(SpellBarId.Elemental_1, reader.ReadString());
+						SpellBars.ReadLegacyState(SpellBarId.Elemental_2, reader.ReadString());
 					}
 
 					if (version < 50) Preferences.QuickBar = reader.ReadString();
@@ -3466,7 +3504,7 @@ namespace Server.Mobiles
 					if (version < 49) Preferences.ClassicPoisoning = reader.ReadInt() == 1;
 					if (version < 50) Preferences.CharacterEvil = reader.ReadInt() == 1;
 					if (version < 50) Preferences.CharacterOriental = reader.ReadInt() == 1;
-					if (version < 50) Preferences.GumpHue = reader.ReadInt();
+					if (version < 50) Preferences.ShowGumpImages = reader.ReadInt() == 1;
 					if (version < 49) Preferences.WeaponBarOpen = reader.ReadInt() == 1;
 					if (version < 50) Quests.EpicQuestNumber = reader.ReadInt();
 
@@ -3803,7 +3841,7 @@ namespace Server.Mobiles
 
 			if ( m_LongTermElapse < this.GameTime )
 			{
-				m_LongTermElapse += TimeSpan.FromHours( 40 );
+				m_LongTermElapse += TimeSpan.FromHours( 12 );
 				if ( Kills > 0 )
 					--Kills;
 			}
@@ -3812,7 +3850,7 @@ namespace Server.Mobiles
 		public void ResetKillTime()
 		{
 			m_ShortTermElapse = this.GameTime + TimeSpan.FromHours( 8 );
-			m_LongTermElapse = this.GameTime + TimeSpan.FromHours( 40 );
+			m_LongTermElapse = this.GameTime + TimeSpan.FromHours( 12 );
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -3864,6 +3902,16 @@ namespace Server.Mobiles
 			MLQuestSystem.HandleDeletion( this );
 
 			DisguiseTimers.RemoveTimer( this );
+
+			WorldUtilities.DeleteAllItems<Item>( item => {
+				if (item is IAvatarOnlyItem)
+				{
+					var avatarOnlyItem = (IAvatarOnlyItem)item;
+					return !avatarOnlyItem.IsPersistent && avatarOnlyItem.PlayerOwner == this;
+				}
+
+				return false;
+			} );
 		}
 
 		public override bool NewGuildDisplay { get { return Server.Guilds.Guild.NewGuildSystem; } }
@@ -4555,6 +4603,17 @@ namespace Server.Mobiles
 			if( m_AcquiredRecipes == null ) m_AcquiredRecipes = new Dictionary<int, bool>();
 
 			m_AcquiredRecipes[recipeID] = true;
+		}
+
+		public string GetRecipeReason( Recipe r )
+		{
+			if (r.CraftSystem == DefInscription.CraftSystem) return "This magic is too difficult to copy.";
+			if (r.CraftSystem == DefBlacksmithy.CraftSystem)
+				return DefBlacksmithy.CraftSystem.IsWeaponRecipe(r)
+					? "Assist with the War Effort"
+					: "Blacksmith chain quest";
+
+			return "You don't know this recipe";
 		}
 
 		public virtual void ResetRecipes()

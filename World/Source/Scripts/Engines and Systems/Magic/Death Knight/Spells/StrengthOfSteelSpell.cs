@@ -1,23 +1,33 @@
 using System;
 using Server.Targeting;
-using Server.Network;
 
 namespace Server.Spells.DeathKnight
 {
 	public class StrengthOfSteelSpell : DeathKnightSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Strength of Steel", "Volac Fortitudo",
-				212,
-				9061
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 760,
+				IconGraphic = 0x2B,
+				Name = "Strength of Steel",
+				PowerWords = "Volac Fortitudo",
+				Description = "Greatly increases the target's strength for a short period.",
+				ManaCost = 20,
+				TithingCost = 28,
+				MinSkill = 20,
+				TargetType = TargetFlags.Beneficial
+			},
+			212,
+			9061
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1 ); } }
-		public override int RequiredTithing{ get{ return 28; } }
-		public override double RequiredSkill{ get{ return 20.0; } }
-		public override int RequiredMana{ get{ return 20; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public StrengthOfSteelSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public StrengthOfSteelSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 

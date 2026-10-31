@@ -177,16 +177,16 @@ namespace Server.Spells
 			Register( 331, typeof( Elementalism.Elemental_Spirit_Spell ) );
 
 			// Paladin abilities
-			Register( 200, typeof( Chivalry.CleanseByFireSpell ) );
-			Register( 201, typeof( Chivalry.CloseWoundsSpell ) );
-			Register( 202, typeof( Chivalry.ConsecrateWeaponSpell ) );
-			Register( 203, typeof( Chivalry.DispelEvilSpell ) );
-			Register( 204, typeof( Chivalry.DivineFurySpell ) );
-			Register( 205, typeof( Chivalry.EnemyOfOneSpell ) );
-			Register( 206, typeof( Chivalry.HolyLightSpell ) );
-			Register( 207, typeof( Chivalry.NobleSacrificeSpell ) );
-			Register( 208, typeof( Chivalry.RemoveCurseSpell ) );
-			Register( 209, typeof( Chivalry.SacredJourneySpell ) );
+			Register( Chivalry.CleanseByFireSpell.SpellInfo.SpellDefinition.SpellID, typeof( Chivalry.CleanseByFireSpell ) );
+			Register( Chivalry.CloseWoundsSpell.SpellInfo.SpellDefinition.SpellID, typeof( Chivalry.CloseWoundsSpell ) );
+			Register( Chivalry.ConsecrateWeaponSpell.SpellInfo.SpellDefinition.SpellID, typeof( Chivalry.ConsecrateWeaponSpell ) );
+			Register( Chivalry.DispelEvilSpell.SpellInfo.SpellDefinition.SpellID, typeof( Chivalry.DispelEvilSpell ) );
+			Register( Chivalry.DivineFurySpell.SpellInfo.SpellDefinition.SpellID, typeof( Chivalry.DivineFurySpell ) );
+			Register( Chivalry.EnemyOfOneSpell.SpellInfo.SpellDefinition.SpellID, typeof( Chivalry.EnemyOfOneSpell ) );
+			Register( Chivalry.HolyLightSpell.SpellInfo.SpellDefinition.SpellID, typeof( Chivalry.HolyLightSpell ) );
+			Register( Chivalry.NobleSacrificeSpell.SpellInfo.SpellDefinition.SpellID, typeof( Chivalry.NobleSacrificeSpell ) );
+			Register( Chivalry.RemoveCurseSpell.SpellInfo.SpellDefinition.SpellID, typeof( Chivalry.RemoveCurseSpell ) );
+			Register( Chivalry.SacredJourneySpell.SpellInfo.SpellDefinition.SpellID, typeof( Chivalry.SacredJourneySpell ) );
 
 			// Mystic abilities
 			Register( 250, typeof( Mystic.AstralProjection ) );
@@ -339,54 +339,54 @@ namespace Server.Spells
 			Register( 706, typeof( Magical.TravelSpell ) );
 
 			// Death Knight Spells
-			Register( 750, typeof( DeathKnight.BanishSpell ) );
-			Register( 751, typeof( DeathKnight.DemonicTouchSpell ) );
-			Register( 752, typeof( DeathKnight.DevilPactSpell ) );
-			Register( 753, typeof( DeathKnight.GrimReaperSpell ) );
-			Register( 754, typeof( DeathKnight.HagHandSpell ) );
-			Register( 755, typeof( DeathKnight.HellfireSpell ) );
-			Register( 756, typeof( DeathKnight.LucifersBoltSpell ) );
-			Register( 757, typeof( DeathKnight.OrbOfOrcusSpell ) );
-			Register( 758, typeof( DeathKnight.ShieldOfHateSpell ) );
-			Register( 759, typeof( DeathKnight.SoulReaperSpell ) );
-			Register( 760, typeof( DeathKnight.StrengthOfSteelSpell ) );
-			Register( 761, typeof( DeathKnight.StrikeSpell ) );
-			Register( 762, typeof( DeathKnight.SuccubusSkinSpell ) );
-			Register( 763, typeof( DeathKnight.WrathSpell ) );
+			Register( DeathKnight.BanishSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.BanishSpell ) );
+			Register( DeathKnight.DemonicTouchSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.DemonicTouchSpell ) );
+			Register( DeathKnight.DevilPactSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.DevilPactSpell ) );
+			Register( DeathKnight.GrimReaperSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.GrimReaperSpell ) );
+			Register( DeathKnight.HagHandSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.HagHandSpell ) );
+			Register( DeathKnight.HellfireSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.HellfireSpell ) );
+			Register( DeathKnight.LucifersBoltSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.LucifersBoltSpell ) );
+			Register( DeathKnight.OrbOfOrcusSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.OrbOfOrcusSpell ) );
+			Register( DeathKnight.ShieldOfHateSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.ShieldOfHateSpell ) );
+			Register( DeathKnight.SoulReaperSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.SoulReaperSpell ) );
+			Register( DeathKnight.StrengthOfSteelSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.StrengthOfSteelSpell ) );
+			Register( DeathKnight.StrikeSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.StrikeSpell ) );
+			Register( DeathKnight.SuccubusSkinSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.SuccubusSkinSpell ) );
+			Register( DeathKnight.WrathSpell.SpellInfo.SpellDefinition.SpellID, typeof( DeathKnight.WrathSpell ) );
 
 			// Holy Man Spells
-			Register( 770, typeof( HolyMan.BanishEvilSpell ) );
-			Register( 771, typeof( HolyMan.DampenSpiritSpell ) );
-			Register( 772, typeof( HolyMan.EnchantSpell ) );
-			Register( 773, typeof( HolyMan.HammerOfFaithSpell ) );
-			Register( 774, typeof( HolyMan.HeavenlyLightSpell ) );
-			Register( 775, typeof( HolyMan.NourishSpell ) );
-			Register( 776, typeof( HolyMan.PurgeSpell ) );
-			Register( 777, typeof( HolyMan.RebirthSpell ) );
-			Register( 778, typeof( HolyMan.SacredBoonSpell ) );
-			Register( 779, typeof( HolyMan.SanctifySpell ) );
-			Register( 780, typeof( HolyMan.SeanceSpell ) );
-			Register( 781, typeof( HolyMan.SmiteSpell ) );
-			Register( 782, typeof( HolyMan.TouchOfLifeSpell ) );
-			Register( 783, typeof( HolyMan.TrialByFireSpell ) );
+			Register( HolyMan.BanishEvilSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.BanishEvilSpell ) );
+			Register( HolyMan.DampenSpiritSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.DampenSpiritSpell ) );
+			Register( HolyMan.EnchantSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.EnchantSpell ) );
+			Register( HolyMan.HammerOfFaithSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.HammerOfFaithSpell ) );
+			Register( HolyMan.HeavenlyLightSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.HeavenlyLightSpell ) );
+			Register( HolyMan.NourishSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.NourishSpell ) );
+			Register( HolyMan.PurgeSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.PurgeSpell ) );
+			Register( HolyMan.RebirthSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.RebirthSpell ) );
+			Register( HolyMan.SacredBoonSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.SacredBoonSpell ) );
+			Register( HolyMan.SanctifySpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.SanctifySpell ) );
+			Register( HolyMan.SeanceSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.SeanceSpell ) );
+			Register( HolyMan.SmiteSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.SmiteSpell ) );
+			Register( HolyMan.TouchOfLifeSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.TouchOfLifeSpell ) );
+			Register( HolyMan.TrialByFireSpell.SpellInfo.SpellDefinition.SpellID, typeof( HolyMan.TrialByFireSpell ) );
 
 			// Bard Songs
-			Register( 351, typeof( Song.ArmysPaeonSong ) );
-			Register( 352, typeof( Song.EnchantingEtudeSong ) );
-			Register( 353, typeof( Song.EnergyCarolSong ) );
-			Register( 354, typeof( Song.EnergyThrenodySong ) );
-			Register( 355, typeof( Song.FireCarolSong ) );
-			Register( 356, typeof( Song.FireThrenodySong ) );
-			Register( 357, typeof( Song.FoeRequiemSong ) );
-			Register( 358, typeof( Song.IceCarolSong ) );
-			Register( 359, typeof( Song.IceThrenodySong ) );
-			Register( 360, typeof( Song.KnightsMinneSong ) );
-			Register( 361, typeof( Song.MagesBalladSong ) );
-			Register( 362, typeof( Song.MagicFinaleSong ) );
-			Register( 363, typeof( Song.PoisonCarolSong ) );
-			Register( 364, typeof( Song.PoisonThrenodySong ) );
-			Register( 365, typeof( Song.SheepfoeMamboSong ) );
-			Register( 366, typeof( Song.SinewyEtudeSong ) );
+			Register( Song.ArmysPaeonSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.ArmysPaeonSong ) );
+			Register( Song.EnchantingEtudeSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.EnchantingEtudeSong ) );
+			Register( Song.EnergyCarolSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.EnergyCarolSong ) );
+			Register( Song.EnergyThrenodySong.SpellInfo.SpellDefinition.SpellID, typeof( Song.EnergyThrenodySong ) );
+			Register( Song.FireCarolSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.FireCarolSong ) );
+			Register( Song.FireThrenodySong.SpellInfo.SpellDefinition.SpellID, typeof( Song.FireThrenodySong ) );
+			Register( Song.FoeRequiemSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.FoeRequiemSong ) );
+			Register( Song.IceCarolSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.IceCarolSong ) );
+			Register( Song.IceThrenodySong.SpellInfo.SpellDefinition.SpellID, typeof( Song.IceThrenodySong ) );
+			Register( Song.KnightsMinneSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.KnightsMinneSong ) );
+			Register( Song.MagesBalladSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.MagesBalladSong ) );
+			Register( Song.MagicFinaleSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.MagicFinaleSong ) );
+			Register( Song.PoisonCarolSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.PoisonCarolSong ) );
+			Register( Song.PoisonThrenodySong.SpellInfo.SpellDefinition.SpellID, typeof( Song.PoisonThrenodySong ) );
+			Register( Song.SheepfoeMamboSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.SheepfoeMamboSong ) );
+			Register( Song.SinewyEtudeSong.SpellInfo.SpellDefinition.SpellID, typeof( Song.SinewyEtudeSong ) );
 		}
 
 		public static void Register( int spellID, Type type )

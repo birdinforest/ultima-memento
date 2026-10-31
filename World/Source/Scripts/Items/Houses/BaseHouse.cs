@@ -215,7 +215,7 @@ namespace Server.Multis
 		public virtual TimeSpan RestrictedPlacingTime { get { return TimeSpan.FromHours( 0.0 ); } }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public virtual double BonusStorageScalar { get { return (Core.ML ? 1.2 : 1.0); } }
+		public virtual double BonusStorageScalar { get { return MySettings.S_HouseStoragePercent; } }
 
 		private bool m_Public;
 

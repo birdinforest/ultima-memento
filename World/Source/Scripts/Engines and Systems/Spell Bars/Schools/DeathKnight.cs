@@ -1,5 +1,5 @@
-using Server.Items;
 using Server.Mobiles;
+using Server.Spells.DeathKnight;
 
 namespace Server.SpellBars
 {
@@ -7,21 +7,8 @@ namespace Server.SpellBars
 	{
 		public static readonly DeathKnightSpellSchool Instance = new DeathKnightSpellSchool();
 
-		private static readonly int[] SpellIcons =
-		{
-			0x5010, 0x5009, 0x5005, 0x402, 0x5002, 0x3E9, 0x5DC0, 0x1B, 0x3EE, 0x5006,
-			0x2B, 0x12, 0x500C, 0x2E
-		};
-
-		private static readonly string[] SpellNames =
-		{
-			"Banish", "Demonic Touch", "Devil Pact", "Grim Reaper", "Hag Hand", "Hellfire",
-			"Lucifer's Bolt", "Orb of Orcus", "Shield of Hate", "Soul Reaper", "Strength of Steel",
-			"Strike", "Succubus Skin", "Wrath"
-		};
-
 		public int MaxSlots
-		{ get { return 14; } }
+		{ get { return DeathKnightSpellProvider.SpellCount; } }
 
 		public SpellBarSchool School
 		{ get { return SpellBarSchool.DeathKnight; } }
@@ -30,27 +17,22 @@ namespace Server.SpellBars
 		{ return 11168; }
 
 		public int GetIcon(PlayerMobile from, int slotIndex)
-		{ return SpellIcons[slotIndex - 1]; }
+		{ return DeathKnightSpellProvider.SpellDefinitions[slotIndex - 1].IconGraphic; }
 
 		public string GetName(int slotIndex)
 		{
-			if (slotIndex < 1 || slotIndex > SpellNames.Length)
+			if (slotIndex < 1 || slotIndex > DeathKnightSpellProvider.SpellCount)
 				return string.Empty;
 
-			return SpellNames[slotIndex - 1];
+			return DeathKnightSpellProvider.SpellDefinitions[slotIndex - 1].Name.String;
 		}
 
 		public int GetRegistrySpellId(int slotIndex)
-		{ return 750 - 1 + slotIndex; }
+		{ return DeathKnightSpellProvider.SpellDefinitions[slotIndex - 1].SpellID; }
 
 		public bool HasSpell(PlayerMobile from, int registrySpellId)
 		{
-			Spellbook book = Spellbook.Find(from, registrySpellId);
-
-			if (book is DeathKnightSpellbook && ((DeathKnightSpellbook)book).Owner != from)
-				book = null;
-
-			return book != null && book.HasSpell(registrySpellId);
+			return DeathKnightSpellProvider.HasSpell(from, registrySpellId);
 		}
 	}
 

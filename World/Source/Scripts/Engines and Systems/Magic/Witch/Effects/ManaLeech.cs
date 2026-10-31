@@ -31,48 +31,41 @@ namespace Server.Spells.Undead
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.CheckReflect( 7, Caster, ref m );
-
-				if ( m.Spell != null )
-					m.Spell.OnCasterHurt();
-
-				m.Paralyzed = false;
-				BuffInfo.CleanupIcons( m, true );
-
-				int toDrain = 0;
-
-					toDrain = (int)(GetDamageSkill( Caster ) - GetResistSkill( m )) + Server.Items.BasePotion.EnhancePotions( Caster );
-
-					if ( !m.Player )
-						toDrain /= 2;
-
-					if ( toDrain < 0 )
-						toDrain = 0;
-					else if ( toDrain > m.Mana )
-						toDrain = m.Mana;
-
-				if ( toDrain > (Caster.ManaMax - Caster.Mana) )
-					toDrain = Caster.ManaMax - Caster.Mana;
-
-				m.Mana -= toDrain;
-				Caster.Mana += toDrain + 25;
+				Mobile source = Caster;
+				bool hitThrough = SpellHelper.ResolveMagicDefense( 7, ref source, ref m );
 
 				m.PlaySound( 0x19C );
 				m.FixedParticles( 0x3709, 1, 30, 9904, 1108, 6, EffectLayer.RightFoot );
+
+				if ( hitThrough )
+				{
+					if ( m.Spell != null )
+						m.Spell.OnCasterHurt();
+
+					m.Paralyzed = false;
+					BuffInfo.CleanupIcons( m, true );
+
+					int toDrain = 0;
+
+						toDrain = (int)(GetDamageSkill( Caster ) - GetResistSkill( m )) + Server.Items.BasePotion.EnhancePotions( Caster );
+
+						if ( !m.Player )
+							toDrain /= 2;
+
+						if ( toDrain < 0 )
+							toDrain = 0;
+						else if ( toDrain > m.Mana )
+							toDrain = m.Mana;
+
+					if ( toDrain > (Caster.ManaMax - Caster.Mana) )
+						toDrain = Caster.ManaMax - Caster.Mana;
+
+					m.Mana -= toDrain;
+					Caster.Mana += toDrain + 25;
+				}
 			}
 
 			FinishSequence();
-		}
-
-		public override double GetResistSkill( Mobile m )
-		{
-			int maxSkill = (1 + 7) * 10;
-			maxSkill += (1 + (7 / 6)) * 25;
-
-			if( m.Skills[SkillName.MagicResist].Value < maxSkill )
-				m.CheckSkill( SkillName.MagicResist, 0.0, 120.0 );
-
-			return m.Skills[SkillName.MagicResist].Value;
 		}
 
 		public virtual bool CheckResisted( Mobile target )

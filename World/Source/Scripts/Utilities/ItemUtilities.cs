@@ -32,6 +32,24 @@ namespace Server.Utilities
 			}
 		}
 
+		public static int ConsumeClamped(Item dropped, int requestedDeduction, int requiredAmount = 0)
+		{
+			if (!dropped.Stackable) return 0;
+			if (dropped.Amount < requiredAmount) return 0;
+
+			int actualDeduction = Math.Min(requestedDeduction, dropped.Amount);
+			dropped.Amount -= actualDeduction;
+			if (dropped.Amount < 1)
+				dropped.Delete();
+
+			return actualDeduction;
+		}
+
+		public static bool ConsumeRequired(Item dropped, int requiredAmount)
+		{
+			return 0 < ConsumeClamped(dropped, requiredAmount, requiredAmount);
+		}
+
 		public static bool HasItemOwnershipRights(Mobile from, Item item)
 		{
 			if (AccessLevel.Player < from.AccessLevel) return true;

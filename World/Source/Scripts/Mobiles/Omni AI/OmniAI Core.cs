@@ -323,16 +323,23 @@ namespace Server.Mobiles
 		public bool OnFailedMove()
 		{
 			var canOnlySwim = m_Mobile.CanSwim && m_Mobile.CantWalk;
-			if( m_CanUseMagery && !canOnlySwim && !m_Mobile.DisallowAllMoves && !Server.Mobiles.BasePirate.IsSailor( m_Mobile ) && DateTime.Now > m_NextTeleportTime )
+			var canCastTeleport = m_CanUseMagery
+				&& !canOnlySwim && !m_Mobile.DisallowAllMoves
+				&& !Server.Mobiles.BasePirate.IsSailor( m_Mobile )
+				&& m_Mobile.Combatant != null && m_Mobile.InLOS( m_Mobile.Combatant );
+			if( canCastTeleport && DateTime.Now > m_NextTeleportTime )
 			{
-				if( m_Mobile.Target != null )
-					m_Mobile.Target.Cancel( m_Mobile, TargetCancelType.Canceled );
+				if( Utility.RandomDouble() < 0.33 )
+				{
+					m_Mobile.DebugSay( "I am stuck, I'm going to try teleporting away" );
 
-				new TeleportSpell( m_Mobile, null ).Cast();
+					if( m_Mobile.Target != null )
+						m_Mobile.Target.Cancel( m_Mobile, TargetCancelType.Canceled );
 
-				m_Mobile.DebugSay( "I am stuck, I'm going to try teleporting away" );
+					new TeleportSpell( m_Mobile, null ).Cast();
 
-				return true;
+					return true;
+				}
 			}
 
 			if( AcquireFocusMob( m_Mobile.RangePerception, m_Mobile.FightMode, false, false, true ) )
@@ -413,7 +420,7 @@ namespace Server.Mobiles
 				else
 					return true;
 			}
-			else if ( m != null && ( m_MoveErratically || m_RequireRanged || m_PrefersRanged ) )
+			else if ( m != null && ( m_MoveErratically || m_RequireRanged || m_PrefersRanged ) && m_Mobile.InLOS( m ) )
 			{
 				bool forceMove = m_MoveErratically;
 				bool shouldRetreat = m_MoveErratically || m_Mobile.InRange( m, 2 );
@@ -547,7 +554,7 @@ namespace Server.Mobiles
 				}
 
 				int px, py;
-				bool teleportAway = ( m_Mobile.Hits < (m_Mobile.Hits / 10) );
+				bool teleportAway = m_Mobile.Hits < (m_Mobile.HitsMax / 10);
 
 				if ( teleportAway )
 				{
@@ -577,14 +584,14 @@ namespace Server.Mobiles
 				}
 
 				// Try finding a path to the target
-				IPoint3D goal = new Point3D( toTarget.X, toTarget.Y, 0 );
+				IPoint3D goal = new Point3D( px, py, 0 );
 				Spells.SpellHelper.GetSurfaceTop(ref goal);
 				var goalPoint = new Point3D(goal.X, goal.Y, goal.Z);
 				var path = new MovementPath( m_Mobile, goalPoint );
 				if ( path.Success )
 				{
-					var x = goalPoint.X;
-					var y = goalPoint.Y;
+					var x = m_Mobile.X;
+					var y = m_Mobile.Y;
 					var points = new List<Point3D>();
 					foreach ( Direction d in path.Directions )
 					{
@@ -764,9 +771,9 @@ namespace Server.Mobiles
 
 			//Default
 			if ( harm )
-				return ( IsGoodGuy( from ) && !(IsGoodGuy( to )) ) | ( !(IsGoodGuy( from )) && IsGoodGuy( to ) );
+				return ( IsGoodGuy( from ) && !(IsGoodGuy( to )) ) || ( !(IsGoodGuy( from )) && IsGoodGuy( to ) );
 			else
-				return  ( IsGoodGuy( from ) && IsGoodGuy( to ) ) | ( !(IsGoodGuy( from )) && !(IsGoodGuy( to )) );
+				return  ( IsGoodGuy( from ) && IsGoodGuy( to ) ) || ( !(IsGoodGuy( from )) && !(IsGoodGuy( to )) );
 		}
 
 		public static bool IsGoodGuy( Mobile m )

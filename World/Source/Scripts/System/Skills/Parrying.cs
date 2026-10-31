@@ -2,6 +2,7 @@
 using System;
 using Server.Items;
 using Server.Localization;
+using Server.Network;
 
 namespace Server.SkillHandlers
 {
@@ -34,7 +35,7 @@ namespace Server.SkillHandlers
 
 			// Apply a reduction for players with < 125 skill
 			const int SKILL_PENALTY_THRESHOLD = 125;
-			if (skill.Fixed < SKILL_PENALTY_THRESHOLD || m.Dex < DEXTERITY_PENALTY_THRESHOLD)
+			if (skill.Fixed < SKILL_PENALTY_THRESHOLD && m.Dex < DEXTERITY_PENALTY_THRESHOLD)
 				value *= (float)m.Dex / DEXTERITY_PENALTY_THRESHOLD;
 
 			// Guarantee at least 1 point is provided
@@ -44,11 +45,9 @@ namespace Server.SkillHandlers
 			m.MeleeDamageAbsorb += amount;
 
 			m.RevealingAction();
-			m.SendMessage(StringCatalog.ResolveByKey(m.Account, "skl.parrying.raise_shield"));
+			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.ResolveByKey(m.Account, "skl.parrying.raise_shield"), m.NetState);
 
-			var duration = TimeSpan.FromSeconds(5);
-
-			Timer.DelayCall(duration, () =>
+			Timer.DelayCall(TimeSpan.FromSeconds(3), () =>
 			{
 				if (0 < m.MagicDamageAbsorb || 0 < m.MeleeDamageAbsorb)
 				{
@@ -56,10 +55,10 @@ namespace Server.SkillHandlers
 					if (0 < m.MeleeDamageAbsorb) m.MeleeDamageAbsorb = Math.Max(0, m.MeleeDamageAbsorb - amount);
 				}
 
-				m.SendMessage(StringCatalog.ResolveByKey(m.Account, "skl.parrying.relax_stance"));
+				m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.ResolveByKey(m.Account, "skl.parrying.relax_stance"), m.NetState);
 			});
 
-			return duration;
+			return TimeSpan.FromSeconds(5);
 		}
 	}
 }

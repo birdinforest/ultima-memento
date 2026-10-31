@@ -46,32 +46,34 @@ namespace Server.Spells.Jedi
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.CheckReflect( CirclePower, Caster, ref m );
-
-				double duration;
-
-				int secs = (int)((GetJediDamage( Caster )/25) - (GetResistSkill( m ) / 10) + (Caster.Skills[SkillName.Psychology].Value / 2) );
-				
-				if( !Core.SE )
-					secs += 2;
-
-				if ( !m.Player )
-					secs *= 3;
-
-				if ( secs < 0 )
-					secs = 0;
-
-				duration = secs;
-
-				m.Paralyze( TimeSpan.FromSeconds( duration ) );
-
-				BuffInfo.RemoveBuff( m, BuffIcon.StasisField );
-				BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.StasisField, 1063528, TimeSpan.FromSeconds( duration ), m ) );
+				Mobile source = Caster;
+				bool hitThrough = SpellHelper.ResolveMagicDefense( CirclePower, ref source, ref m );
 
 				m.PlaySound( 0x204 );
 				m.FixedEffect( 0x376A, 6, 1, 0xB41, 0 );
 
-				HarmfulSpell( m );
+				if ( hitThrough )
+				{
+					int secs = (int)((GetJediDamage( Caster )/25) - (GetResistSkill( m ) / 10) + (Caster.Skills[SkillName.Psychology].Value / 2) );
+					
+					if( !Core.SE )
+						secs += 2;
+
+					if ( !m.Player )
+						secs *= 3;
+
+					if ( secs < 0 )
+						secs = 0;
+
+					double duration = secs;
+
+					m.Paralyze( TimeSpan.FromSeconds( duration ) );
+
+					BuffInfo.RemoveBuff( m, BuffIcon.StasisField );
+					BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.StasisField, 1063528, TimeSpan.FromSeconds( duration ), m ) );
+
+					HarmfulSpell( m );
+				}
 			}
 		}
 

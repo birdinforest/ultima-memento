@@ -1,30 +1,40 @@
 using System;
 using System.Collections.Generic;
-using Server.Network;
 using Server.Items;
-using Server.Targeting;
 using Server.Mobiles;
 using Server.Spells.Necromancy;
+using Server.Targeting;
 
 namespace Server.Spells.Chivalry
 {
 	public class DispelEvilSpell : PaladinSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Dispel Evil", "Dispiro Malum",
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+				new SpellDefinition
+				{
+					SpellID = 203,
+					IconGraphic = 0x5103,
+					Name = "Dispel Evil",
+					PowerWords = 1060721, // Dispiro Malum
+					Description = 1061493, // Attempts to dispel evil summoned creatures and cause other evil creatures to flee from combat.  Transformed Necromancers may also take Stamina and Mana Damage.  Caster’s Karma and Knightship, and Target’s Fame or Necromancy affect Dispel chance.
+					ManaCost = 10,
+					TithingCost = 10,
+					MinSkill = 35,
+					TargetType = TargetFlags.Harmful,
+				},
 				-1,
 				9002
 			);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 0.25 ); } }
 
-		public override double RequiredSkill{ get{ return 35.0; } }
-		public override int RequiredMana{ get{ return 10; } }
-		public override int RequiredTithing{ get{ return 10; } }
-		public override int MantraNumber{ get{ return 1060721; } } // Dispiro Malum
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override int MantraNumber{ get{ return SpellInfo.SpellDefinition.PowerWords.Number; } }
 		public override bool BlocksMovement{ get{ return false; } }
 
-		public DispelEvilSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public DispelEvilSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 

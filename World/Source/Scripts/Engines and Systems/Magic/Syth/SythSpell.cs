@@ -1,11 +1,6 @@
 using System;
-using Server;
-using Server.Spells;
 using Server.Network;
-using Server.Mobiles;
 using Server.Items;
-using System.Collections.Generic;
-using System.Collections;
 using Server.Commands;
 using Server.Commands.Generic;
 using Server.Localization;
@@ -344,21 +339,14 @@ namespace Server.Spells.Syth
 			if ( AosAttributes.GetValue( from, AosAttribute.LowerRegCost ) > Utility.Random( 100 ) )
 				tithing = 0;
 
-			if ( tithing > 0 )
+			if ( tithing > 0 && from.Backpack != null )
 			{
-				ArrayList targets = new ArrayList();
-				foreach ( Item item in World.Items.Values )
+				var book = from.Backpack.FindItemByType<SythSpellbook>();
+				if ( book != null && book.owner == from )
 				{
-					if ( item is SythSpellbook )
-					{
-						SythSpellbook book = (SythSpellbook)item;
-						if ( book.owner == from )
-						{
-							book.crystals = book.crystals - tithing;
-							if ( book.crystals < 1 ){ book.crystals = 0; }
-							book.InvalidateProperties();
-						}
-					}
+					book.crystals -= tithing;
+					if ( book.crystals < 1 ){ book.crystals = 0; }
+					book.InvalidateProperties();
 				}
 			}
 		}
@@ -367,16 +355,12 @@ namespace Server.Spells.Syth
 		{
 			int crystal = 0;
 
-			ArrayList targets = new ArrayList();
-			foreach ( Item item in World.Items.Values )
+			if ( from.Backpack != null )
 			{
-				if ( item is SythSpellbook )
+				var book = from.Backpack.FindItemByType<SythSpellbook>();
+				if ( book != null && book.owner == from )
 				{
-					SythSpellbook book = (SythSpellbook)item;
-					if ( book.owner == from )
-					{
-						crystal = book.crystals;
-					}
+					crystal = book.crystals;
 				}
 			}
 
@@ -417,8 +401,14 @@ namespace Server.Spells.Syth
 			return ( book != null && book.HasSpell( spellID ) );
 		}
 
-		public static void CastSpell( Mobile from, int spell ) //////////////////////////////////////////////////////////////////////////////////////
+		public static void CastSpell( Mobile from, int spell, bool validate = true ) //////////////////////////////////////////////////////////////////////////////////////
 		{
+			if ( validate && !Server.Misc.GetPlayerInfo.isSyth( from, true ) )
+			{
+				from.SendMessage( "Your Syth Powers Are Not Strong Enough!" );
+				return;
+			}
+
 			if ( HasSpell( from, spell ) )
 			{
 				if ( spell == 270 ){ InvokeCommand( "Psychokinesis", from ); }

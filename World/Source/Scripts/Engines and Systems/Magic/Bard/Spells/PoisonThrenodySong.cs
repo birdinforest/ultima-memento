@@ -10,16 +10,26 @@ namespace Server.Spells.Song
 {
 	public class PoisonThrenodySong : Song
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Poison Threnody", "*plays a poison threnody*",
-				-1
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 364,
+				IconGraphic = 0x412,
+				Name = "Poison Threnody",
+				PowerWords = "*plays a poison threnody*",
+				Description = "Lowers the poison resistance of your target.",
+				ManaCost = 25,
+				MinSkill = 70,
+				TargetType = TargetFlags.Harmful
+			},
+	-1
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(0.5); } }
-		public override double RequiredSkill { get { return 70.0; } }
-		public override int RequiredMana { get { return 25; } }
+		public override double RequiredSkill { get { return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana { get { return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public PoisonThrenodySong(Mobile caster, Item scroll) : base(caster, scroll, m_Info)
+		public PoisonThrenodySong(Mobile caster, Item scroll) : base(caster, scroll, SpellInfo)
 		{
 		}
 
@@ -122,7 +132,7 @@ namespace Server.Spells.Song
 				m_Mod = null;
 
 				BuffInfo.RemoveBuff(m, BuffIcon.PoisonThrenody);
-				m.SendMessage("The effect of {0} wears off.", m_Info.Name);
+				m.SendMessage("The effect of {0} wears off.", SpellInfo.SpellDefinition.Name);
 			}
 
 			protected override bool TryApplyInternal()

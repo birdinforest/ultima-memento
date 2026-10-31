@@ -1,23 +1,33 @@
 using System;
 using Server.Targeting;
-using Server.Network;
 
 namespace Server.Spells.DeathKnight
 {
 	public class LucifersBoltSpell : DeathKnightSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Lucifer's Bolt", "Lucifer Fulgur",
-				230,
-				9022
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 756,
+				IconGraphic = 0x5DC0,
+				Name = "Lucifer's Bolt",
+				PowerWords = "Lucifer Fulgur",
+				Description = "Calls down a bolt of energy from Lucifer himself, and temporarily stuns the enemy.",
+				ManaCost = 24,
+				TithingCost = 35,
+				MinSkill = 25,
+				TargetType = TargetFlags.Harmful
+			},
+			230,
+			9022
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1 ); } }
-		public override int RequiredTithing{ get{ return 35; } }
-		public override double RequiredSkill{ get{ return 25.0; } }
-		public override int RequiredMana{ get{ return 24; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public LucifersBoltSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public LucifersBoltSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 
@@ -40,13 +50,19 @@ namespace Server.Spells.DeathKnight
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.CheckReflect( 4, Caster, ref m );
+				Mobile source = Caster;
+				bool hitThrough = SpellHelper.ResolveMagicDefense( 4, ref source, ref m );
 
-				double duration = 7.0 + ( GetKarmaPower( m ) * 0.2 );
-
-				m.Paralyze( TimeSpan.FromSeconds( duration ) );
 				m.FixedEffect( 0x376A, 6, 1 );
 				m.BoltEffect( 0 );
+
+				if ( hitThrough )
+				{
+					double duration = 7.0 + ( GetKarmaPower( m ) * 0.2 );
+
+					m.Paralyze( TimeSpan.FromSeconds( duration ) );
+				}
+
 				DrainSoulsInLantern( Caster, RequiredTithing );
 			}
 

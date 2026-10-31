@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Server.Network;
 using Server.Items;
 using Server.Targeting;
 
@@ -8,21 +7,32 @@ namespace Server.Spells.Chivalry
 {
 	public class ConsecrateWeaponSpell : PaladinSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Consecrate Weapon", "Consecrus Arma",
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+				new SpellDefinition
+				{
+					SpellID = 202,
+					IconGraphic = 0x5102,
+					Name = "Consecrate Weapon",
+					PowerWords = 1060720, // Consecrus Arma
+					Description = 1061492, // Temporarily enchants the weapon the caster is currently wielding.  The type of damage the weapon inflicts when hitting a target will be converted to the target’s worst Resistance type. Duration of the effect is affected by the caster’s Karma.
+					ManaCost = 10,
+					TithingCost = 10,
+					MinSkill = 15,
+					TargetType = TargetFlags.None,
+				},
 				-1,
 				9002
 			);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 0.5 ); } }
 
-		public override double RequiredSkill{ get{ return 15.0; } }
-		public override int RequiredMana{ get{ return 10; } }
-		public override int RequiredTithing{ get{ return 10; } }
-		public override int MantraNumber{ get{ return 1060720; } } // Consecrus Arma
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override int MantraNumber{ get{ return SpellInfo.SpellDefinition.PowerWords.Number; } }
 		public override bool BlocksMovement{ get{ return false; } }
 
-		public ConsecrateWeaponSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public ConsecrateWeaponSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 

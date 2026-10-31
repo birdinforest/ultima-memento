@@ -1,29 +1,36 @@
 using System;
 using Server.Targeting;
-using Server.Network;
 using Server.Gumps;
 using Server.Mobiles;
 using Server.Items;
-using System.Collections;
-using System.Collections.Generic;
-using Server.Localization;
 
 namespace Server.Spells.HolyMan
 {
 	public class RebirthSpell : HolyManSpell
 	{
-        private static SpellInfo m_Info = new SpellInfo(
-				"Rebirth", "Reditus Vitae",
-				266,
-				9040
-            );
+        public static readonly SpellInfo SpellInfo = new SpellInfo(
+            new SpellDefinition
+            {
+                SpellID = 777,
+                IconGraphic = 0x96C,
+                Name = "Rebirth",
+                PowerWords = "Reditus Vitae",
+				Description = "Brings one back to life, or summons an orb to resurrect the priest later on.",
+                ManaCost = 40,
+                TithingCost = 400,
+                MinSkill = 80,
+                TargetType = TargetFlags.Beneficial
+            },
+			266,
+			9040
+        );
  
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 3 ); } }
-		public override int RequiredTithing{ get{ return 400; } }
-		public override double RequiredSkill{ get{ return 80.0; } }
-		public override int RequiredMana{ get{ return 40; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
  
-        public RebirthSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+        public RebirthSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
         {
         }
  
@@ -44,12 +51,12 @@ namespace Server.Spells.HolyMan
 				{
 					m.PlaySound( 0x214 );
 					m.FixedEffect( 0x376A, 10, 16 );
-					m.SendMessage( StringCatalog.Resolve( m.Account, "You summon a magical orb to protect your soul." ) );
+					m.SendMessage( "You summon a magical orb to protect your soul." );
 				}
             }
             else if ( m == Caster )
             {
-				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You failed to summon an orb." ) );
+				Caster.SendMessage("You failed to summon an orb.");
 			}
             else if ( !Caster.Alive )
             {
@@ -108,7 +115,7 @@ namespace Server.Spells.HolyMan
 				}
 				else
 				{
-					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "They are not dead." ) );
+					Caster.SendMessage("They are not dead.");
 				}
 			}
 			else if ( hench is HenchmanWizardItem && CheckSequence() )
@@ -124,7 +131,7 @@ namespace Server.Spells.HolyMan
 				}
 				else
 				{
-					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "They are not dead." ) );
+					Caster.SendMessage("They are not dead.");
 				}
 			}
 			else if ( hench is HenchmanArcherItem && CheckSequence() )
@@ -140,7 +147,7 @@ namespace Server.Spells.HolyMan
 				}
 				else
 				{
-					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "They are not dead." ) );
+					Caster.SendMessage("They are not dead.");
 				}
 			}
 			else if (hench is HenchmanMonsterItem && CheckSequence() )
@@ -156,12 +163,12 @@ namespace Server.Spells.HolyMan
 				}
 				else
 				{
-					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "They are not dead." ) );
+					Caster.SendMessage("They are not dead.");
 				}
 			}
 			else
 			{
-				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This prayer didn't seem to work." ) );
+				Caster.SendMessage("This prayer didn't seem to work.");
 			}
             FinishSequence();
 		}

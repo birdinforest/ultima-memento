@@ -32,6 +32,9 @@ namespace Server.Engines.MLQuests
 
 		public readonly List<MLQuestInstance> Instances;
 
+		/// <summary>
+		/// Quest Chains should likely only set this on the Final step
+		/// </summary>
 		public bool OneTimeOnly { get; protected set; }
 
 		public bool HasRestartDelay { get; protected set; }
@@ -63,7 +66,9 @@ namespace Server.Engines.MLQuests
 		}
 
 		public virtual bool IsChainTriggered { get { return false; } }
+		public virtual Type PrerequisiteQuest { get { return null; } }
 		public virtual Type NextQuest { get { return null; } }
+		public virtual Type QuestRecipient { get { return null; } }
 
 		public TextDefinition Title { get; protected set; }
 		public TextDefinition Description { get; protected set; }
@@ -182,10 +187,14 @@ namespace Server.Engines.MLQuests
 					{
 						if (checkQuest.OneTimeOnly)
 						{
-							if (message)
-								MLQuestSystem.Tell(quester, pm, 1075454); // I cannot offer you the quest again.
+							// Subsequent NextQuest steps may be independently OneTimeOnly (optional hints).
+							if (checkQuest == this)
+							{
+								if (message)
+									MLQuestSystem.Tell(quester, pm, 1075454); // I cannot offer you the quest again.
 
-							return false;
+								return false;
+							}
 						}
 						else if (nextAvailable > DateTime.UtcNow)
 						{
@@ -207,7 +216,7 @@ namespace Server.Engines.MLQuests
 					checkQuest = MLQuestSystem.FindQuest(checkQuest.NextQuest);
 
 					// Block if a subsequent Quest is already in progress
-					if (checkQuest != null && context.IsDoingQuest(checkQuest)) return false;
+					if (checkQuest != null && checkQuest.IsChainTriggered && context.IsDoingQuest(checkQuest)) return false;
 				}
 			}
 
@@ -215,6 +224,14 @@ namespace Server.Engines.MLQuests
 			{
 				if (!obj.CanOffer(quester, pm, message))
 					return false;
+			}
+
+			if (PrerequisiteQuest != null && (context == null || !context.HasDoneQuest(PrerequisiteQuest)))
+			{
+				if (message)
+					MLQuestSystem.Tell(quester, pm, 1080107); // I'm sorry, I have nothing for you at this time.
+
+				return false;
 			}
 
 			return true;

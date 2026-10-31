@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using Server.Network;
-using Server.Mobiles;
 using Server.Targeting;
 using Server.Localization;
 
@@ -9,18 +8,29 @@ namespace Server.Spells.DeathKnight
 {
 	public class ShieldOfHateSpell : DeathKnightSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Shield of Hate", "Bael Odi",
-				236,
-				9011
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 758,
+				IconGraphic = 0x3EE,
+				Name = "Shield of Hate",
+				PowerWords = "Bael Odi",
+				Description = "Channels hatred to form a barrier around the target, shielding them from physical harm.",
+				ManaCost = 48,
+				TithingCost = 77,
+				MinSkill = 60,
+				TargetType = TargetFlags.Beneficial
+			},
+			236,
+			9011
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1 ); } }
-		public override int RequiredTithing{ get{ return 77; } }
-		public override double RequiredSkill{ get{ return 60.0; } }
-		public override int RequiredMana{ get{ return 48; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public ShieldOfHateSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public ShieldOfHateSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 

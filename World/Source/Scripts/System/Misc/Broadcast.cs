@@ -23,12 +23,12 @@ namespace Server
 
 			m.RaceBody();
 
-			if ( pm.Preferences.GumpHue > 0 && m.RecordSkinColor == 0 )
+			if ( pm.Preferences.ShowGumpImages && m.RecordSkinColor == 0 )
 			{
 				m.RecordsHair( true );
 
 				pm.Preferences.WeaponBarOpen = true;
-				pm.Preferences.GumpHue = pm.RecordSkinColor = 1;
+				pm.RecordSkinColor = 1;
 			}
 
 			if ( m.RecordSkinColor >= 33770 ){ m.RecordSkinColor = m.RecordSkinColor - 32768; m.Hue = m.RecordSkinColor; }

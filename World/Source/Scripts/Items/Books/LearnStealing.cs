@@ -1,15 +1,10 @@
-using System;
-using Server;
-using Server.Items;
-using System.Text;
-using Server.Mobiles;
 using Server.Gumps;
 using Server.Network;
 using Server.Localization;
 
 namespace Server.Items
 {
-	public class LearnStealingBook : Item
+	public class LearnStealingBook : Item, IShowableBook
 	{
 		public override bool IsContentLocalized => true;
 
@@ -68,19 +63,23 @@ namespace Server.Items
 			}
 		}
 
+		public void ShowBookGump( Mobile from )
+		{
+			from.CloseGump( typeof( LearnStealingGump ) );
+			from.SendGump( new LearnStealingGump( from ) );
+		}
+
 		public override void OnDoubleClick( Mobile e )
 		{
-			if ( !IsChildOf( e.Backpack ) && this.Weight != -50.0 ) 
+			if ( !e.InRange(GetWorldLocation(), 2 ) )
 			{
-				e.SendMessage( TradesBookLocalization.Resolve( e, "This must be in your backpack to read." ) );
+				e.SendMessage( TradesBookLocalization.Resolve( e, "That is too far away to read." ) );	
+				return;
 			}
-			else
-			{
-				e.CloseGump( typeof( LearnStealingGump ) );
-				e.SendGump( new LearnStealingGump( e ) );
-				e.PlaySound( 0x249 );
-				Server.Gumps.MyLibrary.readBook ( this, e );
-			}
+
+			ShowBookGump( e );
+			e.PlaySound( 0x249 );
+			Server.Gumps.MyLibrary.readBook ( this, e );
 		}
 
 		public LearnStealingBook(Serial serial) : base(serial)

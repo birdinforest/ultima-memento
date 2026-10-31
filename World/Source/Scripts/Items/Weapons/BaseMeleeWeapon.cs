@@ -34,7 +34,6 @@ namespace Server.Items
 				DefensiveSpell.Nullify( defender );
 			}
 
-			attacker.Damage( absorbed, defender );
 			attacker.PlaySound( 0x1F1 );
 			attacker.FixedEffect( 0x374A, 10, 16 );
 			defender.SendMessage( StringCatalog.Resolve( defender.Account, "Your shield absorbs some of the damage." ), damage );

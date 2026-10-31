@@ -1,27 +1,35 @@
 using System;
-using System.Collections;
-using Server.Network;
-using Server.Items;
 using Server.Targeting;
 
 namespace Server.Spells.Chivalry
 {
 	public class CleanseByFireSpell : PaladinSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Cleanse By Fire", "Expor Flamus",
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+				new SpellDefinition
+				{
+					SpellID = 200,
+					IconGraphic = 0x5100,
+					Name = "Cleanse By Fire",
+					PowerWords = 1060718, // Expor Flamus
+					Description = 1061490, // Cures the target of poisons, but causes the caster to be burned by fire damage. The amount of fire damage is lessened if the caster has high Karma.
+					ManaCost = 10,
+					TithingCost = 10,
+					MinSkill = 5,
+					TargetType = TargetFlags.Beneficial,
+				},
 				-1,
 				9002
 			);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1.0 ); } }
 
-		public override double RequiredSkill{ get{ return 5.0; } }
-		public override int RequiredMana{ get{ return 10; } }
-		public override int RequiredTithing{ get{ return 10; } }
-		public override int MantraNumber{ get{ return 1060718; } } // Expor Flamus
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override int MantraNumber{ get{ return SpellInfo.SpellDefinition.PowerWords.Number; } }
 
-		public CleanseByFireSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public CleanseByFireSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 

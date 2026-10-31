@@ -1,30 +1,33 @@
 using System;
-using System.Collections;
-using Server.Network;
-using Server.Items;
 using Server.Targeting;
-using Server.Spells.Necromancy;
-using Server.Spells.Fourth;
-using Server.Mobiles;
-using System.Collections.Generic;
-using Server.Misc;
 
 namespace Server.Spells.HolyMan
 {
 	public class PurgeSpell : HolyManSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Purge", "Deiectionem",
-				266,
-				9040
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 776,
+				IconGraphic = 0x96B,
+				Name = "Purge",
+				PowerWords = "Deiectionem",
+				Description = "Removes curses and other ailing effects.",
+				ManaCost = 20,
+				TithingCost = 80,
+				MinSkill = 40,
+				TargetType = TargetFlags.Beneficial
+			},
+			266,
+			9040
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 3 ); } }
-		public override int RequiredTithing{ get{ return 80; } }
-		public override double RequiredSkill{ get{ return 40.0; } }
-		public override int RequiredMana{ get{ return 20; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public PurgeSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public PurgeSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 

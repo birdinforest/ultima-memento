@@ -95,6 +95,14 @@ namespace Server.Items
 		ElixirTracking,
 		ElixirVeterinary,
 		ElixirWrestling,
+		// Skip - Magic skills
+		// ElixirElementalism,
+		// ElixirMagery,
+		// ElixirNecromancy,
+		// ElixirKnightship,
+		// ElixirBushido,
+		// ElixirNinjitsu,
+		// Skip - Magic skills
 		MixtureSlime,
 		MixtureIceSlime,
 		MixtureFireSlime,
@@ -408,7 +416,10 @@ namespace Server.Items
 						++keg.Held;
 
 						Consume();
-						from.AddToBackpack( new Bottle() );
+						if ( PotionKeg.IsJarPotion( PotionEffect ) )
+							from.AddToBackpack( new Jar() );
+						else
+							from.AddToBackpack( new Bottle() );
 
 						return -1; // signal placed in keg
 					}

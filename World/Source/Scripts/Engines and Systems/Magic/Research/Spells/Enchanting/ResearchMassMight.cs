@@ -63,7 +63,7 @@ namespace Server.Spells.Research
 					success = true;
 
 					string args = String.Format("{0}", amount);
-					BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.MassMight, 1063644, 1063645, TimeSpan.FromMinutes( duration ), m, args.ToString(), true));
+					BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.MassMight, 1063644, 1063645, TimeSpan.FromSeconds( duration ), m, args.ToString(), true));
 				}
 
 				if ( success ){ Server.Misc.Research.ConsumeScroll( Caster, true, spellIndex, alwaysConsume, Scroll ); }

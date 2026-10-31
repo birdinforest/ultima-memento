@@ -39,6 +39,14 @@ namespace Server.Mobiles
 			m.Send( new MessageLocalizedAffix( guildmaster.Serial, guildmaster.Body, MessageType.Regular, guildmaster.SpeechHue, 3, 1008052, guildmaster.Name, AffixType.Append, " " + MyServerSettings.JoiningFee( m ).ToString(), "" ) );
 		}
 
+		public override void OnAfterSpawn()
+		{
+			base.OnAfterSpawn();
+
+			if (NpcGuild != NpcGuild.None)
+				AddItem(new GuildRing(this, (int)NpcGuild));
+		}
+
 		public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list ) 
 		{
 			PlayerMobile pm = (PlayerMobile)from;

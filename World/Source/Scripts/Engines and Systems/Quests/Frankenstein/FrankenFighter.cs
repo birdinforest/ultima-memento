@@ -1,8 +1,5 @@
 using System; 
-using System.Collections; 
-using Server.Misc; 
-using Server.Items; 
-using Server.Mobiles; 
+using Server.Items;  
 using Server.Network;
 using System.Collections.Generic;
 using Server.ContextMenus;
@@ -16,7 +13,7 @@ namespace Server.Mobiles
 		private bool m_Stunning;
 
 		public int FighterLevel;
-		[CommandProperty(AccessLevel.Owner)]
+		[CommandProperty(AccessLevel.GameMaster)]
 		public int Fighter_Level{ get { return FighterLevel; } set { FighterLevel = value; InvalidateProperties(); } }
 
 		private DateTime m_NextTalking;
@@ -38,7 +35,7 @@ namespace Server.Mobiles
 			Name = "a reanimation";
 			Body = 69;
 			BaseSoundID = 684;
-			ControlSlots = 3;
+			ControlSlots = 5;
 			ActiveSpeed = 0.1;
 			PassiveSpeed = 0.2;
 		}

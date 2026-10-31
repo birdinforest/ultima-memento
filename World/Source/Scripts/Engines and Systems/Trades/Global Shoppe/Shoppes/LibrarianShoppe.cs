@@ -54,7 +54,7 @@ namespace Server.Engines.GlobalShoppe
 				var rewards = LibrarianRewardCalculator.Instance;
 				rewards.SetRewards(context, order);
 
-				var item = ShoppeItemCache.GetOrCreate(order.Type);
+				var item = Misc.Cache.ItemSnapshotCache.GetOrCreate(order.Type);
 				order.GraphicId = item.ItemID;
 				order.ItemName = item.Name;
 				order.Person = CreatePersonName();
@@ -71,10 +71,21 @@ namespace Server.Engines.GlobalShoppe
 			// Build item list
 			var player = (PlayerMobile)from;
 			var items = GetCraftItems(from, craftSystem)
-				.Where(i =>
-					TypeUtilities.IsTypeOrDerived<SpellScroll>(i.ItemType)
-					&& (i.Recipe == null || player.HasRecipe(i.Recipe))
-				)
+				.Where(craftItem =>
+				{
+					if (!TypeUtilities.IsTypeOrDerived<SpellScroll>(craftItem.ItemType)) return false;
+					if (craftItem.Recipe != null && !player.HasRecipe(craftItem.Recipe)) return false;
+
+					// Arcane Scrolls are a bit too difficult to farm, so exclude anything that has them in their recipe
+					foreach (var o in craftItem.Resources)
+					{
+						var res = o as CraftRes;
+						if (res == null) continue;
+						if (res.ItemType == typeof(ArcaneScroll)) return false;
+					}
+
+					return true;
+				})
 				.ToList();
 			if (items.Count < 1) yield break;
 

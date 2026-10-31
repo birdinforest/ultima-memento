@@ -26,6 +26,13 @@ namespace Server.Items
 			return string.IsNullOrEmpty( s ) ? ammo : s;
 		}
 
+		public static void SendGloveTypeChanged( Mobile m, ThrowingWeaponType type )
+		{
+			// Map renamed enum members onto the existing zh shotkeys.
+			string code = ( type == ThrowingWeaponType.Daggers ) ? "Knives" : type.ToString();
+			SendGloveTypeChanged( m, code );
+		}
+
 		public static void SendGloveTypeChanged( Mobile m, string gloveTypeCode )
 		{
 			string sub = GloveKindLabel( m, gloveTypeCode );

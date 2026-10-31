@@ -224,6 +224,7 @@ namespace Server.Engines.Craft
 			AddCraft( typeof( DeerCap ), 1015283, "deerskin cap", 26.2, 51.2, typeof( Leather ), 1044462, 4, 1044463 );
 			AddCraft( typeof( StagCap ), 1015283, "stagskin cap", 26.2, 51.2, typeof( Leather ), 1044462, 4, 1044463 );
 			AddCraft( typeof( WolfCap ), 1015283, "wolfskin cap", 26.2, 51.2, typeof( Leather ), 1044462, 4, 1044463 );
+			AddCraft( typeof( ElvenQuiver ), 1015283, 1032657, 65.0, 110.0, typeof( Leather ), 1044462, 18, 1044463 );
 			#endregion
 
 			// Set the overridable material

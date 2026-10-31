@@ -1,6 +1,7 @@
 using Server.Engines.MobileEnhancement;
 using Server.Items;
 using Server.Misc;
+using Server.Targeting;
 using System;
 using Server.Localization;
 
@@ -8,17 +9,27 @@ namespace Server.Spells.Song
 {
 	public class ArmysPaeonSong : Song
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-			"Army's Paeon", "*plays an army's paeon*",
-			-1
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 351,
+				IconGraphic = 0x404,
+				Name = "Army's Paeon",
+				PowerWords = "*plays an army's paeon*",
+				Description = "An area of effect that regenerates your party's health slowly.",
+				ManaCost = 15,
+				MinSkill = 55,
+				TargetType = TargetFlags.Beneficial
+			},
+	-1
+		);
 
 		public override bool BlocksMovement { get { return true; } }
-		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(5); } }
-		public override double RequiredSkill { get { return 55.0; } }
-		public override int RequiredMana { get { return 15; } }
+		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(3); } }
+		public override double RequiredSkill { get { return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana { get { return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public ArmysPaeonSong(Mobile caster, Item scroll) : base(caster, scroll, m_Info)
+		public ArmysPaeonSong(Mobile caster, Item scroll) : base(caster, scroll, SpellInfo)
 		{
 		}
 
@@ -73,7 +84,7 @@ namespace Server.Spells.Song
 
 				var m = TargetMobile;
 				BuffInfo.RemoveBuff(m, BuffIcon.ArmysPaeon);
-				m.SendMessage("The effect of {0} wears off.", m_Info.Name);
+				m.SendMessage("The effect of {0} wears off.", SpellInfo.SpellDefinition.Name);
 			}
 
 			protected override bool TryApplyInternal()

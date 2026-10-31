@@ -1,11 +1,6 @@
-using System;
-using Server;
-using Server.Items;
-using Server.Network;
 using Server.Targeting;
-using Server.Engines.Craft;
-using Server.Mobiles;
 using Server.Localization;
+using Server.Utilities;
 
 namespace Server.Items
 {
@@ -13,24 +8,7 @@ namespace Server.Items
 	{
 		public override string DefaultDescription{ get{ return StringCatalog.Resolve( null, "These logs can be used at a saw mill, which will cut them into boards. The boards can then be used for crafting." ); } }
 
-		public override string InfoDataLocalizationKey { get { return "prop.trade.itemdesc.log"; } }
-
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Crafting; } }
-
-		public override bool IsContentLocalized => true;
-
-		public override void AddNameProperty( ObjectPropertyList list )
-		{
-			string locale = BuildingPropertyListLocale;
-
-			if ( locale != null )
-			{
-				CraftResources.AddLocalizedTradeCommodityNameProperty( list, locale, this, m_Resource, true, false, null );
-				return;
-			}
-
-			base.AddNameProperty( list );
-		}
 
 		public override double DefaultWeight
 		{
@@ -97,7 +75,8 @@ namespace Server.Items
 			if ( from.InRange( this.GetWorldLocation(), 2 ) )
 			{
 				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.log.select.sawmill" ) );
-				from.Target = new InternalTarget( this );
+				if ( Utility.RandomDouble() < 0.1 ) from.SendMessage( StringCatalog.Resolve( from.Account, "Target yourself to automatically choose a nearby target" ) );
+				from.Target = new InternalTarget( this, from );
 			}
 			else
 			{
@@ -107,11 +86,13 @@ namespace Server.Items
 
 		private class InternalTarget : Target
 		{
-			private BaseLog m_Log;
+			private readonly BaseLog m_Log;
+			private readonly Mobile m_From;
 
-			public InternalTarget( BaseLog log ) :  base ( 2, false, TargetFlags.None )
+			public InternalTarget( BaseLog log, Mobile from ) :  base ( 2, false, TargetFlags.None )
 			{
 				m_Log = log;
+				m_From = from;
 			}
 
 			private bool IsSawmill( object obj )
@@ -131,23 +112,26 @@ namespace Server.Items
 				return false;
 			}
 
+			private bool IsSawmillNearby(Mobile from, int range)
+			{
+				return WorldUtilities.HasNearbyItem<Item>( from, range, item => IsSawmill(item) );
+			}
+
 			protected override void OnTarget(Mobile from, object targeted)
 			{
 				if (m_Log.Deleted) return;
 
 				if (!from.InRange(m_Log.GetWorldLocation(), 2))
 				{
-					from.SendMessage(StringCatalog.ResolveByKey( from.Account, "prop.trade.log.too.far" ));
+					from.SendMessage("The logs are too far away.");
 					return;
 				}
 
-				if (!IsSawmill(targeted))
+				if (!IsSawmill(targeted) && false == ( targeted == m_From && IsSawmillNearby( from, Range ) ) )
 				{
-					from.SendMessage(StringCatalog.ResolveByKey( from.Account, "prop.trade.log.not.sawmill" ));
+					from.SendMessage("That is not a saw mill.");
 					return;
 				}
-
-				if (((Item)targeted).Deleted) return; // Sawmill is gone...
 
 				double difficulty;
 				switch (m_Log.Resource)
@@ -173,7 +157,7 @@ namespace Server.Items
 				double maxSkill = difficulty + 25.0;
 				if (difficulty > 50.0 && difficulty > from.Skills[SkillName.Lumberjacking].Value || from.Skills[SkillName.Lumberjacking].Value < minSkill)
 				{
-					from.SendMessage(StringCatalog.ResolveByKey( from.Account, "prop.trade.log.need.lumberjacking" ));
+					from.SendMessage("You have no idea how to best cut this type of wood! (You need to raise your lumberjacking)");
 					return;
 				}
 				
@@ -195,13 +179,13 @@ namespace Server.Items
 				if (0 < lost)
 				{
 					string message = boards == 0
-						? StringCatalog.ResolveByKey( from.Account, "prop.trade.log.ruin.all" )
-						: StringCatalog.ResolveByKey( from.Account, "prop.trade.log.ruin.some" );
+						? "You try to cut the logs but ruin all of the wood."
+						: "You try to cut the logs but ruin some of the wood.";
 					from.SendMessage(message);
 				}
 				else
 				{
-					from.SendMessage(StringCatalog.ResolveByKey( from.Account, "prop.trade.log.cut.boards" ));
+					from.SendMessage("You cut the logs and put some boards in your backpack.");
 				}
 
 				if (0 < boards)

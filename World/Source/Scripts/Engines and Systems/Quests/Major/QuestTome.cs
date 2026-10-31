@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Collections;
 using Server.Regions; 
 using System.Globalization;
+using Server.Timers;
 
 namespace Server.Items
 {
@@ -349,6 +350,14 @@ namespace Server.Items
 				QuestTomeClaimNpc = reader.ReadString();
 			else
 				QuestTomeClaimNpc = "";
+
+			Type mobType = ScriptCompiler.FindTypeByName( VillainType );
+			if ( mobType == null )
+			{
+				var oldType = VillainType;
+				QuestTake.MakeVillain(this);
+				Console.WriteLine("[WARNING] Quest Tome villain type ({0}) was not found. A new villain ({1}) has been generated.", oldType, VillainType);
+			}
 		}
 
 		private class QuestTomeGump : Gump
@@ -746,7 +755,7 @@ namespace Server.Items
 			else if ( chest != null && book.VillainName == chest.VillainName && book.VillainTitle == chest.VillainTitle && book.QuestTomeOwner == player && book.QuestTomeGoals == 3 )
 			{
 				player.AddToBackpack(new HoardMinionFamiliarItem());
-				ApproachObsidian.TitanRiches( player );
+				GoodiesTimer.Create(player);
 				CustomEventSink.InvokeCombatQuestCompleted(player, 10000);
 				player.LocalOverheadMessage(MessageType.Emote, 1150, true, StringCatalog.ResolveFormatByKey(player.Account, "quest.tome.emote.found_goal", book.GoalItem4));
 				book.QuestTomeGoals++;
@@ -758,6 +767,11 @@ namespace Server.Items
 
 		public static void BossEscaped( Mobile from, string region )
 		{
+			// Null-safe: fires from BaseRegion.OnExit during logout (LogoutTimer -> UpdateRegion),
+			// where a player's Backpack can already be null. NRE here crashed the server on logout.
+			if ( from == null || from.Backpack == null )
+				return;
+
 			if ( from.Backpack.FindItemByType( typeof ( QuestTome ) ) != null )
 			{
 				Item item = from.Backpack.FindItemByType( typeof ( QuestTome ) );

@@ -53,8 +53,15 @@ namespace Server.Items
 
 				if ( foundIt )
 				{
+					var path = new MovementPath( m, item.Location, true, true, true );
+					if ( !path.Success )
+					{
+						// Chest cannot be reached ... delete in subsequent pass
+						Timer.DelayCall( TimeSpan.Zero, () => item.Delete() );
+						return false;
+					}
+
 					m.LocalOverheadMessage(Network.MessageType.Emote, 0x3B2, false, "Your eye catches something nearby.");
-					Map map = m.Map;
 					string where = Server.Misc.Worlds.GetRegionName( m.Map, m.Location );
 
 					int money = Utility.RandomMinMax( 100, 200 );

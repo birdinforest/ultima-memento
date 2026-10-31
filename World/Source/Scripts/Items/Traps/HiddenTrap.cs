@@ -1,9 +1,6 @@
 using System;
-using Server;
 using Server.Network;
 using Server.Mobiles;
-using Server.Items;
-using Server.Spells;
 using System.Collections.Generic;
 using Server.Misc;
 using Server.Localization;
@@ -12,10 +9,11 @@ using System.Text;
 using System.IO;
 using Server.Regions;
 using Server.Targeting;
+using Server.ModernSkill;
 
 namespace Server.Items
 {
-	public class HiddenTrap : Item
+	public class HiddenTrap : Item, ITrap
 	{
 		public override bool DisplayWeight { get { return false; } }
 
@@ -73,6 +71,24 @@ namespace Server.Items
 			else
 				HiddenTrapType = WeightedTrapPool[Utility.Random(WeightedTrapPool.Length)];
 			SetAppearance( this );
+		}
+
+		public override void OnDoubleClick(Mobile from)
+		{
+			if (!from.InRange(this.GetWorldLocation(), 2))
+			{
+				from.LocalOverheadMessage(MessageType.Regular, 0x3B2, 1019045); // I can't reach that.
+				return;
+			}
+
+			if ( from is PlayerMobile )
+			{
+				var player = (PlayerMobile)from;
+				if ( player.Preferences.ModernRemoveTrapEnabled && LockpickAndRemoveTrapGump.TryRemoveTrap( player, this, true ) )
+					return;
+			}
+
+			base.OnDoubleClick(from);
 		}
 
 		public static void SetAppearance( Item trap )
@@ -1361,7 +1377,7 @@ namespace Server.Items
 
 		public static void DitchTrap( Item trap )
 		{
-			if ( trap.Weight < 5.0 && trap is HiddenTrap )
+			if ( IsActiveTrap( trap ) )
 			{
 				trap.Visible = false;
 				trap.Weight = 6.0;
@@ -1372,7 +1388,7 @@ namespace Server.Items
 
 		public static void DisableTrap( Item trap )
 		{
-			if ( trap.Weight < 5.0 && trap is HiddenTrap )
+			if ( IsActiveTrap( trap ) )
 			{
 				trap.Visible = true;
 				trap.Weight = 5.0;
@@ -1390,6 +1406,11 @@ namespace Server.Items
 				SetAppearance( trap );
 				new Delete_5_Minutes( trap ).Start();
 			}
+		}
+
+		public static bool IsActiveTrap( Item trap )
+		{
+			return trap is HiddenTrap && trap.Weight < 5;
 		}
 
 		private static bool IsRateLimitedFixtureSalvage( Item trap )
@@ -1885,6 +1906,10 @@ namespace Server.Items
 
 		private DateTime m_NextSound;	
 		public DateTime NextSound{ get{ return m_NextSound; } set{ m_NextSound = value; } }
+
+		public bool IsActive { get { return IsActiveTrap( this ); } }
+
+		public int TrapDifficulty { get { return 125; } }
 
 		public override void OnMovement( Mobile m, Point3D oldLocation )
 		{

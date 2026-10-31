@@ -415,7 +415,14 @@ namespace Server.Engines.MLQuests
 			List<MLQuest> quests = quester.MLQuests;
 			Type questerType = quester.GetType();
 
-			// 1. Check quests in progress with this NPC (overriding deliveries is intended)
+			// 1. Check deliveries (overriding in-progress NPC quests is intended)
+			if ((entry = HandleDelivery(pm, quester, questerType)) != null)
+			{
+				quest = entry.Quest;
+				return true;
+			}
+
+			// 2. Check quests in progress with this NPC (overriding chain offers is intended)
 			if (context != null)
 			{
 				foreach (MLQuest questEntry in quests)
@@ -431,23 +438,19 @@ namespace Server.Engines.MLQuests
 				}
 			}
 
-			// 2. Check deliveries (overriding chain offers is intended)
-			if ((entry = HandleDelivery(pm, quester, questerType)) != null)
-			{
-				quest = entry.Quest;
-				return true;
-			}
-
 			// 3. Check chain quest offers
 			if (context != null)
 			{
 				foreach (MLQuest questEntry in quests)
 				{
-					if (questEntry.IsChainTriggered && context.ChainOffers.Contains(questEntry))
-					{
-						quest = questEntry;
-						return true;
-					}
+					if (!questEntry.IsChainTriggered || !context.ChainOffers.Contains(questEntry))
+						continue;
+
+					if (!questEntry.CanOffer(quester, pm, context, false))
+						continue;
+
+					quest = questEntry;
+					return true;
 				}
 			}
 
@@ -756,7 +759,11 @@ namespace Server.Engines.MLQuests
 
 			foreach (MLQuest quest in quests)
 			{
-				if (quest.IsChainTriggered || (context != null && context.IsDoingQuest(quest)))
+				if (context != null && context.IsDoingQuest(quest))
+					continue;
+
+				// Chain-triggered quests with a completed prerequisite can be re-offered after abandon/refuse.
+				if (quest.IsChainTriggered && (quest.PrerequisiteQuest == null || context == null || !context.HasDoneQuest(quest.PrerequisiteQuest)))
 					continue;
 
 				/*

@@ -1,25 +1,33 @@
 using System;
-using System.Collections;
 using Server.Targeting;
-using Server.Network;
-using Server.Mobiles;
 
 namespace Server.Spells.DeathKnight
 {
 	public class DemonicTouchSpell : DeathKnightSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Demonic Touch", "Raum Curare",
-				224,
-				9061
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 751,
+				IconGraphic = 0x5009,
+				Name = "Demonic Touch",
+				PowerWords = "Raum Curare",
+				Description = "The death knight's target is healed by demonic forces for a significant amount.",
+				ManaCost = 16,
+				TithingCost = 21,
+				MinSkill = 15,
+				TargetType = TargetFlags.Beneficial
+			},
+			224,
+			9061
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1 ); } }
-		public override int RequiredTithing{ get{ return 21; } }
-		public override double RequiredSkill{ get{ return 15.0; } }
-		public override int RequiredMana{ get{ return 16; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public DemonicTouchSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public DemonicTouchSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 

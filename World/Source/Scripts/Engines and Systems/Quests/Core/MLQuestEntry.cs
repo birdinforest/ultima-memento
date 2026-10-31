@@ -361,9 +361,9 @@ namespace Server.Engines.MLQuests
 					string rewardName = (rewardItem.Name != null) ? rewardItem.Name : String.Concat("#", rewardItem.LabelNumber);
 
 					if (rewardItem.Stackable)
-						Player.SendLocalizedMessage(1115917, String.Concat(rewardItem.Amount, "\t", rewardName)); // You receive a reward: ~1_QUANTITY~ ~2_ITEM~
+						Player.LocalOverheadMessage(Network.MessageType.Regular, 1153, 1115917, String.Concat(rewardItem.Amount, "\t", rewardName)); // You receive a reward: ~1_QUANTITY~ ~2_ITEM~
 					else
-						Player.SendLocalizedMessage(1074360, rewardName); // You receive a reward: ~1_REWARD~
+						Player.LocalOverheadMessage(Network.MessageType.Regular, 1153, 1074360, rewardName); // You receive a reward: ~1_REWARD~
 				}
 			}
 
@@ -379,6 +379,17 @@ namespace Server.Engines.MLQuests
 
 			if (Quest.IsChainTriggered)
 				context.ChainOffers.Remove(Quest);
+
+			// ChainOffers that lead to the completed quest get removed.
+			// This is to handle the fact that Hint quests could be skipped over until after the
+			// main recipe is completed.
+			Type completedType = Quest.GetType();
+			for (int i = context.ChainOffers.Count - 1; i >= 0; --i)
+			{
+				MLQuest offer = context.ChainOffers[i];
+				if (offer != null && offer.NextQuest == completedType)
+					context.ChainOffers.RemoveAt(i);
+			}
 
 			Type nextQuestType = Quest.NextQuest;
 

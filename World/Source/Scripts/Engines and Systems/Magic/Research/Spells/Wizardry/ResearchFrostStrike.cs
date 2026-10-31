@@ -42,18 +42,22 @@ namespace Server.Spells.Research
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.CheckReflect( CirclePower, Caster, ref m );
-
-				double damage = DamagingSkill( Caster )/2;
-					if ( damage > 125 ){ damage = 125.0; }
-					if ( damage < 35 ){ damage = 35.0; }
+				Mobile source = Caster;
+				bool hitThrough = SpellHelper.ResolveMagicDefense( CirclePower, ref source, ref m );
 
 				m.FixedParticles( 0x5571, 10, 30, 5052, Server.Misc.PlayerSettings.GetMySpellHue( true, Caster, 0 ), 0, EffectLayer.LeftFoot );
 				m.PlaySound( 0x65D );
 
-				Server.Misc.Research.ConsumeScroll( Caster, true, spellIndex, alwaysConsume, Scroll );
+				if ( hitThrough )
+				{
+					double damage = DamagingSkill( Caster )/2;
+						if ( damage > 125 ){ damage = 125.0; }
+						if ( damage < 35 ){ damage = 35.0; }
 
-				SpellHelper.Damage( this, m, damage, 0, 0, 100, 0, 0 );
+					Server.Misc.Research.ConsumeScroll( Caster, true, spellIndex, alwaysConsume, Scroll );
+
+					SpellHelper.Damage( this, m, damage, 0, 0, 100, 0, 0 );
+				}
 			}
 
 			FinishSequence();

@@ -6,10 +6,6 @@ namespace Server.SpellBars
 
 		int Number { get; }
 
-		string SetupCommand { get; }
-
-		string StorageKey { get; }
-
 		string Title { get; }
 
 		string ToolCommand { get; }

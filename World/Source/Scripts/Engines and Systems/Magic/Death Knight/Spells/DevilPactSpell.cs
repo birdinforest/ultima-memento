@@ -1,6 +1,5 @@
 using System;
 using Server.Mobiles;
-using Server.Network;
 using Server.Targeting;
 using Server.Localization;
 
@@ -8,19 +7,30 @@ namespace Server.Spells.DeathKnight
 {
 	public class DevilPactSpell : DeathKnightSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Devil Pact", "Deumus Foedus",
-				269,
-				9050,
-				false
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 752,
+				IconGraphic = 0x5005,
+				Name = "Devil Pact",
+				PowerWords = "Deumus Foedus",
+				Description = "Summons the devil to battle with the death knight.",
+				ManaCost = 60,
+				TithingCost = 98,
+				MinSkill = 90,
+				TargetType = TargetFlags.Beneficial
+			},
+			269,
+			9050,
+			false
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1 ); } }
-		public override int RequiredTithing{ get{ return 98; } }
-		public override double RequiredSkill{ get{ return 90.0; } }
-		public override int RequiredMana{ get{ return 60; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public DevilPactSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public DevilPactSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 

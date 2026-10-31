@@ -1,5 +1,4 @@
 using System;
-using Server.Items;
 using Server.Network;
 using Server.Spells;
 using Server.Mobiles;
@@ -39,16 +38,18 @@ namespace Server.Items
 			{
 				bool canSwing = true;
 
-				if ( Core.AOS )
+				canSwing = !attacker.Paralyzed && !attacker.Frozen;
+
+				if ( canSwing )
 				{
-					canSwing = ( !attacker.Paralyzed && !attacker.Frozen );
+					Spell sp = attacker.Spell as Spell;
+					canSwing = sp == null || !sp.IsCasting || !sp.BlocksMovement;
+				}
 
-					if ( canSwing )
-					{
-						Spell sp = attacker.Spell as Spell;
-
-						canSwing = ( sp == null || !sp.IsCasting || !sp.BlocksMovement );
-					}
+				if ( canSwing )
+				{
+					PlayerMobile p = attacker as PlayerMobile;
+					canSwing = p == null || p.PeacedUntil <= DateTime.Now;
 				}
 
 				if ( canSwing && attacker.HarmfulCheck( defender ) )
@@ -65,13 +66,15 @@ namespace Server.Items
 					}
 				}
 
-				attacker.RevealingAction();
+				if ( !( a is ShadowStrike || a is ShadowInfectiousStrike ) )
+					attacker.RevealingAction();
 
 				return GetDelay( attacker );
 			}
 			else
 			{
-				attacker.RevealingAction();
+				if ( !( a is ShadowStrike || a is ShadowInfectiousStrike ) )
+					attacker.RevealingAction();
 
 				return TimeSpan.FromSeconds( 0.25 );
 			}
@@ -89,23 +92,25 @@ namespace Server.Items
 
 		public virtual bool OnFired( Mobile attacker, Mobile defender )
 		{
-			BaseQuiver quiver = attacker.FindItemOnLayer( Layer.Cloak ) as BaseQuiver;
-			Container pack = attacker.Backpack;
+			attacker.MovingEffect( defender, EffectID, 18, 1, false, false );
+
+			Server.Gumps.QuickBar.RefreshQuickBar( attacker );
 
 			if ( attacker.Player )
 			{
-				if ( quiver == null || quiver.LowerAmmoCost == 0 || quiver.LowerAmmoCost > Utility.Random( 100 ) )
+				BaseQuiver quiver = attacker.FindItemOnLayer( Layer.Cloak ) as BaseQuiver;
+				Container pack = attacker.Backpack;
+
+				if ( quiver == null || Utility.Random( 100 ) >= quiver.LowerAmmoCost )
 				{
 					if ( quiver != null && quiver.ConsumeTotal( AmmoType, 1 ) )
 						quiver.InvalidateWeight();
 					else if ( pack == null || !pack.ConsumeTotal( AmmoType, 1 ) )
 						return false;
 				}
+				else if ( quiver.FindItemByType( AmmoType ) == null && ( pack == null || pack.FindItemByType( AmmoType ) == null ) )
+					return false;
 			}
-
-			attacker.MovingEffect( defender, EffectID, 18, 1, false, false );
-
-			Server.Gumps.QuickBar.RefreshQuickBar( attacker );
 
 			return true;
 		}

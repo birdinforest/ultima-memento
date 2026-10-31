@@ -156,8 +156,11 @@ namespace Server.PathAlgorithms.FastAStar
 				int[] vals = m_Successors;
 				int count = GetSuccessors( bestNode, m, map );
 
-				MoveImpl.AlwaysIgnoreDoors = false;
-				MoveImpl.IgnoreMovableImpassables = false;
+				if ( !MoveImpl.RetainFlagsForEveryPass )
+				{
+					MoveImpl.AlwaysIgnoreDoors = false;
+					MoveImpl.IgnoreMovableImpassables = false;
+				}
 
 				if ( count == 0 )
 					break;
@@ -310,8 +313,10 @@ namespace Server.Movement
 		private static bool m_AlwaysIgnoreDoors;
 		private static bool m_IgnoreMovableImpassables;
 		private static bool m_IgnoreSpellFields;
+		private static bool m_RetainFlagsForEveryPass;
 
 		public static bool AlwaysIgnoreDoors{ get{ return m_AlwaysIgnoreDoors; } set{ m_AlwaysIgnoreDoors = value; } }
+		public static bool RetainFlagsForEveryPass{ get{ return m_RetainFlagsForEveryPass; } set{ m_RetainFlagsForEveryPass = value; } }
 		public static bool IgnoreMovableImpassables{ get{ return m_IgnoreMovableImpassables; } set{ m_IgnoreMovableImpassables = value; } }
 		public static bool IgnoreSpellFields{ get{ return m_IgnoreSpellFields; } set{ m_IgnoreSpellFields = value; } }
 
@@ -1036,8 +1041,11 @@ namespace Server.PathAlgorithms.SlowAStar
 					}
 				}
 
-				MoveImpl.AlwaysIgnoreDoors = false;
-				MoveImpl.IgnoreMovableImpassables = false;
+				if ( !MoveImpl.RetainFlagsForEveryPass )
+				{
+					MoveImpl.AlwaysIgnoreDoors = false;
+					MoveImpl.IgnoreMovableImpassables = false;
+				}
 
 				if ( sucCount == 0 || ++depth > MaxDepth )
 					break;
@@ -1241,7 +1249,7 @@ namespace Server
 			set{ m_OverrideAlgorithm = value; }
 		}
 
-		public MovementPath( Mobile m, Point3D goal )
+		public MovementPath( Mobile m, Point3D goal, bool alwaysIgnoreDoors = false, bool ignoreMovableImpassables = false, bool retainFlagsForEveryPass = false )
 		{
 			Point3D start = m.Location;
 			Map map = m.Map;
@@ -1258,6 +1266,10 @@ namespace Server
 
 			try
 			{
+				MovementImpl.AlwaysIgnoreDoors = alwaysIgnoreDoors;
+				MovementImpl.IgnoreMovableImpassables = ignoreMovableImpassables;
+				MovementImpl.RetainFlagsForEveryPass = retainFlagsForEveryPass;
+				
 				PathAlgorithm alg = m_OverrideAlgorithm;
 
 				if ( alg == null )
@@ -1274,6 +1286,12 @@ namespace Server
 			catch ( Exception e )
 			{
 				Console.WriteLine( "Warning: {0}: Pathing error from {1} to {2}", e.GetType().Name, start, goal );
+			}
+			finally
+			{
+				MovementImpl.AlwaysIgnoreDoors = false;
+				MovementImpl.IgnoreMovableImpassables = false;
+				MovementImpl.RetainFlagsForEveryPass = false;
 			}
 		}
 	}

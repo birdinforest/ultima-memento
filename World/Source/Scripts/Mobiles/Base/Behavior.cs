@@ -18,14 +18,12 @@ using Server.Spells.Shinobi;
 using Server.Spells;
 using Server.Targeting;
 using Server.Targets;
-using Server;
 using System.Collections.Generic;
 using System.Collections;
-using System.IO;
-using System.Text;
 using System;
 using Server.Gumps;
 using Server.Localization;
+using Server.Utilities.Constants;
 
 namespace Server
 {
@@ -1122,14 +1120,14 @@ namespace Server.Misc
 				}
 			}
 
-			if ( (m.Region).Name != "the Castle of Knowledge" && !trick && m is PlayerMobile && m.Karma <= -5000 && m.Skills[SkillName.Knightship].Base >= 50 && !m.Region.IsPartOf(typeof(UmbraRegion)) && !m.Region.IsPartOf(typeof(NecromancerRegion)) )
+			if ( (m.Region).Name != "the Castle of Knowledge" && !trick && GetPlayerInfo.isDeathKnight(m) && !m.Region.IsPartOf(typeof(UmbraRegion)) && !m.Region.IsPartOf(typeof(NecromancerRegion)) )
 				enemy = true; // DEATH KNIGHTS ARE NOT WELCOME AFTER THIS POINT...EXCEPT IN UMBRA OR RAVENDARK
 
-			if ( (m.Region).Name != "the Castle of Knowledge" && !trick && m is PlayerMobile && m.Karma <= -5000 && m.Skills[SkillName.Psychology].Base >= 50 && Server.Misc.GetPlayerInfo.isSyth(m, false) && !m.Region.IsPartOf(typeof(UmbraRegion)) && !m.Region.IsPartOf(typeof(NecromancerRegion)) )
+			if ( (m.Region).Name != "the Castle of Knowledge" && !trick && Server.Misc.GetPlayerInfo.isSyth(m, false) && !m.Region.IsPartOf(typeof(UmbraRegion)) && !m.Region.IsPartOf(typeof(NecromancerRegion)) )
 				enemy = true; // SYTH ARE NOT WELCOME AFTER THIS POINT...EXCEPT IN UMBRA OR RAVENDARK
 
 			if ( (m.Region).Name != "the Castle of Knowledge" && !trick && m is PlayerMobile && m.Karma < 2500 && m.Fame < 2500 && Server.Items.BaseRace.IsEvil( m ) && !m.Region.IsPartOf(typeof(UmbraRegion)) && !m.Region.IsPartOf(typeof(NecromancerRegion)) && !m.Region.IsPartOf(typeof(GargoyleRegion)) )
-				enemy = true; // PLAYER CREATURES THAT ARE EVIL...EXCEPT IN UMBRA OR RAVENDARK
+				enemy = true; // PLAYER CREATURES THAT ARE EVIL...EXCEPT IN UMBRA OR RAVENDARK OR FURNACE
 
 			if (m is BaseCreature)
 			{
@@ -1230,430 +1228,21 @@ namespace Server.Misc
 
 		public static void DoSpecialAbility( Mobile from, Mobile target )
 		{
-			if ( from == null || from.Deleted ) //sanity
-				return;
+			if ( from == null || from.Deleted ) return;
+			if ( from.Map == null ) return;
 
-			if ( Utility.RandomMinMax( 1, 20 ) == 1 && from.EmoteHue > 0 )
+			if ( EmoteHues.None < from.EmoteHue && Utility.RandomMinMax( 1, 10 ) == 1 )
 			{
-				Map map = from.Map;
-
-				if ( map == null )
-					return;
-
 				int monsters = 0;
-
 				foreach ( Mobile m in from.GetMobilesInRange( 10 ) )
 				{
-					if ( from.EmoteHue == 1 )
-					{
-						if ( m is EvilBladeSpirits || m is Imp || m is Slime )
-							++monsters;
-					}
-					else if ( from.EmoteHue == 2 )
-					{
-						if ( m is BloodWorm || m is BloodSnake || m is Viscera || m is BloodSpawn || m is GiantLeech )
-							++monsters;
-					}
-					else if ( from.EmoteHue == 3 )
-					{
-						if ( m is LesserDemon || m is Imp || m is ShadowHound || m is Gargoyle || m is SoulWorm )
-							++monsters;
-
-						if ( m is LowerDemon )
-						{
-							++monsters;
-							++monsters;
-						}
-					}
-					else if ( from.EmoteHue == 4 )
-					{
-						if ( m is GarnetElemental || m is TopazElemental || m is QuartzElemental || m is SpinelElemental || m is StarRubyElemental || m is EarthElemental || m is AgapiteElemental || m is BronzeElemental || m is CopperElemental || m is DullCopperElemental || m is GoldenElemental || m is ShadowIronElemental || m is ValoriteElemental || m is VeriteElemental || m is WaterElemental )
-							++monsters;
-
-						if ( m is PoisonElemental || m is ToxicElemental || m is AirElemental || m is BloodElemental || m is FireElemental || m is ElectricalElemental )
-						{
-							++monsters;
-							++monsters;
-						}
-					}
-					else if ( from.EmoteHue == 5 )
-					{
-						if ( m is Bodak || m is BoneKnight || m is BoneMagi || m is Ghoul || m is Mummy || m is Shade || m is SkeletalKnight || m is SkeletalMage || m is Skeleton || m is Spectre || m is Wraith || m is Phantom || m is Zombie )
-							++monsters;
-					}
-					else if ( from.EmoteHue == 6 )
-					{
-						if ( m is WeedElemental || m is WolfDire || m is DireBear || m is DireBoar )
-							++monsters;
-					}
-					else if ( from.EmoteHue == 7 )
-					{
-						if ( m is SnowElemental || m is IceSerpent || m is WinterWolf || m is IceElemental || m is FrostOoze || m is FrostSpider || m is IceGolem || m is IceToad || m is IceSerpent )
-							++monsters;
-					}
-					else if ( from.EmoteHue == 8 )
-					{
-						if ( m is FireDemon || m is LavaPuddle || m is CinderElemental || m is FireBat || m is FireElemental || m is FireMephit )
-							++monsters;
-					}
-					else if ( from.EmoteHue == 9 )
-					{
-						if ( m is GiantSerpent || m is GiantAdder || m is JungleViper || m is LargeSnake || m is Snake )
-							++monsters;
-
-						if ( m is SilverSerpent )
-						{
-							++monsters;
-							++monsters;
-						}
-					}
-					else if ( from.EmoteHue == 10 )
-					{
-						if ( m is WaterWeird || m is Typhoon || m is WaterElemental || m is StormCloud || m is WaterSpawn )
-							++monsters;
-					}
-					else if ( from.EmoteHue == 11 || from.EmoteHue == 505 )
-					{
-						if ( m is EvilIcyVortex || m is EvilPlagueVortex || m is EvilEnergyVortex || m is EvilBladeSpirits || m is EvilScorchingVortex )
-							++monsters;
-					}
-					else if ( from.EmoteHue == 12 )
-					{
-						if ( m is WineElemental || m is ManureGolem || m is Fairy )
-							++monsters;
-					}
-					else if ( from.EmoteHue == 13 )
-					{
-						if ( m is GhostWarrior || m is WalkingCorpse || m is Wight || m is Spirit || m is Phantom || m is FrailSkeleton || m is Zombie || m is Skeleton || m is SkeletalKnight || m is BoneKnight || m is SkeletalWarrior )
-							++monsters;
-					}
-					else if ( from.EmoteHue == 14 )
-					{
-						if ( m is DeathBear || m is DeathWolf || m is DarkReaper )
-							++monsters;
-					}
-					else if ( from.EmoteHue == 15 )
-					{
-						if ( m is Bat || m is Ghoul || m is Wraith || m is WalkingCorpse || m is VampireBat || m is Zombie )
-							++monsters;
-					}
-					else if ( from.EmoteHue == 16 )
-					{
-						if ( m is EvilIcyVortex || m is IceBladeSpirits )
-							++monsters;
-					}
-					else if ( from.EmoteHue == 17 )
-					{
-						if ( m is Scorpion || m is SandVortex || m is SandSpider || m is DustElemental || m is GiantAdder )
-							++monsters;
-					}
+					if ( m is BaseCreature )
+						monsters += SummonCreatureSpell.GetSummonStrength( from, (BaseCreature)m );
 				}
-
-				if ( monsters < 3 && from.Mana > 39 )
+				
+				if ( monsters < 3 )
 				{
-					BaseCreature monster = new Imp();
-
-					from.PlaySound( 0x216 );
-
-					from.Mana = from.Mana - 40;
-
-					int newmonsters = Utility.RandomMinMax( 1, 3 );
-
-					for ( int i = 0; i < newmonsters; ++i )
-					{
-						if ( from.EmoteHue == 1 )
-						{
-							switch ( Utility.Random( 5 ) )
-							{
-								default:
-								case 0: monster = new EvilBladeSpirits(); break;
-								case 1: monster = new Imp(); break;
-								case 2: monster = new Imp(); break;
-								case 3: monster = new Slime(); break;
-								case 4: monster = new Slime(); break;
-							}
-						}
-						else if ( from.EmoteHue == 2 )
-						{
-							switch ( Utility.Random( 5 ) )
-							{
-								default:
-								case 0: monster = new BloodWorm(); break;
-								case 1: monster = new BloodSnake(); break;
-								case 2: monster = new Viscera(); break;
-								case 3: monster = new BloodSpawn(); break;
-								case 4: monster = new GiantLeech(); break;
-							}
-						}
-						else if ( from.EmoteHue == 3 )
-						{
-							switch ( Utility.Random( 11 ) )
-							{
-								default:
-								case 0: monster = new LesserDemon(); break;
-								case 1: monster = new LowerDemon(); break;
-								case 2: monster = new LesserDemon(); break;
-								case 3: monster = new LowerDemon(); break;
-								case 4: monster = new Imp(); break;
-								case 5: monster = new ShadowHound(); break;
-								case 7: monster = new Gargoyle(); break;
-								case 9: monster = new SoulWorm(); break;
-							}
-						}
-						else if ( from.EmoteHue == 4 )
-						{
-							switch ( Utility.Random( 31 ) )
-							{
-								default:
-								case 0: monster = new GarnetElemental(); break;
-								case 1: monster = new TopazElemental(); break;
-								case 2: monster = new QuartzElemental(); break;
-								case 3: monster = new SpinelElemental(); break;
-								case 4: monster = new StarRubyElemental(); break;
-								case 5: monster = new GarnetElemental(); break;
-								case 6: monster = new TopazElemental(); break;
-								case 7: monster = new QuartzElemental(); break;
-								case 8: monster = new SpinelElemental(); break;
-								case 9: monster = new StarRubyElemental(); break;
-								case 10: monster = new GarnetElemental(); break;
-								case 11: monster = new TopazElemental(); break;
-								case 12: monster = new QuartzElemental(); break;
-								case 13: monster = new SpinelElemental(); break;
-								case 14: monster = new StarRubyElemental(); break;
-								case 15: monster = new EarthElemental(); break;
-								case 16: monster = new AgapiteElemental(); break;
-								case 17: monster = new BronzeElemental(); break;
-								case 18: monster = new CopperElemental(); break;
-								case 19: monster = new DullCopperElemental(); break;
-								case 20: monster = new GoldenElemental(); break;
-								case 21: monster = new ShadowIronElemental(); break;
-								case 22: monster = new ValoriteElemental(); break;
-								case 23: monster = new VeriteElemental(); break;
-								case 24: monster = new PoisonElemental(); break;
-								case 25: monster = new ToxicElemental(); break;
-								case 26: monster = new WaterElemental(); break;
-								case 27: monster = new AirElemental(); break;
-								case 28: monster = new BloodElemental(); break;
-								case 29: monster = new FireElemental(); break;
-								case 30: monster = new ElectricalElemental(); break;
-							}
-						}
-						else if ( from.EmoteHue == 5 )
-						{
-							switch ( Utility.Random( 14 ) )
-							{
-								default:
-								case 0: monster = new BoneKnight(); break;
-								case 1: monster = new BoneMagi(); break;
-								case 2: monster = new Ghoul(); break;
-								case 3: monster = new Ghostly(); break;
-								case 4: monster = new Mummy(); break;
-								case 5: monster = new Shade(); break;
-								case 6: monster = new SkeletalKnight(); break;
-								case 7: monster = new SkeletalMage(); break;
-								case 8: monster = new Skeleton(); break;
-								case 9: monster = new Spectre(); break;
-								case 10: monster = new Wraith(); break;
-								case 11: monster = new Phantom(); break;
-								case 12: monster = new Zombie(); break;
-								case 13: monster = new Bodak(); break;
-							}
-						}
-						else if ( from.EmoteHue == 6 )
-						{
-							switch ( Utility.Random( 4 ) )
-							{
-								default:
-								case 0: monster = new DireBear(); break;
-								case 1: monster = new DireBoar(); break;
-								case 2: monster = new WolfDire(); break;
-								case 3: monster = new WeedElemental(); break;
-							}
-						}
-						else if ( from.EmoteHue == 7 )
-						{
-							switch ( Utility.Random( 9 ) )
-							{
-								default:
-								case 0: monster = new SnowElemental(); break;
-								case 1: monster = new IceSerpent(); break;
-								case 2: monster = new IceElemental(); break;
-								case 3: monster = new FrostOoze(); break;
-								case 4: monster = new FrostSpider(); break;
-								case 5: monster = new IceGolem(); break;
-								case 6: monster = new IceToad(); break;
-								case 7: monster = new IceSerpent(); break;
-								case 8: monster = new WinterWolf(); break;
-							}
-						}
-						else if ( from.EmoteHue == 8 )
-						{
-							switch ( Utility.Random( 9 ) )
-							{
-								default:
-								case 0: monster = new FireDemon(); break;
-								case 1: monster = new LavaPuddle(); break;
-								case 2: monster = new CinderElemental(); break;
-								case 3: monster = new FireElemental(); break;
-								case 4: monster = new FireBat(); break;
-								case 5: monster = new FireBat(); break;
-								case 6: monster = new LavaPuddle(); break;
-								case 7: monster = new FireMephit(); break;
-								case 8: monster = new FireMephit(); break;
-							}
-						}
-						else if ( from.EmoteHue == 9 )
-						{
-							switch ( Utility.Random( 11 ) )
-							{
-								default:
-								case 0: monster = new GiantSerpent(); break;
-								case 1: monster = new GiantAdder(); break;
-								case 2: monster = new JungleViper(); break;
-								case 3: monster = new LargeSnake(); break;
-								case 4: monster = new Snake(); break;
-								case 5: monster = new GiantSerpent(); break;
-								case 6: monster = new GiantAdder(); break;
-								case 7: monster = new JungleViper(); break;
-								case 8: monster = new LargeSnake(); break;
-								case 9: monster = new Snake(); break;
-								case 10: monster = new SilverSerpent(); break;
-							}
-						}
-						else if ( from.EmoteHue == 10 )
-						{
-							switch ( Utility.Random( 5 ) )
-							{
-								default:
-								case 0: monster = new WaterWeird(); break;
-								case 1: monster = new Typhoon(); break;
-								case 2: monster = new WaterElemental(); break;
-								case 3: monster = new StormCloud(); break;
-								case 4: monster = new WaterSpawn(); break;
-							}
-						}
-						else if ( from.EmoteHue == 11 || from.EmoteHue == 505 )
-						{
-							switch ( Utility.Random( 5 ) )
-							{
-								default:
-								case 0: monster = new EvilIcyVortex(); break;
-								case 1: monster = new EvilPlagueVortex(); break;
-								case 2: monster = new EvilEnergyVortex(); break;
-								case 3: monster = new EvilScorchingVortex(); break;
-								case 4: monster = new EvilBladeSpirits(); break;
-							}
-						}
-						else if ( from.EmoteHue == 12 )
-						{
-							switch ( Utility.Random( 3 ) )
-							{
-								default:
-								case 0: monster = new WineElemental(); break;
-								case 1: monster = new ManureGolem(); break;
-								case 2: monster = new Fairy(); break;
-							}
-						}
-						else if ( from.EmoteHue == 13 )
-						{
-							int MaxMonster = 2;
-							if ( from.Fame >= 23000 ){		MaxMonster = 10; }
-							else if ( from.Fame >= 12000 ){	MaxMonster = 6; }
-
-							switch ( Utility.RandomMinMax( 0, MaxMonster ) )
-							{
-								default:
-								case 0: monster = new FrailSkeleton(); break;
-								case 1: monster = new Phantom(); break;
-								case 2: monster = new Skeleton(); break;
-								case 3: monster = new Zombie(); break;
-								case 4: monster = new GhostWarrior(); break;
-								case 5: monster = new Wight(); break;
-								case 6: monster = new SkeletalWarrior(); break;
-								case 7: monster = new WalkingCorpse(); break;
-								case 8: monster = new SkeletalKnight(); break;
-								case 9: monster = new BoneKnight(); break;
-								case 10: monster = new Spirit(); break;
-							}
-						}
-						else if ( from.EmoteHue == 14 )
-						{
-							switch ( Utility.Random( 5 ) )
-							{
-								default:
-								case 0: case 1:	monster = new DeathWolf(); break;
-								case 2: case 3:	monster = new DeathBear(); break;
-								case 4:			monster = new DarkReaper(); break;
-							}
-						}
-						else if ( from.EmoteHue == 15 )
-						{
-							int MaxMonster = 1;
-							if ( from.Fame >= 24000 ){		MaxMonster = 5; }
-							else if ( from.Fame >= 10500 ){	MaxMonster = 3; }
-
-							switch ( Utility.RandomMinMax( 0, MaxMonster ) )
-							{
-								default:
-								case 0: monster = new Bat(); break;
-								case 1: monster = new Zombie(); break;
-								case 2: monster = new Wraith(); break;
-								case 3: monster = new Ghoul(); break;
-								case 4: monster = new VampireBat(); break;
-								case 5: monster = new WalkingCorpse(); break;
-							}
-						}
-						else if ( from.EmoteHue == 16 )
-						{
-							switch ( Utility.Random( 2 ) )
-							{
-								default:
-								case 0: monster = new EvilIcyVortex(); break;
-								case 1: monster = new IceBladeSpirits(); break;
-							}
-						}
-						else if ( from.EmoteHue == 17 )
-						{
-							switch ( Utility.Random( 7 ) )
-							{
-								default:
-								case 0: monster = new Scorpion(); break;
-								case 1: monster = new SandVortex(); break;
-								case 2: monster = new SandVortex(); break;
-								case 3: monster = new DustElemental(); break;
-								case 4: monster = new DustElemental(); break;
-								case 5: monster = new SandSpider(); break;
-								case 6: monster = new GiantAdder(); break;
-							}
-						}
-
-						((BaseCreature)monster).Team = ((BaseCreature)from).Team;
-
-						bool validLocation = false;
-						Point3D loc = from.Location;
-
-						for ( int j = 0; !validLocation && j < 10; ++j )
-						{
-							int x = from.X + Utility.Random( 3 ) - 1;
-							int y = from.Y + Utility.Random( 3 ) - 1;
-							int z = map.GetAverageZ( x, y );
-
-							if ( validLocation = map.CanFit( x, y, from.Z, 16, false, false ) )
-								loc = new Point3D( x, y, from.Z );
-							else if ( validLocation = map.CanFit( x, y, z, 16, false, false ) )
-								loc = new Point3D( x, y, z );
-						}
-
-						monster.IsTempEnemy = true;
-						monster.YellHue = from.Serial;
-						monster.MoveToWorld( loc, map );
-						monster.Combatant = target;
-						Effects.SendLocationParticles( EffectItem.Create( monster.Location, monster.Map, EffectItem.DefaultDuration ), 0x3728, 10, 10, 2023 );
-						monster.PlaySound( 0x1FE );
-						OnCreatureSpawned( monster );
-					}
-
-					from.Say( "" + NameList.RandomName( "magic words" ) + " " + NameList.RandomName( "magic words" ) + " " + NameList.RandomName( "magic words" ) + "!" );
+					new SummonCreatureSpell( from, null ).Cast();
 				}
 			}
 		}
@@ -2618,7 +2207,7 @@ namespace Server.Misc
 				bool shinobi = false;
 					if ( Utility.RandomMinMax(1,10) == 1 ){ shinobi = true; }
 
-				m.EmoteHue = 1;
+				m.EmoteHue = EmoteHues.TraditionalMage;
 
 				int thief = Utility.RandomList(0,1,2);
 					if ( !isEnemy ){ thief = Utility.RandomList(0,1); }
@@ -2982,10 +2571,15 @@ namespace Server.Misc
 
 		public static bool HealThySelf( Mobile from )
 		{
-			if ( from.Mana > 20 && !Server.Items.MortalStrike.IsWounded( from ) && Utility.RandomMinMax( 1, 4 ) == 1  )
+			if ( Server.Items.MortalStrike.IsWounded( from ) ) return false;
+
+			var manaPercent = 100 * from.Mana / from.ManaMax;
+			if ( manaPercent < 20 ) return false;
+
+			if ( Utility.RandomMinMax( 1, 4 ) == 1 )
 			{
-				from.Mana = from.Mana - 20;
-				from.Hits = from.HitsMax;
+				from.Hits = from.HitsMax * manaPercent / 100; // Restore hp% to mana%
+				from.Mana /= 2; // Reduce mana by half
 				from.FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
 				from.PlaySound( 0x202 );
 				return true;
@@ -3641,7 +3235,7 @@ namespace Server.Misc
 				CanPoison = true;
 				itSicks = 1;
 			}
-			else if ( from.EmoteHue == 1 )
+			else if ( from.EmoteHue == EmoteHues.TraditionalMage )
 			{
 				CanPoison = true;
 			}
@@ -3719,7 +3313,17 @@ namespace Server.Misc
 						foreach ( Item stuff in belongings )
 						{
 							o++;
-							if ( c == o ){ ((BaseCreature)m).PackItem( stuff ); from.LocalOverheadMessage(MessageType.Emote, 0x916, true, m.Name + " stole something from you!"); }
+							if ( c == o )
+							{
+								((BaseCreature)m).PackItem( stuff );
+								if ( from is PlayerMobile )
+								{
+									from.LocalOverheadMessage(MessageType.Emote, 0x916, true, m.Name + " stole something from you!");
+									Server.Misc.LoggingFunctions.LogStandard( from, string.Format( "had their '{0}' stolen by {1}!", stuff.Name, m.Name) );
+								}
+
+								return;
+							}
 						}
 					}
 				}
@@ -4126,7 +3730,7 @@ namespace Server.Misc
 					}
 				}
 			}
-			else if ( from.EmoteHue == 11 && from.Title == "the mad archmage" )
+			else if ( from.EmoteHue == EmoteHues.EvilMageLord && from.Title == "the mad archmage" )
 			{
 				switch( Utility.RandomMinMax( 0, 1 ) )
 				{
@@ -4154,7 +3758,7 @@ namespace Server.Misc
 						break;
 				}
 			}
-			else if ( from.EmoteHue == 16 )
+			else if ( from.EmoteHue == EmoteHues.IceQueen )
 			{
 				switch( Utility.RandomMinMax( 0, 1 ) )
 				{
@@ -4190,63 +3794,63 @@ namespace Server.Misc
 
 			if ( reg.IsPartOf( "the Ice Queen Fortress" ) && from is EvilMageLord )
 			{
-				from.EmoteHue = 16;
+				from.EmoteHue = EmoteHues.IceQueen;
 				PackGear = 0;
 			}
-			else if ( from.EmoteHue == 11 ){} // EVIL MAGE LORD SKIP
+			else if ( from.EmoteHue == EmoteHues.EvilMageLord ){} // EVIL MAGE LORD SKIP
 			else if ( from is DeadWizard )
 			{
-				from.EmoteHue = 0;
+				from.EmoteHue = EmoteHues.None;
 				PackGear = 0;
 			}
 			else if ( reg.IsPartOf( "Stonegate Castle" ) && ( from is EvilMage || from is ElfMage || from is OrkMage ) && from.X >= 6326 && from.Y >= 2377 && from.X <= 6509 && from.Y <= 2505 )
 			{
-				from.EmoteHue = 6;
+				from.EmoteHue = EmoteHues.Druid;
 			}
 			else if ( reg.IsPartOf( "Stonegate Castle" ) && ( from is EvilMage || from is ElfMage || from is OrkMage ) )
 			{
-				from.EmoteHue = 0;
+				from.EmoteHue = EmoteHues.None;
 				PackGear = 0;
 			}
 			else if ( reg.IsPartOf( "the Hidden Valley" ) && ( from is EvilMage || from is ElfMage || from is OrkMage ) )
 			{
-				from.EmoteHue = 6;
+				from.EmoteHue = EmoteHues.Druid;
 				PackGear = 0;
 			}
 			else if ( reg.IsPartOf( "the Azure Castle" ) && ( from is EvilMage || from is ElfMage || from is OrkMage ) )
 			{
-				from.EmoteHue = 0;
+				from.EmoteHue = EmoteHues.None;
 				PackGear = 0;
 			}
 			else if ( from is SkeletalGargoyle || from is BoneMagi || from is SkeletalMage || from is SkeletalWizard || from is Lich || from is Vordo || from is Nazghoul || from is LichLord || from is DemiLich || from is AncientLich || from is Surtaz || from is LichKing )
 			{
-				from.EmoteHue = 13;
+				from.EmoteHue = EmoteHues.Undead;
 				PackGear = 0;
 			}
 			else if ( from is UndeadDruid )
 			{
-				from.EmoteHue = 14;
+				from.EmoteHue = EmoteHues.UndeadDruid;
 				PackGear = 0;
 			}
 			else if ( from is VampirePrince || from is Vampire || from is VampireLord || from is Dracula )
 			{
-				from.EmoteHue = 15;
+				from.EmoteHue = EmoteHues.Vampire;
 				PackGear = 0;
 			}
 			else if (	reg.IsPartOf( "the Ruins of the Black Blade" ) || 
 						reg.IsPartOf( typeof( BardDungeonRegion ) ) )
 			{
-				from.EmoteHue = 0;
+				from.EmoteHue = EmoteHues.None;
 			}
 			else if (	from.Map == Map.IslesDread || 
 						reg.IsPartOf( "the Blood Temple" ) )
 			{
-				from.EmoteHue = 2;
+				from.EmoteHue = EmoteHues.Blood;
 				PackGear = 0;
 			}
 			else if (	reg.IsPartOf( "Dungeon Hythloth" ) )
 			{
-				from.EmoteHue = 3;
+				from.EmoteHue = EmoteHues.Demonologist;
 			}
 			else if (
 						( from.X >= 6362 && from.Y >= 3854 && from.X <= 6372 && from.Y <= 3864 && from.Map == Map.Lodor ) || 
@@ -4255,7 +3859,7 @@ namespace Server.Misc
 						reg.IsPartOf( "Dungeon Shame" )
 			)
 			{
-				from.EmoteHue = 4;
+				from.EmoteHue = EmoteHues.Elementalist;
 			}
 			else if (
 						( from.X >= 6312 && from.Y >= 3538 && from.X <= 6397 && from.Y <= 3628 && from.Map == Map.Sosaria ) || 
@@ -4269,7 +3873,7 @@ namespace Server.Misc
 						Server.Misc.Worlds.IsCrypt( from.Location, from.Map )
 			)
 			{
-				from.EmoteHue = 5;
+				from.EmoteHue = EmoteHues.Necromancer;
 			}
 			else if (
 
@@ -4277,7 +3881,7 @@ namespace Server.Misc
 						( Utility.RandomMinMax( 1, 4 ) > 1 && Server.Misc.Worlds.TestTile ( from.Map, from.X, from.Y, "forest" ) ) || 
 						reg.IsPartOf( "the Valley of Dark Druids" ) )
 			{
-				from.EmoteHue = 6;
+				from.EmoteHue = EmoteHues.Druid;
 			}
 			else if (
 						( from is EvilMage || from is ElfMage || from is OrkMage ) && 
@@ -4289,7 +3893,7 @@ namespace Server.Misc
 						)
 			)
 			{
-				from.EmoteHue = 7;
+				from.EmoteHue = EmoteHues.IceWizard;
 			}
 			else if (
 						( from.X >= 6184 && from.Y >= 496 && from.X <= 6208 && from.Y <= 520 && from.Map == Map.Sosaria ) || 
@@ -4300,7 +3904,7 @@ namespace Server.Misc
 						reg.IsPartOf( "the Tower of Brass" ) 
 			)
 			{
-				from.EmoteHue = 8;
+				from.EmoteHue = EmoteHues.FireWizard;
 			}
 			else if (
 						( from.X >= 6289 && from.Y >= 119 && from.X <= 6299 && from.Y <= 129 && from.Map == Map.Sosaria ) || 
@@ -4311,36 +3915,36 @@ namespace Server.Misc
 						reg.IsPartOf( "Dungeon Destard" ) 
 			)
 			{
-				from.EmoteHue = 9;
+				from.EmoteHue = EmoteHues.SerpentMage;
 			}
 			else if ( Server.Misc.Worlds.IsSeaDungeon( from.Location, from.Map ) || 
 						Server.Misc.Worlds.TestOcean ( from.Map, from.X, from.Y, 15 ) )
 			{
-				from.EmoteHue = 10;
+				from.EmoteHue = EmoteHues.WaterWizard;
 			}
 			else if ( reg.IsPartOf( "the Tomb of Kazibal" ) )
 			{
-				from.EmoteHue = 17;
+				from.EmoteHue = EmoteHues.Sand;
 			}
 			else // RANDOM MAGE
 			{
 				switch ( Utility.RandomMinMax( 0, 10 ) )
 				{
-					case 0: from.EmoteHue = 0; break; // Mages with no Summoning
-					case 1: from.EmoteHue = 1; break; // Traditional Mages
-					case 2: from.EmoteHue = 3; break; // Demonologists
-					case 3: from.EmoteHue = 4; break; // Elementalists
-					case 4: from.EmoteHue = 5; break; // Necromancers
-					case 5: from.EmoteHue = 6; break; // Druids
-					case 6: from.EmoteHue = 7; break; // Ice Wizards
-					case 7: from.EmoteHue = 8; break; // Fire Wizards
-					case 8: from.EmoteHue = 9; break; // Serpent Mages
-					case 9: from.EmoteHue = 10; break; // Water Wizards
-					case 10: from.EmoteHue = 12; break; // Insane Wizards
+					case 0: from.EmoteHue = EmoteHues.None; break; // Mages with no Summoning
+					case 1: from.EmoteHue = EmoteHues.TraditionalMage; break; // Traditional Mages
+					case 2: from.EmoteHue = EmoteHues.Demonologist; break; // Demonologists
+					case 3: from.EmoteHue = EmoteHues.Elementalist; break; // Elementalists
+					case 4: from.EmoteHue = EmoteHues.Necromancer; break; // Necromancers
+					case 5: from.EmoteHue = EmoteHues.Druid; break; // Druids
+					case 6: from.EmoteHue = EmoteHues.IceWizard; break; // Ice Wizards
+					case 7: from.EmoteHue = EmoteHues.FireWizard; break; // Fire Wizards
+					case 8: from.EmoteHue = EmoteHues.SerpentMage; break; // Serpent Mages
+					case 9: from.EmoteHue = EmoteHues.WaterWizard; break; // Water Wizards
+					case 10: from.EmoteHue = EmoteHues.InsaneWizard; break; // Insane Wizards
 				}
 			}
 
-			if ( from.EmoteHue == 0 && reg.IsPartOf( "Stonegate Castle" ) )
+			if ( from.EmoteHue == EmoteHues.None && reg.IsPartOf( "Stonegate Castle" ) )
 			{
 				from.Title = "the shadow priest";
 				from.Hue = 0x4001;
@@ -4367,7 +3971,7 @@ namespace Server.Misc
 						item.Hue = 0x538;
 				}
 			}
-			else if ( from.EmoteHue == 2 )
+			else if ( from.EmoteHue == EmoteHues.Blood )
 			{
 				from.Title = from.Title + " of blood";
 				from.Hue = 0x4AA;
@@ -4384,15 +3988,15 @@ namespace Server.Misc
 						item.Hue = 0x84D;
 				}
 			}
-			else if ( from.EmoteHue == 3 )
+			else if ( from.EmoteHue == EmoteHues.Demonologist )
 			{
 				from.Title = from.Title + " of demons";
 			}
-			else if ( from.EmoteHue == 4 )
+			else if ( from.EmoteHue == EmoteHues.Elementalist )
 			{
 				from.Title = from.Title + " of elements";
 			}
-			else if ( from.EmoteHue == 5 )
+			else if ( from.EmoteHue == EmoteHues.Necromancer )
 			{
 				switch ( Utility.RandomMinMax( 0, 2 ) )
 				{
@@ -4403,7 +4007,7 @@ namespace Server.Misc
 				
 				Server.Misc.MorphingTime.TurnToNecromancer( from );
 			}
-			else if ( from.EmoteHue == 6 )
+			else if ( from.EmoteHue == EmoteHues.Druid )
 			{
 				switch ( Utility.RandomMinMax( 0, 2 ) )
 				{
@@ -4420,7 +4024,7 @@ namespace Server.Misc
 						item.Hue = Utility.RandomYellowHue();
 				}
 			}
-			else if ( from.EmoteHue == 7 )
+			else if ( from.EmoteHue == EmoteHues.IceWizard )
 			{
 				switch ( Utility.RandomMinMax( 0, 2 ) )
 				{
@@ -4443,7 +4047,7 @@ namespace Server.Misc
 						item.Hue = Utility.RandomList( 0xB78, 0xB33, 0xB34, 0xB35, 0xB36, 0xB37, 0xAF3 );
 				}
 			}
-			else if ( from.EmoteHue == 8 )
+			else if ( from.EmoteHue == EmoteHues.FireWizard )
 			{
 				switch ( Utility.RandomMinMax( 0, 2 ) )
 				{
@@ -4462,7 +4066,7 @@ namespace Server.Misc
 
 				from.AddItem( new LighterSource() );
 			}
-			else if ( from.EmoteHue == 9 )
+			else if ( from.EmoteHue == EmoteHues.SerpentMage )
 			{
 				switch ( Utility.RandomMinMax( 0, 2 ) )
 				{
@@ -4486,7 +4090,7 @@ namespace Server.Misc
 						item.Hue = Utility.RandomGreenHue();
 				}
 			}
-			else if ( from.EmoteHue == 10 )
+			else if ( from.EmoteHue == EmoteHues.WaterWizard )
 			{
 				switch ( Utility.RandomMinMax( 0, 2 ) )
 				{
@@ -4510,7 +4114,7 @@ namespace Server.Misc
 						item.Hue = Utility.RandomColor( 2 );
 				}
 			}
-			else if ( from.EmoteHue == 16 )
+			else if ( from.EmoteHue == EmoteHues.IceQueen )
 			{
 				BaseCreature bsct = (BaseCreature)from;
 
@@ -4573,7 +4177,7 @@ namespace Server.Misc
 
 				from.VirtualArmor = 60;
 			}
-			else if ( from.EmoteHue == 12 )
+			else if ( from.EmoteHue == EmoteHues.InsaneWizard )
 			{
 				switch ( Utility.RandomMinMax( 0, 5 ) )
 				{
@@ -4593,7 +4197,7 @@ namespace Server.Misc
 						item.Hue = Utility.RandomColor( 0 );
 				}
 			}
-			else if ( from.EmoteHue == 17 )
+			else if ( from.EmoteHue == EmoteHues.Sand )
 			{
 				switch ( Utility.RandomMinMax( 0, 5 ) )
 				{
@@ -4637,9 +4241,9 @@ namespace Server.Misc
 				caster.LootType = LootType.Blessed;
 				caster.Attributes.SpellChanneling = 1;
 				caster.damageType = Utility.RandomMinMax( 0, 4 );
-				if ( from.EmoteHue == 7 ){ caster.damageType = 2; } 		// Ice Wizards
-				else if ( from.EmoteHue == 8 ){ caster.damageType = 1; } 	// Fire Wizards
-				else if ( from.EmoteHue == 9 ){ caster.damageType = 4; } 	// Serpent Mages
+				if ( from.EmoteHue == EmoteHues.IceWizard ){ caster.damageType = 2; } 		// Ice Wizards
+				else if ( from.EmoteHue == EmoteHues.FireWizard ){ caster.damageType = 1; } 	// Fire Wizards
+				else if ( from.EmoteHue == EmoteHues.SerpentMage ){ caster.damageType = 4; } 	// Serpent Mages
 				from.AddItem( caster );
 		}
 
@@ -4687,7 +4291,7 @@ namespace Server.Misc
 
 		public static void SaySomethingWhenAttacking( Mobile from, Mobile m )
 		{
-			if ( from.Name != "a sailor" && from.Name != "a pirate" && from.Name != "a follower" && m != null && from.EmoteHue != 505 && ((BaseCreature)from).ControlSlots != 666 && ((BaseCreature)from).GetMaster() == null && Utility.Random( 5 ) == 1 )
+			if ( from.Name != "a sailor" && from.Name != "a pirate" && from.Name != "a follower" && m != null && from.EmoteHue != EmoteHues.SummonQuest && ((BaseCreature)from).ControlSlots != 666 && ((BaseCreature)from).GetMaster() == null && Utility.Random( 5 ) == 1 )
 			{
 				if ( from.SpeechHue < 1 ){ from.SpeechHue = Utility.RandomTalkHue(); }
 
@@ -5252,7 +4856,7 @@ namespace Server.Misc
 
 		public static void SaySomethingOnDeath( Mobile from, Mobile m )
 		{
-			if ( from.Name != "a sailor" && from.Name != "a pirate" && from.Name != "a follower" && m != null && from.EmoteHue != 505 && ((BaseCreature)from).ControlSlots != 666 && ((BaseCreature)from).GetMaster() == null && Utility.Random( 5 ) == 1 )
+			if ( from.Name != "a sailor" && from.Name != "a pirate" && from.Name != "a follower" && m != null && from.EmoteHue != EmoteHues.SummonQuest && ((BaseCreature)from).ControlSlots != 666 && ((BaseCreature)from).GetMaster() == null && Utility.Random( 5 ) == 1 )
 			{
 				if ( from.SpeechHue < 1 ){ from.SpeechHue = Utility.RandomTalkHue(); }
 
@@ -8169,7 +7773,7 @@ namespace Server.Mobiles
 				delay -= 0.075;
 			}
 
-			if ( m_Mobile.ReduceSpeedWithDamage || m_Mobile.IsSubdued )
+			if ( !m_Mobile.IsDeadBondedPet && ( m_Mobile.ReduceSpeedWithDamage || m_Mobile.IsSubdued ) )
 			{
 				double offset = (double) m_Mobile.Hits / m_Mobile.HitsMax;
 
@@ -8488,8 +8092,12 @@ namespace Server.Mobiles
 
 			if( m_Mobile.InRange( m, range ) )
 			{
-				m_Path = null;
-				return true;
+				// Ensure they're on the same level
+				if( Math.Abs( m_Mobile.Z - m.Z ) < 16 )
+				{
+					m_Path = null;
+					return true;
+				}
 			}
 
 			if( m_Path != null && m_Path.Goal == m )
@@ -8500,8 +8108,16 @@ namespace Server.Mobiles
 					return true;
 				}
 			}
-			else if( !DoMove( m_Mobile.GetDirectionTo( m ), true ) )
+			else
 			{
+				bool needsPath = !m_Mobile.InLOS( m ) && Math.Abs( m_Mobile.Z - m.Z ) >= 16;
+
+				if( !needsPath && DoMove( m_Mobile.GetDirectionTo( m ), true ) )
+				{
+					m_Path = null;
+					return true;
+				}
+
 				m_Path = new PathFollower( m_Mobile, m );
 				m_Path.Mover = new MoveMethod( DoMoveImpl );
 
@@ -8510,11 +8126,6 @@ namespace Server.Mobiles
 					m_Path = null;
 					return true;
 				}
-			}
-			else
-			{
-				m_Path = null;
-				return true;
 			}
 
 			return false;

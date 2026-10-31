@@ -1,9 +1,10 @@
 using System;
-using Server;
+using Server.Gumps;
+using Server.Mobiles;
 using Server.Network;
 using Server.Targeting;
-using Server.Items;
-using Server.Localization;
+using Server.Utilities;
+using Server.ModernSkill;
 
 namespace Server.Items
 {
@@ -21,6 +22,16 @@ namespace Server.Items
 	[FlipableAttribute( 0x14fc, 0x14fb )]
 	public class Lockpick : Item
 	{
+		private enum LockpickDifficulty
+		{
+			NotLocked = 0,
+			Trivial,
+			Easy,
+			Difficult,
+			Challenging,
+			Impossible,
+		}
+		
 		public override string DefaultDescription
 		{
 			get
@@ -32,15 +43,8 @@ namespace Server.Items
 			}
 		}
 
-		public override string InfoDataLocalizationKey
-		{
-			get { return Technology ? "prop.trade.itemdesc.lockpick.tech" : "prop.trade.itemdesc.lockpick.normal"; }
-		}
-
-		public override string DisplayNameLocalizationKey
-		{
-			get { return Technology ? "item.trade.name.access.card" : "item.trade.name.lockpick"; }
-		}
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool IsSciFi { get { return ItemID == 0x3A75; } }
 
 		[Constructable]
 		public Lockpick() : this( 1 )
@@ -58,6 +62,7 @@ namespace Server.Items
 		public Lockpick( Serial serial ) : base( serial )
 		{
 		}
+
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
@@ -81,11 +86,86 @@ namespace Server.Items
 			from.Target = new InternalTarget( this );
 		}
 
+		public static string GetDifficulty( double removeTrapSkill, object target )
+		{
+			switch (GetDifficultyInternal(removeTrapSkill, target))
+			{
+				default:
+				case LockpickDifficulty.NotLocked: return TextDefinition.GetColorizedText("Not Locked", HtmlColors.COOL_GREEN);
+				case LockpickDifficulty.Trivial: return  TextDefinition.GetColorizedText("Trivial", HtmlColors.MINT_GREEN);
+				case LockpickDifficulty.Easy: return TextDefinition.GetColorizedText("Easy", HtmlColors.MINT_GREEN);
+				case LockpickDifficulty.Difficult: return TextDefinition.GetColorizedText("Difficult", HtmlColors.RUST);
+				case LockpickDifficulty.Challenging: return TextDefinition.GetColorizedText("Challenging", HtmlColors.PALE_RED);
+				case LockpickDifficulty.Impossible: return TextDefinition.GetColorizedText("Impossible", HtmlColors.RED);
+			}
+		}
+
+		private static LockpickDifficulty GetDifficultyInternal( double lockpickSkill, object target )
+		{
+			if ( target is ILockpickable )
+			{
+				var lockpickable = (ILockpickable)target;
+				if ( !lockpickable.Locked ) return LockpickDifficulty.NotLocked;
+
+				if ( lockpickable.MaxLockLevel <= lockpickSkill ) return LockpickDifficulty.Trivial;
+				if ( lockpickSkill < lockpickable.RequiredSkill ) return LockpickDifficulty.Impossible;
+				
+				var delta = (double)( lockpickable.MaxLockLevel - lockpickSkill ) / ( 1 + Math.Abs( lockpickable.MaxLockLevel - lockpickable.LockLevel ) );
+				if ( delta < 0.33 ) return LockpickDifficulty.Easy;
+				if ( delta < 0.66 ) return LockpickDifficulty.Difficult;
+
+				return LockpickDifficulty.Challenging;
+			}
+
+			return LockpickDifficulty.NotLocked;
+		}
+
+		public static bool ValidateLockpickType( Lockpick lockpick, Item targeted )
+		{
+			return targeted.Catalog == Catalogs.SciFi ? lockpick.IsSciFi : !lockpick.IsSciFi;
+		}
+
+		public static bool CanDoEffect( Mobile from, Lockpick lockpick, Item targeted, bool isLocked )
+		{
+			from.Direction = from.GetDirectionTo( targeted );
+
+			if ( targeted.Catalog == Catalogs.SciFi && isLocked && !lockpick.IsSciFi )
+			{
+				from.LocalOverheadMessage(MessageType.Regular, 1150, false, "This doesn't have a key hole, but it does have a card slot." );
+				return false;
+			}
+			else if ( targeted.Catalog == Catalogs.SciFi && isLocked && lockpick.IsSciFi )
+			{
+				from.PlaySound( 0x54B );
+				return true;
+			}
+			else if ( isLocked && !lockpick.IsSciFi )
+			{
+				from.PlaySound( 0x241 );
+				return true;
+			}
+			else if ( isLocked && lockpick.IsSciFi )
+			{
+				from.LocalOverheadMessage(MessageType.Regular, 1150, false, "You don't see a card slot on this." );
+				return false;
+			}
+			else
+			{
+				from.LocalOverheadMessage(MessageType.Regular, 1150,  502069 ); // This does not appear to be locked
+				return false;
+			}
+		}
+
+		public static void DoEffect(Mobile from, Lockpick lockpick, Item targeted, Action onComplete)
+		{
+			new InternalTimer( from, (ILockpickable)targeted, lockpick, onComplete ).Start();
+		}
+
 		private class InternalTarget : Target
 		{
 			private Lockpick m_Item;
 
-			public InternalTarget( Lockpick item ) : base( 1, false, TargetFlags.None )
+			public InternalTarget( Lockpick item ) : base( 2, false, TargetFlags.None )
 			{
 				m_Item = item;
 			}
@@ -95,164 +175,74 @@ namespace Server.Items
 				if ( m_Item.Deleted )
 					return;
 
+				if ( from is PlayerMobile && targeted is Item )
+				{
+					var player = (PlayerMobile)from;
+					if ( player.Preferences.ModernLockpickingEnabled && LockpickAndRemoveTrapGump.TryLockpick(player, (Item)targeted) )
+						return;
+				}
+
 				if ( targeted is BaseDoor && from.Skills[SkillName.Lockpicking].Value >= 30 )
 				{
-					if ( Server.Items.DoorType.IsSpaceshipDoor( (BaseDoor)targeted ) && m_Item.ItemID != 0x3A75 )
-					{
-						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.lockpick.no.keyhole.has.slot" ) );
-					}
-					else if ( !(Server.Items.DoorType.IsSpaceshipDoor( (BaseDoor)targeted )) && m_Item.ItemID == 0x3A75 )
-					{
-						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.lockpick.no.slot.has.keyhole" ) );
-					}
-					else if ( Server.Items.DoorType.IsSpaceshipDoor( (BaseDoor)targeted ) && m_Item.ItemID == 0x3A75 )
-					{
-						if ( ((BaseDoor)targeted).Locked == false )
-							from.SendLocalizedMessage( 502069 ); // This does not appear to be locked
-
-						else
-						{
-							from.PlaySound( 0x54B );
-							((BaseDoor)targeted).Locked = false;
-							Server.Items.DoorType.UnlockDoors( (BaseDoor)targeted );
-						}
-					}
-					else if ( Server.Items.DoorType.IsDungeonDoor( (BaseDoor)targeted ) )
-					{
-						if ( ((BaseDoor)targeted).Locked == false )
-							from.SendLocalizedMessage( 502069 ); // This does not appear to be locked
-
-						else
-						{
-							from.PlaySound( 0x241 );
-							((BaseDoor)targeted).Locked = false;
-							Server.Items.DoorType.UnlockDoors( (BaseDoor)targeted );
-						}
-					}
-					else
-						from.SendLocalizedMessage( 502069 ); // This does not appear to be locked
+					UnlockUtilities.TryUnlockDoor( from, (BaseDoor)targeted, m_Item, UnlockUtilities.LockpickDoorOptions );
 				}
-				else if ( targeted is ILockpickable )
+				else if ( targeted is ILockpickable && targeted is Item )
 				{
-					Item item = (Item)targeted;
-					from.Direction = from.GetDirectionTo( item );
-
-					if ( item.Catalog == Catalogs.SciFi && ((ILockpickable)targeted).Locked && m_Item.ItemID != 0x3A75 )
+					if (CanDoEffect(from, m_Item, (Item)targeted, ((ILockpickable)targeted).Locked))
 					{
-						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.lockpick.no.keyhole.has.slot" ) );
-					}
-					else if ( item.Catalog == Catalogs.SciFi && ((ILockpickable)targeted).Locked && m_Item.ItemID == 0x3A75 )
-					{
-						from.PlaySound( 0x54B );
-						new InternalTimer( from, (ILockpickable)targeted, m_Item ).Start();
-					}
-					else if ( ((ILockpickable)targeted).Locked && m_Item.ItemID != 0x3A75 )
-					{
-						from.PlaySound( 0x241 );
-						new InternalTimer( from, (ILockpickable)targeted, m_Item ).Start();
-					}
-					else if ( ((ILockpickable)targeted).Locked && m_Item.ItemID == 0x3A75 )
-					{
-						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "prop.trade.lockpick.no.card.slot" ) );
-					}
-					else
-					{
-						// The door is not locked
-						from.SendLocalizedMessage( 502069 ); // This does not appear to be locked
+						DoEffect(from, m_Item, (Item)targeted, null);
 					}
 				}
 				else
 				{
-					from.SendLocalizedMessage( 501666 ); // You can't unlock that!
+					from.LocalOverheadMessage(MessageType.Regular, 1150,  501666 ); // You can't unlock that!
 				}
 			}
+		}
 
-			private class InternalTimer : Timer
+		private class InternalTimer : Timer
+		{
+			private readonly Mobile m_From;
+			private readonly ILockpickable m_Item;
+			private readonly Lockpick m_Lockpick;
+			private readonly Action m_OnComplete;
+
+			public InternalTimer( Mobile from, ILockpickable item, Lockpick lockpick, Action onComplete ) : base( TimeSpan.FromSeconds( 1.0 ) )
 			{
-				private Mobile m_From;
-				private ILockpickable m_Item;
-				private Lockpick m_Lockpick;
+				m_From = from;
+				m_Item = item;
+				m_Lockpick = lockpick;
+				m_OnComplete = onComplete;
+				Priority = TimerPriority.TwoFiftyMS;
+			}
 
-				private static void PublicOverheadMessageByCatalogKey( Item item, MessageType type, int hue, bool ascii, string catalogKey )
+			protected void BrokeLockPickTest()
+			{
+				// When failed, a 25% chance to break the lockpick
+				if ( Utility.Random( 4 ) == 0 )
 				{
-					if ( item == null || item.Map == null )
-						return;
+					// You broke the lockpick.
+					if ( m_Lockpick.IsSciFi ){ m_From.PlaySound( 0x549 ); m_From.PrivateOverheadMessage( 0, 1150, false,  "You broke the key card.", m_From.NetState ); }
+					else { m_From.PlaySound( 0x3A4 ); m_From.PrivateOverheadMessage( 0, 1150, false,  "You broke the lockpick.", m_From.NetState ); }
 
-					Point3D worldLoc = item.GetWorldLocation();
-					IPooledEnumerable eable = item.Map.GetClientsInRange( worldLoc, item.GetMaxUpdateRange() );
-
-					foreach ( NetState state in eable )
-					{
-						Mobile m = state.Mobile;
-
-						if ( m != null && m.CanSee( item ) && m.InRange( worldLoc, item.GetUpdateRange( m ) ) )
-						{
-							string lang = AccountLang.GetLanguageCode( m.Account );
-							string outText = StringCatalog.TryResolveByKey( lang, catalogKey );
-
-							if ( string.IsNullOrEmpty( outText ) )
-								outText = StringCatalog.TryResolveByKey( "en", catalogKey );
-
-							if ( string.IsNullOrEmpty( outText ) )
-								outText = "The sound of gas escaping is heard from the chest.";
-
-							if ( ascii && StringCatalog.IsAsciiOnly( outText ) )
-								state.Send( new AsciiMessage( item.Serial, item.ItemID, type, hue, 3, item.Name, outText ) );
-							else
-								state.Send( new UnicodeMessage( item.Serial, item.ItemID, type, hue, 3, "ENU", item.Name, outText ) );
-						}
-					}
-
-					eable.Free();
+					m_Lockpick.Consume();
 				}
+			}
 			
-				public InternalTimer( Mobile from, ILockpickable item, Lockpick lockpick ) : base( TimeSpan.FromSeconds( 3.0 ) )
-				{
-					m_From = from;
-					m_Item = item;
-					m_Lockpick = lockpick;
-					Priority = TimerPriority.TwoFiftyMS;
-				}
-
-				protected void BrokeLockPickTest()
-				{
-					// When failed, a 25% chance to break the lockpick
-					if ( Utility.Random( 4 ) == 0 )
-					{
-						Item item = (Item)m_Item;
-
-						// You broke the lockpick.
-						if ( m_Lockpick.ItemID == 0x3A75 ){ m_From.PlaySound( 0x549 ); m_From.PrivateOverheadMessage( 0, 1150, false, StringCatalog.ResolveByKey( m_From.Account, "prop.trade.lockpick.overhead.broke.card" ), m_From.NetState ); }
-						else { m_From.PlaySound( 0x3A4 ); m_From.PrivateOverheadMessage( 0, 1150, false, StringCatalog.ResolveByKey( m_From.Account, "prop.trade.lockpick.overhead.broke.pick" ), m_From.NetState ); }
-
-						m_Lockpick.Consume();
-					}
-				}
-				
-				protected override void OnTick()
+			protected override void OnTick()
+			{
+				try
 				{
 					Item item = (Item)m_Item;
-
-					if ( m_From.Skills[SkillName.Lockpicking].Base < 1 )
-					{
-						int cycle = 10;
-
-						while ( cycle > 0 )
-						{
-							cycle--;
-							m_From.CheckTargetSkill( SkillName.Lockpicking, m_Item, 0, 10 );
-						}
-					}
-
-					if ( !m_From.InRange( item.GetWorldLocation(), 1 ) )
+					if ( !m_From.InRange( item.GetWorldLocation(), 2 ) )
 						return;
 
 					if ( m_Item.LockLevel == 0 || m_Item.LockLevel == -255 )
 					{
 						// LockLevel of 0 means that the door can't be picklocked
 						// LockLevel of -255 means it's magic locked
-						if ( m_Lockpick.ItemID == 0x3A75 ){ m_From.PrivateOverheadMessage( 0, 1150, false, StringCatalog.ResolveByKey( m_From.Account, "prop.trade.lockpick.overhead.cannot.hack.normal" ), m_From.NetState ); }
-						else { m_From.PrivateOverheadMessage( 0, 1150, false, StringCatalog.ResolveByKey( m_From.Account, "prop.trade.lockpick.overhead.cannot.pick.normal" ), m_From.NetState ); }
+						if ( m_Lockpick.IsSciFi ){ m_From.PrivateOverheadMessage( 0, 1150, false,  "This lock cannot be hacked by normal means.", m_From.NetState ); }
+						else { m_From.PrivateOverheadMessage( 0, 1150, false,  "This lock cannot be picked by normal means.", m_From.NetState ); }
 
 						return;
 					}
@@ -264,16 +254,16 @@ namespace Server.Items
 						m_From.CheckSkill( SkillName.Lockpicking, 0, m_Item.LockLevel );*/
 
 						// The LockLevel is higher thant the LockPicking of the player
-						if ( m_Lockpick.ItemID == 0x3A75 ){ m_From.PrivateOverheadMessage( 0, 1150, false, StringCatalog.ResolveByKey( m_From.Account, "prop.trade.lockpick.overhead.no.idea.hack" ), m_From.NetState ); }
-						else { m_From.PrivateOverheadMessage( 0, 1150, false, StringCatalog.ResolveByKey( m_From.Account, "prop.trade.lockpick.overhead.no.idea.pick" ), m_From.NetState ); }
+						if ( m_Lockpick.IsSciFi ){ m_From.PrivateOverheadMessage( 0, 1150, false,  "You don't see how that lock can be hacked.", m_From.NetState ); }
+						else { m_From.PrivateOverheadMessage( 0, 1150, false,  "You don't see how that lock can be manipulated.", m_From.NetState ); }
 						return;
 					}
 
 					if ( m_From.CheckTargetSkill( SkillName.Lockpicking, m_Item, m_Item.LockLevel, m_Item.MaxLockLevel ) )
 					{
 						// Success! Pick the lock!
-						if ( m_Lockpick.ItemID == 0x3A75 ){ m_From.PlaySound( 0x54B ); m_From.PrivateOverheadMessage( 0, 1150, false, StringCatalog.ResolveByKey( m_From.Account, "prop.trade.lockpick.overhead.success.hack" ), m_From.NetState ); }
-						else { m_From.PlaySound( 0x4A ); m_From.PrivateOverheadMessage( 0, 1150, false, StringCatalog.ResolveByKey( m_From.Account, "prop.trade.lockpick.overhead.success.pick" ), m_From.NetState ); }
+						if ( m_Lockpick.IsSciFi ){ m_From.PlaySound( 0x54B ); m_From.PrivateOverheadMessage( 0, 1150, false,  "Your skill at hacking worked.", m_From.NetState ); }
+						else { m_From.PlaySound( 0x4A ); m_From.PrivateOverheadMessage( 0, 1150, false,  "The lock quickly yields to your skill.", m_From.NetState ); }
 						
 						m_Item.LockPick( m_From );
 					}
@@ -282,68 +272,73 @@ namespace Server.Items
 						// The player failed to pick the lock
 						BrokeLockPickTest();
 
-						if ( m_Lockpick.ItemID == 0x3A75 ){ m_From.PrivateOverheadMessage( 0, 1150, false, StringCatalog.ResolveByKey( m_From.Account, "prop.trade.lockpick.overhead.fail.hack" ), m_From.NetState ); }
-						else { m_From.PrivateOverheadMessage( 0, 1150, false, StringCatalog.ResolveByKey( m_From.Account, "prop.trade.lockpick.overhead.fail.pick" ), m_From.NetState ); }
+						if ( m_Lockpick.IsSciFi ){ m_From.PrivateOverheadMessage( 0, 1150, false,  "You are unable to hack the lock.", m_From.NetState ); }
+						else { m_From.PrivateOverheadMessage( 0, 1150, false,  "You are unable to pick the lock.", m_From.NetState ); }
 
-                        // ==== Random Item Disintergration upon Failure ====
-                        if (m_Item is TreasureMapChest)
-                        {
-                            int i_Num = 0; Item i_Destroy = null;
+						// ==== Random Item Disintergration upon Failure ====
+						if (m_Item is TreasureMapChest)
+						{
+							int i_Num = 0; Item i_Destroy = null;
 
-                            BaseContainer m_chest = m_Item as BaseContainer;                            
-                            Item Dust = new DustPile();
-                            
-                            for (int i = 10; i > 0; i--)
-                            {
-                                i_Num = Utility.Random(m_chest.Items.Count);
-                                // Make sure DustPiles aren't called for destruction
-                                if ((m_chest.Items.Count > 0) && m_chest.Items[i_Num] is DustPile)
-                                {
-                                    for (int ci = (m_chest.Items.Count - 1); ci >= 0; ci--)
-                                    {
-                                        i_Num = ci;
-                                        if (i_Num < 0) { i_Num = 0; }
+							BaseContainer m_chest = m_Item as BaseContainer;
+							Item Dust = new DustPile();
+							
+							for (int i = 10; i > 0; i--)
+							{
+								i_Num = Utility.Random(m_chest.Items.Count);
+								// Make sure DustPiles aren't called for destruction
+								if ((m_chest.Items.Count > 0) && m_chest.Items[i_Num] is DustPile)
+								{
+									for (int ci = (m_chest.Items.Count - 1); ci >= 0; ci--)
+									{
+										i_Num = ci;
+										if (i_Num < 0) { i_Num = 0; }
 
-                                        if (m_chest.Items[i_Num] is DustPile)
-                                        {
-                                            i_Destroy = null;
-                                        }
-                                        else
-                                        {
-                                            i_Destroy = m_chest.Items[i_Num];
-                                            i = 0;
-                                        }
-                                        // Nothing left but Dust
-                                        if (ci < 0 && i > 0)
-                                        {
-                                            i_Destroy = null; i = 0;
-                                        }
-                                    }
-                                }
-                                // Item targeted =+= prepare for object DOOM! >;D
-                                else
-                                {
-                                    i_Destroy = m_chest.Items[i_Num]; i = 0;
-                                }
-                            }                            
-                            // Delete chosen Item and drop a Dust Pile
-                            if (i_Destroy is Gold)
-                            {
-                                if (i_Destroy.Amount > 1000)
-                                    i_Destroy.Amount -= 1000;
-                                else
-                                    i_Destroy.Delete();
+										if (m_chest.Items[i_Num] is DustPile)
+										{
+											i_Destroy = null;
+										}
+										else
+										{
+											i_Destroy = m_chest.Items[i_Num];
+											i = 0;
+										}
+										// Nothing left but Dust
+										if (ci < 0 && i > 0)
+										{
+											i_Destroy = null; i = 0;
+										}
+									}
+								}
+								// Item targeted =+= prepare for object DOOM! >;D
+								else
+								{
+									i_Destroy = m_chest.Items[i_Num]; i = 0;
+								}
+							}
+							// Delete chosen Item and drop a Dust Pile
+							if (i_Destroy is Gold)
+							{
+								if (i_Destroy.Amount > 1000)
+									i_Destroy.Amount -= 1000;
+								else
+									i_Destroy.Delete();
 
-                                Dust.Hue = 1177; m_chest.DropItem(Dust);
-                            }
-                            else if (i_Destroy != null)
-                            {
-                                i_Destroy.Delete(); m_chest.DropItem(Dust);
-                            }
-                            Effects.PlaySound(m_chest.Location, m_chest.Map, 0x1DE);
-                            PublicOverheadMessageByCatalogKey( m_chest, MessageType.Regular, 2004, false, "prop.trade.lockpick.overhead.gas.chest" );
-                        }
+								Dust.Hue = 1177; m_chest.DropItem(Dust);
+							}
+							else if (i_Destroy != null)
+							{
+								i_Destroy.Delete(); m_chest.DropItem(Dust);
+							}
+							Effects.PlaySound(m_chest.Location, m_chest.Map, 0x1DE);
+							m_chest.PublicOverheadMessage(MessageType.Regular, 2004, false, "The sound of gas escaping is heard from the chest.");
+						}
 					}
+				}
+				finally
+				{
+					if (m_OnComplete != null)
+						m_OnComplete.Invoke();
 				}
 			}
 		}

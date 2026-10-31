@@ -2,28 +2,36 @@ using System;
 using System.Collections;
 using Server.Targeting;
 using Server.Network;
-using Server.Mobiles;
-using Server.Spells;
-using Server.Localization;
 
 namespace Server.Spells.HolyMan
 {
 	public class SacredBoonSpell : HolyManSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Sacred Boon", "Sacrum Munus",
-				266,
-				9040
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 778,
+				IconGraphic = 0x96E,
+				Name = "Sacred Boon",
+				PowerWords = "Sacrum Munus",
+				Description = "Surrounds one with a holy aura that heals wounds much quicker.",
+				ManaCost = 10,
+				TithingCost = 40,
+				MinSkill = 20,
+				TargetType = TargetFlags.Beneficial
+			},
+			266,
+			9040
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 3 ); } }
-		public override int RequiredTithing{ get{ return 40; } }
-		public override double RequiredSkill{ get{ return 20.0; } }
-		public override int RequiredMana{ get{ return 10; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
 		private static Hashtable m_Table = new Hashtable();
 
-		public SacredBoonSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public SacredBoonSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 
@@ -70,7 +78,7 @@ namespace Server.Spells.HolyMan
 				m.PlaySound( 0x202 );
 				m.FixedParticles( 0x376A, 1, 62, 9923, 3, 3, EffectLayer.Waist );
 				m.FixedParticles( 0x3779, 1, 46, 9502, 5, 3, EffectLayer.Waist );
-				m.SendMessage( StringCatalog.Resolve( m.Account, "A holy aura surrounds you causing your wounds to heal faster." ) );
+				m.SendMessage( "A holy aura surrounds you causing your wounds to heal faster." );
 			}
 
 			FinishSequence();

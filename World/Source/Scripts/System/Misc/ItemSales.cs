@@ -608,8 +608,8 @@ namespace Server
 			}
 			else if ( item is BaseQuiver )
 			{
-				price +=		((BaseQuiver)item).LowerAmmoCost * 5;
-				price +=		((BaseQuiver)item).WeightReduction * 2;
+				price +=		((BaseQuiver)item).LowerAmmoCost;
+				price +=		((BaseQuiver)item).WeightReduction;
 
 				price +=		((BaseQuiver)item).Attributes.SpellChanneling * 200;
 				price +=		((BaseQuiver)item).Attributes.DefendChance * 10;
@@ -781,7 +781,13 @@ namespace Server
 			return false;
 		}
 
-		public static void GetSellList( Mobile m, List<GenericBuyInfo> LIST, ItemSalesInfo.Category v_Category, ItemSalesInfo.Material v_Material, ItemSalesInfo.Market v_Market, ItemSalesInfo.World v_World, Type specificType )
+		public static void GetSellList( Mobile m, List<GenericBuyInfo> LIST, bool alwaysAvailable, params Type[] specificTypes )
+		{
+			foreach ( var specificType in specificTypes )
+				GetSellList( m, LIST, ItemSalesInfo.Category.All, ItemSalesInfo.Material.All, ItemSalesInfo.Market.All, ItemSalesInfo.World.None, specificType, alwaysAvailable );
+		}
+
+		public static void GetSellList( Mobile m, List<GenericBuyInfo> LIST, ItemSalesInfo.Category v_Category, ItemSalesInfo.Material v_Material, ItemSalesInfo.Market v_Market, ItemSalesInfo.World v_World, Type specificType, bool force = true )
 		{
 			ItemSalesInfo[] list = ItemSalesInfo.m_SellingInfo;
 
@@ -819,7 +825,11 @@ namespace Server
 
 					chemist = Chemist( val, v_Market, v_Category );
 
-					if ( ( specificType != null && itemType == specificType ) || ( iSells(val) && v_Market == iMarket(val) && v_Category == iCategory(val) ) )
+					if ( specificType != null && itemType == specificType && ( force || WillDeal( val, m, true, false, iWorld(val), false ) ) )
+					{
+						set = true;
+					}
+					else if ( iSells(val) && v_Market == iMarket(val) && v_Category == iCategory(val) )
 					{
 						set = true;
 					}
@@ -904,6 +914,12 @@ namespace Server
 				val++;
 			}
 
+		}
+
+		public static void GetBuysList( Mobile m, GenericSellInfo LIST, params Type[] specificTypes )
+		{
+			foreach (Type specificType in specificTypes)
+				GetBuysList( m, LIST, ItemSalesInfo.Category.All, ItemSalesInfo.Material.All, ItemSalesInfo.Market.All, ItemSalesInfo.World.None, specificType );
 		}
 
 		public static void GetBuysList( Mobile m, GenericSellInfo LIST, ItemSalesInfo.Category v_Category, ItemSalesInfo.Material v_Material, ItemSalesInfo.Market v_Market, ItemSalesInfo.World v_World, Type specificType, bool force = false )
@@ -1558,7 +1574,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	Armoire	),	176	,	1	,	90	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Carpenter	),
 			new ItemSalesInfo( typeof(	DDRelicArmor	),	1	,	0	,	200	,	false	,	false	,	World.None	,	Category.Armor	,	Material.Metal	,	Market.Smith	),
 			new ItemSalesInfo( typeof(	ArmsCrate	),	400	,	5	,	75	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Smith	),
-			new ItemSalesInfo( typeof(	Arrow	),	2	,	15	,	0	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Bow	),
+			new ItemSalesInfo( typeof(	Arrow	),	3	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Bow	),
 			new ItemSalesInfo( typeof(	DDRelicArts	),	1	,	0	,	200	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Art	),
 			new ItemSalesInfo( typeof(	Artifact_AbysmalGloves	),	5000	,	0	,	0	,	false	,	false	,	World.None	,	Category.Artifact	,	Material.None	,	Market.None	),
 			new ItemSalesInfo( typeof(	Artifact_AchillesShield	),	5000	,	0	,	0	,	false	,	false	,	World.None	,	Category.Artifact	,	Material.None	,	Market.None	),
@@ -2048,7 +2064,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	BoilingCauldronDeed	),	5000	,	1	,	95	,	false	,	false	,	World.None	,	Category.Rare	,	Material.None	,	Market.Death	),
 			new ItemSalesInfo( typeof(	Bokuto	),	21	,	15	,	0	,	false	,	false	,	World.Orient	,	Category.Weapon	,	Material.Wood	,	Market.Monk	),
 			new ItemSalesInfo( typeof(	BolaBall	),	6	,	5	,	80	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Tinker	),
-			new ItemSalesInfo( typeof(	Bolt	),	2	,	60	,	0	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Bow	),
+			new ItemSalesInfo( typeof(	Bolt	),	3	,	60	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Bow	),
 			new ItemSalesInfo( typeof(	Bone	),	20	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Evil	),
 			new ItemSalesInfo( typeof(	BoneArms	),	86	,	3	,	0	,	false	,	false	,	World.None	,	Category.Armor	,	Material.Bone	,	Market.Undertaker	),
 			new ItemSalesInfo( typeof(	BoneChest	),	128	,	3	,	0	,	false	,	false	,	World.None	,	Category.Armor	,	Material.Bone	,	Market.Undertaker	),
@@ -2134,6 +2150,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	Candelabra	),	280	,	1	,	80	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Wax	),
 			new ItemSalesInfo( typeof(	CandelabraStand	),	420	,	1	,	95	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Tinker	),
 			new ItemSalesInfo( typeof(	Candle	),	6	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Wax	),
+			new ItemSalesInfo( typeof(	TrinketCandle	),	16	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Wax	),
 			new ItemSalesInfo( typeof(	CandleLarge	),	140	,	1	,	80	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Wax	),
 			new ItemSalesInfo( typeof(	CandleLong	),	160	,	1	,	80	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Wax	),
 			new ItemSalesInfo( typeof(	CandleReligious	),	240	,	1	,	80	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Wax	),
@@ -2338,29 +2355,6 @@ namespace Server
 			new ItemSalesInfo( typeof(	DeamonHeadB	),	600	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Death	),
 			new ItemSalesInfo( typeof(	DeamonHeadC	),	600	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Death	),
 			new ItemSalesInfo( typeof(	DeathKnightSpellbook	),	600	,	0	,	0	,	false	,	false	,	World.None	,	Category.Book	,	Material.None	,	Market.Death	),
-			new ItemSalesInfo( typeof(	BackpackArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	BloodyWaterArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	BooksFaceDownArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	BooksNorthArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	BooksWestArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	BottleArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	BrazierArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	CocoonArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	DamagedBooksArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	EggCaseArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	GruesomeStandardArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	LampPostArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	LeatherTunicArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	RockArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	RuinedPaintingArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	SaddleArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	SkinnedDeerArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	SkinnedGoatArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	SkullCandleArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	StretchedHideArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	StuddedLeggingsArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	StuddedTunicArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	TarotCardsArtifact	),	1	,	0	,	101	,	false	,	true	,	World.None	,	Category.Artifact	,	Material.None	,	Market.Thief	),
 			new ItemSalesInfo( typeof(	DecoBlackmoor	),	1000	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Alchemy	),
 			new ItemSalesInfo( typeof(	DecoBloodspawn	),	1000	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Alchemy	),
 			new ItemSalesInfo( typeof(	DecoBottlesOfLiquor	),	5000	,	1	,	95	,	false	,	false	,	World.None	,	Category.Tavern	,	Material.None	,	Market.Inn	),
@@ -2707,7 +2701,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	AlienHides	),	16	,	0	,	80	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Tanner	),
 			new ItemSalesInfo( typeof(	HikingBoots	),	800	,	15	,	0	,	false	,	false	,	World.None	,	Category.MonsterRace	,	Material.Leather	,	Market.Shoes	),
 			new ItemSalesInfo( typeof(	Hinge	),	2	,	5	,	80	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Tinker	),
-			new ItemSalesInfo( typeof(	HiveTool	),	100	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Wax	),
+			new ItemSalesInfo( typeof(	HiveTool	),	23	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Wax	),
 			new ItemSalesInfo( typeof(	HolidayBell	),	280	,	3	,	0	,	false	,	false	,	World.None	,	Category.Christmas	,	Material.None	,	Market.None	),
 			new ItemSalesInfo( typeof(	HolidayBells	),	560	,	3	,	0	,	false	,	false	,	World.None	,	Category.Christmas	,	Material.None	,	Market.None	),
 			new ItemSalesInfo( typeof(	HolidayTreeDeed	),	860	,	3	,	0	,	false	,	false	,	World.None	,	Category.Christmas	,	Material.None	,	Market.None	),
@@ -2828,6 +2822,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	Lance	),	34	,	15	,	0	,	false	,	false	,	World.None	,	Category.Weapon	,	Material.Metal	,	Market.Smith	),
 			new ItemSalesInfo( typeof(	LandmineSetup	),	600	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Tinker	),
 			new ItemSalesInfo( typeof(	Lantern	),	2	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Provisions	),
+			new ItemSalesInfo( typeof(	TrinketLantern	),	2	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Provisions	),
 			new ItemSalesInfo( typeof(	LapHarp	),	21	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Bard	),
 			new ItemSalesInfo( typeof(	LargeBackpack	),	10	,	5	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Provisions	),
 			new ItemSalesInfo( typeof(	LargeBag	),	10	,	5	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Provisions	),
@@ -3580,7 +3575,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	Sextant	),	13	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Sailor	),
 			new ItemSalesInfo( typeof(	MagicSextant	),	1000	,	5	,	0	,	false	,	false	,	World.Underworld	,	Category.None	,	Material.None	,	Market.Sailor	),
 			new ItemSalesInfo( typeof(	SextantParts	),	5	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Tinker	),
-			new ItemSalesInfo( typeof(	Shaft	),	3	,	60	,	0	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Bow	),
+			new ItemSalesInfo( typeof(	Shaft	),	3	,	60	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Bow	),
 			new ItemSalesInfo( typeof(	ShantyTools	),	400	,	5	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Home	),
 			new ItemSalesInfo( typeof(	SheafOfHay	),	2	,	15	,	0	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Mill	),
 			new ItemSalesInfo( typeof(	ShepherdsCrook	),	20	,	15	,	0	,	false	,	false	,	World.None	,	Category.Weapon	,	Material.Wood	,	Market.Stable	),
@@ -3670,7 +3665,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	SpecialFishingNet	),	160	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Fisherman	),
 			new ItemSalesInfo( typeof(	SpecialHairDye	),	500	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Barber	),
 			new ItemSalesInfo( typeof(	SpecialSeaweed	),	80	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Fisherman	),
-			new ItemSalesInfo( typeof(	Spellbook	),	18	,	15	,	0	,	false	,	false	,	World.None	,	Category.Book	,	Material.None	,	Market.Mage	),
+			new ItemSalesInfo( typeof(	Spellbook	),	100	,	15	,	0	,	false	,	false	,	World.None	,	Category.Book	,	Material.None	,	Market.Mage	),
 			new ItemSalesInfo( typeof(	SphinxStatue	),	500	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Stone	),
 			new ItemSalesInfo( typeof(	SpiderRobe	),	40	,	5	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.Cloth	,	Market.Tailor	),
 			new ItemSalesInfo( typeof(	SpikedClub	),	28	,	15	,	0	,	false	,	false	,	World.None	,	Category.Weapon	,	Material.Metal	,	Market.Smith	),
@@ -3795,6 +3790,8 @@ namespace Server
 			new ItemSalesInfo( typeof(	StrawHat	),	7	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.Cloth	,	Market.Tailor	),
 			new ItemSalesInfo( typeof(	StuddedArms	),	87	,	15	,	0	,	false	,	false	,	World.None	,	Category.Armor	,	Material.Leather	,	Market.Leather	),
 			new ItemSalesInfo( typeof(	StuddedBustierArms	),	120	,	15	,	0	,	false	,	false	,	World.None	,	Category.Armor	,	Material.Leather	,	Market.Leather	),
+			new ItemSalesInfo( typeof(	HideChest	),	128	,	15	,	0	,	false	,	false	,	World.None	,	Category.Armor	,	Material.Leather	,	Market.Leather	),
+			new ItemSalesInfo( typeof(	StuddedHideChest	),	128	,	15	,	0	,	false	,	false	,	World.None	,	Category.Armor	,	Material.Leather	,	Market.Leather	),
 			new ItemSalesInfo( typeof(	StuddedChest	),	128	,	15	,	0	,	false	,	false	,	World.None	,	Category.Armor	,	Material.Leather	,	Market.Leather	),
 			new ItemSalesInfo( typeof(	StuddedDo	),	130	,	15	,	0	,	false	,	false	,	World.Orient	,	Category.Armor	,	Material.Leather	,	Market.Monk	),
 			new ItemSalesInfo( typeof(	StuddedGloves	),	79	,	15	,	0	,	false	,	false	,	World.None	,	Category.Armor	,	Material.Leather	,	Market.Leather	),
@@ -3850,6 +3847,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	DDRelicGrave	),	1	,	0	,	200	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Evil	),
 			new ItemSalesInfo( typeof(	TomeOfWands	),	800	,	0	,	0	,	false	,	false	,	World.None	,	Category.Wand	,	Material.None	,	Market.Mage	),
 			new ItemSalesInfo( typeof(	Torch	),	8	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Provisions	),
+			new ItemSalesInfo( typeof(	TrinketTorch	),	18	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Provisions	),
 			new ItemSalesInfo( typeof(	Torso	),	20	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Evil	),
 			new ItemSalesInfo( typeof(	TrainingDaemonEastDeed	),	500	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Fighter	),
 			new ItemSalesInfo( typeof(	TrainingDaemonSouthDeed	),	500	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Fighter	),

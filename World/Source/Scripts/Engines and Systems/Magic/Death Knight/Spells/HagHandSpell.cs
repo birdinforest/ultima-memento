@@ -1,32 +1,36 @@
 using System;
-using System.Collections;
 using Server.Network;
 using Server.Items;
 using Server.Targeting;
-using Server.Spells.Necromancy;
-using Server.Spells.Chivalry;
-using Server.Spells.Fourth;
-using Server.Mobiles;
 using System.Collections.Generic;
-using Server.Misc;
-using Server.Localization;
 
 namespace Server.Spells.DeathKnight
 {
 	public class HagHandSpell : DeathKnightSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Hag Hand", "Haures Manibus",
-				227,
-				9031
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 754,
+				IconGraphic = 0x5002,
+				Name = "Hag Hand",
+				PowerWords = "Haures Manibus",
+				Description = "Your hand holds the powers of a hag, where it can remove curses from items and others.",
+				ManaCost = 8,
+				TithingCost = 7,
+				MinSkill = 5,
+				TargetType = TargetFlags.None
+			},
+			227,
+			9031
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1 ); } }
-		public override double RequiredSkill{ get{ return 5.0; } }
-		public override int RequiredMana{ get{ return 8; } }
-		public override int RequiredTithing{ get{ return 7; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
 
-		public HagHandSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public HagHandSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 
@@ -122,7 +126,7 @@ namespace Server.Spells.DeathKnight
 				caster.PlaySound( 0x1DF );
 
 				if ( o is BookBox || o is CurseItem )
-					caster.SendMessage( StringCatalog.Resolve( caster.Account, "You fail to lift the curse." ) );
+					caster.SendMessage("You fail to lift the curse.");
 			}
 
 			FinishSequence();

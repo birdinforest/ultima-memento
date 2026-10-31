@@ -36,11 +36,8 @@ namespace Server.Spells.Elementalism
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.CheckReflect( (int)this.Circle, Caster, ref m );
-
-				int nBenefit = (int)(Caster.Skills[CastSkill].Value / 5);
-
-				double damage = GetNewAosDamage( 48, 1, 5, m ) + nBenefit;
+				Mobile source = Caster;
+				bool hitThrough = SpellHelper.ResolveMagicDefense( (int)this.OneBasedCircle, ref source, ref m );
 
 				string elm = ElementalSpell.GetElement( Caster );
 
@@ -49,7 +46,6 @@ namespace Server.Spells.Elementalism
 					Point3D blast6w = new Point3D( m.X+2, m.Y+2, m.Z+15 );
 					Effects.SendLocationEffect( blast6w, m.Map, 0x5492, 30, 10, 0, 0 );
 					m.PlaySound( 0x64F );
-					SpellHelper.Damage( this, m, damage, 30, 0, 0, 0, 70 );
 				}
 				else if ( elm == "earth" )
 				{
@@ -58,7 +54,6 @@ namespace Server.Spells.Elementalism
 					blast6w = new Point3D( m.X, m.Y, m.Z+5 );
 					Effects.SendLocationEffect( blast6w, m.Map, 0x554F, 30, 10, 0, 0 );
 					m.PlaySound( 0x5CC );
-					SpellHelper.Damage( this, m, damage, 30, 0, 0, 70, 0 );
 				}
 				else if ( elm == "fire" )
 				{
@@ -69,15 +64,31 @@ namespace Server.Spells.Elementalism
 					blast6w = new Point3D( m.X+2, m.Y+2, m.Z+15 );
 					Effects.SendLocationEffect( blast6w, m.Map, 0x3709, 30, 10, 0, 0 );
 					m.PlaySound( 0x208 );
-					SpellHelper.Damage( this, m, damage, 30, 70, 0, 0, 0 );
 				}
 				else if ( elm == "water" )
 				{
 					Point3D blast6w = new Point3D( m.X+2, m.Y+2, m.Z+12 );
 					Effects.SendLocationEffect( blast6w, m.Map, 0x559A, 30, 10, 0, 0 );
 					m.PlaySound( 0x64B );
-					AddWater( m );
-					SpellHelper.Damage( this, m, damage, 30, 0, 70, 0, 0 );
+				}
+
+				if ( hitThrough )
+				{
+					int nBenefit = (int)(Caster.Skills[CastSkill].Value / 5);
+
+					double damage = GetNewAosDamage( 48, 1, 5, m ) + nBenefit;
+
+					if ( elm == "air" )
+						SpellHelper.Damage( this, m, damage, 30, 0, 0, 0, 70 );
+					else if ( elm == "earth" )
+						SpellHelper.Damage( this, m, damage, 30, 0, 0, 70, 0 );
+					else if ( elm == "fire" )
+						SpellHelper.Damage( this, m, damage, 30, 70, 0, 0, 0 );
+					else if ( elm == "water" )
+					{
+						AddWater( m );
+						SpellHelper.Damage( this, m, damage, 30, 0, 70, 0, 0 );
+					}
 				}
 			}
 

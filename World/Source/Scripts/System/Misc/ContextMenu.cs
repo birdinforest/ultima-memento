@@ -102,21 +102,7 @@ namespace Server.ContextMenus
 
 		public override void OnClick()
 		{
-			int cyc = 20 - m_From.Thirst + 1;
-
-			while ( cyc > 0 )
-			{
-				cyc--;
-
-				if ( m_Drink.Deleted || !m_Drink.Movable || !m_From.CheckAlive() || !m_Drink.ValidateUse( m_From, true ) )
-					return;
-
-				m_Drink.Pour_OnTarget( m_From, m_From );
-
-				if ( cyc > 1 && ( m_From.Thirst > 20 || m_Drink.IsEmpty ) )
-					cyc = 1;
-
-			}
+			m_Drink.DrinkMax( m_From );
 		}
 	}
 

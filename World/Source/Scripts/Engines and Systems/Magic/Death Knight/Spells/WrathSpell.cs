@@ -1,28 +1,36 @@
 using System;
 using System.Collections;
-using Server.Network;
-using Server.Items;
 using Server.Targeting;
-using Server.Regions;
 using Server.Mobiles;
 
 namespace Server.Spells.DeathKnight
 {
 	public class WrathSpell : DeathKnightSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Wrath", "Zagan Ira",
-				233,
-				9042,
-				false
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 763,
+				IconGraphic = 0x2E,
+				Name = "Wrath",
+				PowerWords = "Zagan Ira",
+				Description = "The death knight unleashes the forces of hell unto his nearby enemies, causing much damage.",
+				ManaCost = 44,
+				TithingCost = 70,
+				MinSkill = 50,
+				TargetType = TargetFlags.Harmful
+			},
+			233,
+			9042,
+			false
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1 ); } }
-		public override int RequiredTithing{ get{ return 70; } }
-		public override double RequiredSkill{ get{ return 50.0; } }
-		public override int RequiredMana{ get{ return 44; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public WrathSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public WrathSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 

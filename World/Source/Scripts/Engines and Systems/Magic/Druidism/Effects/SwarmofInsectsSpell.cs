@@ -30,24 +30,28 @@ namespace Server.Spells.Herbalist
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.CheckReflect( 7, Caster, ref m );
-
-				CheckResisted( m ); // Check magic resist for skill, but do not use return value
+				Mobile source = Caster;
+				bool hitThrough = SpellHelper.ResolveMagicDefense( 7, ref source, ref m );
 
 				m.FixedParticles( 0x91B, 1, 240, 9916, 0, 3, EffectLayer.Head );
 				m.PlaySound( 0x1E5 );
 
-				double damage = ((Caster.Skills[CastSkill].Value + m.Skills[DamageSkill].Value) / 10) + (int)(Server.Items.BasePotion.EnhancePotions( m )/2);
+				if ( hitThrough )
+				{
+					CheckResisted( m ); // Check magic resist for skill, but do not use return value
 
-				if ( damage < 1 )
-					damage = 1;
+					double damage = ((Caster.Skills[CastSkill].Value + m.Skills[DamageSkill].Value) / 10) + (int)(Server.Items.BasePotion.EnhancePotions( m )/2);
 
-				if ( m_Table.Contains( m ) )
-					damage /= 10;
-				else
-					new InternalTimer( m, damage * 0.5 ).Start();
+					if ( damage < 1 )
+						damage = 1;
 
-				SpellHelper.Damage( this, m, damage );
+					if ( m_Table.Contains( m ) )
+						damage /= 10;
+					else
+						new InternalTimer( m, damage * 0.5 ).Start();
+
+					SpellHelper.Damage( this, m, damage );
+				}
 			}
 
 			FinishSequence();

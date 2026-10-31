@@ -1,26 +1,33 @@
 using System;
-using System.Collections;
 using Server.Targeting;
-using Server.Network;
-using Server.Mobiles;
-using Server.Items;
 
 namespace Server.Spells.DeathKnight
 {
 	public class StrikeSpell : DeathKnightSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Strike", "Naberius Impetus",
-				230,
-				9022
-			);
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+			new SpellDefinition
+			{
+				SpellID = 761,
+				IconGraphic = 0x12,
+				Name = "Strike",
+				PowerWords = "Naberius Impetus",
+				Description = "The death knight unleashes the forces of hell unto his nearby enemies, causing much damage.",
+				ManaCost = 12,
+				TithingCost = 14,
+				MinSkill = 10,
+				TargetType = TargetFlags.Harmful
+			},
+			230,
+			9022
+		);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1 ); } }
-		public override int RequiredTithing{ get{ return 14; } }
-		public override double RequiredSkill{ get{ return 10.0; } }
-		public override int RequiredMana{ get{ return 12; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
 
-		public StrikeSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public StrikeSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 

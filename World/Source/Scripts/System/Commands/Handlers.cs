@@ -34,7 +34,7 @@ namespace Server.Commands
 
 			Register( "ClearFacet", AccessLevel.Administrator, new CommandEventHandler( ClearFacet_OnCommand ) );
 
-			Register( "Where", AccessLevel.Counselor, new CommandEventHandler( Where_OnCommand ) );
+			Register( "Where", AccessLevel.Player, new CommandEventHandler( Where_OnCommand ) );
 
 			Register( "AutoPageNotify", AccessLevel.Counselor, new CommandEventHandler( APN_OnCommand ) );
 			Register( "APN", AccessLevel.Counselor, new CommandEventHandler( APN_OnCommand ) );
@@ -45,7 +45,7 @@ namespace Server.Commands
 
 			Register( "Stuck", AccessLevel.Counselor, new CommandEventHandler( Stuck_OnCommand ) );
 
-			Register( "Help", AccessLevel.Player, new CommandEventHandler( Help_OnCommand ) );
+			Register( "Commands", AccessLevel.Player, new CommandEventHandler( Commands_OnCommand ) );
 
 			Register( "Save", AccessLevel.Administrator, new CommandEventHandler( Save_OnCommand ) );
 
@@ -924,9 +924,9 @@ namespace Server.Commands
 			}
 		}
 
-		[Usage( "Help" )]
+		[Usage( "Commands" )]
 		[Description( "Lists all available commands." )]
-		public static void Help_OnCommand( CommandEventArgs e )
+		public static void Commands_OnCommand( CommandEventArgs e )
 		{
 			Mobile m = e.Mobile;
 
@@ -979,6 +979,14 @@ namespace Server.Commands
 		{
 			BroadcastMessage( AccessLevel.Player, 0x482, String.Format( "Staff message from {0}:", e.Mobile.Name ) );
 			BroadcastMessage( AccessLevel.Player, 0x482, e.ArgString );
+
+			var overhead = string.Format( "{0}: {1}", e.Mobile.Name, e.ArgString );
+			foreach ( var state in NetState.Instances )
+			{
+				if (state == null || state.Mobile == null) continue;
+
+				state.Mobile.LocalOverheadMessage( MessageType.Regular, 32, false, overhead );
+			}
 		}
 
 		public static void BroadcastMessage ( AccessLevel ac, int hue, string message ) 

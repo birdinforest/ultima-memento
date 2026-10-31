@@ -1,34 +1,40 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Server;
 using Server.Mobiles;
-using Server.Network;
-using Server.Items;
-using Server.Targeting;
 using Server.Gumps;
 using Server.Spells.Necromancy;
-using Server.Regions;
+using Server.Targeting;
 
 namespace Server.Spells.Chivalry
 {
 	public class NobleSacrificeSpell : PaladinSpell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Noble Sacrifice", "Dium Prostra",
+		public static readonly SpellInfo SpellInfo = new SpellInfo(
+				new SpellDefinition
+				{
+					SpellID = 207,
+					IconGraphic = 0x5107,
+					Name = "Noble Sacrifice",
+					PowerWords = 1060725, // Dium Prostra
+					Description = 1061497, // Attempts to Resurrect, Cure, and Heal all targets in a radius around the caster. If any target is successfully assisted, the Knight’s current Hit Points, Mana, and Stamina are greatly reduced.  Amount of damage healed is affected by the Caster’s Karma.
+					ManaCost = 20,
+					TithingCost = 30,
+					MinSkill = 65,
+					TargetType = TargetFlags.Beneficial,
+				},
 				-1,
 				9002
 			);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1.5 ); } }
 
-		public override double RequiredSkill{ get{ return 65.0; } }
-		public override int RequiredMana{ get{ return 20; } }
-		public override int RequiredTithing{ get{ return 30; } }
-		public override int MantraNumber{ get{ return 1060725; } } // Dium Prostra
+		public override double RequiredSkill{ get{ return SpellInfo.SpellDefinition.MinSkill; } }
+		public override int RequiredMana{ get{ return SpellInfo.SpellDefinition.ManaCost; } }
+		public override int RequiredTithing{ get{ return SpellInfo.SpellDefinition.TithingCost; } }
+		public override int MantraNumber{ get{ return SpellInfo.SpellDefinition.PowerWords.Number; } }
 		public override bool BlocksMovement{ get{ return false; } }
 
-		public NobleSacrificeSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public NobleSacrificeSpell( Mobile caster, Item scroll ) : base( caster, scroll, SpellInfo )
 		{
 		}
 
