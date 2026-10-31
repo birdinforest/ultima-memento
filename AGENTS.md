@@ -577,6 +577,11 @@ When adding a third language (e.g. `zh-Hant`, `ja`):
 This file uses a simple date-stamp comment at the top for tracking. When making substantive updates, add a one-line change note at the bottom of this section.
 
 **Change log:**
+- 2026-10-21: §8.1 — indexed `CU_SIDHE_PADS_MOUNT_DESIGN.md`（启用库希仙灵：四槽治疗坐骑，非精灵穿护垫才能骑）。
+- 2026-10-02: §8.1 — indexed `DRAKKHEN_CRYSTAL_SYSTEM.md`（龙晶：DropRelic 3%、50,000 金交德鲁伊、绑定可骑 Drakkhen）。
+- 2026-09-06: §8.1 — indexed `MURDERER_DISGUISE_TOWN_SELL_DESIGN.md`（红名伪装城镇出售：风险回报变现、不抬全局商人金）。
+- 2026-08-30: §8.1 — indexed `EQUIPMENT_DURABILITY_BOOST_SYSTEM.md`（提高装备耐久上限：药水、蜂蜡、调和粉、与修理药水分界）。
+- 2026-08-26: §8.1 — indexed `WEAPON_SPECIAL_ABILITY_SYSTEM.md`（武器五档特攻 WeaponAbility：55 招、技能/法力、全武器绑定表）。
 - 2026-10-10: §1 — indexed `World/Documentation/pending-fixes.md`（待修复缺陷记录：Spell Bars ≥700 ID 的 `SpellRegistry` 注册失效致 HolyMan/DeathKnight 法术不可用；Avatar 重生共鸣完成后重生报告仍于每次登录弹出）。
 - 2026-08-23: §8.1 — indexed `CRIMSON_GOLD_CONCORD_NATIONAL_DAY_EVENT_DESIGN.md`（赤金同心节四周活动：账号点数、捐献、水晶、盟约灯进阶、冠军 Boss 与奖励经济）。
 - 2026-08-23: §8.1 — indexed `CRAFTING_TRADES_SYSTEM.md`（工匠/制作机制总览：架构、专柜、掉落 vs 自制、专题交叉索引）。
@@ -705,6 +710,7 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | NPC economy & vendor mechanisms | `memento/game-mechanism/npc-game-mechanisms.md` | Before modifying vendor, buy/sell, black market, shoppe, or service NPC code |
 | Champion spawn system | `memento/game-mechanism/CHAMPION_SPAWN_SYSTEM.md` | Before touching champion/raid spawn logic |
 | Crimson-Gold Concord / National Day four-week event | `memento/game-design-idea/CRIMSON_GOLD_CONCORD_NATIONAL_DAY_EVENT_DESIGN.md` | Before implementing the Concord point ledger, steward NPC, donation/crystal/lamp loops, reward Gump, or Vargos Champion boss |
+| 红名伪装城镇出售 / 法外变现风险回报 | `memento/game-design-idea/MURDERER_DISGUISE_TOWN_SELL_DESIGN.md` | Before changing murderer/vendor sell access, disguise-gated town commerce, or murderer-only merchant purse rules |
 | Gypsy tarot / starting fates | `memento/game-mechanism/GYPSY_TAROT_STARTING_FATES.md` | Before modifying starting-area NPCs or race selection |
 | Trap system (code analysis) | `memento/game-mechanism/trap-system/trap_system_code_analysis.md` | Before modifying trap items or trap-related NPC speech |
 | Magic system docs | `memento/game-mechanism/spell-and-magic/` (8 files) | Before modifying magic, spell, or rune systems |
@@ -715,6 +721,7 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | Avatar core item death / Memory Echo Resonance | `memento/game-mechanism/AVATAR_CORE_ITEM_RESEARCH_RESONANCE_SYSTEM.md` | Before modifying `AvatarCoreItemMigration`, Dormant/Resonance gumps, `SearchBase` dormant branch, or research snapshot merge on rebirth |
 | Death / resurrection / bank tribute | `memento/game-mechanism/death-resurrection-bank-tribute.md` | Before modifying death or tribute handling |
 | Pet taming & Jako system | `memento/game-mechanism/PET_TAMING_AND_JAKO_SYSTEM.md` | Before modifying pet/taming mechanics |
+| 库希仙灵与护垫骑乘 | `memento/game-design-idea/CU_SIDHE_PADS_MOUNT_DESIGN.md` | Before enabling `CuSidhe` spawns, changing its mount gate, or changing `Artifact_PadsOfTheCuSidhe` |
 | Dragon riding scroll / Dragon King / draconic mounts | `memento/game-mechanism/DRAGON_RIDING_SCROLL_SYSTEM.md` | Before modifying `DragonRidingScroll`, `DragonRiding` keys, or `RidingDragon`/`Dragoon`/`GemDragon` mount gate |
 | Dragon King boss | `memento/game-mechanism/DRAGON_KING_SYSTEM.md` | Before modifying `DragonKing`, lucky kills, ManualOfItems relics book, or dragon `DropSpecial` on Great Dragons |
 | ManualOfItems / Relics chest | `memento/game-mechanism/MANUAL_OF_ITEMS_RELICS_SYSTEM.md` | Before modifying `ManualOfItems`, `RelicBoxGump`, `GiveItemBonus`, `Gift*` enchant flow, or boss relic drop tables |
@@ -724,15 +731,19 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | Epic Tribute 个人挑战（`EpicTributeChallenge`） | `memento/game-mechanism/EPIC_TRIBUTE_CHALLENGE_SYSTEM.md` | Before modifying `EpicTributeChallenge.cs`, `SummonItems.EpicChallengeSource`, `BaseRegion` Epic hooks, or GM `[epic-tribute-loc]` |
 | Thief 市场（`Market.Thief`） | `memento/game-mechanism/THIEF_MARKET_SYSTEM.md` | Before modifying `Thief.cs`, `ThiefGuildmaster.cs`, `Market.Thief` rows in `ItemSales.cs`, unlock service, or `ThiefNote` jobs |
 | Dragon egg hatch | `memento/game-mechanism/DRAGON_EGG_SYSTEM.md` | Before modifying `DragonEgg`, Search potions, or hatch-at-vet flow |
+| Drakkhen Crystal / 龙晶 | `memento/game-mechanism/DRAKKHEN_CRYSTAL_SYSTEM.md` | Before modifying `DrakkhenEggRed`/`DrakkhenEggBlack`, `DrakkhenRed`/`DrakkhenBlack`, or the `DropRelic` crystal color branches |
 | Race temptation & potion shelf | `memento/game-mechanism/race-temptation-and-potion-shelf.md` | Before modifying race temptation or potion shelf |
 | Player hazards & threats | `memento/game-mechanism/PLAYER_HAZARDS_AND_THREATS.md` | Before modifying hazard/threat systems |
 | Black Knight NPC / black key / Vault of the Black Knight / Vordo boss / Bottle World of Kuldar | `memento/game-mechanism/BLACK_KNIGHT_VAULT_BOTTLE_WORLD.md` | Before modifying BlackKnight, BlackKnightBox, vault/bottle `QuestTeleporter` (`Build.cs`), Vordo, VordoScroll, GateMoon in Kuldar, or first-entry vs return (Gate 28/29) logic |
+| House mannequin (人偶) | `memento/game-mechanism/MANNEQUIN_SYSTEM.md` | Before modifying Mannequin, MannequinDeed, MannequinOwnerGump, or mannequin hooks in PlayerVendorGumps / InteriorDecorator / BaseHouse.Mannequins |
 | Golem Porter (搬运魔像) system | `memento/game-mechanism/GOLEM_PORTER_SYSTEM.md` | Before modifying GolemPorter, GolemPorterItem, GolemManual, or any porter/pack creature |
 | Treasure Hoard (宝藏堆) | `memento/game-mechanism/TREASURE_HOARD_SYSTEM.md` | Before modifying HoardPiles, HoardTile, HoardPile.MakeHoard, or HoardMinionFamiliar |
 | Crafting & trades (artisan spine: Shoppe, craft loop, drop vs made) | `memento/game-mechanism/CRAFTING_TRADES_SYSTEM.md` | Before analyzing or changing craft economy, player expectations on artisan profitability, or cross-system gear progression |
 | Equipment breakdown (Break Down / Scissors) | `memento/game-mechanism/EQUIPMENT_BREAKDOWN_SYSTEM.md` | Before modifying `BreakDown.cs`, `Scissors.CutUp`, `BaseItemBreakDown`, craft `BreakDown` flags, or `ColorlessFabricBreakdown` |
 | Equipment enhancement (Enhance / Guild / sharpening stones) | `memento/game-mechanism/EQUIPMENT_ENHANCEMENT_SYSTEM.md` | Before modifying `Enhance.cs`, `GuildCraftingProcess`, `AttributeHandler`, sharpening items, or `ResourceCanChange` |
 | PvP / harmful actions / notoriety / murder | `memento/game-mechanism/PVP_COMBAT_SYSTEM.md` | Before modifying player combat, `Mobile_AllowHarmful`, criminal/murder reporting, or region combat rules |
+| Weapon special abilities / 武器五档特攻 | `memento/game-mechanism/WEAPON_SPECIAL_ABILITY_SYSTEM.md` | Before modifying `WeaponAbility`, `SpecialAttackGump`, or any weapon `PrimaryAbility`–`FifthAbility` |
+| Equipment durability boost / 提高装备耐久上限 | `memento/game-mechanism/EQUIPMENT_DURABILITY_BOOST_SYSTEM.md` | Before modifying `DurabilityPotion`, wax jars, `PowderOfTemperament`, or `RepairPotion` |
 | Slayer weapon system | `memento/game-mechanism/SLAYER_WEAPON_SYSTEM.md` | Before modifying slayer mechanics |
 | Endgame boss data & BeefUp | `memento/game-mechanism/ENDGAME_BOSS_ANALYSIS.md` | Before balancing named bosses, champ/world boss stats, or difficulty scaling |
 | Endgame content survey | `memento/game-mechanism/survey_endgame_content.md` | Broad endgame inventory (champs, Avatar, quests, items) |

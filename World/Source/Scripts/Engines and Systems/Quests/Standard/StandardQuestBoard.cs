@@ -10,17 +10,21 @@ namespace Server.Items
 	[Flipable(0x577C, 0x577B)]
 	public class StandardQuestBoard : Item
 	{
-		const string BRAVE_ADVENTURERS_TITLE = "SEEKING BRAVE ADVENTURERS";
-
-		// Localization helper (Memento zh-Hans): resolve per-account language, fall back to English.
+		// Localization helper: logical shotkeys (quest.board.*) or legacy hash English.
 		private static string ResolveText( Mobile from, string text )
 		{
+			if ( text != null && text.StartsWith( "quest.board." ) )
+				return StringCatalog.ResolveByKey( from.Account, text );
+
 			string lang = AccountLang.GetLanguageCode( from.Account );
 			return StringCatalog.TryResolve( lang, text ) ?? text;
 		}
 
 		private static string ResolveFormat( Mobile from, string format, params object[] args )
 		{
+			if ( format != null && format.StartsWith( "quest.board." ) )
+				return StringCatalog.ResolveFormatByKey( from.Account, format, args );
+
 			return string.Format( ResolveText( from, format ), args );
 		}
 
@@ -52,7 +56,7 @@ namespace Server.Items
 				var status = StandardQuestFunctions.QuestStatus( e );
 				if (string.IsNullOrWhiteSpace(status))
 				{
-					e.PrivateOverheadMessage(MessageType.Regular, 1150, false, ResolveText( e, "Your quest is broken." ), e.NetState);
+					e.PrivateOverheadMessage(MessageType.Regular, 1150, false, ResolveText( e, "quest.board.quest_broken" ), e.NetState);
 					return;
 				}
 
@@ -67,15 +71,15 @@ namespace Server.Items
 			int nServerQuestTimeAllowed = MyServerSettings.GetTimeBetweenQuests();
 			int nWhenForAnotherQuest = nServerQuestTimeAllowed - nAllowedForAnotherQuest;
 
-			message = ResolveFormat( e, "The townsfolk are looking for brave adventurers, {0}. Adventurers are given bounties in which they must search for and slay, or items they are to search for and retrieve. Each quest must be completed to get another. If you fail at one quest, the townsfolk will not grant another unless reparations are given. The more famous an adventurer, the better chance to get a high priced bounty or valuable item to find. Of course the more gold for a reward, usually means how difficult the quest may be.<br><br>", e.Name );
-			message += ResolveText( e, "These quests do not send you to a land you have never been, but they may send you to any dungeon in lands you have traveled. If you do not know the location of a particular place, you had better begin your exploration of such areas. Any other details of the quest can be read in the quest log (typing '[quests'). When such a quest is completed, return to any of these bulletin boards and select that you are 'Done'. You will be rewarded with some gold and fame. You will gain some karma unless your karma is locked. In that case, you will lose karma instead.<br><br>" );
+			message = ResolveFormat( e, "quest.board.intro_para1", e.Name );
+			message += ResolveText( e, "quest.board.intro_para2" );
 
 			// Quest on cooldown
 			if ( 0 < nWhenForAnotherQuest )
 			{
-				message += TextDefinition.GetColorizedText(ResolveFormat(e, "There are no quests at the moment. Check back in {0} minutes.", nWhenForAnotherQuest), HtmlColors.MUSTARD);
+				message += TextDefinition.GetColorizedText(ResolveFormat(e, "quest.board.no_quests_cooldown", nWhenForAnotherQuest), HtmlColors.MUSTARD);
 
-				e.SendGump( new BoardGump( e, ResolveText( e, BRAVE_ADVENTURERS_TITLE ), message, "#e9e9e9", false ) );
+				e.SendGump( new BoardGump( e, ResolveText( e, "quest.board.title" ), message, "#e9e9e9", false ) );
 				return;
 			}
 
@@ -84,13 +88,13 @@ namespace Server.Items
 
 		private void AbandonQuestPrompt( Mobile e, string questStatus )
 		{
-			var message = ResolveText( e, "You are currently on a quest that should not be too difficulty for someone as hardy as yourself. If you feel this quest is beyond your bravery, you may never get asked to do another unless reparations are paid. If you wish to rid yourself of this quest, then you must pay the reward offered to restore your reputation with the townsfolk.<br><br>" );
+			var message = ResolveText( e, "quest.board.abandon_intro" );
 			message += string.Format("{0}.", TextDefinition.GetColorizedText(questStatus, HtmlColors.MUSTARD));
 
 			var cost = StandardQuestFunctions.QuestFailure( e );
 			e.SendGump( new BoardGump(
-				e, ResolveText( e, BRAVE_ADVENTURERS_TITLE ), message, "#e9e9e9", false, null, null,
-				TextDefinition.GetColorizedText(ResolveFormat(e, "Concede and pay {0:n0} gold in reparations", cost ), HtmlColors.RED),
+				e, ResolveText( e, "quest.board.title" ), message, "#e9e9e9", false, null, null,
+				TextDefinition.GetColorizedText(ResolveFormat(e, "quest.board.concede_pay", cost ), HtmlColors.RED),
 				() => {
 					var paid = e.AccessLevel >= AccessLevel.GameMaster;
 
@@ -114,7 +118,7 @@ namespace Server.Items
 					}
 					else
 					{
-						e.SendMessage(ResolveText(e, "You cannot afford to pay the reparations."));
+						e.SendMessage(ResolveText(e, "quest.board.cannot_afford_reparations"));
 					}
 
 					Timer.DelayCall(TimeSpan.FromMilliseconds( 500 ), () => OnDoubleClick( e ));
@@ -125,8 +129,8 @@ namespace Server.Items
 		private void OfferQuest( Mobile e, string message )
 		{
 			e.SendGump( new BoardGump(
-				e, ResolveText( e, BRAVE_ADVENTURERS_TITLE ), message, "#e9e9e9", false,
-				TextDefinition.GetColorizedText(ResolveText(e, "Offer your services"), HtmlColors.MUSTARD),
+				e, ResolveText( e, "quest.board.title" ), message, "#e9e9e9", false,
+				TextDefinition.GetColorizedText(ResolveText(e, "quest.board.offer_services"), HtmlColors.MUSTARD),
 				() => {
 					var minFame = e.Fame;
 					var maxFame = Utility.RandomMinMax( minFame, minFame * 2 ) + 2000;
@@ -142,7 +146,7 @@ namespace Server.Items
 					var status = StandardQuestFunctions.QuestStatus( e );
 					if (string.IsNullOrWhiteSpace( status ) )
 					{
-						message += TextDefinition.GetColorizedText(ResolveText(e, "There are no quests at the moment."), HtmlColors.MUSTARD);
+						message += TextDefinition.GetColorizedText(ResolveText(e, "quest.board.no_quests"), HtmlColors.MUSTARD);
 						Timer.DelayCall(TimeSpan.FromMilliseconds( 500 ), () => OnDoubleClick( e ));
 					}
 					else
@@ -158,12 +162,12 @@ namespace Server.Items
 		{
 			if ( StandardQuestFunctions.DidQuest( e ) < 1 ) return false;
 
-			var message = ResolveFormat( e, "The townsfolk are looking for brave adventurers, {0}. Adventurers are given bounties in which they must search for and slay, or items they are to search for and retrieve. Each quest must be completed to get another. If you fail at one quest, the townsfolk will not grant another unless reparations are given. The more famous an adventurer, the better chance to get a high priced bounty or valuable item to find. Of course the more gold for a reward, usually means how difficult the quest may be.<br><br>", e.Name );
-			message += ResolveText( e, "These quests do not send you to a land you have never been, but they may send you to any dungeon in lands you have traveled. If you do not know the location of a particular place, you had better begin your exploration of such areas. Any other details of the quest can be read in the quest log (typing '[quests'). When such a quest is completed, return to any of these bulletin boards and select that you are 'Done'. You will be rewarded with some gold and fame. You will gain some karma unless your karma is locked. In that case, you will lose karma instead.<br><br>" );
+			var message = ResolveFormat( e, "quest.board.intro_para1", e.Name );
+			message += ResolveText( e, "quest.board.intro_para2" );
 
 			e.SendGump( new BoardGump(
-				e, ResolveText( e, BRAVE_ADVENTURERS_TITLE ), message, "#e9e9e9", false,
-				TextDefinition.GetColorizedText(ResolveText(e, "Collect your reward"), HtmlColors.MUSTARD),
+				e, ResolveText( e, "quest.board.title" ), message, "#e9e9e9", false,
+				TextDefinition.GetColorizedText(ResolveText(e, "quest.board.collect_reward"), HtmlColors.MUSTARD),
 				() => StandardQuestFunctions.PayAdventurer( e ),
 				null, null)
 			);

@@ -49,11 +49,9 @@ namespace Server.Items
 			base.AddNameProperty( list );
 		}
 
-		// Memento zh-Hans: resolve per-account language, fall back to English.
-		private static string ResolveText( Mobile from, string text )
+		private static string ResolveText( Mobile from, string key )
 		{
-			string lang = AccountLang.GetLanguageCode( from.Account );
-			return StringCatalog.TryResolve( lang, text ) ?? text;
+			return StringCatalog.ResolveByKey( from != null ? from.Account : null, key );
 		}
 		private bool m_HasSecondaryEffect;
 		private PotionEffect m_SecondaryEffect;
@@ -278,31 +276,31 @@ namespace Server.Items
 
 			if ( from == null || from.Deleted || !from.Alive )
 			{
-				message = ResolveText( from, "You cannot do that now." );
+				message = ResolveText( from, "trap.trapkit.cannot_now" );
 				return false;
 			}
 
 			if ( !IsChildOf( from.Backpack ) )
 			{
-				message = ResolveText( from, "These tools must be in your backpack to use." );
+				message = ResolveText( from, "trap.trapkit.backpack" );
 				return false;
 			}
 
 			if ( Limits <= 0 )
 			{
-				message = ResolveText( from, "Your trapping tools have no uses remaining." );
+				message = ResolveText( from, "trap.trapkit.no_uses" );
 				return false;
 			}
 
 			if ( !from.Region.AllowHarmful( from, from ) )
 			{
-				message = ResolveText( from, "That doesn't feel like a good idea." );
+				message = ResolveText( from, "trap.trapkit.badidea" );
 				return false;
 			}
 
 			if ( from.Skills[SkillName.RemoveTrap].Value <= 0 )
 			{
-				message = ResolveText( from, "You cannot figure out how these tools work!" );
+				message = ResolveText( from, "trap.trapkit.cantfigure" );
 				return false;
 			}
 
@@ -318,26 +316,26 @@ namespace Server.Items
 
 			if ( map == null || map == Map.Internal || from.Map != map )
 			{
-				message = ResolveText( from, "You cannot place a trap there." );
+				message = ResolveText( from, "trap.trapkit.cannot_place" );
 				return false;
 			}
 
 			if ( !from.InRange( loc, 2 ) )
 			{
-				message = ResolveText( from, "That location is too far away." );
+				message = ResolveText( from, "trap.trapkit.too_far" );
 				return false;
 			}
 
 			if ( !from.CanSee( loc ) )
 			{
-				message = ResolveText( from, "You cannot see that location." );
+				message = ResolveText( from, "trap.trapkit.cannot_see" );
 				return false;
 			}
 
 			var region = Region.Find( loc, map );
 			if ( region != null && !region.AllowHarmful( from, from ) )
 			{
-				message = ResolveText( from, "That doesn't feel like a good idea." );
+				message = ResolveText( from, "trap.trapkit.badidea" );
 				return false;
 			}
 
@@ -351,13 +349,13 @@ namespace Server.Items
 
 			if ( traps > 2 )
 			{
-				message = ResolveText( from, "There are too many traps in the area!" );
+				message = ResolveText( from, "trap.trapkit.toomany" );
 				return false;
 			}
 
 			if ( !map.CanFit( loc.X, loc.Y, loc.Z, 16, false, false ) )
 			{
-				message = ResolveText( from, "You cannot place a trap there." );
+				message = ResolveText( from, "trap.trapkit.cannot_place" );
 				return false;
 			}
 
@@ -396,7 +394,7 @@ namespace Server.Items
 		{
 			if ( from.Spell != null )
 			{
-				from.SendMessage( ResolveText( from, "You are already doing something else." ) );
+				from.SendMessage( ResolveText( from, "trap.trapkit.busy" ) );
 				return;
 			}
 
@@ -415,7 +413,7 @@ namespace Server.Items
 				return;
 			}
 
-			from.SendMessage( ResolveText( from, "Where do you wish to place the trap?" ) );
+			from.SendMessage( ResolveText( from, "trap.trapkit.where" ) );
 			from.Target = new PlaceTrapTarget( this );
 		}
 
@@ -434,7 +432,7 @@ namespace Server.Items
 
 				if ( from.Spell != null )
 				{
-					from.SendMessage( ResolveText( from, "You are already doing something else." ) );
+					from.SendMessage( ResolveText( from, "trap.trapkit.busy" ) );
 					return;
 				}
 
@@ -448,7 +446,7 @@ namespace Server.Items
 				var p = targeted as IPoint3D;
 				if ( map == null || map == Map.Internal || p == null)
 				{
-					from.SendMessage( ResolveText( from, "You cannot place a trap there." ) );
+					from.SendMessage( ResolveText( from, "trap.trapkit.cannot_place" ) );
 					return;
 				}
 
@@ -572,7 +570,7 @@ namespace Server.Items
 			public override void OnDisturb( DisturbType type, bool message )
 			{
 				if ( message )
-					Caster.SendMessage( ResolveText( Caster, "You are interrupted while setting the trap." ) );
+					Caster.SendMessage( ResolveText( Caster, "trap.trapkit.interrupted" ) );
 			}
 
 			public override void OnCast()

@@ -1,5 +1,6 @@
 using Server.Items;
 using Server.Prompts;
+using Server.Localization;
 
 namespace Server.Engines.Craft
 {
@@ -23,7 +24,7 @@ namespace Server.Engines.Craft
 		{
 			if (from == null || craftSystem == null || tool == null || craftItem == null) return;
 
-			from.SendMessage("Enter how many to craft (1-10000, ESC to cancel):");
+			from.SendMessage( StringCatalog.ResolveByKey( from.Account, "eng.craft.amount_prompt" ) );
 			from.Prompt = new CraftAmountPrompt(from, craftSystem, tool, craftItem, source);
 		}
 

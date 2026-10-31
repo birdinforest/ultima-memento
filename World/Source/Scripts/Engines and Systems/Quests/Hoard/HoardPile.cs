@@ -94,8 +94,7 @@ namespace Server.Items
 			{
 				Item item = null;
 
-				var rand = Utility.Random( 17 );
-				switch ( rand )
+				switch ( Utility.Random( 17 ) )
 				{
 					case 0:
 						item = Loot.RandomArty();
@@ -131,10 +130,15 @@ namespace Server.Items
 
 						break;
 					case 8: case 9: case 10: case 11:
+						item = Loot.RandomMagicalItem( Server.LootPackEntry.playOrient( from ) );
+						item = LootPackEntry.Enchant( from, 500, item );
+						break;
 					case 12:
-						item = rand == 12 && Utility.RandomBool()
-							? Loot.RandomInstrument()
-							: Loot.RandomMagicalItem( Server.LootPackEntry.playOrient( from ) );
+						// Equal chance: bard instrument vs archer kit (was instrument-only)
+						if ( Utility.RandomBool() )
+							item = Loot.RandomInstrument();
+						else
+							item = Loot.RandomArcherEquipment( Server.LootPackEntry.playOrient( from ) );
 						item = LootPackEntry.Enchant( from, 500, item );
 						break;
 					case 13:
@@ -148,7 +152,7 @@ namespace Server.Items
 						break;
 					case 16:
 						m_Uses = 6; // STOP GIVING LOOT WHEN THEY GET A CONTAINER
-						int chestLuck = Server.Misc.GetPlayerInfo.GetLuckPercent( from.Luck, 10 );
+						int chestLuck = Server.Misc.GetPlayerInfo.LuckyPlayerArtifacts( from.Luck );
 						if ( chestLuck < 3 ){ chestLuck = 3; }
 						if ( chestLuck > 8 ){ chestLuck = 8; }
 						int chestLevel = Utility.RandomMinMax( 3, chestLuck );
@@ -183,8 +187,8 @@ namespace Server.Items
 						int xTraCash = Utility.RandomMinMax( 5000, 8000 );
 
 						LootPackChange.AddGoldToContainer( xTraCash, (LootChest)item, from, chestLevel );
-						if ( GetPlayerInfo.LuckyPlayerArtifacts( from.Luck, 10 ) )
-							((LootChest)item).DropItem( Loot.RandomArty() );
+						int artychance = GetPlayerInfo.LuckyPlayerArtifacts( from.Luck ) + 10;
+						if ( Utility.RandomMinMax( 0, 100 ) < artychance ){ Item artys = Loot.RandomArty(); ((LootChest)item).DropItem( artys ); }
 						break;
 				}
 

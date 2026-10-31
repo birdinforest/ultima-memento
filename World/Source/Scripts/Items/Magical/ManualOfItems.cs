@@ -582,45 +582,9 @@ namespace Server.Items
 			{
 				if ( slay1 > 0 ){ ((BaseWeapon)item).Slayer = ResourceMods.GetSlayer( slay1 ); }
 				if ( slay2 > 0 ){ ((BaseWeapon)item).Slayer2 = ResourceMods.GetSlayer( slay2 ); }
+			}
 
-				if ( val1 == 99 ){ ((BaseWeapon)item).SkillBonuses.SetValues(0, ((BaseWeapon)item).Skill, sk1); }
-				else if ( val1 > 0 ){ ((BaseWeapon)item).SkillBonuses.SetValues(0, ResourceMods.GetSkill( val1 ), sk1); }
-				if ( val2 > 0 ){ ((BaseWeapon)item).SkillBonuses.SetValues(1, ResourceMods.GetSkill( val2 ), sk2); }
-				if ( val3 > 0 ){ ((BaseWeapon)item).SkillBonuses.SetValues(2, ResourceMods.GetSkill( val3 ), sk3); }
-				if ( val4 > 0 ){ ((BaseWeapon)item).SkillBonuses.SetValues(3, ResourceMods.GetSkill( val4 ), sk4); }
-				if ( val5 == 100 ){ ((BaseWeapon)item).Attributes.EnhancePotions = (int)sk5;  }
-				else if ( val5 > 0 ){ ((BaseWeapon)item).SkillBonuses.SetValues(4, ResourceMods.GetSkill( val5 ), sk5); }
-			}
-			else if ( item is BaseArmor )
-			{
-				if ( val1 == 99 && item is BaseShield ){ ((BaseShield)item).SkillBonuses.SetValues(0, SkillName.Parry, sk1); }
-				else if ( val1 > 0 ){ ((BaseArmor)item).SkillBonuses.SetValues(0, ResourceMods.GetSkill( val1 ), sk1); }
-				if ( val2 > 0 ){ ((BaseArmor)item).SkillBonuses.SetValues(1, ResourceMods.GetSkill( val2 ), sk2); }
-				if ( val3 > 0 ){ ((BaseArmor)item).SkillBonuses.SetValues(2, ResourceMods.GetSkill( val3 ), sk3); }
-				if ( val4 > 0 ){ ((BaseArmor)item).SkillBonuses.SetValues(3, ResourceMods.GetSkill( val4 ), sk4); }
-				if ( val5 == 100 ){ ((BaseArmor)item).Attributes.EnhancePotions = (int)sk5; }
-				else if ( val5 > 0 ){ ((BaseArmor)item).SkillBonuses.SetValues(4, ResourceMods.GetSkill( val5 ), sk5); }
-			}
-			else if ( item is BaseClothing )
-			{
-				if ( val1 == 99 ){}
-				else if ( val1 > 0 ){ ((BaseClothing)item).SkillBonuses.SetValues(0, ResourceMods.GetSkill( val1 ), sk1); }
-				if ( val2 > 0 ){ ((BaseClothing)item).SkillBonuses.SetValues(1, ResourceMods.GetSkill( val2 ), sk2); }
-				if ( val3 > 0 ){ ((BaseClothing)item).SkillBonuses.SetValues(2, ResourceMods.GetSkill( val3 ), sk3); }
-				if ( val4 > 0 ){ ((BaseClothing)item).SkillBonuses.SetValues(3, ResourceMods.GetSkill( val4 ), sk4); }
-				if ( val5 == 100 ){ ((BaseClothing)item).Attributes.EnhancePotions = (int)sk5; }
-				else if ( val5 > 0 ){ ((BaseClothing)item).SkillBonuses.SetValues(4, ResourceMods.GetSkill( val5 ), sk5); }
-			}
-			else if ( item is BaseTrinket )
-			{
-				if ( val1 == 99 ){}
-				else if ( val1 > 0 ){ ((BaseTrinket)item).SkillBonuses.SetValues(0, ResourceMods.GetSkill( val1 ), sk1); }
-				if ( val2 > 0 ){ ((BaseTrinket)item).SkillBonuses.SetValues(1, ResourceMods.GetSkill( val2 ), sk2); }
-				if ( val3 > 0 ){ ((BaseTrinket)item).SkillBonuses.SetValues(2, ResourceMods.GetSkill( val3 ), sk3); }
-				if ( val4 > 0 ){ ((BaseTrinket)item).SkillBonuses.SetValues(3, ResourceMods.GetSkill( val4 ), sk4); }
-				if ( val5 == 100 ){ ((BaseTrinket)item).Attributes.EnhancePotions = (int)sk5; }
-				else if ( val5 > 0 ){ ((BaseTrinket)item).SkillBonuses.SetValues(4, ResourceMods.GetSkill( val5 ), sk5); }
-			}
+			GiftSkillBonus.Apply( item, val1, val2, val3, val4, val5, sk1, sk2, sk3, sk4, sk5 );
 		}
 
 		private bool m_AnyoneCanUse;

@@ -6,14 +6,19 @@ using Server.ContextMenus;
 using System.Collections.Generic;
 using Server.Misc;
 using Server.Network;
+using Server.Items;
 using Server.Gumps;
 using Server.Mobiles;
-using Server.Utilities;
+using Server.Commands;
 
 namespace Server.Items
 {
 	public class DrakkhenEggRed : Item
 	{
+		public override bool IsContentLocalized { get { return true; } }
+
+		public override string DisplayNameLocalizationKey => "item.special.drakkhen.crystal";
+
 		[Constructable]
 		public DrakkhenEggRed() : base( 0x1444 )
 		{
@@ -37,22 +42,25 @@ namespace Server.Items
 
 		public override bool OnDragDrop( Mobile from, Item dropped )
 		{          		
-			string sEnd = ".";
+			int iAmount = 0;
 
 			if ( from != null )
 			{
-				int WhatIsNeeded = 50000 - HaveGold;
-				if ( dropped is Gold && WhatIsNeeded > 0 )
+				if ( dropped is Gold && 50000 > HaveGold )
 				{
 					from.SendSound( 0x5AA );
-					var iAmount = ItemUtilities.ConsumeClamped(dropped, WhatIsNeeded);
+					int WhatIsDropped = dropped.Amount;
+					int WhatIsNeeded = 50000 - HaveGold;
+					int WhatIsExtra = WhatIsDropped - WhatIsNeeded; if ( WhatIsExtra < 1 ){ WhatIsExtra = 0; }
+					int WhatIsTaken = WhatIsDropped - WhatIsExtra;
 
-					if ( iAmount > 1 ){ sEnd = "s."; }
+					if ( WhatIsExtra > 0 ){ from.AddToBackpack( new Gold( WhatIsExtra ) ); }
+					iAmount = WhatIsTaken;
 
-					HaveGold += iAmount;
-					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "prop.special.egg.gold.added", iAmount, sEnd ) );
-
-					return dropped.Deleted;
+					HaveGold = HaveGold + iAmount;
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "prop.special.drakkhen.gold.added", iAmount ) );
+					dropped.Delete();
+					return true;
 				}
 			}
 
@@ -65,12 +73,12 @@ namespace Server.Items
 
 			if ( egg.HaveGold < 50000 )
 			{
-				druid.Say( StringCatalog.Resolve( m.Account, "You do not have enough gold for me to perform this service." ) );
+				druid.Say( StringCatalog.ResolveByKey( m.Account, "prop.special.drakkhen.gold.short" ) );
 				return false;
 			}
 			else if ( (m.Followers + 2) > m.FollowersMax )
 			{
-				druid.Say( StringCatalog.Resolve( m.Account, "You have too many followers with you to crack this crystal." ) );
+				druid.Say( StringCatalog.ResolveByKey( m.Account, "prop.special.drakkhen.followers" ) );
 				return false;
 			}
 
@@ -85,7 +93,7 @@ namespace Server.Items
 			drakkhen.ControlOrder = OrderType.Follow;
 
 			LoggingFunctions.LogGenericQuest( m, "has cracked open a drakkhen crystal" );
-			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.Resolve( m.Account, "Your drakkhen is freed." ), m.NetState);
+			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.ResolveByKey( m.Account, "prop.special.drakkhen.freed" ), m.NetState);
 
 			m.PlaySound( 0x041 );
 
@@ -120,15 +128,18 @@ namespace Server.Items
 				this.Resizable=false;
 
 				int need = 50000 - egg.HaveGold;
-				string cost = " Place " + need + " more gold onto the crystal and give it to a druid.";
-				if ( egg.HaveGold >= 50000 ){ cost = " You can now give this to a druid as you have enough gold."; }
+				string title = StringCatalog.ResolveByKey( from.Account, "prop.special.drakkhen.gump.title" );
+				string lore = StringCatalog.ResolveByKey( from.Account, "prop.special.drakkhen.gump.body" );
+				string cost = egg.HaveGold >= 50000
+					? StringCatalog.ResolveByKey( from.Account, "prop.special.drakkhen.gump.ready" )
+					: StringCatalog.ResolveFormatByKey( from.Account, "prop.special.drakkhen.gump.need.gold", need );
 
 				AddPage(0);
 
 				AddImage(0, 0, 7016, Server.Misc.PlayerSettings.GetGumpHue( from ));
-				AddHtml( 12, 11, 420, 20, @"<BODY><BASEFONT Color=" + color + ">DRAKKHEN CRYSTAL</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 12, 11, 420, 20, @"<BODY><BASEFONT Color=" + color + ">" + title + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddButton(546, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
-				AddHtml( 12, 42, 561, 297, @"<BODY><BASEFONT Color=" + color + "><BR><BR><BR>You have heard tales of these gems. These rare crystals come from the mighty dragon-kin beasts in which this was found. Within it lies the infant version of the creature, but only the local druids know how to safely release it from this encased gem. If you could find such a druid, and you want to release the creature, then be ready to give 50000 gold in tribute as the druid will not do such a thing out of the kindness of their heart. When the drakkhen is released, it will be very young and only half as powerful as a drake. You can ride them if you wish but it takes centuries for them to grow as mighty as the one this was taken from, so they will never be as strong. They are rare beasts nonetheless." + cost + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 12, 42, 561, 297, @"<BODY><BASEFONT Color=" + color + "><BR><BR><BR>" + lore + " " + cost + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			}
 
 			public override void OnResponse(NetState state, RelayInfo info)
@@ -144,6 +155,10 @@ namespace Server.Items
 	}
 	public class DrakkhenEggBlack : Item
 	{
+		public override bool IsContentLocalized { get { return true; } }
+
+		public override string DisplayNameLocalizationKey => "item.special.drakkhen.crystal";
+
 		[Constructable]
 		public DrakkhenEggBlack() : base( 0x1444 )
 		{
@@ -167,22 +182,25 @@ namespace Server.Items
 
 		public override bool OnDragDrop( Mobile from, Item dropped )
 		{          		
-			string sEnd = ".";
+			int iAmount = 0;
 
 			if ( from != null )
 			{
-				int WhatIsNeeded = 50000 - HaveGold;
-				if ( dropped is Gold && WhatIsNeeded > 0 )
+				if ( dropped is Gold && 50000 > HaveGold )
 				{
 					from.SendSound( 0x5AA );
-					var iAmount = ItemUtilities.ConsumeClamped(dropped, WhatIsNeeded);
+					int WhatIsDropped = dropped.Amount;
+					int WhatIsNeeded = 50000 - HaveGold;
+					int WhatIsExtra = WhatIsDropped - WhatIsNeeded; if ( WhatIsExtra < 1 ){ WhatIsExtra = 0; }
+					int WhatIsTaken = WhatIsDropped - WhatIsExtra;
 
-					if ( iAmount > 1 ){ sEnd = "s."; }
+					if ( WhatIsExtra > 0 ){ from.AddToBackpack( new Gold( WhatIsExtra ) ); }
+					iAmount = WhatIsTaken;
 
-					HaveGold += iAmount;
-					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "prop.special.egg.gold.added", iAmount, sEnd ) );
-
-					return dropped.Deleted;
+					HaveGold = HaveGold + iAmount;
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "prop.special.drakkhen.gold.added", iAmount ) );
+					dropped.Delete();
+					return true;
 				}
 			}
 
@@ -195,12 +213,12 @@ namespace Server.Items
 
 			if ( egg.HaveGold < 50000 )
 			{
-				druid.Say( StringCatalog.Resolve( m.Account, "You do not have enough gold for me to perform this service." ) );
+				druid.Say( StringCatalog.ResolveByKey( m.Account, "prop.special.drakkhen.gold.short" ) );
 				return false;
 			}
 			else if ( (m.Followers + 2) > m.FollowersMax )
 			{
-				druid.Say( StringCatalog.Resolve( m.Account, "You have too many followers with you to crack this crystal." ) );
+				druid.Say( StringCatalog.ResolveByKey( m.Account, "prop.special.drakkhen.followers" ) );
 				return false;
 			}
 
@@ -215,7 +233,7 @@ namespace Server.Items
 			drakkhen.ControlOrder = OrderType.Follow;
 
 			LoggingFunctions.LogGenericQuest( m, "has cracked open a drakkhen crystal" );
-			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.Resolve( m.Account, "Your drakkhen is freed." ), m.NetState);
+			m.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.ResolveByKey( m.Account, "prop.special.drakkhen.freed" ), m.NetState);
 
 			m.PlaySound( 0x041 );
 
@@ -250,15 +268,18 @@ namespace Server.Items
 				this.Resizable=false;
 
 				int need = 50000 - egg.HaveGold;
-				string cost = " Place " + need + " more gold onto the crystal and give it to a druid.";
-				if ( egg.HaveGold >= 50000 ){ cost = " You can now give this to a druid as you have enough gold."; }
+				string title = StringCatalog.ResolveByKey( from.Account, "prop.special.drakkhen.gump.title" );
+				string lore = StringCatalog.ResolveByKey( from.Account, "prop.special.drakkhen.gump.body" );
+				string cost = egg.HaveGold >= 50000
+					? StringCatalog.ResolveByKey( from.Account, "prop.special.drakkhen.gump.ready" )
+					: StringCatalog.ResolveFormatByKey( from.Account, "prop.special.drakkhen.gump.need.gold", need );
 
 				AddPage(0);
 
 				AddImage(0, 0, 7016, Server.Misc.PlayerSettings.GetGumpHue( from ));
-				AddHtml( 12, 11, 420, 20, @"<BODY><BASEFONT Color=" + color + ">DRAKKHEN CRYSTAL</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 12, 11, 420, 20, @"<BODY><BASEFONT Color=" + color + ">" + title + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddButton(546, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
-				AddHtml( 12, 42, 561, 297, @"<BODY><BASEFONT Color=" + color + "><BR><BR><BR>You have heard tales of these gems. These rare crystals come from the mighty dragon-kin beasts in which this was found. Within it lies the infant version of the creature, but only the local druids know how to safely release it from this encased gem. If you could find such a druid, and you want to release the creature, then be ready to give 50000 gold in tribute as the druid will not do such a thing out of the kindness of their heart. When the drakkhen is released, it will be very young and only half as powerful as a drake. You can ride them if you wish but it takes centuries for them to grow as mighty as the one this was taken from, so they will never be as strong. They are rare beasts nonetheless." + cost + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 12, 42, 561, 297, @"<BODY><BASEFONT Color=" + color + "><BR><BR><BR>" + lore + " " + cost + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			}
 
 			public override void OnResponse(NetState state, RelayInfo info)

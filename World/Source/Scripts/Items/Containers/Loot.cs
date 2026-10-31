@@ -1425,6 +1425,21 @@ namespace Server
 			return Construct( m_QuiverTypes ) as BaseQuiver;
 		}
 
+		/// <summary>
+		/// Archer kit for side-loot tables (hoard / steal): equal chance quiver or ranged weapon.
+		/// </summary>
+		public static Item RandomArcherEquipment( bool playOrient )
+		{
+			if ( Utility.RandomBool() )
+			{
+				BaseQuiver quiver = RandomQuiver();
+				if ( quiver != null )
+					return quiver;
+			}
+
+			return RandomRangedWeapon( playOrient );
+		}
+
 		public static Item RandomScroll( int level )
 		{
 			if ( Utility.Random(100) == 0 )

@@ -58,12 +58,6 @@ namespace Server
 		{
 			if( m == null || m.Deleted || !m.Alive || damage <= 0 )
 				return 0;
-			
-			if (from != null && !from.CanBeHarmful(m))
-			{
-				Console.WriteLine("[WARNING]: Unconsented damage was prevented! ({0} against {1})", from.Name, m.Name);
-				return 0;
-			}
 
 			if( !Core.AOS )
 			{
@@ -107,18 +101,24 @@ namespace Server
 				int resPois = m.PoisonResistance;
 				int resNrgy = m.EnergyResistance;
 
-				if ( 0 < resPois && from != null )
+				if ( from != null && 0 < resPois )
 				{
 					var poisonSkill = Math.Min( 125, from.Skills[SkillName.Poisoning].Value );
 					if ( 0 < poisonSkill )
 					{
 						// 1% per 10 points
 						var pierce = (int) Math.Min( 100, poisonSkill ) / 10;
-						if ( 100 < poisonSkill ) pierce += (int) ( 2 * ( poisonSkill - 100 ) / 5 );
+
+						// 5% at each 5 point breakpoint
+						if (105 <= poisonSkill) pierce += 5;
+						if (110 <= poisonSkill) pierce += 5;
+						if (115 <= poisonSkill) pierce += 5;
+						if (120 <= poisonSkill) pierce += 5;
+						if (125 <= poisonSkill) pierce += 5;
 
 						if ( m.Player ) pierce /= 2; // Reduce pierce by half against players
 
-						// Up to 20% total pierce bonus
+						// Up to 35% total pierce bonus
 						resPois = Math.Max( 0, resPois - pierce );
 					}
 				}
@@ -293,17 +293,13 @@ namespace Server
 
 				if( obj is BaseWeapon )
 				{
-					var weapon = (BaseWeapon)obj;
-					AosAttributes attrs = weapon.Attributes;
+					AosAttributes attrs = ((BaseWeapon)obj).Attributes;
 
 					if( attrs != null )
 						value += attrs[attribute];
 
 					if( attribute == AosAttribute.Luck )
-						value += weapon.GetLuckBonus();
-
-					if (attribute == AosAttribute.AttackChance )
-						value += weapon.GetHitChanceBonus();
+						value += ((BaseWeapon)obj).GetLuckBonus();
 				}
 				else if( obj is BaseArmor )
 				{

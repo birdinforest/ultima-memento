@@ -34,14 +34,14 @@ namespace Server.Items
 
 			if ( SoulOrb.FindActive( from ) != null )
 			{
-				from.SendMessage( StringCatalog.Resolve( from.Account, "The spirits watch you already." ) );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "eng.soul_orb.spirits_watch_already" ) );
 				return;
 			}
 
 			var orb = SoulOrb.Create( from, SoulOrbType.Default );
 			if ( orb != null )
 			{
-				from.SendMessage( StringCatalog.Resolve( from.Account, "You feel the spirits watching you, awaiting to send you back to your body." ) );
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "eng.soul_orb.spirits_watching" ) );
 				orb.Location = Location;
 				Delete();
 			}

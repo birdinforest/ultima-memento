@@ -7,6 +7,7 @@ using Server.Spells;
 using Server.Spells.Fifth;
 using Server.Spells.Shinobi;
 using Server.Misc;
+using Server.Mobiles;
 
 namespace Server.Spells.Seventh
 {
@@ -148,6 +149,31 @@ namespace Server.Spells.Seventh
 			return ( t != null );
 		}
 
+		public static TimeSpan TimeRemaining( Mobile m )
+		{
+			Timer t = (Timer)m_Timers[m];
+
+			if ( t != null )
+				return t.Next - DateTime.Now;
+
+			return TimeSpan.Zero;
+		}
+
+		public static long ExpiryTicks( Mobile m )
+		{
+			Timer t = (Timer)m_Timers[m];
+
+			if ( t != null )
+				return t.Next.Ticks;
+
+			return 0;
+		}
+
+		public static void RemoveEffect( Mobile m )
+		{
+			EndPolymorph( m );
+		}
+
 		private static void EndPolymorph( Mobile m )
 		{
 			if( !m.CanBeginAction( typeof( PolymorphSpell ) ) )
@@ -164,6 +190,8 @@ namespace Server.Spells.Seventh
 
 				BaseArmor.ValidateMobile( m );
 				BaseClothing.ValidateMobile( m );
+
+				MurdererDisguiseSell.NotifyTrickEnded( m );
 			}
 		}
 

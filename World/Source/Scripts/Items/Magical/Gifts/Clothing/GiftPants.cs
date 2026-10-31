@@ -1,5 +1,3 @@
-using Server.Mobiles;
-
 namespace Server.Items
 {
 	public abstract class BaseGiftPants : BaseGiftClothing
@@ -16,16 +14,26 @@ namespace Server.Items
 		{
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public override Layer Layer
-		{ 
-			get
-			{
-				if (false == RootParentEntity is PlayerMobile) return Layer.Pants;
+		public override bool CanEquip( Mobile from )
+		{
+			PantsTemptationLayer.Resolve( this, from );
+			return base.CanEquip( from );
+		}
 
-				return ((PlayerMobile)RootParentEntity).Temptations.CanWearTightPants ? Layer.InnerLegs : Layer.Pants;
-			} 
-			set { base.Layer = value; }
+		public override bool OnEquip( Mobile from )
+		{
+			if ( !base.OnEquip( from ) )
+				return false;
+
+			PantsTemptationLayer.Resolve( this, from );
+			return true;
+		}
+
+		public override void OnRemoved(object parent)
+		{
+			base.OnRemoved(parent);
+
+			Layer = Layer.Pants;
 		}
 
 		public override void Serialize( GenericWriter writer )

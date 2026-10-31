@@ -1,7 +1,76 @@
+using System.Collections.Generic;
 using Server.Mobiles;
 
 namespace Server.Items
 {
+	/// <summary>
+	/// Tight-pants temptation moves clothing pants to InnerLegs so leg armor can share Pants.
+	/// Layer must be resolved in CanEquip (before Mobile.CheckEquip), or multiple pants can stack
+	/// on InnerLegs with doubled bonuses while the paperdoll only shows one.
+	/// </summary>
+	public static class PantsTemptationLayer
+	{
+		public static bool IsTemptationPants( Item item )
+		{
+			return item is BasePants || item is BaseGiftPants || item is BaseLevelPants;
+		}
+
+		public static void Resolve( Item pants, Mobile from )
+		{
+			PlayerMobile pm = from as PlayerMobile;
+			pants.Layer = ( pm != null && pm.Temptations.CanWearTightPants )
+				? Layer.InnerLegs
+				: Layer.Pants;
+		}
+
+		/// <summary>
+		/// One-time recovery for characters that already stacked multiple pants on the same layer.
+		/// Keeps the first worn pants per layer; extras go to the backpack (bonuses cleared via OnRemoved).
+		/// </summary>
+		public static void DeduplicateWornPants( Mobile m )
+		{
+			if ( m == null || m.Items == null )
+				return;
+
+			DeduplicateLayer( m, Layer.InnerLegs );
+			DeduplicateLayer( m, Layer.Pants );
+		}
+
+		private static void DeduplicateLayer( Mobile m, Layer layer )
+		{
+			Item keep = null;
+			List<Item> extras = null;
+
+			for ( int i = 0; i < m.Items.Count; i++ )
+			{
+				Item item = m.Items[i];
+				if ( item == null || item.Layer != layer || !IsTemptationPants( item ) )
+					continue;
+
+				if ( keep == null )
+				{
+					keep = item;
+				}
+				else
+				{
+					if ( extras == null )
+						extras = new List<Item>();
+					extras.Add( item );
+				}
+			}
+
+			if ( extras == null )
+				return;
+
+			for ( int i = 0; i < extras.Count; i++ )
+			{
+				Item pants = extras[i];
+				m.RemoveItem( pants );
+				m.AddToBackpack( pants );
+			}
+		}
+	}
+
 	public abstract class BasePants : BaseClothing
 	{
 		public BasePants( int itemID ) : this( itemID, 0 )
@@ -16,16 +85,26 @@ namespace Server.Items
 		{
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public override Layer Layer
-		{ 
-			get
-			{
-				if (false == RootParentEntity is PlayerMobile) return Layer.Pants;
+		public override bool CanEquip( Mobile from )
+		{
+			PantsTemptationLayer.Resolve( this, from );
+			return base.CanEquip( from );
+		}
 
-				return ((PlayerMobile)RootParentEntity).Temptations.CanWearTightPants ? Layer.InnerLegs : Layer.Pants;
-			} 
-			set { base.Layer = value; }
+		public override bool OnEquip( Mobile from )
+		{
+			if ( !base.OnEquip( from ) )
+				return false;
+
+			PantsTemptationLayer.Resolve( this, from );
+			return true;
+		}
+
+		public override void OnRemoved(object parent)
+		{
+			base.OnRemoved(parent);
+
+			Layer = Layer.Pants;
 		}
 
 		public override void Serialize( GenericWriter writer )

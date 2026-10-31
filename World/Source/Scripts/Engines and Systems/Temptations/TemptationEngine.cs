@@ -42,10 +42,18 @@ namespace Server.Temptation
 
 		public void ApplyContext(PlayerMobile player, PlayerContext context, bool initialLoad = false)
 		{
-			Item pants = player.FindItemOnLayer(Layer.InnerLegs);
-			if (!context.CanWearTightPants && pants != null)
+			if (!context.CanWearTightPants)
 			{
-				player.RemoveItem(pants);
+				// FindItemOnLayer only returns one; stacked InnerLegs pants (pre-fix) must all come off.
+				for (;;)
+				{
+					Item pants = player.FindItemOnLayer(Layer.InnerLegs);
+					if (pants == null || !PantsTemptationLayer.IsTemptationPants(pants))
+						break;
+
+					player.RemoveItem(pants);
+					player.AddToBackpack(pants);
+				}
 			}
 
 			BaseRace playerRace = player.FindItemOnLayer(Layer.Special) as BaseRace;

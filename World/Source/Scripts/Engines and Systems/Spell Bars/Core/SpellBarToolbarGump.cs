@@ -4,6 +4,7 @@ using Server.Gumps;
 using Server.Mobiles;
 using Server.Network;
 using Server.Spells;
+using Server.Localization;
 
 namespace Server.SpellBars
 {
@@ -104,7 +105,7 @@ namespace Server.SpellBars
 			if (spell != null)
 				spell.Cast();
 			else
-				from.SendMessage("That spell was not found.");
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "sys.spellbar.spell_not_found" ) );
 
 			from.SendGump(SpellBarRegistry.CreateToolbarGump(from, _barId));
 		}

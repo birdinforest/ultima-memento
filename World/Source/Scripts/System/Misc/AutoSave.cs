@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Globalization;
+using System.Diagnostics;
 using Server;
 using Server.Commands;
 using System.Collections;
@@ -88,11 +89,14 @@ namespace Server.Misc
 			if ( AutoRestart.Restarting )
 				return;
 
+			Console.WriteLine( "AutoSave: waiting for prior disk write..." );
 			World.WaitForWriteCompletion();
+			Console.WriteLine( "AutoSave: prior disk write complete." );
 
 			try{ Backup(); }
 			catch ( Exception e ) { Console.WriteLine("WARNING: Automatic backup FAILED: {0}", e); }
 
+			Console.WriteLine( "AutoSave: starting world save..." );
 			World.Save( true, permitBackgroundWrite );
 		}
 
@@ -101,6 +105,9 @@ namespace Server.Misc
 
 		private static void Backup()
 		{
+			Stopwatch watch = Stopwatch.StartNew();
+			Console.WriteLine( "Backup: starting..." );
+
 			string root = Path.Combine( Core.BaseDirectory, "Backups/Automatic" );
 
 			if ( !Directory.Exists( root ) )
@@ -118,6 +125,8 @@ namespace Server.Misc
 				string rootBackup = FormatDirectory( root, "Backup", time );
 				string rootOrigin = saves;
 
+				Console.WriteLine( "Backup: creating directories under {0}", rootBackup );
+
 				// Create new directories
 				CreateDirectory( rootBackup );
 				CreateDirectory( rootBackup, "Accounts/" );
@@ -129,6 +138,8 @@ namespace Server.Misc
 				CreateDirectory( rootBackup, "Achievements/" );
 				CreateDirectory( rootBackup, "Craft/" );
 				CreateDirectory( rootBackup, "Player/" );
+
+				Console.WriteLine( "Backup: copying save files..." );
 
 				// Copy files
 				CopyFile( rootOrigin, rootBackup, "Accounts/Accounts.xml" );
@@ -168,11 +179,21 @@ namespace Server.Misc
 
 				CopyFile( rootOrigin, rootBackup, "Player/Temptations.bin" );
 				CopyFile( rootOrigin, rootBackup, "Player/Avatar.bin" );
+
+				Console.WriteLine( "Backup: file copy finished in {0:F2} seconds.", watch.Elapsed.TotalSeconds );
+			}
+			else
+			{
+				Console.WriteLine( "Backup: Saves directory missing, skipping file copy." );
 			}
 
 			ApplyBackupRetention( root );
 
+			Console.WriteLine( "Backup: running Cleanup.RemoveScripts..." );
 			Server.Misc.Cleanup.RemoveScripts();
+
+			watch.Stop();
+			Console.WriteLine( "Backup: done in {0:F2} seconds.", watch.Elapsed.TotalSeconds );
 		}
 
 		private static string Combine( string path1, string path2 )
@@ -201,11 +222,21 @@ namespace Server.Misc
 
 			try
 			{
-				if ( File.Exists( originPath ) )
-					File.Copy( originPath, backupPath );
+				if ( !File.Exists( originPath ) )
+					return;
+
+				FileInfo info = new FileInfo( originPath );
+				Console.WriteLine( "Backup: copying {0} ({1:N0} bytes)...", path, info.Length );
+
+				Stopwatch copyWatch = Stopwatch.StartNew();
+				File.Copy( originPath, backupPath );
+				copyWatch.Stop();
+
+				Console.WriteLine( "Backup: copied {0} in {1:F2} seconds.", path, copyWatch.Elapsed.TotalSeconds );
 			}
-			catch
+			catch ( Exception e )
 			{
+				Console.WriteLine( "Backup: FAILED copying {0}: {1}", path, e.Message );
 			}
 		}
 
@@ -245,7 +276,12 @@ namespace Server.Misc
 
 		private static void ApplyBackupRetention( string root )
 		{
+			Stopwatch watch = Stopwatch.StartNew();
+			Console.WriteLine( "Backup: retention scanning {0}...", root );
+
 			List<KeyValuePair<DirectoryInfo, DateTime>> backups = GetDatedBackups( root );
+
+			Console.WriteLine( "Backup: retention found {0} dated backup(s).", backups.Count );
 
 			if ( backups.Count == 0 )
 				return;
@@ -253,9 +289,13 @@ namespace Server.Misc
 			DateTime today = DateTime.Today;
 			DateTime previousDay = today.AddDays( -1 );
 
-			TrimBackupGroup( backups, today, TodayBackupRetention );
-			TrimBackupGroup( backups, previousDay, PreviousDayBackupRetention );
-			RemoveBackupsOutsideDates( backups, today, previousDay );
+			int deleted = 0;
+			deleted += TrimBackupGroup( backups, today, TodayBackupRetention );
+			deleted += TrimBackupGroup( backups, previousDay, PreviousDayBackupRetention );
+			deleted += RemoveBackupsOutsideDates( backups, today, previousDay );
+
+			watch.Stop();
+			Console.WriteLine( "Backup: retention removed {0} directories in {1:F2} seconds.", deleted, watch.Elapsed.TotalSeconds );
 		}
 
 		private static List<KeyValuePair<DirectoryInfo, DateTime>> GetDatedBackups( string root )
@@ -289,7 +329,7 @@ namespace Server.Misc
 			return false;
 		}
 
-		private static void TrimBackupGroup( List<KeyValuePair<DirectoryInfo, DateTime>> backups, DateTime targetDate, int keepCount )
+		private static int TrimBackupGroup( List<KeyValuePair<DirectoryInfo, DateTime>> backups, DateTime targetDate, int keepCount )
 		{
 			List<KeyValuePair<DirectoryInfo, DateTime>> matching = backups.FindAll(
 				delegate( KeyValuePair<DirectoryInfo, DateTime> entry )
@@ -303,30 +343,53 @@ namespace Server.Misc
 					return b.Value.CompareTo( a.Value );
 				} );
 
+			int deleted = 0;
+
 			for ( int i = keepCount; i < matching.Count; ++i )
-				DeleteDirectorySafe( matching[i].Key );
+			{
+				if ( DeleteDirectorySafe( matching[i].Key ) )
+					++deleted;
+			}
+
+			return deleted;
 		}
 
-		private static void RemoveBackupsOutsideDates( List<KeyValuePair<DirectoryInfo, DateTime>> backups, DateTime today, DateTime previousDay )
+		private static int RemoveBackupsOutsideDates( List<KeyValuePair<DirectoryInfo, DateTime>> backups, DateTime today, DateTime previousDay )
 		{
+			int deleted = 0;
+
 			for ( int i = 0; i < backups.Count; ++i )
 			{
 				DateTime date = backups[i].Value.Date;
 
 				if ( date != today.Date && date != previousDay.Date )
-					DeleteDirectorySafe( backups[i].Key );
+				{
+					if ( DeleteDirectorySafe( backups[i].Key ) )
+						++deleted;
+				}
 			}
+
+			return deleted;
 		}
 
-		private static void DeleteDirectorySafe( DirectoryInfo dir )
+		private static bool DeleteDirectorySafe( DirectoryInfo dir )
 		{
 			try
 			{
-				if ( dir.Exists )
-					dir.Delete( true );
+				if ( !dir.Exists )
+					return false;
+
+				Console.WriteLine( "Backup: retention deleting {0}...", dir.Name );
+				Stopwatch watch = Stopwatch.StartNew();
+				dir.Delete( true );
+				watch.Stop();
+				Console.WriteLine( "Backup: retention deleted {0} in {1:F2} seconds.", dir.Name, watch.Elapsed.TotalSeconds );
+				return true;
 			}
-			catch
+			catch ( Exception e )
 			{
+				Console.WriteLine( "Backup: retention FAILED deleting {0}: {1}", dir.Name, e.Message );
+				return false;
 			}
 		}
 	}

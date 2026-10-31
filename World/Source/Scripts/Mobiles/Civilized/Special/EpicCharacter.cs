@@ -9,6 +9,7 @@ using Server.Items;
 using Server.Gumps;
 using Server.Mobiles;
 using Server.Commands;
+using Server.Targeting;
 using System.Globalization;
 using Server.Localization;
 
@@ -17,9 +18,6 @@ namespace Server.Mobiles
 	public class EpicCharacter : BasePerson
 	{
 		public override bool InitialInnocent{ get{ return true; } }
-		public static Mobile m_Mobile;
-		public static Mobile m_Giver;
-		public static bool m_Pay;
 
 		public string MyAlignment;
 		public string MyItemText;
@@ -97,12 +95,7 @@ namespace Server.Mobiles
 			if ( from == null )
 				return false;
 
-			SpeechGumpEntry entry = new SpeechGumpEntry( from, this );
-
-			if ( !from.CanSee( this ) || !from.InRange( this, entry.Range ) )
-				return false;
-
-			entry.OnClick();
+			new SpeechGumpEntry( from, this ).OnClick();
 			return true;
 		}
 
@@ -318,6 +311,9 @@ namespace Server.Mobiles
 
 		public class SpeechGumpEntry : ContextMenuEntry
 		{
+			private readonly Mobile m_Mobile;
+			private readonly Mobile m_Giver;
+
 			public SpeechGumpEntry( Mobile from, Mobile giver ) : base( 6146, 3 )
 			{
 				m_Mobile = from;
@@ -328,6 +324,9 @@ namespace Server.Mobiles
 			{
 			    if( !( m_Mobile is PlayerMobile ) )
 				return;
+
+				if ( m_Giver == null || m_Giver.Deleted )
+					return;
 				
 				bool PassTest = false;
 
@@ -348,6 +347,10 @@ namespace Server.Mobiles
 
 		public class GiftGumpEntry : ContextMenuEntry
 		{
+			private readonly Mobile m_Mobile;
+			private readonly Mobile m_Giver;
+			private readonly bool m_Pay;
+
 			public GiftGumpEntry( Mobile from, Mobile giver, bool pay ) : base( 6163, 3 )
 			{
 				m_Mobile = from;
@@ -359,6 +362,9 @@ namespace Server.Mobiles
 			{
 			    if( !( m_Mobile is PlayerMobile ) )
 				return;
+
+				if ( m_Giver == null || m_Giver.Deleted )
+					return;
 
 				bool PassTest = false;
 
@@ -384,7 +390,7 @@ namespace Server.Mobiles
 				{
 					if ( ! mobile.HasGump( typeof( EpicBookGump ) ) )
 					{
-						mobile.SendGump( new EpicBookGump( m_Mobile, m_Giver, 0, m_Pay ) );
+						mobile.SendGump( new EpicBookGump( m_Mobile, m_Giver, 0, m_Pay, null ) );
 					}
 				}
 			}
@@ -1112,12 +1118,18 @@ namespace Server.Mobiles
 
 		public class EpicBookGump : Gump
 		{
-			public EpicBookGump( Mobile from, Mobile giver, int page, bool pay ): base( 100, 100 )
+			private readonly Mobile m_Giver;
+			private readonly bool m_Pay;
+			private readonly QuestTome m_QuestTome;
+			private readonly int m_Page;
+
+			public EpicBookGump( Mobile from, Mobile giver, int page, bool pay, QuestTome tome ): base( 100, 100 )
 			{
 				string color = "#cfc990";
-				m_Mobile = from;
 				m_Giver = giver;
 				m_Pay = pay;
+				m_QuestTome = tome;
+				m_Page = page;
 
 				int NumberOfArtifacts = 291;	// SEE LISTING BELOW AND MAKE SURE IT MATCHES THE AMOUNT
 												// DO THIS NUMBER+1 IN THE OnResponse SECTION BELOW
@@ -1215,107 +1227,264 @@ namespace Server.Mobiles
 				AddHtml( x+20, y, 155, 20, @"<BODY><BASEFONT Color=" + color + ">" + Server.Items.ManualOfItems.GetRelicArtyForBook( showItem16, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false); y=s-3;
 			}
 
+			private void Reopen( Mobile from )
+			{
+				from.SendGump( new EpicBookGump( from, m_Giver, m_Page, m_Pay, m_QuestTome ) );
+			}
+
+			private static bool MeetsFameKarma( EpicCharacter tribute, Mobile from )
+			{
+				if ( tribute.MyAlignment == "good" )
+					return from.Fame >= 4000 && from.Karma >= 4000;
+				if ( tribute.MyAlignment == "evil" )
+					return from.Fame >= 4000 && from.Karma <= -4000;
+				if ( tribute.MyAlignment == "neutral" )
+					return from.Fame >= 7000;
+				return false;
+			}
+
+			private static void DeductFameKarma( EpicCharacter tribute, Mobile from )
+			{
+				if ( tribute.MyAlignment == "good" )
+				{
+					from.Fame = from.Fame - 4000;
+					from.Karma = from.Karma - 4000;
+				}
+				else if ( tribute.MyAlignment == "evil" )
+				{
+					from.Fame = from.Fame - 4000;
+					from.Karma = from.Karma + 4000;
+				}
+				else if ( tribute.MyAlignment == "neutral" )
+				{
+					from.Fame = from.Fame - 7000;
+				}
+			}
+
+			private bool TryGrantReward( Mobile from, EpicCharacter tribute, int buttonId )
+			{
+				string sType = Server.Items.ManualOfItems.GetRelicArtyForBook( buttonId, 2 );
+				string sName = Server.Items.ManualOfItems.GetRelicArtyForBook( buttonId, 1 );
+
+				if ( string.IsNullOrEmpty( sName ) || string.IsNullOrEmpty( sType ) )
+					return false;
+
+				Type itemType = ScriptCompiler.FindTypeByName( sType );
+				if ( itemType == null )
+					return false;
+
+				string sArty = sName;
+				if ( sArty == "Talisman, Holy" ){ sArty = "Talisman"; }
+				if ( sArty == "Talisman, Snake" ){ sArty = "Talisman"; }
+				if ( sArty == "Talisman, Totem" ){ sArty = "Talisman"; }
+				sArty = sArty + " " + tribute.MyItemText;
+
+				Item reward = (Item)Activator.CreateInstance( itemType );
+				if ( reward == null )
+					return false;
+
+				int points = tribute.MyItemPower;
+				string gifter = "From " + m_Giver.Name + " " + m_Giver.Title;
+
+				if ( reward is BaseGiftAxe )
+				{
+					((BaseGiftAxe)reward).m_Owner = from;
+					((BaseGiftAxe)reward).m_Gifter = gifter;
+					((BaseGiftAxe)reward).m_How = "Tribute To";
+					((BaseGiftAxe)reward).m_Points = points;
+				}
+				if ( reward is BaseGiftRanged )
+				{
+					((BaseGiftRanged)reward).m_Owner = from;
+					((BaseGiftRanged)reward).m_Gifter = gifter;
+					((BaseGiftRanged)reward).m_How = "Tribute To";
+					((BaseGiftRanged)reward).m_Points = points;
+				}
+				if ( reward is BaseGiftSpear )
+				{
+					((BaseGiftSpear)reward).m_Owner = from;
+					((BaseGiftSpear)reward).m_Gifter = gifter;
+					((BaseGiftSpear)reward).m_How = "Tribute To";
+					((BaseGiftSpear)reward).m_Points = points;
+				}
+				if ( reward is BaseGiftClothing )
+				{
+					((BaseGiftClothing)reward).m_Owner = from;
+					((BaseGiftClothing)reward).m_Gifter = gifter;
+					((BaseGiftClothing)reward).m_How = "Tribute To";
+					((BaseGiftClothing)reward).m_Points = points;
+				}
+				if ( reward is BaseGiftJewel )
+				{
+					((BaseGiftJewel)reward).m_Owner = from;
+					((BaseGiftJewel)reward).m_Gifter = gifter;
+					((BaseGiftJewel)reward).m_How = "Tribute To";
+					((BaseGiftJewel)reward).m_Points = points;
+				}
+				if ( reward is BaseGiftArmor )
+				{
+					((BaseGiftArmor)reward).m_Owner = from;
+					((BaseGiftArmor)reward).m_Gifter = gifter;
+					((BaseGiftArmor)reward).m_How = "Tribute To";
+					((BaseGiftArmor)reward).m_Points = points;
+				}
+				if ( reward is BaseGiftShield )
+				{
+					((BaseGiftShield)reward).m_Owner = from;
+					((BaseGiftShield)reward).m_Gifter = gifter;
+					((BaseGiftShield)reward).m_How = "Tribute To";
+					((BaseGiftShield)reward).m_Points = points;
+				}
+				if ( reward is BaseGiftKnife )
+				{
+					((BaseGiftKnife)reward).m_Owner = from;
+					((BaseGiftKnife)reward).m_Gifter = gifter;
+					((BaseGiftKnife)reward).m_How = "Tribute To";
+					((BaseGiftKnife)reward).m_Points = points;
+				}
+				if ( reward is BaseGiftBashing )
+				{
+					((BaseGiftBashing)reward).m_Owner = from;
+					((BaseGiftBashing)reward).m_Gifter = gifter;
+					((BaseGiftBashing)reward).m_How = "Tribute To";
+					((BaseGiftBashing)reward).m_Points = points;
+				}
+				if ( reward is BaseGiftWhip )
+				{
+					((BaseGiftWhip)reward).m_Owner = from;
+					((BaseGiftWhip)reward).m_Gifter = gifter;
+					((BaseGiftWhip)reward).m_How = "Tribute To";
+					((BaseGiftWhip)reward).m_Points = points;
+				}
+				if ( reward is BaseGiftPoleArm )
+				{
+					((BaseGiftPoleArm)reward).m_Owner = from;
+					((BaseGiftPoleArm)reward).m_Gifter = gifter;
+					((BaseGiftPoleArm)reward).m_How = "Tribute To";
+					((BaseGiftPoleArm)reward).m_Points = points;
+				}
+				if ( reward is BaseGiftStaff )
+				{
+					((BaseGiftStaff)reward).m_Owner = from;
+					((BaseGiftStaff)reward).m_Gifter = gifter;
+					((BaseGiftStaff)reward).m_How = "Tribute To";
+					((BaseGiftStaff)reward).m_Points = points;
+				}
+				if ( reward is BaseGiftSword )
+				{
+					((BaseGiftSword)reward).m_Owner = from;
+					((BaseGiftSword)reward).m_Gifter = gifter;
+					((BaseGiftSword)reward).m_How = "Tribute To";
+					((BaseGiftSword)reward).m_Points = points;
+				}
+
+				reward.Name = sArty;
+				reward.Hue = tribute.MyItemHue;
+
+				AddToItem( reward, m_Giver );
+
+				from.AddToBackpack( reward );
+
+				string sEntry = "has received the " + sArty + " from " + m_Giver.Name + " " + m_Giver.Title;
+				string sMessage = "You have received the " + sArty + " from " + m_Giver.Name + ".";
+
+				LoggingFunctions.LogGenericQuest( from, sEntry );
+
+				from.SendMessage( sMessage );
+				from.PlaySound( 0x3D );
+				return true;
+			}
+
 			public override void OnResponse( NetState state, RelayInfo info )
 			{
-				EpicCharacter tribute = (EpicCharacter)m_Giver;
-				Mobile from = state.Mobile; 
+				Mobile from = state.Mobile;
 
-				bool passTest = false;
+				if ( m_Giver == null || m_Giver.Deleted )
+					return;
+
+				EpicCharacter tribute = m_Giver as EpicCharacter;
+				if ( tribute == null )
+					return;
+
+				from.SendSound( 0x55 );
+
+				if ( info.ButtonID >= 100000 )
+				{
+					int page = info.ButtonID - 100000;
+					from.SendGump( new EpicBookGump( from, m_Giver, page, m_Pay, m_QuestTome ) );
+					return;
+				}
+
+				string sType = Server.Items.ManualOfItems.GetRelicArtyForBook( info.ButtonID, 2 );
+				string sName = Server.Items.ManualOfItems.GetRelicArtyForBook( info.ButtonID, 1 );
+				Type itemType = ( !string.IsNullOrEmpty( sType ) ) ? ScriptCompiler.FindTypeByName( sType ) : null;
+				bool validItem = info.ButtonID > 0 && info.ButtonID < 100000 && itemType != null && !string.IsNullOrEmpty( sName );
+
+				if ( !validItem )
+					return;
 
 				string merit = "bravery";
 				if ( tribute.MyAlignment == "good" ){ merit = "valor"; }
 				else if ( tribute.MyAlignment == "evil" ){ merit = "tenacity"; }
 
-				if ( tribute.MyAlignment == "good" && m_Pay && info.ButtonID > 0 && info.ButtonID < 300 && from.TotalGold >= 5000 && HaveSpecialItemRequirement( from ) )
+				if ( !m_Pay )
 				{
-					if ( from.Fame >= 4000 && from.Karma >= 4000 )
+					if ( m_QuestTome != null )
 					{
-						from.Fame = from.Fame - 4000;
-						from.Karma = from.Karma - 4000;
-						passTest = true;
-					}
-				}
-				else if ( tribute.MyAlignment == "evil" && m_Pay && info.ButtonID > 0 && info.ButtonID < 300 && from.TotalGold >= 5000 && HaveSpecialItemRequirement( from ) )
-				{
-					if ( from.Fame >= 4000 && from.Karma <= -4000 )
-					{
-						from.Fame = from.Fame - 4000;
-						from.Karma = from.Karma + 4000;
-						passTest = true;
-					}
-				}
-				else if ( tribute.MyAlignment == "neutral" && m_Pay && info.ButtonID > 0 && info.ButtonID < 300 && from.TotalGold >= 5000 && HaveSpecialItemRequirement( from ) )
-				{
-					if ( from.Fame >= 7000 )
-					{
-						from.Fame = from.Fame - 7000;
-						passTest = true;
-					}
-				}
-
-				from.SendSound( 0x55 );
-                Container pack = from.Backpack;
-
-				if ( info.ButtonID >= 100000 )
-				{
-					int page = info.ButtonID - 100000;
-					from.SendGump( new EpicBookGump( from, m_Giver, page, m_Pay ) );
-				}
-			else if ( from.TotalGold < 5000 && m_Pay )
-			{
-				from.SendMessage( string.Format( Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.fmt.0_needs_at_least_5_000_gold_to_construct_the_item_for_y"), m_Giver.Name ) );
-			}
-			else if ( !(HaveSpecialItemRequirement( from )) && m_Pay )
-			{
-				SendMissingSymbolMessage( from, m_Giver, merit );
-				}
-				else if ( ( passTest == true && pack.ConsumeTotal(typeof(Gold), 5000) ) || !m_Pay )
-				{
-					ClearSpecialItemRequirement( from );
-
-					string sType = Server.Items.ManualOfItems.GetRelicArtyForBook( info.ButtonID, 2 );
-					string sName = Server.Items.ManualOfItems.GetRelicArtyForBook( info.ButtonID, 1 );
-					string sArty = sName;
-						if ( sArty == "Talisman, Holy" ){ sArty = "Talisman"; }
-						if ( sArty == "Talisman, Snake" ){ sArty = "Talisman"; }
-						if ( sArty == "Talisman, Totem" ){ sArty = "Talisman"; }
-						sArty = sArty + " " + tribute.MyItemText;
-
-					if ( sName != "" )
-					{
-						Type itemType = ScriptCompiler.FindTypeByName( sType );
-						var reward = (Item)Activator.CreateInstance(itemType);
-
-						int points = tribute.MyItemPower;
-						if ( reward is IGiftable )
+						string claimName = m_Giver.Name + " " + m_Giver.Title;
+						if ( m_QuestTome.Deleted
+							|| m_QuestTome.QuestTomeOwner != from
+							|| from.Backpack == null
+							|| !m_QuestTome.IsChildOf( from.Backpack )
+							|| m_QuestTome.QuestTomeGoals != 5
+							|| m_QuestTome.QuestTomeClaimNpc != claimName )
 						{
-							var gift = (IGiftable)reward;
-							gift.Owner = from;
-							gift.Gifter = "From " + m_Giver.Name + " " + m_Giver.Title;
-							gift.How = "Tribute To";
-							gift.Points = points;
+							from.SendMessage( StringCatalog.ResolveByKey( from.Account, "epic.quest.journal_invalid_for_reward" ) );
+							return;
 						}
-
-						reward.Name = sArty;
-						reward.Hue = tribute.MyItemHue;
-
-						AddToItem( reward, m_Giver );
-
-						from.AddToBackpack ( reward );
-
-						string sEntry = "has received the " + sArty + " from " + m_Giver.Name + " " + m_Giver.Title;
-						string sMessage = "You have received the " + sArty + " from " + m_Giver.Name + ".";
-
-						LoggingFunctions.LogGenericQuest( from, sEntry );
-
-						from.SendMessage( sMessage );
-						from.PlaySound( 0x3D );
 					}
+
+					if ( TryGrantReward( from, tribute, info.ButtonID ) )
+					{
+						if ( m_QuestTome != null && !m_QuestTome.Deleted )
+							m_QuestTome.Delete();
+					}
+					return;
 				}
-			else if ( passTest == false && info.ButtonID > 0 && info.ButtonID < 262 )
-			{
-				from.SendMessage( Server.Localization.StringCatalog.ResolveByKey(from.Account, "mob.other.your_deeds_do_not_grant_you_a_gift_of_tribute") );
-			}
+
+				// Paid Tribute path: validate everything before consuming.
+				if ( from.TotalGold < 5000 )
+				{
+					from.SendMessage( string.Format( StringCatalog.ResolveByKey( from.Account, "mob.fmt.0_needs_at_least_5_000_gold_to_construct_the_item_for_y" ), m_Giver.Name ) );
+					Reopen( from );
+					return;
+				}
+
+				if ( !HaveSpecialItemRequirement( from ) )
+				{
+					SendMissingSymbolMessage( from, m_Giver, merit );
+					Reopen( from );
+					return;
+				}
+
+				if ( !MeetsFameKarma( tribute, from ) )
+				{
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "mob.other.your_deeds_do_not_grant_you_a_gift_of_tribute" ) );
+					Reopen( from );
+					return;
+				}
+
+				Container pack = from.Backpack;
+				if ( pack == null || !pack.ConsumeTotal( typeof( Gold ), 5000 ) )
+				{
+					from.SendMessage( string.Format( StringCatalog.ResolveByKey( from.Account, "mob.fmt.0_needs_at_least_5_000_gold_to_construct_the_item_for_y" ), m_Giver.Name ) );
+					Reopen( from );
+					return;
+				}
+
+				ClearSpecialItemRequirement( from );
+				DeductFameKarma( tribute, from );
+				TryGrantReward( from, tribute, info.ButtonID );
 			}
 		}
 
@@ -1395,7 +1564,7 @@ namespace Server.Mobiles
 			}
 			else if ( from.Name == "Iolo" )
 			{
-				GiveGiftBonus( item, 100, 48, 21, 29, 0, 5.0, 5.0, 5.0, 5.0, 0.0, 0, 0 );
+				GiveGiftBonus( item, 100, 48, 21, 20, 0, 5.0, 5.0, 5.0, 5.0, 0.0, 0, 0 );
 			}
 			else if ( from.Name == "Shamino" )
 			{
@@ -1433,49 +1602,9 @@ namespace Server.Mobiles
 			{
 				if ( slay1 > 0 ){ ((BaseWeapon)item).Slayer = ResourceMods.GetSlayer( slay1 ); }
 				if ( slay2 > 0 ){ ((BaseWeapon)item).Slayer2 = ResourceMods.GetSlayer( slay2 ); }
+			}
 
-				if ( val1 == 99 ){ ((BaseWeapon)item).SkillBonuses.SetValues(0, ((BaseWeapon)item).Skill, sk1); }
-				else if ( val1 == 100 && item is BaseRanged ){ ((BaseWeapon)item).SkillBonuses.SetValues(0, ResourceMods.GetSkill( 5 ), sk1); }
-				else if ( val1 > 0 ){ ((BaseWeapon)item).SkillBonuses.SetValues(0, ResourceMods.GetSkill( val1 ), sk1); }
-				if ( val2 > 0 ){ ((BaseWeapon)item).SkillBonuses.SetValues(1, ResourceMods.GetSkill( val2 ), sk2); }
-				if ( val3 > 0 ){ ((BaseWeapon)item).SkillBonuses.SetValues(2, ResourceMods.GetSkill( val3 ), sk3); }
-				if ( val4 > 0 ){ ((BaseWeapon)item).SkillBonuses.SetValues(3, ResourceMods.GetSkill( val4 ), sk4); }
-				if ( val5 == 100 ){ ((BaseWeapon)item).Attributes.EnhancePotions = (int)sk5;  }
-				else if ( val5 > 0 ){ ((BaseWeapon)item).SkillBonuses.SetValues(4, ResourceMods.GetSkill( val5 ), sk5); }
-			}
-			else if ( item is BaseArmor )
-			{
-				if ( val1 == 99 ){}
-				else if ( val1 == 100 ){ ((BaseArmor)item).SkillBonuses.SetValues(0, ResourceMods.GetSkill( 5 ), sk1); }
-				else if ( val1 > 0 ){ ((BaseArmor)item).SkillBonuses.SetValues(0, ResourceMods.GetSkill( val1 ), sk1); }
-				if ( val2 > 0 ){ ((BaseArmor)item).SkillBonuses.SetValues(1, ResourceMods.GetSkill( val2 ), sk2); }
-				if ( val3 > 0 ){ ((BaseArmor)item).SkillBonuses.SetValues(2, ResourceMods.GetSkill( val3 ), sk3); }
-				if ( val4 > 0 ){ ((BaseArmor)item).SkillBonuses.SetValues(3, ResourceMods.GetSkill( val4 ), sk4); }
-				if ( val5 == 100 ){ ((BaseArmor)item).Attributes.EnhancePotions = (int)sk5; }
-				else if ( val5 > 0 ){ ((BaseArmor)item).SkillBonuses.SetValues(4, ResourceMods.GetSkill( val5 ), sk5); }
-			}
-			else if ( item is BaseClothing )
-			{
-				if ( val1 == 99 ){}
-				else if ( val1 == 100 ){ ((BaseClothing)item).SkillBonuses.SetValues(0, ResourceMods.GetSkill( 5 ), sk1); }
-				else if ( val1 > 0 ){ ((BaseClothing)item).SkillBonuses.SetValues(0, ResourceMods.GetSkill( val1 ), sk1); }
-				if ( val2 > 0 ){ ((BaseClothing)item).SkillBonuses.SetValues(1, ResourceMods.GetSkill( val2 ), sk2); }
-				if ( val3 > 0 ){ ((BaseClothing)item).SkillBonuses.SetValues(2, ResourceMods.GetSkill( val3 ), sk3); }
-				if ( val4 > 0 ){ ((BaseClothing)item).SkillBonuses.SetValues(3, ResourceMods.GetSkill( val4 ), sk4); }
-				if ( val5 == 100 ){ ((BaseClothing)item).Attributes.EnhancePotions = (int)sk5; }
-				else if ( val5 > 0 ){ ((BaseClothing)item).SkillBonuses.SetValues(4, ResourceMods.GetSkill( val5 ), sk5); }
-			}
-			else if ( item is BaseTrinket )
-			{
-				if ( val1 == 99 ){}
-				else if ( val1 == 100 ){ ((BaseTrinket)item).SkillBonuses.SetValues(0, ResourceMods.GetSkill( 5 ), sk1); }
-				else if ( val1 > 0 ){ ((BaseTrinket)item).SkillBonuses.SetValues(0, ResourceMods.GetSkill( val1 ), sk1); }
-				if ( val2 > 0 ){ ((BaseTrinket)item).SkillBonuses.SetValues(1, ResourceMods.GetSkill( val2 ), sk2); }
-				if ( val3 > 0 ){ ((BaseTrinket)item).SkillBonuses.SetValues(2, ResourceMods.GetSkill( val3 ), sk3); }
-				if ( val4 > 0 ){ ((BaseTrinket)item).SkillBonuses.SetValues(3, ResourceMods.GetSkill( val4 ), sk4); }
-				if ( val5 == 100 ){ ((BaseTrinket)item).Attributes.EnhancePotions = (int)sk5; }
-				else if ( val5 > 0 ){ ((BaseTrinket)item).SkillBonuses.SetValues(4, ResourceMods.GetSkill( val5 ), sk5); }
-			}
+			GiftSkillBonus.Apply( item, val1, val2, val3, val4, val5, sk1, sk2, sk3, sk4, sk5 );
 		}
 
 		public override bool OnDragDrop( Mobile from, Item dropped )
@@ -1572,11 +1701,11 @@ namespace Server.Mobiles
 			{
 				QuestTome book = (QuestTome)dropped;
 				string FullName = this.Name + " " + this.Title;
-				if ( book.QuestTomeOwner == from && ( book.QuestTomeNPCGood == this.Name + " " + this.Title || book.QuestTomeNPCEvil == this.Name + " " + this.Title ) )
+				if ( book.QuestTomeOwner == from && ( book.QuestTomeNPCGood == FullName || book.QuestTomeNPCEvil == FullName ) )
 				{
-					bool handled = book.QuestTomeGoals > 3;
 					string sMessage = "";
-					if ( handled )
+
+					if ( book.QuestTomeGoals == 4 )
 					{
 						string success = "has found " + book.GoalItem4 + " for " + FullName;
 						LoggingFunctions.LogGenericQuest( from, success );
@@ -1589,40 +1718,122 @@ namespace Server.Mobiles
 						if ( this.MyAlignment == "evil" ){ Titles.AwardKarma( from, -KarmaFame, true ); }
 						else if ( this.MyAlignment == "good" ){ Titles.AwardKarma( from, KarmaFame, true ); }
 
+						book.QuestTomeGoals = 5;
+						book.QuestTomeClaimNpc = FullName;
+
 						if ( this.MyAlignment == "good" )
-						{
 							sMessage = "Ahhh...you found it and perhaps saved us all! Choose your reward.";
-						}
 						else if ( this.MyAlignment == "evil" )
-						{
 							sMessage = "Good! Everything is going to plan. Choose your reward.";
-						}
 
 						if ( !from.HasGump( typeof( EpicBookGump ) ) )
+							from.SendGump( new EpicBookGump( from, this, 0, false, book ) );
+
+						this.PrivateOverheadMessage( MessageType.Regular, 1153, false, sMessage, from.NetState );
+						return false; // keep journal in pack until gift is claimed
+					}
+					else if ( book.QuestTomeGoals >= 5 )
+					{
+						if ( book.QuestTomeClaimNpc != FullName )
 						{
-							from.SendGump( new EpicBookGump( from, this, 0, false ) );
+							from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "epic.quest.claim_belongs_to_other", book.QuestTomeClaimNpc ) );
+							return false;
 						}
 
-						dropped.Delete();
+						from.SendSound( 0x3D );
+
+						if ( this.MyAlignment == "good" )
+							sMessage = "Ahhh...you found it and perhaps saved us all! Choose your reward.";
+						else if ( this.MyAlignment == "evil" )
+							sMessage = "Good! Everything is going to plan. Choose your reward.";
+
+						if ( !from.HasGump( typeof( EpicBookGump ) ) )
+							from.SendGump( new EpicBookGump( from, this, 0, false, book ) );
+
+						this.PrivateOverheadMessage( MessageType.Regular, 1153, false, sMessage, from.NetState );
+						return false;
 					}
 					else
 					{
 						if ( this.MyAlignment == "good" )
-						{
 							sMessage = "Return to me when you find it.";
-						}
 						else if ( this.MyAlignment == "evil" )
-						{
 							sMessage = "Do not fail me in this task.";
-						}
-					}
 
-					this.PrivateOverheadMessage(MessageType.Regular, 1153, false, sMessage, from.NetState);
-					return handled;
+						this.PrivateOverheadMessage( MessageType.Regular, 1153, false, sMessage, from.NetState );
+						return false;
+					}
 				}
 			}
 
 			return base.OnDragDrop( from, dropped );
+		}
+
+		public static void Initialize()
+		{
+			CommandSystem.Register( "epic-quest-reward", AccessLevel.GameMaster, new CommandEventHandler( EpicQuestReward_OnCommand ) );
+		}
+
+		[Usage( "epic-quest-reward" )]
+		[Description( "Target a player, then an EpicCharacter, to reopen a free QuestTome tribute reward gump (compensation)." )]
+		private static void EpicQuestReward_OnCommand( CommandEventArgs e )
+		{
+			e.Mobile.SendMessage( StringCatalog.ResolveByKey( e.Mobile.Account, "epic.quest.gm.target_player" ) );
+			e.Mobile.Target = new EpicQuestRewardPlayerTarget();
+		}
+
+		private class EpicQuestRewardPlayerTarget : Target
+		{
+			public EpicQuestRewardPlayerTarget() : base( -1, false, TargetFlags.None )
+			{
+			}
+
+			protected override void OnTarget( Mobile from, object targeted )
+			{
+				PlayerMobile player = targeted as PlayerMobile;
+
+				if ( player == null )
+				{
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "epic.quest.gm.not_a_player" ) );
+					return;
+				}
+
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "epic.quest.gm.target_npc" ) );
+				from.Target = new EpicQuestRewardNpcTarget( player );
+			}
+		}
+
+		private class EpicQuestRewardNpcTarget : Target
+		{
+			private readonly PlayerMobile m_Player;
+
+			public EpicQuestRewardNpcTarget( PlayerMobile player ) : base( -1, false, TargetFlags.None )
+			{
+				m_Player = player;
+			}
+
+			protected override void OnTarget( Mobile from, object targeted )
+			{
+				EpicCharacter npc = targeted as EpicCharacter;
+
+				if ( npc == null || npc.Deleted )
+				{
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "epic.quest.gm.not_epic_npc" ) );
+					return;
+				}
+
+				if ( m_Player == null || m_Player.Deleted )
+				{
+					from.SendMessage( StringCatalog.ResolveByKey( from.Account, "epic.quest.gm.player_gone" ) );
+					return;
+				}
+
+				m_Player.CloseGump( typeof( EpicBookGump ) );
+				m_Player.SendGump( new EpicBookGump( m_Player, npc, 0, false, null ) );
+
+				from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "epic.quest.gm.opened", m_Player.Name, npc.Name ) );
+				LoggingFunctions.LogGenericQuest( m_Player, "was granted a free Epic Tribute reward gump by " + from.Name + " at " + npc.Name + " " + npc.Title );
+			}
 		}
 	}
 }

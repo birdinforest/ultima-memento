@@ -6,6 +6,7 @@ using Server.Multis;
 using Server.Network;
 using Server.Spells;
 using Server.Targeting;
+using Server.Localization;
 
 namespace Server.Items
 {
@@ -30,7 +31,7 @@ namespace Server.Items
 				return;
 			}
 
-			from.SendMessage( "Where would you like to place the mannequin?" );
+			from.SendMessage( StringCatalog.ResolveByKey( from.Account, "mob.mannequin.deed.place_prompt" ) );
 			from.Target = new MannequinPlacementTarget( this );
 		}
 

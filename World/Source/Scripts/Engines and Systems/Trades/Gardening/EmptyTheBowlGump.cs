@@ -71,7 +71,7 @@ namespace Server.Engines.Plants
 			{
 				case 1: // Cancel
 				{
-					from.SendGump( new MainPlantGump( m_Plant ) );
+					from.SendGump( new MainPlantGump( m_Plant, from ) );
 
 					break;
 				}
@@ -97,7 +97,7 @@ namespace Server.Engines.Plants
 						bowl.Delete();
 
 						m_Plant.LabelTo( from, 1053047 ); // You cannot empty a bowl with a full pack!
-						from.SendGump( new MainPlantGump( m_Plant ) );
+						from.SendGump( new MainPlantGump( m_Plant, from ) );
 
 						break;
 					}
@@ -112,7 +112,7 @@ namespace Server.Engines.Plants
 							seed.Delete();
 
 							m_Plant.LabelTo( from, 1053047 ); // You cannot empty a bowl with a full pack!
-							from.SendGump( new MainPlantGump( m_Plant ) );
+							from.SendGump( new MainPlantGump( m_Plant, from ) );
 
 							break;
 						}

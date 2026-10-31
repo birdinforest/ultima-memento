@@ -176,15 +176,14 @@ namespace Server.Mobiles
 			PlayerMobile killer = MobileUtilities.TryGetKillingPlayer( this );
 			if ( killer != null )
 			{
-				int chance = 0;
-
 				Server.Items.QuestSouvenir.GiveReward( killer, "Exodus", 0, 0x65B9 );
 
-				if ( Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "Exodus" ) ){ chance = 9; }
+				bool alreadyKilled = Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "Exodus" );
 
-				if ( chance < Utility.RandomMinMax(1,10) )
+				// First kill: always drop core (+ statue). Repeat: 25% (Luck 0) → 50% (Luck 2000+).
+				if ( !alreadyKilled || RollRepeatDarkCore( killer.Luck ) )
 				{
-					if ( !Server.Misc.PlayerSettings.GetSpecialsKilled( killer, "Exodus" ) )
+					if ( !alreadyKilled )
 					{
 						Server.Misc.PlayerSettings.SetSpecialsKilled( killer, "Exodus", true );
 						Item reward = new SummonReward();
@@ -197,6 +196,24 @@ namespace Server.Mobiles
 					Server.Misc.LoggingFunctions.LogSlayingLord( killer, this.Name );
 				}
 			}
+		}
+
+		/// <summary>
+		/// Repeat Dark Core of Exodus drop chance: linear from 1/4 (Luck 0) to 1/2 (Luck ≥ 2000).
+		/// </summary>
+		private static bool RollRepeatDarkCore( int luck )
+		{
+			const int luckCap = 2000;
+			const double minPct = 25.0;
+			const double maxPct = 50.0;
+
+			if ( luck < 0 )
+				luck = 0;
+			else if ( luck > luckCap )
+				luck = luckCap;
+
+			double pct = minPct + ( luck * ( maxPct - minPct ) / luckCap );
+			return Utility.RandomDouble() * 100.0 < pct;
 		}
 
 		public override void OnThink()

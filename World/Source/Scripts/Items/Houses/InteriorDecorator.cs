@@ -277,7 +277,7 @@ namespace Server.Items
 					}
 					else if ( mannequin.Roaming )
 					{
-						from.SendMessage( "You must disable roaming on the mannequin before you can use the Homeowner Tools on it." );
+						from.SendMessage( StringCatalog.ResolveByKey( from.Account, "mob.mannequin.decorator.disable_roaming" ) );
 					}
 					else
 					{
@@ -286,12 +286,12 @@ namespace Server.Items
 							case DecorateCommand.Turn:	Turn( mannequin );						break;
 							case DecorateCommand.Up:	Up( mannequin, from );					break;
 							case DecorateCommand.Down:	Down( mannequin, from );				break;
-							case DecorateCommand.North:	Shift( mannequin, from, house,  0, -1, "north" );	break;
-							case DecorateCommand.East:	Shift( mannequin, from, house,  1,  0, "east"  );	break;
-							case DecorateCommand.South:	Shift( mannequin, from, house,  0,  1, "south" );	break;
-							case DecorateCommand.West:	Shift( mannequin, from, house, -1,  0, "west"  );	break;
+							case DecorateCommand.North:	Shift( mannequin, from, house,  0, -1, "mob.mannequin.direction.north" );	break;
+							case DecorateCommand.East:	Shift( mannequin, from, house,  1,  0, "mob.mannequin.direction.east"  );	break;
+							case DecorateCommand.South:	Shift( mannequin, from, house,  0,  1, "mob.mannequin.direction.south" );	break;
+							case DecorateCommand.West:	Shift( mannequin, from, house, -1,  0, "mob.mannequin.direction.west"  );	break;
 							default:
-								from.SendMessage( "You can only turn or move a mannequin with this tool." );
+								from.SendMessage( StringCatalog.ResolveByKey( from.Account, "mob.mannequin.decorator.turn_or_move_only" ) );
 								break;
 						}
 					}
@@ -2267,14 +2267,14 @@ namespace Server.Items
 					from.SendLocalizedMessage( 1042275 ); // You cannot lower it down any further.
 			}
 
-			private static void Shift( Mobile m, Mobile from, BaseHouse house, int dx, int dy, string dirName )
+			private static void Shift( Mobile m, Mobile from, BaseHouse house, int dx, int dy, string dirKey )
 			{
 				Point3D dest = new Point3D( m.X + dx, m.Y + dy, m.Z );
 
 				if ( house.IsInside( dest, 16 ) )
 					m.Location = dest;
 				else
-					from.SendMessage( "You cannot move it " + dirName + " any further." );
+					from.SendMessage( StringCatalog.ResolveFormatByKey( from.Account, "mob.mannequin.cannot_move_direction_further", StringCatalog.ResolveByKey( from.Account, dirKey ) ) );
 			}
 
 			private static bool ValidRegion( Point3D loc, Map map, Mobile from )

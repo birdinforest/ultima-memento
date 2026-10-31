@@ -218,6 +218,9 @@ namespace Server.Mobiles
 
 		public static void Ride( BaseMount mount, Mobile rider )
 		{
+			if ( mount is CuSidhe && !CuSidhe.CheckPadsForRider( rider, true ) )
+				return;
+
 			if ( mount is Wyverns ){ mount.Hue = 0x991; }
 			else if ( mount is TigerRiding ){ mount.Hue = 0x54F; }
 			else if ( mount is SabretoothTigerRiding ){ mount.Hue = 0x54F; }

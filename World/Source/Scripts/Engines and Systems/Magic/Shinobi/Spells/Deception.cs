@@ -140,6 +140,51 @@ namespace Server.Spells.Shinobi
 			return ( t != null );
 		}
 
+		public static TimeSpan TimeRemaining( Mobile m )
+		{
+			Timer t = (Timer)m_Timers[m];
+
+			if ( t != null )
+				return t.Next - DateTime.Now;
+
+			return TimeSpan.Zero;
+		}
+
+		public static long ExpiryTicks( Mobile m )
+		{
+			Timer t = (Timer)m_Timers[m];
+
+			if ( t != null )
+				return t.Next.Ticks;
+
+			return 0;
+		}
+
+		public static void RemoveEffect( Mobile m )
+		{
+			if ( m == null )
+				return;
+
+			StopTimer( m );
+
+			if ( !m.CanBeginAction( typeof( Deception ) ) )
+			{
+				if ( m is PlayerMobile && m.RaceID == 0 )
+					((PlayerMobile)m).SetHairMods( -1, -1 );
+
+				m.BodyMod = 0;
+				m.HueMod = -1;
+				m.NameMod = null;
+				m.RaceBody();
+				m.EndAction( typeof( Deception ) );
+
+				BaseArmor.ValidateMobile( m );
+				BaseClothing.ValidateMobile( m );
+
+				MurdererDisguiseSell.NotifyTrickEnded( m );
+			}
+		}
+
 		private static int[] m_HairIDs = new int[]
 			{
 				0x2044, 0x2045, 0x2046,
@@ -189,6 +234,8 @@ namespace Server.Spells.Shinobi
 
 					BaseArmor.ValidateMobile( m_Owner );
 					BaseClothing.ValidateMobile( m_Owner );
+
+					MurdererDisguiseSell.NotifyTrickEnded( m_Owner );
 				}
 			}
 		}

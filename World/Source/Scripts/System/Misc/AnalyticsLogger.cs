@@ -204,6 +204,68 @@ namespace Server.Misc
 			Emit( d );
 		}
 
+		/// <summary>
+		/// Successful town NPC sell while on the murderer-disguise path (after gold paid and −Karma/+Fame applied).
+		/// </summary>
+		public static void LogMurdererDisguiseSellCompleted(
+			PlayerMobile seller,
+			BaseVendor vendor,
+			int goldReceived,
+			int itemsSold,
+			int karmaComputed,
+			int karmaApplied,
+			int fameComputed,
+			int fameApplied,
+			int sessionSales,
+			int sessionGold,
+			int karmaDailyApplied,
+			int fameDailyApplied )
+		{
+			if ( !MySettings.S_AnalyticsEnabled || seller == null )
+				return;
+
+			var acc = seller.Account as Account;
+			var d = BaseAccountFields( acc, seller );
+			d["event_type"] = "murderer_disguise_sell_completed";
+			d["feature_name"] = "murderer_disguise_sell";
+			d["feature_variant"] = vendor != null ? vendor.GetType().Name : "";
+			d["gold_received"] = goldReceived.ToString( CultureInfo.InvariantCulture );
+			d["items_sold"] = itemsSold.ToString( CultureInfo.InvariantCulture );
+			d["karma_computed"] = karmaComputed.ToString( CultureInfo.InvariantCulture );
+			d["karma_applied"] = karmaApplied.ToString( CultureInfo.InvariantCulture );
+			d["fame_computed"] = fameComputed.ToString( CultureInfo.InvariantCulture );
+			d["fame_applied"] = fameApplied.ToString( CultureInfo.InvariantCulture );
+			d["session_sales"] = sessionSales.ToString( CultureInfo.InvariantCulture );
+			d["session_gold"] = sessionGold.ToString( CultureInfo.InvariantCulture );
+			d["karma_daily_applied"] = karmaDailyApplied.ToString( CultureInfo.InvariantCulture );
+			d["fame_daily_applied"] = fameDailyApplied.ToString( CultureInfo.InvariantCulture );
+			d["kills"] = seller.Kills.ToString( CultureInfo.InvariantCulture );
+			d["fugitive"] = seller.Fugitive.ToString( CultureInfo.InvariantCulture );
+			d["price_mult_percent"] = MySettings.S_MurdererDisguiseSellPriceMultPercent.ToString( CultureInfo.InvariantCulture );
+			Emit( d );
+		}
+
+		/// <summary>
+		/// Disguise sell skill check failed (opening or per-sale); disguise stripped and Criminal set.
+		/// </summary>
+		public static void LogMurdererDisguiseSellFailed( PlayerMobile seller, BaseVendor vendor, string failPhase, int sessionSales, int sessionGold )
+		{
+			if ( !MySettings.S_AnalyticsEnabled || seller == null )
+				return;
+
+			var acc = seller.Account as Account;
+			var d = BaseAccountFields( acc, seller );
+			d["event_type"] = "murderer_disguise_sell_failed";
+			d["feature_name"] = "murderer_disguise_sell";
+			d["feature_variant"] = failPhase ?? "unknown";
+			d["vendor_type"] = vendor != null ? vendor.GetType().Name : "";
+			d["session_sales"] = sessionSales.ToString( CultureInfo.InvariantCulture );
+			d["session_gold"] = sessionGold.ToString( CultureInfo.InvariantCulture );
+			d["kills"] = seller.Kills.ToString( CultureInfo.InvariantCulture );
+			d["fugitive"] = seller.Fugitive.ToString( CultureInfo.InvariantCulture );
+			Emit( d );
+		}
+
 		public static void LogInscriptionRecipeRollAttempted( PlayerMobile pm, RareDropRollContext ctx )
 		{
 			LogRareDropRollAttempted( pm, ctx, "inscription_recipe_roll_attempted", "inscription_recipe" );

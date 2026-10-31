@@ -496,9 +496,14 @@ namespace Server.Items
 				case 5:
 				case 6:
 				{
-					Item item =  Utility.RandomMinMax(1, 4) == 1
-						? Loot.RandomInstrument()
-						: Loot.RandomMagicalItem( Server.LootPackEntry.playOrient( from ) );
+					int sideRoll = Utility.RandomMinMax( 1, 4 );
+					Item item;
+					if ( sideRoll == 1 )
+						item = Loot.RandomInstrument();
+					else if ( sideRoll == 2 )
+						item = Loot.RandomArcherEquipment( Server.LootPackEntry.playOrient( from ) );
+					else
+						item = Loot.RandomMagicalItem( Server.LootPackEntry.playOrient( from ) );
 					box.DropItem( LootPackEntry.Enchant( from, 500, item ) );
 					break;
 				}

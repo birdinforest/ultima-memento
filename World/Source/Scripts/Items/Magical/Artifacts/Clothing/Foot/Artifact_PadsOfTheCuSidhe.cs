@@ -1,5 +1,7 @@
 using System;
 using Server;
+using Server.Localization;
+using Server.Mobiles;
 
 namespace Server.Items
 {
@@ -12,6 +14,23 @@ namespace Server.Items
 			Name = "Pads of the Cu Sidhe";
 			ArtifactLevel = ArtifactLevel.StandardArtefact;
 			Server.Misc.Arty.ArtySetup( this, 0, "" );
+		}
+
+		public override void OnRemoved( object parent )
+		{
+			PlayerMobile wearer = parent as PlayerMobile;
+
+			if ( wearer != null
+				&& wearer.Mounted
+				&& wearer.AccessLevel == AccessLevel.Player
+				&& wearer.Race != Race.Elf
+				&& wearer.Mount is CuSidhe )
+			{
+				BaseMount.Dismount( wearer );
+				wearer.SendMessage( StringCatalog.ResolveByKey( wearer.Account, "mob.other.cu_sidhe.pads_left" ) );
+			}
+
+			base.OnRemoved( parent );
 		}
 
 		public Artifact_PadsOfTheCuSidhe( Serial serial ) : base( serial )

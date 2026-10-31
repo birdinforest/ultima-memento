@@ -30,7 +30,7 @@ When the user sends a prompt like:
 ```
 iterative-code-review fr01 \
   --specs doc/dev-log/2026-06-14-phase-0-scaffold-and-first-owa-test.md \
-  --reviewer-model claude-5-sonnet \
+  --reviewer-model gpt-5.6-sol-medium \
   --implementer-model composer-2.5-fast
 ```
 
