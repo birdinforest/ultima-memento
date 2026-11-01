@@ -1505,7 +1505,11 @@ namespace Server.Items
 					defender.FixedEffect( 0x37B9, 10, 5 );
 
 				//factor *= 2.0;
-				percentageBonus += this is BaseRanged ? 50 : 100;
+				// TEMPORARY (ranged only): +75% until weak elemental quivers circulate
+				// (14 days live + >=30 distinct accounts with elemental_quiver_awarded).
+				// Then restore BaseRanged branch to 50. Melee stays +100; spellbooks stay 1.5x in Spell.cs.
+				// See SLAYER_WEAPON_SYSTEM.md and AnalyticsLogger elemental_quiver_awarded / hoard_archer_roll.
+				percentageBonus += this is BaseRanged ? 75 : 100;
 
 				if ( Utility.Random( 5 ) == 1 && attacker is PlayerMobile )
 				{

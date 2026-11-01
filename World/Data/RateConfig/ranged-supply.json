@@ -1,0 +1,9 @@
+{
+  "ranged.supply.outcome.enchanted_ranged": "35",
+  "ranged.supply.outcome.magic_quiver": "20",
+  "ranged.supply.outcome.elemental_quiver": "45",
+  "ranged.supply.element.fire": "1",
+  "ranged.supply.element.cold": "1",
+  "ranged.supply.element.poison": "1",
+  "ranged.supply.element.energy": "1"
+}

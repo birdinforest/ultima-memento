@@ -26,7 +26,8 @@ World/Data/RateConfig/
 ├── inscription-recipe-drop.json # inscription.drop.* / inscription.enemy.* / inscription.avatar.*
 ├── avatar-fortune.json          # avatar.fortune.* — AscentHuntBonus multipliers
 ├── dragon-riding-scroll.json    # dragon.ridingScroll.luckCap / maxChancePct
-└── relics-drop.json             # relics.drop.luckCap / first|repeat.rankNMaxPct
+├── relics-drop.json             # relics.drop.luckCap / first|repeat.rankNMaxPct
+└── ranged-supply.json           # ranged.supply.outcome.* / ranged.supply.element.* — hoard archer kit
 ```
 
 - **`RateConfigEngine`** lives in `System.csproj` (the `World` executable assembly) alongside
@@ -182,6 +183,20 @@ Consumed by `InscriptionRecipeDropHelper.TryDropRecipe` on `BaseCreature.OnDeath
   `RateConfigEngine`. To inspect which scroll class names loaded, read `Data/InscriptionRecipeDrop/tier-scrolls.json`
   on disk or check the startup / `[ratereload]` console line (`T1=… T2=…` counts only, not names). Unknown
   type names are logged at load time and skipped.
+
+### Ranged elemental supply (`Data/RateConfig/ranged-supply.json`)
+
+`Loot.RandomHoardArcherEquipment` (treasure-hoard case 12 archer branch only) reads:
+
+| Key | Default | Meaning |
+|-----|---------|---------|
+| `ranged.supply.outcome.enchanted_ranged` | 35 | Weight for enchanted ranged weapon |
+| `ranged.supply.outcome.magic_quiver` | 20 | Weight for ordinary `MagicQuiver` |
+| `ranged.supply.outcome.elemental_quiver` | 45 | Weight for weak `ElementalMagicQuiver` |
+| `ranged.supply.element.fire` / `cold` / `poison` / `energy` | 1 each | Relative weights among the four weak quivers |
+
+Missing/empty tables fall back to the defaults above. Hot-reload via `[ratereload]`. Debug: `[ratelist ranged.supply]`.
+Analytics: `hoard_archer_roll` (every draw) and `elemental_quiver_awarded` (elemental quiver only).
 
 ## Adding a new consumer
 

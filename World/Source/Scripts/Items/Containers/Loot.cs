@@ -4,6 +4,8 @@ using System.Reflection;
 using Server;
 using Server.Items;
 using Server.Misc;
+using Server.Mobiles;
+using Server.RateConfig;
 using Server.Engines.Mahjong;
 using System.Collections.Generic;
 using System.Collections;
@@ -1438,6 +1440,109 @@ namespace Server
 			}
 
 			return RandomRangedWeapon( playOrient );
+		}
+
+		/// <summary>
+		/// Hoard-only archer branch: weighted enchanted ranged / MagicQuiver / weak elemental quiver.
+		/// Defaults 35 / 20 / 45; elements equal weight. Tunable via Data/RateConfig/ranged-supply.json.
+		/// </summary>
+		public static Item RandomHoardArcherEquipment( bool playOrient, Mobile from )
+		{
+			Dictionary<string, double> outcomeWeights = RateConfigEngine.GetTable( "ranged.supply.outcome" );
+
+			if ( outcomeWeights == null || outcomeWeights.Count == 0 )
+			{
+				outcomeWeights = new Dictionary<string, double>
+				{
+					{ "enchanted_ranged", 35.0 },
+					{ "magic_quiver", 20.0 },
+					{ "elemental_quiver", 45.0 }
+				};
+			}
+			else
+			{
+				EnsureWeight( outcomeWeights, "enchanted_ranged", 35.0 );
+				EnsureWeight( outcomeWeights, "magic_quiver", 20.0 );
+				EnsureWeight( outcomeWeights, "elemental_quiver", 45.0 );
+			}
+
+			Dictionary<string, double> elementWeights = RateConfigEngine.GetTable( "ranged.supply.element" );
+
+			if ( elementWeights == null || elementWeights.Count == 0 )
+			{
+				elementWeights = new Dictionary<string, double>
+				{
+					{ "fire", 1.0 },
+					{ "cold", 1.0 },
+					{ "poison", 1.0 },
+					{ "energy", 1.0 }
+				};
+			}
+			else
+			{
+				EnsureWeight( elementWeights, "fire", 1.0 );
+				EnsureWeight( elementWeights, "cold", 1.0 );
+				EnsureWeight( elementWeights, "poison", 1.0 );
+				EnsureWeight( elementWeights, "energy", 1.0 );
+			}
+
+			string outcome = WeightedPick.Pick( outcomeWeights );
+
+			if ( string.IsNullOrEmpty( outcome ) )
+				outcome = "enchanted_ranged";
+
+			Item item = null;
+			string element = "";
+
+			if ( outcome == "elemental_quiver" )
+			{
+				element = WeightedPick.Pick( elementWeights );
+
+				if ( string.IsNullOrEmpty( element ) )
+					element = "fire";
+
+				ElementalMagicQuiverElement el;
+
+				if ( !ElementalMagicQuiver.TryParseElement( element, out el ) )
+				{
+					el = ElementalMagicQuiverElement.Fire;
+					element = "fire";
+				}
+
+				item = new ElementalMagicQuiver( el );
+			}
+			else if ( outcome == "magic_quiver" )
+			{
+				item = RandomQuiver();
+
+				if ( item == null )
+				{
+					outcome = "enchanted_ranged";
+					item = RandomRangedWeapon( playOrient );
+				}
+			}
+			else
+			{
+				outcome = "enchanted_ranged";
+				item = RandomRangedWeapon( playOrient );
+			}
+
+			PlayerMobile pm = from as PlayerMobile;
+			AnalyticsLogger.LogHoardArcherRoll( pm, outcome, element, outcomeWeights, elementWeights, item );
+
+			if ( outcome == "elemental_quiver" && item is ElementalMagicQuiver )
+				AnalyticsLogger.LogElementalQuiverAwarded( pm, (ElementalMagicQuiver)item, element );
+
+			return item;
+		}
+
+		private static void EnsureWeight( Dictionary<string, double> weights, string key, double fallback )
+		{
+			if ( weights == null )
+				return;
+
+			if ( !weights.ContainsKey( key ) || weights[key] < 0.0 )
+				weights[key] = fallback;
 		}
 
 		public static Item RandomScroll( int level )

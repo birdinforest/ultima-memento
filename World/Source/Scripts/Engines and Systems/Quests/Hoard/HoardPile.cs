@@ -138,7 +138,7 @@ namespace Server.Items
 						if ( Utility.RandomBool() )
 							item = Loot.RandomInstrument();
 						else
-							item = Loot.RandomArcherEquipment( Server.LootPackEntry.playOrient( from ) );
+							item = Loot.RandomHoardArcherEquipment( Server.LootPackEntry.playOrient( from ), from );
 						item = LootPackEntry.Enchant( from, 500, item );
 						break;
 					case 13:

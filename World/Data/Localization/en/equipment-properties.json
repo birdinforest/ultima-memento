@@ -2164,5 +2164,21 @@
   "item.special.golem.porter": "a golem",
   "item.special.pant.of.pants": "The Pant of Pants",
   "prop.special.pant.of.pants.infotext": "of the Haute Haul",
-  "prop.special.pant.of.pants.desc": "Not a spare pair—the statement piece after a ruthlessly curated haul. Every boutique long pant that almost made the cut was edited, layered in spirit, then pressed into this single, unapologetic silhouette: the pant of pants. One look. Full closet energy. No returns, darling—this is the edit."
+  "prop.special.pant.of.pants.desc": "Not a spare pair—the statement piece after a ruthlessly curated haul. Every boutique long pant that almost made the cut was edited, layered in spirit, then pressed into this single, unapologetic silhouette: the pant of pants. One look. Full closet energy. No returns, darling—this is the edit.",
+  "item.magical.elementalquiver.fire": "Quiver of Mild Embers",
+  "item.magical.elementalquiver.cold": "Quiver of Mild Frost",
+  "item.magical.elementalquiver.poison": "Quiver of Mild Venom",
+  "item.magical.elementalquiver.energy": "Quiver of Mild Spark",
+  "item.magical.rangedslayerseal": "a ranged family slayer seal",
+  "prop.magical.rangedslayerseal.desc": "Applies one Super Slayer to an ordinary empty-slot ranged weapon",
+  "prop.magical.rangedslayerseal.shoppe.name": "Ranged Family Slayer Seal",
+  "prop.magical.rangedslayerseal.shoppe.desc": "Apply one Super Slayer to an ordinary empty-slot ranged weapon in your backpack.",
+  "prop.magical.rangedslayerseal.gump.title": "Choose a family Slayer",
+  "prop.magical.rangedslayerseal.msg.prompt": "Target an ordinary ranged weapon in your backpack.",
+  "prop.magical.rangedslayerseal.msg.pack": "The weapon must be in your pack.",
+  "prop.magical.rangedslayerseal.msg.ranged": "You may only use this on a ranged weapon.",
+  "prop.magical.rangedslayerseal.msg.ordinary": "Only ordinary ranged weapons without artifact or gift status can be sealed.",
+  "prop.magical.rangedslayerseal.msg.empty": "The weapon must have empty Slayer slots.",
+  "prop.magical.rangedslayerseal.msg.invalid": "That Slayer choice is not valid.",
+  "prop.magical.rangedslayerseal.msg.done": "Your ranged weapon now bears {0}."
 }

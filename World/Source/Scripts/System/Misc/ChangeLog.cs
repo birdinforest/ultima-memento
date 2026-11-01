@@ -1325,6 +1325,9 @@ namespace Server.Misc
 					builder.Append("- Misc - Magery or Necromancy cannot be taught if the student has Elementalism<br>");
 					builder.Append("- Misc - Summoned pack animals that are invulnerable no longer delete after server restart<br>");
 					builder.Append("- Misc - Reduce strictness when placing Treasure Pile addons<br>");
+					builder.Append("- Combat - Ranged weapon slayers temporarily add 75% more damage (was 50%; returns to 50% after elemental quivers circulate)<br>");
+					builder.Append("- Item - Treasure hoards can yield weak elemental quivers (70% physical / 30% element)<br>");
+					builder.Append("- Shoppe - Bowyer rewards include a ranged family Slayer seal (25,000 points)<br>");
 
 					builder.Append("<br>Fixes<br>");
 					builder.Append("- Item - Research bag can only consume Magery or Necromancy spellbooks<br>");

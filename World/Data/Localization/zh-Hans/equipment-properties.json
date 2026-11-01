@@ -2165,5 +2165,21 @@
   "item.special.golem.porter": "一个魔像（golem）",
   "item.special.pant.of.pants": "众裤之王（The Pant of Pants）",
   "prop.special.pant.of.pants.infotext": "高定限量归仓（Bespoke Collection）",
-  "prop.special.pant.of.pants.desc": "这不是多买的那一条，而是整柜扫货之后留下的「高定主look」。每一条差点入选的精品长裤，都被买手精神剪辑、意念叠穿，最后收成这一条理直气壮的剪裁——裤中之裤。一条腿上的排面，一整柜的气场。概不退换，无需发票，亲爱的：穿着宇宙尽头的裤子，冲向世界尽头的酒馆！"
+  "prop.special.pant.of.pants.desc": "这不是多买的那一条，而是整柜扫货之后留下的「高定主look」。每一条差点入选的精品长裤，都被买手精神剪辑、意念叠穿，最后收成这一条理直气壮的剪裁——裤中之裤。一条腿上的排面，一整柜的气场。概不退换，无需发票，亲爱的：穿着宇宙尽头的裤子，冲向世界尽头的酒馆！",
+  "item.magical.elementalquiver.fire": "微烬箭袋（Quiver of Mild Embers）",
+  "item.magical.elementalquiver.cold": "微霜箭袋（Quiver of Mild Frost）",
+  "item.magical.elementalquiver.poison": "微毒箭袋（Quiver of Mild Venom）",
+  "item.magical.elementalquiver.energy": "微电箭袋（Quiver of Mild Spark）",
+  "item.magical.rangedslayerseal": "远程家族克星封印",
+  "prop.magical.rangedslayerseal.desc": "可为普通、克星槽全空的远程武器施加一种超级克星",
+  "prop.magical.rangedslayerseal.shoppe.name": "远程家族克星封印",
+  "prop.magical.rangedslayerseal.shoppe.desc": "对背包中普通、克星槽全空的远程武器施加一种超级克星（家族级）。",
+  "prop.magical.rangedslayerseal.gump.title": "选择家族克星",
+  "prop.magical.rangedslayerseal.msg.prompt": "请选择背包中的普通远程武器。",
+  "prop.magical.rangedslayerseal.msg.pack": "武器必须在你的背包中。",
+  "prop.magical.rangedslayerseal.msg.ranged": "只能用于远程武器。",
+  "prop.magical.rangedslayerseal.msg.ordinary": "只能封印非神器、非赠礼的普通远程武器。",
+  "prop.magical.rangedslayerseal.msg.empty": "武器的克星槽必须全空。",
+  "prop.magical.rangedslayerseal.msg.invalid": "该克星选项无效。",
+  "prop.magical.rangedslayerseal.msg.done": "你的远程武器现已带有{0}。"
 }

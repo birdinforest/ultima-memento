@@ -84,6 +84,7 @@ namespace Server.Engines.GlobalShoppe
 					_Reward.Create(5000, () => { return new FletcherToolsRunicI(15); }, uses: 15, name: "Runic (I)", description: "Runic tool; crafted items have 1 magical property."),
 					_Reward.Create(20000, () => { return new FletcherToolsRunicII(10); }, uses: 10, name: "Runic (II)", description: "Runic tool; crafted items have 2 magical properties."),
 					_Reward.Create(50000, () => { return new FletcherToolsRunicIII(5); }, uses: 5, name: "Runic (III)", description: "Runic tool; crafted items have 3 magical properties."),
+					_Reward.Create(25000, () => { return new RangedSlayerSeal(); }, name: "prop.magical.rangedslayerseal.shoppe.name", description: "prop.magical.rangedslayerseal.shoppe.desc"),
 
 					_Reward.Create(100000, () => { return new Artifact_BootsofHermes(); }, description: "Allows players to run at mounted speed."),
 				}
@@ -198,6 +199,15 @@ namespace Server.Engines.GlobalShoppe
 		private static string ResolveText( Mobile from, string text )
 		{
 			string lang = AccountLang.GetLanguageCode( from.Account );
+
+			if ( !string.IsNullOrEmpty( text ) && text.IndexOf( '.' ) >= 0 )
+			{
+				string byKey = StringCatalog.TryResolveByKey( lang, text );
+
+				if ( byKey != null )
+					return byKey;
+			}
+
 			return StringCatalog.TryResolve( lang, text ) ?? text;
 		}
 

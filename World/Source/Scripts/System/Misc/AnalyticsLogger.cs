@@ -364,6 +364,135 @@ namespace Server.Misc
 			Emit( d );
 		}
 
+		/// <summary>
+		/// Treasure-hoard case-12 archer branch denominator: every weighted draw, including non-elemental outcomes.
+		/// </summary>
+		public static void LogHoardArcherRoll(
+			PlayerMobile pm,
+			string outcome,
+			string element,
+			Dictionary<string, double> outcomeWeights,
+			Dictionary<string, double> elementWeights,
+			Item item )
+		{
+			if ( !MySettings.S_AnalyticsEnabled || pm == null )
+				return;
+
+			var acc = pm.Account as Account;
+			var d = BaseAccountFields( acc, pm );
+			d["event_type"] = "hoard_archer_roll";
+			d["feature_name"] = "ranged_elemental_supply";
+			d["feature_variant"] = outcome ?? "";
+			d["source"] = "hoard_case_12";
+			d["outcome"] = outcome ?? "";
+			d["element"] = element ?? "";
+			AppendWeightFields( d, "outcome_weight_", outcomeWeights );
+			AppendWeightFields( d, "element_weight_", elementWeights );
+
+			if ( item != null )
+			{
+				d["item_serial"] = item.Serial.Value.ToString( CultureInfo.InvariantCulture );
+				d["item_type"] = item.GetType().Name;
+			}
+			else
+			{
+				d["item_serial"] = "";
+				d["item_type"] = "";
+			}
+
+			Emit( d );
+		}
+
+		/// <summary>
+		/// Weak elemental quiver actually created from the hoard archer branch (circulation numerator).
+		/// </summary>
+		public static void LogElementalQuiverAwarded( PlayerMobile pm, ElementalMagicQuiver quiver, string element )
+		{
+			if ( !MySettings.S_AnalyticsEnabled || pm == null || quiver == null )
+				return;
+
+			var acc = pm.Account as Account;
+			var d = BaseAccountFields( acc, pm );
+			d["event_type"] = "elemental_quiver_awarded";
+			d["feature_name"] = "ranged_elemental_supply";
+			d["feature_variant"] = element ?? ElementalMagicQuiver.ElementKey( quiver.Element );
+			d["source"] = "hoard_case_12";
+			d["element"] = element ?? ElementalMagicQuiver.ElementKey( quiver.Element );
+			d["damage_split"] = "70/30";
+			d["item_serial"] = quiver.Serial.Value.ToString( CultureInfo.InvariantCulture );
+			d["item_type"] = quiver.GetType().Name;
+			Emit( d );
+		}
+
+		public static void LogRangedSlayerSealChosen( PlayerMobile pm, RangedSlayerSeal seal, SlayerName slayer )
+		{
+			if ( !MySettings.S_AnalyticsEnabled || pm == null )
+				return;
+
+			var acc = pm.Account as Account;
+			var d = BaseAccountFields( acc, pm );
+			d["event_type"] = "ranged_slayer_seal_chosen";
+			d["feature_name"] = "ranged_elemental_supply";
+			d["feature_variant"] = slayer.ToString();
+			d["slayer"] = slayer.ToString();
+
+			if ( seal != null )
+			{
+				d["item_serial"] = seal.Serial.Value.ToString( CultureInfo.InvariantCulture );
+				d["item_type"] = seal.GetType().Name;
+			}
+
+			Emit( d );
+		}
+
+		public static void LogRangedSlayerSealApplied( PlayerMobile pm, RangedSlayerSeal seal, BaseWeapon weapon, SlayerName slayer, bool success, string rejectReason )
+		{
+			if ( !MySettings.S_AnalyticsEnabled || pm == null )
+				return;
+
+			var acc = pm.Account as Account;
+			var d = BaseAccountFields( acc, pm );
+			d["event_type"] = "ranged_slayer_seal_applied";
+			d["feature_name"] = "ranged_elemental_supply";
+			d["feature_variant"] = slayer.ToString();
+			d["slayer"] = slayer.ToString();
+			d["success"] = success ? "true" : "false";
+			d["reject_reason"] = rejectReason ?? "";
+
+			if ( seal != null )
+			{
+				d["seal_serial"] = seal.Serial.Value.ToString( CultureInfo.InvariantCulture );
+				d["seal_type"] = seal.GetType().Name;
+			}
+
+			if ( weapon != null )
+			{
+				d["weapon_serial"] = weapon.Serial.Value.ToString( CultureInfo.InvariantCulture );
+				d["weapon_type"] = weapon.GetType().Name;
+			}
+			else
+			{
+				d["weapon_serial"] = "";
+				d["weapon_type"] = "";
+			}
+
+			Emit( d );
+		}
+
+		private static void AppendWeightFields( Dictionary<string, string> d, string prefix, Dictionary<string, double> weights )
+		{
+			if ( d == null || weights == null )
+				return;
+
+			foreach ( var kv in weights )
+			{
+				if ( string.IsNullOrEmpty( kv.Key ) )
+					continue;
+
+				d[prefix + kv.Key] = kv.Value.ToString( "0.##", CultureInfo.InvariantCulture );
+			}
+		}
+
 		private static void AppendRelicsChestFields( Dictionary<string, string> d, ManualOfItems chest )
 		{
 			d["item_serial"] = chest.Serial.Value.ToString( CultureInfo.InvariantCulture );
