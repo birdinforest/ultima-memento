@@ -1,5 +1,6 @@
 using Server.Spells.Song;
 
+using Server.Localization;
 namespace Server.Items
 {
 	public class KnightsMinneScroll : SpellScroll
@@ -25,7 +26,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( "The sheet music must be in your music book." );
+			from.SendMessage( StringCatalog.Resolve( from.Account, "The sheet music must be in your music book." ) );
 		}
 
 		public override void Serialize( GenericWriter writer )

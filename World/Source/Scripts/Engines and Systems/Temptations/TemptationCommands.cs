@@ -1,5 +1,6 @@
 using Server.Commands;
 using Server.Commands.Generic;
+using Server.Localization;
 using Server.Mobiles;
 
 namespace Server.Temptation
@@ -22,13 +23,13 @@ namespace Server.Temptation
 			var pm = obj as PlayerMobile;
 			if (pm == null)
 			{
-				LogFailure("That is not a player.");
+				LogFailure( StringCatalog.Resolve( from.Account, "That is not a player." ) );
 				return;
 			}
 
 			if (from.Avatar.Active && !from.Avatar.UnlockTemptations)
 			{
-				from.SendMessage("An Avatar must unlock the Temptations system before using this command.");
+				from.SendMessage( StringCatalog.ResolveByKey( from.Account, "temptationgump.msg.avatar_unlock_required" ) );
 				return;
 			}
 

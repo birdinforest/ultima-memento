@@ -1,0 +1,40 @@
+{"file": "scripts-books.json", "key": "s.b5d3a335a29c1572", "en": "This magic can only be unleashed at the {0}."}
+{"file": "scripts-books.json", "key": "s.cce5205f9bcd3322", "en": "You have stolen the following relics:"}
+{"file": "scripts-books.json", "key": "s.d4c3580f065a5730", "en": "There are those with great wealth that seek items that have been rumored to lie within the dungeons of the land. These nobles seek a crafty thief to sneak into these places and find these items. Speak with the Thief Guildmaster to take the job. Bring each prize back in the order listed, mark it as a quest item, and collect your fee when you deliver it.<br><br>"}
+{"file": "scripts-books.json", "key": "s.f5586d29c278dfcd", "en": "The Guildmaster only commissions one relic at a time. These rare items might not always be there. A better thief may have beaten you to it, and you may be forced to wait for it to reappear again. So time is of the essence if you want to profit from the eagerness of royalty."}
+{"file": "scripts-engines-and-systems.json", "key": "s.02a92fe6f09d5cbf", "en": "There isn't enough excess wax in the hive to harvest!"}
+{"file": "scripts-engines-and-systems.json", "key": "s.0af4152e092d28ec", "en": "That spellbook is no longer in your possession."}
+{"file": "scripts-engines-and-systems.json", "key": "s.0d9d3a963d2af9f3", "en": "You leave the spellbook intact."}
+{"file": "scripts-engines-and-systems.json", "key": "s.11677c7d43135bc0", "en": "Goal: Cube of {0}"}
+{"file": "scripts-engines-and-systems.json", "key": "s.1857580e9b507ea0", "en": "You begin to pick the lock."}
+{"file": "scripts-engines-and-systems.json", "key": "s.1fdf2811cb12532e", "en": "You don't have a lockpick that can be used on this container."}
+{"file": "scripts-engines-and-systems.json", "key": "s.255b7f526786a7b6", "en": "Note: Research Bag is dormant (likely in bank). Complete resonance and carry the bag before SearchBase chests will grant progress."}
+{"file": "scripts-engines-and-systems.json", "key": "s.260257ef672f820d", "en": "Draft mode disabled. All skills have been reset to 0 and Unlocked."}
+{"file": "scripts-engines-and-systems.json", "key": "s.2daad7fe6c765ff4", "en": "That spellbook is too far away."}
+{"file": "scripts-engines-and-systems.json", "key": "s.3556cd84991988c8", "en": "Your skill is too low to use this resource."}
+{"file": "scripts-engines-and-systems.json", "key": "s.37911556dc33f234", "en": "Your skills have been set to the chosen template. Focus and Meditation have been set to Locked."}
+{"file": "scripts-engines-and-systems.json", "key": "s.39aa359b02613d02", "en": "What do you want to chop?"}
+{"file": "scripts-engines-and-systems.json", "key": "s.3a5acac57133dc0e", "en": "'{0}' may now see '{1}' when drafting skills."}
+{"file": "scripts-engines-and-systems.json", "key": "s.3c04282a2d7223e3", "en": "You need a bottle to fill with honey!"}
+{"file": "scripts-engines-and-systems.json", "key": "s.445d3d07198f9d3c", "en": "That player has no Memory Echo assigned."}
+{"file": "scripts-engines-and-systems.json", "key": "s.44b53ca6a87ab123", "en": "You cannot use that."}
+{"file": "scripts-engines-and-systems.json", "key": "s.480f10d51f1374da", "en": "That Research Bag belongs to someone else."}
+{"file": "scripts-engines-and-systems.json", "key": "s.484fda997a119ccf", "en": "Ephemeral magic cannot be added to spellbooks."}
+{"file": "scripts-engines-and-systems.json", "key": "s.48519111b23b2f83", "en": "You cannot destroy the hive with a full backpack!"}
+{"file": "scripts-engines-and-systems.json", "key": "s.49c266baaaa70981", "en": "Search"}
+{"file": "scripts-engines-and-systems.json", "key": "s.4c527106dca0a2f9", "en": "Next research search for {0}: [{1}] {2} in {3}"}
+{"file": "scripts-engines-and-systems.json", "key": "s.4fdf1dac0f0a9139", "en": "Coordinates: {0}, {1}, {2}"}
+{"file": "scripts-engines-and-systems.json", "key": "s.551eb3dc9aa4cd7f", "en": "Goal: {0} — find {1}"}
+{"file": "scripts-engines-and-systems.json", "key": "s.5a25a8964a18c041", "en": "That is not a player."}
+{"file": "scripts-engines-and-systems.json", "key": "s.5e6fac02e787046c", "en": "You need a hive tool to scrape the excess beeswax!"}
+{"file": "scripts-engines-and-systems.json", "key": "s.5e9043a728f65bdd", "en": "You begin to remove the trap."}
+{"file": "scripts-engines-and-systems.json", "key": "s.5ff2b5b3d9517a8e", "en": "Custom amount"}
+{"file": "scripts-engines-and-systems.json", "key": "s.63f21aec5b1ca331", "en": "Spell bars automatically opened. Use `[toolbars` to disable them."}
+{"file": "scripts-engines-and-systems.json", "key": "s.70050f070c84376c", "en": "You need a hive tool to extract the excess honey!"}
+{"file": "scripts-engines-and-systems.json", "key": "s.7ae30934aec53a56", "en": "Pay {0} gold from backpack/bank"}
+{"file": "scripts-engines-and-systems.json", "key": "s.8190f34bcd235179", "en": "Re-assigned to: {0}"}
+{"file": "scripts-engines-and-systems.json", "key": "s.82335724b33a63b0", "en": "Still could not resolve coordinates. Check that SearchBase chests exist in the world."}
+{"file": "scripts-engines-and-systems.json", "key": "s.841411b1da502656", "en": "Required mana"}
+{"file": "scripts-engines-and-systems.json", "key": "s.84dd01b36e6b4b1e", "en": "Target the player whose Memory Echo you wish to inspect."}
+{"file": "scripts-engines-and-systems.json", "key": "s.87dc707fb0a09d98", "en": "Map: {0}"}
+{"file": "scripts-engines-and-systems.json", "key": "s.8aa0f13094103501", "en": "{0} has no pending research search locations."}

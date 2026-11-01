@@ -4,6 +4,7 @@ using Server.Misc;
 using System;
 using Server.Targeting;
 
+using Server.Localization;
 namespace Server.Spells.Song
 {
 	public class EnchantingEtudeSong : Song
@@ -71,7 +72,7 @@ namespace Server.Spells.Song
 				m.RemoveStatMod(StatModName);
 
 				BuffInfo.RemoveBuff(m, BuffIcon.EnchantingEtude);
-				m.SendMessage("The effect of {0} wears off.", SpellInfo.SpellDefinition.Name);
+				m.SendMessage( StringCatalog.ResolveFormat( m.Account, "The effect of {0} wears off.", SpellInfo.SpellDefinition.Name ) );
 			}
 
 			protected override bool TryApplyInternal()

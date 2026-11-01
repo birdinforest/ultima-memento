@@ -94,7 +94,8 @@ def _hash_en_identity_ok_for_zh_hans(en_val: str) -> bool:
         return True
     if len(t) >= 2 and set(t) == {"*"}:
         return True
-    if "{" in t and re.fullmatch(r"[0-9A-Za-z\t \[\]{}]+", t):
+    # Format-only templates (placeholders + punctuation); zh may mirror en.
+    if "{" in t and re.fullmatch(r"[0-9A-Za-z\t \[\]{}.=_+/\-:,]+", t):
         return True
     return False
 

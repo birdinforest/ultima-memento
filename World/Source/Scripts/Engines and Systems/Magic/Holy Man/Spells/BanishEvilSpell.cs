@@ -3,6 +3,7 @@ using Server.Targeting;
 using Server.Mobiles;
 using Server.Items;
 
+using Server.Localization;
 namespace Server.Spells.HolyMan
 {
 	public class BanishEvilSpell : HolyManSpell
@@ -51,15 +52,15 @@ namespace Server.Spells.HolyMan
             }
             else if (m is PlayerMobile)
             {
-                Caster.SendMessage("Your prayers cannot banish that!");
+                Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Your prayers cannot banish that!" ) );
             }
 			else if (!undead.Slays(m) && !exorcism.Slays(m))
 			{
-                Caster.SendMessage("Your prayers cannot banish such a creature!");
+                Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Your prayers cannot banish such a creature!" ) );
             }
 			else if( bc.IsBonded )
 			{
-                Caster.SendMessage("Your prayers cannot banish such a creature!");
+                Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "Your prayers cannot banish such a creature!" ) );
 			}
             else if (CheckHSequence( m ) )
             {

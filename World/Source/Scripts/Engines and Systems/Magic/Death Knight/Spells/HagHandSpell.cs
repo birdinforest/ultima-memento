@@ -4,6 +4,7 @@ using Server.Items;
 using Server.Targeting;
 using System.Collections.Generic;
 
+using Server.Localization;
 namespace Server.Spells.DeathKnight
 {
 	public class HagHandSpell : DeathKnightSpell
@@ -96,7 +97,7 @@ namespace Server.Spells.DeathKnight
 						{
 							caster.AddToBackpack ( item );
 						}
-					caster.PrivateOverheadMessage(MessageType.Regular, 1153, false, "The curse has been lifted from the books.", caster.NetState);
+					caster.PrivateOverheadMessage( MessageType.Regular, 1153, false, StringCatalog.Resolve( caster.Account, "The curse has been lifted from the books." ), caster.NetState );
 					o.Delete();
 				}
 				else if ( o is CurseItem )
@@ -113,7 +114,7 @@ namespace Server.Spells.DeathKnight
 						}
 					string curseName = o.Name;
 						if ( curseName == ""){ curseName = "item"; }
-					caster.PrivateOverheadMessage(MessageType.Regular, 1153, false, "The curse has been lifted from the " + curseName + ".", caster.NetState);
+					caster.PrivateOverheadMessage(MessageType.Regular, 1153, false, StringCatalog.ResolveFormat( caster.Account, "The curse has been lifted from the {0}.", curseName ), caster.NetState);
 					o.Delete();
 				}
 
@@ -126,7 +127,7 @@ namespace Server.Spells.DeathKnight
 				caster.PlaySound( 0x1DF );
 
 				if ( o is BookBox || o is CurseItem )
-					caster.SendMessage("You fail to lift the curse.");
+					caster.SendMessage( StringCatalog.Resolve( caster.Account, "You fail to lift the curse." ) );
 			}
 
 			FinishSequence();

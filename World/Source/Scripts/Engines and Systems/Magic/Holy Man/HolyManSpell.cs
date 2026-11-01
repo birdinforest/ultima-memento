@@ -3,6 +3,7 @@ using Server.Network;
 using Server.Items;
 using System.Collections;
 
+using Server.Localization;
 namespace Server.Spells.HolyMan
 {
 	public abstract class HolyManSpell : Spell
@@ -37,22 +38,22 @@ namespace Server.Spells.HolyMan
 
 			if ( Caster.Karma < 2500 )
 			{
-				Caster.SendMessage( "You have too little Karma to invoke this prayer." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You have too little Karma to invoke this prayer." ) );
 				return false;
 			}
 			else if ( Caster.Skills[CastSkill].Value < RequiredSkill )
 			{
-				Caster.SendMessage( "You must have at least " + RequiredSkill + " Spiritualism to invoke this prayer." );
+				Caster.SendMessage( StringCatalog.ResolveFormat( Caster.Account, "You must have at least {0} Spiritualism to invoke this prayer.", RequiredSkill ) );
 				return false;
 			}
 			else if ( GetSoulsInSymbol( Caster ) < RequiredTithing )
 			{
-				Caster.SendMessage( "You must have at least " + RequiredTithing + " piety to invoke this prayer." );
+				Caster.SendMessage( StringCatalog.ResolveFormat( Caster.Account, "You must have at least {0} piety to invoke this prayer.", RequiredTithing ) );
 				return false;
 			}
 			else if ( Caster.Mana < GetMana() )
 			{
-				Caster.SendMessage( "You must have at least " + GetMana() + " Mana to invoke this prayer." );
+				Caster.SendMessage( StringCatalog.ResolveFormat( Caster.Account, "You must have at least {0} Mana to invoke this prayer.", GetMana() ) );
 				return false;
 			}
 
@@ -66,22 +67,22 @@ namespace Server.Spells.HolyMan
 
 			if ( Caster.Karma < 2500 )
 			{
-				Caster.SendMessage( "You have too little Karma to invoke this prayer." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You have too little Karma to invoke this prayer." ) );
 				return false;
 			}
 			else if ( Caster.Skills[CastSkill].Value < RequiredSkill )
 			{
-				Caster.SendMessage( "You must have at least " + RequiredSkill + " Spiritualism to invoke this prayer" );
+				Caster.SendMessage( StringCatalog.ResolveFormat( Caster.Account, "You must have at least {0} Spiritualism to invoke this prayer.", RequiredSkill ) );
 				return false;
 			}
 			else if ( GetSoulsInSymbol( Caster ) < requiredTithing )
 			{
-				Caster.SendMessage( "You must have at least " + requiredTithing + " piety to invoke this prayer." );
+				Caster.SendMessage( StringCatalog.ResolveFormat( Caster.Account, "You must have at least {0} piety to invoke this prayer.", requiredTithing ) );
 				return false;
 			}
 			else if ( Caster.Mana < mana )
 			{
-				Caster.SendMessage( "You must have at least " + mana + " Mana to invoke this prayer." );
+				Caster.SendMessage( StringCatalog.ResolveFormat( Caster.Account, "You must have at least {0} Mana to invoke this prayer.", mana ) );
 				return false;
 			}
 
@@ -92,7 +93,7 @@ namespace Server.Spells.HolyMan
 
 		public override void DoFizzle()
 		{
-			Caster.PrivateOverheadMessage(MessageType.Regular, 0x3B2, false, "You fail to invoke the power.", Caster.NetState);
+			Caster.PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, StringCatalog.Resolve( Caster.Account, "You fail to invoke the power." ), Caster.NetState );
 			Caster.FixedParticles( 0x3735, 1, 30, 9503, EffectLayer.Waist );
 			Caster.PlaySound( 0x1D6 );
 			Caster.NextSpellTime = DateTime.Now;

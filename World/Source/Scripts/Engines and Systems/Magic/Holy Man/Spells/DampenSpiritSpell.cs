@@ -1,6 +1,7 @@
 using System;
 using Server.Targeting;
 
+using Server.Localization;
 namespace Server.Spells.HolyMan
 {
 	public class DampenSpiritSpell : HolyManSpell
@@ -63,7 +64,7 @@ namespace Server.Spells.HolyMan
 					int toDrain = 0;
 
 					if ( m.Karma > 0 )
-						Caster.SendMessage( "The gods will not smite such a kindly soul." );
+						Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "The gods will not smite such a kindly soul." ) );
 					else
 					{
 						toDrain = (int)(GetDamageSkill( Caster ) - GetResistSkill( m ));

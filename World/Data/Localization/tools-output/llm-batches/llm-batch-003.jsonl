@@ -1,0 +1,40 @@
+{"file": "scripts-items.json", "key": "s.25a783ce16666fa8", "en": "Only an Avatar may use this item."}
+{"file": "scripts-items.json", "key": "s.3693a6b4f01d3bd6", "en": "The destination has been cleared. This must be secured in a house to set it or in your backpack to change the appearance! This teleporter can be dyed as well."}
+{"file": "scripts-items.json", "key": "s.3711b73ce822cb15", "en": "You don't see how that lock can be hacked."}
+{"file": "scripts-items.json", "key": "s.4df08004b5610644", "en": "You can only coat the tools with a potion."}
+{"file": "scripts-items.json", "key": "s.52e3c031d8e1d80d", "en": "You are already doing something else."}
+{"file": "scripts-items.json", "key": "s.57944f785c15c555", "en": "You wipe the potion coating from the trapping tools."}
+{"file": "scripts-items.json", "key": "s.5f09c848f3cd97be", "en": "What locked container or door do you want to use the key on?"}
+{"file": "scripts-items.json", "key": "s.6a4d1c1057da516f", "en": "You have no idea how to best cut this type of wood! (You need to raise your lumberjacking)"}
+{"file": "scripts-items.json", "key": "s.729246a961ae14dc", "en": "You coat the trapping tools with the potion."}
+{"file": "scripts-items.json", "key": "s.7452a5e7a602e36c", "en": "The sound of gas escaping is heard from the chest."}
+{"file": "scripts-items.json", "key": "s.80a64f63f78df390", "en": "Your skill at hacking worked."}
+{"file": "scripts-items.json", "key": "s.8334496868b26015", "en": "Select the flour mill on which to grind the wheat."}
+{"file": "scripts-items.json", "key": "s.8b614117aee64241", "en": "The container relocks itself."}
+{"file": "scripts-items.json", "key": "s.8f3fdb9b788be298", "en": "This item belongs to another."}
+{"file": "scripts-items.json", "key": "s.9083bd76e7bc61e4", "en": "The lock quickly yields to your skill."}
+{"file": "scripts-items.json", "key": "s.9dd0361f5966e069", "en": "This kit is already coated with something."}
+{"file": "scripts-items.json", "key": "s.a94963fc88cb2733", "en": "This must be in your backpack to change the ammo type."}
+{"file": "scripts-items.json", "key": "s.b4d1969700f521df", "en": "You are unable to pick the lock."}
+{"file": "scripts-items.json", "key": "s.b709c665f9576d16", "en": "This lock cannot be picked by normal means."}
+{"file": "scripts-items.json", "key": "s.bb3e18f999c10463", "en": "That is not a saw mill."}
+{"file": "scripts-items.json", "key": "s.c67d4bafaa8a5490", "en": "Your decisions preclude you from accessing this destination."}
+{"file": "scripts-items.json", "key": "s.ca9d81d2c6441932", "en": "You don't see a card slot on this."}
+{"file": "scripts-items.json", "key": "s.cce1c1bbf47663e9", "en": "That potion cannot be used with trapping tools."}
+{"file": "scripts-items.json", "key": "s.d5e2d3b9e7d5ab1b", "en": "This doesn't have a key hole, but it does have a card slot."}
+{"file": "scripts-items.json", "key": "s.e7405304824ef0eb", "en": "You are unable to hack the lock."}
+{"file": "scripts-items.json", "key": "s.ef3f60dcbdf228e7", "en": "You have changed the ammo to "}
+{"file": "scripts-items.json", "key": "s.f1de0d560f845727", "en": "The key is still misshapen from the last use. Wait a moment before using it again."}
+{"file": "scripts-mobiles.json", "key": "s.0eeba02152476f67", "en": "mob.fmt.0_the_vendor_cannot_be_harmed"}
+{"file": "scripts-mobiles.json", "key": "s.2f950474ad1ed342", "en": "mob.fmt.0_needs_at_least_5_000_gold_to_construct_the_item_for_y"}
+{"file": "scripts-mobiles.json", "key": "s.394c00856a997d39", "en": "That does not need my services."}
+{"file": "scripts-mobiles.json", "key": "s.47c90c33eab903d9", "en": "You separate the boards into your backpack"}
+{"file": "scripts-mobiles.json", "key": "s.481dd2cb9e546da8", "en": "You separate the ingots into your backpack"}
+{"file": "scripts-mobiles.json", "key": "s.4e4b6c5a03bbbca0", "en": "willing to sell"}
+{"file": "scripts-mobiles.json", "key": "s.4f93ecd1ddd51dd2", "en": "an enchanted item"}
+{"file": "scripts-mobiles.json", "key": "s.52291cd265ddd953", "en": "{0} I have {1} I {2} on the remains of some {3} that I am {4} for {5} gold."}
+{"file": "scripts-mobiles.json", "key": "s.52bc185b8d4447da", "en": "a magic item"}
+{"file": "scripts-mobiles.json", "key": "s.616d4a81244d32d7", "en": " You can look in my backpack to examine the item if you wish. If you want to trade, then hand me the gold and I will give you the item."}
+{"file": "scripts-mobiles.json", "key": "s.6379b6de64a1fb89", "en": "{0} I have {1} I {2} on some {3} in {4} that I am {5} for {6} gold."}
+{"file": "scripts-mobiles.json", "key": "s.6492e5d4215fd655", "en": "I have rebound your book."}
+{"file": "scripts-mobiles.json", "key": "s.6e70659c47401b2f", "en": "Hail, Z~Z~Z~Z~Z. Welcome to Y~Y~Y~Y~Y."}

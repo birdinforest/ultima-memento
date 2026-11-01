@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Server.Targeting;
 
+using Server.Localization;
 namespace Server.Spells.DeathKnight
 {
 	public class SoulReaperSpell : DeathKnightSpell
@@ -73,7 +74,7 @@ namespace Server.Spells.DeathKnight
 
 				m.FixedParticles( 0x374A, 10, 15, 5032, EffectLayer.Head );
 				m.PlaySound( 0x1F8 );
-				m.SendMessage( "You feel your soul weakening." );
+				m.SendMessage( StringCatalog.Resolve( m.Account, "You feel your soul weakening." ) );
 
 				DrainSoulsInLantern( Caster, RequiredTithing );
 			}
@@ -101,7 +102,7 @@ namespace Server.Spells.DeathKnight
 				{
 					Stop();
 					m_Table.Remove( m_Owner );
-					m_Owner.SendMessage( "Your soul begins to recover." );
+					m_Owner.SendMessage( StringCatalog.Resolve( m_Owner.Account, "Your soul begins to recover." ) );
 				}
 				else if ( m_Owner.Mana < 10 )
 				{

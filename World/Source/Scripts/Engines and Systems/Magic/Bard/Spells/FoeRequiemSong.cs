@@ -52,7 +52,7 @@ namespace Server.Spells.Song
 
 				if (messageRecipient != null)
 				{
-					messageRecipient.SendMessage("The effect of {0} wears off.", SpellInfo.SpellDefinition.Name);
+					messageRecipient.SendMessage( StringCatalog.ResolveFormat( messageRecipient.Account, "The effect of {0} wears off.", SpellInfo.SpellDefinition.Name ) );
 				}
 			}
 		}

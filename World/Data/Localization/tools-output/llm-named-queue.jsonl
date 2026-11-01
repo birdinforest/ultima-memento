@@ -1,0 +1,65 @@
+{"file": "avatar-system.json", "key": "avatar.gump.faction_bonus_tooltip", "en": "The amount of coins you have received for killing your enemy faction."}
+{"file": "chat3-ui.json", "key": "chat3.273", "en": "Gump"}
+{"file": "equipment-properties.json", "key": "gift.provenance", "en": "{0} {1}"}
+{"file": "equipment-properties.json", "key": "prop.gift.provenance", "en": "{0}"}
+{"file": "equipment-properties.json", "key": "prop.magical.gem.charges.line", "en": "{0}\t{1}"}
+{"file": "equipment-properties.json", "key": "prop.special.soulstonefragment.uses.line", "en": "{0}\t{1}"}
+{"file": "equipment-properties.json", "key": "prop.special.dragonstatue.material", "en": "{0}"}
+{"file": "equipment-properties.json", "key": "prop.special.dragonstatue.inscription", "en": "{0}"}
+{"file": "equipment-properties.json", "key": "prop.trade.common.uses.line", "en": "{0}\t{1}"}
+{"file": "equipment-properties.json", "key": "prop.reward.bonusgloves.skill", "en": "{0} +{1}"}
+{"file": "research-spell-catalog.json", "key": "research.rune.01.upper", "en": "An"}
+{"file": "research-spell-catalog.json", "key": "research.rune.01.lower", "en": "an"}
+{"file": "research-spell-catalog.json", "key": "research.rune.02.upper", "en": "Bet"}
+{"file": "research-spell-catalog.json", "key": "research.rune.02.lower", "en": "bet"}
+{"file": "research-spell-catalog.json", "key": "research.rune.03.upper", "en": "Corp"}
+{"file": "research-spell-catalog.json", "key": "research.rune.03.lower", "en": "corp"}
+{"file": "research-spell-catalog.json", "key": "research.rune.04.upper", "en": "Des"}
+{"file": "research-spell-catalog.json", "key": "research.rune.04.lower", "en": "des"}
+{"file": "research-spell-catalog.json", "key": "research.rune.05.upper", "en": "Ex"}
+{"file": "research-spell-catalog.json", "key": "research.rune.05.lower", "en": "ex"}
+{"file": "research-spell-catalog.json", "key": "research.rune.06.upper", "en": "Flam"}
+{"file": "research-spell-catalog.json", "key": "research.rune.06.lower", "en": "flam"}
+{"file": "research-spell-catalog.json", "key": "research.rune.07.upper", "en": "Grav"}
+{"file": "research-spell-catalog.json", "key": "research.rune.07.lower", "en": "grav"}
+{"file": "research-spell-catalog.json", "key": "research.rune.08.upper", "en": "Hur"}
+{"file": "research-spell-catalog.json", "key": "research.rune.08.lower", "en": "hur"}
+{"file": "research-spell-catalog.json", "key": "research.rune.09.upper", "en": "In"}
+{"file": "research-spell-catalog.json", "key": "research.rune.09.lower", "en": "in"}
+{"file": "research-spell-catalog.json", "key": "research.rune.10.upper", "en": "Jux"}
+{"file": "research-spell-catalog.json", "key": "research.rune.10.lower", "en": "jux"}
+{"file": "research-spell-catalog.json", "key": "research.rune.11.upper", "en": "Kal"}
+{"file": "research-spell-catalog.json", "key": "research.rune.11.lower", "en": "kal"}
+{"file": "research-spell-catalog.json", "key": "research.rune.12.upper", "en": "Lor"}
+{"file": "research-spell-catalog.json", "key": "research.rune.12.lower", "en": "lor"}
+{"file": "research-spell-catalog.json", "key": "research.rune.13.upper", "en": "Mani"}
+{"file": "research-spell-catalog.json", "key": "research.rune.13.lower", "en": "mani"}
+{"file": "research-spell-catalog.json", "key": "research.rune.14.upper", "en": "Nox"}
+{"file": "research-spell-catalog.json", "key": "research.rune.14.lower", "en": "nox"}
+{"file": "research-spell-catalog.json", "key": "research.rune.15.upper", "en": "Ort"}
+{"file": "research-spell-catalog.json", "key": "research.rune.15.lower", "en": "ort"}
+{"file": "research-spell-catalog.json", "key": "research.rune.16.upper", "en": "Por"}
+{"file": "research-spell-catalog.json", "key": "research.rune.16.lower", "en": "por"}
+{"file": "research-spell-catalog.json", "key": "research.rune.17.upper", "en": "Quas"}
+{"file": "research-spell-catalog.json", "key": "research.rune.17.lower", "en": "quas"}
+{"file": "research-spell-catalog.json", "key": "research.rune.18.upper", "en": "Rel"}
+{"file": "research-spell-catalog.json", "key": "research.rune.18.lower", "en": "rel"}
+{"file": "research-spell-catalog.json", "key": "research.rune.19.upper", "en": "Sanct"}
+{"file": "research-spell-catalog.json", "key": "research.rune.19.lower", "en": "sanct"}
+{"file": "research-spell-catalog.json", "key": "research.rune.20.upper", "en": "Tym"}
+{"file": "research-spell-catalog.json", "key": "research.rune.20.lower", "en": "tym"}
+{"file": "research-spell-catalog.json", "key": "research.rune.21.upper", "en": "Uus"}
+{"file": "research-spell-catalog.json", "key": "research.rune.21.lower", "en": "uus"}
+{"file": "research-spell-catalog.json", "key": "research.rune.22.upper", "en": "Vas"}
+{"file": "research-spell-catalog.json", "key": "research.rune.22.lower", "en": "vas"}
+{"file": "research-spell-catalog.json", "key": "research.rune.23.upper", "en": "Wis"}
+{"file": "research-spell-catalog.json", "key": "research.rune.23.lower", "en": "wis"}
+{"file": "research-spell-catalog.json", "key": "research.rune.24.upper", "en": "Xen"}
+{"file": "research-spell-catalog.json", "key": "research.rune.24.lower", "en": "xen"}
+{"file": "research-spell-catalog.json", "key": "research.rune.25.upper", "en": "Ylem"}
+{"file": "research-spell-catalog.json", "key": "research.rune.25.lower", "en": "ylem"}
+{"file": "research-spell-catalog.json", "key": "research.rune.26.upper", "en": "Zu"}
+{"file": "research-spell-catalog.json", "key": "research.rune.26.lower", "en": "zu"}
+{"file": "scripts-system.json", "key": "s.285a27dbcae663b6", "en": "{0} = {1}"}
+{"file": "scripts-system.json", "key": "s.294b31251820ccce", "en": "  {0}.{1} = {2}"}
+{"file": "world-player-text.json", "key": "mob.other.in_vas_mani", "en": "In Vas Mani"}

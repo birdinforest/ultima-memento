@@ -1,0 +1,8 @@
+{
+  "avatar-system.json": {
+    "avatar.gump.faction_bonus_tooltip": "你因击杀敌对派系所获得的金币数量。"
+  },
+  "chat3-ui.json": {
+    "chat3.273": "面板"
+  }
+}

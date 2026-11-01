@@ -5,6 +5,7 @@ using Server.Engines.MobileEnhancement;
 using Server.Items;
 using Server.Targeting;
 
+using Server.Localization;
 namespace Server.Spells.Song
 {
 	public class FireCarolSong : Song
@@ -75,7 +76,7 @@ namespace Server.Spells.Song
 				m_Mod = null;
 
 				BuffInfo.RemoveBuff(m, BuffIcon.FireCarol);
-				m.SendMessage("The effect of {0} wears off.", SpellInfo.SpellDefinition.Name);
+				m.SendMessage( StringCatalog.ResolveFormat( m.Account, "The effect of {0} wears off.", SpellInfo.SpellDefinition.Name ) );
 			}
 
 			protected override bool TryApplyInternal()
@@ -93,7 +94,7 @@ namespace Server.Spells.Song
 					}
 				}
 
-				m.SendMessage("Your resistance to fire has increased.");
+				m.SendMessage( StringCatalog.Resolve( m.Account, "Your resistance to fire has increased." ) );
 				m_Mod = new ResistanceMod(ResistanceType.Fire, +amount);
 				m.AddResistanceMod(m_Mod);
 				m.FixedParticles(0x373A, 10, 15, 5012, 0x21, 3, EffectLayer.Waist);

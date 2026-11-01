@@ -3,6 +3,7 @@ using System.Collections;
 using Server.Items;
 using Server.Targeting;
 
+using Server.Localization;
 namespace Server.Spells.HolyMan
 {
 	public class SeanceSpell : HolyManSpell
@@ -47,12 +48,12 @@ namespace Server.Spells.HolyMan
             }
             else if (TransformationSpellHelper.UnderTransformation(Caster))
             {
-                Caster.SendMessage("You cannot enter the realm of the dead while in that form.");
+                Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You cannot enter the realm of the dead while in that form." ) );
                 return false;
             }
 			else if ( DisguiseTimers.IsDisguised( Caster ) )
 			{
-                Caster.SendMessage("You cannot enter the realm of the dead while disguised.");
+                Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You cannot enter the realm of the dead while disguised." ) );
                 return false;
             }
             else if (!Caster.CanBeginAction(typeof(SeanceSpell)))
@@ -82,11 +83,11 @@ namespace Server.Spells.HolyMan
             }
             else if (TransformationSpellHelper.UnderTransformation(Caster))
             {
-                Caster.SendMessage("You cannot enter the realm of the dead while in that form.");
+                Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You cannot enter the realm of the dead while in that form." ) );
             }
 			else if ( DisguiseTimers.IsDisguised( Caster ) )
 			{
-                Caster.SendMessage("You cannot enter the realm of the dead while disguised.");
+                Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You cannot enter the realm of the dead while disguised." ) );
             }
             else if (!Caster.CanBeginAction(typeof(Server.Spells.Shinobi.Deception)) || !Caster.CanBeginAction(typeof(Server.Spells.Fifth.IncognitoSpell)) || (Caster.IsBodyMod && Caster.RaceID != Caster.BodyMod) )
             {
@@ -104,7 +105,7 @@ namespace Server.Spells.HolyMan
                         Caster.PlaySound(0x379);
                         Caster.BodyValue = m_NewBody;
                         Caster.Hue = m_NewHue;
-                        Caster.SendMessage("You enter the realm of the dead.");
+                        Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You enter the realm of the dead." ) );
                         Caster.Blessed = true;
 
                         StopTimer(Caster);

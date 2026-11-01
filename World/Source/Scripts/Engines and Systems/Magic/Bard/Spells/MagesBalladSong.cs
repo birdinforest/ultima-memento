@@ -4,6 +4,7 @@ using Server.Misc;
 using System;
 using Server.Targeting;
 
+using Server.Localization;
 namespace Server.Spells.Song
 {
 	public class MagesBalladSong : Song
@@ -83,13 +84,13 @@ namespace Server.Spells.Song
 
 				var m = TargetMobile;
 				BuffInfo.RemoveBuff(m, BuffIcon.MagesBallad);
-				m.SendMessage("The effect of {0} wears off.", SpellInfo.SpellDefinition.Name);
+				m.SendMessage( StringCatalog.ResolveFormat( m.Account, "The effect of {0} wears off.", SpellInfo.SpellDefinition.Name ) );
 			}
 
 			protected override bool TryApplyInternal()
 			{
 				var m = TargetMobile;
-				m.SendMessage("Your mind clears.");
+				m.SendMessage( StringCatalog.Resolve( m.Account, "Your mind clears." ) );
 				m_Timer = Timer.DelayCall(m_TickInterval, m_TickInterval, () =>
 				{
 					if (m == null || m.Deleted || !m.Alive || DateTime.Now >= AppliedAt + Duration)

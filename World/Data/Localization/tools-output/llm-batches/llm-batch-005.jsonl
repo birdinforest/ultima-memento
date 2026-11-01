@@ -1,0 +1,40 @@
+{"file": "scripts-quests.json", "key": "s.ab17ca3d8fbc4860", "en": "Challenge mob: {0}{1}"}
+{"file": "scripts-quests.json", "key": "s.b8bef080f9b9d1bf", "en": "You are already searching for {0}, do you want to abandon your search and start a new quest?"}
+{"file": "scripts-quests.json", "key": "s.cd6496bba8cc7901", "en": "Ringmail Armor Recipes"}
+{"file": "scripts-quests.json", "key": "s.d28020f715fadceb", "en": "Royal Armor Recipes"}
+{"file": "scripts-quests.json", "key": "s.df21a0b1408f1b4c", "en": "Abandon Quest?"}
+{"file": "scripts-quests.json", "key": "s.e1f15d023e872db3", "en": "an unstable rift"}
+{"file": "scripts-quests.json", "key": "s.e36a7f98730f3374", "en": "Epic Tribute challenge for {0}: \"{1}\" in {2}."}
+{"file": "scripts-quests.json", "key": "s.e4a672a99c5d243a", "en": "Challenge record exists but the mob is gone (killed or cleaned up). Re-enter \"{0}\" to re-trigger if still needed."}
+{"file": "scripts-quests.json", "key": "s.e4f702b23376a41e", "en": "This job is for guild members only."}
+{"file": "scripts-quests.json", "key": "s.f0a2069586d67447", "en": "Deliver this to the Britain Blacksmith"}
+{"file": "scripts-quests.json", "key": "s.f7f8f20605a96611", "en": "You already have a journal! You can only have one at a time."}
+{"file": "scripts-system.json", "key": "s.00c319de22d29d39", "en": "Configure the gump shown when you drop a container on a vendor to sell its contents. If the new gump is disabled, sellable items from the container are sent through the classic vendor sell list instead."}
+{"file": "scripts-system.json", "key": "s.094a8058e08be396", "en": "This food looks safe to eat."}
+{"file": "scripts-system.json", "key": "s.220aa73fec6d31e0", "en": "This is the default play style for the . It is designed for a classic fantasy world experience for the players. There are two other play styles available, evil and oriental. Play styles do not change the mechanics of the game playing experience, but it does change the flavor of the treasure you find and the henchman you hire. For example, you can set your play style to an 'evil' style of play. What happens is you will find treasure geared toward that play style. Where you would normally find a blue 'mace of might', the evil style would have you find a black 'mace of ghostly death'. They are simply a way to tweak your character's experience in the game."}
+{"file": "scripts-system.json", "key": "s.25d7d71714e55e05", "en": "When enabled, carving humanoid corpses will turn them into bones. Warning: Enabling this setting may cause an awkward looting experience after carving."}
+{"file": "scripts-system.json", "key": "s.285a27dbcae663b6", "en": "{0} = {1}"}
+{"file": "scripts-system.json", "key": "s.294b31251820ccce", "en": "  {0}.{1} = {2}"}
+{"file": "scripts-system.json", "key": "s.297a932802fd76ee", "en": "{0}: Effective Str {1}, Dex {2}, Int {3} ({4} StatMod(s))"}
+{"file": "scripts-system.json", "key": "s.2ee52aeacf919669", "en": "Usage: [ClearSkillMods [skill|all]"}
+{"file": "scripts-system.json", "key": "s.2f7405b89ff4e166", "en": "System messages have been enabled."}
+{"file": "scripts-system.json", "key": "s.2fc9a3c19450afe2", "en": "Gumps"}
+{"file": "scripts-system.json", "key": "s.324ae7e30fafca1a", "en": "Removed {0} SkillMod(s) for {1}."}
+{"file": "scripts-system.json", "key": "s.358e330461041a2a", "en": "Removed {0} StatMod(s)."}
+{"file": "scripts-system.json", "key": "s.3912ba81cfb7d511", "en": "Double Click Talk"}
+{"file": "scripts-system.json", "key": "s.3ac9d10b13fa991a", "en": "Added StatMod \"{0}\" ({1}{2})."}
+{"file": "scripts-system.json", "key": "s.3b24e2b507f01e00", "en": "Added SkillMod {0} {1}{2}. Value now {3} (base {4})."}
+{"file": "scripts-system.json", "key": "s.3bf562fc0fa28208", "en": "You take a moment to look around."}
+{"file": "scripts-system.json", "key": "s.4351f53aba90fc84", "en": "Usage: [ratelist <prefix>  (e.g. [ratelist dragon.breedWeight)"}
+{"file": "scripts-system.json", "key": "s.47be2e9767571b0f", "en": "{0}: Raw Str {1}, Dex {2}, Int {3}"}
+{"file": "scripts-system.json", "key": "s.492912cd83a852d6", "en": "{0}: {1} {2}{3} ({4})"}
+{"file": "scripts-system.json", "key": "s.4db406f3591eccae", "en": "Localization JSON reloaded from Data/Localization/."}
+{"file": "scripts-system.json", "key": "s.5051f9251619c1a4", "en": "Usage: [ClearStatMods [Str|Dex|Int|all]"}
+{"file": "scripts-system.json", "key": "s.53348412f5b3a340", "en": "Invalid stat type. Use Str, Dex, or Int."}
+{"file": "scripts-system.json", "key": "s.557c209c6d92ac45", "en": "FixSkillMods: {0} mod(s) cleared, {1} mod(s) now active from equipped items."}
+{"file": "scripts-system.json", "key": "s.57589c48fd21dd11", "en": "You swallowed a bit too much!"}
+{"file": "scripts-system.json", "key": "s.5e2958b3214446ea", "en": "Usage: [RemoveSkillMod <skill>"}
+{"file": "scripts-system.json", "key": "s.5ebfd29693b7b3a8", "en": "Invalidated bilingual OPL cache on {0} items."}
+{"file": "scripts-system.json", "key": "s.613eb0d646331599", "en": "Removed StatMod \"{0}\"."}
+{"file": "scripts-system.json", "key": "s.61baf2cf72bfcbd6", "en": "Item tooltips may stay cached until re-examined; use [locreload opl to flush."}
+{"file": "scripts-system.json", "key": "s.656653b9e804eb52", "en": "Container Sell"}

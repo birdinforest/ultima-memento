@@ -1,6 +1,7 @@
 using System;
 using Server.Targeting;
 
+using Server.Localization;
 namespace Server.Spells.HolyMan
 {
 	public class HeavenlyLightSpell : HolyManSpell
@@ -70,7 +71,7 @@ namespace Server.Spells.HolyMan
 					}
 					else
 					{
-						from.SendMessage( "{0} already have nightsight.", from == targ ? "You" : "They" );
+						from.SendMessage( StringCatalog.ResolveFormat( from.Account, "{0} already have nightsight.", from == targ ? "You" : "They" ) );
 					}
 				}
 

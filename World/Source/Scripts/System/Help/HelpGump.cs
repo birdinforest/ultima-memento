@@ -62,6 +62,34 @@ namespace Server.Engines.Help
 	{
 		private const string TEXT_COLOR = "#ddbc4b"; // Yellowy
 		private readonly int m_PageNumber;
+		private readonly PlayerMobile m_From;
+
+		private static string ResolveText( Mobile from, string text )
+		{
+			if ( string.IsNullOrEmpty( text ) )
+				return text;
+
+			string lang = AccountLang.GetLanguageCode( from != null ? from.Account : null );
+			return StringCatalog.TryResolve( lang, text ) ?? text;
+		}
+
+		private string ResolveText( string text )
+		{
+			return ResolveText( m_From, text );
+		}
+
+		private string ResolveFormat( string englishTemplate, params object[] args )
+		{
+			string fmt = ResolveText( englishTemplate );
+			try
+			{
+				return string.Format( fmt, args );
+			}
+			catch
+			{
+				return englishTemplate;
+			}
+		}
 
 		private enum PageActionType
 		{
@@ -340,7 +368,9 @@ namespace Server.Engines.Help
 
 			m_PageNumber = page;
 			var from = (PlayerMobile)mobile;
-			string HelpText = MyHelp();
+			m_From = from;
+			string HelpText = StringCatalog.ResolveByKey( from.Account, "sys.if_you_are_looking_for_help_exploring_this_world_c_you_can_learn_about_almost_anything_within_the_ga" )
+				+ "<br><br><br><BASEFONT Color=\"#888888\" Size=6>" + Server.Misc.ShardInfo.VersionString + "</BASEFONT>";
 			string color = TEXT_COLOR;
 
 			from.SendSound( 0x4A ); 
@@ -356,7 +386,7 @@ namespace Server.Engines.Help
 			int e = 30;
 
 			AddImage(0, 0, 9548, Server.Misc.PlayerSettings.GetGumpHue( from ));
-			AddHtml( 12, 12, 300, 20, @"<BODY><BASEFONT Color=" + color + ">HELP OPTIONS</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 12, 12, 300, 20, @"<BODY><BASEFONT Color=" + color + ">" + ResolveText( from, "HELP OPTIONS" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddButton(967, 10, 4017, 4017, (int)PageActionType.Close, GumpButtonType.Reply, 0);
 
 			const int NAVIGATION_START_X = 15;
@@ -641,7 +671,7 @@ namespace Server.Engines.Help
 
 			AddAction(nav_x, r, from, "Quests", PageActionType.Show_Quests, NAVIGATION_ITEM_WIDTH);
 			r += e;
-			if ( page == (int)PageActionType.Show_Quests ){ AddHtml( 252, 71, 739, 630, @"<BODY><BASEFONT Color=" + color + ">Throughout your journey, you may come across particular events that appear in your quest log. They may be a simple achievement of finding a strange land, or they may reference an item you must find. Quests are handled in a 'virtual' manner. What this means is that any achievements are real, but any references to items found are not. If your quest log states that you found an ebony key, you will not have an ebony key in your backpack...but you will 'virtually' have the item. The quest will keep track of this fact for you. Because of this, you will never lose that ebony key and it remains unique to your character's questing. The quest knows you found it and have it. You may be tasked to find an item in a dungeon. When there is an indication you found it, it will be 'virtually' in your possession. You will often hear a sound of victory when a quest event is reached, along with a message about it. You still may miss it, however. So check your quest log from time to time. One way to get quests is to visit taverns or inns. If you see a bulletin board called 'Seeking Brave Adventurers', single click on it to begin your life questing for fame and fortune.<BR><BR>" + MyQuests( from ) + "<BR><BR></BASEFONT></BODY>", (bool)false, (bool)true); }
+			if ( page == (int)PageActionType.Show_Quests ){ AddHtml( 252, 71, 739, 630, @"<BODY><BASEFONT Color=" + color + ">" + ResolveText( from, "Throughout your journey, you may come across particular events that appear in your quest log. They may be a simple achievement of finding a strange land, or they may reference an item you must find. Quests are handled in a 'virtual' manner. What this means is that any achievements are real, but any references to items found are not. If your quest log states that you found an ebony key, you will not have an ebony key in your backpack...but you will 'virtually' have the item. The quest will keep track of this fact for you. Because of this, you will never lose that ebony key and it remains unique to your character's questing. The quest knows you found it and have it. You may be tasked to find an item in a dungeon. When there is an indication you found it, it will be 'virtually' in your possession. You will often hear a sound of victory when a quest event is reached, along with a message about it. You still may miss it, however. So check your quest log from time to time. One way to get quests is to visit taverns or inns. If you see a bulletin board called 'Seeking Brave Adventurers', single click on it to begin your life questing for fame and fortune." ) + "<BR><BR>" + MyQuests( from ) + "<BR><BR></BASEFONT></BODY>", (bool)false, (bool)true); }
 
 			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -698,14 +728,14 @@ namespace Server.Engines.Help
 			}
 
 			AddButton(x+40, y, 4011, 4011, (int)infoType, GumpButtonType.Reply, 0);
-			AddHtml( x+80, y + 3, 316, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + name + "</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( x+80, y + 3, 316, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + ResolveText( from, name ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 		}
 
 		private void AddAction(int x, int y, PlayerMobile from, string name, PageActionType actionType, int width = 100)
 		{
 			int isSelected = GetActionIcon(from, actionType);
 			AddButton(x, y, isSelected, isSelected, (int)actionType, GumpButtonType.Reply, 0);
-			AddHtml( x+40, y + 3, width, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + name + "</BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( x+40, y + 3, width, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + ResolveText( from, name ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 		}
 
 		private void AddChangelogPanel( string color, int changelogPage )
@@ -724,15 +754,15 @@ namespace Server.Engines.Help
 			if ( releaseIndex > 0 )
 			{
 				AddButton( 252, FOOTER_Y, 4014, 4016, (int)PageActionType.Changelog_PageBase + ( releaseIndex - 1 ), GumpButtonType.Reply, 0 );
-				AddHtml( 287, FOOTER_Y + 3, 80, 20, string.Format( @"<BODY><BASEFONT Color={0}>Prev</BASEFONT></BODY>", color ), false, false );
+				AddHtml( 287, FOOTER_Y + 3, 80, 20, string.Format( @"<BODY><BASEFONT Color={0}>{1}</BASEFONT></BODY>", color, ResolveText( "Prev" ) ), false, false );
 			}
 
-			AddHtml( 500, FOOTER_Y + 3, 240, 20, string.Format( @"<BODY><BASEFONT Color={0}><CENTER>Release {1} of {2}</CENTER></BASEFONT></BODY>", color, releaseIndex + 1, releaseCount ), false, false );
+			AddHtml( 500, FOOTER_Y + 3, 240, 20, string.Format( @"<BODY><BASEFONT Color={0}><CENTER>{1}</CENTER></BASEFONT></BODY>", color, ResolveFormat( "Release {0} of {1}", releaseIndex + 1, releaseCount ) ), false, false );
 
 			if ( releaseIndex < releaseCount - 1 )
 			{
 				AddButton( 920, FOOTER_Y, 4005, 4007, (int)PageActionType.Changelog_PageBase + ( releaseIndex + 1 ), GumpButtonType.Reply, 0 );
-				AddHtml( 955, FOOTER_Y + 3, 80, 20, string.Format( @"<BODY><BASEFONT Color={0}>Next</BASEFONT></BODY>", color ), false, false );
+				AddHtml( 955, FOOTER_Y + 3, 80, 20, string.Format( @"<BODY><BASEFONT Color={0}>{1}</BASEFONT></BODY>", color, ResolveText( "Next" ) ), false, false );
 			}
 		}
 
@@ -744,7 +774,7 @@ namespace Server.Engines.Help
 			AddImageTiled(x + 2, y + 25, 740, BORDER_WIDTH, HORIZONTAL_LINE);
 
 			x += 10;
-			AddHtml(x, y + 3, 200, 20, string.Format(@"<BODY><BASEFONT Color={0}>{1}</BASEFONT></BODY>", TEXT_COLOR, label), false, false);
+			AddHtml(x, y + 3, 200, 20, string.Format(@"<BODY><BASEFONT Color={0}>{1}</BASEFONT></BODY>", TEXT_COLOR, ResolveText( label )), false, false);
 		}
 
 		private void AddGeneralActionRow(int x, int y, string name, PageActionType action, PageActionType infoAction = PageActionType.None, bool addTopSeparator = false)
@@ -769,7 +799,7 @@ namespace Server.Engines.Help
 				AddButton(x, y, PAGE_ICON, PAGE_ICON, (int)infoAction, GumpButtonType.Reply, 0);
 			}
 
-			AddHtml(x + 40, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + name + "</BASEFONT></BODY>", false, false);
+			AddHtml(x + 40, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + ResolveText( name ) + "</BASEFONT></BODY>", false, false);
 		}
 
 		private void AddMagicToolbarRowHeader(int x, int y)
@@ -780,19 +810,19 @@ namespace Server.Engines.Help
 			AddImageTiled(x + 2, y + 25, 740, BORDER_WIDTH, HORIZONTAL_LINE);
 
 			x += 10;
-			AddHtml(x, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">Type</BASEFONT></BODY>", false, false);
+			AddHtml(x, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + ResolveText( "Type" ) + "</BASEFONT></BODY>", false, false);
 
 			x += 215;
-			AddHtml(x, y + 3, 100, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">Open</BASEFONT></BODY>", false, false);
+			AddHtml(x, y + 3, 100, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + ResolveText( "Open" ) + "</BASEFONT></BODY>", false, false);
 
 			x += 50;
-			AddHtml(x, y + 3, 100, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">Close</BASEFONT></BODY>", false, false);
+			AddHtml(x, y + 3, 100, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + ResolveText( "Close" ) + "</BASEFONT></BODY>", false, false);
 
 			x += 50;
-			AddHtml(x, y + 3, 100, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">Manage</BASEFONT></BODY>", false, false);
+			AddHtml(x, y + 3, 100, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + ResolveText( "Manage" ) + "</BASEFONT></BODY>", false, false);
 
 			x += 75;
-			AddHtml(x, y + 3, 100, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">Open on Login</BASEFONT></BODY>", false, false);
+			AddHtml(x, y + 3, 100, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + ResolveText( "Open on Login" ) + "</BASEFONT></BODY>", false, false);
 		}
 
 		private void AddToolbarRowOnlyOpen(int x, int y, string name, PageActionType open, bool addTopSeparator = false)
@@ -818,7 +848,7 @@ namespace Server.Engines.Help
 
 			x += 20;
 			if (!string.IsNullOrWhiteSpace(name))
-				AddHtml(x, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + name + "</BASEFONT></BODY>", false, false);
+				AddHtml(x, y + 3, 200, 20, @"<BODY><BASEFONT Color=" + TEXT_COLOR + ">" + ResolveText( name ) + "</BASEFONT></BODY>", false, false);
 
 			// Open
 			x += 205;

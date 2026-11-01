@@ -1,0 +1,1207 @@
+[
+  {
+    "file": "scripts-books.json",
+    "key": "s.b5d3a335a29c1572",
+    "en": "This magic can only be unleashed at the {0}."
+  },
+  {
+    "file": "scripts-books.json",
+    "key": "s.cce5205f9bcd3322",
+    "en": "You have stolen the following relics:"
+  },
+  {
+    "file": "scripts-books.json",
+    "key": "s.d4c3580f065a5730",
+    "en": "There are those with great wealth that seek items that have been rumored to lie within the dungeons of the land. These nobles seek a crafty thief to sneak into these places and find these items. Speak with the Thief Guildmaster to take the job. Bring each prize back in the order listed, mark it as a quest item, and collect your fee when you deliver it.<br><br>"
+  },
+  {
+    "file": "scripts-books.json",
+    "key": "s.f5586d29c278dfcd",
+    "en": "The Guildmaster only commissions one relic at a time. These rare items might not always be there. A better thief may have beaten you to it, and you may be forced to wait for it to reappear again. So time is of the essence if you want to profit from the eagerness of royalty."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.02a92fe6f09d5cbf",
+    "en": "There isn't enough excess wax in the hive to harvest!"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.0af4152e092d28ec",
+    "en": "That spellbook is no longer in your possession."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.0d9d3a963d2af9f3",
+    "en": "You leave the spellbook intact."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.11677c7d43135bc0",
+    "en": "Goal: Cube of {0}"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.1857580e9b507ea0",
+    "en": "You begin to pick the lock."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.1fdf2811cb12532e",
+    "en": "You don't have a lockpick that can be used on this container."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.255b7f526786a7b6",
+    "en": "Note: Research Bag is dormant (likely in bank). Complete resonance and carry the bag before SearchBase chests will grant progress."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.260257ef672f820d",
+    "en": "Draft mode disabled. All skills have been reset to 0 and Unlocked."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.2daad7fe6c765ff4",
+    "en": "That spellbook is too far away."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.3556cd84991988c8",
+    "en": "Your skill is too low to use this resource."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.37911556dc33f234",
+    "en": "Your skills have been set to the chosen template. Focus and Meditation have been set to Locked."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.39aa359b02613d02",
+    "en": "What do you want to chop?"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.3a5acac57133dc0e",
+    "en": "'{0}' may now see '{1}' when drafting skills."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.3c04282a2d7223e3",
+    "en": "You need a bottle to fill with honey!"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.42847ca0dd7957ee",
+    "en": "The curse has been lifted from the {0}."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.445d3d07198f9d3c",
+    "en": "That player has no Memory Echo assigned."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.44b53ca6a87ab123",
+    "en": "You cannot use that."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.4739a44eb543e964",
+    "en": "You must have at least {0} Mana to invoke this prayer."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.47a92d0a8af6d3d6",
+    "en": "You must have at least {0} piety to invoke this prayer."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.480f10d51f1374da",
+    "en": "That Research Bag belongs to someone else."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.484fda997a119ccf",
+    "en": "Ephemeral magic cannot be added to spellbooks."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.48519111b23b2f83",
+    "en": "You cannot destroy the hive with a full backpack!"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.49c266baaaa70981",
+    "en": "Search"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.4c527106dca0a2f9",
+    "en": "Next research search for {0}: [{1}] {2} in {3}"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.4fdf1dac0f0a9139",
+    "en": "Coordinates: {0}, {1}, {2}"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.551eb3dc9aa4cd7f",
+    "en": "Goal: {0} — find {1}"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.5a25a8964a18c041",
+    "en": "That is not a player."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.5e6fac02e787046c",
+    "en": "You need a hive tool to scrape the excess beeswax!"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.5e9043a728f65bdd",
+    "en": "You begin to remove the trap."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.5ff2b5b3d9517a8e",
+    "en": "Custom amount"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.63f21aec5b1ca331",
+    "en": "Spell bars automatically opened. Use `[toolbars` to disable them."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.643339f63831282a",
+    "en": "You must have at least {0} Spiritualism to invoke this prayer."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.70050f070c84376c",
+    "en": "You need a hive tool to extract the excess honey!"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.7ae30934aec53a56",
+    "en": "Pay {0} gold from backpack/bank"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.7cddfc875d6a368c",
+    "en": "You must have at least {0} Souls to cast this spell."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.8190f34bcd235179",
+    "en": "Re-assigned to: {0}"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.82335724b33a63b0",
+    "en": "Still could not resolve coordinates. Check that SearchBase chests exist in the world."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.841411b1da502656",
+    "en": "Required mana"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.84dd01b36e6b4b1e",
+    "en": "Target the player whose Memory Echo you wish to inspect."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.87dc707fb0a09d98",
+    "en": "Map: {0}"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.8aa0f13094103501",
+    "en": "{0} has no pending research search locations."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.8b7ee6e7aef81dc0",
+    "en": "Target the player whose next research search location you wish to inspect."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.8c7442f43279c45d",
+    "en": "'{0}' will no longer see '{1}' when drafting skills."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.96d96653ba1e2ad7",
+    "en": "Warning: no SearchBase chest found in region \"{0}\". Research search may fail until a chest exists there."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.9c2156c6be43decb",
+    "en": "Deaths loaded successfully."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.9c7e04ae0087ff8d",
+    "en": "That wasn't even a challenge."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.9dc593fdc726a803",
+    "en": "Setting can only be changed in the Gypsy Forest"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.9e5c4716c0a2c032",
+    "en": "Using your research, you make a new spellbook."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.9e7a6aeefb51ed2e",
+    "en": "Search chest at: {0}, {1}, {2} — interact within 2 tiles to begin resonance."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.9fcaf40753df5231",
+    "en": "Target yourself to automatically choose a nearby target"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.a48aefc65745dbf6",
+    "en": "Could not resolve a reachable SearchBase for region \"{0}\". Re-assigning echo…"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.abf0340ea9109a38",
+    "en": "Required tithing"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.b15bbf55a0f54f97",
+    "en": "You feel a presence wash over you as you open the book."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.b373e18713972d04",
+    "en": "You can no longer use that research pack."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.b556c8b6b81a2faf",
+    "en": "Go command: {0}"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.b79cac926e0b2e34",
+    "en": "Help"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.b870235ac69d31fe",
+    "en": "Empty the bowl"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.ba4e001d7badd3ca",
+    "en": "{0} does not have Avatar status enabled."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.be8fc5865cd17d30",
+    "en": "You must have at least {0} Mana to cast this spell."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.c0b7579aa8f0b198",
+    "en": "Goal: {0}"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.c2348ae5b8d5e6ac",
+    "en": "You need {0} gold in your backpack or bank to open this shoppe."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.c41a611626d19379",
+    "en": "You are not worthy of this book."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.c53c048a59e2d28c",
+    "en": "You pull the symbol from the book and it binds to you."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.cb9e926d01179a51",
+    "en": "Required skill"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.cf905149e9f63518",
+    "en": "There isn't enough honey in the hive to fill a bottle!"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.d0eb3562c2ca303b",
+    "en": "You must have at least {0} Knightship to cast this spell."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.d5ae2d043a17d508",
+    "en": "Stand near: {0}, {1}, {2}"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.e06a51320898b8aa",
+    "en": "{0} has no Research Bag."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.e118c36e8ac5cd1b",
+    "en": "Memory Echo for {0}: {1} ({2})"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.e5d4148266f0b7ca",
+    "en": "You paid {0} gold from {1} to open this shoppe."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.e8cf0ff935684b05",
+    "en": "That spellbook is no longer there."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.ea9bb7ea83febba1",
+    "en": "Destroy"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.f1b1cd6a0d9742d6",
+    "en": "Reproduction Menu"
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.f7d98af64bac95be",
+    "en": "Search chest at: {0}, {1}, {2} — interact within 2 tiles."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.f9dda5ab0381ffa2",
+    "en": "Draft mode enabled. All skills have been reset to 0 and Locked."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.fe5da4b3c5871fb0",
+    "en": "You collect the excess beeswax and place it in your pack."
+  },
+  {
+    "file": "scripts-engines-and-systems.json",
+    "key": "s.ff8d2531259c2cac",
+    "en": "You fill a bottle with golden honey and place it in your pack."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.0649ed03e10fd693",
+    "en": "You broke the lockpick."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.07503d38d815435b",
+    "en": "This lock cannot be hacked by normal means."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.088c5855c05dfc9a",
+    "en": "You are not a skilled enough musician to use this!"
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.10371e2507fbb641",
+    "en": "That is not a flour mill."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.18c8e669f1ce662c",
+    "en": "You broke the key card."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.1ef7c62558583cc2",
+    "en": "You don't see how that lock can be manipulated."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.25a783ce16666fa8",
+    "en": "Only an Avatar may use this item."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.3693a6b4f01d3bd6",
+    "en": "The destination has been cleared. This must be secured in a house to set it or in your backpack to change the appearance! This teleporter can be dyed as well."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.3711b73ce822cb15",
+    "en": "You don't see how that lock can be hacked."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.4df08004b5610644",
+    "en": "You can only coat the tools with a potion."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.52e3c031d8e1d80d",
+    "en": "You are already doing something else."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.57944f785c15c555",
+    "en": "You wipe the potion coating from the trapping tools."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.5f09c848f3cd97be",
+    "en": "What locked container or door do you want to use the key on?"
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.6a4d1c1057da516f",
+    "en": "You have no idea how to best cut this type of wood! (You need to raise your lumberjacking)"
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.729246a961ae14dc",
+    "en": "You coat the trapping tools with the potion."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.7452a5e7a602e36c",
+    "en": "The sound of gas escaping is heard from the chest."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.80a64f63f78df390",
+    "en": "Your skill at hacking worked."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.8334496868b26015",
+    "en": "Select the flour mill on which to grind the wheat."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.8b614117aee64241",
+    "en": "The container relocks itself."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.8f3fdb9b788be298",
+    "en": "This item belongs to another."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.9083bd76e7bc61e4",
+    "en": "The lock quickly yields to your skill."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.9dd0361f5966e069",
+    "en": "This kit is already coated with something."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.a94963fc88cb2733",
+    "en": "This must be in your backpack to change the ammo type."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.b4d1969700f521df",
+    "en": "You are unable to pick the lock."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.b709c665f9576d16",
+    "en": "This lock cannot be picked by normal means."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.bb3e18f999c10463",
+    "en": "That is not a saw mill."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.c67d4bafaa8a5490",
+    "en": "Your decisions preclude you from accessing this destination."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.ca9d81d2c6441932",
+    "en": "You don't see a card slot on this."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.cce1c1bbf47663e9",
+    "en": "That potion cannot be used with trapping tools."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.d5e2d3b9e7d5ab1b",
+    "en": "This doesn't have a key hole, but it does have a card slot."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.e7405304824ef0eb",
+    "en": "You are unable to hack the lock."
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.ef3f60dcbdf228e7",
+    "en": "You have changed the ammo to "
+  },
+  {
+    "file": "scripts-items.json",
+    "key": "s.f1de0d560f845727",
+    "en": "The key is still misshapen from the last use. Wait a moment before using it again."
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.0eeba02152476f67",
+    "en": "mob.fmt.0_the_vendor_cannot_be_harmed"
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.2f950474ad1ed342",
+    "en": "mob.fmt.0_needs_at_least_5_000_gold_to_construct_the_item_for_y"
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.394c00856a997d39",
+    "en": "That does not need my services."
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.47c90c33eab903d9",
+    "en": "You separate the boards into your backpack"
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.481dd2cb9e546da8",
+    "en": "You separate the ingots into your backpack"
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.4e4b6c5a03bbbca0",
+    "en": "willing to sell"
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.4f93ecd1ddd51dd2",
+    "en": "an enchanted item"
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.52291cd265ddd953",
+    "en": "{0} I have {1} I {2} on the remains of some {3} that I am {4} for {5} gold."
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.52bc185b8d4447da",
+    "en": "a magic item"
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.616d4a81244d32d7",
+    "en": " You can look in my backpack to examine the item if you wish. If you want to trade, then hand me the gold and I will give you the item."
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.6379b6de64a1fb89",
+    "en": "{0} I have {1} I {2} on some {3} in {4} that I am {5} for {6} gold."
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.6492e5d4215fd655",
+    "en": "I have rebound your book."
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.6e70659c47401b2f",
+    "en": "Hail, Z~Z~Z~Z~Z. Welcome to Y~Y~Y~Y~Y."
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.77a7ff0a46b2be55",
+    "en": "We are just here to rest after exploring {0}."
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.7d1a3da1e76dc16b",
+    "en": "mob.fmt.0_will_probably_adventure_with_you_for_another_1_minute"
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.7dac5810142182e2",
+    "en": "willing to trade"
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.99055a9ed78e5ba5",
+    "en": "I cannot teach thee. Thy wits have grown far too dull and brutish from the raw channels of Elementalism."
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.99a889b7a56db40a",
+    "en": "This is the first time I have been to Y~Y~Y~Y~Y."
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.9ece4f8d92ae660b",
+    "en": "I cannot teach thee. Thy mind is already enthralled by the mundane, simple magicks of Magery."
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.9fa0348eb865b8bc",
+    "en": "You do not have enough gold."
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.a179a6885d58f0d7",
+    "en": "A soul has been claimed."
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.a4d228886dcf5271",
+    "en": "You separate the leather into your backpack"
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.a99801e8a2c53bcc",
+    "en": "Hello, Z~Z~Z~Z~Z."
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.aba442673f0cab41",
+    "en": "{0} I have {1} I {2} from a chest in {3} that I am {4} for {5} gold."
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.b002f60202e35654",
+    "en": "Evil has been banished."
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.c2e94e2cdbc6f9ae",
+    "en": "a special item"
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.c613a217d3ee34c5",
+    "en": "You separate the ore into your backpack"
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.d72a7217ce998ef5",
+    "en": "I cannot teach thee. Thy mind is already corrupted by the parasitic forces of Necromancy."
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.e0b735a04fddb0f0",
+    "en": "willing to part with"
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.e39dd00513bc648d",
+    "en": "{0} I have {1} I {2} while exploring {3} that I am {4} for {5} gold."
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.eacc1fbd11e01ea0",
+    "en": "mob.fmt.0_1_cannot_be_harmed"
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.ee1bed2dec8687de",
+    "en": "{0} I won {1} from a card game in {2} that I am {3} for {4} gold."
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.f5cb2d7afab9a605",
+    "en": "You separate the logs into your backpack"
+  },
+  {
+    "file": "scripts-mobiles.json",
+    "key": "s.fc16b0f115f2e2bb",
+    "en": "{0} I have {1} I {2} on a beast I killed in {3} that I am {4} for {5} gold."
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.0c70c0e591e3d0bc",
+    "en": "You have been given a minion to help you clean up this mess."
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.24cd2d3d128960ee",
+    "en": "{0} has no active Epic Tribute key requirement."
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.2ae599e50d0dbac7",
+    "en": "{0} requires \"{1}\", but no challenge template exists for that item."
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.3b4d5f9181adfc55",
+    "en": "Obelisk Tip"
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.3c7e0111134be4de",
+    "en": "Go command: [Go {0} {1} {2}]"
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.44dfbfda83c8a7da",
+    "en": "highly reliable legend for "
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.586455094c7b2eac",
+    "en": "Plate Armor Recipes"
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.5fcca90f0c869e91",
+    "en": "If you have a grand quest to unearth an artifact, you can seek the advice of sages in your journey. Their advice is not cheap, they charge 10,000 gold for the guidance. To begin your quest, visit one of the many sages in the land and give them enough gold for their advice. They will share what little they have heard of a powerful artefact, though their thoughts are often cloudy and incomplete."
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.745c6c21eec0c251",
+    "en": "Chain Armor Recipes"
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.774739c55ffb83eb",
+    "en": "No personal challenge mob is currently spawned. The player must enter \"{0}\" while the requirement is active."
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.78c5c0a2e7207115",
+    "en": "Locate and acquire the relic:"
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.9023927a73eac0ee",
+    "en": "Throughout history, many people kept these artifacts stored on blocks of crafted stone. These crafted stones are often decorated with a symbol on the surface, where a metal chest rests and the item may be inside. Some treasure hunters find the chests empty, realizing the legends were false. If nothing else, you may find a large sum of gold to cover some of your expenses on this journey. Some may provide a new clue on where the artifact is, and you will update your notes when these clues are found. The most disappointing search may yield a fake artifact. These turn out to be useless items that simply look like the artifact you were searching for."
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.9547fc69f70c20f8",
+    "en": "Animal Armor Recipes"
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.a0518bdcf1933315",
+    "en": "These quests are quite involved and you may only participate in one such quest at a time. If you have not finished a quest, and try to seek a sage for another, you will find that the page of your prior quest will have gone missing. It would have been surely lost somewhere. If you finish a quest, either with success or failure, a sage will not have any new advice for you for quite some time so you will have to wait until then to begin a new quest. So good luck treasure hunter, and may the gods aid you in your journey."
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.a1b4b1f3f62ac710",
+    "en": "You must then speak with the townsfolk to refine the rumor. Press them for details until you discover which land the artefact rests in, which dungeon or region holds it, and which artefact people are talking about. Not every citizen will know something useful, so you may need to ask many before the truth comes together. If you are curious what artefacts may be out there, look through a Sage's wares for sale. At the end of their inventory, you will see research replicas priced at zero gold. You can hover over these to see what they may offer you, but you cannot buy them. Artifacts such as books, quivers, and instruments will be shown with some common and random qualities, where finding the actual artifact will have somewhat different properties. Once the rumor is fully refined, return to the Sage and they will give you a legend with your first solid clues on where to search. Areas the artifact may be in could span many different lands or worlds, where some you may have never been or heard of. The legend will name the place you seek and provide sextant coordinates, so make sure you have a sextant with you."
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.a35b9c71876aaf54",
+    "en": "This journal does not belong to you!"
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.a3e29f53bbefeaec",
+    "en": "Weapon Recipes"
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.a572496a29d62c37",
+    "en": "Trident Recipe"
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.a726303347b412ef",
+    "en": "Target the player whose Epic Tribute challenge you wish to inspect."
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.ab17ca3d8fbc4860",
+    "en": "Challenge mob: {0}{1}"
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.b8bef080f9b9d1bf",
+    "en": "You are already searching for {0}, do you want to abandon your search and start a new quest?"
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.cd6496bba8cc7901",
+    "en": "Ringmail Armor Recipes"
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.d28020f715fadceb",
+    "en": "Royal Armor Recipes"
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.df21a0b1408f1b4c",
+    "en": "Abandon Quest?"
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.e1f15d023e872db3",
+    "en": "an unstable rift"
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.e36a7f98730f3374",
+    "en": "Epic Tribute challenge for {0}: \"{1}\" in {2}."
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.e4a672a99c5d243a",
+    "en": "Challenge record exists but the mob is gone (killed or cleaned up). Re-enter \"{0}\" to re-trigger if still needed."
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.e4f702b23376a41e",
+    "en": "This job is for guild members only."
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.f0a2069586d67447",
+    "en": "Deliver this to the Britain Blacksmith"
+  },
+  {
+    "file": "scripts-quests.json",
+    "key": "s.f7f8f20605a96611",
+    "en": "You already have a journal! You can only have one at a time."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.00c319de22d29d39",
+    "en": "Configure the gump shown when you drop a container on a vendor to sell its contents. If the new gump is disabled, sellable items from the container are sent through the classic vendor sell list instead."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.094a8058e08be396",
+    "en": "This food looks safe to eat."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.220aa73fec6d31e0",
+    "en": "This is the default play style for the . It is designed for a classic fantasy world experience for the players. There are two other play styles available, evil and oriental. Play styles do not change the mechanics of the game playing experience, but it does change the flavor of the treasure you find and the henchman you hire. For example, you can set your play style to an 'evil' style of play. What happens is you will find treasure geared toward that play style. Where you would normally find a blue 'mace of might', the evil style would have you find a black 'mace of ghostly death'. They are simply a way to tweak your character's experience in the game."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.25d7d71714e55e05",
+    "en": "When enabled, carving humanoid corpses will turn them into bones. Warning: Enabling this setting may cause an awkward looting experience after carving."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.285a27dbcae663b6",
+    "en": "{0} = {1}"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.294b31251820ccce",
+    "en": "  {0}.{1} = {2}"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.297a932802fd76ee",
+    "en": "{0}: Effective Str {1}, Dex {2}, Int {3} ({4} StatMod(s))"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.2ee52aeacf919669",
+    "en": "Usage: [ClearSkillMods [skill|all]"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.2f7405b89ff4e166",
+    "en": "System messages have been enabled."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.2fc9a3c19450afe2",
+    "en": "Gumps"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.324ae7e30fafca1a",
+    "en": "Removed {0} SkillMod(s) for {1}."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.358e330461041a2a",
+    "en": "Removed {0} StatMod(s)."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.3912ba81cfb7d511",
+    "en": "Double Click Talk"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.3ac9d10b13fa991a",
+    "en": "Added StatMod \"{0}\" ({1}{2})."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.3b24e2b507f01e00",
+    "en": "Added SkillMod {0} {1}{2}. Value now {3} (base {4})."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.3bf562fc0fa28208",
+    "en": "You take a moment to look around."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.4351f53aba90fc84",
+    "en": "Usage: [ratelist <prefix>  (e.g. [ratelist dragon.breedWeight)"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.47be2e9767571b0f",
+    "en": "{0}: Raw Str {1}, Dex {2}, Int {3}"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.492912cd83a852d6",
+    "en": "{0}: {1} {2}{3} ({4})"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.4db406f3591eccae",
+    "en": "Localization JSON reloaded from Data/Localization/."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.5051f9251619c1a4",
+    "en": "Usage: [ClearStatMods [Str|Dex|Int|all]"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.53348412f5b3a340",
+    "en": "Invalid stat type. Use Str, Dex, or Int."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.557c209c6d92ac45",
+    "en": "FixSkillMods: {0} mod(s) cleared, {1} mod(s) now active from equipped items."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.57589c48fd21dd11",
+    "en": "You swallowed a bit too much!"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.5e2958b3214446ea",
+    "en": "Usage: [RemoveSkillMod <skill>"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.5ebfd29693b7b3a8",
+    "en": "Invalidated bilingual OPL cache on {0} items."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.613eb0d646331599",
+    "en": "Removed StatMod \"{0}\"."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.61baf2cf72bfcbd6",
+    "en": "Item tooltips may stay cached until re-examined; use [locreload opl to flush."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.656653b9e804eb52",
+    "en": "Container Sell"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.66962f72a0888373",
+    "en": "Preferences"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.689e55c2991f4f63",
+    "en": "Legacy Carve"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.6942ee4597c79167",
+    "en": "RateConfig JSON reloaded from Data/RateConfig/ (includes inscription-recipe-drop.json). Inscription tier scroll lists reloaded from Data/InscriptionRecipeDrop/."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.7385095d8fe96bc0",
+    "en": "Suppress System Messages"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.7b12a324c73491fa",
+    "en": "Command: [SuppressSystemMessages<br><br>When enabled, system messages sent to the client will be replaced with a `!` symbol."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.7eca5e68db7f386d",
+    "en": "No StatMod named \"{0}\"."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.7ffbc6e9784836a2",
+    "en": "Relative must be true or false."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.865aafac4e202a49",
+    "en": "Removed {0} SkillMod(s)."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.89903907472ca95f",
+    "en": "FixStatMods: {0} mod(s) cleared, {1} mod(s) now active from equipped items."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.8ca917ff043d604d",
+    "en": "No entries found under \"{0}.*\"."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.91daf31ff0c5139f",
+    "en": "Value must be a number."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.94954c9c865b57cf",
+    "en": "{0}: {1} {2}{3} relative={4} (skill value {5}, base {6})"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.94dd676c2fcf69e4",
+    "en": "When enabled, double clicking a citizen or other talkative NPC (the ones with a 'Talk' option in their context menu - found at meeting spots, town guards, innkeepers, couriers, and epic characters) will open their conversation directly instead of opening their paperdoll. NPCs without anything to say still show their paperdoll as normal."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.9817fd7e823d863e",
+    "en": "Configure the modernized behavior of skills."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.9965dcde8715cfc9",
+    "en": "Usage: [rateget <key>  (e.g. [rateget dragon.breedWeight.xormite)"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.9fe68270352a0cf2",
+    "en": "Offset must be an integer."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.a570e5e4f9b9eb40",
+    "en": "RateConfig entries under \"{0}.*\" ({1}):"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.b57fab496d453d7b",
+    "en": "Usage: [RemoveStatMod <modName>"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.b69b51de5100e656",
+    "en": "You bit off a bit too much!"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.b95904a9aeae9d66",
+    "en": "*bows*"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.b969b55ad2715147",
+    "en": "*yawns*"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.bf09839db7f7d75c",
+    "en": "This liquid looks safe to drink."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.d2b20c8c72528743",
+    "en": "You stop trying to tame the creature."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.d7c72487b8515ddd",
+    "en": "Usage: [AddStatMod <Str|Dex|Int> <offset> [modName] [minutes]"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.e9a80c426875ad71",
+    "en": "No value configured for \"{0}\" (no default was supplied)."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.ebd31c2e9b9f819c",
+    "en": "No active StatMods."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.f008ec91b956f197",
+    "en": "Modern Skill Settings"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.f2c3526915d35ece",
+    "en": "Bars"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.f5e65bb2c9f78e3f",
+    "en": "Usage: [AddSkillMod <skill> <value> [relative true|false]"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.f6bc7c3f42aacf07",
+    "en": "No active SkillMods."
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.ff24c02f9c28874a",
+    "en": "If you are looking for help exploring this world, you can learn about almost anything within the game world you travel. Some merchants sell scrolls or books that will explain how some skills can be performed, resources gathered, and even how elements of the world can be manipulated. A sage often sells many tomes of useful information on skills, weapon abilities, or various types of magics available. If you are totally new to this game, buy yourself a Guide to Adventure book from a sage if you lost the one you started with. This book explains how to navigate and play the game. You will also learn some things about how the world behaves such as merchant interactions, how to use items, and what to do when your character dies. Talk to the townsfolk to learn whatever you can. On this screen there are many options, information, and settings that can assist in your journey. Many of the options here have keyboard commands that are listed below. Make sure to check out the 'Info' section on your character's paperdoll as it has some vital information about your character.<br><br>Common Commands: Below are the commands you can use for various things in the game.<br><br>[abilitynames - Turns on/off the special weapon ability names next to the appropriate icons.<br><br>[afk - Turns on/off the notification to others that you are away from keyboard.<br><br>[ancient - Turns on/off whether you are using magic from the research bag or the ancient spellbook.<br><br>[autoattack - Turns on/off whether you auto attack when attacked.<br><br>[bandother - Bandage other command.<br><br>[bandself - Bandage self command.<br><br>[barbaric - Turns on/off the barbaric flavor the game provides (see end).<br><br>[c - Initiates the chat system.<br><br>[e - Opens the emote mini window.<br><br>[emote - Opens the emote window.<br><br>[evil - Turns on/off the evil flavor the game provides (see end).<br><br>[feats - Opens the Achievements window.<br><br>[loot - Automatically take certain items from common dungeon chests or corpses and put them in your backpack. The unknown items are those that will need identification, but you may decide to take them anyway. The reagent options have a few categories. Magery and necromancer reagents are those used specifically by those characters, where witches brew reagents mainly fall into the necromancer category. Alchemic reagents are those that fall outside the category of magery and necromancer reagents, and only alchemists use them. Herbalist reagents are useful in druidic herbalism.<br><br>[oriental - Turns on/off the oriental flavor the game provides (see end).<br><br>[password - Change your account password.<br><br>[poisons - This changes how poisoned weapons work, which can be for either precise control with special weapon infectious strikes (default) or with hits of a one-handed slashing or piercing weapon.<br><br>[private - Turns on/off detailed messages of your journey for the town crier and local citizen chatter.<br><br>[quests - Opens a scroll to show certain quest events.<br><br>[sad - Opens the weapon's special abilities.<br><br>[set1 - Sets your weapon's first ability to active.<br>[set2 - Sets your weapon's second ability to active.<br>[set3 - Sets your weapon's third ability to active.<br>[set4 - Sets your weapon's fourth ability to active.<br>[set5 - Sets your weapon's fifth ability to active.<br><br>[skill - Shows you what each skill is used for.<br><br>[spellhue ## - This command, following by a color reference hue number, will change all of your magery spell effects to that color. A value of '1' will normally render as '0' so avoid that setting as it will not produce the result you may want.<br><br><br><br>Area Difficulty Levels: When you enter many dangerous areas, there will be a message to you that you entered a particular area. There may be a level of difficulty shown in parenthesis, that will give you an indication on the difficulty of the area. Below are the descriptions for each level.<br><br> - Easy (Not much of a challenge)<br> - Normal (An average level of challenge)<br> - Difficult (A tad more difficult)<br> - Challenging (You will probably run away alot)<br> - Hard (You will probably die alot)<br> - Deadly (I dare you)<br><br><br>Skill Titles: You can set your default title for your character. Although you may be a Grandmaster Driven, you may want your title to reflect your Apprentice Wizard title instead. This is how you set it...<br><br>Type the '[SkillName' command followed by the name of the skill you want to set as your default. Make sure you surround the skill name in quotes and all lowercase. Example...<br>  [SkillName \"taming\"<br><br>If you want the game to manage your character's title, simply use the same command with a skill name of \"clear\".<br><br><br><br>Reagent Bars: Below are the commands you can use to watch your reagent quantities as you cast spells or create potions. These are customizable bars that will show the quantities of the reagents you are carrying. These will show updated quantities of reagents whenever you cast a spell or make a potion that uses them. Otherwise you can make a macro to these commands and use them to refresh the amounts manually.<br><br>[regbar - Opens the reagent bar.<br><br>[regclose - Closes the reagent bar.<br><br><br><br>Music: There is many different pieces of classic music in the game, and they play depending on areas you visit. Some of the music is from the original game, but there are some pieces from older games. There are also some pieces from computer games in the 1990's, but they really fit the theme when traveling the land. You can choose to listen to them, or change the music you are listening to when exploring the world. Keep in mind that when you change the music, and you enter a new area, the default music for that area will play and you may have to change your music again. Also keep in mind that your game client will want to play the song for a few seconds before allowing a switch of new music. You can use the below command to open a window that allows you to choose a song to play. Almost all of them play in a loop, where there are three that do not and are marked with an asterisk. There are two pages of songs to choose from so use the top arrow to go back and forth to each screen. When your music begins to play, then press the OKAY button to exit the screen. Although an unnecessary function, it does give you some control over the music in the game.<br><br>[music - Opens the music playlist and player.<br><br>The below command will simply toggle your music preference to play a different set of music in the dungeons. When turned on, it will play music you normally hear when traveling the land, instead of the music commonly played in dungeons.<br><br>[musical - Sets the default dungeon music.<br><br><br><br>Evil Style: There is an evil element to the game that some want to participate in. With classes such as Necromancers, some players may want to travel a world with this flavor added. This particular setting allows you to toggle between regular and evil flavors. When in the evil mode, some of the treasure you will find will often have a name that fits in the evil style. When you stay within negative karma, skill titles will change for you as well, but not all. Look over the book of skill titles (found within the game world) to see which titles will change based on karma. Some of the relics you will find may also have this style, to perhaps decorate a home in this fashion. This option can be turned off and on at any time. You can only have one type of play style active at any one time.<br><br>[evil - Turns on/off the evil flavor the game provides.<br><br><br><br>Oriental Style: There is an oriental element to the game that most do not want to participate in. With classes such as Ninja and Samurai, some players may want to travel a world with this flavor added. This particular setting allows you to toggle between fantasy and oriental. When in the oriental mode, half of the treasure you will find will be of Chinese or Japanese historical origins. These types of items will most times be named to match the style. Items that once belonged to someone, will often have a name that fits in the oriental style. Some of the skill titles will change for you as well, but not all. Look over the book of skill titles (found within the game world) to see which titles will change based on this play style. Some of the relics and artwork you will find will also have this style, to perhaps decorate a home in this fashion. This option can be turned off and on at any time. You can only have one type of play style active at any one time.<br><br>[oriental - Turns on/off the oriental flavor the game provides.<br><br><br><br>Barbaric Style: The default game does not lend itself to a sword and sorcery experience. This means that it is not the most optimal play experience to be a loin cloth wearing barbarian that roams the land with a huge axe. Characters generally get as much equipment as they can in order to maximize their rate of survivability. This particular play style can help in this regard. Choosing to play in this style will have a satchel appear in your main pack. You cannot store anything in this satchel, as its purpose is to change certain pieces of equipment you place into it. It will change shields, hats, helms, tunics, sleeves, leggings, boots, gorgets, gloves, necklaces, cloaks, and robes. When these items get changed, they will become something that appears differently but behave in the same way the previous item did. These different items can be equipped but may not appear on your character. Also note that when you wear robes, they cover your character's tunics and sleeves. Wearing a sword and sorcery robe will do the same thing so you will have to remove the robe in order to get to the sleeves and/or tunic. This play style has their own set of skill titles for many skills as well. If you are playing a female character, pressing the button further will convert any 'Barbarian' titles to 'Amazon'. You can open your satchel to learn more about this play style. This option can be turned off and on at any time. You can only have one type of play style active at any one time.<br><br>[barbaric - Turns on/off the barbaric flavor the game provides.<br><br>"
+  },
+  {
+    "file": "scripts-system.json",
+    "key": "s.ff8059dc6752afdd",
+    "en": "Actions"
+  },
+  {
+    "file": "scripts-timers.json",
+    "key": "s.897517427e073a61",
+    "en": "You stop what you were doing."
+  },
+  {
+    "file": "scripts-utilities.json",
+    "key": "s.1be4009a674340bf",
+    "en": "This doesn't have a card slot, but it does have a key hole."
+  }
+]

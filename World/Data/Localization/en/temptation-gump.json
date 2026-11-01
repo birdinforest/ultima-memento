@@ -22,5 +22,9 @@
   "temptationgump.puzzle.reduced": "<br>x Permanently reduced skill cap bonuses",
   "temptationgump.puzzle.racial": "<br>x Monster racial bonuses work differently",
   "temptationgump.desc.tribute": "- Tribute quests rewards are changed",
-  "temptationgump.desc.deathwish": "+ You gain stats and skills faster<br>- An old sword<br>x You may never be resurrected"
+  "temptationgump.desc.deathwish": "+ You gain stats and skills faster<br>- An old sword<br>x You may never be resurrected",
+  "temptationgump.msg.avatar_unlock_required": "An Avatar must unlock the Temptations system before using this command.",
+  "temptationgump.puzzle.info.intro": "This temptation removes the need for integrating Stealing and Snooping into your template.<br><br>",
+  "temptationgump.puzzle.info.skillcap": "Permanently reduced skill cap bonuses<br>- Fugitives begin with a +200 skill cap bonus, down from +300<br>- Titan of Ether quest completion grants +200 skill cap bonus, down from +500<br>",
+  "temptationgump.puzzle.info.racial_example": "<br>Monster racial bonuses<br>- Magical attribute type bonuses now act as Minimums instead of stacking with equipment<br>- Resist/Stat bonuses stack normally<br><br>Example:<br>- Your combined equipment bonuses<br>  +1 Fire Resistance<br>  +2% Damage Increase<br>  +30 Luck<br>  +4 Arms Lore<br>- Your monster racial bonuses provide<br>  +5 Fire Resistance<br>  +6% Damage Increase<br>  +7 Luck<br>  +8 Arms Lore<br>- Your total bonus values are<br>  1 + 5 ... 6 Fire Resistance<br>  Max(2%, 6%) ... 6% Damage Increase<br>  Max(30, 7) ... 30 Luck<br>  4 + 8 ... 12 Arms Lore<br>"
 }

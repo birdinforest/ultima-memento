@@ -57,7 +57,7 @@ namespace Server.Spells.HolyMan
 
 			if ( Caster.MagicDamageAbsorb > 0 )
 			{
-				Caster.SendMessage( "You are already under the effects of this prayer." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are already under the effects of this prayer." ) );
 			}
 			else if ( CheckSequence() )
 			{

@@ -36,3 +36,11 @@
 ## D. 已顺带修复
 
 - pending-fixes #1（SpellRegistry MAX_SPELL_ID≥700 法术不可用）：上游 MAX_SPELL_ID=1000 + 中心化法术模型重构，待玩家实测 HolyMan 法术条。
+
+## E. 2026-11-01 清偿进度（PR #13 / merge d314b1cf）
+
+- **A（Holy/Bard/DeathKnight）**：玩家可见 `SendMessage` / `PrivateOverheadMessage` 已回植 `StringCatalog.Resolve` / `ResolveFormat`；技能门槛句改为 `{0}` 模板。
+- **B（hash 重译积压）**：`llm_incremental_locale.py stats` → `needs_translation: 0`（纯占位模板如 `{0} = {1}` 记为 identity）。
+- **TemptationGump**：UI / 帮助 / Puzzle INFO 详页改走 `temptation-gump.json` shotkeys；`TemptationCommands` Avatar 解锁提示亦已 shotkey 化。
+- **验证**：`sync_localization_glossary.py --check` exit 0。
+

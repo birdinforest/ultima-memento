@@ -2,6 +2,7 @@ using System;
 using Server.Network;
 using Server.Items;
 
+using Server.Localization;
 namespace Server.Spells.DeathKnight
 {
 	public abstract class DeathKnightSpell : Spell
@@ -38,27 +39,27 @@ namespace Server.Spells.DeathKnight
 
 			if ( Caster.Stam < mana )
 			{
-				Caster.SendMessage( "You are too fatigued to do that now." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are too fatigued to do that now." ) );
 				return false;
 			}
 			else if ( Caster.Karma > 0 )
 			{
-				Caster.SendMessage( "You have too much Karma to cast this spell." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You have too much Karma to cast this spell." ) );
 				return false;
 			}
 			else if ( Caster.Skills[CastSkill].Value < RequiredSkill )
 			{
-				Caster.SendMessage( "You must have at least " + RequiredSkill + " Knightship to cast this spell." );
+				Caster.SendMessage( StringCatalog.ResolveFormat( Caster.Account, "You must have at least {0} Knightship to cast this spell.", RequiredSkill ) );
 				return false;
 			}
 			else if ( GetSoulsInLantern( Caster ) < RequiredTithing )
 			{
-				Caster.SendMessage( "You must have at least " + RequiredTithing + " Souls to cast this spell." );
+				Caster.SendMessage( StringCatalog.ResolveFormat( Caster.Account, "You must have at least {0} Souls to cast this spell.", RequiredTithing ) );
 				return false;
 			}
 			else if ( Caster.Mana < mana )
 			{
-				Caster.SendMessage( "You must have at least " + mana + " Mana to cast this spell." );
+				Caster.SendMessage( StringCatalog.ResolveFormat( Caster.Account, "You must have at least {0} Mana to cast this spell.", mana ) );
 				return false;
 			}
 
@@ -72,27 +73,27 @@ namespace Server.Spells.DeathKnight
 
 			if ( Caster.Stam < mana )
 			{
-				Caster.SendMessage( "You are too fatigued to do that now." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You are too fatigued to do that now." ) );
 				return false;
 			}
 			else if ( Caster.Karma > 0 )
 			{
-				Caster.SendMessage( "You have too much Karma to cast this spell." );
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You have too much Karma to cast this spell." ) );
 				return false;
 			}
 			else if ( Caster.Skills[CastSkill].Value < RequiredSkill )
 			{
-				Caster.SendMessage( "You must have at least " + RequiredSkill + " Knightship to cast this spell." );
+				Caster.SendMessage( StringCatalog.ResolveFormat( Caster.Account, "You must have at least {0} Knightship to cast this spell.", RequiredSkill ) );
 				return false;
 			}
 			else if ( GetSoulsInLantern( Caster ) < requiredTithing )
 			{
-				Caster.SendMessage( "You must have at least " + requiredTithing + " Souls to cast this spell." );
+				Caster.SendMessage( StringCatalog.ResolveFormat( Caster.Account, "You must have at least {0} Souls to cast this spell.", requiredTithing ) );
 				return false;
 			}
 			else if ( Caster.Mana < mana )
 			{
-				Caster.SendMessage( "You must have at least " + mana + " Mana to cast this spell." );
+				Caster.SendMessage( StringCatalog.ResolveFormat( Caster.Account, "You must have at least {0} Mana to cast this spell.", mana ) );
 				return false;
 			}
 
@@ -104,7 +105,7 @@ namespace Server.Spells.DeathKnight
 
 		public override void DoFizzle()
 		{
-			Caster.PrivateOverheadMessage(MessageType.Regular, 0x3B2, false, "You fail to invoke the power.", Caster.NetState);
+			Caster.PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, StringCatalog.Resolve( Caster.Account, "You fail to invoke the power." ), Caster.NetState );
 			Caster.FixedParticles( 0x3735, 1, 30, 9503, EffectLayer.Waist );
 			Caster.PlaySound( 0x19D );
 			Caster.NextSpellTime = DateTime.Now;

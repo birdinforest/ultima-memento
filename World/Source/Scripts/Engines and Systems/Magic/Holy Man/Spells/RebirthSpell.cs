@@ -4,6 +4,7 @@ using Server.Gumps;
 using Server.Mobiles;
 using Server.Items;
 
+using Server.Localization;
 namespace Server.Spells.HolyMan
 {
 	public class RebirthSpell : HolyManSpell
@@ -51,12 +52,12 @@ namespace Server.Spells.HolyMan
 				{
 					m.PlaySound( 0x214 );
 					m.FixedEffect( 0x376A, 10, 16 );
-					m.SendMessage( "You summon a magical orb to protect your soul." );
+					m.SendMessage( StringCatalog.Resolve( m.Account, "You summon a magical orb to protect your soul." ) );
 				}
             }
             else if ( m == Caster )
             {
-				Caster.SendMessage("You failed to summon an orb.");
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "You failed to summon an orb." ) );
 			}
             else if ( !Caster.Alive )
             {
@@ -115,7 +116,7 @@ namespace Server.Spells.HolyMan
 				}
 				else
 				{
-					Caster.SendMessage("They are not dead.");
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "They are not dead." ) );
 				}
 			}
 			else if ( hench is HenchmanWizardItem && CheckSequence() )
@@ -131,7 +132,7 @@ namespace Server.Spells.HolyMan
 				}
 				else
 				{
-					Caster.SendMessage("They are not dead.");
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "They are not dead." ) );
 				}
 			}
 			else if ( hench is HenchmanArcherItem && CheckSequence() )
@@ -147,7 +148,7 @@ namespace Server.Spells.HolyMan
 				}
 				else
 				{
-					Caster.SendMessage("They are not dead.");
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "They are not dead." ) );
 				}
 			}
 			else if (hench is HenchmanMonsterItem && CheckSequence() )
@@ -163,12 +164,12 @@ namespace Server.Spells.HolyMan
 				}
 				else
 				{
-					Caster.SendMessage("They are not dead.");
+					Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "They are not dead." ) );
 				}
 			}
 			else
 			{
-				Caster.SendMessage("This prayer didn't seem to work.");
+				Caster.SendMessage( StringCatalog.Resolve( Caster.Account, "This prayer didn't seem to work." ) );
 			}
             FinishSequence();
 		}

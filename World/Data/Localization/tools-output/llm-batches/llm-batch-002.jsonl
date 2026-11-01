@@ -1,0 +1,40 @@
+{"file": "scripts-engines-and-systems.json", "key": "s.8b7ee6e7aef81dc0", "en": "Target the player whose next research search location you wish to inspect."}
+{"file": "scripts-engines-and-systems.json", "key": "s.8c7442f43279c45d", "en": "'{0}' will no longer see '{1}' when drafting skills."}
+{"file": "scripts-engines-and-systems.json", "key": "s.96d96653ba1e2ad7", "en": "Warning: no SearchBase chest found in region \"{0}\". Research search may fail until a chest exists there."}
+{"file": "scripts-engines-and-systems.json", "key": "s.9c2156c6be43decb", "en": "Deaths loaded successfully."}
+{"file": "scripts-engines-and-systems.json", "key": "s.9c7e04ae0087ff8d", "en": "That wasn't even a challenge."}
+{"file": "scripts-engines-and-systems.json", "key": "s.9dc593fdc726a803", "en": "Setting can only be changed in the Gypsy Forest"}
+{"file": "scripts-engines-and-systems.json", "key": "s.9e5c4716c0a2c032", "en": "Using your research, you make a new spellbook."}
+{"file": "scripts-engines-and-systems.json", "key": "s.9e7a6aeefb51ed2e", "en": "Search chest at: {0}, {1}, {2} — interact within 2 tiles to begin resonance."}
+{"file": "scripts-engines-and-systems.json", "key": "s.9fcaf40753df5231", "en": "Target yourself to automatically choose a nearby target"}
+{"file": "scripts-engines-and-systems.json", "key": "s.a48aefc65745dbf6", "en": "Could not resolve a reachable SearchBase for region \"{0}\". Re-assigning echo…"}
+{"file": "scripts-engines-and-systems.json", "key": "s.abf0340ea9109a38", "en": "Required tithing"}
+{"file": "scripts-engines-and-systems.json", "key": "s.b15bbf55a0f54f97", "en": "You feel a presence wash over you as you open the book."}
+{"file": "scripts-engines-and-systems.json", "key": "s.b373e18713972d04", "en": "You can no longer use that research pack."}
+{"file": "scripts-engines-and-systems.json", "key": "s.b556c8b6b81a2faf", "en": "Go command: {0}"}
+{"file": "scripts-engines-and-systems.json", "key": "s.b79cac926e0b2e34", "en": "Help"}
+{"file": "scripts-engines-and-systems.json", "key": "s.b870235ac69d31fe", "en": "Empty the bowl"}
+{"file": "scripts-engines-and-systems.json", "key": "s.ba4e001d7badd3ca", "en": "{0} does not have Avatar status enabled."}
+{"file": "scripts-engines-and-systems.json", "key": "s.c0b7579aa8f0b198", "en": "Goal: {0}"}
+{"file": "scripts-engines-and-systems.json", "key": "s.c2348ae5b8d5e6ac", "en": "You need {0} gold in your backpack or bank to open this shoppe."}
+{"file": "scripts-engines-and-systems.json", "key": "s.c41a611626d19379", "en": "You are not worthy of this book."}
+{"file": "scripts-engines-and-systems.json", "key": "s.c53c048a59e2d28c", "en": "You pull the symbol from the book and it binds to you."}
+{"file": "scripts-engines-and-systems.json", "key": "s.cb9e926d01179a51", "en": "Required skill"}
+{"file": "scripts-engines-and-systems.json", "key": "s.cf905149e9f63518", "en": "There isn't enough honey in the hive to fill a bottle!"}
+{"file": "scripts-engines-and-systems.json", "key": "s.d5ae2d043a17d508", "en": "Stand near: {0}, {1}, {2}"}
+{"file": "scripts-engines-and-systems.json", "key": "s.e06a51320898b8aa", "en": "{0} has no Research Bag."}
+{"file": "scripts-engines-and-systems.json", "key": "s.e118c36e8ac5cd1b", "en": "Memory Echo for {0}: {1} ({2})"}
+{"file": "scripts-engines-and-systems.json", "key": "s.e5d4148266f0b7ca", "en": "You paid {0} gold from {1} to open this shoppe."}
+{"file": "scripts-engines-and-systems.json", "key": "s.e8cf0ff935684b05", "en": "That spellbook is no longer there."}
+{"file": "scripts-engines-and-systems.json", "key": "s.ea9bb7ea83febba1", "en": "Destroy"}
+{"file": "scripts-engines-and-systems.json", "key": "s.f1b1cd6a0d9742d6", "en": "Reproduction Menu"}
+{"file": "scripts-engines-and-systems.json", "key": "s.f7d98af64bac95be", "en": "Search chest at: {0}, {1}, {2} — interact within 2 tiles."}
+{"file": "scripts-engines-and-systems.json", "key": "s.f9dda5ab0381ffa2", "en": "Draft mode enabled. All skills have been reset to 0 and Locked."}
+{"file": "scripts-engines-and-systems.json", "key": "s.fe5da4b3c5871fb0", "en": "You collect the excess beeswax and place it in your pack."}
+{"file": "scripts-engines-and-systems.json", "key": "s.ff8d2531259c2cac", "en": "You fill a bottle with golden honey and place it in your pack."}
+{"file": "scripts-items.json", "key": "s.0649ed03e10fd693", "en": "You broke the lockpick."}
+{"file": "scripts-items.json", "key": "s.07503d38d815435b", "en": "This lock cannot be hacked by normal means."}
+{"file": "scripts-items.json", "key": "s.088c5855c05dfc9a", "en": "You are not a skilled enough musician to use this!"}
+{"file": "scripts-items.json", "key": "s.10371e2507fbb641", "en": "That is not a flour mill."}
+{"file": "scripts-items.json", "key": "s.18c8e669f1ce662c", "en": "You broke the key card."}
+{"file": "scripts-items.json", "key": "s.1ef7c62558583cc2", "en": "You don't see how that lock can be manipulated."}

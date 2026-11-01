@@ -22,5 +22,9 @@
   "temptationgump.puzzle.reduced": "<br>x 永久降低技能上限加成",
   "temptationgump.puzzle.racial": "<br>x 怪物种族加成的运作方式有所不同",
   "temptationgump.desc.tribute": "- 赠礼任务奖励发生变化",
-  "temptationgump.desc.deathwish": "(优势) 你获得属性与技能的速度更快<br>(中立) 一把旧剑<br>(劣势) 你将永远无法被复活"
+  "temptationgump.desc.deathwish": "(优势) 你获得属性与技能的速度更快<br>(中立) 一把旧剑<br>(劣势) 你将永远无法被复活",
+  "temptationgump.msg.avatar_unlock_required": "化身（Avatar）须先解锁试炼诱惑系统，方可使用此命令。",
+  "temptationgump.puzzle.info.intro": "此诱惑使你不必再把偷窃（Stealing）与窥探（Snooping）编入模板。<br><br>",
+  "temptationgump.puzzle.info.skillcap": "永久降低技能上限加成<br>- 逃亡者（Fugitives）起始技能上限加成为 +200（原为 +300）<br>- 以太泰坦（Titan of Ether）任务完成后技能上限加成为 +200（原为 +500）<br>",
+  "temptationgump.puzzle.info.racial_example": "<br>怪物种族加成<br>- 魔法属性类加成现作为下限生效，不再与装备叠加<br>- 抗性/属性加成仍正常叠加<br><br>示例：<br>- 你的装备合计加成<br>  +1 火焰抗性<br>  +2% 伤害提升<br>  +30 幸运<br>  +4 兵器学识（Arms Lore）<br>- 你的怪物种族加成提供<br>  +5 火焰抗性<br>  +6% 伤害提升<br>  +7 幸运<br>  +8 兵器学识<br>- 你的总加成为<br>  1 + 5 …… 6 火焰抗性<br>  Max(2%, 6%) …… 6% 伤害提升<br>  Max(30, 7) …… 30 幸运<br>  4 + 8 …… 12 兵器学识<br>"
 }

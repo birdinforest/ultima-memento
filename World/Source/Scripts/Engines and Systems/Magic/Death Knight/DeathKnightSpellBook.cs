@@ -1,6 +1,7 @@
 using Server.Gumps;
 using Server.Spells.DeathKnight;
 
+using Server.Localization;
 namespace Server.Items
 {
 	[FlipableAttribute( 0x6721, 0x6722 )]
@@ -62,7 +63,7 @@ namespace Server.Items
 
 			if ( Owner != from )
 			{
-				from.SendMessage( "These pages appears as scribbles to you." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "These pages appears as scribbles to you." ) );
 			}
 			else if ( Parent == from || ( pack != null && Parent == pack ) )
 			{

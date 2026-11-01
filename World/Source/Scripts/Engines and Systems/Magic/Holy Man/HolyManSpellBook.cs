@@ -3,6 +3,7 @@ using Server.Utilities;
 using Server.Misc;
 using Server.Spells.HolyMan;
 
+using Server.Localization;
 namespace Server.Items
 {
 	[FlipableAttribute( 0x672B, 0x672C )]
@@ -76,12 +77,12 @@ namespace Server.Items
 							var symbol = WorldUtilities.FirstOrDefault<HolySymbol>(item => item.owner == from);
 							if ( symbol == null )
 							{
-								from.SendMessage( "You pull the symbol from the book and it binds to you." );
+								from.SendMessage( StringCatalog.Resolve( from.Account, "You pull the symbol from the book and it binds to you." ) );
 								from.AddToBackpack( new HolySymbol( from ) );
 							}
 							else
 							{
-								from.SendMessage( "You feel a presence wash over you as you open the book." );
+								from.SendMessage( StringCatalog.Resolve( from.Account, "You feel a presence wash over you as you open the book." ) );
 							}
 							
 							from.AddToBackpack( this );
@@ -93,7 +94,7 @@ namespace Server.Items
 				}
 				else
 				{
-					from.SendMessage( "You are not worthy of this book." );
+					from.SendMessage( StringCatalog.Resolve( from.Account, "You are not worthy of this book." ) );
 					return;
 				}
 			}
@@ -101,7 +102,7 @@ namespace Server.Items
 			Container pack = from.Backpack;
 			if ( owner != from )
 			{
-				from.SendMessage( "These pages appears as scribbles to you." );
+				from.SendMessage( StringCatalog.Resolve( from.Account, "These pages appears as scribbles to you." ) );
 			}
 			else if ( Parent == from || ( pack != null && Parent == pack ) )
 			{
