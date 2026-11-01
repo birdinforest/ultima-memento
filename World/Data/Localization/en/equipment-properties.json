@@ -2161,5 +2161,8 @@
   "prop.golem.type.shadowiron": "a Shadow Iron Golem",
   "prop.golem.type.dullcopper": "a Dull Copper Golem",
   "prop.golem.type.iron": "an Iron Golem",
-  "item.special.golem.porter": "a golem"
+  "item.special.golem.porter": "a golem",
+  "item.special.pant.of.pants": "The Pant of Pants",
+  "prop.special.pant.of.pants.infotext": "of the Haute Haul",
+  "prop.special.pant.of.pants.desc": "Not a spare pair—the statement piece after a ruthlessly curated haul. Every boutique long pant that almost made the cut was edited, layered in spirit, then pressed into this single, unapologetic silhouette: the pant of pants. One look. Full closet energy. No returns, darling—this is the edit."
 }
