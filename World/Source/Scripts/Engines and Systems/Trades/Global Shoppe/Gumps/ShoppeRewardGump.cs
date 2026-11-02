@@ -79,12 +79,15 @@ namespace Server.Engines.GlobalShoppe
 					_Reward.Create(1000, () => { return new FletcherTools(1000); }, uses: 1000),
 					_Reward.Create(5000, () => { return new ArboristTool(50); }, uses: 50, name: "Arborist Tool"),
 					_Reward.Create(5000, () => { return new WoodDyeTubTemp(20); }, uses: 20, description: "Apply dye to wooden items."),
-					_Reward.Create(10000, () => { return new AncientCraftingGloves(SkillName.Bowcraft, 5, 10); }, uses: 10, name: "Ancient Bowyer Gloves (+5 skill)"),
-
 					_Reward.Create(5000, () => { return new FletcherToolsRunicI(15); }, uses: 15, name: "Runic (I)", description: "Runic tool; crafted items have 1 magical property."),
+					// Combat supply ladder: random (RNG) < frost (fixed) < consecrated (temp strong) < seal (permanent).
+					_Reward.Create(5000, () => { return ElementalMagicQuiver.CreateRandomElement(); }, name: "prop.magical.elementalquiver.shoppe.random.name", description: "prop.magical.elementalquiver.shoppe.random.desc"),
+					_Reward.Create(10000, () => { return new AncientCraftingGloves(SkillName.Bowcraft, 5, 10); }, uses: 10, name: "Ancient Bowyer Gloves (+5 skill)"),
+					_Reward.Create(10000, () => { return new ElementalMagicQuiver(ElementalMagicQuiverElement.Cold); }, name: "prop.magical.elementalquiver.shoppe.frost.name", description: "prop.magical.elementalquiver.shoppe.frost.desc"),
+					_Reward.Create(15000, () => { return new ConsecratedBowString(Utility.RandomMinMax(1, 3)); }, name: "prop.magical.consecratedbowstring.shoppe.name", description: "prop.magical.consecratedbowstring.shoppe.desc"),
 					_Reward.Create(20000, () => { return new FletcherToolsRunicII(10); }, uses: 10, name: "Runic (II)", description: "Runic tool; crafted items have 2 magical properties."),
-					_Reward.Create(50000, () => { return new FletcherToolsRunicIII(5); }, uses: 5, name: "Runic (III)", description: "Runic tool; crafted items have 3 magical properties."),
 					_Reward.Create(25000, () => { return new RangedSlayerSeal(); }, name: "prop.magical.rangedslayerseal.shoppe.name", description: "prop.magical.rangedslayerseal.shoppe.desc"),
+					_Reward.Create(50000, () => { return new FletcherToolsRunicIII(5); }, uses: 5, name: "Runic (III)", description: "Runic tool; crafted items have 3 magical properties."),
 
 					_Reward.Create(100000, () => { return new Artifact_BootsofHermes(); }, description: "Allows players to run at mounted speed."),
 				}

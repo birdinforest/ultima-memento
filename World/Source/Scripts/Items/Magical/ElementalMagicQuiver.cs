@@ -98,6 +98,11 @@ namespace Server.Items
 			}
 		}
 
+		public static ElementalMagicQuiver CreateRandomElement()
+		{
+			return new ElementalMagicQuiver( (ElementalMagicQuiverElement)Utility.Random( 4 ) );
+		}
+
 		public static string ElementKey( ElementalMagicQuiverElement element )
 		{
 			switch ( element )
