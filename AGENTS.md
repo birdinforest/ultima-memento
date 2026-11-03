@@ -577,6 +577,8 @@ When adding a third language (e.g. `zh-Hant`, `ja`):
 This file uses a simple date-stamp comment at the top for tracking. When making substantive updates, add a one-line change note at the bottom of this section.
 
 **Change log:**
+- 2026-11-04: §8.1 — indexed `BARD_SONGS_AND_INSTRUMENTS.md`（音乐/吟游全貌：四技能、SongBook、16 曲、佩戴门槛、Foe Requiem；网站 `/mechanics/bard-songs`）。
+- 2026-11-03: §8.1 — indexed `RANGED_LIFE_SKILL_SUPPLY_AND_SALVAGE_DESIGN.md`（远程生活技能消耗品防膨胀、魔法远程底装供给、分解强化料闭环）。
 - 2026-10-21: §8.1 — indexed `CU_SIDHE_PADS_MOUNT_DESIGN.md`（启用库希仙灵：四槽治疗坐骑，非精灵穿护垫才能骑）。
 - 2026-10-02: §8.1 — indexed `DRAKKHEN_CRYSTAL_SYSTEM.md`（龙晶：DropRelic 3%、50,000 金交德鲁伊、绑定可骑 Drakkhen）。
 - 2026-09-06: §8.1 — indexed `MURDERER_DISGUISE_TOWN_SELL_DESIGN.md`（红名伪装城镇出售：风险回报变现、不抬全局商人金）。
@@ -722,6 +724,7 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | Death / resurrection / bank tribute | `memento/game-mechanism/death-resurrection-bank-tribute.md` | Before modifying death or tribute handling |
 | Pet taming & Jako system | `memento/game-mechanism/PET_TAMING_AND_JAKO_SYSTEM.md` | Before modifying pet/taming mechanics |
 | 库希仙灵与护垫骑乘 | `memento/game-design-idea/CU_SIDHE_PADS_MOUNT_DESIGN.md` | Before enabling `CuSidhe` spawns, changing its mount gate, or changing `Artifact_PadsOfTheCuSidhe` |
+| 远程生活技能互动 / 魔法远程底装 / 分解强化料 | `memento/game-design-idea/RANGED_LIFE_SKILL_SUPPLY_AND_SALVAGE_DESIGN.md` | Before implementing alchemy/scroll/ammo ranged consumables, tuning magic ranged mid-tier drops, or breakdown→enhancement special mats |
 | Dragon riding scroll / Dragon King / draconic mounts | `memento/game-mechanism/DRAGON_RIDING_SCROLL_SYSTEM.md` | Before modifying `DragonRidingScroll`, `DragonRiding` keys, or `RidingDragon`/`Dragoon`/`GemDragon` mount gate |
 | Dragon King boss | `memento/game-mechanism/DRAGON_KING_SYSTEM.md` | Before modifying `DragonKing`, lucky kills, ManualOfItems relics book, or dragon `DropSpecial` on Great Dragons |
 | ManualOfItems / Relics chest | `memento/game-mechanism/MANUAL_OF_ITEMS_RELICS_SYSTEM.md` | Before modifying `ManualOfItems`, `RelicBoxGump`, `GiveItemBonus`, `Gift*` enchant flow, or boss relic drop tables |
@@ -742,6 +745,7 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | Equipment breakdown (Break Down / Scissors) | `memento/game-mechanism/EQUIPMENT_BREAKDOWN_SYSTEM.md` | Before modifying `BreakDown.cs`, `Scissors.CutUp`, `BaseItemBreakDown`, craft `BreakDown` flags, or `ColorlessFabricBreakdown` |
 | Equipment enhancement (Enhance / Guild / sharpening stones) | `memento/game-mechanism/EQUIPMENT_ENHANCEMENT_SYSTEM.md` | Before modifying `Enhance.cs`, `GuildCraftingProcess`, `AttributeHandler`, sharpening items, or `ResourceCanChange` |
 | PvP / harmful actions / notoriety / murder | `memento/game-mechanism/PVP_COMBAT_SYSTEM.md` | Before modifying player combat, `Mobile_AllowHarmful`, criminal/murder reporting, or region combat rules |
+| Musicianship & bard play / 音乐技能与吟游 | `memento/game-mechanism/BARD_SONGS_AND_INSTRUMENTS.md` | Before modifying bard skills, `Song` / `SongBook` / `BaseInstrument`, or song cast rules |
 | Weapon special abilities / 武器五档特攻 | `memento/game-mechanism/WEAPON_SPECIAL_ABILITY_SYSTEM.md` | Before modifying `WeaponAbility`, `SpecialAttackGump`, or any weapon `PrimaryAbility`–`FifthAbility` |
 | Equipment durability boost / 提高装备耐久上限 | `memento/game-mechanism/EQUIPMENT_DURABILITY_BOOST_SYSTEM.md` | Before modifying `DurabilityPotion`, wax jars, `PowderOfTemperament`, or `RepairPotion` |
 | Slayer weapon system | `memento/game-mechanism/SLAYER_WEAPON_SYSTEM.md` | Before modifying slayer mechanics |
