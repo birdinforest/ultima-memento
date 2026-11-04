@@ -2179,7 +2179,7 @@
   "item.magical.rangedslayerseal": "远程家族克星封印",
   "prop.magical.rangedslayerseal.desc": "可为普通、克星槽全空的远程武器施加一种超级克星",
   "prop.magical.rangedslayerseal.shoppe.name": "远程家族克星封印",
-  "prop.magical.rangedslayerseal.shoppe.desc": "对背包中普通、克星槽全空的远程武器施加一种超级克星（家族级）。",
+  "prop.magical.rangedslayerseal.shoppe.desc": "对背包中普通、克星槽全空的远程武器施加一种自选的超级克星（家族级）。",
   "prop.magical.rangedslayerseal.gump.title": "选择家族克星",
   "prop.magical.rangedslayerseal.msg.prompt": "请选择背包中的普通远程武器。",
   "prop.magical.rangedslayerseal.msg.pack": "武器必须在你的背包中。",
