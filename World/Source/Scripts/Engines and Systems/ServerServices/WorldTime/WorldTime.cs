@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Server.Commands;
+using Server.Engines.ServerServices.WebApi;
 using Server.Items;
 
 namespace Server.Engines.ServerServices.Time
@@ -49,6 +50,11 @@ namespace Server.Engines.ServerServices.Time
 			RefreshSnapshots();
 
 			CommandSystem.Register("WorldTime", AccessLevel.GameMaster, new CommandEventHandler(WorldTime_OnCommand));
+
+			WebApiHost.Register("GET", WebApiHost.ApiRoot + "/world-time", request => TimeSnapshot,
+				"Real time, effective world calendar time, in-game clock and moon phase.");
+			WebApiHost.Register("GET", WebApiHost.ApiRoot + "/seasons", request => new Dictionary<string, object> { { "seasons", SeasonsSnapshot } },
+				"All seasons with active state and next start/end dates.");
 
 			ServiceLog.Info(LogSystem, "Started: enabled={0}, mode={1}, world date {2:yyyy-MM-dd HH:mm}, active seasons [{3}].",
 				m_File.Current.Enabled, config.Mode, Now, string.Join(", ", ActiveSeasons.ToArray()));

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Server.Engines.ServerServices.Time;
+using Server.Engines.ServerServices.WebApi;
 using Server.Misc;
 
 namespace Server.Engines.ServerServices.Loot
@@ -30,6 +31,9 @@ namespace Server.Engines.ServerServices.Loot
 			WorldTime.SeasonChanged += (season, active) => RefreshSnapshot();
 			WarnUnknownSeasons(Effective);
 			RefreshSnapshot();
+
+			WebApiHost.Register("GET", WebApiHost.ApiRoot + "/drop-rates", request => Snapshot,
+				"Configured drop rules with season state and effective chances.");
 
 			ServiceLog.Info(LogSystem, "Started: enabled={0}, multiplier={1}, {2} rules.", m_File.Current.Enabled, Effective.GlobalMultiplier, Effective.Rules.Count);
 		}
