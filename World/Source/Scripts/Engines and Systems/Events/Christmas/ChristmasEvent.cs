@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Server.Engines.ServerServices.Loot;
 using Server.Engines.ServerServices.Time;
 using Server.Items;
 using Server.Misc;
@@ -79,34 +80,20 @@ namespace Server.Engines.Events.Christmas
 		}
 
 		/// <summary>
-		/// Chance-based corpse drop during December. Fame and luck improve odds / stack size.
+		/// Chance-based corpse drop during the christmas season; rates come from the
+		/// "christmas.winter_spirit_mote" rule in drop-rates.json.
 		/// </summary>
 		public static void TryDropMote(BaseCreature creature, Container corpse, Mobile killer, int killerLuck)
 		{
-			if (!IsActive || creature == null || corpse == null || killer == null)
+			if (creature == null || corpse == null || killer == null)
 				return;
 
 			if (creature.IsStabled || creature.Controlled || creature.IsBonded)
 				return;
 
-			int chance = 5 + Math.Min(15, creature.Fame / 2000);
-
-			if (GetPlayerInfo.LuckyKiller(killerLuck))
-				chance += 5;
-
-			if (Utility.Random(100) >= chance)
-				return;
-
-			int amount = 1;
-
-			if (creature.Fame >= 5000)
-				amount++;
-			if (creature.Fame >= 15000)
-				amount++;
-			if (GetPlayerInfo.LuckyKiller(killerLuck) && Utility.RandomBool())
-				amount++;
-
-			corpse.DropItem(new WinterSpiritMote(amount));
+			int amount;
+			if (DropRateSystem.Roll("christmas.winter_spirit_mote", creature.Fame, killerLuck, out amount))
+				corpse.DropItem(new WinterSpiritMote(amount));
 		}
 	}
 

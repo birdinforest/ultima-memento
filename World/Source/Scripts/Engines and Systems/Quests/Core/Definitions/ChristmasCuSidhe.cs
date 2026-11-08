@@ -5,6 +5,7 @@ using Server.ContextMenus;
 using Server.Engines.Events.Christmas;
 using Server.Engines.MLQuests.Objectives;
 using Server.Engines.MLQuests.Rewards;
+using Server.Engines.ServerServices.Loot;
 using Server.Items;
 using Server.Mobiles;
 
@@ -277,8 +278,9 @@ namespace Server.Engines.MLQuests.Definitions
 
 			PackGold(400, 700);
 
-			if (Utility.RandomDouble() < 0.35)
-				PackItem(new WinterSpiritMote(Utility.RandomMinMax(3, 8)));
+			int motes;
+			if (DropRateSystem.Roll("christmas.veil_torn_pack", Fame, 0, out motes))
+				PackItem(new WinterSpiritMote(motes));
 		}
 
 		public VeilTornCuSidhe(Serial serial) : base(serial)
@@ -303,8 +305,9 @@ namespace Server.Engines.MLQuests.Definitions
 		{
 			base.OnDeath(c);
 
-			if (ChristmasEvent.IsActive && c != null && Utility.RandomDouble() < 0.5)
-				c.DropItem(new WinterSpiritMote(Utility.RandomMinMax(5, 12)));
+			int motes;
+			if (c != null && DropRateSystem.Roll("christmas.veil_torn_bonus", Fame, MobileUtilities.GetLuckFromKiller(this), out motes))
+				c.DropItem(new WinterSpiritMote(motes));
 		}
 
 		public override void Serialize(GenericWriter writer)
