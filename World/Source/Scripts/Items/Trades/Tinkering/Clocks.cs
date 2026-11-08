@@ -49,8 +49,6 @@ namespace Server.Items
 		public const double SecondsPerUOMinute = 5.0;
 		public const double MinutesPerUODay = SecondsPerUOMinute * 24;
 
-		private static DateTime WorldStart = new DateTime( 1997, 9, 1 );
-
 		public static MoonPhase GetMoonPhase( Map map, int x, int y )
 		{
 			x = 100; y = 100; map = Map.Sosaria;
@@ -75,9 +73,8 @@ namespace Server.Items
 		public static void GetTime( Map map, int x, int y, out int hours, out int minutes, out int totalMinutes )
 		{
 			x = 100; y = 100; map = Map.Sosaria;
-			TimeSpan timeSpan = DateTime.Now - WorldStart;
 
-			totalMinutes = (int)(timeSpan.TotalSeconds / SecondsPerUOMinute);
+			totalMinutes = (int)Server.Engines.ServerServices.Time.WorldTime.GetGameTotalMinutes();
 
 			if ( map != null )
 				totalMinutes += map.MapIndex * 320;
@@ -87,6 +84,8 @@ namespace Server.Items
 
 			hours = (totalMinutes / 60) % 24;
 			minutes = totalMinutes % 60;
+
+			Server.Engines.ServerServices.Time.WorldTime.ApplyHourOverride( ref hours, ref minutes );
 		}
 
 		public static void GetTime( out int generalNumber, out string exactTime )

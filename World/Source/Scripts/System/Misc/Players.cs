@@ -484,8 +484,9 @@ namespace Server.Misc
 
 		public static string GetTodaysDate()
 		{
-			string sYear = DateTime.Now.Year.ToString();
-			string sMonth = DateTime.Now.Month.ToString();
+			DateTime now = Server.Engines.ServerServices.Time.WorldTime.Now;
+			string sYear = now.Year.ToString();
+			string sMonth = now.Month.ToString();
 				string sMonthName = "January";
 				if ( sMonth == "2" ){ sMonthName = "February"; }
 				else if ( sMonth == "3" ){ sMonthName = "March"; }
@@ -498,10 +499,10 @@ namespace Server.Misc
 				else if ( sMonth == "10" ){ sMonthName = "October"; }
 				else if ( sMonth == "11" ){ sMonthName = "November"; }
 				else if ( sMonth == "12" ){ sMonthName = "December"; }
-			string sDay = DateTime.Now.Day.ToString();
-			string sHour = DateTime.Now.Hour.ToString();
-			string sMinute = DateTime.Now.Minute.ToString();
-			string sSecond = DateTime.Now.Second.ToString();
+			string sDay = now.Day.ToString();
+			string sHour = now.Hour.ToString();
+			string sMinute = now.Minute.ToString();
+			string sSecond = now.Second.ToString();
 
 			if ( sHour.Length == 1 ){ sHour = "0" + sHour; }
 			if ( sMinute.Length == 1 ){ sMinute = "0" + sMinute; }

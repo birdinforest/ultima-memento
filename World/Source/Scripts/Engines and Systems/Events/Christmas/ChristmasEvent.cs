@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Server.Engines.ServerServices.Time;
 using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
@@ -8,13 +9,15 @@ namespace Server.Engines.Events.Christmas
 {
 	/// <summary>
 	/// Midwinter / Christmas seasonal helpers.
-	/// Active during December (local server time), matching Category.Christmas vendor gating.
+	/// Active during the "christmas" season in world-time.json, the same window that gates Category.Christmas vendor stock.
 	/// </summary>
 	public static class ChristmasEvent
 	{
+		public const string SeasonId = "christmas";
+
 		public static bool IsActive
 		{
-			get { return DateTime.Now.Month == 12; }
+			get { return WorldTime.IsSeasonActive(SeasonId); }
 		}
 
 		/// <summary>
