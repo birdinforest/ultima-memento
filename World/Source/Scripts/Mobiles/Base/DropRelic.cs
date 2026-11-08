@@ -1,10 +1,11 @@
 using Server.Mobiles;
 using Server.Items;
+using Server.Engines.Events.Christmas;
 
 namespace Server.Misc
 {
     class DropRelic
-    {
+	{
 		public static void DropSpecialItem( BaseCreature from, Container c )
 		{
 			if ( c == null ) return;
@@ -14,6 +15,9 @@ namespace Server.Misc
 			if ( killer == null ) return;
 
 			int killerLuck = MobileUtilities.GetLuckFromKiller( from );
+
+			// Midwinter event: December monster kills may drop Winter Spirit Motes
+			ChristmasEvent.TryDropMote( from, c, killer, killerLuck );
 
 			Region reg = Region.Find( from.Location, from.Map );
 
