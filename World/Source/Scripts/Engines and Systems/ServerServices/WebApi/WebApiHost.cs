@@ -238,6 +238,12 @@ namespace Server.Engines.ServerServices.WebApi
 					return;
 				}
 
+				bool isGet = string.Equals(request.HttpMethod, "GET", StringComparison.OrdinalIgnoreCase)
+					|| string.Equals(request.HttpMethod, "HEAD", StringComparison.OrdinalIgnoreCase);
+
+				if (!isGet)
+					throw new ApiException(405, "method_not_allowed", "Only GET is supported.");
+
 				if (!CheckRateLimit(config, remote))
 					throw new ApiException(429, "rate_limited", "Too many requests; slow down.");
 
@@ -246,16 +252,8 @@ namespace Server.Engines.ServerServices.WebApi
 
 				Dictionary<string, Route> routes = m_Routes;
 				Route route;
-				if (!routes.TryGetValue(RouteKey(request.HttpMethod, path), out route))
-				{
-					foreach (Route r in routes.Values)
-					{
-						if (string.Equals(r.Path, path, StringComparison.OrdinalIgnoreCase))
-							throw new ApiException(405, "method_not_allowed", "Method not allowed.");
-					}
-
+				if (!routes.TryGetValue(RouteKey("GET", path), out route))
 					throw new ApiException(404, "not_found", "No endpoint at " + path + ". See " + ApiRoot + ".");
-				}
 
 				var apiRequest = new ApiRequest
 				{
