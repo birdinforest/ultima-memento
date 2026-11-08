@@ -801,7 +801,8 @@ namespace Server
 			int oHue = 0;
 			string oName = null;
 
-			string CurrentMonth = DateTime.Now.ToString("MM");
+			bool christmasSeason = Server.Engines.ServerServices.Time.WorldTime.IsSeasonActive( "christmas" );
+			bool halloweenSeason = Server.Engines.ServerServices.Time.WorldTime.IsSeasonActive( "halloween" );
 
 			Drinks( LIST, v_Market );
 
@@ -840,10 +841,10 @@ namespace Server
 						set = true;
 					}
 
-					if ( CurrentMonth != "12" && iCategory(val) == ItemSalesInfo.Category.Christmas )
+					if ( !christmasSeason && iCategory(val) == ItemSalesInfo.Category.Christmas )
 						set = false;
 
-					if ( CurrentMonth != "10" && iCategory(val) == ItemSalesInfo.Category.Halloween )
+					if ( !halloweenSeason && iCategory(val) == ItemSalesInfo.Category.Halloween )
 						set = false;
 
 					if ( v_Market == ItemSalesInfo.Market.Sage && v_Category == ItemSalesInfo.Category.Artifact && iMarket(val) != ItemSalesInfo.Market.Thief && iCategory(val) == ItemSalesInfo.Category.Artifact )

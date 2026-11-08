@@ -1,0 +1,27 @@
+{
+  "_comment": "World calendar and in-game clock. Saved changes apply within a few seconds. With enabled=false the server uses real time, a 5s-per-UO-minute clock and the season windows below are ignored in favour of the built-in December/October windows.",
+  "enabled": false,
+  "log_level": "Info",
+
+  "_calendar_mode_help": "real = server clock; offset = server clock + offset_days/offset_hours; fixed = always fixed_date (yyyy-MM-dd or yyyy-MM-ddTHH:mm:ss).",
+  "calendar_mode": "real",
+  "offset_days": 0,
+  "offset_hours": 0,
+  "fixed_date": "2026-12-10",
+
+  "game_clock": {
+    "_help": "seconds_per_uo_minute: real seconds per in-game minute (default 5). Changing it or 'frozen' at runtime keeps the current in-game time. fixed_hour: -1 = off, 0-23 = force that hour.",
+    "seconds_per_uo_minute": 5,
+    "frozen": false,
+    "fixed_hour": -1
+  },
+
+  "seasons": {
+    "_help": "Yearly MM-dd windows (inclusive). Windows may wrap the year end, e.g. 12-20..01-06. Systems query these by id.",
+    "christmas": { "display_name": "Midwinter", "enabled": true, "start": "12-01", "end": "12-31" },
+    "halloween": { "display_name": "Halloween", "enabled": true, "start": "10-01", "end": "10-31" }
+  },
+
+  "snapshot_interval_seconds": 5,
+  "season_check_interval_seconds": 30
+}

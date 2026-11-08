@@ -1,0 +1,48 @@
+{
+  "_comment": "Configurable drop chances. Saved changes apply within a few seconds. With enabled=false the built-in rates (identical to the values below) are used. Fields left out of a rule keep that rule's built-in value; to stop a drop set its enabled to false.",
+  "enabled": false,
+  "log_level": "Info",
+  "global_multiplier": 1.0,
+
+  "_rule_help": "chance% = base_chance_percent + floor((fame - min_fame) / fame_per_bonus_percent) [capped by max_fame_bonus_percent, -1 = no cap] + lucky_bonus_percent (if the killer's luck roll succeeds), times global_multiplier (unless use_global_multiplier=false), capped by max_chance_percent. season refers to an id in world-time.json. amount = base + 1 per fame tier reached + 1 on a lucky roll (lucky_extra_chance_percent) + random 0..random_bonus_max.",
+
+  "rules": {
+    "christmas.winter_spirit_mote": {
+      "enabled": true,
+      "season": "christmas",
+      "base_chance_percent": 5,
+      "fame_per_bonus_percent": 2000,
+      "max_fame_bonus_percent": 15,
+      "lucky_bonus_percent": 5,
+      "amount": { "base": 1, "fame_tiers": [5000, 15000], "lucky_extra_chance_percent": 50, "random_bonus_max": 0 }
+    },
+    "christmas.veil_torn_bonus": {
+      "enabled": true,
+      "season": "christmas",
+      "base_chance_percent": 50,
+      "amount": { "base": 5, "random_bonus_max": 7 }
+    },
+    "christmas.veil_torn_pack": {
+      "enabled": true,
+      "base_chance_percent": 35,
+      "amount": { "base": 3, "random_bonus_max": 5 }
+    },
+    "champion_skull": {
+      "enabled": true,
+      "base_chance_percent": 10,
+      "min_fame": 20000,
+      "fame_per_bonus_percent": 2000,
+      "max_fame_bonus_percent": -1
+    },
+    "lucky_trinket": {
+      "enabled": true,
+      "base_chance_percent": 5,
+      "requires_lucky_killer": true
+    },
+    "lucky_mask": {
+      "enabled": true,
+      "base_chance_percent": 5,
+      "requires_lucky_killer": true
+    }
+  }
+}

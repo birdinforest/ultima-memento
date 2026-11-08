@@ -1,10 +1,12 @@
 using Server.Mobiles;
 using Server.Items;
+using Server.Engines.Events.Christmas;
+using Server.Engines.ServerServices.Loot;
 
 namespace Server.Misc
 {
     class DropRelic
-    {
+	{
 		public static void DropSpecialItem( BaseCreature from, Container c )
 		{
 			if ( c == null ) return;
@@ -15,20 +17,14 @@ namespace Server.Misc
 
 			int killerLuck = MobileUtilities.GetLuckFromKiller( from );
 
+			ChristmasEvent.TryDropMote( from, c, killer, killerLuck );
+
 			Region reg = Region.Find( from.Location, from.Map );
 
 			if ( !reg.IsPartOf(typeof( Server.Engines.CannedEvil.ChampionSpawnRegion )) )
 			{
-				const int MIN_FAME_FOR_CHAMP_SKULL = 20000;
-				if ( MIN_FAME_FOR_CHAMP_SKULL <= from.Fame )
-				{
-					const int BASE_CHANCE = 10;
-
-					// Theoretical cap is probably 24k Fame, so up to +4% chance
-					var bonusChance = (from.Fame - MIN_FAME_FOR_CHAMP_SKULL) / 2000;
-
-					if ( Utility.RandomMinMax( 0, 100 ) < BASE_CHANCE + bonusChance ) c.DropItem( new ChampionSkull() );
-				}
+				// Theoretical fame cap is probably 24k, so up to +4% over the base chance by default
+				if ( DropRateSystem.Roll( "champion_skull", from.Fame, killerLuck ) ) c.DropItem( new ChampionSkull() );
 			}
 
 			if ( Server.Misc.Worlds.IsOnSpaceship( from.Location, from.Map ) )
@@ -56,7 +52,7 @@ namespace Server.Misc
 				if ( Utility.RandomMinMax( 1, 300 ) < (from.Fame/100) ){ c.DropItem( new RobotOil( Utility.RandomMinMax( 1, 2 ) ) ); }
 			}
 
-			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 0, 100 ) > 95 )
+			if ( DropRateSystem.Roll( "lucky_trinket", from.Fame, killerLuck ) )
 			{
 				int item = 0;
 				int color = 0;
@@ -88,7 +84,7 @@ namespace Server.Misc
 
 			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-			if ( GetPlayerInfo.LuckyKiller( killerLuck ) && Utility.RandomMinMax( 0, 100 ) > 95 )
+			if ( DropRateSystem.Roll( "lucky_mask", from.Fame, killerLuck ) )
 			{
 				if ( from is Lich || from is Vordo || from is Nazghoul || from is LichLord || from is DemiLich || from is AncientLich || from is Surtaz || from is LichKing || from is UndeadDruid )
 				{

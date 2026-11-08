@@ -1,0 +1,12 @@
+{
+  "_comment": "Read-only HTTP API for websites and tools (GET /api/v1 lists endpoints). Saved changes apply within a few seconds; changing enabled or prefixes restarts the listener. On Windows, prefixes other than http://localhost:PORT/ need: netsh http add urlacl url=http://+:8085/ user=Everyone",
+  "enabled": false,
+  "log_level": "Info",
+  "prefixes": ["http://localhost:8085/"],
+  "_api_key_help": "Leave empty for no auth. When set, clients send it in the X-Api-Key header (or Authorization: Bearer <key>).",
+  "api_key": "",
+  "_cors_help": "Origins allowed to call the API from a browser, e.g. [\"https://example.com\"] or [\"*\"].",
+  "cors_allowed_origins": [],
+  "rate_limit_per_minute": 120,
+  "log_requests": false
+}

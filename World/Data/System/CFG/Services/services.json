@@ -1,0 +1,5 @@
+{
+  "_comment": "Shared settings for hot-reloadable service configs in this folder. Files are re-read automatically when saved.",
+  "poll_interval_seconds": 2,
+  "log_level": "Info"
+}
