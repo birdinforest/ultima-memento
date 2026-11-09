@@ -100,6 +100,8 @@ namespace Server
 		}
 
 		public static readonly LootPackItem[] Gold = new LootPackItem[] { new LootPackItem( typeof( Gold ), 1 ) };
+		// Dedicated instrument line is half of Spellbooks/Quivers so non-bard
+		// Layer.Trinket expectation stays usable-talisman-first (see m_JewelryTypes).
 		public static readonly LootPackItem[] Instruments = new LootPackItem[] { new LootPackItem( typeof( BaseInstrument ), 1 ) };
 		public static readonly LootPackItem[] Spellbooks = new LootPackItem[] { new LootPackItem( typeof( Spellbook ), 1 ) };
 		public static readonly LootPackItem[] Quivers = new LootPackItem[] { new LootPackItem( typeof( BaseQuiver ), 1 ) };
@@ -230,7 +232,7 @@ namespace Server
 			{
 				new LootPackEntry( true, Gold,					   100.00, "2d10+20" ),
 				new LootPackEntry( false, MagicItemsPoor,		  	 1.00, 1, 1, 0, 25 ),
-				new LootPackEntry( false, Instruments,			  	 0.04, 1, 1, 0, 25 ),
+				new LootPackEntry( false, Instruments,			  	 0.02, 1, 1, 0, 25 ),
 				new LootPackEntry( false, Spellbooks,				 0.04, 1, 1, 0, 25 ),
 				new LootPackEntry( false, Quivers,				  	 0.04, 1, 1, 0, 25 ),
 				new LootPackEntry( false, MagicItemsMeager1,	 	20.40, 1, 2, 0, 25 ),
@@ -242,7 +244,7 @@ namespace Server
 				new LootPackEntry( true, Gold,						100.00, "4d10+40" ),
 				new LootPackEntry( false, MagicItemsMeager1,	 	 20.40, 1, 2, 0, 30 ),
 				new LootPackEntry( false, MagicItemsMeager2,	 	 10.20, 1, 2, 0, 30 ),
-				new LootPackEntry( false, Instruments,				  0.20, 1, 2, 0, 30 ),
+				new LootPackEntry( false, Instruments,				  0.10, 1, 2, 0, 30 ),
 				new LootPackEntry( false, Spellbooks,				  0.20, 1, 2, 0, 30 ),
 				new LootPackEntry( false, Quivers,				  	  0.20, 1, 2, 0, 30 ),
 				new LootPackEntry( false, LowPotionItems,			 50.00, 1 )
@@ -254,7 +256,7 @@ namespace Server
 				new LootPackEntry( false, MagicItemsAverage1, 		32.80, 1, 3, 0, 40 ),
 				new LootPackEntry( false, MagicItemsAverage1, 		32.80, 1, 3, 0, 40 ),
 				new LootPackEntry( false, MagicItemsAverage2, 		19.50, 1, 3, 0, 40 ),
-				new LootPackEntry( false, Instruments,				 0.80, 1, 3, 0, 40 ),
+				new LootPackEntry( false, Instruments,				 0.40, 1, 3, 0, 40 ),
 				new LootPackEntry( false, Spellbooks,				 0.80, 1, 3, 0, 40 ),
 				new LootPackEntry( false, Quivers,				  	 0.80, 1, 3, 0, 40 ),
 				new LootPackEntry( false, MedPotionItems,			20.00, 1 )
@@ -266,7 +268,7 @@ namespace Server
 				new LootPackEntry( false, MagicItemsRich1,	 		76.30, 2, 3, 20, 40 ),
 				new LootPackEntry( false, MagicItemsRich1,	 		76.30, 2, 3, 20, 40 ),
 				new LootPackEntry( false, MagicItemsRich2,	 		61.70, 2, 4, 20, 40 ),
-				new LootPackEntry( false, Instruments,				 4.00, 2, 3, 20, 40 ),
+				new LootPackEntry( false, Instruments,				 2.00, 2, 3, 20, 40 ),
 				new LootPackEntry( false, Spellbooks,				 4.00, 2, 3, 20, 40 ),
 				new LootPackEntry( false, Quivers,				  	 4.00, 2, 3, 20, 40 ),
 				new LootPackEntry( false, SArtyItems,				 1.00, 2, 3, 20, 40 ),
@@ -279,7 +281,7 @@ namespace Server
 				new LootPackEntry( false, MagicItemsFilthyRich1,		79.50, 2, 4, 25,  50 ),
 				new LootPackEntry( false, MagicItemsFilthyRich1,		79.50, 2, 4, 25,  50 ),
 				new LootPackEntry( false, MagicItemsFilthyRich2,		77.60, 3, 4, 25,  50 ),
-				new LootPackEntry( false, Instruments,					 4.00, 2, 4, 25,  50 ),
+				new LootPackEntry( false, Instruments,					 2.00, 2, 4, 25,  50 ),
 				new LootPackEntry( false, Spellbooks,					 4.00, 2, 4, 25,  50 ),
 				new LootPackEntry( false, Quivers,				  	  	 4.00, 2, 4, 25,  50 ),
 				new LootPackEntry( false, SArtyItems,				  	 1.00, 1 ),
@@ -296,7 +298,7 @@ namespace Server
 				new LootPackEntry( false, MagicItemsUltraRich,		100.00, 2, 5, 40, 70 ),
 				new LootPackEntry( false, MagicItemsUltraRich,		100.00, 2, 5, 40, 70 ),
 				new LootPackEntry( false, MagicItemsUltraRich,		100.00, 2, 5, 40, 70 ),
-				new LootPackEntry( false, Instruments,				  8.00, 2, 5, 40, 70 ),
+				new LootPackEntry( false, Instruments,				  4.00, 2, 5, 40, 70 ),
 				new LootPackEntry( false, Spellbooks,				  8.00, 2, 5, 40, 70 ),
 				new LootPackEntry( false, Quivers,				  	  8.00, 2, 5, 40, 70 ),
 				new LootPackEntry( false, SArtyItems,				  2.00, 1 ),
@@ -317,7 +319,7 @@ namespace Server
 				new LootPackEntry( false, MagicItemsUltraRich,		100.00, 3, 5, 40, 70 ),
 				new LootPackEntry( false, MagicItemsUltraRich,		100.00, 3, 5, 40, 70 ),
 				new LootPackEntry( false, MagicItemsUltraRich,		100.00, 3, 5, 40, 70 ),
-				new LootPackEntry( false, Instruments,				  8.00, 3, 5, 40, 70 ),
+				new LootPackEntry( false, Instruments,				  4.00, 3, 5, 40, 70 ),
 				new LootPackEntry( false, Spellbooks,				  8.00, 3, 5, 40, 70 ),
 				new LootPackEntry( false, Quivers,				  	  8.00, 3, 5, 40, 70 ),
 				new LootPackEntry( false, SArtyItems,				  4.00, 1 ),
@@ -332,7 +334,7 @@ namespace Server
 		public static readonly LootPack TreasurePoor = new LootPack( new LootPackEntry[]
 			{
 				new LootPackEntry( false, MagicItemsPoor,		  	10.00, 1, 1, 10, 25 ),
-				new LootPackEntry( false, Instruments,			  	 0.04, 1, 1, 10, 25 ),
+				new LootPackEntry( false, Instruments,			  	 0.02, 1, 1, 10, 25 ),
 				new LootPackEntry( false, Spellbooks,				 0.04, 1, 1, 10, 25 ),
 				new LootPackEntry( false, Quivers,				  	 0.04, 1, 1, 10, 25 ),
 				new LootPackEntry( false, MagicItemsMeager1,	 	20.40, 1, 1, 10, 25 ),
@@ -345,7 +347,7 @@ namespace Server
 		public static readonly LootPack TreasureMeager = new LootPack( new LootPackEntry[]
 			{
 				new LootPackEntry( false, MagicItemsMeager1,	 	 20.40, 1, 2, 10, 30 ),
-				new LootPackEntry( false, Instruments,				  0.20, 1, 2, 10, 30 ),
+				new LootPackEntry( false, Instruments,				  0.10, 1, 2, 10, 30 ),
 				new LootPackEntry( false, Spellbooks,				  0.20, 1, 2, 10, 30 ),
 				new LootPackEntry( false, Quivers,				  	  0.20, 1, 2, 10, 30 ),
 				new LootPackEntry( false, LowScrollItems,			 10.00, 1 ),
@@ -357,7 +359,7 @@ namespace Server
 		public static readonly LootPack TreasureAverage = new LootPack( new LootPackEntry[]
 			{
 				new LootPackEntry( false, MagicItemsAverage1, 		32.80, 1, 3, 10, 40 ),
-				new LootPackEntry( false, Instruments,				 0.80, 1, 3, 10, 40 ),
+				new LootPackEntry( false, Instruments,				 0.40, 1, 3, 10, 40 ),
 				new LootPackEntry( false, Spellbooks,				 0.80, 1, 3, 10, 40 ),
 				new LootPackEntry( false, Quivers,				  	 0.80, 1, 3, 10, 40 ),
 				new LootPackEntry( false, MedScrollItems,			20.00, 1 ),
@@ -369,7 +371,7 @@ namespace Server
 		public static readonly LootPack TreasureRich = new LootPack( new LootPackEntry[]
 			{
 				new LootPackEntry( false, MagicItemsRich1,	 		76.30, 2, 3, 20, 40 ),
-				new LootPackEntry( false, Instruments,				 4.00, 2, 3, 20, 40 ),
+				new LootPackEntry( false, Instruments,				 2.00, 2, 3, 20, 40 ),
 				new LootPackEntry( false, Spellbooks,				 4.00, 2, 3, 20, 40 ),
 				new LootPackEntry( false, Quivers,				  	 4.00, 2, 3, 20, 40 ),
 				new LootPackEntry( false, SArtyItems,				 0.50, 2, 3, 20, 40 ),
@@ -382,7 +384,7 @@ namespace Server
 		public static readonly LootPack TreasureFilthyRich = new LootPack( new LootPackEntry[]
 			{
 				new LootPackEntry( false, MagicItemsFilthyRich1,		79.50, 2, 4, 35, 50 ),
-				new LootPackEntry( false, Instruments,					 4.00, 2, 4, 35, 50 ),
+				new LootPackEntry( false, Instruments,					 2.00, 2, 4, 35, 50 ),
 				new LootPackEntry( false, Spellbooks,					 4.00, 2, 4, 35, 50 ),
 				new LootPackEntry( false, Quivers,				  	  	 4.00, 2, 4, 35, 50 ),
 				new LootPackEntry( false, SArtyItems,				  	 0.50, 1 ),
@@ -396,7 +398,7 @@ namespace Server
 		public static readonly LootPack TreasureUltraRich = new LootPack( new LootPackEntry[]
 			{
 				new LootPackEntry( false, MagicItemsUltraRich,		100.00, 2, 5, 50, 70 ),
-				new LootPackEntry( false, Instruments,				  8.00, 2, 5, 50, 70 ),
+				new LootPackEntry( false, Instruments,				  4.00, 2, 5, 50, 70 ),
 				new LootPackEntry( false, Spellbooks,				  8.00, 2, 5, 50, 70 ),
 				new LootPackEntry( false, Quivers,				  	  8.00, 2, 5, 50, 70 ),
 				new LootPackEntry( false, SArtyItems,				  1.00, 1 ),
@@ -411,7 +413,7 @@ namespace Server
 			{
 				new LootPackEntry( false, MagicItemsUltraRich,		100.00, 3, 5, 50, 70 ),
 				new LootPackEntry( false, MagicItemsUltraRich,		100.00, 3, 5, 50, 70 ),
-				new LootPackEntry( false, Instruments,				  8.00, 3, 5, 50, 70 ),
+				new LootPackEntry( false, Instruments,				  4.00, 3, 5, 50, 70 ),
 				new LootPackEntry( false, Spellbooks,				  8.00, 3, 5, 50, 70 ),
 				new LootPackEntry( false, Quivers,				  	  8.00, 3, 5, 50, 70 ),
 				new LootPackEntry( false, SArtyItems,				  2.00, 1 ),

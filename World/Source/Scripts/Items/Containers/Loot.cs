@@ -291,10 +291,13 @@ namespace Server
 
 		// ------------------------------------------------------------------------------------------------------------------------------------------
 
+		// TrinketTalisman listed twice: raise general Layer.Trinket share vs dedicated
+		// Instruments loot (non-bard usable talisman ≥ instrument expectation).
 		private static Type[] m_JewelryTypes = new Type[]
 			{
 				typeof( JewelryRing ),			typeof( JewelryNecklace ),		typeof( JewelryEarrings ),	
-				typeof( JewelryBracelet ),		typeof( JewelryCirclet ),		typeof( TrinketTalisman ),
+				typeof( JewelryBracelet ),		typeof( JewelryCirclet ),
+				typeof( TrinketTalisman ),		typeof( TrinketTalisman ),
 				typeof( TrinketCandle ),		typeof( TrinketTorch ),			typeof( TrinketLantern )
 			};
 
