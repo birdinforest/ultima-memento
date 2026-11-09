@@ -2,6 +2,7 @@ using System;
 using System.Globalization;
 using Server.Misc;
 using Server.Localization;
+using Server.RateConfig;
 
 namespace Server.Items
 {
@@ -134,11 +135,24 @@ namespace Server.Items
 						item = LootPackEntry.Enchant( from, 500, item );
 						break;
 					case 12:
-						// Equal chance: bard instrument vs archer kit (was instrument-only)
-						if ( Utility.RandomBool() )
-							item = Loot.RandomInstrument();
-						else
-							item = Loot.RandomHoardArcherEquipment( Server.LootPackEntry.playOrient( from ), from );
+						// Bard instrument vs archer kit — shares tunable via ranged-supply.json
+						// (default 1 instrument : 2 archer). Mid-tier magic ranged supply design.
+						{
+							int archerShare = (int)Math.Round( RateConfigEngine.GetDouble( "ranged.supply.hoard.archerShare", 2.0 ) );
+							int instrumentShare = (int)Math.Round( RateConfigEngine.GetDouble( "ranged.supply.hoard.instrumentShare", 1.0 ) );
+
+							if ( archerShare < 0 )
+								archerShare = 0;
+							if ( instrumentShare < 0 )
+								instrumentShare = 0;
+
+							int totalShare = archerShare + instrumentShare;
+
+							if ( totalShare <= 0 || Utility.Random( totalShare ) < instrumentShare )
+								item = Loot.RandomInstrument();
+							else
+								item = Loot.RandomHoardArcherEquipment( Server.LootPackEntry.playOrient( from ), from );
+						}
 						item = LootPackEntry.Enchant( from, 500, item );
 						break;
 					case 13:

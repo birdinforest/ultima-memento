@@ -1,4 +1,5 @@
 ﻿using Server.Commands;
+using Server.Localization;
 using Server.Mobiles;
 
 namespace Server.Items
@@ -19,18 +20,18 @@ namespace Server.Items
 
 			if ( m.Preferences.CharacterBarbaric == 1 && m.Female )
 			{
-				m.SendMessage(68, "You have enabled the barbaric play style with amazon fighter titles.");
+				m.SendMessage(68, StringCatalog.ResolveByKey( m.Account, "prop.special.barbaric.enabled.amazon" ));
 				m.Preferences.CharacterBarbaric = 2;
 			}
 			else if ( m.Preferences.CharacterBarbaric > 0 )
 			{
-				m.SendMessage(38, "You have disabled the barbaric play style.");
+				m.SendMessage(38, StringCatalog.ResolveByKey( m.Account, "prop.special.barbaric.disabled" ));
 				m.Preferences.CharacterBarbaric = 0;
 				Server.Items.BarbaricSatchel.GetRidOf( m );
 			}
 			else
 			{
-				m.SendMessage(68, "You have enabled the barbaric play style.");
+				m.SendMessage(68, StringCatalog.ResolveByKey( m.Account, "prop.special.barbaric.enabled" ));
 				m.Preferences.CharacterEvil = false;
 				m.Preferences.CharacterOriental = false;
 				m.Preferences.CharacterBarbaric = 1;

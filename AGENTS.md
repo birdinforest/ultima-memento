@@ -577,7 +577,11 @@ When adding a third language (e.g. `zh-Hant`, `ja`):
 This file uses a simple date-stamp comment at the top for tracking. When making substantive updates, add a one-line change note at the bottom of this section.
 
 **Change log:**
+- 2026-11-04: §8.1 — indexed `DIVERSITY_OVER_NUMBERS_FROM_PLAYER_FEEDBACK.md`（机制故事优先、反同质化）。
+- 2026-11-04: §8.1 — indexed `SHOPPE_SIGNATURE_REWARDS_FROM_PLAYER_FEEDBACK.md`（专柜特色补给扩展）。
+- 2026-11-04: §8.1 — indexed `player-feedback/`（玩家反馈设计思路目录；首篇 `PLAYER_FEEDBACK_DESIGN_THINKING.md`）。
 - 2026-11-04: §8.1 — indexed `BARD_SONGS_AND_INSTRUMENTS.md`（音乐/吟游全貌：四技能、SongBook、16 曲、佩戴门槛、Foe Requiem；网站 `/mechanics/bard-songs`）。
+- 2026-11-04: §8.1 — indexed `RANGED_CRAFT_MAGIC_MIDTIER_SUPPLY_DESIGN.md`（制作向魔法远程中间档；总包 D8 / §5 子设计）。
 - 2026-11-03: §8.1 — indexed `RANGED_LIFE_SKILL_SUPPLY_AND_SALVAGE_DESIGN.md`（远程生活技能消耗品防膨胀、魔法远程底装供给、分解强化料闭环）。
 - 2026-10-21: §8.1 — indexed `CU_SIDHE_PADS_MOUNT_DESIGN.md`（启用库希仙灵：四槽治疗坐骑，非精灵穿护垫才能骑）。
 - 2026-10-02: §8.1 — indexed `DRAKKHEN_CRYSTAL_SYSTEM.md`（龙晶：DropRelic 3%、50,000 金交德鲁伊、绑定可骑 Drakkhen）。
@@ -725,6 +729,10 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | Pet taming & Jako system | `memento/game-mechanism/PET_TAMING_AND_JAKO_SYSTEM.md` | Before modifying pet/taming mechanics |
 | 库希仙灵与护垫骑乘 | `memento/game-design-idea/CU_SIDHE_PADS_MOUNT_DESIGN.md` | Before enabling `CuSidhe` spawns, changing its mount gate, or changing `Artifact_PadsOfTheCuSidhe` |
 | 远程生活技能互动 / 魔法远程底装 / 分解强化料 | `memento/game-design-idea/RANGED_LIFE_SKILL_SUPPLY_AND_SALVAGE_DESIGN.md` | Before implementing alchemy/scroll/ammo ranged consumables, tuning magic ranged mid-tier drops, or breakdown→enhancement special mats |
+| 制作向魔法远程中间档（制弓 / 符文主通道） | `memento/game-design-idea/RANGED_CRAFT_MAGIC_MIDTIER_SUPPLY_DESIGN.md` | Before strengthening Exceptional/Runic Fletching supply, or rolling back forceRangedPct / LootPack BaseRanged bias |
+| 玩家反馈设计思路（爽感/挑战/公平/轻量/仪式关/AI；可续增） | `memento/game-design-idea/player-feedback/README.md` · `PLAYER_FEEDBACK_DESIGN_THINKING.md` | Before drafting content from long player feedback, Ritual Run / content-admission principles, or AI-in-game scope |
+| 专柜特色补给扩展（铁匠克星 / 炼金耐久 / 修补匠马蹄铁） | `memento/game-design-idea/player-feedback/SHOPPE_SIGNATURE_REWARDS_FROM_PLAYER_FEEDBACK.md` | Before adding Global Shoppe signature rewards beyond Bowyer (slayer seals, durability items, lucky horseshoes) |
+| 机制故事优先 / 反数值同质化（美德、飞升、鉴定 junk、采集） | `memento/game-design-idea/player-feedback/DIVERSITY_OVER_NUMBERS_FROM_PLAYER_FEEDBACK.md` | Before loot identify/junk/gold retunes, gathering ease changes, Virtue-axis content, or Avatar ceiling vs diversity debates |
 | Dragon riding scroll / Dragon King / draconic mounts | `memento/game-mechanism/DRAGON_RIDING_SCROLL_SYSTEM.md` | Before modifying `DragonRidingScroll`, `DragonRiding` keys, or `RidingDragon`/`Dragoon`/`GemDragon` mount gate |
 | Dragon King boss | `memento/game-mechanism/DRAGON_KING_SYSTEM.md` | Before modifying `DragonKing`, lucky kills, ManualOfItems relics book, or dragon `DropSpecial` on Great Dragons |
 | ManualOfItems / Relics chest | `memento/game-mechanism/MANUAL_OF_ITEMS_RELICS_SYSTEM.md` | Before modifying `ManualOfItems`, `RelicBoxGump`, `GiveItemBonus`, `Gift*` enchant flow, or boss relic drop tables |

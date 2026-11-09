@@ -119,9 +119,11 @@ namespace Server
 		// ------------------------------------------------------------------------------------------------------------------------------------------
 
 		#region Magic Items
+		// Mid-tier magic ranged supply: BaseRanged share of weapon slots raised from ~20% to ~33%
+		// (weapon:ranged ≈ 2:1). See RANGED_LIFE_SKILL_SUPPLY_AND_SALVAGE_DESIGN §5.
 		public static readonly LootPackItem[] MagicItemsPoor = new LootPackItem[]
 			{
-				new LootPackItem( typeof( BaseWeapon ), 3 ),
+				new LootPackItem( typeof( BaseWeapon ), 2 ),
 				new LootPackItem( typeof( BaseRanged ), 1 ),
 				new LootPackItem( typeof( BaseArmor ), 3 ),
 				new LootPackItem( typeof( BaseShield ), 1 ),
@@ -131,8 +133,8 @@ namespace Server
 
 		public static readonly LootPackItem[] MagicItemsMeager1 = new LootPackItem[]
 			{
-				new LootPackItem( typeof( BaseWeapon ), 56 ),
-				new LootPackItem( typeof( BaseRanged ), 14 ),
+				new LootPackItem( typeof( BaseWeapon ), 48 ),
+				new LootPackItem( typeof( BaseRanged ), 24 ),
 				new LootPackItem( typeof( BaseArmor ), 61 ),
 				new LootPackItem( typeof( BaseShield ), 11 ),
 				new LootPackItem( typeof( BaseTrinket ), 42 ),
@@ -141,8 +143,8 @@ namespace Server
 
 		public static readonly LootPackItem[] MagicItemsMeager2 = new LootPackItem[]
 			{
-				new LootPackItem( typeof( BaseWeapon ), 28 ),
-				new LootPackItem( typeof( BaseRanged ), 7 ),
+				new LootPackItem( typeof( BaseWeapon ), 24 ),
+				new LootPackItem( typeof( BaseRanged ), 12 ),
 				new LootPackItem( typeof( BaseArmor ), 30 ),
 				new LootPackItem( typeof( BaseShield ), 5 ),
 				new LootPackItem( typeof( BaseTrinket ), 21 ),
@@ -151,8 +153,8 @@ namespace Server
 
 		public static readonly LootPackItem[] MagicItemsAverage1 = new LootPackItem[]
 			{
-				new LootPackItem( typeof( BaseWeapon ), 90 ),
-				new LootPackItem( typeof( BaseRanged ), 23 ),
+				new LootPackItem( typeof( BaseWeapon ), 76 ),
+				new LootPackItem( typeof( BaseRanged ), 38 ),
 				new LootPackItem( typeof( BaseArmor ), 98 ),
 				new LootPackItem( typeof( BaseShield ), 17 ),
 				new LootPackItem( typeof( BaseTrinket ), 68 ),
@@ -161,8 +163,8 @@ namespace Server
 
 		public static readonly LootPackItem[] MagicItemsAverage2 = new LootPackItem[]
 			{
-				new LootPackItem( typeof( BaseWeapon ), 54 ),
-				new LootPackItem( typeof( BaseRanged ), 13 ),
+				new LootPackItem( typeof( BaseWeapon ), 45 ),
+				new LootPackItem( typeof( BaseRanged ), 22 ),
 				new LootPackItem( typeof( BaseArmor ), 57 ),
 				new LootPackItem( typeof( BaseShield ), 10 ),
 				new LootPackItem( typeof( BaseTrinket ), 40 ),
@@ -171,8 +173,8 @@ namespace Server
 
 		public static readonly LootPackItem[] MagicItemsRich1 = new LootPackItem[]
 			{
-				new LootPackItem( typeof( BaseWeapon ), 211 ),
-				new LootPackItem( typeof( BaseRanged ), 53 ),
+				new LootPackItem( typeof( BaseWeapon ), 176 ),
+				new LootPackItem( typeof( BaseRanged ), 88 ),
 				new LootPackItem( typeof( BaseArmor ), 227 ),
 				new LootPackItem( typeof( BaseShield ), 39 ),
 				new LootPackItem( typeof( BaseTrinket ), 158 ),
@@ -181,8 +183,8 @@ namespace Server
 
 		public static readonly LootPackItem[] MagicItemsRich2 = new LootPackItem[]
 			{
-				new LootPackItem( typeof( BaseWeapon ), 170 ),
-				new LootPackItem( typeof( BaseRanged ), 43 ),
+				new LootPackItem( typeof( BaseWeapon ), 142 ),
+				new LootPackItem( typeof( BaseRanged ), 71 ),
 				new LootPackItem( typeof( BaseArmor ), 184 ),
 				new LootPackItem( typeof( BaseShield ), 32 ),
 				new LootPackItem( typeof( BaseTrinket ), 128 ),
@@ -191,8 +193,8 @@ namespace Server
 
 		public static readonly LootPackItem[] MagicItemsFilthyRich1 = new LootPackItem[]
 			{
-				new LootPackItem( typeof( BaseWeapon ), 219 ),
-				new LootPackItem( typeof( BaseRanged ), 55 ),
+				new LootPackItem( typeof( BaseWeapon ), 183 ),
+				new LootPackItem( typeof( BaseRanged ), 91 ),
 				new LootPackItem( typeof( BaseArmor ), 236 ),
 				new LootPackItem( typeof( BaseShield ), 41 ),
 				new LootPackItem( typeof( BaseTrinket ), 164 ),
@@ -201,8 +203,8 @@ namespace Server
 
 		public static readonly LootPackItem[] MagicItemsFilthyRich2 = new LootPackItem[]
 			{
-				new LootPackItem( typeof( BaseWeapon ), 239 ),
-				new LootPackItem( typeof( BaseRanged ), 60 ),
+				new LootPackItem( typeof( BaseWeapon ), 199 ),
+				new LootPackItem( typeof( BaseRanged ), 100 ),
 				new LootPackItem( typeof( BaseArmor ), 257 ),
 				new LootPackItem( typeof( BaseShield ), 90 ),
 				new LootPackItem( typeof( BaseTrinket ), 45 ),
@@ -211,8 +213,8 @@ namespace Server
 
 		public static readonly LootPackItem[] MagicItemsUltraRich = new LootPackItem[]
 			{
-				new LootPackItem( typeof( BaseWeapon ), 276 ),
-				new LootPackItem( typeof( BaseRanged ), 69 ),
+				new LootPackItem( typeof( BaseWeapon ), 230 ),
+				new LootPackItem( typeof( BaseRanged ), 115 ),
 				new LootPackItem( typeof( BaseArmor ), 397 ),
 				new LootPackItem( typeof( BaseShield ), 52 ),
 				new LootPackItem( typeof( BaseTrinket ), 207 ),

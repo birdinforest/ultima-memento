@@ -18,6 +18,7 @@ namespace Server.Items
 	public class BarbaricSatchel : Item
 	{
 		public override bool DisplayWeight { get { return false; } }
+		public override string DisplayNameLocalizationKey { get { return "item.special.barbaric.satchel"; } }
 
 		[Constructable]
 		public BarbaricSatchel() : base( 0x27BE )
@@ -215,19 +216,18 @@ namespace Server.Items
 				this.Dragable=true;
 				this.Resizable=false;
 
-				string sText = "The world does not normally lend itself to a sword and sorcery experience. This means that it is not the most optimal play experience to be a loin cloth wearing barbarian that roams the land with a huge axe. Characters generally get as much equipment as they can in order to maximize their rate of survivability. This satchel can change some of your equipment to fit within this sword and sorcery style. You cannot store anything in this satchel, as its purpose is to change certain pieces of equipment you place onto it. It will change shields, hats, helms, tunics, sleeves, leggings, boots, gorgets, gloves, sashes, cloaks, and robes. When these items get changed, they will become something that appears differently but behave in the same way the previous item did. These different items can be equipped but some may not appear on your character's appearance.<br><br><br><br>The 'amulet' item shown is something that can be created from a gorget, and it can be seen on yourself when worn. The other inventory icons displayed are items that do not visually appear on your character, so if you do not want a helm to appear on your character's head, then transform the helm to appear as the icon represented here. Once you make an item barbaric, it will remain as such, although you can convert it to other styles and make it visible on characters again. Note that when you wear robes, they cover your character's tunics and sleeves. Wearing a sword and sorcery robe will do the same thing so you will have to remove the robe in order to get to the sleeves and/or tunic. Also keep in mind that your sleeves and/or tunic, that you visibly wear, will vanish from view when wearing a sword and sorcery robe. Sword and sorcery robes will either appear as a sash (males) or bustiers (females) when worn. The exception is if you chose a scant robe, as that will leave your character bare chested. To get a scant robe, simply drop the barbaric mantle onto the satchel. If you have a robe that you don't want to have hide your armor, then use this satchel to turn it into a shoulder or cross belt and then it can be placed in the sash location (middle torso) of your body.<br><br>";
-
-				if ( satchel.Weight > 0 )
-				{
-					sText = "The world does not normally lend itself to a sword and sorcery experience. This means that it is not the most optimal play experience to be a loin cloth wearing barbarian that roams the land with a huge axe. Characters generally get as much equipment as they can in order to maximize their rate of survivability. This particular play style can help in this regard. Choosing to play in this style made this satchel appear in your main pack. You cannot store anything in this satchel, as its purpose is to change certain pieces of equipment you place onto it. It will change shields, hats, helms, tunics, sleeves, leggings, boots, gorgets, gloves, sashes, cloaks, and robes. When these items get changed, they will become something that appears differently but behave in the same way the previous item did. These different items can be equipped but some may not appear on your character's appearance.<br><br><br><br>The 'amulet' item shown is something that can be created from a gorget, and it can be seen on yourself when worn. The other inventory icons displayed are items that do not visually appear on your character, so if you do not want a helm to appear on your character's head, then transform the helm to appear as the icon represented here. Once you make an item barbaric, it will remain as such, although you can convert it to other styles and make it visible on characters again. Note that when you wear robes, they cover your character's tunics and sleeves. Wearing a sword and sorcery robe will do the same thing so you will have to remove the robe in order to get to the sleeves and/or tunic. Also keep in mind that your sleeves and/or tunic, that you visibly wear, will vanish from view when wearing a sword and sorcery robe. Sword and sorcery robes will either appear as a sash (males) or bustiers (females) when worn. The exception is if you chose a scant robe, as that will leave your character bare chested. To get a scant robe, simply drop the barbaric mantle onto the satchel. If you have a robe that you don't want to have hide your armor, then use this satchel to turn it into a shoulder or cross belt and then it can be placed in the sash location (middle torso) of your body.<br><br><br><br>This satchel cannot be easily lost, and you may only have one such satchel at any given time. If you lose the satchel for any reason, set your play style to something other than 'barbaric' and then set it back to 'barbaric'. A new stachel will appear in your pack.<br><br>This play style has their own set of skill titles for many skills as well:<br><br>Barbaric Titles<br><br>Alchemy <br>-- Herbalist <br>Arms Lore <br>-- Gladiator <br>Bludgeoning <br>-- Barbarian (Amazon) <br>Camping <br>-- Wanderer <br>Druidism <br>-- Beastmaster <br>Fencing <br>-- Barbarian (Amazon) <br>Herding <br>-- Beastmaster <br>Knightship <br>-- Chieftain <br>Magery <br>-- Shaman <br>Marksmanship <br>-- Barbarian (Amazon) <br>Musicianship <br>-- Chronicler <br>Necromancy <br>-- Witch Doctor <br>Parrying <br>-- Defender <br>Swordsmanship <br>-- Barbarian (Amazon) <br>Taming <br>-- Beastmaster <br>Tracking <br>-- Hunter <br>Tactics <br>-- Warlord <br>Veterinary <br>-- Beastmaster<br><br>";
-				}
+				string bodyKey = satchel.Weight > 0
+					? "prop.special.barbaric.satchel.gump.body.owned"
+					: "prop.special.barbaric.satchel.gump.body";
+				string sText = StringCatalog.ResolveByKey( from.Account, bodyKey );
+				string title = StringCatalog.ResolveByKey( from.Account, "prop.special.barbaric.satchel.gump.title" );
 
 				AddPage(0);
 
 				string color = "#dbd354";
 
 				AddImage(0, 0, 9542, Server.Misc.PlayerSettings.GetGumpHue( from ));
-				AddHtml( 15, 15, 200, 20, @"<BODY><BASEFONT Color=" + color + ">BARBARIC SATCHEL</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 15, 15, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + title + "</BASEFONT></BODY>", (bool)false, (bool)false);
 				AddHtml( 15, 50, 500, 479, @"<BODY><BASEFONT Color=" + color + ">" + sText + "</BASEFONT></BODY>", (bool)false, (bool)true);
 
 				AddItem(521, 28, 22078);
@@ -240,16 +240,16 @@ namespace Server.Items
 				AddItem(535, 393, 22097);
 				AddItem(535, 452, 22096);
 				AddItem(528, 487, 22137);
-				AddHtml( 585, 40, 116, 20, @"<BODY><BASEFONT Color=" + color + ">Robe</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 585, 100, 116, 20, @"<BODY><BASEFONT Color=" + color + ">Sleeves</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 585, 150, 116, 20, @"<BODY><BASEFONT Color=" + color + ">Helm</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 585, 200, 116, 20, @"<BODY><BASEFONT Color=" + color + ">Hat</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 585, 250, 116, 20, @"<BODY><BASEFONT Color=" + color + ">Sash</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 585, 300, 116, 20, @"<BODY><BASEFONT Color=" + color + ">Gloves</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 585, 350, 116, 20, @"<BODY><BASEFONT Color=" + color + ">Leggings</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 585, 400, 116, 20, @"<BODY><BASEFONT Color=" + color + ">Tunic</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 585, 450, 116, 20, @"<BODY><BASEFONT Color=" + color + ">Amulet</BASEFONT></BODY>", (bool)false, (bool)false);
-				AddHtml( 585, 500, 116, 20, @"<BODY><BASEFONT Color=" + color + ">Cloak</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 585, 40, 116, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey( from.Account, "prop.special.barbaric.satchel.gump.label.robe" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 585, 100, 116, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey( from.Account, "prop.special.barbaric.satchel.gump.label.sleeves" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 585, 150, 116, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey( from.Account, "prop.special.barbaric.satchel.gump.label.helm" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 585, 200, 116, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey( from.Account, "prop.special.barbaric.satchel.gump.label.hat" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 585, 250, 116, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey( from.Account, "prop.special.barbaric.satchel.gump.label.sash" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 585, 300, 116, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey( from.Account, "prop.special.barbaric.satchel.gump.label.gloves" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 585, 350, 116, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey( from.Account, "prop.special.barbaric.satchel.gump.label.leggings" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 585, 400, 116, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey( from.Account, "prop.special.barbaric.satchel.gump.label.tunic" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 585, 450, 116, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey( from.Account, "prop.special.barbaric.satchel.gump.label.amulet" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+				AddHtml( 585, 500, 116, 20, @"<BODY><BASEFONT Color=" + color + ">" + StringCatalog.ResolveByKey( from.Account, "prop.special.barbaric.satchel.gump.label.cloak" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				AddButton(609, 8, 4017, 4017, 0, GumpButtonType.Reply, 0);
 			}
@@ -277,7 +277,9 @@ namespace Server.Items
 				this.Resizable=false;
 
 				AddPage(0);
-				AddHtml( 10, 7, 434, 20, @"<BODY><BASEFONT Color=" + color + ">What do you want to change the item into?</BASEFONT></BODY>", (bool)false, (bool)false);
+				string alterPrompt = StringCatalog.ResolveByKey( from.Account, "prop.special.barbaric.satchel.alter.prompt" );
+				string scantLabel = StringCatalog.ResolveByKey( from.Account, "prop.special.barbaric.satchel.alter.scant" );
+				AddHtml( 10, 7, 434, 20, @"<BODY><BASEFONT Color=" + color + ">" + alterPrompt + "</BASEFONT></BODY>", (bool)false, (bool)false);
 
 				if ( make == "robe" )
 				{
@@ -294,8 +296,8 @@ namespace Server.Items
 					AddItem(224, 65, 5441);
 					AddItem(294, 64, 1033);
 
-					AddHtml( 78, 14, 60, 19, @"<BODY><BASEFONT Color=" + color + "><CENTER>Scant</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
-					AddHtml( 284, 14, 60, 19, @"<BODY><BASEFONT Color=" + color + "><CENTER>Scant</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 78, 14, 60, 19, @"<BODY><BASEFONT Color=" + color + "><CENTER>" + scantLabel + "</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+					AddHtml( 284, 14, 60, 19, @"<BODY><BASEFONT Color=" + color + "><CENTER>" + scantLabel + "</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
 
 					AddButton(22, 106, 4018, 4018, 30, GumpButtonType.Reply, 0);
 					AddButton(92, 106, 4005, 4005, 31, GumpButtonType.Reply, 0);

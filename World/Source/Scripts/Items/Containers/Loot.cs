@@ -1168,6 +1168,23 @@ namespace Server
 
 		public static Item RandomMagicalItem( bool playOrient )
 		{
+			// Mid-tier magic ranged bias (design: RANGED_LIFE_SKILL_SUPPLY_AND_SALVAGE).
+			// Default 25% force a ranged weapon; tunable via ranged.supply.magicalItem.forceRangedPct.
+			int forceRangedPct = (int)Math.Round( RateConfigEngine.GetDouble( "ranged.supply.magicalItem.forceRangedPct", 25.0 ) );
+
+			if ( forceRangedPct < 0 )
+				forceRangedPct = 0;
+			else if ( forceRangedPct > 100 )
+				forceRangedPct = 100;
+
+			if ( forceRangedPct > 0 && Utility.Random( 100 ) < forceRangedPct )
+			{
+				BaseWeapon ranged = RandomRangedWeapon( playOrient );
+
+				if ( ranged != null )
+					return ranged;
+			}
+
 			if ( playOrient )
 				return Construct( m_WeaponTypes, m_RangedWeaponTypes, m_ArmorTypes, m_HatTypes, m_ClothingTypes, m_Spellbooks, m_OrientWeaponTypes, m_OrientRangedWeaponTypes, m_OrientArmorTypes, m_OrientHatTypes, m_ShieldTypes, m_JewelryTypes, m_OrientClothingTypes, m_OrientSpellbooks, m_InstrumentTypes, m_QuiverTypes );
 
@@ -1444,7 +1461,7 @@ namespace Server
 
 		/// <summary>
 		/// Hoard-only archer branch: weighted enchanted ranged / MagicQuiver / weak elemental quiver.
-		/// Defaults 35 / 20 / 45; elements equal weight. Tunable via Data/RateConfig/ranged-supply.json.
+		/// Defaults 55 / 20 / 25; elements equal weight. Tunable via Data/RateConfig/ranged-supply.json.
 		/// </summary>
 		public static Item RandomHoardArcherEquipment( bool playOrient, Mobile from )
 		{
@@ -1454,16 +1471,16 @@ namespace Server
 			{
 				outcomeWeights = new Dictionary<string, double>
 				{
-					{ "enchanted_ranged", 35.0 },
+					{ "enchanted_ranged", 55.0 },
 					{ "magic_quiver", 20.0 },
-					{ "elemental_quiver", 45.0 }
+					{ "elemental_quiver", 25.0 }
 				};
 			}
 			else
 			{
-				EnsureWeight( outcomeWeights, "enchanted_ranged", 35.0 );
+				EnsureWeight( outcomeWeights, "enchanted_ranged", 55.0 );
 				EnsureWeight( outcomeWeights, "magic_quiver", 20.0 );
-				EnsureWeight( outcomeWeights, "elemental_quiver", 45.0 );
+				EnsureWeight( outcomeWeights, "elemental_quiver", 25.0 );
 			}
 
 			Dictionary<string, double> elementWeights = RateConfigEngine.GetTable( "ranged.supply.element" );

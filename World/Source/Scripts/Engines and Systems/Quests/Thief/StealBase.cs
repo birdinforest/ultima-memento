@@ -496,11 +496,12 @@ namespace Server.Items
 				case 5:
 				case 6:
 				{
-					int sideRoll = Utility.RandomMinMax( 1, 4 );
+					// Mid-tier magic ranged: archer kit 2/5 (was 1/4); instrument 1/5; magical 2/5
+					int sideRoll = Utility.RandomMinMax( 1, 5 );
 					Item item;
 					if ( sideRoll == 1 )
 						item = Loot.RandomInstrument();
-					else if ( sideRoll == 2 )
+					else if ( sideRoll <= 3 )
 						item = Loot.RandomArcherEquipment( Server.LootPackEntry.playOrient( from ) );
 					else
 						item = Loot.RandomMagicalItem( Server.LootPackEntry.playOrient( from ) );

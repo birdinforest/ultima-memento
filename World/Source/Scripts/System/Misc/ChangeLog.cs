@@ -1328,6 +1328,7 @@ namespace Server.Misc
 					builder.Append("- Combat - Ranged weapon slayers temporarily added 75% more damage, then restored to +50% (melee remains +100%)<br>");
 					builder.Append("- Item - Treasure hoards can yield weak elemental quivers (70% physical / 30% element)<br>");
 					builder.Append("- Shoppe - Bowyer rewards include weak elemental quivers, consecrated bow strings (1-3 uses), and a ranged family Slayer seal (25,000 points)<br>");
+					builder.Append("- Loot - Mid-tier magic ranged supply: hoard archer branch favors enchanted bows (55/20/25), case-12 archer share 2:1 vs instruments, RandomMagicalItem 25% force-ranged, LootPack BaseRanged ~33% of weapon slots, steal chests archer 2/5<br>");
 
 					builder.Append("<br>Fixes<br>");
 					builder.Append("- Item - Research bag can only consume Magery or Necromancy spellbooks<br>");

@@ -1,3 +1,4 @@
+using Server.Localization;
 using Server.Mobiles;
 
 namespace Server.Engines.Help
@@ -97,7 +98,7 @@ namespace Server.Engines.Help
 			xs += COLUMN_WIDTH + EXCESS_PADDING_PER_COLUMN;
 
 			xs = FOURTH_COL_X;
-			string barbaricStyle = !from.Female ? "Barbaric" : "Barbaric (Amazon)";
+			string barbaricStyle = StringCatalog.ResolveByKey( from.Account, !from.Female ? "prop.special.barbaric.style" : "prop.special.barbaric.style.amazon" );
 			AddSetting(xs, rowY, from, barbaricStyle, PageActionType.Setting_Playstyle_Barbaric, PageActionType.Setting_Playstyle_Barbaric_Info);
 			if ( isEvenRow ){ rowY += ROW_HEIGHT; isEvenRow=false; xs=FIRST_COL_X; } else { isEvenRow=true; xs=THIRD_COL_X; }
 

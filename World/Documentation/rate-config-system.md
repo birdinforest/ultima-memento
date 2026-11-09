@@ -27,7 +27,7 @@ World/Data/RateConfig/
 ├── avatar-fortune.json          # avatar.fortune.* — AscentHuntBonus multipliers
 ├── dragon-riding-scroll.json    # dragon.ridingScroll.luckCap / maxChancePct
 ├── relics-drop.json             # relics.drop.luckCap / first|repeat.rankNMaxPct
-└── ranged-supply.json           # ranged.supply.outcome.* / ranged.supply.element.* — hoard archer kit
+└── ranged-supply.json           # ranged.supply.* — hoard archer kit, case-12 shares, magical-item ranged bias
 ```
 
 - **`RateConfigEngine`** lives in `System.csproj` (the `World` executable assembly) alongside
@@ -184,19 +184,23 @@ Consumed by `InscriptionRecipeDropHelper.TryDropRecipe` on `BaseCreature.OnDeath
   on disk or check the startup / `[ratereload]` console line (`T1=… T2=…` counts only, not names). Unknown
   type names are logged at load time and skipped.
 
-### Ranged elemental supply (`Data/RateConfig/ranged-supply.json`)
+### Ranged mid-tier supply (`Data/RateConfig/ranged-supply.json`)
 
-`Loot.RandomHoardArcherEquipment` (treasure-hoard case 12 archer branch only) reads:
+Consumers: `Loot.RandomHoardArcherEquipment`, `HoardPile` case 12 instrument/archer split, and `Loot.RandomMagicalItem` ranged bias.
 
 | Key | Default | Meaning |
 |-----|---------|---------|
-| `ranged.supply.outcome.enchanted_ranged` | 35 | Weight for enchanted ranged weapon |
+| `ranged.supply.outcome.enchanted_ranged` | 55 | Weight for enchanted ranged weapon (hoard archer branch) |
 | `ranged.supply.outcome.magic_quiver` | 20 | Weight for ordinary `MagicQuiver` |
-| `ranged.supply.outcome.elemental_quiver` | 45 | Weight for weak `ElementalMagicQuiver` |
+| `ranged.supply.outcome.elemental_quiver` | 25 | Weight for weak `ElementalMagicQuiver` |
 | `ranged.supply.element.fire` / `cold` / `poison` / `energy` | 1 each | Relative weights among the four weak quivers |
+| `ranged.supply.hoard.archerShare` | 2 | Relative share of case 12 going to archer kit |
+| `ranged.supply.hoard.instrumentShare` | 1 | Relative share of case 12 going to instrument |
+| `ranged.supply.magicalItem.forceRangedPct` | 25 | % chance `RandomMagicalItem` forces a ranged weapon before the mixed pool |
 
-Missing/empty tables fall back to the defaults above. Hot-reload via `[ratereload]`. Debug: `[ratelist ranged.supply]`.
-Analytics: `hoard_archer_roll` (every draw) and `elemental_quiver_awarded` (elemental quiver only).
+Missing/empty outcome tables fall back to the defaults above. Hot-reload via `[ratereload]`. Debug: `[ratelist ranged.supply]`.
+Analytics: `hoard_archer_roll` (every archer-branch draw) and `elemental_quiver_awarded` (elemental quiver only).
+Design: `<UO_DEV_DOCS_ROOT>/memento/game-design-idea/RANGED_LIFE_SKILL_SUPPLY_AND_SALVAGE_DESIGN.md` §5.
 
 ## Adding a new consumer
 
