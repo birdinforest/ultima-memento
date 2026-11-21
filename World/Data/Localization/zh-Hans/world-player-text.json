@@ -3575,5 +3575,7 @@
   "epic.quest.gm.player_gone": "该玩家已不可用。",
   "epic.quest.gm.target_npc": "请再点选将授予赠礼的史诗人物。",
   "epic.quest.gm.target_player": "请点选应获得免费史诗献礼奖励界面的玩家。",
-  "epic.quest.journal_invalid_for_reward": "这本日记已无法用于领取此奖励。"
+  "epic.quest.journal_invalid_for_reward": "这本日记已无法用于领取此奖励。",
+  "sys.island_shrines.reloading": "正在替换岛屿地城复活祭坛……",
+  "sys.island_shrines.complete": "岛屿地城复活祭坛已更新，共生成 {0} 座。"
 }

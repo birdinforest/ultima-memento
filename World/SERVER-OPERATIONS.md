@@ -81,6 +81,19 @@ mono WorldLinux.exe > server-start.log 2>&1
 ```
 
 ## 服务器命令
+### 刷新岛屿地城复活祭坛
+
+```text
+[IslandShrines
+```
+
+- 权限：`Administrator`。
+- 作用：从常规 `World/Data/Decoration/*.cfg` 中读取标记为 `IslandDungeonShrine` 的条目，只替换这批岛屿地城复活祭坛，不重建其他世界装饰。
+- 幂等性：命令会先删除同一地图、坐标和祭坛类型的旧装饰实例，再生成配置中的实例，可重复执行而不会持续叠加。
+- 与 `[Decorate]` 的关系：祭坛仍属于普通装饰配置，完整执行 `[Decorate]` 时仍会生成。
+- 存档：命令不会自动执行世界保存。是否保存由在线服务器的运维人员根据部署流程决定。
+- 仓库编辑：仅修改装饰配置时，不需要为了验证而启动本地服务器、执行本命令或改写 `World/Saves/`。
+
 ### Reload 中文化
 [locreload          # 重读全部 locale JSON + quest-composite 表
 [locreload opl      # 同上，并刷新双语物品 tooltip 缓存

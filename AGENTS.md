@@ -18,6 +18,7 @@
 | Update or add glossary terms | [§3.5 Glossary](#35-glossary-management) |
 | Website: images/GIFs, wiki index from glossary | [§7 Website (`ultima-memento-web`)](#7-website--player-facing-docs-ultima-memento-web) |
 | Build and test the server | [§4 Build & Test](#4-build--test) |
+| Modify world decoration (`World/Data/Decoration/*.cfg`) | Edit and validate the config only; do not start the server or save `World/Saves/` solely to materialize the change (§4.2) |
 | **Existing save compatibility** (final step before declaring done) | [§4.5](#45-existing-save-compatibility-mandatory-final-review) |
 | Localization regression (lightweight host, CI) | [§4.4](#44-localization-regression-lightweight-host) |
 | Understand what an AI agent may/must not do | [§5 Boundaries & Verification](#5-agent-boundaries--verification) |
@@ -422,6 +423,8 @@ mono WorldLinux.exe             # Linux/macOS, from ultima-memento/ root (or `mo
 
 The server outputs to stdout/stderr and writes logs under `World/`. Do not commit `World/Saves/` changes — these are runtime state.
 
+**World decoration config:** Changes under `World/Data/Decoration/*.cfg` are source changes and do not require starting a local server, invoking `[Decorate]`, or executing a world save. Do not start the server or modify `World/Saves/` solely to materialize or verify decoration edits. Validate the config statically. If an already-running development server must reflect the change immediately, a human operator may invoke `[Decorate]` in that environment, but this is an operational deployment step rather than part of the repository edit.
+
 **Optional `.env` (secrets):** At startup, `DotEnvLoader` reads `.env` from `Core.BaseDirectory` (the folder containing the runtime binary, usually `World/`) and sets process environment variables without overwriting keys already set in the shell. For analytics, set `UO_MEMENTO_ANALYTICS_ACCOUNT_SALT` (see `World/.env.example`). Do not commit `.env` (gitignored).
 
 ### 4.3 What to Verify After Changes
@@ -577,6 +580,9 @@ When adding a third language (e.g. `zh-Hant`, `ja`):
 This file uses a simple date-stamp comment at the top for tracking. When making substantive updates, add a one-line change note at the bottom of this section.
 
 **Change log:**
+- 2026-11-13: §8.1 — indexed `WEAPON_DAMAGE_LEVEL_RANDOM_DROP_IMPACT.md`（随机武器品级掉落 vs DI 顶 / 神器经济）。
+- 2026-11-13: §8.1 — indexed `melee-damage-mechanism.md`（近战伤害管线 + 武器 Hit\* 魔法附魔）。
+- 2026-11-10: §8.1 — indexed `SLAYER_BOSS_AND_CLASS_CHANGE_FROM_PLAYER_FEEDBACK.md`（克星改版后 Boss 工具感；拒转职破帽）。
 - 2026-11-04: §8.1 — indexed `DIVERSITY_OVER_NUMBERS_FROM_PLAYER_FEEDBACK.md`（机制故事优先、反同质化）。
 - 2026-11-04: §8.1 — indexed `SHOPPE_SIGNATURE_REWARDS_FROM_PLAYER_FEEDBACK.md`（专柜特色补给扩展）。
 - 2026-11-04: §8.1 — indexed `player-feedback/`（玩家反馈设计思路目录；首篇 `PLAYER_FEEDBACK_DESIGN_THINKING.md`）。
@@ -733,6 +739,7 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | 玩家反馈设计思路（爽感/挑战/公平/轻量/仪式关/AI；可续增） | `memento/game-design-idea/player-feedback/README.md` · `PLAYER_FEEDBACK_DESIGN_THINKING.md` | Before drafting content from long player feedback, Ritual Run / content-admission principles, or AI-in-game scope |
 | 专柜特色补给扩展（铁匠克星 / 炼金耐久 / 修补匠马蹄铁） | `memento/game-design-idea/player-feedback/SHOPPE_SIGNATURE_REWARDS_FROM_PLAYER_FEEDBACK.md` | Before adding Global Shoppe signature rewards beyond Bowyer (slayer seals, durability items, lucky horseshoes) |
 | 机制故事优先 / 反数值同质化（美德、飞升、鉴定 junk、采集） | `memento/game-design-idea/player-feedback/DIVERSITY_OVER_NUMBERS_FROM_PLAYER_FEEDBACK.md` | Before loot identify/junk/gold retunes, gathering ease changes, Virtue-axis content, or Avatar ceiling vs diversity debates |
+| 克星改版后 Boss 工具感 · 拒转职破帽 | `memento/game-design-idea/player-feedback/SLAYER_BOSS_AND_CLASS_CHANGE_FROM_PLAYER_FEEDBACK.md` | Before treating ranged-slayer / Boss weapon-breadth feedback as a class-change or skill-125 / resist-70% cap-break request; accept diagnosis, reject cap-break prescriptions |
 | Dragon riding scroll / Dragon King / draconic mounts | `memento/game-mechanism/DRAGON_RIDING_SCROLL_SYSTEM.md` | Before modifying `DragonRidingScroll`, `DragonRiding` keys, or `RidingDragon`/`Dragoon`/`GemDragon` mount gate |
 | Dragon King boss | `memento/game-mechanism/DRAGON_KING_SYSTEM.md` | Before modifying `DragonKing`, lucky kills, ManualOfItems relics book, or dragon `DropSpecial` on Great Dragons |
 | ManualOfItems / Relics chest | `memento/game-mechanism/MANUAL_OF_ITEMS_RELICS_SYSTEM.md` | Before modifying `ManualOfItems`, `RelicBoxGump`, `GiveItemBonus`, `Gift*` enchant flow, or boss relic drop tables |
@@ -755,6 +762,8 @@ If the layout differs, set **`GLOSSARY_PATH`** to the absolute path of `glossary
 | PvP / harmful actions / notoriety / murder | `memento/game-mechanism/PVP_COMBAT_SYSTEM.md` | Before modifying player combat, `Mobile_AllowHarmful`, criminal/murder reporting, or region combat rules |
 | Musicianship & bard play / 音乐技能与吟游 | `memento/game-mechanism/BARD_SONGS_AND_INSTRUMENTS.md` | Before modifying bard skills, `Song` / `SongBook` / `BaseInstrument`, or song cast rules |
 | Weapon special abilities / 武器五档特攻 | `memento/game-mechanism/WEAPON_SPECIAL_ABILITY_SYSTEM.md` | Before modifying `WeaponAbility`, `SpecialAttackGump`, or any weapon `PrimaryAbility`–`FifthAbility` |
+| Melee damage + weapon Hit\* magic procs（近战伤害 / 闪电·群伤附魔） | `memento/game-mechanism/melee-damage-mechanism.md` | Before retuning swing damage layers or `HitLightning` / `Hit*Area` / `GetAosDamage` on-hit procs |
+| 随机武器品级（Damage Level）掉落影响 | `memento/game-design-idea/WEAPON_DAMAGE_LEVEL_RANDOM_DROP_IMPACT.md` | Before adding random Ruin–Vanq to loot/craft pools (stacks outside DI 100 cap) |
 | Equipment durability boost / 提高装备耐久上限 | `memento/game-mechanism/EQUIPMENT_DURABILITY_BOOST_SYSTEM.md` | Before modifying `DurabilityPotion`, wax jars, `PowderOfTemperament`, or `RepairPotion` |
 | Slayer weapon system | `memento/game-mechanism/SLAYER_WEAPON_SYSTEM.md` | Before modifying slayer mechanics |
 | Endgame boss data & BeefUp | `memento/game-mechanism/ENDGAME_BOSS_ANALYSIS.md` | Before balancing named bosses, champ/world boss stats, or difficulty scaling |

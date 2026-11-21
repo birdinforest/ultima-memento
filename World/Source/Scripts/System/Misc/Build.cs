@@ -4583,6 +4583,25 @@ namespace Server.Commands
 					m_Count += ((DecorationList)list[j]).Generate( maps );
 			}
 		}
+
+		public static int ReplaceTaggedFile( string folder, string file, string tag, params Map[] maps )
+		{
+			if ( !Directory.Exists( folder ) )
+				return 0;
+
+			int count = 0;
+			string[] files = Directory.GetFiles( folder, file );
+
+			for ( int i = 0; i < files.Length; ++i )
+			{
+				ArrayList list = DecorationList.ReadAll( files[i] );
+
+				for ( int j = 0; j < list.Count; ++j )
+					count += ((DecorationList)list[j]).Generate( maps, tag, true );
+			}
+
+			return count;
+		}
 		
 		private static Mobile m_Mobile;
 		private static int m_Count;
@@ -5657,6 +5676,11 @@ namespace Server.Commands
 
 		public int Generate( Map[] maps )
 		{
+			return Generate( maps, null, false );
+		}
+
+		public int Generate( Map[] maps, string requiredExtra, bool replaceExisting )
+		{
 			int count = 0;
 
 			Item item = null;
@@ -5664,8 +5688,11 @@ namespace Server.Commands
 			for ( int i = 0; i < m_Entries.Count; ++i )
 			{
 				DecorationEntry entry = (DecorationEntry)m_Entries[i];
+
+				if ( requiredExtra != null && !String.Equals( entry.Extra, requiredExtra, StringComparison.OrdinalIgnoreCase ) )
+					continue;
+
 				Point3D loc = entry.Location;
-				string extra = entry.Extra;
 
 				for ( int j = 0; j < maps.Length; ++j )
 				{
@@ -5674,6 +5701,23 @@ namespace Server.Commands
 
 					if ( item == null )
 						continue;
+
+					if ( replaceExisting )
+					{
+						ArrayList replacements = new ArrayList();
+						IPooledEnumerable existing = maps[j].GetItemsInRange( loc, 0 );
+
+						foreach ( Item current in existing )
+						{
+							if ( current.Z == loc.Z && current.Weight == -2 && current.GetType() == item.GetType() )
+								replacements.Add( current );
+						}
+
+						existing.Free();
+
+						for ( int k = 0; k < replacements.Count; ++k )
+							((Item)replacements[k]).Delete();
+					}
 
 					item.MoveToWorld( loc, maps[j] );
 					item.OnAfterSpawn();

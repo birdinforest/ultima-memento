@@ -3575,5 +3575,7 @@
   "epic.quest.gm.player_gone": "That player is no longer available.",
   "epic.quest.gm.target_npc": "Now target the Epic Character who will grant the gift.",
   "epic.quest.gm.target_player": "Target the player who should receive a free Epic Tribute reward gump.",
-  "epic.quest.journal_invalid_for_reward": "That journal is no longer valid for this reward."
+  "epic.quest.journal_invalid_for_reward": "That journal is no longer valid for this reward.",
+  "sys.island_shrines.reloading": "Replacing the island-dungeon resurrection shrines...",
+  "sys.island_shrines.complete": "Island-dungeon resurrection shrines updated. {0} shrines were generated."
 }
