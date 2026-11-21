@@ -25,6 +25,10 @@ namespace Server.Mobiles
 		public override double BreathEffectDelay{ get{ return 0.1; } }
 		public override void BreathDealDamage( Mobile target, int form ){ base.BreathDealDamage( target, 41 ); }
 
+		// Tracks cooldowns for special mechanics (not serialized; reset on restart is acceptable).
+		private DateTime m_NextStoneShatter;
+		private DateTime m_NextRegen;
+
 		[Constructable]
 		public TitanLithos () : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
@@ -35,30 +39,83 @@ namespace Server.Mobiles
 			BaseSoundID = 609;
 			NameHue = 0x22;
 
-			SetStr( 896, 985 );
+			SetStr( 986, 1085 );
 			SetDex( 86, 175 );
 			SetInt( 586, 675 );
 
-			SetHits( 558, 611 );
+			// HP pool requires sustained team DPS; a solo player cannot outlast the passive regen.
+			SetHits( 2000, 2400 );
 
-			SetDamage( 23, 30 );
+			// High melee damage demands a dedicated front-line tank (warrior + pet) to absorb hits.
+			SetDamage( 36, 48 );
 
 			SetDamageType( ResistanceType.Physical, 100 );
 
-			SetResistance( ResistanceType.Physical, 65, 75 );
-			SetResistance( ResistanceType.Cold, 40, 50 );
-			SetResistance( ResistanceType.Fire, 40, 50 );
-			SetResistance( ResistanceType.Poison, 40, 50 );
-			SetResistance( ResistanceType.Energy, 40, 50 );
+			// Extreme physical resist forces magic DPS (energy is the elemental weakness).
+			SetResistance( ResistanceType.Physical, 78, 88 );
+			SetResistance( ResistanceType.Cold,     55, 65 );
+			SetResistance( ResistanceType.Fire,     55, 65 );
+			SetResistance( ResistanceType.Poison,   50, 60 );
+			SetResistance( ResistanceType.Energy,   40, 50 );
 
-			SetSkill( SkillName.MagicResist, 100.5, 150.0 );
-			SetSkill( SkillName.Tactics, 97.6, 100.0 );
-			SetSkill( SkillName.FistFighting, 97.6, 100.0 );
+			SetSkill( SkillName.MagicResist,  120.0, 160.0 );
+			SetSkill( SkillName.Tactics,      105.0, 120.0 );
+			SetSkill( SkillName.FistFighting, 105.0, 120.0 );
 
 			Fame = 24000;
 			Karma = -24000;
 
-			VirtualArmor = 60;
+			VirtualArmor = 90;
+
+			m_NextStoneShatter = DateTime.Now + TimeSpan.FromSeconds( 12.0 );
+			m_NextRegen        = DateTime.Now + TimeSpan.FromSeconds(  5.0 );
+		}
+
+		// Stone Skin: 30 % chance to halve incoming melee damage.
+		// Solo melee Warriors are barely able to dent Lithos; they must be paired with magic DPS.
+		public override void AlterMeleeDamageFrom( Mobile from, ref int damage )
+		{
+			if ( Utility.RandomMinMax( 1, 10 ) <= 3 )
+				damage = (int)( damage * 0.5 );
+		}
+
+		public override void OnThink()
+		{
+			base.OnThink();
+
+			if ( !Alive || Combatant == null )
+				return;
+
+			// Passive regen: punishes teams that cannot sustain damage output.
+			if ( DateTime.Now >= m_NextRegen && Hits < HitsMax )
+			{
+				Hits = Math.Min( HitsMax, Hits + 25 );
+				m_NextRegen = DateTime.Now + TimeSpan.FromSeconds( 5.0 );
+			}
+
+			// Stone Shatter: large AoE physical burst.
+			// Without a melee tank and pet soaking front-line hits, the whole team is overwhelmed.
+			if ( DateTime.Now >= m_NextStoneShatter )
+			{
+				DoStoneShatter();
+				m_NextStoneShatter = DateTime.Now + TimeSpan.FromSeconds( 22.0 );
+			}
+		}
+
+		private void DoStoneShatter()
+		{
+			Say( "Your bones will become part of the earth!" );
+			PlaySound( 0x65A );
+			FixedParticles( 0x36BD, 20, 10, 5044, EffectLayer.CenterFeet );
+
+			foreach ( Mobile m in GetMobilesInRange( 5 ) )
+			{
+				if ( m is PlayerMobile && m.Map == Map && m.Alive && !m.Blessed )
+				{
+					AOS.Damage( m, this, Utility.RandomMinMax( 40, 58 ), 100, 0, 0, 0, 0 );
+					m.FixedParticles( 0x3779, 1, 15, 9913, 1153, 7, EffectLayer.Waist );
+				}
+			}
 		}
 
 		public override bool OnBeforeDeath()
